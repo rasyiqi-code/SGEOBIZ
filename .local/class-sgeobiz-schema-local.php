@@ -276,7 +276,7 @@ class SGEOBIZ_Schema_Local {
 	 * @return array
 	 */
 	private function build_same_as( array $data ) {
-		$fields    = [ 'website', 'facebook', 'instagram', 'tokopedia', 'shopee', 'tiktok' ];
+		$fields    = [ 'website', 'facebook', 'instagram', 'tokopedia', 'shopee', 'tiktok', 'google_business_url' ];
 		$same_as   = [];
 
 		foreach ( $fields as $field ) {

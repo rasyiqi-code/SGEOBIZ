@@ -376,6 +376,7 @@ class SGEOBIZ_GBP_Settings {
 			'tokopedia'       => esc_url_raw( $post['social_tokopedia'] ?? '' ),
 			'shopee'          => esc_url_raw( $post['social_shopee'] ?? '' ),
 			'tiktok'          => esc_url_raw( $post['social_tiktok'] ?? '' ),
+			'google_business_url' => esc_url_raw( $post['social_google_business'] ?? '' ),
 
 			// Logo bisnis (attachment ID)
 			'logo_id'         => absint( $post['business_logo_id'] ?? 0 ),
@@ -497,6 +498,7 @@ class SGEOBIZ_GBP_Settings {
 		$this->field( 'social_tokopedia', 'Tokopedia URL', $d( 'tokopedia' ), 'url' );
 		$this->field( 'social_shopee', 'Shopee URL', $d( 'shopee' ), 'url' );
 		$this->field( 'social_tiktok', 'TikTok URL', $d( 'tiktok' ), 'url' );
+		$this->field( 'social_google_business', 'Google Business Profile / Maps URL', $d( 'google_business_url' ), 'url' );
 		echo '</div>';
 		echo '</div>';
 
