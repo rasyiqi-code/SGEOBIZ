@@ -10,6 +10,22 @@
 
 defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
+// Paksa textdomain sgeobiz-seo menggunakan Bahasa Indonesia (id_ID) secara global
+add_filter( 'plugin_locale', function( $locale, $domain ) {
+	if ( 'sgeobiz-seo' === $domain ) {
+		return 'id_ID';
+	}
+	return $locale;
+}, 100, 2 );
+
+// Muat ulang textdomain agar perubahan lokalisasi Bahasa Indonesia langsung aktif
+unload_textdomain( 'sgeobiz-seo' );
+load_plugin_textdomain(
+	'sgeobiz-seo',
+	false,
+	dirname( SGEOBIZ_SEO_PLUGIN_BASENAME ) . DIRECTORY_SEPARATOR . 'language'
+);
+
 // Konstanta jalur direktori .local
 define( 'SGEOBIZ_LOCAL_DIR', dirname( __FILE__ ) . DIRECTORY_SEPARATOR );
 define( 'SGEOBIZ_VERSION', '1.0.0' );
