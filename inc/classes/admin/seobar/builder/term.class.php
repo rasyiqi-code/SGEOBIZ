@@ -1,23 +1,23 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Admin\SEOBar\Builder\Term
- * @subpackage The_SEO_Framework\SEOBar
+ * @package SGEOBIZ_SEO\Classes\Admin\SEOBar\Builder\Term
+ * @subpackage SGEOBIZ_SEO\SEOBar
  */
 
-namespace The_SEO_Framework\Admin\SEOBar\Builder;
+namespace SGEOBIZ_SEO\Admin\SEOBar\Builder;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use const The_SEO_Framework\ROBOTS_ASSERT;
+use const SGEOBIZ_SEO\ROBOTS_ASSERT;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Data\Filter\Sanitize,
 	Meta,
 	RobotsTXT,
 	Admin\SEOBar\Builder,
 };
-use The_SEO_Framework\Helper\{
+use SGEOBIZ_SEO\Helper\{
 	Guidelines,
 	Format\Strings,
 	Query,
@@ -47,10 +47,10 @@ use The_SEO_Framework\Helper\{
  *
  * @since 4.0.0
  * @since 4.2.0 Renamed from `SeoBar_Term`.
- * @since 5.0.0 Moved from `\The_SEO_Framework\Builders\SEOBar`.
+ * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Builders\SEOBar`.
  *
  * @access private
- * @see \The_SEO_Framework\Admin\SEOBar\Builder
+ * @see \SGEOBIZ_SEO\Admin\SEOBar\Builder
  */
 final class Term extends Main {
 
@@ -181,48 +181,48 @@ final class Term extends Main {
 						'/',
 					),
 					/* translators: 1 = An assessment, 2 = Disclaimer, e.g. "take it with a grain of salt" */
-					'disclaim'        => \__( '%1$s (%2$s)', 'autodescription' ),
-					'estimated'       => \__( 'Estimated from the number of characters found. The pixel counter asserts the true length.', 'autodescription' ),
+					'disclaim'        => \__( '%1$s (%2$s)', 'sgeobiz-seo' ),
+					'estimated'       => \__( 'Estimated from the number of characters found. The pixel counter asserts the true length.', 'sgeobiz-seo' ),
 				],
 				'assess'   => [
-					'empty'      => \__( 'No title could be fetched.', 'autodescription' ),
+					'empty'      => \__( 'No title could be fetched.', 'sgeobiz-seo' ),
 					'untitled'   => \sprintf(
 						/* translators: %s = "Untitled" */
-						\__( 'No title could be fetched, "%s" is used instead.', 'autodescription' ),
+						\__( 'No title could be fetched, "%s" is used instead.', 'sgeobiz-seo' ),
 						Meta\Title::get_untitled_title(),
 					),
-					'prefixed'   => \__( 'A term label prefix is automatically added which increases the length.', 'autodescription' ),
+					'prefixed'   => \__( 'A term label prefix is automatically added which increases the length.', 'sgeobiz-seo' ),
 					'branding'   => [
-						'not'       => \__( "It's not branded. Search engines may ignore your title. Consider adding back the site title.", 'autodescription' ),
-						'manual'    => \__( "It's manually branded.", 'autodescription' ),
-						'automatic' => \__( "It's automatically branded.", 'autodescription' ),
+						'not'       => \__( "It's not branded. Search engines may ignore your title. Consider adding back the site title.", 'sgeobiz-seo' ),
+						'manual'    => \__( "It's manually branded.", 'sgeobiz-seo' ),
+						'automatic' => \__( "It's automatically branded.", 'sgeobiz-seo' ),
 					],
-					'duplicated' => \__( 'The site title is found multiple times.', 'autodescription' ),
-					'syntax'     => \__( "Markup syntax was found that isn't transformed. Consider rewriting the custom title.", 'autodescription' ),
+					'duplicated' => \__( 'The site title is found multiple times.', 'sgeobiz-seo' ),
+					'syntax'     => \__( "Markup syntax was found that isn't transformed. Consider rewriting the custom title.", 'sgeobiz-seo' ),
 				],
 				'reason'   => [
-					'incomplete' => \__( 'Incomplete.', 'autodescription' ),
-					'duplicated' => \__( 'The branding is repeated.', 'autodescription' ),
-					'notbranded' => \__( 'Not branded.', 'autodescription' ),
-					'syntax'     => \__( 'Found markup syntax.', 'autodescription' ),
+					'incomplete' => \__( 'Incomplete.', 'sgeobiz-seo' ),
+					'duplicated' => \__( 'The branding is repeated.', 'sgeobiz-seo' ),
+					'notbranded' => \__( 'Not branded.', 'sgeobiz-seo' ),
+					'syntax'     => \__( 'Found markup syntax.', 'sgeobiz-seo' ),
 				],
 				'defaults' => [
 					'generated' => [
-						'symbol' => \_x( 'TG', 'Title Generated', 'autodescription' ),
-						'title'  => \__( 'Title, generated', 'autodescription' ),
+						'symbol' => \_x( 'TG', 'Title Generated', 'sgeobiz-seo' ),
+						'title'  => \__( 'Title, generated', 'sgeobiz-seo' ),
 						'status' => Builder::STATE_GOOD,
-						'reason' => \__( 'Automatically generated.', 'autodescription' ),
+						'reason' => \__( 'Automatically generated.', 'sgeobiz-seo' ),
 						'assess' => [
-							'base' => \__( "It's built from the term name.", 'autodescription' ),
+							'base' => \__( "It's built from the term name.", 'sgeobiz-seo' ),
 						],
 					],
 					'custom'    => [
-						'symbol' => \_x( 'T', 'Title', 'autodescription' ),
-						'title'  => \__( 'Title', 'autodescription' ),
+						'symbol' => \_x( 'T', 'Title', 'sgeobiz-seo' ),
+						'title'  => \__( 'Title', 'sgeobiz-seo' ),
 						'status' => Builder::STATE_GOOD,
-						'reason' => \__( 'Obtained from term SEO meta input.', 'autodescription' ),
+						'reason' => \__( 'Obtained from term SEO meta input.', 'sgeobiz-seo' ),
 						'assess' => [
-							'base' => \__( "It's built from term SEO meta input.", 'autodescription' ),
+							'base' => \__( "It's built from term SEO meta input.", 'sgeobiz-seo' ),
 						],
 					],
 				],
@@ -377,52 +377,52 @@ final class Term extends Main {
 			[
 				'params'   => [
 					/* translators: 1 = An assessment, 2 = Disclaimer, e.g. "take it with a grain of salt" */
-					'disclaim'   => \__( '%1$s (%2$s)', 'autodescription' ),
-					'estimated'  => \__( 'Estimated from the number of characters found. The pixel counter asserts the true length.', 'autodescription' ),
+					'disclaim'   => \__( '%1$s (%2$s)', 'sgeobiz-seo' ),
+					'estimated'  => \__( 'Estimated from the number of characters found. The pixel counter asserts the true length.', 'sgeobiz-seo' ),
 					/**
 					 * @since 2.6.0
 					 * @param int $short_word_length The minimum string length of words to find as dupes.
 					 */
-					'dupe_short' => (int) \apply_filters( 'the_seo_framework_bother_me_desc_length', 3 ),
+					'dupe_short' => (int) \apply_filters( 'sgeobiz_seo_bother_me_desc_length', 3 ),
 				],
 				'assess'   => [
-					'empty'  => \__( 'No description could be generated.', 'autodescription' ),
+					'empty'  => \__( 'No description could be generated.', 'sgeobiz-seo' ),
 					/* translators: %s = list of repeated words */
-					'dupes'  => \__( 'Found repeated words: %s', 'autodescription' ),
-					'syntax' => \__( "Markup syntax was found that isn't transformed. Consider rewriting the custom description.", 'autodescription' ),
+					'dupes'  => \__( 'Found repeated words: %s', 'sgeobiz-seo' ),
+					'syntax' => \__( "Markup syntax was found that isn't transformed. Consider rewriting the custom description.", 'sgeobiz-seo' ),
 				],
 				'reason'   => [
-					'empty'         => \__( 'Empty.', 'autodescription' ),
-					'founddupe'     => \__( 'Found repeated words.', 'autodescription' ),
-					'foundmanydupe' => \__( 'Found too many repeated words.', 'autodescription' ),
-					'syntax'        => \__( 'Found markup syntax.', 'autodescription' ),
+					'empty'         => \__( 'Empty.', 'sgeobiz-seo' ),
+					'founddupe'     => \__( 'Found repeated words.', 'sgeobiz-seo' ),
+					'foundmanydupe' => \__( 'Found too many repeated words.', 'sgeobiz-seo' ),
+					'syntax'        => \__( 'Found markup syntax.', 'sgeobiz-seo' ),
 				],
 				'defaults' => [
 					'generated'   => [
-						'symbol' => \_x( 'DG', 'Description Generated', 'autodescription' ),
-						'title'  => \__( 'Description, generated', 'autodescription' ),
+						'symbol' => \_x( 'DG', 'Description Generated', 'sgeobiz-seo' ),
+						'title'  => \__( 'Description, generated', 'sgeobiz-seo' ),
 						'status' => Builder::STATE_GOOD,
-						'reason' => \__( 'Automatically generated.', 'autodescription' ),
+						'reason' => \__( 'Automatically generated.', 'sgeobiz-seo' ),
 						'assess' => [
-							'base' => \__( "It's built from the term description field.", 'autodescription' ),
+							'base' => \__( "It's built from the term description field.", 'sgeobiz-seo' ),
 						],
 					],
 					'emptynoauto' => [
-						'symbol' => \_x( 'D', 'Description', 'autodescription' ),
-						'title'  => \__( 'Description', 'autodescription' ),
+						'symbol' => \_x( 'D', 'Description', 'sgeobiz-seo' ),
+						'title'  => \__( 'Description', 'sgeobiz-seo' ),
 						'status' => Builder::STATE_UNKNOWN,
-						'reason' => \__( 'Empty.', 'autodescription' ),
+						'reason' => \__( 'Empty.', 'sgeobiz-seo' ),
 						'assess' => [
-							'noauto' => \__( 'No term description is set.', 'autodescription' ),
+							'noauto' => \__( 'No term description is set.', 'sgeobiz-seo' ),
 						],
 					],
 					'custom'      => [
-						'symbol' => \_x( 'D', 'Description', 'autodescription' ),
-						'title'  => \__( 'Description', 'autodescription' ),
+						'symbol' => \_x( 'D', 'Description', 'sgeobiz-seo' ),
+						'title'  => \__( 'Description', 'sgeobiz-seo' ),
 						'status' => Builder::STATE_GOOD,
-						'reason' => \__( 'Obtained from the term SEO meta input.', 'autodescription' ),
+						'reason' => \__( 'Obtained from the term SEO meta input.', 'sgeobiz-seo' ),
 						'assess' => [
-							'base' => \__( "It's built from the term SEO meta input.", 'autodescription' ),
+							'base' => \__( "It's built from the term SEO meta input.", 'sgeobiz-seo' ),
 						],
 					],
 				],
@@ -485,7 +485,7 @@ final class Term extends Main {
 
 				$dupes[] = \sprintf(
 					/* translators: 1: Word found, 2: Occurrences */
-					\esc_attr__( '&#8220;%1$s&#8221; is used %2$d times.', 'autodescription' ),
+					\esc_attr__( '&#8220;%1$s&#8221; is used %2$d times.', 'sgeobiz-seo' ),
 					\esc_attr( key( $_repeated_word ) ),
 					reset( $_repeated_word ), // escaped in sprintf %d.
 				);
@@ -569,39 +569,39 @@ final class Term extends Main {
 			[
 				'params'   => [],
 				'assess'   => [
-					'robotstxt'     => \__( 'The robots.txt file is nonstandard, and may still direct search engines differently.', 'autodescription' ),
-					'notpublic'     => \__( 'WordPress discourages crawling via the Reading Settings.', 'autodescription' ),
-					'site'          => \__( 'Indexing is discouraged for the whole site at the SEO Settings screen.', 'autodescription' ),
-					'posttypes'     => \__( 'Indexing is discouraged for all bound post types to this term at the SEO Settings screen.', 'autodescription' ),
-					'taxonomy'      => \__( 'Indexing is discouraged for this taxonomy at the SEO Settings screen.', 'autodescription' ),
-					'override'      => \__( 'The term SEO meta input overrides the indexing state.', 'autodescription' ),
-					'empty'         => \__( 'No posts are attached to this term, so indexing is disabled.', 'autodescription' ),
-					'emptyoverride' => \__( 'No posts are attached to this term, so indexing should be disabled.', 'autodescription' ),
-					'canonicalurl'  => \__( 'A custom canonical URL is set that points to another page.', 'autodescription' ),
+					'robotstxt'     => \__( 'The robots.txt file is nonstandard, and may still direct search engines differently.', 'sgeobiz-seo' ),
+					'notpublic'     => \__( 'WordPress discourages crawling via the Reading Settings.', 'sgeobiz-seo' ),
+					'site'          => \__( 'Indexing is discouraged for the whole site at the SEO Settings screen.', 'sgeobiz-seo' ),
+					'posttypes'     => \__( 'Indexing is discouraged for all bound post types to this term at the SEO Settings screen.', 'sgeobiz-seo' ),
+					'taxonomy'      => \__( 'Indexing is discouraged for this taxonomy at the SEO Settings screen.', 'sgeobiz-seo' ),
+					'override'      => \__( 'The term SEO meta input overrides the indexing state.', 'sgeobiz-seo' ),
+					'empty'         => \__( 'No posts are attached to this term, so indexing is disabled.', 'sgeobiz-seo' ),
+					'emptyoverride' => \__( 'No posts are attached to this term, so indexing should be disabled.', 'sgeobiz-seo' ),
+					'canonicalurl'  => \__( 'A custom canonical URL is set that points to another page.', 'sgeobiz-seo' ),
 				],
 				'reason'   => [
-					'notpublic'     => \__( 'WordPress overrides the robots directive.', 'autodescription' ),
-					'empty'         => \__( 'The term is empty.', 'autodescription' ),
-					'emptyoverride' => \__( 'The term is empty yet still indexed.', 'autodescription' ),
-					'canonicalurl'  => \__( 'The canonical URL points to another page.', 'autodescription' ),
+					'notpublic'     => \__( 'WordPress overrides the robots directive.', 'sgeobiz-seo' ),
+					'empty'         => \__( 'The term is empty.', 'sgeobiz-seo' ),
+					'emptyoverride' => \__( 'The term is empty yet still indexed.', 'sgeobiz-seo' ),
+					'canonicalurl'  => \__( 'The canonical URL points to another page.', 'sgeobiz-seo' ),
 				],
 				'defaults' => [
 					'index'   => [
-						'symbol' => \_x( 'I', 'Indexing', 'autodescription' ),
-						'title'  => \__( 'Indexing', 'autodescription' ),
+						'symbol' => \_x( 'I', 'Indexing', 'sgeobiz-seo' ),
+						'title'  => \__( 'Indexing', 'sgeobiz-seo' ),
 						'status' => Builder::STATE_GOOD,
-						'reason' => \__( 'Term may be indexed.', 'autodescription' ),
+						'reason' => \__( 'Term may be indexed.', 'sgeobiz-seo' ),
 						'assess' => [
-							'base' => \__( 'The robots meta tag allows indexing.', 'autodescription' ),
+							'base' => \__( 'The robots meta tag allows indexing.', 'sgeobiz-seo' ),
 						],
 					],
 					'noindex' => [
-						'symbol' => \_x( 'I', 'Indexing', 'autodescription' ),
-						'title'  => \__( 'Indexing', 'autodescription' ),
+						'symbol' => \_x( 'I', 'Indexing', 'sgeobiz-seo' ),
+						'title'  => \__( 'Indexing', 'sgeobiz-seo' ),
 						'status' => Builder::STATE_UNKNOWN,
-						'reason' => \__( 'Term may not be indexed.', 'autodescription' ),
+						'reason' => \__( 'Term may not be indexed.', 'sgeobiz-seo' ),
 						'assess' => [
-							'base' => \__( 'The robots meta tag does not allow indexing.', 'autodescription' ),
+							'base' => \__( 'The robots meta tag does not allow indexing.', 'sgeobiz-seo' ),
 						],
 					],
 				],
@@ -725,34 +725,34 @@ final class Term extends Main {
 			[
 				'params'   => [],
 				'assess'   => [
-					'robotstxt' => \__( 'The robots.txt file is nonstandard, and may still direct search engines differently.', 'autodescription' ),
-					'notpublic' => \__( 'WordPress discourages crawling via the Reading Settings.', 'autodescription' ),
-					'site'      => \__( 'Link following is discouraged for the whole site at the SEO Settings screen.', 'autodescription' ),
-					'posttypes' => \__( 'Link following is discouraged for all bound post types to this term at the SEO Settings screen.', 'autodescription' ),
-					'taxonomy'  => \__( 'Link following is discouraged for this taxonomy at the SEO Settings screen.', 'autodescription' ),
-					'override'  => \__( 'The term SEO meta input overrides the link following state.', 'autodescription' ),
-					'noindex'   => \__( 'The term may not be indexed, this may also discourage link following.', 'autodescription' ),
+					'robotstxt' => \__( 'The robots.txt file is nonstandard, and may still direct search engines differently.', 'sgeobiz-seo' ),
+					'notpublic' => \__( 'WordPress discourages crawling via the Reading Settings.', 'sgeobiz-seo' ),
+					'site'      => \__( 'Link following is discouraged for the whole site at the SEO Settings screen.', 'sgeobiz-seo' ),
+					'posttypes' => \__( 'Link following is discouraged for all bound post types to this term at the SEO Settings screen.', 'sgeobiz-seo' ),
+					'taxonomy'  => \__( 'Link following is discouraged for this taxonomy at the SEO Settings screen.', 'sgeobiz-seo' ),
+					'override'  => \__( 'The term SEO meta input overrides the link following state.', 'sgeobiz-seo' ),
+					'noindex'   => \__( 'The term may not be indexed, this may also discourage link following.', 'sgeobiz-seo' ),
 				],
 				'reason'   => [
-					'notpublic' => \__( 'WordPress overrides the robots directive.', 'autodescription' ),
+					'notpublic' => \__( 'WordPress overrides the robots directive.', 'sgeobiz-seo' ),
 				],
 				'defaults' => [
 					'follow'   => [
-						'symbol' => \_x( 'F', 'Following', 'autodescription' ),
-						'title'  => \__( 'Following', 'autodescription' ),
+						'symbol' => \_x( 'F', 'Following', 'sgeobiz-seo' ),
+						'title'  => \__( 'Following', 'sgeobiz-seo' ),
 						'status' => Builder::STATE_GOOD,
-						'reason' => \__( 'Term links may be followed.', 'autodescription' ),
+						'reason' => \__( 'Term links may be followed.', 'sgeobiz-seo' ),
 						'assess' => [
-							'base' => \__( 'The robots meta tag allows link following.', 'autodescription' ),
+							'base' => \__( 'The robots meta tag allows link following.', 'sgeobiz-seo' ),
 						],
 					],
 					'nofollow' => [
-						'symbol' => \_x( 'F', 'Following', 'autodescription' ),
-						'title'  => \__( 'Following', 'autodescription' ),
+						'symbol' => \_x( 'F', 'Following', 'sgeobiz-seo' ),
+						'title'  => \__( 'Following', 'sgeobiz-seo' ),
 						'status' => Builder::STATE_UNKNOWN,
-						'reason' => \__( 'Term links may not be followed.', 'autodescription' ),
+						'reason' => \__( 'Term links may not be followed.', 'sgeobiz-seo' ),
 						'assess' => [
-							'base' => \__( 'The robots meta tag does not allow link following.', 'autodescription' ),
+							'base' => \__( 'The robots meta tag does not allow link following.', 'sgeobiz-seo' ),
 						],
 					],
 				],
@@ -850,34 +850,34 @@ final class Term extends Main {
 			[
 				'params'   => [],
 				'assess'   => [
-					'robotstxt' => \__( 'The robots.txt file is nonstandard, and may still direct search engines differently.', 'autodescription' ),
-					'notpublic' => \__( 'WordPress discourages crawling via the Reading Settings.', 'autodescription' ),
-					'site'      => \__( 'Archiving is discouraged for the whole site at the SEO Settings screen.', 'autodescription' ),
-					'posttypes' => \__( 'Archiving is discouraged for all bound post types to this term at the SEO Settings screen.', 'autodescription' ),
-					'taxonomy'  => \__( 'Archiving is discouraged for this taxonomy at the SEO Settings screen.', 'autodescription' ),
-					'override'  => \__( 'The term SEO meta input overrides the archiving state.', 'autodescription' ),
-					'noindex'   => \__( 'The term may not be indexed, this may also discourage archiving.', 'autodescription' ),
+					'robotstxt' => \__( 'The robots.txt file is nonstandard, and may still direct search engines differently.', 'sgeobiz-seo' ),
+					'notpublic' => \__( 'WordPress discourages crawling via the Reading Settings.', 'sgeobiz-seo' ),
+					'site'      => \__( 'Archiving is discouraged for the whole site at the SEO Settings screen.', 'sgeobiz-seo' ),
+					'posttypes' => \__( 'Archiving is discouraged for all bound post types to this term at the SEO Settings screen.', 'sgeobiz-seo' ),
+					'taxonomy'  => \__( 'Archiving is discouraged for this taxonomy at the SEO Settings screen.', 'sgeobiz-seo' ),
+					'override'  => \__( 'The term SEO meta input overrides the archiving state.', 'sgeobiz-seo' ),
+					'noindex'   => \__( 'The term may not be indexed, this may also discourage archiving.', 'sgeobiz-seo' ),
 				],
 				'reason'   => [
-					'notpublic' => \__( 'WordPress overrides the robots directive.', 'autodescription' ),
+					'notpublic' => \__( 'WordPress overrides the robots directive.', 'sgeobiz-seo' ),
 				],
 				'defaults' => [
 					'archive'   => [
-						'symbol' => \_x( 'A', 'Archiving', 'autodescription' ),
-						'title'  => \__( 'Archiving', 'autodescription' ),
+						'symbol' => \_x( 'A', 'Archiving', 'sgeobiz-seo' ),
+						'title'  => \__( 'Archiving', 'sgeobiz-seo' ),
 						'status' => Builder::STATE_GOOD,
-						'reason' => \__( 'Term may be archived.', 'autodescription' ),
+						'reason' => \__( 'Term may be archived.', 'sgeobiz-seo' ),
 						'assess' => [
-							'base' => \__( 'The robots meta tag allows archiving.', 'autodescription' ),
+							'base' => \__( 'The robots meta tag allows archiving.', 'sgeobiz-seo' ),
 						],
 					],
 					'noarchive' => [
-						'symbol' => \_x( 'A', 'Archiving', 'autodescription' ),
-						'title'  => \__( 'Archiving', 'autodescription' ),
+						'symbol' => \_x( 'A', 'Archiving', 'sgeobiz-seo' ),
+						'title'  => \__( 'Archiving', 'sgeobiz-seo' ),
 						'status' => Builder::STATE_UNKNOWN,
-						'reason' => \__( 'Term may not be archived.', 'autodescription' ),
+						'reason' => \__( 'Term may not be archived.', 'sgeobiz-seo' ),
 						'assess' => [
-							'base' => \__( 'The robots meta tag does not allow archiving.', 'autodescription' ),
+							'base' => \__( 'The robots meta tag does not allow archiving.', 'sgeobiz-seo' ),
 						],
 					],
 				],
@@ -972,12 +972,12 @@ final class Term extends Main {
 			return static::get_cache( 'term/redirect/default/0' ) ?: static::set_cache(
 				'term/redirect/default/0',
 				[
-					'symbol' => \_x( 'R', 'Redirect', 'autodescription' ),
-					'title'  => \__( 'Redirection', 'autodescription' ),
+					'symbol' => \_x( 'R', 'Redirect', 'sgeobiz-seo' ),
+					'title'  => \__( 'Redirection', 'sgeobiz-seo' ),
 					'status' => Builder::STATE_GOOD,
-					'reason' => \__( 'Term does not redirect visitors.', 'autodescription' ),
+					'reason' => \__( 'Term does not redirect visitors.', 'sgeobiz-seo' ),
 					'assess' => [
-						'redirect' => \__( 'All visitors and crawlers may access this page.', 'autodescription' ),
+						'redirect' => \__( 'All visitors and crawlers may access this page.', 'sgeobiz-seo' ),
 					],
 					'meta'   => [
 						'blocking' => false,
@@ -988,12 +988,12 @@ final class Term extends Main {
 			return static::get_cache( 'term/redirect/default/1' ) ?: static::set_cache(
 				'term/redirect/default/1',
 				[
-					'symbol' => \_x( 'R', 'Redirect', 'autodescription' ),
-					'title'  => \__( 'Redirection', 'autodescription' ),
+					'symbol' => \_x( 'R', 'Redirect', 'sgeobiz-seo' ),
+					'title'  => \__( 'Redirection', 'sgeobiz-seo' ),
 					'status' => Builder::STATE_UNKNOWN,
-					'reason' => \__( 'Term redirects visitors.', 'autodescription' ),
+					'reason' => \__( 'Term redirects visitors.', 'sgeobiz-seo' ),
 					'assess' => [
-						'redirect' => \__( 'All visitors and crawlers are being redirected. So, no other SEO enhancements are effective.', 'autodescription' ),
+						'redirect' => \__( 'All visitors and crawlers are being redirected. So, no other SEO enhancements are effective.', 'sgeobiz-seo' ),
 					],
 					'meta'   => [
 						'blocking' => true,

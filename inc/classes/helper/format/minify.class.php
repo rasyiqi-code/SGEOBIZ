@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Helper\Format\Minify
- * @subpackage The_SEO_Framework\Formatting
+ * @package SGEOBIZ_SEO\Classes\Helper\Format\Minify
+ * @subpackage SGEOBIZ_SEO\Formatting
  */
 
-namespace The_SEO_Framework\Helper\Format;
+namespace SGEOBIZ_SEO\Helper\Format;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
  * The SEO Framework plugin
@@ -33,7 +33,7 @@ namespace The_SEO_Framework\Helper\Format;
  * @since 5.0.5
  *
  * @access protected
- *         Use tsf()->format()-minify() instead.
+ *         Use sgeobiz()->format()-minify() instead.
  */
 class Minify {
 

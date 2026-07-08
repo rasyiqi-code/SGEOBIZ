@@ -1,19 +1,19 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Meta
- * @subpackage The_SEO_Framework\Meta\Image
+ * @package SGEOBIZ_SEO\Classes\Meta
+ * @subpackage SGEOBIZ_SEO\Meta\Image
  */
 
-namespace The_SEO_Framework\Meta;
+namespace SGEOBIZ_SEO\Meta;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	get_query_type_from_args,
 	normalize_generation_args,
 };
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Data\Filter\Sanitize,
 	Helper\Query,
@@ -42,7 +42,7 @@ use The_SEO_Framework\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->image() instead.
+ *         Use sgeobiz()->image() instead.
  */
 class Image {
 
@@ -93,7 +93,7 @@ class Image {
 	 * @since 4.0.5 The output is now filterable.
 	 * @since 4.2.0 Now supports the `$args['pta']` index.
 	 * @since 5.0.0 1. Now always obtains cleaned images.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param array|null $args    The query arguments. Accepts 'id', 'tax', 'pta', and 'uid'.
 	 *                            Leave null to autodetermine query.
@@ -121,7 +121,7 @@ class Image {
 	 *
 	 * @since 4.0.0
 	 * @since 4.2.0 Now supports the `$args['pta']` index.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `get_custom_field_image_details`.
 	 *              3. Now accepts `$context`.
 	 *
@@ -160,7 +160,7 @@ class Image {
 		 * @param bool       $single  Whether to fetch one image, or multiple.
 		 */
 		return \apply_filters(
-			'the_seo_framework_custom_image_details',
+			'sgeobiz_seo_custom_image_details',
 			$single
 				? array_filter( [ self::generate_custom_image_details( $args, $context )->current() ] )
 				: [ ...self::generate_custom_image_details( $args, $context ) ],
@@ -174,7 +174,7 @@ class Image {
 	 *
 	 * @since 4.0.0
 	 * @since 4.2.0 Now supports the `$args['pta']` index.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param array|null $args    The query arguments. Accepts 'id', 'tax', 'pta', and 'uid'.
 	 *                            Leave null to autodetermine query.
@@ -212,7 +212,7 @@ class Image {
 		 * @param string     $context Caller context. Internally supports 'organization', 'social', and 'oembed'. Default 'social'.
 		 */
 		return \apply_filters(
-			'the_seo_framework_generated_image_details',
+			'sgeobiz_seo_generated_image_details',
 			$single
 				? array_filter( [ self::generate_generated_image_details( $args, $context )->current() ] )
 				: [ ...self::generate_generated_image_details( $args, $context ) ],
@@ -567,7 +567,7 @@ class Image {
 		 *                            May be (for example) 'breadcrumb' or 'article' for structured data.
 		 */
 		return \apply_filters(
-			'the_seo_framework_image_generation_params',
+			'sgeobiz_seo_image_generation_params',
 			[
 				'size'     => 'full',
 				'multi'    => true,

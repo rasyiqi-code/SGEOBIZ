@@ -1,13 +1,13 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Admin\Menu
+ * @package SGEOBIZ_SEO\Classes\Admin\Menu
  */
 
-namespace The_SEO_Framework\Admin;
+namespace SGEOBIZ_SEO\Admin;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	memo,
 	has_run,
 	is_headless,
@@ -35,7 +35,7 @@ use function The_SEO_Framework\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->admin()->menu() instead.
+ *         Use sgeobiz()->admin()->menu() instead.
  */
 class Menu {
 
@@ -45,7 +45,7 @@ class Menu {
 	 * @hook admin_menu 10
 	 * @since 2.2.2
 	 * @since 2.9.2 Added static cache so the method can only run once.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `add_menu_link`.
 	 *
 	 * @return void Early if method is already called.
@@ -107,13 +107,13 @@ class Menu {
 		 * @param array $args The menu arguments. All indexes must be maintained.
 		 */
 		return memo( \apply_filters(
-			'the_seo_framework_top_menu_args',
+			'sgeobiz_seo_top_menu_args',
 			[
-				'page_title' => \esc_html__( 'SEO Settings', 'autodescription' ),
-				'menu_title' => \esc_html__( 'SEO', 'autodescription' )
+				'page_title' => \esc_html__( 'SEO Settings', 'sgeobiz-seo' ),
+				'menu_title' => \esc_html__( 'SEO', 'sgeobiz-seo' )
 					. ( $issue_count ? self::get_issue_badge( $issue_count ) : '' ),
-				'capability' => \THE_SEO_FRAMEWORK_SETTINGS_CAP,
-				'menu_slug'  => \THE_SEO_FRAMEWORK_SITE_OPTIONS_SLUG,
+				'capability' => \SGEOBIZ_SEO_SETTINGS_CAP,
+				'menu_slug'  => \SGEOBIZ_SEO_SITE_OPTIONS_SLUG,
 				'callback'   => [ Settings\Plugin::class, 'prepare_settings_wrap' ],
 				'icon'       => 'dashicons-search',
 				'position'   => '90.9001',
@@ -149,7 +149,7 @@ class Menu {
 	 * Always returns 0 when the settings are headless.
 	 *
 	 * @since 4.2.8
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `get_admin_issue_count`.
 	 *
 	 * @return int The registered issue count.
@@ -162,14 +162,14 @@ class Menu {
 		 * @since 4.2.8
 		 * @param int The issue count. Don't overwrite, but increment it!
 		 */
-		return memo() ?? memo( \absint( \apply_filters( 'the_seo_framework_top_menu_issue_count', 0 ) ) );
+		return memo() ?? memo( \absint( \apply_filters( 'sgeobiz_seo_top_menu_issue_count', 0 ) ) );
 	}
 
 	/**
 	 * Returns formatted text for the notice count to be displayed in the admin menu as a number.
 	 *
 	 * @since 4.2.8
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `get_issue_badge`.
 	 *
 	 * @param int $issue_count The issue count.
@@ -180,12 +180,12 @@ class Menu {
 		$notice_i18n = \number_format_i18n( $issue_count );
 
 		return ' ' . \sprintf(
-			'<span class="tsf-menu-issue menu-counter count-%d"><span class=tsf-menu-issue-text aria-hidden=true>%s</span><span class=screen-reader-text>%s</span></span>',
+			'<span class="sgeobiz-menu-issue menu-counter count-%d"><span class=sgeobiz-menu-issue-text aria-hidden=true>%s</span><span class=screen-reader-text>%s</span></span>',
 			$issue_count,
 			$notice_i18n,
 			\sprintf(
 				/* translators: %s: number of issues waiting */
-				\_n( '%s issue waiting', '%s issues waiting', $issue_count, 'autodescription' ),
+				\_n( '%s issue waiting', '%s issues waiting', $issue_count, 'sgeobiz-seo' ),
 				$notice_i18n,
 			)
 		);

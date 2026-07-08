@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Data\Filter\Escape
- * @subpackage The_SEO_Framework\Data\Filter
+ * @package SGEOBIZ_SEO\Classes\Data\Filter\Escape
+ * @subpackage SGEOBIZ_SEO\Data\Filter
  */
 
-namespace The_SEO_Framework\Data\Filter;
+namespace SGEOBIZ_SEO\Data\Filter;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
  * The SEO Framework plugin
@@ -30,7 +30,7 @@ namespace The_SEO_Framework\Data\Filter;
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->escape() instead.
+ *         Use sgeobiz()->escape() instead.
  */
 class Escape {
 
@@ -42,7 +42,7 @@ class Escape {
 	 *
 	 * @see WordPress Core sanitize_key()
 	 * @since 4.0.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `s_field_id`.
 	 *
 	 * @param string $id The unsanitized ID.

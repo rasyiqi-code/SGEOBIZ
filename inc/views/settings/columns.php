@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Admin
- * @subpackage The_SEO_Framework\Admin\Settings
+ * @package SGEOBIZ_SEO\Views\Admin
+ * @subpackage SGEOBIZ_SEO\Admin\Settings
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
 // phpcs:disable WordPress.WP.GlobalVariablesOverride -- This isn't the global scope.
 
@@ -33,25 +33,25 @@ $hook_name = Admin\Menu::get_page_hook_name();
 <div class="metabox-holder columns-2">
 	<div class=postbox-container-1>
 		<?php
-		\do_action( 'the_seo_framework_before_siteadmin_metaboxes', $hook_name );
+		\do_action( 'sgeobiz_seo_before_siteadmin_metaboxes', $hook_name );
 
 		\do_meta_boxes( $hook_name, 'main', null );
 
 		if ( isset( $GLOBALS['wp_meta_boxes'][ $hook_name ]['main_extra'] ) )
 			\do_meta_boxes( $hook_name, 'main_extra', null );
 
-		\do_action( 'the_seo_framework_after_siteadmin_metaboxes', $hook_name );
+		\do_action( 'sgeobiz_seo_after_siteadmin_metaboxes', $hook_name );
 		?>
 	</div>
 	<div class=postbox-container-2>
 		<?php
-		\do_action( 'the_seo_framework_before_siteadmin_metaboxes_side', $hook_name );
+		\do_action( 'sgeobiz_seo_before_siteadmin_metaboxes_side', $hook_name );
 
 		/**
 		 * @TODO fill this in...? Is this even styled?
 		 */
 
-		\do_action( 'the_seo_framework_after_siteadmin_metaboxes_side', $hook_name );
+		\do_action( 'sgeobiz_seo_after_siteadmin_metaboxes_side', $hook_name );
 		?>
 	</div>
 </div>

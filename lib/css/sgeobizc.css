@@ -1,10 +1,10 @@
 /* START Character Counters */
 
-.tsf-counter-wrap {
+.sgeobiz-counter-wrap {
 	margin-top: 15px;
 }
 
-.tsf-counter {
+.sgeobiz-counter {
 	font-weight: 400;
 	color: #666;
 	cursor: pointer;
@@ -26,7 +26,7 @@
 	color: #2271b1;
 }
 
-.tsf-counter-one {
+.sgeobiz-counter-one {
 	color: #fff;
 	border-radius: 4em;
 	padding: 0 1ch;
@@ -35,28 +35,28 @@
 	text-align: center;
 	vertical-align: baseline;
 }
-.tsf-counter-one.tsf-count-bad {
+.sgeobiz-counter-one.tsf-count-bad {
 	background-color: #d63638;
 }
-.tsf-counter-one.tsf-count-okay {
+.sgeobiz-counter-one.tsf-count-okay {
 	background-color: #ffae00;
 }
-.tsf-counter-one.tsf-count-good {
+.sgeobiz-counter-one.tsf-count-good {
 	background-color: #00a32a;
 }
-.tsf-counter-one.tsf-count-unknown {
+.sgeobiz-counter-one.tsf-count-unknown {
 	background-color: #4f94d4;
 }
 
 /* START Pixel Counters */
 
 /* Temporarily fix for SEO settings page. Remove me TSF 6.0 */
-.tsf-nav-tab-content .tsf-pixel-counter-wrap {
+.tsf-nav-tab-content .sgeobiz-pixel-counter-wrap {
 	margin-inline-start: 1px;
 	max-width: 99%;
 }
 
-.tsf-pixel-shadow-wrap {
+.sgeobiz-pixel-shadow-wrap {
 	position: relative;
 	overflow: hidden;
 	width: 0;
@@ -64,18 +64,18 @@
 }
 
 /* 8 + 4 = 12. The 4px margins account for line height. TODO use unit lh instead? */
-.tsf-pixel-counter-wrap {
+.sgeobiz-pixel-counter-wrap {
 	border-bottom: 1px solid #ccc;
 	margin-top: 12px;
 }
 
-.tsf-pixel-counter-bar {
+.sgeobiz-pixel-counter-bar {
 	padding-top: 7px;
 	display: block;
 	width: 100%;
 }
 
-.tsf-pixel-counter-fluid {
+.sgeobiz-pixel-counter-fluid {
 	display: block;
 	pointer-events: none;
 	height: 3px;
@@ -86,15 +86,15 @@
 	transition: width .15s cubic-bezier( 0, 0, .75, 1 );
 }
 
-.tsf-pixel-counter-bad .tsf-pixel-counter-fluid {
+.sgeobiz-pixel-counter-bad .sgeobiz-pixel-counter-fluid {
 	background-color: #d63638;
 }
 
-.tsf-pixel-counter-okay .tsf-pixel-counter-fluid {
+.sgeobiz-pixel-counter-okay .sgeobiz-pixel-counter-fluid {
 	background-color: #ffae00;
 }
 
-.tsf-pixel-counter-good .tsf-pixel-counter-fluid {
+.sgeobiz-pixel-counter-good .sgeobiz-pixel-counter-fluid {
 	background-color: #00a32a;
 }
 

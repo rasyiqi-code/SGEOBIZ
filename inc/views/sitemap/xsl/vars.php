@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Sitemap\XSL\Vars
- * @subpackage The_SEO_Framework\Sitemap\XSL
+ * @package SGEOBIZ_SEO\Views\Sitemap\XSL\Vars
+ * @subpackage SGEOBIZ_SEO\Sitemap\XSL
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data\Filter\Sanitize,
 	Helper\Format,
 };
@@ -49,7 +49,7 @@ printf(
 		 * @since 3.1.0 It now filters the mail color, instead of accent.
 		 * @param string $colorMain A hexadecimal color.
 		 */
-		\apply_filters( 'the_seo_framework_sitemap_color_main', $colors['main'] )
+		\apply_filters( 'sgeobiz_seo_sitemap_color_main', $colors['main'] )
 	)
 );
 printf(
@@ -60,7 +60,7 @@ printf(
 		 * @since 3.1.0 It now filters the accent color, instead of main.
 		 * @param string $colorAccent A hexadecimal color.
 		 */
-		\apply_filters( 'the_seo_framework_sitemap_color_accent', $colors['accent'] )
+		\apply_filters( 'sgeobiz_seo_sitemap_color_accent', $colors['accent'] )
 	)
 );
 printf(
@@ -71,7 +71,7 @@ printf(
 		 * @param string $relativeFontColor A hexadecimal color.
 		 */
 		\apply_filters(
-			'the_seo_framework_sitemap_relative_font_color',
+			'sgeobiz_seo_sitemap_relative_font_color',
 			Format\Color::get_relative_fontcolor( $colors['main'] )
 		)
 	)

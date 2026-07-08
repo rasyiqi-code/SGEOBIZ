@@ -1,16 +1,16 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\List
- * @subpackage The_SEO_Framework\Admin\Edit\List
+ * @package SGEOBIZ_SEO\Views\List
+ * @subpackage SGEOBIZ_SEO\Admin\Edit\List
  *
  * POST index: autodescription-quick
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
-use The_SEO_Framework\Admin\Settings\Layout\{
+use SGEOBIZ_SEO\Admin\Settings\Layout\{
 	Form,
 	Input,
 };
@@ -43,21 +43,21 @@ $robots_settings = [
 		'name'      => 'autodescription-quick[noindex]',
 		'force_on'  => 'index',
 		'force_off' => 'noindex',
-		'label'     => \__( 'Indexing', 'autodescription' ),
+		'label'     => \__( 'Indexing', 'sgeobiz-seo' ),
 	],
 	'nofollow'  => [
 		'id'        => 'autodescription-quick[nofollow]',
 		'name'      => 'autodescription-quick[nofollow]',
 		'force_on'  => 'follow',
 		'force_off' => 'nofollow',
-		'label'     => \__( 'Following', 'autodescription' ),
+		'label'     => \__( 'Following', 'sgeobiz-seo' ),
 	],
 	'noarchive' => [
 		'id'        => 'autodescription-quick[noarchive]',
 		'name'      => 'autodescription-quick[noarchive]',
 		'force_on'  => 'archive',
 		'force_off' => 'noarchive',
-		'label'     => \__( 'Archiving', 'autodescription' ),
+		'label'     => \__( 'Archiving', 'sgeobiz-seo' ),
 	],
 ];
 
@@ -74,13 +74,13 @@ $robots_settings = [
 	 * @param string $post_type The post type slug, or current screen name if this is a taxonomy list table.
 	 * @param string $taxonomy  The current taxonomy type (if any).
 	 */
-	\do_action( 'the_seo_framework_before_quick_edit', $post_type, $taxonomy );
+	\do_action( 'sgeobiz_seo_before_quick_edit', $post_type, $taxonomy );
 	?>
 	<fieldset class=inline-edit-col-full>
-		<legend class=inline-edit-legend><?php \esc_html_e( 'General SEO Settings', 'autodescription' ); ?></legend>
+		<legend class=inline-edit-legend><?php \esc_html_e( 'General SEO Settings', 'sgeobiz-seo' ); ?></legend>
 		<div class="inline-edit-col tsf-le-wide-complex-column">
 			<label for=autodescription-quick[doctitle]>
-				<span class=title><?php \esc_html_e( 'Meta Title', 'autodescription' ); ?></span>
+				<span class=title><?php \esc_html_e( 'Meta Title', 'sgeobiz-seo' ); ?></span>
 			</label>
 			<?php
 			Data\Plugin::get_option( 'display_character_counter' )
@@ -97,7 +97,7 @@ $robots_settings = [
 		</div>
 		<div class="inline-edit-col tsf-le-wide-complex-column">
 			<label for=autodescription-quick[description]>
-				<span class=title><?php \esc_html_e( 'Meta Description', 'autodescription' ); ?></span>
+				<span class=title><?php \esc_html_e( 'Meta Description', 'sgeobiz-seo' ); ?></span>
 			</label>
 			<?php
 			Data\Plugin::get_option( 'display_character_counter' )
@@ -114,10 +114,10 @@ $robots_settings = [
 		</div>
 	</fieldset>
 	<fieldset class=inline-edit-col-full>
-		<legend class=inline-edit-legend><?php \esc_html_e( 'Visibility SEO Settings', 'autodescription' ); ?></legend>
+		<legend class=inline-edit-legend><?php \esc_html_e( 'Visibility SEO Settings', 'sgeobiz-seo' ); ?></legend>
 		<div class=inline-edit-col>
 			<label>
-				<span class=title><?php \esc_html_e( 'Canonical URL', 'autodescription' ); ?></span>
+				<span class=title><?php \esc_html_e( 'Canonical URL', 'sgeobiz-seo' ); ?></span>
 				<span class=tsf-inline-input>
 					<input type=url id=autodescription-quick[canonical] name=autodescription-quick[canonical]>
 				</span>
@@ -125,7 +125,7 @@ $robots_settings = [
 			<div class="inline-edit-group wp-clearfix">
 				<?php
 				/* translators: %s = default option value */
-				$_default_i18n = \__( 'Default (%s)', 'autodescription' );
+				$_default_i18n = \__( 'Default (%s)', 'sgeobiz-seo' );
 
 				foreach ( $robots_settings as $_setting ) {
 					// This is bad accessibility, but it's exactly as bad as WP is, and we don't want to stray away from their standards.
@@ -150,7 +150,7 @@ $robots_settings = [
 			</div>
 			<div class="inline-edit-group wp-clearfix">
 				<label>
-					<span class=title><?php \esc_html_e( '301 Redirect URL', 'autodescription' ); ?></span>
+					<span class=title><?php \esc_html_e( '301 Redirect URL', 'sgeobiz-seo' ); ?></span>
 					<span class=tsf-inline-input>
 						<input type=url id=autodescription-quick[redirect] name=autodescription-quick[redirect]>
 					</span>
@@ -164,6 +164,6 @@ $robots_settings = [
 	 * @param string $post_type The post type slug, or current screen name if this is a taxonomy list table.
 	 * @param string $taxonomy  The current taxonomy type (if any).
 	 */
-	\do_action( 'the_seo_framework_after_quick_edit', $post_type, $taxonomy );
+	\do_action( 'sgeobiz_seo_after_quick_edit', $post_type, $taxonomy );
 	?>
 </div>

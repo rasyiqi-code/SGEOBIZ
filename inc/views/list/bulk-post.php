@@ -1,16 +1,16 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\List
- * @subpackage The_SEO_Framework\Admin\Edit\List
+ * @package SGEOBIZ_SEO\Views\List
+ * @subpackage SGEOBIZ_SEO\Admin\Edit\List
  *
  * POST index: autodescription-bulk
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
-use The_SEO_Framework\Admin\Settings\Layout\Form;
+use SGEOBIZ_SEO\Admin\Settings\Layout\Form;
 
 // phpcs:disable WordPress.WP.GlobalVariablesOverride -- This isn't the global scope.
 
@@ -40,21 +40,21 @@ $robots_settings = [
 		'name'      => 'autodescription-bulk[noindex]',
 		'force_on'  => 'index',
 		'force_off' => 'noindex',
-		'label'     => \__( 'Indexing', 'autodescription' ),
+		'label'     => \__( 'Indexing', 'sgeobiz-seo' ),
 	],
 	'nofollow'  => [
 		'id'        => 'autodescription-bulk[nofollow]',
 		'name'      => 'autodescription-bulk[nofollow]',
 		'force_on'  => 'follow',
 		'force_off' => 'nofollow',
-		'label'     => \__( 'Link following', 'autodescription' ),
+		'label'     => \__( 'Link following', 'sgeobiz-seo' ),
 	],
 	'noarchive' => [
 		'id'        => 'autodescription-bulk[noarchive]',
 		'name'      => 'autodescription-bulk[noarchive]',
 		'force_on'  => 'archive',
 		'force_off' => 'noarchive',
-		'label'     => \__( 'Archiving', 'autodescription' ),
+		'label'     => \__( 'Archiving', 'sgeobiz-seo' ),
 	],
 ];
 
@@ -71,15 +71,15 @@ $robots_settings = [
 	 * @param string $post_type The current post type.
 	 * @param string $taxonomy  The current taxonomy type (if any).
 	 */
-	\do_action( 'the_seo_framework_before_bulk_edit', $post_type, $taxonomy );
+	\do_action( 'sgeobiz_seo_before_bulk_edit', $post_type, $taxonomy );
 	?>
 	<fieldset class=inline-edit-col-left>
-		<legend class=inline-edit-legend><?php \esc_html_e( 'Visibility SEO Settings', 'autodescription' ); ?></legend>
+		<legend class=inline-edit-legend><?php \esc_html_e( 'Visibility SEO Settings', 'sgeobiz-seo' ); ?></legend>
 		<div class=inline-edit-col>
 			<div class="inline-edit-group wp-clearfix">
 				<?php
 				$_no_change_i18n       = \__( '&mdash; No Change &mdash;', 'default' );
-				$_default_unknown_i18n = \__( 'Default (unknown)', 'autodescription' );
+				$_default_unknown_i18n = \__( 'Default (unknown)', 'sgeobiz-seo' );
 
 				foreach ( $robots_settings as $_setting ) {
 					// This is bad accessibility, but it's exactly as bad as WP is, and we don't want to stray away from their standards.
@@ -110,6 +110,6 @@ $robots_settings = [
 	 * @param string $post_type The current post type.
 	 * @param string $taxonomy  The current taxonomy type (if any).
 	 */
-	\do_action( 'the_seo_framework_after_bulk_edit', $post_type, $taxonomy );
+	\do_action( 'sgeobiz_seo_after_bulk_edit', $post_type, $taxonomy );
 	?>
 </div>

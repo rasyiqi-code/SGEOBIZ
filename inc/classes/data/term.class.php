@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Data\Post
- * @subpackage The_SEO_Framework\Data
+ * @package SGEOBIZ_SEO\Classes\Data\Post
+ * @subpackage SGEOBIZ_SEO\Data
  */
 
-namespace The_SEO_Framework\Data;
+namespace SGEOBIZ_SEO\Data;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\memo;
+use function SGEOBIZ_SEO\memo;
 
 /**
  * The SEO Framework plugin
@@ -32,7 +32,7 @@ use function The_SEO_Framework\memo;
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->data()->term() instead.
+ *         Use sgeobiz()->data()->term() instead.
  */
 class Term {
 
@@ -70,7 +70,7 @@ class Term {
 	 * Memoizes the return value.
 	 *
 	 * @since 4.2.8
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param int    $term_id The term ID.
 	 * @param string $taxonomy The term taxonomy.

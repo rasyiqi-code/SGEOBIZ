@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Sitemap
- * @subpackage The_SEO_Framework\Sitemap
+ * @package SGEOBIZ_SEO\Views\Sitemap
+ * @subpackage SGEOBIZ_SEO\Sitemap
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
 // phpcs:disable WordPress.WP.GlobalVariablesOverride -- This isn't the global scope.
 
@@ -30,11 +30,11 @@ namespace The_SEO_Framework;
 // See output_base_sitemap et al.
 [ $sitemap_id ] = $view_args;
 
-THE_SEO_FRAMEWORK_DEBUG and $timer_start = hrtime( true );
+SGEOBIZ_SEO_DEBUG and $timer_start = hrtime( true );
 
 Sitemap\Registry::output_sitemap_header();
 
-if ( THE_SEO_FRAMEWORK_DEBUG ) {
+if ( SGEOBIZ_SEO_DEBUG ) {
 	echo '<!-- Site estimated peak usage prior to generation: ', number_format( memory_get_peak_usage() / MB_IN_BYTES, 3 ), ' MB -->' . "\n";
 	echo '<!-- System estimated peak usage prior to generation: ', number_format( memory_get_peak_usage( true ) / MB_IN_BYTES, 3 ), ' MB -->' . "\n";
 }
@@ -48,15 +48,15 @@ echo $sitemap_base->generate_sitemap( $sitemap_id );
 Sitemap\Registry::output_sitemap_urlset_close_tag();
 
 if ( $sitemap_base->base_is_regenerated ) {
-	echo "\n<!-- ", \esc_html__( 'Sitemap is generated for this view', 'autodescription' ), ' -->';
+	echo "\n<!-- ", \esc_html__( 'Sitemap is generated for this view', 'sgeobiz-seo' ), ' -->';
 } else {
-	echo "\n<!-- ", \esc_html__( 'Sitemap is served from cache', 'autodescription' ), ' -->';
+	echo "\n<!-- ", \esc_html__( 'Sitemap is served from cache', 'sgeobiz-seo' ), ' -->';
 }
 
 // Destruct class.
 $sitemap_base = null;
 
-if ( THE_SEO_FRAMEWORK_DEBUG ) {
+if ( SGEOBIZ_SEO_DEBUG ) {
 	echo "\n<!-- Site estimated current usage: ", number_format( memory_get_usage() / MB_IN_BYTES, 3 ), ' MB -->';
 	echo "\n<!-- System estimated current usage: ", number_format( memory_get_usage( true ) / MB_IN_BYTES, 3 ), ' MB -->';
 	echo "\n<!-- Site estimated peak usage: ", number_format( memory_get_peak_usage() / MB_IN_BYTES, 3 ), ' MB -->';

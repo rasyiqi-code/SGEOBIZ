@@ -1,19 +1,19 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Front\Meta
- * @subpackage The_SEO_Framework\Meta
+ * @package SGEOBIZ_SEO\Classes\Front\Meta
+ * @subpackage SGEOBIZ_SEO\Meta
  */
 
-namespace The_SEO_Framework\Front\Meta;
+namespace SGEOBIZ_SEO\Front\Meta;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	memo,
 	_bootstrap_timer,
 };
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper\Query,
 };
@@ -57,7 +57,7 @@ final class Head {
 		/**
 		 * @since 2.6.0
 		 */
-		\do_action( 'the_seo_framework_do_before_output' );
+		\do_action( 'sgeobiz_seo_do_before_output' );
 
 		/**
 		 * The bootstrap timer keeps adding when metadata is strapping.
@@ -84,7 +84,7 @@ final class Head {
 		/**
 		 * @since 2.6.0
 		 */
-		\do_action( 'the_seo_framework_do_after_output' );
+		\do_action( 'sgeobiz_seo_do_after_output' );
 	}
 
 	/**
@@ -98,7 +98,7 @@ final class Head {
 		/**
 		 * @since 4.2.0
 		 */
-		\do_action( 'the_seo_framework_before_meta_output' );
+		\do_action( 'sgeobiz_seo_before_meta_output' );
 
 		// Limit processing and redundant tags on 404 and search.
 		// TODO consider switching is_404 and aqp again when resolved: https://core.trac.wordpress.org/ticket/51117.
@@ -143,7 +143,7 @@ final class Head {
 		 *                                  Do not register new pools; it'll cause a fatal error.
 		 */
 		$generator_pools = \apply_filters(
-			'the_seo_framework_meta_generator_pools',
+			'sgeobiz_seo_meta_generator_pools',
 			isset( $remove_pools ) ? array_diff( $generator_pools, $remove_pools ) : $generator_pools,
 		);
 
@@ -152,7 +152,7 @@ final class Head {
 
 		// Queue array_merge for improved performance. Do not use __NAMESPACE__; needs to be found easily.
 		foreach ( $generator_pools as $pool )
-			$generators_queue[] = ( "\The_SEO_Framework\Front\Meta\Generator\\$pool" )::GENERATORS;
+			$generators_queue[] = ( "\SGEOBIZ_SEO\Front\Meta\Generator\\$pool" )::GENERATORS;
 
 		/**
 		 * @since 5.0.0
@@ -162,7 +162,7 @@ final class Head {
 		 *                                    The tag pool names correspond directly to the classes'.
 		 */
 		$tag_generators = \apply_filters(
-			'the_seo_framework_meta_generators',
+			'sgeobiz_seo_meta_generators',
 			array_merge( ...$generators_queue ),
 			$generator_pools,
 		);
@@ -181,7 +181,7 @@ final class Head {
 		 *                                     The generators may offload work to other generators.
 		 */
 		$tags_render_data = \apply_filters( // phpcs:ignore Generic.Formatting -- bug in PHPCS.
-			'the_seo_framework_meta_render_data',
+			'sgeobiz_seo_meta_render_data',
 			$tags_render_data = &Tags::tags_render_data(),
 			$tag_generators,
 		);
@@ -192,7 +192,7 @@ final class Head {
 		/**
 		 * @since 4.2.0
 		 */
-		\do_action( 'the_seo_framework_after_meta_output' );
+		\do_action( 'sgeobiz_seo_after_meta_output' );
 	}
 
 	/**
@@ -215,15 +215,15 @@ final class Head {
 			 * @since 2.0.0
 			 * @param bool $run Whether to run and show the plugin indicator.
 			 */
-			'run'        => (bool) \apply_filters( 'the_seo_framework_indicator', true ),
+			'run'        => (bool) \apply_filters( 'sgeobiz_seo_indicator', true ),
 			/**
 			 * @since 2.4.0
 			 * @param bool $show_timer Whether to show the generation time in the indicator.
 			 */
-			'show_timer' => (bool) \apply_filters( 'the_seo_framework_indicator_timing', true ),
+			'show_timer' => (bool) \apply_filters( 'sgeobiz_seo_indicator_timing', true ),
 			'annotation' => \esc_html( trim( vsprintf(
 				/* translators: 1 = Plugin name, 2 = Author */
-				\__( '%1$s %2$s', 'autodescription' ),
+				\__( '%1$s %2$s', 'sgeobiz-seo' ),
 				[
 					'SGEOBIZ SEO',
 					/**
@@ -231,7 +231,7 @@ final class Head {
 					 * @param bool $sybre Whether to show the author name in the indicator.
 					 */
 					false // phpcs:ignore WordPress.NamingConventions.ValidHookName -- Easter egg.
-						? \__( 'by SGEOBIZ', 'autodescription' )
+						? \__( 'by SGEOBIZ', 'sgeobiz-seo' )
 						: '',
 				]
 			) ) ),

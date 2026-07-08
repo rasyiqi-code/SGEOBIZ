@@ -1,21 +1,21 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Meta\Robots
- * @subpackage The_SEO_Framework\Meta\Robots
+ * @package SGEOBIZ_SEO\Classes\Meta\Robots
+ * @subpackage SGEOBIZ_SEO\Meta\Robots
  */
 
-namespace The_SEO_Framework\Meta\Robots;
+namespace SGEOBIZ_SEO\Meta\Robots;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use const The_SEO_Framework\{
+use const SGEOBIZ_SEO\{
 	ROBOTS_IGNORE_SETTINGS,
 	ROBOTS_IGNORE_PROTECTION,
 };
 
-use The_SEO_Framework\Data;
-use The_SEO_Framework\Meta\Robots; // Yes, it is legal to share class and namespaces.
-use The_SEO_Framework\Helper\{
+use SGEOBIZ_SEO\Data;
+use SGEOBIZ_SEO\Meta\Robots; // Yes, it is legal to share class and namespaces.
+use SGEOBIZ_SEO\Helper\{
 	Query,
 	Taxonomy,
 };
@@ -41,7 +41,7 @@ use The_SEO_Framework\Helper\{
  * Engine for robots generator via front-end query.
  *
  * @since 4.2.0
- * @since 5.0.0 Moved from `\The_SEO_Framework\Builders\Robots`.
+ * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Builders\Robots`.
  * @access private
  */
 final class Front extends Factory {
@@ -217,7 +217,7 @@ final class Front extends Factory {
 						 * @link <https://github.com/sybrew/the-seo-framework/issues/194#issuecomment-864298702>
 						 * @param bool $noindex Whether to enable no posts protection.
 						 */
-						yield '404' => (bool) \apply_filters( 'the_seo_framework_enable_noindex_no_posts', true );
+						yield '404' => (bool) \apply_filters( 'sgeobiz_seo_enable_noindex_no_posts', true );
 					}
 				}
 				break;
@@ -242,7 +242,7 @@ final class Front extends Factory {
 				 * @since 4.0.5
 				 * @param bool $noindex Whether to enable comment pagination protection.
 				 */
-				yield 'cpage' => \apply_filters( 'the_seo_framework_enable_noindex_comment_pagination', true );
+				yield 'cpage' => \apply_filters( 'sgeobiz_seo_enable_noindex_comment_pagination', true );
 		}
 	}
 }

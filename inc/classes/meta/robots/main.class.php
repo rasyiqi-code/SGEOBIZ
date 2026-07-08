@@ -1,16 +1,16 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Meta\Robots
- * @subpackage The_SEO_Framework\Meta\Robots
+ * @package SGEOBIZ_SEO\Classes\Meta\Robots
+ * @subpackage SGEOBIZ_SEO\Meta\Robots
  */
 
-namespace The_SEO_Framework\Meta\Robots;
+namespace SGEOBIZ_SEO\Meta\Robots;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use const The_SEO_Framework\ROBOTS_ASSERT;
+use const SGEOBIZ_SEO\ROBOTS_ASSERT;
 
-use function The_SEO_Framework\umemo;
+use function SGEOBIZ_SEO\umemo;
 
 /**
  * The SEO Framework plugin
@@ -33,7 +33,7 @@ use function The_SEO_Framework\umemo;
  * Generates robots meta.
  *
  * @since 4.2.0
- * @since 5.0.0 Moved from `\The_SEO_Framework\Builders\Robots`.
+ * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Builders\Robots`.
  * @access private
  */
 final class Main {
@@ -170,7 +170,7 @@ final class Main {
 	 * @since 4.2.0
 	 * @factory
 	 *
-	 * @return The_SEO_Framework\Builders\Robots\<Args|Front>
+	 * @return SGEOBIZ_SEO\Builders\Robots\<Args|Front>
 	 */
 	private function get_factory() {
 		return umemo(

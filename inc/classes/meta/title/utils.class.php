@@ -1,19 +1,19 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Meta\Title
- * @subpackage The_SEO_Framework\Meta\Title
+ * @package SGEOBIZ_SEO\Classes\Meta\Title
+ * @subpackage SGEOBIZ_SEO\Meta\Title
  */
 
-namespace The_SEO_Framework\Meta\Title;
+namespace SGEOBIZ_SEO\Meta\Title;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	get_query_type_from_args,
 	normalize_generation_args,
 };
 
-use The_SEO_Framework\Data;
+use SGEOBIZ_SEO\Data;
 
 /**
  * The SEO Framework plugin
@@ -37,7 +37,7 @@ use The_SEO_Framework\Data;
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->title()->utils() instead.
+ *         Use sgeobiz()->title()->utils() instead.
  */
 class Utils {
 
@@ -58,7 +58,7 @@ class Utils {
 		 *                    'pipe' is excluded from this rule.
 		 */
 		return (array) \apply_filters(
-			'the_seo_framework_separator_list',
+			'sgeobiz_seo_separator_list',
 			[
 				'hyphen' => '&#x2d;',
 				'pipe'   => '|',
@@ -88,7 +88,7 @@ class Utils {
 	 * @since 3.1.0
 	 * @since 4.1.0 Added a second parameter, $args, to help soften the burden of this method.
 	 * @since 5.0.0 1. Now handles filters with a priority of 0. Only a theoretical bug, so not in changelog.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 * @internal Only to be used within Meta\Title::get_bare_unfiltered_generated_title()
 	 *
 	 * @param bool       $reset Whether to reset the removed filters.
@@ -156,7 +156,7 @@ class Utils {
 	 * Resets default title filters, for consistent output and sanitation.
 	 *
 	 * @since 3.1.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @internal Only to be used within Meta\Title::get_bare_unfiltered_generated_title()
 	 */
 	public static function reset_default_title_filters() {

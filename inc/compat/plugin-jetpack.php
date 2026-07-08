@@ -1,13 +1,13 @@
 <?php
 /**
- * @package The_SEO_Framework\Compat\Plugin\Jetpack
- * @subpackage The_SEO_Framework\Compatibility
+ * @package SGEOBIZ_SEO\Compat\Plugin\Jetpack
+ * @subpackage SGEOBIZ_SEO\Compatibility
  * @access private
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 if ( Data\Plugin::get_option( 'og_tags' ) )
 	\add_filter( 'jetpack_enable_open_graph', '__return_false' );

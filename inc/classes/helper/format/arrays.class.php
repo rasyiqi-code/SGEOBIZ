@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Helper\Format\Arrays
- * @subpackage The_SEO_Framework\Formatting
+ * @package SGEOBIZ_SEO\Classes\Helper\Format\Arrays
+ * @subpackage SGEOBIZ_SEO\Formatting
  */
 
-namespace The_SEO_Framework\Helper\Format;
+namespace SGEOBIZ_SEO\Helper\Format;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\memo;
+use function SGEOBIZ_SEO\memo;
 
 /**
  * The SEO Framework plugin
@@ -34,7 +34,7 @@ use function The_SEO_Framework\memo;
  * @since 5.0.0
  *
  * @access protected
- *         Use tsf()->format()->arrays() instead.
+ *         Use sgeobiz()->format()->arrays() instead.
  */
 class Arrays {
 
@@ -121,7 +121,7 @@ class Arrays {
 	 *              2. Reduced number of opcodes by roughly 27% by reworking it.
 	 *              3. Now no longer throws warnings with qubed+ arrays.
 	 *              4. Now no longer prevents scalar values overwriting arrays.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param array ...$arrays The arrays to merge. The rightmost array's values are dominant.
 	 * @return array The merged arrays.

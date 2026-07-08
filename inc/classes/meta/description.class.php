@@ -1,26 +1,26 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Meta
- * @subpackage The_SEO_Framework\Meta\Description
+ * @package SGEOBIZ_SEO\Classes\Meta
+ * @subpackage SGEOBIZ_SEO\Meta\Description
  */
 
-namespace The_SEO_Framework\Meta;
+namespace SGEOBIZ_SEO\Meta;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	coalesce_strlen,
 	get_query_type_from_args,
 	memo,
 	normalize_generation_args,
 };
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Data\Filter\Sanitize,
 	Meta,
 };
-use The_SEO_Framework\Helper\{
+use SGEOBIZ_SEO\Helper\{
 	Guidelines,
 	Query,
 	Format\Strings,
@@ -48,7 +48,7 @@ use The_SEO_Framework\Helper\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->description() instead.
+ *         Use sgeobiz()->description() instead.
  */
 class Description {
 
@@ -93,7 +93,7 @@ class Description {
 		 *                         Is null when the query is auto-determined.
 		 */
 		return Sanitize::metadata_content( \apply_filters(
-			'the_seo_framework_custom_field_description',
+			'sgeobiz_seo_custom_field_description',
 			$desc,
 			$args,
 		) );
@@ -111,7 +111,7 @@ class Description {
 	 *              2. Now no longer converts additions into excerpt when no excerpt is found.
 	 * @since 3.2.2 Now converts HTML characters prior trimming.
 	 * @since 4.2.0 Now supports the `$args['pta']` index.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Removed the second `$escape` parameter.
 	 *              3. Moved the third parameter to the second.
 	 *
@@ -148,7 +148,7 @@ class Description {
 		 * @param string     $type    Type of description. Accepts 'search', 'opengraph', 'twitter'.
 		 */
 		$excerpt = (string) \apply_filters(
-			'the_seo_framework_description_excerpt',
+			'sgeobiz_seo_description_excerpt',
 			$excerpt,
 			$args,
 			$type,
@@ -174,7 +174,7 @@ class Description {
 		 * @param string     $type Type of description. Accepts 'search', 'opengraph', 'twitter'.
 		 */
 		$desc = (string) \apply_filters(
-			'the_seo_framework_generated_description',
+			'sgeobiz_seo_generated_description',
 			$desc,
 			$args,
 			$type,
@@ -225,7 +225,7 @@ class Description {
 	 * @since 3.2.2 Now tests for the static frontpage metadata prior getting fallback data.
 	 * @since 4.2.0 Now supports the `$args['pta']` index.
 	 * @since 5.0.0 1. Now expects an ID before getting a post meta item.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param array $args The query arguments. Accepts 'id', 'tax', 'pta', and 'uid'.
 	 * @return string The custom description.
@@ -282,7 +282,7 @@ class Description {
 		 *                                    Is null when the query is auto-determined.
 		 */
 		return (bool) \apply_filters(
-			'the_seo_framework_enable_auto_description',
+			'sgeobiz_seo_enable_auto_description',
 			Data\Plugin::get_option( 'auto_description' ),
 			$args,
 		);

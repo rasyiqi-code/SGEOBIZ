@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Admin
- * @subpackage The_SEO_Framework\Admin\Settings
+ * @package SGEOBIZ_SEO\Views\Admin
+ * @subpackage SGEOBIZ_SEO\Admin\Settings
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
 // phpcs:disable WordPress.WP.GlobalVariablesOverride -- This isn't the global scope.
 
@@ -56,7 +56,7 @@ foreach ( $tabs as $tab => $args ) {
 			$name     = $args['name'] ?? '';
 
 			?>
-			<div class="hide-if-tsf-js tsf-nav-tab-content-no-js">
+			<div class="hide-if-sgeobiz-js tsf-nav-tab-content-no-js">
 				<div class="tsf-tab tsf-nav-tab-no-js">
 					<span class="tsf-nav-tab-label tsf-nav-tab-active">
 						<?= $dashicon ? '<span class="dashicons dashicons-' . \esc_attr( $dashicon ) . ' tsf-dashicons-tabs"></span>' : '' ?>
@@ -90,7 +90,7 @@ foreach ( $tabs as $tab => $args ) {
 		 * }
 		 */
 		\do_action(
-			'the_seo_framework_tab_content',
+			'sgeobiz_seo_tab_content',
 			[
 				'id'   => $id,
 				'tab'  => $tab,

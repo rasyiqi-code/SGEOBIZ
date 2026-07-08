@@ -1,19 +1,19 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Data\Blog
- * @subpackage The_SEO_Framework\Data
+ * @package SGEOBIZ_SEO\Classes\Data\Blog
+ * @subpackage SGEOBIZ_SEO\Data
  */
 
-namespace The_SEO_Framework\Data;
+namespace SGEOBIZ_SEO\Data;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	memo,
 	umemo,
 };
 
-use The_SEO_Framework\Data; // Yes, it is legal to import the same namespace.
+use SGEOBIZ_SEO\Data; // Yes, it is legal to import the same namespace.
 
 /**
  * The SEO Framework plugin
@@ -38,7 +38,7 @@ use The_SEO_Framework\Data; // Yes, it is legal to import the same namespace.
  * @since 5.0.0
  * @since 5.1.0 Removed the unused Property_Refresher trait.
  * @access protected
- *         Use tsf()->data()->blog() instead.
+ *         Use sgeobiz()->data()->blog() instead.
  */
 class Blog {
 
@@ -74,7 +74,7 @@ class Blog {
 		 * @param string The blog name.
 		 */
 		return (string) \apply_filters(
-			'the_seo_framework_blog_name',
+			'sgeobiz_seo_blog_name',
 			trim( \get_bloginfo( 'name', 'display' ) ),
 		);
 	}
@@ -157,7 +157,7 @@ class Blog {
 	 * Memoizes the return value.
 	 *
 	 * @since 2.9.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return bool
 	 */
@@ -177,7 +177,7 @@ class Blog {
 	 * Returns list of active plugins.
 	 *
 	 * @since 2.6.1
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `active_plugins`.
 	 *              3. Optimized code and removed memoization.
 	 * @credits Jetpack for some code.

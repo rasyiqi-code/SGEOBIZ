@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Front\Front\Meta\Generator
- * @subpackage The_SEO_Framework\Meta\Schema
+ * @package SGEOBIZ_SEO\Classes\Front\Front\Meta\Generator
+ * @subpackage SGEOBIZ_SEO\Meta\Schema
  */
 
-namespace The_SEO_Framework\Front\Meta\Generator;
+namespace SGEOBIZ_SEO\Front\Meta\Generator;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data\Filter\Escape,
 	Meta,
 };

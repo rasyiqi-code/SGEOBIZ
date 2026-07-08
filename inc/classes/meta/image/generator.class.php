@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Meta\Image
- * @subpackage The_SEO_Framework\Meta\Image
+ * @package SGEOBIZ_SEO\Classes\Meta\Image
+ * @subpackage SGEOBIZ_SEO\Meta\Image
  */
 
-namespace The_SEO_Framework\Meta\Image;
+namespace SGEOBIZ_SEO\Meta\Image;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper\Query,
 	Helper\Format,

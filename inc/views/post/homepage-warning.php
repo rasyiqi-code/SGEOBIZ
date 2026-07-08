@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Post
- * @subpackage The_SEO_Framework\Admin\Post
+ * @package SGEOBIZ_SEO\Views\Post
+ * @subpackage SGEOBIZ_SEO\Admin\Post
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
 // phpcs:disable WordPress.WP.GlobalVariablesOverride -- This isn't the global scope.
 
@@ -34,14 +34,14 @@ namespace The_SEO_Framework;
 			<div class="tsf-flex-setting-input-item tsf-flex">
 				<span>
 					<?php
-					\esc_html_e( 'The fields below may be overwritten by the Homepage Settings found on the SEO Settings page.', 'autodescription' );
-					if ( \current_user_can( \THE_SEO_FRAMEWORK_SETTINGS_CAP ) ) {
+					\esc_html_e( 'The fields below may be overwritten by the Homepage Settings found on the SEO Settings page.', 'sgeobiz-seo' );
+					if ( \current_user_can( \SGEOBIZ_SEO_SETTINGS_CAP ) ) {
 						echo ' &mdash; ';
 						printf(
 							'<a href="%s" target=_blank>%s</a>',
 							// phpcs:ignore WordPress.Security.EscapeOutput -- menu_page_url() escapes
-							\menu_page_url( \THE_SEO_FRAMEWORK_SITE_OPTIONS_SLUG, false ) . '#autodescription-homepage-settings',
-							\esc_html__( 'Edit those settings instead.', 'autodescription' ),
+							\menu_page_url( \SGEOBIZ_SEO_SITE_OPTIONS_SLUG, false ) . '#autodescription-homepage-settings',
+							\esc_html__( 'Edit those settings instead.', 'sgeobiz-seo' ),
 						);
 					}
 					?>

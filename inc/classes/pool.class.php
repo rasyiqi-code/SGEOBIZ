@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Facade\Generate_Url
- * @subpackage The_SEO_Framework\Getters\URL
+ * @package SGEOBIZ_SEO\Classes\Facade\Generate_Url
+ * @subpackage SGEOBIZ_SEO\Getters\URL
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Traits\Internal\Static_Deprecator;
+use SGEOBIZ_SEO\Traits\Internal\Static_Deprecator;
 
 /**
  * The SEO Framework plugin
@@ -28,15 +28,15 @@ use The_SEO_Framework\Traits\Internal\Static_Deprecator;
  */
 
 /**
- * Class The_SEO_Framework\Pool
+ * Class SGEOBIZ_SEO\Pool
  *
- * Holds a pool of proxied composite objects, so we can keep the facade tsf().
+ * Holds a pool of proxied composite objects, so we can keep the facade sgeobiz().
  * The objects are decorated with Static Deprecator, allowing us to deprecate
  * methods and properties quickly.
  *
  * @NOTE: STATIC pools and their STATIC functions MUST BE CALLED in a NON-STATIC manner.
- *        Do NOT use   tsf()::admin()::layout()::make_single_select_form();
- *        Instead, use tsf()->admin()->layout()->make_single_select_form();
+ *        Do NOT use   sgeobiz()::admin()::layout()::make_single_select_form();
+ *        Instead, use sgeobiz()->admin()->layout()->make_single_select_form();
  *        Failing to do so might result in a crash when we need to deprecate a call,
  *        defeating the purpose of the static deprecator.
  * @NOTE: All static:: calls within this class are intentional, to allow overrides in deprecators.
@@ -46,7 +46,7 @@ use The_SEO_Framework\Traits\Internal\Static_Deprecator;
  *
  * @since 5.0.0
  * @link https://en.wikipedia.org/wiki/Object_pool_pattern
- * You can access these methods via `tsf()` and `the_seo_framework()`.
+ * You can access these methods via `sgeobiz()` and `sgeobiz_seo()`.
  */
 class Pool extends Legacy_API {
 
@@ -71,7 +71,7 @@ class Pool extends Legacy_API {
 		return static::$pool[ __FUNCTION__ ] ??= new class {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->admin()';
+			private $colloquial_handle     = 'sgeobiz()->admin()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 
@@ -83,19 +83,19 @@ class Pool extends Legacy_API {
 				return static::$subpool[ __FUNCTION__ ] ??= new class {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->admin()->layout()';
+					private $colloquial_handle     = 'sgeobiz()->admin()->layout()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 
 					/**
 					 * @since 5.0.0
-					 * @return \The_SEO_Framework\Admin\Settings\Layout\HTML
+					 * @return \SGEOBIZ_SEO\Admin\Settings\Layout\HTML
 					 */
 					public static function form() {
 						return static::$subpool[ __FUNCTION__ ] ??= new class extends Admin\Settings\Layout\Form {
 							use Static_Deprecator;
 
-							private $colloquial_handle     = 'tsf()->admin()->layout()->form()';
+							private $colloquial_handle     = 'sgeobiz()->admin()->layout()->form()';
 							private $deprecated_methods    = [];
 							private $deprecated_properties = [];
 						};
@@ -103,13 +103,13 @@ class Pool extends Legacy_API {
 
 					/**
 					 * @since 5.0.0
-					 * @return \The_SEO_Framework\Admin\Settings\Layout\HTML
+					 * @return \SGEOBIZ_SEO\Admin\Settings\Layout\HTML
 					 */
 					public static function html() {
 						return static::$subpool[ __FUNCTION__ ] ??= new class extends Admin\Settings\Layout\HTML {
 							use Static_Deprecator;
 
-							private $colloquial_handle     = 'tsf()->admin()->layout()->html()';
+							private $colloquial_handle     = 'sgeobiz()->admin()->layout()->html()';
 							private $deprecated_methods    = [];
 							private $deprecated_properties = [];
 						};
@@ -119,13 +119,13 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Admin\Menu
+			 * @return \SGEOBIZ_SEO\Admin\Menu
 			 */
 			public static function menu() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Admin\Menu {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->admin()->menu()';
+					private $colloquial_handle     = 'sgeobiz()->admin()->menu()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -133,25 +133,25 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Admin\Notice
+			 * @return \SGEOBIZ_SEO\Admin\Notice
 			 */
 			public static function notice() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Admin\Notice {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->admin()->notice()';
+					private $colloquial_handle     = 'sgeobiz()->admin()->notice()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 
 					/**
 					 * @since 5.0.0
-					 * @return \The_SEO_Framework\Admin\Notice\Persistent
+					 * @return \SGEOBIZ_SEO\Admin\Notice\Persistent
 					 */
 					public static function persistent() {
 						return static::$subpool[ __FUNCTION__ ] ??= new class extends Admin\Notice\Persistent {
 							use Static_Deprecator;
 
-							private $colloquial_handle     = 'tsf()->admin()->notice()->persistent()';
+							private $colloquial_handle     = 'sgeobiz()->admin()->notice()->persistent()';
 							private $deprecated_methods    = [];
 							private $deprecated_properties = [];
 						};
@@ -161,13 +161,13 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Admin\Utils
+			 * @return \SGEOBIZ_SEO\Admin\Utils
 			 */
 			public static function utils() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Admin\Utils {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->admin()->utils()';
+					private $colloquial_handle     = 'sgeobiz()->admin()->utils()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -175,13 +175,13 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.1.5
-			 * @return \The_SEO_Framework\Admin\SEOBar\Builder
+			 * @return \SGEOBIZ_SEO\Admin\SEOBar\Builder
 			 */
 			public static function seobar() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Admin\SEOBar\Builder {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->admin()->seobar()';
+					private $colloquial_handle     = 'sgeobiz()->admin()->seobar()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -196,7 +196,7 @@ class Pool extends Legacy_API {
 
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->admin()->scripts()';
+					private $colloquial_handle     = 'sgeobiz()->admin()->scripts()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 
@@ -204,13 +204,13 @@ class Pool extends Legacy_API {
 
 					/**
 					 * @since 5.1.5
-					 * @return \The_SEO_Framework\Admin\Script\Loader
+					 * @return \SGEOBIZ_SEO\Admin\Script\Loader
 					 */
 					public static function loader() {
 						return static::$subpool[ __FUNCTION__ ] ??= new class extends Admin\Script\Loader {
 							use Static_Deprecator;
 
-							private $colloquial_handle     = 'tsf()->admin()->scripts()->loader()';
+							private $colloquial_handle     = 'sgeobiz()->admin()->scripts()->loader()';
 							private $deprecated_methods    = [];
 							private $deprecated_properties = [];
 						};
@@ -227,13 +227,13 @@ class Pool extends Legacy_API {
 	 * @since 5.0.0
 	 * @api Not used internally.
 	 *
-	 * @return \The_SEO_Framework\Meta\Breadcrumbs
+	 * @return \SGEOBIZ_SEO\Meta\Breadcrumbs
 	 */
 	public static function breadcrumbs() {
 		return static::$pool[ __FUNCTION__ ] ??= new class extends Meta\Breadcrumbs {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->breadcrumbs()';
+			private $colloquial_handle     = 'sgeobiz()->breadcrumbs()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 		};
@@ -252,19 +252,19 @@ class Pool extends Legacy_API {
 		return static::$pool[ __FUNCTION__ ] ??= new class {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->data()';
+			private $colloquial_handle     = 'sgeobiz()->data()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Data\Blog
+			 * @return \SGEOBIZ_SEO\Data\Blog
 			 */
 			public static function blog() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Data\Blog {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->data()->blog()';
+					private $colloquial_handle     = 'sgeobiz()->data()->blog()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -272,38 +272,38 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Data\Plugin
+			 * @return \SGEOBIZ_SEO\Data\Plugin
 			 */
 			public static function plugin() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Data\Plugin {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->data()->plugin()';
+					private $colloquial_handle     = 'sgeobiz()->data()->plugin()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 
 					/**
 					 * @since 5.0.0
-					 * @return \The_SEO_Framework\Data\Plugin\Filter
+					 * @return \SGEOBIZ_SEO\Data\Plugin\Filter
 					 */
 					public static function filter() {
 						return static::$subpool[ __FUNCTION__ ] ??= new class extends Data\Plugin\Filter {
 							use Static_Deprecator;
 
-							private $colloquial_handle     = 'tsf()->data()->plugin()->filter()';
+							private $colloquial_handle     = 'sgeobiz()->data()->plugin()->filter()';
 							private $deprecated_methods    = [];
 							private $deprecated_properties = [];
 						};
 					}
 					/**
 					 * @since 5.0.0
-					 * @return \The_SEO_Framework\Data\Plugin\Helper
+					 * @return \SGEOBIZ_SEO\Data\Plugin\Helper
 					 */
 					public static function helper() {
 						return static::$subpool[ __FUNCTION__ ] ??= new class extends Data\Plugin\Helper {
 							use Static_Deprecator;
 
-							private $colloquial_handle     = 'tsf()->data()->plugin()->helper()';
+							private $colloquial_handle     = 'sgeobiz()->data()->plugin()->helper()';
 							private $deprecated_methods    = [];
 							private $deprecated_properties = [];
 						};
@@ -311,13 +311,13 @@ class Pool extends Legacy_API {
 
 					/**
 					 * @since 5.0.0
-					 * @return \The_SEO_Framework\Data\Plugin\Post
+					 * @return \SGEOBIZ_SEO\Data\Plugin\Post
 					 */
 					public static function post() {
 						return static::$subpool[ __FUNCTION__ ] ??= new class extends Data\Plugin\Post {
 							use Static_Deprecator;
 
-							private $colloquial_handle     = 'tsf()->data()->plugin()->post()';
+							private $colloquial_handle     = 'sgeobiz()->data()->plugin()->post()';
 							private $deprecated_methods    = [];
 							private $deprecated_properties = [];
 						};
@@ -325,13 +325,13 @@ class Pool extends Legacy_API {
 
 					/**
 					 * @since 5.0.0
-					 * @return \The_SEO_Framework\Data\Plugin\PTA
+					 * @return \SGEOBIZ_SEO\Data\Plugin\PTA
 					 */
 					public static function pta() {
 						return static::$subpool[ __FUNCTION__ ] ??= new class extends Data\Plugin\PTA {
 							use Static_Deprecator;
 
-							private $colloquial_handle     = 'tsf()->data()->plugin()->pta()';
+							private $colloquial_handle     = 'sgeobiz()->data()->plugin()->pta()';
 							private $deprecated_methods    = [];
 							private $deprecated_properties = [];
 						};
@@ -339,13 +339,13 @@ class Pool extends Legacy_API {
 
 					/**
 					 * @since 5.0.0
-					 * @return \The_SEO_Framework\Data\Plugin\Setup
+					 * @return \SGEOBIZ_SEO\Data\Plugin\Setup
 					 */
 					public static function setup() {
 						return static::$subpool[ __FUNCTION__ ] ??= new class extends Data\Plugin\Setup {
 							use Static_Deprecator;
 
-							private $colloquial_handle     = 'tsf()->data()->plugin()->setup()';
+							private $colloquial_handle     = 'sgeobiz()->data()->plugin()->setup()';
 							private $deprecated_methods    = [];
 							private $deprecated_properties = [];
 						};
@@ -353,13 +353,13 @@ class Pool extends Legacy_API {
 
 					/**
 					 * @since 5.0.0
-					 * @return \The_SEO_Framework\Data\Plugin\Term
+					 * @return \SGEOBIZ_SEO\Data\Plugin\Term
 					 */
 					public static function term() {
 						return static::$subpool[ __FUNCTION__ ] ??= new class extends Data\Plugin\Term {
 							use Static_Deprecator;
 
-							private $colloquial_handle     = 'tsf()->data()->plugin()->term()';
+							private $colloquial_handle     = 'sgeobiz()->data()->plugin()->term()';
 							private $deprecated_methods    = [];
 							private $deprecated_properties = [];
 						};
@@ -367,13 +367,13 @@ class Pool extends Legacy_API {
 
 					/**
 					 * @since 5.0.0
-					 * @return \The_SEO_Framework\Data\Plugin\User
+					 * @return \SGEOBIZ_SEO\Data\Plugin\User
 					 */
 					public static function user() {
 						return static::$subpool[ __FUNCTION__ ] ??= new class extends Data\Plugin\User {
 							use Static_Deprecator;
 
-							private $colloquial_handle     = 'tsf()->data()->plugin()->user()';
+							private $colloquial_handle     = 'sgeobiz()->data()->plugin()->user()';
 							private $deprecated_methods    = [];
 							private $deprecated_properties = [];
 						};
@@ -383,13 +383,13 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Data\Post
+			 * @return \SGEOBIZ_SEO\Data\Post
 			 */
 			public static function post() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Data\Post {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->data()->post()';
+					private $colloquial_handle     = 'sgeobiz()->data()->post()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -397,13 +397,13 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Data\Term
+			 * @return \SGEOBIZ_SEO\Data\Term
 			 */
 			public static function term() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Data\Term {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->data()->term()';
+					private $colloquial_handle     = 'sgeobiz()->data()->term()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -411,13 +411,13 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Data\User
+			 * @return \SGEOBIZ_SEO\Data\User
 			 */
 			public static function user() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Data\User {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->data()->user()';
+					private $colloquial_handle     = 'sgeobiz()->data()->user()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -432,25 +432,25 @@ class Pool extends Legacy_API {
 	 * @since 5.0.0
 	 * @api Not used internally.
 	 *
-	 * @return \The_SEO_Framework\Meta\Description
+	 * @return \SGEOBIZ_SEO\Meta\Description
 	 */
 	public static function description() {
 		return static::$pool[ __FUNCTION__ ] ??= new class extends Meta\Description {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->description()';
+			private $colloquial_handle     = 'sgeobiz()->description()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Meta\Description\Excerpt
+			 * @return \SGEOBIZ_SEO\Meta\Description\Excerpt
 			 */
 			public static function excerpt() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Meta\Description\Excerpt {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->description()->excerpt()';
+					private $colloquial_handle     = 'sgeobiz()->description()->excerpt()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -465,13 +465,13 @@ class Pool extends Legacy_API {
 	 * @since 5.0.0
 	 * @api Not used internally.
 	 *
-	 * @return \The_SEO_Framework\Data\Filter\Escape
+	 * @return \SGEOBIZ_SEO\Data\Filter\Escape
 	 */
 	public static function escape() {
 		return static::$pool[ __FUNCTION__ ] ??= new class extends Data\Filter\Escape {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->escape()';
+			private $colloquial_handle     = 'sgeobiz()->escape()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 		};
@@ -484,13 +484,13 @@ class Pool extends Legacy_API {
 	 * @since 5.0.0
 	 * @api Not used internally.
 	 *
-	 * @return \The_SEO_Framework\Meta\Facebook
+	 * @return \SGEOBIZ_SEO\Meta\Facebook
 	 */
 	public static function facebook() {
 		return static::$pool[ __FUNCTION__ ] ??= new class extends Meta\Facebook {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->facebook()';
+			private $colloquial_handle     = 'sgeobiz()->facebook()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 		};
@@ -509,19 +509,19 @@ class Pool extends Legacy_API {
 		return static::$pool[ __FUNCTION__ ] ??= new class {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->format()';
+			private $colloquial_handle     = 'sgeobiz()->format()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Helper\Format\Arrays
+			 * @return \SGEOBIZ_SEO\Helper\Format\Arrays
 			 */
 			public static function arrays() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Helper\Format\Arrays {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->format()->arrays()';
+					private $colloquial_handle     = 'sgeobiz()->format()->arrays()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -529,13 +529,13 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Helper\Format\Color
+			 * @return \SGEOBIZ_SEO\Helper\Format\Color
 			 */
 			public static function color() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Helper\Format\Color {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->format()->color()';
+					private $colloquial_handle     = 'sgeobiz()->format()->color()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -543,13 +543,13 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.0.5
-			 * @return \The_SEO_Framework\Helper\Format\Minify
+			 * @return \SGEOBIZ_SEO\Helper\Format\Minify
 			 */
 			public static function minify() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Helper\Format\Minify {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->format()->minify()';
+					private $colloquial_handle     = 'sgeobiz()->format()->minify()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -557,13 +557,13 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Helper\Format\HTML
+			 * @return \SGEOBIZ_SEO\Helper\Format\HTML
 			 */
 			public static function html() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Helper\Format\HTML {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->format()->html()';
+					private $colloquial_handle     = 'sgeobiz()->format()->html()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -571,13 +571,13 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Helper\Format\Markdown
+			 * @return \SGEOBIZ_SEO\Helper\Format\Markdown
 			 */
 			public static function markdown() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Helper\Format\Markdown {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->format()->markdown()';
+					private $colloquial_handle     = 'sgeobiz()->format()->markdown()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -585,13 +585,13 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Helper\Format\Strings
+			 * @return \SGEOBIZ_SEO\Helper\Format\Strings
 			 */
 			public static function strings() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Helper\Format\Strings {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->format()->strings()';
+					private $colloquial_handle     = 'sgeobiz()->format()->strings()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -599,13 +599,13 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Helper\Format\Time
+			 * @return \SGEOBIZ_SEO\Helper\Format\Time
 			 */
 			public static function time() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Helper\Format\Time {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->format()->time()';
+					private $colloquial_handle     = 'sgeobiz()->format()->time()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -620,13 +620,13 @@ class Pool extends Legacy_API {
 	 * @since 5.0.0
 	 * @api Not used internally.
 	 *
-	 * @return \The_SEO_Framework\Helper\Guidelines
+	 * @return \SGEOBIZ_SEO\Helper\Guidelines
 	 */
 	public static function guidelines() {
 		return static::$pool[ __FUNCTION__ ] ??= new class extends Helper\Guidelines {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->guidelines()';
+			private $colloquial_handle     = 'sgeobiz()->guidelines()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 		};
@@ -639,13 +639,13 @@ class Pool extends Legacy_API {
 	 * @since 5.0.0
 	 * @api Not used internally.
 	 *
-	 * @return \The_SEO_Framework\Helper\Headers
+	 * @return \SGEOBIZ_SEO\Helper\Headers
 	 */
 	public static function headers() {
 		return static::$pool[ __FUNCTION__ ] ??= new class extends Helper\Headers {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->headers()';
+			private $colloquial_handle     = 'sgeobiz()->headers()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 		};
@@ -658,25 +658,25 @@ class Pool extends Legacy_API {
 	 * @since 5.0.0
 	 * @api Not used internally.
 	 *
-	 * @return \The_SEO_Framework\Meta\Image
+	 * @return \SGEOBIZ_SEO\Meta\Image
 	 */
 	public static function image() {
 		return static::$pool[ __FUNCTION__ ] ??= new class extends Meta\Image {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->image()';
+			private $colloquial_handle     = 'sgeobiz()->image()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Meta\Image\Utils
+			 * @return \SGEOBIZ_SEO\Meta\Image\Utils
 			 */
 			public static function utils() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Meta\Image\Utils {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->image()->utils()';
+					private $colloquial_handle     = 'sgeobiz()->image()->utils()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -691,13 +691,13 @@ class Pool extends Legacy_API {
 	 * @since 5.0.0
 	 * @api Not used internally.
 	 *
-	 * @return \The_SEO_Framework\Meta\Open_Graph
+	 * @return \SGEOBIZ_SEO\Meta\Open_Graph
 	 */
 	public static function open_graph() {
 		return static::$pool[ __FUNCTION__ ] ??= new class extends Meta\Open_Graph {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->open_graph()';
+			private $colloquial_handle     = 'sgeobiz()->open_graph()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 		};
@@ -710,13 +710,13 @@ class Pool extends Legacy_API {
 	 * @since 5.0.0
 	 * @api Not used internally.
 	 *
-	 * @return \The_SEO_Framework\Helper\Post_Type
+	 * @return \SGEOBIZ_SEO\Helper\Post_Type
 	 */
 	public static function post_type() {
 		return static::$pool[ __FUNCTION__ ] ??= new class extends Helper\Post_Type {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->post_type()';
+			private $colloquial_handle     = 'sgeobiz()->post_type()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 		};
@@ -729,25 +729,25 @@ class Pool extends Legacy_API {
 	 * @since 5.0.0
 	 * @api Not used internally.
 	 *
-	 * @return \The_SEO_Framework\Helper\Query
+	 * @return \SGEOBIZ_SEO\Helper\Query
 	 */
 	public static function query() {
 		return static::$pool[ __FUNCTION__ ] ??= new class extends Helper\Query {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->query()';
+			private $colloquial_handle     = 'sgeobiz()->query()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Helper\Query\Cache
+			 * @return \SGEOBIZ_SEO\Helper\Query\Cache
 			 */
 			public static function cache() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Helper\Query\Cache {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->query()->cache()';
+					private $colloquial_handle     = 'sgeobiz()->query()->cache()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -755,13 +755,13 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Helper\Query\Exclusion
+			 * @return \SGEOBIZ_SEO\Helper\Query\Exclusion
 			 */
 			public static function exclusion() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Helper\Query\Exclusion {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->query()->exclusion()';
+					private $colloquial_handle     = 'sgeobiz()->query()->exclusion()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -769,13 +769,13 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Helper\Query\Utils
+			 * @return \SGEOBIZ_SEO\Helper\Query\Utils
 			 */
 			public static function utils() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Helper\Query\Utils {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->query()->utils()';
+					private $colloquial_handle     = 'sgeobiz()->query()->utils()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -790,13 +790,13 @@ class Pool extends Legacy_API {
 	 * @since 5.0.0
 	 * @api Not used internally.
 	 *
-	 * @return \The_SEO_Framework\Meta\Robots
+	 * @return \SGEOBIZ_SEO\Meta\Robots
 	 */
 	public static function robots() {
 		return static::$pool[ __FUNCTION__ ] ??= new class extends Meta\Robots {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->robots()';
+			private $colloquial_handle     = 'sgeobiz()->robots()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 		};
@@ -809,25 +809,25 @@ class Pool extends Legacy_API {
 	 * @since 5.0.0
 	 * @api Not used internally.
 	 *
-	 * @return \The_SEO_Framework\RobotsTXT\Main
+	 * @return \SGEOBIZ_SEO\RobotsTXT\Main
 	 */
 	public static function robotstxt() {
 		return static::$pool[ __FUNCTION__ ] ??= new class extends RobotsTXT\Main {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->robotstxt()';
+			private $colloquial_handle     = 'sgeobiz()->robotstxt()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\RobotsTXT\Utils
+			 * @return \SGEOBIZ_SEO\RobotsTXT\Utils
 			 */
 			public static function utils() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends RobotsTXT\Utils {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->robotstxt()->utils()';
+					private $colloquial_handle     = 'sgeobiz()->robotstxt()->utils()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -842,13 +842,13 @@ class Pool extends Legacy_API {
 	 * @since 5.0.0
 	 * @api Not used internally.
 	 *
-	 * @return \The_SEO_Framework\Data\Filter\Sanitize
+	 * @return \SGEOBIZ_SEO\Data\Filter\Sanitize
 	 */
 	public static function sanitize() {
 		return static::$pool[ __FUNCTION__ ] ??= new class extends Data\Filter\Sanitize {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->sanitize()';
+			private $colloquial_handle     = 'sgeobiz()->sanitize()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 		};
@@ -861,13 +861,13 @@ class Pool extends Legacy_API {
 	 * @since 5.0.0
 	 * @api Not used internally.
 	 *
-	 * @return \The_SEO_Framework\Meta\Schema
+	 * @return \SGEOBIZ_SEO\Meta\Schema
 	 */
 	public static function schema() {
 		return static::$pool[ __FUNCTION__ ] ??= new class extends Meta\Schema {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->schema()';
+			private $colloquial_handle     = 'sgeobiz()->schema()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 
@@ -902,24 +902,24 @@ class Pool extends Legacy_API {
 		return static::$pool[ __FUNCTION__ ] ??= new class {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->sitemap()';
+			private $colloquial_handle     = 'sgeobiz()->sitemap()';
 			private $deprecated_methods    = [
 				'ping' => [
 					'since'    => '5.0.5',
-					'fallback' => '\The_SEO_Framework\Internal\Silencer::instance',
+					'fallback' => '\SGEOBIZ_SEO\Internal\Silencer::instance',
 				],
 			];
 			private $deprecated_properties = [];
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Sitemap\Cache
+			 * @return \SGEOBIZ_SEO\Sitemap\Cache
 			 */
 			public static function cache() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Sitemap\Cache {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->sitemap()->cache()';
+					private $colloquial_handle     = 'sgeobiz()->sitemap()->cache()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -927,13 +927,13 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.0.5
-			 * @return \The_SEO_Framework\Sitemap\Cron
+			 * @return \SGEOBIZ_SEO\Sitemap\Cron
 			 */
 			public static function cron() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Sitemap\Cron {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->sitemap()->cron()';
+					private $colloquial_handle     = 'sgeobiz()->sitemap()->cron()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -941,13 +941,13 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Sitemap\Lock
+			 * @return \SGEOBIZ_SEO\Sitemap\Lock
 			 */
 			public static function lock() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Sitemap\Lock {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->sitemap()->lock()';
+					private $colloquial_handle     = 'sgeobiz()->sitemap()->lock()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -955,13 +955,13 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Sitemap\Registry
+			 * @return \SGEOBIZ_SEO\Sitemap\Registry
 			 */
 			public static function registry() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Sitemap\Registry {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->sitemap()->registry()';
+					private $colloquial_handle     = 'sgeobiz()->sitemap()->registry()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -969,13 +969,13 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Sitemap\Utils
+			 * @return \SGEOBIZ_SEO\Sitemap\Utils
 			 */
 			public static function utils() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Sitemap\Utils {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->sitemap()->utils()';
+					private $colloquial_handle     = 'sgeobiz()->sitemap()->utils()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -990,13 +990,13 @@ class Pool extends Legacy_API {
 	 * @since 5.0.0
 	 * @api Not used internally.
 	 *
-	 * @return \The_SEO_Framework\Helper\Taxonomy
+	 * @return \SGEOBIZ_SEO\Helper\Taxonomy
 	 */
 	public static function taxonomy() {
 		return static::$pool[ __FUNCTION__ ] ??= new class extends Helper\Taxonomy {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->taxonomy()';
+			private $colloquial_handle     = 'sgeobiz()->taxonomy()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 		};
@@ -1009,13 +1009,13 @@ class Pool extends Legacy_API {
 	 * @since 5.0.1
 	 * @api Not used internally.
 	 *
-	 * @return \The_SEO_Framework\Meta\Theme_Color
+	 * @return \SGEOBIZ_SEO\Meta\Theme_Color
 	 */
 	public static function theme_color() {
 		return static::$pool[ __FUNCTION__ ] ??= new class extends Meta\Theme_Color {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->theme_color()';
+			private $colloquial_handle     = 'sgeobiz()->theme_color()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 		};
@@ -1028,25 +1028,25 @@ class Pool extends Legacy_API {
 	 * @since 5.0.0
 	 * @api Not used internally.
 	 *
-	 * @return \The_SEO_Framework\Meta\Title
+	 * @return \SGEOBIZ_SEO\Meta\Title
 	 */
 	public static function title() {
 		return static::$pool[ __FUNCTION__ ] ??= new class extends Meta\Title {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->title()';
+			private $colloquial_handle     = 'sgeobiz()->title()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Meta\Title\Conditions
+			 * @return \SGEOBIZ_SEO\Meta\Title\Conditions
 			 */
 			public static function conditions() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Meta\Title\Conditions {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->title()->conditions()';
+					private $colloquial_handle     = 'sgeobiz()->title()->conditions()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -1054,13 +1054,13 @@ class Pool extends Legacy_API {
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Meta\Title\Utils
+			 * @return \SGEOBIZ_SEO\Meta\Title\Utils
 			 */
 			public static function utils() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Meta\Title\Utils {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->title()->utils()';
+					private $colloquial_handle     = 'sgeobiz()->title()->utils()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};
@@ -1075,13 +1075,13 @@ class Pool extends Legacy_API {
 	 * @since 5.0.0
 	 * @api Not used internally.
 	 *
-	 * @return \The_SEO_Framework\Meta\Twitter
+	 * @return \SGEOBIZ_SEO\Meta\Twitter
 	 */
 	public static function twitter() {
 		return static::$pool[ __FUNCTION__ ] ??= new class extends Meta\Twitter {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->twitter()';
+			private $colloquial_handle     = 'sgeobiz()->twitter()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 		};
@@ -1094,25 +1094,25 @@ class Pool extends Legacy_API {
 	 * @since 5.0.0
 	 * @api Not used internally.
 	 *
-	 * @return \The_SEO_Framework\Meta\URI
+	 * @return \SGEOBIZ_SEO\Meta\URI
 	 */
 	public static function uri() {
 		return static::$pool[ __FUNCTION__ ] ??= new class extends Meta\URI {
 			use Static_Deprecator;
 
-			private $colloquial_handle     = 'tsf()->uri()';
+			private $colloquial_handle     = 'sgeobiz()->uri()';
 			private $deprecated_methods    = [];
 			private $deprecated_properties = [];
 
 			/**
 			 * @since 5.0.0
-			 * @return \The_SEO_Framework\Meta\URI\Utils
+			 * @return \SGEOBIZ_SEO\Meta\URI\Utils
 			 */
 			public static function utils() {
 				return static::$subpool[ __FUNCTION__ ] ??= new class extends Meta\URI\Utils {
 					use Static_Deprecator;
 
-					private $colloquial_handle     = 'tsf()->uri()->utils()';
+					private $colloquial_handle     = 'sgeobiz()->uri()->utils()';
 					private $deprecated_methods    = [];
 					private $deprecated_properties = [];
 				};

@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Sitemap\XSL\Table
- * @subpackage The_SEO_Framework\Sitemap\XSL
+ * @package SGEOBIZ_SEO\Views\Sitemap\XSL\Table
+ * @subpackage SGEOBIZ_SEO\Sitemap\XSL
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
 // phpcs:disable WordPress.WP.GlobalVariablesOverride -- This isn't the global scope.
 
@@ -34,13 +34,13 @@ $vars  = [
 $empty = array_fill_keys( [ 'th', 'td' ], '' );
 
 $url = [
-	'th' => \sprintf( '<th>%s</th>', \esc_xml( \__( 'URL', 'autodescription' ) ) ),
+	'th' => \sprintf( '<th>%s</th>', \esc_xml( \__( 'URL', 'sgeobiz-seo' ) ) ),
 	'td' => '<td><a href="{$itemURL}"><xsl:choose><xsl:when test="string-length($itemURL)&gt;95"><xsl:value-of select="substring($itemURL,0,93)" />...</xsl:when><xsl:otherwise><xsl:value-of select="$itemURL" /></xsl:otherwise></xsl:choose></a></td>',
 ];
 
-if ( \The_SEO_Framework\Data\Plugin::get_option( 'sitemaps_modified' ) ) {
+if ( \SGEOBIZ_SEO\Data\Plugin::get_option( 'sitemaps_modified' ) ) {
 	$last_updated = [
-		'th' => \sprintf( '<th>%s</th>', \esc_xml( \__( 'Last Updated', 'autodescription' ) ) ),
+		'th' => \sprintf( '<th>%s</th>', \esc_xml( \__( 'Last Updated', 'sgeobiz-seo' ) ) ),
 		'td' => '<td><xsl:value-of select="$lastmod" /></td>',
 	];
 } else {

@@ -1,21 +1,21 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Meta\URI
- * @subpackage The_SEO_Framework\Meta\URI
+ * @package SGEOBIZ_SEO\Classes\Meta\URI
+ * @subpackage SGEOBIZ_SEO\Meta\URI
  */
 
-namespace The_SEO_Framework\Meta\URI;
+namespace SGEOBIZ_SEO\Meta\URI;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	get_query_type_from_args,
 	memo,
 	normalize_generation_args,
 	umemo,
 };
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper\Query,
 };
@@ -42,7 +42,7 @@ use The_SEO_Framework\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->uri()->utils() instead.
+ *         Use sgeobiz()->uri()->utils() instead.
  */
 class Utils {
 
@@ -75,7 +75,7 @@ class Utils {
 	 * @since 2.7.0
 	 * @since 2.9.2 1. Now considers port too.
 	 *              2. Now uses get_home_url(), rather than get_option('home').
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `get_home_host`.
 	 *              2. Removed memoization.
 	 *
@@ -179,7 +179,7 @@ class Utils {
 		 * @since 2.8.0
 		 * @param string $scheme The current URL scheme.
 		 */
-		return memo( (string) \apply_filters( 'the_seo_framework_preferred_url_scheme', $scheme ) );
+		return memo( (string) \apply_filters( 'sgeobiz_seo_preferred_url_scheme', $scheme ) );
 	}
 
 	/**
@@ -187,7 +187,7 @@ class Utils {
 	 * Does not sanitize output.
 	 *
 	 * @since 2.8.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param string $url The URL to set scheme for.
 	 * @return string The URL with the preferred scheme.
@@ -204,7 +204,7 @@ class Utils {
 	 * @since 3.0.0 $use_filter now defaults to false.
 	 * @since 3.1.0 The third parameter ($use_filter) is now $deprecated.
 	 * @since 4.0.0 Removed the deprecated parameter.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Removed support for $scheme type 'admin', 'login', 'login_post', and 'rpc'.
 	 *
 	 * @param string $url    Absolute url that includes a scheme.
@@ -264,7 +264,7 @@ class Utils {
 	 *       '/path/to/folder/` will become `http:///path/to/folder/`
 	 *
 	 * @since 2.6.5
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @see `self::set_url_scheme()` to set the correct scheme.
 	 * @see `self::convert_path_to_url()` to create URLs from paths.
 	 *
@@ -325,7 +325,7 @@ class Utils {
 	 * @since 2.6.5
 	 * @since 2.8.0 Method is now public.
 	 * @since 4.0.0 No longer strips the prepended / path.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `s_relative_url()`
 	 *
 	 * @param string $url An absolute or relative URL.
@@ -357,7 +357,7 @@ class Utils {
 	 * Adds pagination to input URL.
 	 *
 	 * @since 4.2.3
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param string $url      The fully qualified URL.
 	 * @param int    $page     The page number. Should be bigger than 1 to paginate.
@@ -421,7 +421,7 @@ class Utils {
 	 *              5. Is now public.
 	 * @since 4.1.2 Now correctly reappends query when pagination isn't removed.
 	 * @since 4.2.0 Now properly removes pagination from search links.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param string    $url  The fully qualified URL to remove pagination from.
 	 * @param int|null  $page The page number to remove. If null, it will get number from query.

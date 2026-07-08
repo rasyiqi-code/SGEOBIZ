@@ -1,16 +1,16 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Helper\Compatibility
- * @subpackage The_SEO_Framework\Compatibility
+ * @package SGEOBIZ_SEO\Classes\Helper\Compatibility
+ * @subpackage SGEOBIZ_SEO\Compatibility
  */
 
-namespace The_SEO_Framework\Helper;
+namespace SGEOBIZ_SEO\Helper;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\memo;
+use function SGEOBIZ_SEO\memo;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Admin,
 	Data,
 };
@@ -52,11 +52,11 @@ final class Compatibility {
 		if ( ! self::get_active_conflicting_plugin_types( true )['seo_tools'] ) return;
 
 		Admin\Notice\Persistent::register_notice(
-			\__( 'Multiple SEO plugins have been detected. You should only use one.', 'autodescription' ),
+			\__( 'Multiple SEO plugins have been detected. You should only use one.', 'sgeobiz-seo' ),
 			'seo-plugin-conflict',
 			[ 'type' => 'warning' ],
 			[
-				'screens'    => [ 'edit', 'edit-tags', 'dashboard', 'plugins', 'toplevel_page_theseoframework-settings' ],
+				'screens'    => [ 'edit', 'edit-tags', 'dashboard', 'plugins', 'toplevel_page_sgeobiz-seo-settings' ],
 				'capability' => 'activate_plugins',
 				'count'      => 3,
 				/**
@@ -82,7 +82,7 @@ final class Compatibility {
 	 * Returns a filterable list of conflicting plugins.
 	 *
 	 * @since 2.6.0
-	 * @since 5.0.0 1. Moved from `The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `conflicting_plugins`.
 	 *
 	 * @return array[] {
@@ -144,7 +144,7 @@ final class Compatibility {
 		 *     @type string[] $multilingual The conflicting multilingual plugins base files, indexed by plugin name.
 		 * }
 		 */
-		return (array) \apply_filters( 'the_seo_framework_conflicting_plugins', $conflicting_plugins );
+		return (array) \apply_filters( 'sgeobiz_seo_conflicting_plugins', $conflicting_plugins );
 	}
 
 	/**
@@ -204,7 +204,7 @@ final class Compatibility {
 	 * @since 2.5.2
 	 * @since 4.1.4 Fixed sorting algorithm from fribbling-me to resolving-me. Nothing changed but legibility.
 	 * @since 4.2.0 Rewrote sorting algorithm; now, it's actually good.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `can_i_use`.
 	 *              3. Removed the second parameter `$use_cache`.
 	 *              4. Removed caching. This responsibility now lies by the caller.
@@ -250,7 +250,7 @@ final class Compatibility {
 	 *
 	 * @since 2.1.0
 	 * @since 4.2.0 No longer "loads" the theme; instead, simply compares input to active theme options.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `is_theme`.
 	 * @since 5.1.0 Added memoization.
 	 * @since 5.1.3 Removed memoization; now uses `Data\Blog::get_active_themes()`.
@@ -278,7 +278,7 @@ final class Compatibility {
 	 * - Bricks Builder by Bricks
 	 *
 	 * @since 4.1.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `detect_non_html_page_builder`.
 	 * @since 5.1.0 Added 'BRICKS_VERSION' (Bricks) constants.
 	 *
@@ -289,11 +289,11 @@ final class Compatibility {
 			/**
 			 * @since 4.1.0
 			 * @param bool $detected Whether an active page builder that renders content dynamically is detected.
-			 * @NOTE not to be confused with `the_seo_framework_detect_non_html_page_builder`, which tests
+			 * @NOTE not to be confused with `sgeobiz_seo_detect_non_html_page_builder`, which tests
 			 *       the page builder status for each post individually.
 			 */
 			(bool) \apply_filters(
-				'the_seo_framework_shortcode_based_page_builder_active',
+				'sgeobiz_seo_shortcode_based_page_builder_active',
 				(
 					   \defined( 'ET_BUILDER_VERSION' )
 					|| \defined( 'WPB_VC_VERSION' )

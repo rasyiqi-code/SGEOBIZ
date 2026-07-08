@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Front\Redirect
- * @subpackage The_SEO_Framework\Redirect
+ * @package SGEOBIZ_SEO\Classes\Front\Redirect
+ * @subpackage SGEOBIZ_SEO\Redirect
  */
 
-namespace The_SEO_Framework\Front;
+namespace SGEOBIZ_SEO\Front;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Helper,
 	Helper\Query,
 	Meta,
@@ -49,7 +49,7 @@ final class Redirect {
 	 * @since 4.0.0 1. No longer tries to redirect on "search".
 	 *              2. Added term redirect support.
 	 *              3. No longer redirects on Customizer.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `_init_custom_field_redirect`.
 	 *
 	 * @return void early on non-singular pages.
@@ -65,7 +65,7 @@ final class Redirect {
 			 * @since 4.1.2
 			 * @param string $url The URL we're redirecting to.
 			 */
-			\do_action( 'the_seo_framework_before_redirect', $url );
+			\do_action( 'sgeobiz_seo_before_redirect', $url );
 
 			self::do_redirect( $url );
 		}
@@ -75,7 +75,7 @@ final class Redirect {
 	 * Redirects visitor to input $url.
 	 *
 	 * @since 2.9.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. First parameter is now required.
 	 *              3. Removed various sanity tests, since this method is no longer public.
 	 *              4. Now exists with a 400 error code when the URL failed.
@@ -96,10 +96,10 @@ final class Redirect {
 		 * @since 2.8.0
 		 * @param int <unsigned> $redirect_type
 		 */
-		$redirect_type = \absint( \apply_filters( 'the_seo_framework_redirect_status_code', 301 ) );
+		$redirect_type = \absint( \apply_filters( 'sgeobiz_seo_redirect_status_code', 301 ) );
 
 		if ( $redirect_type > 399 || $redirect_type < 300 )
-			\tsf()->_doing_it_wrong( __METHOD__, 'You should use 3xx HTTP Status Codes. Recommended 301 and 302.', '2.8.0' );
+			\sgeobiz()->_doing_it_wrong( __METHOD__, 'You should use 3xx HTTP Status Codes. Recommended 301 and 302.', '2.8.0' );
 
 		if ( ! Helper\Redirect::allow_external_redirect() ) {
 			// Only HTTP/HTTPS and home URLs are allowed. Maintain current request's scheme.

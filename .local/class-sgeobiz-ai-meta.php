@@ -15,7 +15,7 @@
  * @package SGEOBIZ
  */
 
-defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 class SGEOBIZ_AI_Meta {
 
@@ -205,7 +205,7 @@ class SGEOBIZ_AI_Meta {
 		var observer = new MutationObserver(function(){
 			sgeobizInjectAiButtons();
 		});
-		var target = document.querySelector('#tsf-inpost-box, #normal-sortables, .postbox-container');
+		var target = document.querySelector('#sgeobiz-inpost-box, #normal-sortables, .postbox-container');
 		if ( target ) {
 			observer.observe(target, { childList: true, subtree: true });
 		}

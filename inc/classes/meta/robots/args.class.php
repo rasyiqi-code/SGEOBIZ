@@ -1,21 +1,21 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Meta\Robots
- * @subpackage The_SEO_Framework\Meta\Robots
+ * @package SGEOBIZ_SEO\Classes\Meta\Robots
+ * @subpackage SGEOBIZ_SEO\Meta\Robots
  */
 
-namespace The_SEO_Framework\Meta\Robots;
+namespace SGEOBIZ_SEO\Meta\Robots;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use const The_SEO_Framework\{
+use const SGEOBIZ_SEO\{
 	ROBOTS_IGNORE_SETTINGS,
 	ROBOTS_IGNORE_PROTECTION,
 };
 
-use function The_SEO_Framework\get_query_type_from_args;
+use function SGEOBIZ_SEO\get_query_type_from_args;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Meta\Robots, // Yes, it is legal to share class and namespaces.
 	Helper\Query,
@@ -43,7 +43,7 @@ use The_SEO_Framework\{
  * Engine for robots generator by arguments.
  *
  * @since 4.2.0
- * @since 5.0.0 Moved from `\The_SEO_Framework\Builders\Robots`.
+ * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Builders\Robots`.
  * @access private
  */
 final class Args extends Factory {

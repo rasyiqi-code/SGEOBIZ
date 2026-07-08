@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Data\Plugin\Deprecated
- * @subpackage The_SEO_Framework\Data\Plugin
+ * @package SGEOBIZ_SEO\Classes\Data\Plugin\Deprecated
+ * @subpackage SGEOBIZ_SEO\Data\Plugin
  */
 
-namespace The_SEO_Framework\Data\Plugin;
+namespace SGEOBIZ_SEO\Data\Plugin;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Data;
+use SGEOBIZ_SEO\Data;
 
 /**
  * The SEO Framework plugin
@@ -61,7 +61,7 @@ final class Deprecated {
 		if ( empty( $map ) )
 			return null;
 
-		// Do not loop back to The_SEO_Framework\Data::get_option(); that could cause an infinite loop.
+		// Do not loop back to SGEOBIZ_SEO\Data::get_option(); that could cause an infinite loop.
 		$option = Data\Plugin::get_options();
 
 		foreach ( (array) $map as $k )

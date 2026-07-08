@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Meta
- * @subpackage The_SEO_Framework\Meta\Facebook
+ * @package SGEOBIZ_SEO\Classes\Meta
+ * @subpackage SGEOBIZ_SEO\Meta\Facebook
  */
 
-namespace The_SEO_Framework\Meta;
+namespace SGEOBIZ_SEO\Meta;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Data;
+use SGEOBIZ_SEO\Data;
 
 /**
  * The SEO Framework plugin
@@ -32,7 +32,7 @@ use The_SEO_Framework\Data;
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->facebook() instead.
+ *         Use sgeobiz()->facebook() instead.
  */
 class Facebook {
 

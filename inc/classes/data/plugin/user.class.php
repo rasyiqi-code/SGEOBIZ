@@ -1,16 +1,16 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Data\Plugin\User
- * @subpackage The_SEO_Framework\Data\Plugin
+ * @package SGEOBIZ_SEO\Classes\Data\Plugin\User
+ * @subpackage SGEOBIZ_SEO\Data\Plugin
  */
 
-namespace The_SEO_Framework\Data\Plugin;
+namespace SGEOBIZ_SEO\Data\Plugin;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\is_headless;
+use function SGEOBIZ_SEO\is_headless;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Helper\Query,
 	Traits\Property_Refresher,
 };
@@ -38,7 +38,7 @@ use The_SEO_Framework\{
  * @since 5.0.0
  * @since 5.1.0 Added the Property_Refresher trait.
  * @access protected
- *         Use tsf()->data()->plugin()->user() instead.
+ *         Use sgeobiz()->data()->plugin()->user() instead.
  *
  * @NOTE: All static:: calls within this class are intentional due to Property_Refresher trait.
  */
@@ -58,7 +58,7 @@ class User {
 	 * @since 4.1.4
 	 * @since 4.2.8 Now returns null when no post author can be established.
 	 * @since 5.0.0 1. Removed the second `$use_cache` parameter.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param string $item The user meta item to get. Required.
 	 * @return ?mixed The author meta item. Null when no author is found.
@@ -79,7 +79,7 @@ class User {
 	 * @since 4.1.4
 	 * @since 4.2.7 Removed redundant memoization.
 	 * @since 4.2.8 Now returns null when no post author can be established.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @ignore Unused internally. Public API.
 	 *
 	 * @return ?array The current author meta, null when no author is set.
@@ -99,7 +99,7 @@ class User {
 	 *
 	 * @since 4.1.4
 	 * @since 5.0.0 1. Removed the third `$use_cache` parameter.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              3. Renamed from `get_user_meta_item`.
 	 *
 	 * @param string $item      The user meta item to get. Required.
@@ -125,7 +125,7 @@ class User {
 	 *              2. Now listens to headlessness.
 	 *              3. Deprecated the third argument, and moved it to the second.
 	 * @since 5.0.0 1. Removed the second `$depr` and third `$use_cache` parameter.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              3. Renamed from `get_user_meta`.
 	 * @since 5.1.0 Now returns the default meta if the user ID is empty.
 	 *
@@ -159,7 +159,7 @@ class User {
 			$meta = [];
 
 			if ( \in_array( false, $is_headless, true ) ) {
-				$_meta = \get_user_meta( $user_id, \THE_SEO_FRAMEWORK_USER_OPTIONS, true ) ?: [];
+				$_meta = \get_user_meta( $user_id, \SGEOBIZ_SEO_USER_OPTIONS, true ) ?: [];
 				// The counter type is still supported for meta and settings.
 				// Retrieve those items if either type (meta/settings) isn't headless.
 				$non_headless_meta = [
@@ -185,7 +185,7 @@ class User {
 		} else {
 			// FIXME: (array) is a patch. We messed up the datastore in 5.1.1, where strings got stored instead of arrays.
 			// We'll rectify it in a future database upgrade, so we can remove the patch.
-			$meta = (array) ( \get_user_meta( $user_id, \THE_SEO_FRAMEWORK_USER_OPTIONS, true ) ?: [] );
+			$meta = (array) ( \get_user_meta( $user_id, \SGEOBIZ_SEO_USER_OPTIONS, true ) ?: [] );
 		}
 
 		/**
@@ -196,7 +196,7 @@ class User {
 		 * @param bool  $is_headless Whether the meta are headless.
 		 */
 		return static::$meta_memo[ $user_id ] = \apply_filters(
-			'the_seo_framework_user_meta',
+			'sgeobiz_seo_user_meta',
 			array_merge(
 				static::get_default_meta( $user_id ),
 				$meta,
@@ -210,7 +210,7 @@ class User {
 	 * Returns an array of default user meta.
 	 *
 	 * @since 4.1.4
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `get_user_meta_defaults`.
 	 *
 	 * @param int $user_id The user ID. Defaults to CURRENT USER, NOT CURRENT POST AUTHOR.
@@ -223,7 +223,7 @@ class User {
 		 * @param int   $user_id
 		 */
 		return (array) \apply_filters(
-			'the_seo_framework_user_meta_defaults',
+			'sgeobiz_seo_user_meta_defaults',
 			[
 				'counter_type'  => 3,
 				'facebook_page' => '',
@@ -237,7 +237,7 @@ class User {
 	 * Updates user TSF-meta option.
 	 *
 	 * @since 4.1.4
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `update_single_user_meta_item`.
 	 *
 	 * @param int    $user_id The user ID.
@@ -262,7 +262,7 @@ class User {
 	 *
 	 * @since 4.1.4
 	 * @since 4.2.0 No longer returns the update success state.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `save_user_meta`.
 	 *
 	 * @param int   $user_id The user ID.
@@ -281,7 +281,7 @@ class User {
 		 * @param int    $user_id  The user ID.
 		 */
 		$data = (array) \apply_filters(
-			'the_seo_framework_save_user_data',
+			'sgeobiz_seo_save_user_data',
 			array_merge(
 				static::get_default_meta( $user_id ),
 				$data,
@@ -291,7 +291,7 @@ class User {
 
 		unset( static::$meta_memo[ $user_id ] );
 
-		\update_user_meta( $user_id, \THE_SEO_FRAMEWORK_USER_OPTIONS, $data );
+		\update_user_meta( $user_id, \SGEOBIZ_SEO_USER_OPTIONS, $data );
 	}
 
 	/**
@@ -307,7 +307,7 @@ class User {
 	public static function delete_meta( $user_id ) {
 
 		// If this results in an empty data string, all data has already been removed by WP core.
-		$data = \get_user_meta( $user_id, \THE_SEO_FRAMEWORK_USER_OPTIONS, true );
+		$data = \get_user_meta( $user_id, \SGEOBIZ_SEO_USER_OPTIONS, true );
 
 		if ( \is_array( $data ) ) {
 			foreach ( static::get_default_meta( $user_id ) as $key => $value )
@@ -319,9 +319,9 @@ class User {
 
 		// Only delete when no values are left, because someone else might've filtered it.
 		if ( empty( $data ) ) {
-			\delete_user_meta( $user_id, \THE_SEO_FRAMEWORK_USER_OPTIONS );
+			\delete_user_meta( $user_id, \SGEOBIZ_SEO_USER_OPTIONS );
 		} else {
-			\update_user_meta( $user_id, \THE_SEO_FRAMEWORK_USER_OPTIONS, $data );
+			\update_user_meta( $user_id, \SGEOBIZ_SEO_USER_OPTIONS, $data );
 		}
 	}
 }

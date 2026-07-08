@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Profile
- * @subpackage The_SEO_Framework\Admin\User
+ * @package SGEOBIZ_SEO\Views\Profile
+ * @subpackage SGEOBIZ_SEO\Admin\User
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
-use const The_SEO_Framework\ROBOTS_IGNORE_SETTINGS;
+use const SGEOBIZ_SEO\ROBOTS_IGNORE_SETTINGS;
 
 // phpcs:disable WordPress.WP.GlobalVariablesOverride -- This isn't the global scope.
 
@@ -34,23 +34,23 @@ use const The_SEO_Framework\ROBOTS_IGNORE_SETTINGS;
 
 $fields = [
 	'tsf-user-meta[facebook_page]' => [
-		'name'        => \__( 'Facebook profile page', 'autodescription' ),
+		'name'        => \__( 'Facebook profile page', 'sgeobiz-seo' ),
 		'type'        => 'url',
-		'placeholder' => \_x( 'https://www.facebook.com/YourPersonalProfile', 'Example Facebook Personal URL', 'autodescription' ),
+		'placeholder' => \_x( 'https://www.facebook.com/YourPersonalProfile', 'Example Facebook Personal URL', 'sgeobiz-seo' ),
 		'value'       => Data\Plugin\User::get_meta_item( 'facebook_page', $user->ID ),
 		'class'       => '',
 	],
 	'tsf-user-meta[twitter_page]'  => [
-		'name'        => \__( 'X profile handle', 'autodescription' ),
+		'name'        => \__( 'X profile handle', 'sgeobiz-seo' ),
 		'type'        => 'text',
-		'placeholder' => \_x( '@your-personal-username', 'X @username', 'autodescription' ),
+		'placeholder' => \_x( '@your-personal-username', 'X @username', 'sgeobiz-seo' ),
 		'value'       => Data\Plugin\User::get_meta_item( 'twitter_page', $user->ID ),
 		'class'       => 'ltr',
 	],
 ];
 
 ?>
-<h2><?php \esc_html_e( 'Authorial Info', 'autodescription' ); ?></h2>
+<h2><?php \esc_html_e( 'Authorial Info', 'sgeobiz-seo' ); ?></h2>
 <table class=form-table>
 <?php
 foreach ( $fields as $field => $labels ) {
@@ -67,7 +67,7 @@ foreach ( $fields as $field => $labels ) {
 				value="<?= \esc_attr( $labels['value'] ) ?>"
 				placeholder="<?= \esc_attr( $labels['placeholder'] ) ?>"
 				class="regular-text <?= \esc_attr( $labels['class'] ) ?>" />
-			<p class=description><?php \esc_html_e( 'This may be shown publicly.', 'autodescription' ); ?></p>
+			<p class=description><?php \esc_html_e( 'This may be shown publicly.', 'sgeobiz-seo' ); ?></p>
 		</td>
 	</tr>
 	<?php

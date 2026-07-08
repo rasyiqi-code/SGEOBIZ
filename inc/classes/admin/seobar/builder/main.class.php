@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Admin\SEOBar\Builder\Main
- * @subpackage The_SEO_Framework\SEOBar
+ * @package SGEOBIZ_SEO\Classes\Admin\SEOBar\Builder\Main
+ * @subpackage SGEOBIZ_SEO\SEOBar
  */
 
-namespace The_SEO_Framework\Admin\SEOBar\Builder;
+namespace SGEOBIZ_SEO\Admin\SEOBar\Builder;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
  * The SEO Framework plugin
@@ -37,10 +37,10 @@ namespace The_SEO_Framework\Admin\SEOBar\Builder;
  *
  * @since 4.0.0
  * @since 4.2.0 Renamed from `SeoBar`.
- * @since 5.0.0 Moved from `\\The_SEO_Framework\\Builders\\SEOBar`.
+ * @since 5.0.0 Moved from `\\SGEOBIZ_SEO\\Builders\\SEOBar`.
  *
  * @access private
- * @see \\The_SEO_Framework\\Admin\\SEOBar\\Builder
+ * @see \\SGEOBIZ_SEO\\Admin\\SEOBar\\Builder
  *
  * @NOTE: All static:: calls within this class are intentional to allow overrides in subclasses.
  */
@@ -78,7 +78,7 @@ abstract class Main {
 	/**
 	 * @since 4.0.0
 	 * Not shared between instances
-	 * @var \The_SEO_Framework\Builders\SEOBar_* $instance The instance.
+	 * @var \SGEOBIZ_SEO\Builders\SEOBar_* $instance The instance.
 	 */
 	protected static $instance;
 

@@ -1,21 +1,21 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Admin\Script\Registry
- * @subpackage The_SEO_Framework\Scripts
+ * @package SGEOBIZ_SEO\Classes\Admin\Script\Registry
+ * @subpackage SGEOBIZ_SEO\Scripts
  */
 
-namespace The_SEO_Framework\Admin\Script;
+namespace SGEOBIZ_SEO\Admin\Script;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	has_run,
 	umemo,
 	is_headless,
 };
 
-use The_SEO_Framework\Data;
-use The_SEO_Framework\Helper\{
+use SGEOBIZ_SEO\Data;
+use SGEOBIZ_SEO\Helper\{
 	Format,
 	Post_Type,
 	Query,
@@ -48,12 +48,12 @@ use The_SEO_Framework\Helper\{
  * This handles admin-ONLY scripts for now.
  *
  * @since 3.1.0
- * @since 5.0.0 1. Moved from `\The_SEO_Framework\Builders`.
+ * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Builders`.
  *              2. Renamed from `Scripts`.
  * @see \WP_Styles
  * @see \WP_Scripts
  * @see \WP_Dependencies
- * @see \The_SEO_Framework\Admin\Script\Loader
+ * @see \SGEOBIZ_SEO\Admin\Script\Loader
  * @access private
  */
 final class Registry {
@@ -116,7 +116,7 @@ final class Registry {
 		 * @since 5.0.0
 		 * @param bool $register Whether to register scripts and hooks.
 		 */
-		if ( \apply_filters( 'the_seo_framework_register_scripts', $register ) )
+		if ( \apply_filters( 'sgeobiz_seo_register_scripts', $register ) )
 			self::register_scripts_and_hooks();
 	}
 
@@ -185,10 +185,10 @@ final class Registry {
 	 */
 	public static function _add_body_class( $classes ) {
 
-		$lcseobar = Data\Plugin::get_option( 'seo_bar_low_contrast' ) ? 'tsf-seo-bar-low-contrast' : '';
+		$lcseobar = Data\Plugin::get_option( 'seo_bar_low_contrast' ) ? 'sgeobiz-seo-bar-low-contrast' : '';
 
 		// Add spaces on both sides, because who knows what others do.
-		return " tsf-no-js $lcseobar $classes";
+		return " sgeobiz-no-js $lcseobar $classes";
 	}
 
 	/**
@@ -201,7 +201,7 @@ final class Registry {
 	 * @access private
 	 */
 	public static function _print_tsfjs_script() {
-		echo "<script>(()=>{const a=0;document.body.classList.replace('tsf-no-js','tsf-js')})()</script>";
+		echo "<script>(()=>{const a=0;document.body.classList.replace('sgeobiz-no-js','sgeobiz-js')})()</script>";
 	}
 
 	/**

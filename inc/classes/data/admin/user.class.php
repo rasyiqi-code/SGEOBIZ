@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Data\Admin\User
- * @subpackage The_SEO_Framework\Data
+ * @package SGEOBIZ_SEO\Classes\Data\Admin\User
+ * @subpackage SGEOBIZ_SEO\Data
  */
 
-namespace The_SEO_Framework\Data\Admin;
+namespace SGEOBIZ_SEO\Data\Admin;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Data;
+use SGEOBIZ_SEO\Data;
 
 /**
  * The SEO Framework plugin
@@ -60,7 +60,7 @@ final class User {
 	 * @since 4.1.4
 	 * @since 4.2.0 Now repopulates not-posted user metadata.
 	 * @since 5.0.0 1. Now tests if our POST data is set at all before acting.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              3. Renamed from `_update_user_meta`.
 	 * @access private
 	 *

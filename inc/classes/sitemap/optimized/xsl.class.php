@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Sitemap\Optimized\XSL
- * @subpackage The_SEO_Framework\Sitemap
+ * @package SGEOBIZ_SEO\Classes\Sitemap\Optimized\XSL
+ * @subpackage SGEOBIZ_SEO\Sitemap
  */
 
-namespace The_SEO_Framework\Sitemap\Optimized;
+namespace SGEOBIZ_SEO\Sitemap\Optimized;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Helper\Template;
+use SGEOBIZ_SEO\Helper\Template;
 
 /**
  * The SEO Framework plugin
@@ -31,7 +31,7 @@ use The_SEO_Framework\Helper\Template;
  * Interprets the Sitemap Stylesheet of the optimized Sitemap.
  *
  * @since 4.2.0
- * @since 5.0.0 1. Moved to `\The_SEO_Framework\Interpreters`.
+ * @since 5.0.0 1. Moved to `\SGEOBIZ_SEO\Interpreters`.
  *              2. Renamed from `Sitemap_XSL`.
  * @access private
  */
@@ -45,24 +45,24 @@ final class XSL {
 	public static function register_hooks() {
 
 		// Adds site icon tags to the sitemap stylesheet.
-		\add_action( 'the_seo_framework_xsl_head', 'wp_site_icon', 99 );
+		\add_action( 'sgeobiz_seo_xsl_head', 'wp_site_icon', 99 );
 
-		\add_action( 'the_seo_framework_xsl_head', [ self::class, '_print_xsl_global_variables' ], 0 );
-		\add_action( 'the_seo_framework_xsl_head', [ self::class, '_print_xsl_title' ] );
-		\add_action( 'the_seo_framework_xsl_head', [ self::class, '_print_xsl_styles' ] );
+		\add_action( 'sgeobiz_seo_xsl_head', [ self::class, '_print_xsl_global_variables' ], 0 );
+		\add_action( 'sgeobiz_seo_xsl_head', [ self::class, '_print_xsl_title' ] );
+		\add_action( 'sgeobiz_seo_xsl_head', [ self::class, '_print_xsl_styles' ] );
 
-		\add_action( 'the_seo_framework_xsl_description', [ self::class, '_print_xsl_description' ] );
+		\add_action( 'sgeobiz_seo_xsl_description', [ self::class, '_print_xsl_description' ] );
 
-		\add_action( 'the_seo_framework_xsl_content', [ self::class, '_print_xsl_content' ] );
+		\add_action( 'sgeobiz_seo_xsl_content', [ self::class, '_print_xsl_content' ] );
 
-		\add_action( 'the_seo_framework_xsl_footer', [ self::class, '_print_xsl_footer' ] );
+		\add_action( 'sgeobiz_seo_xsl_footer', [ self::class, '_print_xsl_footer' ] );
 		\add_action( 'site_icon_meta_tags', [ self::class, '_convert_site_icon_meta_tags' ], PHP_INT_MAX );
 	}
 
 	/**
 	 * Prints global XSL variables.
 	 *
-	 * @hook the_seo_framework_xsl_head 0
+	 * @hook sgeobiz_seo_xsl_head 0
 	 * @since 3.1.0
 	 * @since 4.2.0 1. $tableMinWidth no longer adds 'px'.
 	 *              2. Moved to class.
@@ -74,7 +74,7 @@ final class XSL {
 	/**
 	 * Prints XSL title.
 	 *
-	 * @hook the_seo_framework_xsl_head 10
+	 * @hook sgeobiz_seo_xsl_head 10
 	 * @since 3.1.0
 	 * @since 4.0.0 Now uses a consistent titling scheme.
 	 * @since 4.2.0 Moved to class
@@ -86,7 +86,7 @@ final class XSL {
 	/**
 	 * Prints XSL styles.
 	 *
-	 * @hook the_seo_framework_xsl_head 10
+	 * @hook sgeobiz_seo_xsl_head 10
 	 * @since 3.1.0
 	 * @since 4.2.0 1. Centered sitemap.
 	 *              2. Moved to class.
@@ -98,7 +98,7 @@ final class XSL {
 	/**
 	 * Prints XSL description.
 	 *
-	 * @hook the_seo_framework_xsl_description 10
+	 * @hook sgeobiz_seo_xsl_description 10
 	 * @since 3.1.0
 	 * @since 4.2.0 Moved to class.
 	 */
@@ -109,7 +109,7 @@ final class XSL {
 	/**
 	 * Prints XSL content.
 	 *
-	 * @hook the_seo_framework_xsl_content 10
+	 * @hook sgeobiz_seo_xsl_content 10
 	 * @since 3.1.0
 	 * @since 4.2.0 Moved to class.
 	 */
@@ -120,7 +120,7 @@ final class XSL {
 	/**
 	 * Prints XSL footer.
 	 *
-	 * @hook the_seo_framework_xsl_footer 10
+	 * @hook sgeobiz_seo_xsl_footer 10
 	 * @since 3.1.0
 	 * @since 4.2.0 Moved to class.
 	 */
@@ -129,7 +129,7 @@ final class XSL {
 		 * @since 2.8.0
 		 * @param bool $indicator
 		 */
-		\apply_filters( 'the_seo_framework_indicator_sitemap', true )
+		\apply_filters( 'sgeobiz_seo_indicator_sitemap', true )
 			and Template::output_view( 'sitemap/xsl/footer' );
 	}
 

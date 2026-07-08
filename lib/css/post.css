@@ -1,15 +1,15 @@
-#tsf-inpost-box .inside {
+#sgeobiz-inpost-box .inside {
 	margin: 0;
 	padding: 14px;
 }
 
-#tsf-inpost-box:not( .tsf-is-block-editor ) .inside,
-#edit-post\:document #tsf-inpost-box .inside { /* edit-post\:document is Gutenberg's sidebar */
+#sgeobiz-inpost-box:not( .sgeobiz-is-block-editor ) .inside,
+#edit-post\:document #sgeobiz-inpost-box .inside { /* edit-post\:document is Gutenberg's sidebar */
 	width: 100%;
 	padding: 0;
 }
 
-#tsf-inpost-box.closed .inside {
+#sgeobiz-inpost-box.closed .inside {
 	display: none;
 }
 
@@ -18,12 +18,12 @@
 	width: 100%; /* WP 5.4+ fix -- no longer needed, but will mitigate future issues. https://tsf.fyi/p/3505 */
 }
 
-.tsf-is-block-editor .tsf-flex-inside-wrap {
+.sgeobiz-is-block-editor .tsf-flex-inside-wrap {
 	border: 1px solid #ddd;
 }
 
-/* edit-post\:document is Gutenberg's sidebar; .tsf-is-block-editor is used to override specificity  */
-#edit-post\:document .tsf-is-block-editor .tsf-flex-inside-wrap {
+/* edit-post\:document is Gutenberg's sidebar; .sgeobiz-is-block-editor is used to override specificity  */
+#edit-post\:document .sgeobiz-is-block-editor .tsf-flex-inside-wrap {
 	border: 0;
 }
 
@@ -51,7 +51,7 @@
 	border-bottom: 1px solid #e2e4e7;
 }
 
-#tsf-inpost-box .inside select {
+#sgeobiz-inpost-box .inside select {
 	width: 100%;
 	max-width: 99%;
 	text-overflow: ellipsis;
@@ -130,7 +130,7 @@ input.tsf-flex-nav-tab-radio {
 	font-weight: 600;
 }
 
-.tsf-is-block-editor .tsf-flex-nav-tab-wrapper {
+.sgeobiz-is-block-editor .tsf-flex-nav-tab-wrapper {
 	background-color: #f3f4f5;
 	border-bottom-color: #e2e4e7;
 }
@@ -208,12 +208,12 @@ body.js .tsf-flex-tab-content.tsf-flex-tab-content-active {
 	flex: 0 1 auto;
 }
 
-#tsf-inpost-box .hndle {
+#sgeobiz-inpost-box .hndle {
 	justify-content: unset;
 	white-space: pre-wrap;
 }
 
-#tsf-inpost-box .hndle .tsf-tooltip-wrap a {
+#sgeobiz-inpost-box .hndle .sgeobiz-tooltip-wrap a {
 	font-size: 14px;
 	line-height: 1em;
 }
@@ -234,7 +234,7 @@ body.js .tsf-flex-tab-content.tsf-flex-tab-content-active {
  * Start override
  */
 
-.tsf-js .tsf-flex-hide-if-js,
-.tsf-no-js .tsf-flex-hide-if-no-js {
+.sgeobiz-js .tsf-flex-hide-if-js,
+.sgeobiz-no-js .tsf-flex-hide-if-no-js {
 	display: none;
 }

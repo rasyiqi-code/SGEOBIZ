@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Admin
- * @subpackage The_SEO_Framework\Admin\Settings
+ * @package SGEOBIZ_SEO\Views\Admin
+ * @subpackage SGEOBIZ_SEO\Admin\Settings
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
 // phpcs:disable WordPress.WP.GlobalVariablesOverride -- This isn't the global scope.
 
@@ -36,7 +36,7 @@ namespace The_SEO_Framework;
  */
 if ( \count( $tabs ) > 1 ) {
 	?>
-	<div class="tsf-nav-tab-wrapper hide-if-no-tsf-js" id="<?= \esc_attr( "$id-tabs-wrapper" ) ?>">
+	<div class="tsf-nav-tab-wrapper hide-if-no-sgeobiz-js" id="<?= \esc_attr( "$id-tabs-wrapper" ) ?>">
 		<?php
 		$tab_index = 1;
 

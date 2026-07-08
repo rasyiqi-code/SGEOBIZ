@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Admin\Script\Loader
- * @subpackage The_SEO_Framework\Scripts
+ * @package SGEOBIZ_SEO\Classes\Admin\Script\Loader
+ * @subpackage SGEOBIZ_SEO\Scripts
  */
 
-namespace The_SEO_Framework\Admin\Script;
+namespace SGEOBIZ_SEO\Admin\Script;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
  * The SEO Framework plugin
@@ -37,7 +37,7 @@ final class Utils {
 	 * Decodes entities of a string, making it workable for different encoding in both JS and HTML.
 	 *
 	 * @since 4.0.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Bridges\Scripts`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Bridges\Scripts`.
 	 *
 	 * @param mixed $value If string, it'll be decoded.
 	 * @return mixed
@@ -52,7 +52,7 @@ final class Utils {
 	 * Decodes all entities of the input.
 	 *
 	 * @since 4.0.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Bridges\Scripts`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Bridges\Scripts`.
 	 *
 	 * @param mixed $values The entries to decode.
 	 * @return mixed
@@ -92,7 +92,7 @@ final class Utils {
 	 * Performs wp_die( -1, 403 ) on failure.
 	 *
 	 * @since 3.1.0 Introduced in 2.9.0, but the name changed.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `_check_tsf_ajax_referer`.
 	 * @since 5.1.0 Added the `...$args` parameter.
 	 * @access private

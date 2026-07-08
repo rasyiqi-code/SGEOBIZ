@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework
- * @subpackage The_SEO_Framework\Bootstrap
+ * @package SGEOBIZ_SEO
+ * @subpackage SGEOBIZ_SEO\Bootstrap
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
  * The SEO Framework plugin
@@ -36,7 +36,7 @@ foreach (
 	)
 	as $_theme
 ) {
-	require \THE_SEO_FRAMEWORK_DIR_PATH_COMPAT . "theme-$_theme.php";
+	require \SGEOBIZ_SEO_DIR_PATH_COMPAT . "theme-$_theme.php";
 }
 
 foreach (
@@ -58,5 +58,5 @@ foreach (
 	)
 	as $_plugin
 ) {
-	require \THE_SEO_FRAMEWORK_DIR_PATH_COMPAT . "plugin-$_plugin.php";
+	require \SGEOBIZ_SEO_DIR_PATH_COMPAT . "plugin-$_plugin.php";
 }

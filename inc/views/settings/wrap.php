@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Admin
- * @subpackage The_SEO_Framework\Admin\Settings
+ * @package SGEOBIZ_SEO\Views\Admin
+ * @subpackage SGEOBIZ_SEO\Admin\Settings
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
-use The_SEO_Framework\Admin\Settings\Layout\Input;
+use SGEOBIZ_SEO\Admin\Settings\Layout\Input;
 
 // phpcs:disable WordPress.WP.GlobalVariablesOverride -- This isn't the global scope.
 
@@ -33,7 +33,7 @@ if (
 	   \function_exists( 'tsf_extension_manager' )
 	&& \in_array(
 		\tsf_extension_manager()->seo_extensions_page_slug ?? null,
-		array_column( $GLOBALS['submenu'][ \THE_SEO_FRAMEWORK_SITE_OPTIONS_SLUG ] ?? [], 2 ),
+		array_column( $GLOBALS['submenu'][ \SGEOBIZ_SEO_SITE_OPTIONS_SLUG ] ?? [], 2 ),
 		true,
 	)
 ) {
@@ -41,29 +41,29 @@ if (
 		'<a href="%s" class=button>%s</a>',
 		// menu_page_url() escapes
 		\menu_page_url( \tsf_extension_manager()->seo_extensions_page_slug, false ),
-		\esc_html_x( 'Extensions', 'Plugin extensions', 'autodescription' ),
+		\esc_html_x( 'Extensions', 'Plugin extensions', 'sgeobiz-seo' ),
 	);
 } else {
 	$_extensions_button = Admin\Utils::display_extension_suggestions()
 		? \sprintf(
 			'<a href="%s" class=button rel="noreferrer noopener" target=_blank>%s</a>',
 			'https://sgeobiz.com/extensions/',
-			\esc_html_x( 'Extensions', 'Plugin extensions', 'autodescription' ),
+			\esc_html_x( 'Extensions', 'Plugin extensions', 'sgeobiz-seo' ),
 		)
 		: '';
 }
 
 $_save_button = \get_submit_button(
-	\__( 'Save Settings', 'autodescription' ),
+	\__( 'Save Settings', 'sgeobiz-seo' ),
 	[ 'primary' ],
 	'submit',
 	false,
 	[ 'id' => '' ], // we output this twice, don't set ID.
 );
 
-$_ays_reset    = \esc_js( \__( 'Are you sure you want to reset all SEO settings to their defaults?', 'autodescription' ) );
+$_ays_reset    = \esc_js( \__( 'Are you sure you want to reset all SEO settings to their defaults?', 'sgeobiz-seo' ) );
 $_reset_button = \get_submit_button(
-	\__( 'Reset Settings', 'autodescription' ),
+	\__( 'Reset Settings', 'sgeobiz-seo' ),
 	[ 'secondary' ],
 	Input::get_field_name( 'tsf-settings-reset' ),
 	false,
@@ -80,7 +80,7 @@ $hook_name = Admin\Menu::get_page_hook_name();
 	<form id=tsf-settings method=post action=options.php autocomplete=off data-form-type=other>
 		<?php \wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false ); ?>
 		<?php \wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false ); ?>
-		<?php \settings_fields( \THE_SEO_FRAMEWORK_SITE_OPTIONS ); ?>
+		<?php \settings_fields( \SGEOBIZ_SEO_SITE_OPTIONS ); ?>
 
 		<div class=tsf-top-wrap>
 			<h1><?= \esc_html( \get_admin_page_title() ) ?></h1>
@@ -95,7 +95,7 @@ $hook_name = Admin\Menu::get_page_hook_name();
 		<hr class=wp-header-end>
 
 		<?php
-		\do_action( 'the_seo_framework_setting_notices' );
+		\do_action( 'sgeobiz_seo_setting_notices' );
 		?>
 
 		<?php

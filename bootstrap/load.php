@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework
- * @subpackage The_SEO_Framework\Bootstrap
+ * @package SGEOBIZ_SEO
+ * @subpackage SGEOBIZ_SEO\Bootstrap
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
  * The SEO Framework plugin
@@ -26,11 +26,11 @@ namespace The_SEO_Framework;
  */
 
 // Always load autoloader -- plugin (de)activation rely on these. We prepend because we safely assume ours is fastest.
-spl_autoload_register( 'The_SEO_Framework\_autoload_classes', true, true );
+spl_autoload_register( 'SGEOBIZ_SEO\_autoload_classes', true, true );
 
-\add_action( 'plugins_loaded', 'The_SEO_Framework\_load_tsf', 5 );
-\add_action( 'activate_' . \THE_SEO_FRAMEWORK_PLUGIN_BASENAME, 'The_SEO_Framework\_do_plugin_activation' );
-\add_action( 'deactivate_' . \THE_SEO_FRAMEWORK_PLUGIN_BASENAME, 'The_SEO_Framework\_do_plugin_deactivation' );
+\add_action( 'plugins_loaded', 'SGEOBIZ_SEO\_load_tsf', 5 );
+\add_action( 'activate_' . \SGEOBIZ_SEO_PLUGIN_BASENAME, 'SGEOBIZ_SEO\_do_plugin_activation' );
+\add_action( 'deactivate_' . \SGEOBIZ_SEO_PLUGIN_BASENAME, 'SGEOBIZ_SEO\_do_plugin_deactivation' );
 
 /**
  * Loads all of TSF.
@@ -47,27 +47,27 @@ function _load_tsf() {
 	 * @since 2.3.7
 	 * @param bool $load Set to false to prevent loading TSF.
 	 */
-	if ( \apply_filters( 'the_seo_framework_load', true ) ) {
-		if ( THE_SEO_FRAMEWORK_DEBUG )
-			require \THE_SEO_FRAMEWORK_BOOTSTRAP_PATH . 'load-debug.php';
+	if ( \apply_filters( 'sgeobiz_seo_load', true ) ) {
+		if ( SGEOBIZ_SEO_DEBUG )
+			require \SGEOBIZ_SEO_BOOTSTRAP_PATH . 'load-debug.php';
 
-		require \THE_SEO_FRAMEWORK_BOOTSTRAP_PATH . 'init-compat.php';
+		require \SGEOBIZ_SEO_BOOTSTRAP_PATH . 'init-compat.php';
 
-		\add_action( 'init', 'The_SEO_Framework\_init_tsf', 0 );
+		\add_action( 'init', 'SGEOBIZ_SEO\_init_tsf', 0 );
 
 		if ( \is_admin() ) {
 			/**
 			 * @since 3.1.0
 			 * Runs after TSF is loaded in the admin.
 			 */
-			\do_action( 'the_seo_framework_admin_loaded' );
+			\do_action( 'sgeobiz_seo_admin_loaded' );
 		}
 
 		/**
 		 * @since 3.1.0
 		 * Runs after TSF is loaded.
 		 */
-		\do_action( 'the_seo_framework_loaded' );
+		\do_action( 'sgeobiz_seo_loaded' );
 	}
 }
 
@@ -87,23 +87,23 @@ function _init_tsf() {
 	 * @since 2.8.0
 	 * Runs before the plugin is initialized.
 	 */
-	\do_action( 'the_seo_framework_init' );
+	\do_action( 'sgeobiz_seo_init' );
 
-	require \THE_SEO_FRAMEWORK_BOOTSTRAP_PATH . 'init-global.php';
+	require \SGEOBIZ_SEO_BOOTSTRAP_PATH . 'init-global.php';
 
 	if ( \is_admin() || \wp_doing_cron() ) {
 		/**
 		 * @since 2.8.0
 		 * Runs before the plugin is initialized in the admin screens.
 		 */
-		\do_action( 'the_seo_framework_admin_init' );
+		\do_action( 'sgeobiz_seo_admin_init' );
 
-		require \THE_SEO_FRAMEWORK_BOOTSTRAP_PATH . 'init-admin.php';
+		require \SGEOBIZ_SEO_BOOTSTRAP_PATH . 'init-admin.php';
 
 		if ( \wp_doing_ajax() ) {
-			require \THE_SEO_FRAMEWORK_BOOTSTRAP_PATH . 'init-admin-ajax.php';
+			require \SGEOBIZ_SEO_BOOTSTRAP_PATH . 'init-admin-ajax.php';
 		} elseif ( \wp_doing_cron() ) {
-			require \THE_SEO_FRAMEWORK_BOOTSTRAP_PATH . 'init-cron.php';
+			require \SGEOBIZ_SEO_BOOTSTRAP_PATH . 'init-cron.php';
 		}
 
 		/**
@@ -111,22 +111,22 @@ function _init_tsf() {
 		 * Runs after the plugin is initialized in the admin screens.
 		 * Use this to remove actions.
 		 */
-		\do_action( 'the_seo_framework_after_admin_init' );
+		\do_action( 'sgeobiz_seo_after_admin_init' );
 	} else {
 		/**
 		 * @since 2.8.0
 		 * Runs before the plugin is initialized on the front-end.
 		 */
-		\do_action( 'the_seo_framework_front_init' );
+		\do_action( 'sgeobiz_seo_front_init' );
 
-		require \THE_SEO_FRAMEWORK_BOOTSTRAP_PATH . 'init-front.php';
+		require \SGEOBIZ_SEO_BOOTSTRAP_PATH . 'init-front.php';
 
 		/**
 		 * @since 2.9.4
 		 * Runs before the plugin is initialized on the front-end.
 		 * Use this to remove actions.
 		 */
-		\do_action( 'the_seo_framework_after_front_init' );
+		\do_action( 'sgeobiz_seo_after_front_init' );
 	}
 
 	/**
@@ -134,7 +134,7 @@ function _init_tsf() {
 	 * Runs after the plugin is initialized.
 	 * Use this to remove filters and actions.
 	 */
-	\do_action( 'the_seo_framework_after_init' );
+	\do_action( 'sgeobiz_seo_after_init' );
 }
 
 /**
@@ -151,7 +151,7 @@ function _init_tsf() {
  * @since 5.0.0 Now supports trait loading.
  * @access private
  *
- * @NOTE 'The_SEO_Framework\' is a reserved namespace. Using it outside of this
+ * @NOTE 'SGEOBIZ_SEO\' is a reserved namespace. Using it outside of this
  *       plugin's scope could result in an error.
  *
  * @param string $class The class or trait name.
@@ -161,15 +161,15 @@ function _autoload_classes( $class ) {
 
 	$class = strtolower( $class );
 
-	// It's The_SEO_Framework, not the_seo_framework! -- Sybre's a nightmare, honestly! No wonder he hasn't got any friends.
-	if ( ! str_starts_with( $class, 'the_seo_framework\\' ) ) return;
+	// It's SGEOBIZ_SEO, not sgeobiz_seo! -- Sybre's a nightmare, honestly! No wonder he hasn't got any friends.
+	if ( ! str_starts_with( $class, 'sgeobiz_seo\\' ) ) return;
 
 	static $_timer;
 
 	$_timer ??= hrtime( true );
 
 	$class = strtr(
-		substr( $class, 18 ), // remove the "the_seo_framework\"
+		substr( $class, 12 ), // remove the "sgeobiz_seo\"
 		[
 			'\\' => \DIRECTORY_SEPARATOR,
 			'_'  => '-',
@@ -179,9 +179,9 @@ function _autoload_classes( $class ) {
 	if ( str_starts_with( $class, 'traits' ) ) {
 		$class = substr( $class, 7 ); // Remove "traits/"
 		// The extension is deemed to be ".trait.php" always.
-		require \THE_SEO_FRAMEWORK_DIR_PATH_TRAIT . "$class.trait.php";
+		require \SGEOBIZ_SEO_DIR_PATH_TRAIT . "$class.trait.php";
 	} else {
-		require \THE_SEO_FRAMEWORK_DIR_PATH_CLASS . "$class.class.php";
+		require \SGEOBIZ_SEO_DIR_PATH_CLASS . "$class.class.php";
 	}
 
 	if ( isset( $_timer ) ) {
@@ -200,7 +200,7 @@ function _autoload_classes( $class ) {
  * @access private
  */
 function _do_plugin_activation() {
-	require \THE_SEO_FRAMEWORK_BOOTSTRAP_PATH . 'plugin-activation.php';
+	require \SGEOBIZ_SEO_BOOTSTRAP_PATH . 'plugin-activation.php';
 }
 
 /**
@@ -211,7 +211,7 @@ function _do_plugin_activation() {
  * @access private
  */
 function _do_plugin_deactivation() {
-	require \THE_SEO_FRAMEWORK_BOOTSTRAP_PATH . 'plugin-deactivation.php';
+	require \SGEOBIZ_SEO_BOOTSTRAP_PATH . 'plugin-deactivation.php';
 }
 
 /**

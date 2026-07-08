@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Meta
- * @subpackage The_SEO_Framework\Meta\Theme_Color
+ * @package SGEOBIZ_SEO\Classes\Meta
+ * @subpackage SGEOBIZ_SEO\Meta\Theme_Color
  */
 
-namespace The_SEO_Framework\Meta;
+namespace SGEOBIZ_SEO\Meta;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Data\Filter\Sanitize,
 };
@@ -35,7 +35,7 @@ use The_SEO_Framework\{
  *
  * @since 5.0.1
  * @access protected
- *         Use tsf()->theme_color() instead.
+ *         Use sgeobiz()->theme_color() instead.
  */
 class Theme_Color {
 

@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework
- * @subpackage The_SEO_Framework\Bootstrap
+ * @package SGEOBIZ_SEO
+ * @subpackage SGEOBIZ_SEO\Bootstrap
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Helper\{
+use SGEOBIZ_SEO\Helper\{
 	Headers,
 	Query,
 };
@@ -60,7 +60,7 @@ if ( Sitemap\Utils::may_output_optimized_sitemap() ) {
 
 // Prepares requisite robots headers to avoid low-quality content penalties.
 \add_action( 'do_robots', [ Headers::class, 'output_robots_noindex_headers' ], 9 );
-\add_action( 'the_seo_framework_sitemap_header', [ Headers::class, 'output_robots_noindex_headers' ] );
+\add_action( 'sgeobiz_seo_sitemap_header', [ Headers::class, 'output_robots_noindex_headers' ] );
 
 // Overwrite title tags.
 \add_action( 'template_redirect', [ Front\Title::class, 'overwrite_title_filters' ], 20 );
@@ -112,7 +112,7 @@ if (
  * @since 4.1.4
  * @param bool $kill_core_robots Whether you lack sympathy for rocks tricked to think.
  */
-if ( \apply_filters( 'the_seo_framework_kill_core_robots', true ) ) {
+if ( \apply_filters( 'sgeobiz_seo_kill_core_robots', true ) ) {
 	\remove_filter( 'wp_robots', 'wp_robots_max_image_preview_large' );
 	// Reconsider readding this to "supported" queries only?
 	\remove_filter( 'wp_robots', 'wp_robots_noindex_search' );

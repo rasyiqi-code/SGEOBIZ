@@ -1,16 +1,16 @@
 <?php
 /**
- * @package The_SEO_Framework
- * @subpackage The_SEO_Framework\Bootstrap
+ * @package SGEOBIZ_SEO
+ * @subpackage SGEOBIZ_SEO\Bootstrap
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\is_headless;
+use function SGEOBIZ_SEO\is_headless;
 
-use The_SEO_Framework\Helper\{
+use SGEOBIZ_SEO\Helper\{
 	Compatibility,
 	Query,
 };
@@ -64,7 +64,7 @@ if ( ! $headless['meta'] ) {
 	// Initialize term meta filters and actions.
 	\add_action( 'edit_term', [ Data\Admin\Term::class, 'update_meta' ], 10, 3 );
 	\add_action(
-		'sanitize_term_meta_' . \THE_SEO_FRAMEWORK_TERM_OPTIONS,
+		'sanitize_term_meta_' . \SGEOBIZ_SEO_TERM_OPTIONS,
 		[ Data\Filter\Term::class, 'filter_meta_update' ],
 	);
 
@@ -99,8 +99,8 @@ if ( ! $headless['meta'] ) {
  * For it may be higher than manage_options, and shielded via headlessness.
  */
 \add_filter(
-	'option_page_capability_' . \THE_SEO_FRAMEWORK_SITE_OPTIONS,
-	fn() => \THE_SEO_FRAMEWORK_SETTINGS_CAP,
+	'option_page_capability_' . \SGEOBIZ_SEO_SITE_OPTIONS,
+	fn() => \SGEOBIZ_SEO_SETTINGS_CAP,
 );
 /**
  * Register the required settings sanitization regardless of headlessness.
@@ -108,7 +108,7 @@ if ( ! $headless['meta'] ) {
  * Also, register_settings only passes 1 parameter, while we need all 3.
  */
 \add_filter(
-	'sanitize_option_' . \THE_SEO_FRAMEWORK_SITE_OPTIONS,
+	'sanitize_option_' . \SGEOBIZ_SEO_SITE_OPTIONS,
 	[ Data\Filter\Plugin::class, 'filter_settings_update' ],
 	10,
 	3,
@@ -144,14 +144,14 @@ if ( \in_array( false, $headless, true ) ) { // Still got head...
 
 	// Setup user sanitization. If at least something isn't headless, user metadata can be used.
 	\add_action(
-		'sanitize_user_meta_' . \THE_SEO_FRAMEWORK_USER_OPTIONS,
+		'sanitize_user_meta_' . \SGEOBIZ_SEO_USER_OPTIONS,
 		[ Data\Filter\User::class, 'filter_meta_update' ],
 	);
 }
 
 // Add plugin links to the plugin activation page.
 \add_filter(
-	'plugin_action_links_' . \THE_SEO_FRAMEWORK_PLUGIN_BASENAME,
+	'plugin_action_links_' . \SGEOBIZ_SEO_PLUGIN_BASENAME,
 	[ Admin\PluginTable::class, 'add_plugin_action_links' ],
 );
 \add_filter(

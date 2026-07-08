@@ -15,7 +15,7 @@
  * @package SGEOBIZ
  */
 
-defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 class SGEOBIZ_Schema_Local {
 

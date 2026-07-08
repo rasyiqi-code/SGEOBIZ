@@ -1,16 +1,16 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Data\Post
- * @subpackage The_SEO_Framework\Data
+ * @package SGEOBIZ_SEO\Classes\Data\Post
+ * @subpackage SGEOBIZ_SEO\Data
  */
 
-namespace The_SEO_Framework\Data;
+namespace SGEOBIZ_SEO\Data;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\memo;
+use function SGEOBIZ_SEO\memo;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Helper,
 	Helper\Format\Time,
 	Helper\Query,
@@ -38,7 +38,7 @@ use The_SEO_Framework\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->data()->post() instead.
+ *         Use sgeobiz()->data()->post() instead.
  */
 class Post {
 
@@ -91,7 +91,7 @@ class Post {
 	 *
 	 * @since 4.1.0
 	 * @since 5.0.0 1. First parameter may now be empty to automatically fetch the post ID.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 * @since 5.1.0 Now detects Bricks.
 	 *
 	 * @param int $post_id The post ID to check.
@@ -108,7 +108,7 @@ class Post {
 		 * @param int          $post_id The current Post ID.
 		 * @param array        $meta The current post meta.
 		 */
-		$detected = \apply_filters( 'the_seo_framework_detect_non_html_page_builder', null, $post_id, $meta );
+		$detected = \apply_filters( 'sgeobiz_seo_detect_non_html_page_builder', null, $post_id, $meta );
 
 		if ( \is_bool( $detected ) )
 			return $detected;
@@ -134,7 +134,7 @@ class Post {
 	 *              2. Input parameter now default to null.
 	 *                 This currently doesn't affect how it works.
 	 * @since 4.2.0 Added caching. Can be reversed if https://core.trac.wordpress.org/ticket/50567 is fixed.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param int|null|\WP_Post $post The post ID or WP Post object.
 	 * @return bool True if protected or private, false otherwise.
@@ -151,7 +151,7 @@ class Post {
 	 * Determines if the current post has a password.
 	 *
 	 * @since 3.0.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @since 5.0.5 Now again assumes that `'0'` is an invalid password.
 	 *
 	 * @param int|null|\WP_Post $post The post ID or WP Post object.
@@ -167,7 +167,7 @@ class Post {
 	 * Determines if the current post is private.
 	 *
 	 * @since 3.0.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param int|null|\WP_Post $post The post ID or WP Post object.
 	 * @return bool True if private, false otherwise.
@@ -182,7 +182,7 @@ class Post {
 	 * Determines if the current post is a draft.
 	 *
 	 * @since 3.1.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param int|null|\WP_Post $post The post ID or WP Post object.
 	 * @return bool True if draft, false otherwise.
@@ -207,7 +207,7 @@ class Post {
 	 * @since 2.4.3
 	 * @since 2.9.3 1. Removed object caching.
 	 *              2. It now uses WP_Query, instead of wpdb.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @slow The queried result is not stored in WP Post's cache, which would allow
 	 *       direct access to all values of the post (if requested). This is because
 	 *       we're using `'fields' => 'ids'` instead of `'fields' => 'all'`.
@@ -239,7 +239,7 @@ class Post {
 	 * Memoizes the return value.
 	 *
 	 * @since 4.2.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `has_posts_in_post_type_archive`.
 	 * @slow The queried result is not stored in WP Post's cache, which would allow
 	 *       direct access to all values of the post (if requested). This is because

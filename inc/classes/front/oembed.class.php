@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Front\Oembed
- * @subpackage The_SEO_Framework\Oembed
+ * @package SGEOBIZ_SEO\Classes\Front\Oembed
+ * @subpackage SGEOBIZ_SEO\Oembed
  */
 
-namespace The_SEO_Framework\Front;
+namespace SGEOBIZ_SEO\Front;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Meta,
 };
@@ -47,7 +47,7 @@ final class OEmbed {
 	 * @hook oembed_response_data 10
 	 * @since 4.0.5
 	 * @since 4.1.1 Now also alters titles and images.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `_alter_oembed_response_data`.
 	 *
 	 * @param array    $data   The response data.

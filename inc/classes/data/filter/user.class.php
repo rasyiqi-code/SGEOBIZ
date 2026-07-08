@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Data\Filter\Term
- * @subpackage The_SEO_Framework\Data\Term
+ * @package SGEOBIZ_SEO\Classes\Data\Filter\Term
+ * @subpackage SGEOBIZ_SEO\Data\Term
  */
 
-namespace The_SEO_Framework\Data\Filter;
+namespace SGEOBIZ_SEO\Data\Filter;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
  * The SEO Framework plugin
@@ -34,7 +34,7 @@ namespace The_SEO_Framework\Data\Filter;
 final class User {
 
 	/**
-	 * @hook "sanitize_usermeta_ . THE_SEO_FRAMEWORK_USER_OPTIONS" 10
+	 * @hook "sanitize_usermeta_ . SGEOBIZ_SEO_USER_OPTIONS" 10
 	 * @since 5.0.0
 	 *
 	 * @param mixed[] $meta_value An unsanitized value.

@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Admin\Settings\ListEdit
- * @subpackage The_SEO_Framework\Admin\Edit\List
+ * @package SGEOBIZ_SEO\Classes\Admin\Settings\ListEdit
+ * @subpackage SGEOBIZ_SEO\Admin\Edit\List
  */
 
-namespace The_SEO_Framework\Admin\Settings;
+namespace SGEOBIZ_SEO\Admin\Settings;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Admin,
 	Admin\Settings\Layout\HTML,
 	Data,
@@ -40,7 +40,7 @@ use The_SEO_Framework\{
  * Prepares the List Edit view interface.
  *
  * @since 4.0.0
- * @since 5.0.0 Moved from `\The_SEO_Framework\Bridges`.
+ * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Bridges`.
  * @access private
  */
 final class ListEdit extends Admin\Lists\Table {
@@ -189,7 +189,7 @@ final class ListEdit extends Admin\Lists\Table {
 		$r_defaults = Meta\Robots::get_generated_meta(
 			$generator_args,
 			[ 'noindex', 'nofollow', 'noarchive' ],
-			\The_SEO_Framework\ROBOTS_IGNORE_SETTINGS,
+			\SGEOBIZ_SEO\ROBOTS_IGNORE_SETTINGS,
 		);
 
 		$meta        = Data\Plugin\Post::get_meta( $post_id );
@@ -246,7 +246,7 @@ final class ListEdit extends Admin\Lists\Table {
 		 * }
 		 * @param array $generator_args The query data. Contains 'id' or 'taxonomy'.
 		 */
-		$data = \apply_filters( 'the_seo_framework_list_table_data', $data, $generator_args );
+		$data = \apply_filters( 'sgeobiz_seo_list_table_data', $data, $generator_args );
 
 		printf(
 			// '<span class=hidden id=%s data-le="%s"></span>',
@@ -487,7 +487,7 @@ final class ListEdit extends Admin\Lists\Table {
 		$r_defaults = Meta\Robots::get_generated_meta(
 			$generator_args,
 			[ 'noindex', 'nofollow', 'noarchive' ],
-			\The_SEO_Framework\ROBOTS_IGNORE_SETTINGS,
+			\SGEOBIZ_SEO\ROBOTS_IGNORE_SETTINGS,
 		);
 
 		$meta = Data\Plugin\Term::get_meta( $term_id );
@@ -540,7 +540,7 @@ final class ListEdit extends Admin\Lists\Table {
 		 * }
 		 * @param array $generator_args The query data. Contains 'id' and 'tax'.
 		 */
-		$data = \apply_filters( 'the_seo_framework_list_table_data', $data, $generator_args );
+		$data = \apply_filters( 'sgeobiz_seo_list_table_data', $data, $generator_args );
 
 		static $memo = [];
 

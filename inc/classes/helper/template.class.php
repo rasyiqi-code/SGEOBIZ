@@ -1,11 +1,11 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Helper\View
+ * @package SGEOBIZ_SEO\Classes\Helper\View
  */
 
-namespace The_SEO_Framework\Helper;
+namespace SGEOBIZ_SEO\Helper;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
  * The SEO Framework plugin
@@ -82,7 +82,7 @@ final class Template {
 	 * Gets view location. Forces a path on our Views folder.
 	 *
 	 * @since 3.1.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @access private
 	 *
 	 * @param string $file The file name.
@@ -92,7 +92,7 @@ final class Template {
 
 		static $realview;
 
-		$realview ??= realpath( \THE_SEO_FRAMEWORK_DIR_PATH_VIEWS );
+		$realview ??= realpath( \SGEOBIZ_SEO_DIR_PATH_VIEWS );
 		$path       = realpath( "$realview/$file.php" );
 
 		if ( $path && str_starts_with( $path, $realview ) )

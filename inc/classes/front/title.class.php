@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Front\Redirect
- * @subpackage The_SEO_Framework\Redirect
+ * @package SGEOBIZ_SEO\Classes\Front\Redirect
+ * @subpackage SGEOBIZ_SEO\Redirect
  */
 
-namespace The_SEO_Framework\Front;
+namespace SGEOBIZ_SEO\Front;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Helper\Query,
 	Meta,
 };
@@ -52,7 +52,7 @@ final class Title {
 			 * @since 2.9.3
 			 * @param bool $overwrite_titles Whether to enable title overwriting.
 			 */
-			|| ! \apply_filters( 'the_seo_framework_overwrite_titles', true )
+			|| ! \apply_filters( 'sgeobiz_seo_overwrite_titles', true )
 		) return;
 
 		// Removes all pre_get_document_title filters.
@@ -69,13 +69,13 @@ final class Title {
 	 * Returns the document title.
 	 *
 	 * This method serves as a callback for filter `pre_get_document_title`.
-	 * Use tsf()->get_title() instead.
+	 * Use sgeobiz()->get_title() instead.
 	 *
 	 * @hook pre_get_document_title 10
 	 * @hook wp_title 9
 	 * @since 3.1.0
 	 * @since 5.0.0 1. Now escapes the filter output.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              3. Renamed from `get_document_title`.
 	 *
 	 * @return string The document title
@@ -87,7 +87,7 @@ final class Title {
 		 * @param int    $id    The page or term ID.
 		 */
 		return \esc_html( \apply_filters(
-			'the_seo_framework_pre_get_document_title',
+			'sgeobiz_seo_pre_get_document_title',
 			Meta\Title::get_title(),
 			Query::get_the_real_id(),
 		) );

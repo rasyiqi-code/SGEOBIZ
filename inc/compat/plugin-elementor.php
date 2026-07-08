@@ -1,15 +1,15 @@
 <?php
 /**
- * @package The_SEO_Framework\Compat\Plugin\Elementor
- * @subpackage The_SEO_Framework\Compatibility
+ * @package SGEOBIZ_SEO\Compat\Plugin\Elementor
+ * @subpackage SGEOBIZ_SEO\Compatibility
  * @access private
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Helper\Query;
+use SGEOBIZ_SEO\Helper\Query;
 
 const ELEMENTOR_DUMB_POST_TYPES = [ // TODO remove "ELEMENTOR_" prefix when we namespace this file properly
 	'e-landing-page',
@@ -17,8 +17,8 @@ const ELEMENTOR_DUMB_POST_TYPES = [ // TODO remove "ELEMENTOR_" prefix when we n
 	'e-floating-buttons',
 ];
 
-\add_filter( 'the_seo_framework_public_post_types', __NAMESPACE__ . '\_elementor_fix_dumb_post_types' );
-\add_filter( 'the_seo_framework_robots_meta_array', __NAMESPACE__ . '\_elementor_force_noindex' );
+\add_filter( 'sgeobiz_seo_public_post_types', __NAMESPACE__ . '\_elementor_fix_dumb_post_types' );
+\add_filter( 'sgeobiz_seo_robots_meta_array', __NAMESPACE__ . '\_elementor_force_noindex' );
 
 /**
  * Does the job Elementor was sought to do by everyone back in 2016, by chiseling
@@ -29,7 +29,7 @@ const ELEMENTOR_DUMB_POST_TYPES = [ // TODO remove "ELEMENTOR_" prefix when we n
  * This filter only runs on admin pages and sitemap to hide the post type from
  * TSF's interface and improve sitemap rendering performance.
  *
- * @hook the_seo_framework_public_post_types 10
+ * @hook sgeobiz_seo_public_post_types 10
  * @since 4.2.0
  * @since 5.1.3 Now only runs on admin and sitemap.
  *
@@ -50,7 +50,7 @@ function _elementor_fix_dumb_post_types( $post_types ) {
  * Elementor incorrectly made these post types publicly queryable.
  * This filter ensures they are not indexed.
  *
- * @hook the_seo_framework_robots_meta_array 10
+ * @hook sgeobiz_seo_robots_meta_array 10
  * @since 5.1.3
  *
  * @param array $meta {

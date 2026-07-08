@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Admin\Settings\Layout\Input
- * @subpackage The_SEO_Framework\Admin\Settings
+ * @package SGEOBIZ_SEO\Admin\Settings\Layout\Input
+ * @subpackage SGEOBIZ_SEO\Admin\Settings
  */
 
-namespace The_SEO_Framework\Admin\Settings\Layout;
+namespace SGEOBIZ_SEO\Admin\Settings\Layout;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Data\Filter\Escape,
 };
@@ -36,7 +36,7 @@ use The_SEO_Framework\{
  * The `*field_*()` functions are meant for the SEO Settings only.
  *
  * @since 4.2.0
- * @since 5.0.0 1. Moved from `\The_SEO_Framework\Interpreters`.
+ * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Interpreters`.
  *              2. Renamed from `Settings_Input`.
  *
  * @access private
@@ -54,7 +54,7 @@ class Input {
 	 */
 	public static function get_field_id( $id ) {
 
-		$field_id = \THE_SEO_FRAMEWORK_SITE_OPTIONS;
+		$field_id = \SGEOBIZ_SEO_SITE_OPTIONS;
 
 		foreach ( (array) $id as $subid )
 			$field_id .= "[$subid]";
@@ -153,7 +153,7 @@ class Input {
 			$cb_classes[] = $args['class'];
 
 		if ( $args['disabled'] ) {
-			$cb_classes[] = 'tsf-disabled';
+			$cb_classes[] = 'sgeobiz-disabled';
 		} else {
 			array_push( $cb_classes, ...self::get_conditional_checked_classes( ...(array) $args['id'] ) );
 		}
@@ -164,7 +164,7 @@ class Input {
 				'<label for="%s"%s>%s</label>',
 				[
 					Escape::option_name_attribute( $field_id ),
-					( $args['disabled'] ? ' class=tsf-disabled' : '' ),
+					( $args['disabled'] ? ' class=sgeobiz-disabled' : '' ),
 					vsprintf(
 						'<input type=checkbox class="%s" name="%s" id="%s" value=1 %s%s %s /> %s',
 						[
@@ -205,7 +205,7 @@ class Input {
 	 *
 	 * @since 4.1.0
 	 * @since 4.1.2 Now prevents wp-emoji.js parsing the references and data.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param string $id The input ID.
 	 * @param array  $data The input data.
@@ -217,9 +217,9 @@ class Input {
 				[
 					'<span id="tsf-title-reference_%1$s" class="tsf-title-reference hidden wp-exclude-emoji" data-for="%1$s"></span>',
 					'<span id="tsf-title-noadditions-reference_%1$s" class="tsf-title-noadditions-reference hidden wp-exclude-emoji" data-for="%1$s"></span>',
-					'<span class=tsf-title-offset-wrap><span id="tsf-title-offset_%1$s" class="tsf-title-offset wp-exclude-emoji hide-if-no-tsf-js" data-for="%1$s"></span></span>',
-					'<span id="tsf-title-placeholder-additions_%1$s" class="tsf-title-placeholder-additions wp-exclude-emoji hide-if-no-tsf-js" data-for="%1$s"></span>',
-					'<span id="tsf-title-placeholder-prefix_%1$s" class="tsf-title-placeholder-prefix wp-exclude-emoji hide-if-no-tsf-js" data-for="%1$s"></span>',
+					'<span class=tsf-title-offset-wrap><span id="tsf-title-offset_%1$s" class="tsf-title-offset wp-exclude-emoji hide-if-no-sgeobiz-js" data-for="%1$s"></span></span>',
+					'<span id="tsf-title-placeholder-additions_%1$s" class="tsf-title-placeholder-additions wp-exclude-emoji hide-if-no-sgeobiz-js" data-for="%1$s"></span>',
+					'<span id="tsf-title-placeholder-prefix_%1$s" class="tsf-title-placeholder-prefix wp-exclude-emoji hide-if-no-sgeobiz-js" data-for="%1$s"></span>',
 					'<span id="tsf-title-data_%1$s" class="hidden wp-exclude-emoji" data-for="%1$s" %2$s></span>',
 				],
 			),
@@ -235,7 +235,7 @@ class Input {
 	 * Outputs reference social HTML elements for JavaScript for a specific ID.
 	 *
 	 * @since 4.2.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param string       $group    The social input group ID.
 	 * @param array[og,tw] $settings The input settings data.
@@ -256,7 +256,7 @@ class Input {
 	 *
 	 * @since 4.1.0
 	 * @since 4.1.2 Now prevents wp-emoji.js parsing the references and data.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param string $id   The description input ID.
 	 * @param array  $data The input data.

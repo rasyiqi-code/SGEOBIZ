@@ -1,16 +1,16 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Admin\Settings\Post
- * @subpackage The_SEO_Framework\Admin\Edit\Post
+ * @package SGEOBIZ_SEO\Classes\Admin\Settings\Post
+ * @subpackage SGEOBIZ_SEO\Admin\Edit\Post
  */
 
-namespace The_SEO_Framework\Admin\Settings;
+namespace SGEOBIZ_SEO\Admin\Settings;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\is_headless;
+use function SGEOBIZ_SEO\is_headless;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Admin,
 	Data,
 	Helper\Post_Type,
@@ -42,7 +42,7 @@ use The_SEO_Framework\{
  *
  * @since 4.0.0
  * @since 5.0.0 1. Renamed from `PostSettings` to `Post`.
- *              2. Moved from `\The_SEO_Framework\Bridges`.
+ *              2. Moved from `\SGEOBIZ_SEO\Bridges`.
  * @access private
  */
 final class Post {
@@ -59,7 +59,7 @@ final class Post {
 	 *                 This because Gutenberg is inconsistent with metabox display and escapes HTML incorrectly.
 	 *              3. Now registers homepage warnings in the primary tabs.
 	 *              4. Now adds postbox class to non-posts as well.
-	 *              5. Moved from `\The_SEO_Framework\The_SEO_Framework\Bridges\PostSettings`.
+	 *              5. Moved from `\SGEOBIZ_SEO\SGEOBIZ_SEO\Bridges\PostSettings`.
 	 *
 	 * @param string $post_type The current post type.
 	 */
@@ -72,29 +72,29 @@ final class Post {
 		if (
 			   ! Query::is_post_edit()
 			|| ! Post_Type::is_supported( $post_type )
-			|| ! \apply_filters( 'the_seo_framework_seobox_output', true )
+			|| ! \apply_filters( 'sgeobiz_seo_seobox_output', true )
 		) return;
 
-		$box_id = 'tsf-inpost-box';
+		$box_id = 'sgeobiz-inpost-box';
 
-		// TODO 5.1.0 add the_seo_framework_post_metabox_args, and deprecate filters below? whoops, missed: TODO 5.2.0
+		// TODO 5.1.0 add sgeobiz_seo_post_metabox_args, and deprecate filters below? whoops, missed: TODO 5.2.0
 		// -> Even if we'll concede to using Gutenberg, one day, dismissing this, this is still useful for Classic Editor.
 		\add_meta_box(
 			$box_id,
-			\esc_html__( 'SEO Settings', 'autodescription' ),
+			\esc_html__( 'SEO Settings', 'sgeobiz-seo' ),
 			[ self::class, 'meta_box' ],
 			null, // We used to forward hook $post_type, which redundantly forces WP to regenerate the current screen type.
 			/**
 			 * @since 2.9.0
 			 * @param string $context Accepts 'normal', 'side', and 'advanced'.
 			 */
-			(string) \apply_filters( 'the_seo_framework_metabox_context', 'normal' ),
+			(string) \apply_filters( 'sgeobiz_seo_metabox_context', 'normal' ),
 			/**
 			 * @since 2.6.0
 			 * @param string $default Accepts 'high', 'default', 'low'
 			 *                        Defaults to high, this box is seen right below the post/page edit screen.
 			 */
-			(string) \apply_filters( 'the_seo_framework_metabox_priority', 'high' ),
+			(string) \apply_filters( 'sgeobiz_seo_metabox_priority', 'high' ),
 		);
 
 		$screen_id = \get_current_screen()->id;
@@ -103,9 +103,9 @@ final class Post {
 
 		if ( ! is_headless( 'settings' ) && Query::is_static_front_page( Query::get_the_real_id() ) ) {
 			$output_homepage_warning = [ self::class, 'output_homepage_warning' ];
-			\add_action( 'the_seo_framework_pre_page_inpost_general_tab', $output_homepage_warning );
-			\add_action( 'the_seo_framework_pre_page_inpost_visibility_tab', $output_homepage_warning );
-			\add_action( 'the_seo_framework_pre_page_inpost_social_tab', $output_homepage_warning );
+			\add_action( 'sgeobiz_seo_pre_page_inpost_general_tab', $output_homepage_warning );
+			\add_action( 'sgeobiz_seo_pre_page_inpost_visibility_tab', $output_homepage_warning );
+			\add_action( 'sgeobiz_seo_pre_page_inpost_social_tab', $output_homepage_warning );
 		}
 	}
 
@@ -115,7 +115,7 @@ final class Post {
 	 *
 	 * @since 4.0.0
 	 * @since 5.0.0 1. Removed third parameter: $use_tabs.
-	 *              2. Moved from `\The_SEO_Framework\Bridges`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Bridges`.
 	 *              3. Renamed from `_flex_nav_tab_wrapper`.
 	 *
 	 * @param string $id   The nav-tab ID.
@@ -138,7 +138,7 @@ final class Post {
 	 * Outputs the meta box.
 	 *
 	 * @since 4.0.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Bridges`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Bridges`.
 	 *              2. Renamed from `_meta_box`.
 	 */
 	public static function meta_box() {
@@ -151,7 +151,7 @@ final class Post {
 		/**
 		 * @since 2.9.0
 		 */
-		\do_action( 'the_seo_framework_pre_page_inpost_box' );
+		\do_action( 'sgeobiz_seo_pre_page_inpost_box' );
 
 		if ( Query::is_block_editor() )
 			Template::output_view( 'post/gutenberg-data' );
@@ -161,14 +161,14 @@ final class Post {
 		/**
 		 * @since 2.9.0
 		 */
-		\do_action( 'the_seo_framework_pro_page_inpost_box' );
+		\do_action( 'sgeobiz_seo_pro_page_inpost_box' );
 	}
 
 	/**
 	 * Adds a Gutenberg/Block-editor box class.
 	 *
 	 * @since 4.0.5
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Bridges`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Bridges`.
 	 *              2. Renamed from `_add_postbox_class`.
 	 *
 	 * @param array $classes The registered postbox classes.
@@ -177,7 +177,7 @@ final class Post {
 	public static function add_postbox_class( $classes = [] ) {
 
 		if ( Query::is_block_editor() )
-			$classes[] = 'tsf-is-block-editor';
+			$classes[] = 'sgeobiz-is-block-editor';
 
 		return $classes;
 	}
@@ -185,9 +185,9 @@ final class Post {
 	/**
 	 * Outputs the Homepage SEO settings warning.
 	 *
-	 * @hook the_seo_framework_pre_page_inpost_general_tab 10
-	 * @hook the_seo_framework_pre_page_inpost_visibility_tab 10
-	 * @hook the_seo_framework_pre_page_inpost_social_tab 10
+	 * @hook sgeobiz_seo_pre_page_inpost_general_tab 10
+	 * @hook sgeobiz_seo_pre_page_inpost_visibility_tab 10
+	 * @hook sgeobiz_seo_pre_page_inpost_social_tab 10
 	 * @since 5.0.0
 	 */
 	public static function output_homepage_warning() {
@@ -198,56 +198,56 @@ final class Post {
 	 * Outputs the Post SEO box general tab.
 	 *
 	 * @since 4.0.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Bridges`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Bridges`.
 	 *              2. Renamed from `_general_tab`.
 	 */
 	public static function general_tab() {
 		/**
 		 * @since 2.9.0
 		 */
-		\do_action( 'the_seo_framework_pre_page_inpost_general_tab' );
+		\do_action( 'sgeobiz_seo_pre_page_inpost_general_tab' );
 		Template::output_view( 'post/settings', 'general' );
 		/**
 		 * @since 2.9.0
 		 */
-		\do_action( 'the_seo_framework_pro_page_inpost_general_tab' );
+		\do_action( 'sgeobiz_seo_pro_page_inpost_general_tab' );
 	}
 
 	/**
 	 * Outputs the Post SEO box visibility tab.
 	 *
 	 * @since 4.0.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Bridges`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Bridges`.
 	 *              2. Renamed from `_visibility_tab`.
 	 */
 	public static function visibility_tab() {
 		/**
 		 * @since 2.9.0
 		 */
-		\do_action( 'the_seo_framework_pre_page_inpost_visibility_tab' );
+		\do_action( 'sgeobiz_seo_pre_page_inpost_visibility_tab' );
 		Template::output_view( 'post/settings', 'visibility' );
 		/**
 		 * @since 2.9.0
 		 */
-		\do_action( 'the_seo_framework_pro_page_inpost_visibility_tab' );
+		\do_action( 'sgeobiz_seo_pro_page_inpost_visibility_tab' );
 	}
 
 	/**
 	 * Outputs the Post SEO box social tab.
 	 *
 	 * @since 4.0.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Bridges`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Bridges`.
 	 *              2. Renamed from `_social_tab`.
 	 */
 	public static function social_tab() {
 		/**
 		 * @since 2.9.0
 		 */
-		\do_action( 'the_seo_framework_pre_page_inpost_social_tab' );
+		\do_action( 'sgeobiz_seo_pre_page_inpost_social_tab' );
 		Template::output_view( 'post/settings', 'social' );
 		/**
 		 * @since 2.9.0
 		 */
-		\do_action( 'the_seo_framework_pro_page_inpost_social_tab' );
+		\do_action( 'sgeobiz_seo_pro_page_inpost_social_tab' );
 	}
 }

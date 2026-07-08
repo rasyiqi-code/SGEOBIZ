@@ -2,7 +2,7 @@
 /**
  * The SEO Framework
  *
- * @package   The_SEO_Framework\Bootstrap
+ * @package   SGEOBIZ_SEO\Bootstrap
  * @author    Sybre Waaijer
  * @copyright 2015 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
  * @license   GPL-3.0
@@ -53,7 +53,7 @@ defined( 'ABSPATH' ) or die;
  *
  * @since 2.3.5
  */
-define( 'THE_SEO_FRAMEWORK_VERSION', '5.1.5' );
+define( 'SGEOBIZ_SEO_VERSION', '5.1.5' );
 
 /**
  * The plugin database version.
@@ -62,37 +62,37 @@ define( 'THE_SEO_FRAMEWORK_VERSION', '5.1.5' );
  *
  * @since 2.7.0
  */
-define( 'THE_SEO_FRAMEWORK_DB_VERSION', '5140' );
+define( 'SGEOBIZ_SEO_DB_VERSION', '5140' );
 
 /**
  * The plugin file, absolute unix path.
  *
  * @since 2.2.9
  */
-define( 'THE_SEO_FRAMEWORK_PLUGIN_BASE_FILE', __FILE__ );
+define( 'SGEOBIZ_SEO_PLUGIN_BASE_FILE', __FILE__ );
 
 /**
  * The plugin's bootstrap folder location.
  *
  * @since 3.1.0
  */
-define( 'THE_SEO_FRAMEWORK_BOOTSTRAP_PATH', dirname( THE_SEO_FRAMEWORK_PLUGIN_BASE_FILE ) . DIRECTORY_SEPARATOR . 'bootstrap' . DIRECTORY_SEPARATOR );
+define( 'SGEOBIZ_SEO_BOOTSTRAP_PATH', dirname( SGEOBIZ_SEO_PLUGIN_BASE_FILE ) . DIRECTORY_SEPARATOR . 'bootstrap' . DIRECTORY_SEPARATOR );
 
 // Defines environmental constants.
-require THE_SEO_FRAMEWORK_BOOTSTRAP_PATH . 'define.php';
+require SGEOBIZ_SEO_BOOTSTRAP_PATH . 'define.php';
 
 // Load plugin API functions.
-require THE_SEO_FRAMEWORK_DIR_PATH_FUNCT . 'api.php';
+require SGEOBIZ_SEO_DIR_PATH_FUNCT . 'api.php';
 
 // Prepare plugin upgrader before the plugin loads. This may also downgrade (3103 or higher).
-the_seo_framework_db_version() !== THE_SEO_FRAMEWORK_DB_VERSION
-	and require THE_SEO_FRAMEWORK_BOOTSTRAP_PATH . 'upgrade.php';
+sgeobiz_seo_db_version() !== SGEOBIZ_SEO_DB_VERSION
+	and require SGEOBIZ_SEO_BOOTSTRAP_PATH . 'upgrade.php';
 
 // Load deprecated functions.
-// require THE_SEO_FRAMEWORK_DIR_PATH_FUNCT . 'deprecated.php';
+// require SGEOBIZ_SEO_DIR_PATH_FUNCT . 'deprecated.php';
 
 // Load plugin.
-require THE_SEO_FRAMEWORK_BOOTSTRAP_PATH . 'load.php';
+require SGEOBIZ_SEO_BOOTSTRAP_PATH . 'load.php';
 
 // Muat kustomisasi SGEOBIZ dari folder .local
 $_sgeobiz_local = dirname( __FILE__ ) . DIRECTORY_SEPARATOR . '.local' . DIRECTORY_SEPARATOR . 'sgeobiz.php';
@@ -145,12 +145,12 @@ unset( $_sgeobiz_local );
 //
 // add_action( 'plugins_loaded', function () { if ( is_super_admin() ) {
 // if ( is_admin() ) {
-// 	define( 'THE_SEO_FRAMEWORK_DEBUG', true );
-// 	delete_option( 'the_seo_framework_upgraded_db_version' );
-// 	( $_GET['reset_tsf_upgrade'] ?? 0 ) and delete_option( 'the_seo_framework_upgraded_db_version' ) and delete_option( 'the_seo_framework_initial_db_version' );
-// 	( $_GET['downgrade_tsf'] ?? 0 ) and update_option( 'the_seo_framework_upgraded_db_version', (string) (int) $_GET['downgrade_tsf'], true );
-// 	( $_GET['downgrade_tsf_initial'] ?? 0 ) and update_option( 'the_seo_framework_initial_db_version', (string) (int) $_GET['downgrade_tsf_initial'], false );
-// 	( $_GET['tsf_headless'] ?? 0 ) and define( 'THE_SEO_FRAMEWORK_HEADLESS', $_GET['tsf_headless'] === 'true' ?: $_GET['tsf_headless'] );
+// 	define( 'SGEOBIZ_SEO_DEBUG', true );
+// 	delete_option( 'sgeobiz_seo_upgraded_db_version' );
+// 	( $_GET['reset_tsf_upgrade'] ?? 0 ) and delete_option( 'sgeobiz_seo_upgraded_db_version' ) and delete_option( 'sgeobiz_seo_initial_db_version' );
+// 	( $_GET['downgrade_tsf'] ?? 0 ) and update_option( 'sgeobiz_seo_upgraded_db_version', (string) (int) $_GET['downgrade_tsf'], true );
+// 	( $_GET['downgrade_tsf_initial'] ?? 0 ) and update_option( 'sgeobiz_seo_initial_db_version', (string) (int) $_GET['downgrade_tsf_initial'], false );
+// 	( $_GET['tsf_headless'] ?? 0 ) and define( 'SGEOBIZ_SEO_HEADLESS', $_GET['tsf_headless'] === 'true' ?: $_GET['tsf_headless'] );
 // 	add_action( 'admin_footer', function () { print( '<script>jQuery.migrateMute=true;</script>' ); } );
 // }
 // }},0);

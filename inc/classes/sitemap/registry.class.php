@@ -1,19 +1,19 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Sitemap\Registry
- * @subpackage The_SEO_Framework\Sitemap
+ * @package SGEOBIZ_SEO\Classes\Sitemap\Registry
+ * @subpackage SGEOBIZ_SEO\Sitemap
  */
 
-namespace The_SEO_Framework\Sitemap;
+namespace SGEOBIZ_SEO\Sitemap;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	memo,
 	has_run,
 };
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper,
 	Helper\Query,
@@ -43,9 +43,9 @@ use The_SEO_Framework\{
  *
  * @since 4.0.0
  * @since 5.0.0 1. Renamed from `Sitemap`.
- *              2. Moved to `\The_SEO_Framework\Sitemap`.
+ *              2. Moved to `\SGEOBIZ_SEO\Sitemap`.
  * @access protected
- *         Use tsf()->sitemap()->registry() instead.
+ *         Use sgeobiz()->sitemap()->registry() instead.
  */
 class Registry {
 
@@ -124,7 +124,7 @@ class Registry {
 		 * @since 4.0.0
 		 * @param string $sitemap_id The sitemap ID. See `self::get_sitemap_endpoint_list()`.
 		 */
-		\do_action( 'the_seo_framework_sitemap_header', $sitemap_id );
+		\do_action( 'sgeobiz_seo_sitemap_header', $sitemap_id );
 
 		\call_user_func( self::get_sitemap_endpoint_list()[ $sitemap_id ]['callback'], $sitemap_id );
 	}
@@ -154,7 +154,7 @@ class Registry {
 	 * @since 4.1.2 No longer passes the path to the home_url() function because
 	 *              Polylang is being astonishingly asinine.
 	 * @since 4.1.4 Now assimilates the output using the base path, so that filter
-	 *              `the_seo_framework_sitemap_base_path` also works. Glues the
+	 *              `sgeobiz_seo_sitemap_base_path` also works. Glues the
 	 *              pieces together using the `get_site_host()` value.
 	 * @since 5.0.0 Is now static.
 	 * @global \WP_Rewrite $wp_rewrite
@@ -207,13 +207,13 @@ class Registry {
 			 *     @type callable     $callback The callback for the sitemap output.
 			 *                                  Tip: You can pass arbitrary indexes. Prefix them with an underscore to ensure forward compatibility.
 			 *                                  Tip: In the callback, use
-			 *                                       `\The_SEO_Framework\Sitemap\Registry::get_sitemap_endpoint_list()[$sitemap_id]`
+			 *                                       `\SGEOBIZ_SEO\Sitemap\Registry::get_sitemap_endpoint_list()[$sitemap_id]`
 			 *                                       It returns the arguments you've passed in this filter; including your arbitrary indexes.
 			 *     @type bool         $robots   Whether the endpoint should be mentioned in the robots.txt file.
 			 * }
 			 */
 			(array) \apply_filters(
-				'the_seo_framework_sitemap_endpoint_list',
+				'sgeobiz_seo_sitemap_endpoint_list',
 				[
 					'base'           => [
 						'lock_id'  => 'base', // Example, real usage is with "index" using base.
@@ -248,7 +248,7 @@ class Registry {
 	 * Deletes transients for sitemaps. Also engages pings for or pings search engines.
 	 * Can only run once per request.
 	 *
-	 * @hook "update_option_ . THE_SEO_FRAMEWORK_SITE_OPTIONS" 10
+	 * @hook "update_option_ . SGEOBIZ_SEO_SITE_OPTIONS" 10
 	 * @since 5.0.0
 	 *
 	 * @return bool True on success, false on failure.
@@ -264,7 +264,7 @@ class Registry {
 		 * @since 5.0.5 Removed indexes `ping_use_cron` and `ping_use_cron_prerender`.
 		 * @param array $deprecated Deprecated; do not use the first parameter.
 		 */
-		\do_action( 'the_seo_framework_sitemap_transient_cleared', [] );
+		\do_action( 'sgeobiz_seo_sitemap_transient_cleared', [] );
 
 		Cron::schedule_single_event();
 
@@ -322,7 +322,7 @@ class Registry {
 	 * @since 3.1.0 1. Now outputs 200-response code.
 	 *              2. Now outputs robots tag, preventing indexing.
 	 *              3. Now overrides other header tags.
-	 * @since 4.0.0 1. Moved to \The_SEO_Framework\Bridges\Sitemap
+	 * @since 4.0.0 1. Moved to \SGEOBIZ_SEO\Bridges\Sitemap
 	 *              2. Renamed from `output_sitemap()`
 	 * @since 4.1.2 Is now static.
 	 *
@@ -357,7 +357,7 @@ class Registry {
 	 * @since 3.1.0 1. Now outputs 200-response code.
 	 *              2. Now outputs robots tag, preventing indexing.
 	 *              3. Now overrides other header tags.
-	 * @since 4.0.0 1. Moved to \The_SEO_Framework\Bridges\Sitemap
+	 * @since 4.0.0 1. Moved to \SGEOBIZ_SEO\Bridges\Sitemap
 	 *              2. Renamed from `output_sitemap_xsl_stylesheet()`
 	 * @since 4.1.2 Is now static.
 	 * @since 5.1.5 Now sends a nofollow header to prevent crawlers from following non-existent template links in the XSL.
@@ -421,7 +421,7 @@ class Registry {
 		 * @since 2.8.0
 		 * @param array $schemas The schema list. URLs and indexes are expected to be escaped.
 		 */
-		$schemas = (array) \apply_filters( 'the_seo_framework_sitemap_schemas', $schemas );
+		$schemas = (array) \apply_filters( 'sgeobiz_seo_sitemap_schemas', $schemas );
 
 		array_walk(
 			$schemas,
@@ -459,7 +459,7 @@ class Registry {
 		 * @param string $path The home path.
 		 */
 		return \apply_filters(
-			'the_seo_framework_sitemap_base_path',
+			'sgeobiz_seo_sitemap_base_path',
 			rtrim(
 				Meta\URI\Utils::get_site_path(),
 				'/',
@@ -485,7 +485,7 @@ class Registry {
 		 * @param string $prefix The path prefix. Ideally appended with a slash.
 		 *                       Recommended return value: "$prefix$custompath/"
 		 */
-		return \apply_filters( 'the_seo_framework_sitemap_path_prefix', '/' );
+		return \apply_filters( 'sgeobiz_seo_sitemap_path_prefix', '/' );
 	}
 
 	/**
@@ -546,7 +546,7 @@ class Registry {
 	 *
 	 * @since 2.6.0
 	 * @since 2.8.0 Renamed from clean_up_globals().
-	 * @since 4.0.0 1. Moved to \The_SEO_Framework\Bridges\Sitemap
+	 * @since 4.0.0 1. Moved to \SGEOBIZ_SEO\Bridges\Sitemap
 	 *              2. Renamed from clean_up_globals_for_sitemap()
 	 * @since 4.2.0 Now always returns the freed memory.
 	 * @since 5.0.0 Is now static.

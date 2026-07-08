@@ -1,19 +1,19 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Admin\Metaboxes
- * @subpackage The_SEO_Framework\Admin\Settings
+ * @package SGEOBIZ_SEO\Views\Admin\Metaboxes
+ * @subpackage SGEOBIZ_SEO\Admin\Settings
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
-use The_SEO_Framework\Admin\Settings\Layout\{
+use SGEOBIZ_SEO\Admin\Settings\Layout\{
 	HTML,
 	Input,
 };
-use The_SEO_Framework\Data\Filter\Sanitize;
-use The_SEO_Framework\Helper\Format\{
+use SGEOBIZ_SEO\Data\Filter\Sanitize;
+use SGEOBIZ_SEO\Helper\Format\{
 	Markdown,
 	Strings,
 };
@@ -52,13 +52,13 @@ switch ( $instance ) :
 		$latest_cat_id  = Data\Term::get_latest_term_id( 'category' );
 
 		$post_title = \esc_html( Strings::hellip_if_over(
-			Meta\Title::get_post_title( $latest_post_id ) ?: \__( 'Example Post', 'autodescription' ),
+			Meta\Title::get_post_title( $latest_post_id ) ?: \__( 'Example Post', 'sgeobiz-seo' ),
 			60
 		) );
 
 		$cat_prefix = \esc_html( \_x( 'Category:', 'category archive title prefix', 'default' ) );
 		$cat_title  = \esc_html( Strings::hellip_if_over(
-			Meta\Title::get_term_title( \get_term( $latest_cat_id ) ) ?: \__( 'Example Category', 'autodescription' ),
+			Meta\Title::get_term_title( \get_term( $latest_cat_id ) ) ?: \__( 'Example Category', 'sgeobiz-seo' ),
 			60 - \strlen( $cat_prefix ),
 		) );
 
@@ -76,13 +76,13 @@ switch ( $instance ) :
 		$example_tax_left       = "<em>{$additions_left}{$cat_title}</em>";
 		$example_tax_right      = "<em>{$cat_title}{$additions_right}</em>";
 
-		HTML::description( \__( 'The page title is prominently shown within the browser tab as well as within the search engine results pages.', 'autodescription' ) );
+		HTML::description( \__( 'The page title is prominently shown within the browser tab as well as within the search engine results pages.', 'sgeobiz-seo' ) );
 
 		// Yes, this is a mess. But, we cannot circumvent this because we do not control the translations.
 		?>
-		<div class=hide-if-no-tsf-js>
+		<div class=hide-if-no-sgeobiz-js>
 			<?php
-			HTML::header_title( \__( 'Example Page Title Output', 'autodescription' ) );
+			HTML::header_title( \__( 'Example Page Title Output', 'sgeobiz-seo' ) );
 			?>
 			<p>
 				<span class="tsf-title-additions-example-left hidden">
@@ -99,7 +99,7 @@ switch ( $instance ) :
 				</span>
 			</p>
 
-			<?php HTML::header_title( \__( 'Example Archive Title Output', 'autodescription' ) ); ?>
+			<?php HTML::header_title( \__( 'Example Archive Title Output', 'sgeobiz-seo' ) ); ?>
 			<p>
 				<span class="tsf-title-additions-example-left tsf-title-tax-prefix hidden">
 					<?php
@@ -139,7 +139,7 @@ switch ( $instance ) :
 			<h4>
 			<?php
 			/* translators: %s = title-tag */
-			printf( \esc_html__( 'Theme %s Support Missing', 'autodescription' ), '<code>title-tag</code>' );
+			printf( \esc_html__( 'Theme %s Support Missing', 'sgeobiz-seo' ), '<code>title-tag</code>' );
 			?>
 			</h4>
 			<?php
@@ -147,7 +147,7 @@ switch ( $instance ) :
 				Markdown::convert(
 					\sprintf(
 						/* translators: 1: Extension name, 2: Extension link. Markdown!  */
-						\esc_html__( "The current theme doesn't support a feature that allows predictable output of titles. Consider installing [%1\$s](%2\$s) when you notice the title output in the browser-tab isn't as you have configured.", 'autodescription' ),
+						\esc_html__( "The current theme doesn't support a feature that allows predictable output of titles. Consider installing [%1\$s](%2\$s) when you notice the title output in the browser-tab isn't as you have configured.", 'sgeobiz-seo' ),
 						'Title Fix',
 						'https://sgeobiz.com/',
 					),
@@ -162,12 +162,12 @@ switch ( $instance ) :
 
 		$tabs = [
 			'general'   => [
-				'name'     => \__( 'General', 'autodescription' ),
+				'name'     => \__( 'General', 'sgeobiz-seo' ),
 				'callback' => [ Admin\Settings\Plugin::class, '_title_metabox_general_tab' ],
 				'dashicon' => 'admin-generic',
 			],
 			'additions' => [
-				'name'     => \__( 'Additions', 'autodescription' ),
+				'name'     => \__( 'Additions', 'sgeobiz-seo' ),
 				'callback' => [ Admin\Settings\Plugin::class, '_title_metabox_additions_tab' ],
 				'dashicon' => 'plus-alt2',
 				'args'     => [
@@ -178,7 +178,7 @@ switch ( $instance ) :
 				],
 			],
 			'prefixes'  => [
-				'name'     => \__( 'Prefixes', 'autodescription' ),
+				'name'     => \__( 'Prefixes', 'sgeobiz-seo' ),
 				'callback' => [ Admin\Settings\Plugin::class, '_title_metabox_prefixes_tab' ],
 				'dashicon' => 'plus-alt',
 			],
@@ -190,7 +190,7 @@ switch ( $instance ) :
 			 * @since 2.6.0
 			 * @param array $tabs The default tabs.
 			 */
-			(array) \apply_filters( 'the_seo_framework_title_settings_tabs', $tabs )
+			(array) \apply_filters( 'sgeobiz_seo_title_settings_tabs', $tabs )
 		);
 		break;
 
@@ -200,9 +200,9 @@ switch ( $instance ) :
 
 		?>
 		<fieldset>
-			<legend><?php HTML::header_title( \__( 'Title Separator', 'autodescription' ) ); ?></legend>
+			<legend><?php HTML::header_title( \__( 'Title Separator', 'sgeobiz-seo' ) ); ?></legend>
 			<?php
-			HTML::description( \__( 'If the title consists of multiple parts, then the separator will go in-between them.', 'autodescription' ) );
+			HTML::description( \__( 'If the title consists of multiple parts, then the separator will go in-between them.', 'sgeobiz-seo' ) );
 			?>
 			<p id=tsf-title-separator class=tsf-fields>
 			<?php
@@ -226,14 +226,14 @@ switch ( $instance ) :
 
 		<hr>
 		<?php
-		HTML::header_title( \__( 'Automated Title Settings', 'autodescription' ) );
-		HTML::description( \__( 'A title is generated for every page.', 'autodescription' ) );
-		HTML::description( \__( 'Some titles may have HTML tags inserted by the author for styling.', 'autodescription' ) );
+		HTML::header_title( \__( 'Automated Title Settings', 'sgeobiz-seo' ) );
+		HTML::description( \__( 'A title is generated for every page.', 'sgeobiz-seo' ) );
+		HTML::description( \__( 'Some titles may have HTML tags inserted by the author for styling.', 'sgeobiz-seo' ) );
 
 		$info = HTML::make_info(
 			\sprintf(
 				/* translators: %s = HTML tag example */
-				\__( 'This strips HTML tags, like %s, from the title. Disable this option to display generated HTML tags as plain text in meta titles.', 'autodescription' ),
+				\__( 'This strips HTML tags, like %s, from the title. Disable this option to display generated HTML tags as plain text in meta titles.', 'sgeobiz-seo' ),
 				'<code>&amp;lt;strong&amp;gt;</code>' // Double escaped HTML (&amp;) for attribute display.
 			),
 			'',
@@ -242,40 +242,40 @@ switch ( $instance ) :
 		HTML::wrap_fields(
 			Input::make_checkbox( [
 				'id'     => 'title_strip_tags',
-				'label'  => \esc_html__( 'Strip HTML tags from generated titles?', 'autodescription' ) . " $info",
+				'label'  => \esc_html__( 'Strip HTML tags from generated titles?', 'sgeobiz-seo' ) . " $info",
 				'escape' => false,
 			] ),
 			true,
 		);
 
-		HTML::description( \__( 'Tip: It is a bad practice to style page titles with HTML as inconsistent behavior might occur.', 'autodescription' ) );
+		HTML::description( \__( 'Tip: It is a bad practice to style page titles with HTML as inconsistent behavior might occur.', 'sgeobiz-seo' ) );
 		break;
 
 	case 'additions':
 		[ , $args ] = $view_args;
 
-		$homepage_has_option = \__( 'This option does not affect the homepage; it uses a different one.', 'autodescription' );
+		$homepage_has_option = \__( 'This option does not affect the homepage; it uses a different one.', 'sgeobiz-seo' );
 		?>
 		<p>
 			<label for="<?php Input::field_id( 'site_title' ); ?>" class=tsf-toblock>
-				<strong><?php \esc_html_e( 'Site Title', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( 'Site Title', 'sgeobiz-seo' ); ?></strong>
 			</label>
 		</p>
 		<p class=tsf-title-wrap>
 			<input type=text name="<?php Input::field_name( 'site_title' ); ?>" class=large-text id="<?php Input::field_id( 'site_title' ); ?>" placeholder="<?= \esc_html( Sanitize::metadata_content( Data\Blog::get_filtered_blog_name() ) ) ?>" value="<?= \esc_html( Sanitize::metadata_content( Data\Plugin::get_option( 'site_title' ) ) ) ?>" autocomplete=off>
 		</p>
 		<?php
-		HTML::description( \__( 'This option does not affect header titles displayed directly on your website.', 'autodescription' ) );
+		HTML::description( \__( 'This option does not affect header titles displayed directly on your website.', 'sgeobiz-seo' ) );
 		?>
 		<hr>
 
 		<fieldset>
-			<legend><?php HTML::header_title( \__( 'Site Title Location', 'autodescription' ) ); ?></legend>
+			<legend><?php HTML::header_title( \__( 'Site Title Location', 'sgeobiz-seo' ) ); ?></legend>
 			<p id=tsf-title-location class=tsf-fields>
 				<span class=tsf-toblock>
 					<input type=radio name="<?php Input::field_name( 'title_location' ); ?>" id="<?php Input::field_id( 'title_location_left' ); ?>" value=left <?php \checked( Data\Plugin::get_option( 'title_location' ), 'left' ); ?>>
 					<label for="<?php Input::field_id( 'title_location_left' ); ?>">
-						<span><?php \esc_html_e( 'Left:', 'autodescription' ); ?></span>
+						<span><?php \esc_html_e( 'Left:', 'sgeobiz-seo' ); ?></span>
 						<?php
 						// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped.
 						echo HTML::code_wrap_noesc( $args['examples']['left'] );
@@ -285,7 +285,7 @@ switch ( $instance ) :
 				<span class=tsf-toblock>
 					<input type=radio name="<?php Input::field_name( 'title_location' ); ?>" id="<?php Input::field_id( 'title_location_right' ); ?>" value=right <?php \checked( Data\Plugin::get_option( 'title_location' ), 'right' ); ?>>
 					<label for="<?php Input::field_id( 'title_location_right' ); ?>">
-						<span><?php \esc_html_e( 'Right:', 'autodescription' ); ?></span>
+						<span><?php \esc_html_e( 'Right:', 'sgeobiz-seo' ); ?></span>
 						<?php
 						// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped.
 						echo HTML::code_wrap_noesc( $args['examples']['right'] );
@@ -298,11 +298,11 @@ switch ( $instance ) :
 
 		<hr>
 
-		<?php HTML::header_title( \__( 'Site Title Removal', 'autodescription' ) ); ?>
+		<?php HTML::header_title( \__( 'Site Title Removal', 'sgeobiz-seo' ) ); ?>
 		<div id=tsf-title-additions-toggle>
 			<?php
 			$info = HTML::make_info(
-				\__( 'Always brand your titles. Search engines may ignore your titles with this feature enabled.', 'autodescription' ),
+				\__( 'Always brand your titles. Search engines may ignore your titles with this feature enabled.', 'sgeobiz-seo' ),
 				'https://developers.google.com/search/docs/advanced/appearance/title-link',
 				false,
 			);
@@ -310,7 +310,7 @@ switch ( $instance ) :
 			HTML::wrap_fields(
 				Input::make_checkbox( [
 					'id'     => 'title_rem_additions',
-					'label'  => \esc_html__( 'Remove site title from the title?', 'autodescription' ) . " $info",
+					'label'  => \esc_html__( 'Remove site title from the title?', 'sgeobiz-seo' ) . " $info",
 					'escape' => false,
 				] ),
 				true,
@@ -318,30 +318,30 @@ switch ( $instance ) :
 			?>
 		</div>
 		<?php
-		HTML::attention_description( \__( 'Note: Only use this option if you are aware of its SEO effects.', 'autodescription' ), false );
+		HTML::attention_description( \__( 'Note: Only use this option if you are aware of its SEO effects.', 'sgeobiz-seo' ), false );
 		echo ' ';
 		HTML::description( $homepage_has_option, false );
 		break;
 
 	case 'prefixes':
-		HTML::header_title( \__( 'Title Prefix Options', 'autodescription' ) );
-		HTML::description( \__( 'For archives, a descriptive prefix may be added to generated titles.', 'autodescription' ) );
+		HTML::header_title( \__( 'Title Prefix Options', 'sgeobiz-seo' ) );
+		HTML::description( \__( 'For archives, a descriptive prefix may be added to generated titles.', 'sgeobiz-seo' ) );
 
 		?>
 		<hr>
 
-		<?php HTML::header_title( \__( 'Archive Title Prefixes', 'autodescription' ) ); ?>
+		<?php HTML::header_title( \__( 'Archive Title Prefixes', 'sgeobiz-seo' ) ); ?>
 		<div id=tsf-title-prefixes-toggle>
 			<?php
 			$info = HTML::make_info(
-				\__( "The prefix helps visitors and search engines determine what kind of page they're visiting.", 'autodescription' ),
+				\__( "The prefix helps visitors and search engines determine what kind of page they're visiting.", 'sgeobiz-seo' ),
 				'https://docs.sgeobiz.com/',
 				false,
 			);
 			HTML::wrap_fields(
 				Input::make_checkbox( [
 					'id'     => 'title_rem_prefixes',
-					'label'  => \esc_html__( 'Remove term type prefixes from generated archive titles?', 'autodescription' ) . " $info",
+					'label'  => \esc_html__( 'Remove term type prefixes from generated archive titles?', 'sgeobiz-seo' ) . " $info",
 					'escape' => false,
 				] ),
 				true,

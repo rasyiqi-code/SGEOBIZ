@@ -1,19 +1,19 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Meta\Schema\Entities\Webpage
- * @subpackage The_SEO_Framework\Meta\Schema
+ * @package SGEOBIZ_SEO\Classes\Meta\Schema\Entities\Webpage
+ * @subpackage SGEOBIZ_SEO\Meta\Schema
  */
 
-namespace The_SEO_Framework\Meta\Schema\Entities;
+namespace SGEOBIZ_SEO\Meta\Schema\Entities;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	get_query_type_from_args,
 	normalize_generation_args,
 };
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Meta,
 	Helper\Query,
@@ -41,7 +41,7 @@ use The_SEO_Framework\{
  *
  * @since 5.0.0
  * @access protected
- *         Access via tsf()->schema()->entities['WebPage'] instead.
+ *         Access via sgeobiz()->schema()->entities['WebPage'] instead.
  */
 final class WebPage extends Reference {
 

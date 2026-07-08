@@ -1,13 +1,13 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Admin\Lists\PostStates
+ * @package SGEOBIZ_SEO\Classes\Admin\Lists\PostStates
  */
 
-namespace The_SEO_Framework\Admin\Lists;
+namespace SGEOBIZ_SEO\Admin\Lists;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Data;
+use SGEOBIZ_SEO\Data;
 
 /**
  * The SEO Framework plugin
@@ -39,7 +39,7 @@ final class PostStates {
 	 *
 	 * @hook display_post_states 10
 	 * @since 4.0.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `_add_post_state`.
 	 *
 	 * @param string[] $post_states An array of post display states.
@@ -52,14 +52,14 @@ final class PostStates {
 			   Data\Plugin::get_option( 'alter_search_query' )
 			&& Data\Plugin\Post::get_meta_item( 'exclude_local_search', $post->ID )
 		) {
-			$post_states[] = \esc_html__( 'No Search', 'autodescription' );
+			$post_states[] = \esc_html__( 'No Search', 'sgeobiz-seo' );
 		}
 
 		if (
 			   Data\Plugin::get_option( 'alter_archive_query' )
 			&& Data\Plugin\Post::get_meta_item( 'exclude_from_archive', $post->ID )
 		) {
-			$post_states[] = \esc_html__( 'No Archive', 'autodescription' );
+			$post_states[] = \esc_html__( 'No Archive', 'sgeobiz-seo' );
 		}
 
 		return $post_states;

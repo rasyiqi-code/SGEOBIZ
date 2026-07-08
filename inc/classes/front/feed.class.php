@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Front\Feed
- * @subpackage The_SEO_Framework\Feed
+ * @package SGEOBIZ_SEO\Classes\Front\Feed
+ * @subpackage SGEOBIZ_SEO\Feed
  */
 
-namespace The_SEO_Framework\Front;
+namespace SGEOBIZ_SEO\Front;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper,
 	Helper\Format,
@@ -35,7 +35,7 @@ use The_SEO_Framework\{
  * Prepares feed mofifications.
  *
  * @since 4.1.0
- * @since 5.0.0 Moved from `\The_SEO_Framework\Bridges`.
+ * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Bridges`.
  * @access private
  */
 final class Feed {
@@ -78,7 +78,7 @@ final class Feed {
 			 * @since 2.5.2
 			 * @param int $clamp_length The maximum feed (multibyte) string length.
 			 */
-			$clamp_length = (int) \apply_filters( 'the_seo_framework_max_content_feed_length', 400 );
+			$clamp_length = (int) \apply_filters( 'sgeobiz_seo_max_content_feed_length', 400 );
 
 			// Strip all code and lines, and AI-trim it.
 			$excerpt = Format\HTML::extract_content(
@@ -103,8 +103,8 @@ final class Feed {
 					 * @param string $source The source indication string.
 					 */
 					\apply_filters(
-						'the_seo_framework_feed_source_link_text',
-						\_x( 'Source', 'The content source', 'autodescription' ),
+						'sgeobiz_seo_feed_source_link_text',
+						\_x( 'Source', 'The content source', 'sgeobiz-seo' ),
 					),
 				),
 			);

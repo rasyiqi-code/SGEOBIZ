@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Helper\Query\Filter
- * @subpackage The_SEO_Framework\Query
+ * @package SGEOBIZ_SEO\Classes\Helper\Query\Filter
+ * @subpackage SGEOBIZ_SEO\Query
  */
 
-namespace The_SEO_Framework\Helper\Query;
+namespace SGEOBIZ_SEO\Helper\Query;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper\Query, // Yes, it is legal to share class and namespaces.
 };

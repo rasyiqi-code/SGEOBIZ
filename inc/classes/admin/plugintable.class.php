@@ -1,13 +1,13 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Admin\PluginTable
+ * @package SGEOBIZ_SEO\Classes\Admin\PluginTable
  */
 
-namespace The_SEO_Framework\Admin;
+namespace SGEOBIZ_SEO\Admin;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\is_headless;
+use function SGEOBIZ_SEO\is_headless;
 
 /**
  * The SEO Framework plugin
@@ -30,7 +30,7 @@ use function The_SEO_Framework\is_headless;
  * Prepares the Plugin Table view interface.
  *
  * @since 4.1.4
- * @since 5.0.0 Moved from `\The_SEO_Framework\Bridges`
+ * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Bridges`
  * @access private
  */
 final class PluginTable {
@@ -53,20 +53,20 @@ final class PluginTable {
 		if ( ! is_headless( 'settings' ) ) {
 			$tsf_links['settings'] = \sprintf(
 				'<a href="%s">%s</a>',
-				\esc_url( \admin_url( 'admin.php?page=' . \THE_SEO_FRAMEWORK_SITE_OPTIONS_SLUG ) ),
-				\esc_html__( 'Settings', 'autodescription' ),
+				\esc_url( \admin_url( 'admin.php?page=' . \SGEOBIZ_SEO_SITE_OPTIONS_SLUG ) ),
+				\esc_html__( 'Settings', 'sgeobiz-seo' ),
 			);
 		}
 
 		$tsf_links['tsfem']   = \sprintf(
 			'<a href="%s" rel="noreferrer noopener" target=_blank>%s</a>',
 			'https://sgeobiz.com/extensions/',
-			\esc_html_x( 'Extensions', 'Plugin extensions', 'autodescription' ),
+			\esc_html_x( 'Extensions', 'Plugin extensions', 'sgeobiz-seo' ),
 		);
 		$tsf_links['pricing'] = \sprintf(
 			'<a href="%s" rel="noreferrer noopener" target=_blank>%s</a>',
 			'https://sgeobiz.com/pricing/',
-			\esc_html_x( 'Pricing', 'Plugin pricing', 'autodescription' ),
+			\esc_html_x( 'Pricing', 'Plugin pricing', 'sgeobiz-seo' ),
 		);
 
 		return array_merge( $tsf_links, $links );
@@ -89,7 +89,7 @@ final class PluginTable {
 	 */
 	public static function add_plugin_row_meta( $plugin_meta, $plugin_file ) {
 
-		if ( \THE_SEO_FRAMEWORK_PLUGIN_BASENAME !== $plugin_file )
+		if ( \SGEOBIZ_SEO_PLUGIN_BASENAME !== $plugin_file )
 			return $plugin_meta;
 
 		return array_merge(
@@ -98,12 +98,12 @@ final class PluginTable {
 				'support' => \sprintf(
 					'<a href="%s" rel="noreferrer noopener nofollow" target=_blank>%s</a>',
 					'https://sgeobiz.com/support/',
-					\esc_html__( 'Support', 'autodescription' ),
+					\esc_html__( 'Support', 'sgeobiz-seo' ),
 				),
 				'docs'    => \sprintf(
 					'<a href="%s" rel="noreferrer noopener nofollow" target=_blank>%s</a>',
 					'https://sgeobiz.com/docs/',
-					\esc_html__( 'Documentation', 'autodescription' ),
+					\esc_html__( 'Documentation', 'sgeobiz-seo' ),
 				),
 				'Git'     => \sprintf(
 					'<a href="%s" rel="noreferrer noopener nofollow" target=_blank>%s</a>',

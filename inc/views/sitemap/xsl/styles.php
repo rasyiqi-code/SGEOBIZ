@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Sitemap\XSL\Styles
- * @subpackage The_SEO_Framework\Sitemap\XSL
+ * @package SGEOBIZ_SEO\Views\Sitemap\XSL\Styles
+ * @subpackage SGEOBIZ_SEO\Sitemap\XSL
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
-use The_SEO_Framework\Helper\Format\Minify;
+use SGEOBIZ_SEO\Helper\Format\Minify;
 
 // phpcs:disable WordPress.WP.GlobalVariablesOverride -- This isn't the global scope.
 
@@ -125,7 +125,7 @@ CSS;
  * @param string $styles The sitemap XHTML styles. Must be escaped.
  */
 echo Minify::css( \apply_filters(
-	'the_seo_framework_sitemap_styles',
+	'sgeobiz_seo_sitemap_styles',
 	$styles,
 ) );
 // phpcs:enable WordPress.Security.EscapeOutput

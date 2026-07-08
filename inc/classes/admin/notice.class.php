@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Admin\Notice
- * @subpackage The_SEO_Framework\Admin\Notice
+ * @package SGEOBIZ_SEO\Classes\Admin\Notice
+ * @subpackage SGEOBIZ_SEO\Admin\Notice
  */
 
-namespace The_SEO_Framework\Admin;
+namespace SGEOBIZ_SEO\Admin;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Admin; // Yes, it is legal to share class and namespace.
+use SGEOBIZ_SEO\Admin; // Yes, it is legal to share class and namespace.
 
 /**
  * The SEO Framework plugin
@@ -32,7 +32,7 @@ use The_SEO_Framework\Admin; // Yes, it is legal to share class and namespace.
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->admin()->notice() instead.
+ *         Use sgeobiz()->admin()->notice() instead.
  */
 class Notice {
 
@@ -41,7 +41,7 @@ class Notice {
 	 *
 	 * @since 2.7.0
 	 * @since 4.1.2 Added the $inline parameter.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Shifted all second and later parameter into `$args`.
 	 *              3. Renamed from `do_dismissible_notice`.
 	 *
@@ -77,7 +77,7 @@ class Notice {
 	 *              2. Now accepts empty messages, so that AJAX-invoked generators can grab a notice wrapper.
 	 *              3. Added the inline parameter.
 	 *              4. Now enqueues scripts in the footer, so templates won't spam the header.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Shifted all second and later parameter into `$args`.
 	 *              3. Renamed from `generate_dismissible_notice`.
 	 *
@@ -129,7 +129,7 @@ class Notice {
 					$args['escape'] ? \esc_html( $message ) : $message,
 				),
 				\sprintf(
-					'<a class="hide-if-no-tsf-js tsf-dismiss" href="javascript:;" title="%s"></a>',
+					'<a class="hide-if-no-sgeobiz-js tsf-dismiss" href="javascript:;" title="%s"></a>',
 					\esc_attr__( 'Dismiss this notice', 'default' ),
 				),
 			],

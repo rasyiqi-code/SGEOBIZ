@@ -1,23 +1,23 @@
 <?php
 /**
- * @package The_SEO_Framework\Compat\Theme\Bricks
- * @subpackage The_SEO_Framework\Compatibility
+ * @package SGEOBIZ_SEO\Compat\Theme\Bricks
+ * @subpackage SGEOBIZ_SEO\Compatibility
  * @access private
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-\add_filter( 'the_seo_framework_public_post_types', __NAMESPACE__ . '\_bricks_fix_public_post_types' );
-\add_filter( 'the_seo_framework_public_taxonomies', __NAMESPACE__ . '\_bricks_fix_public_taxonomies' );
+\add_filter( 'sgeobiz_seo_public_post_types', __NAMESPACE__ . '\_bricks_fix_public_post_types' );
+\add_filter( 'sgeobiz_seo_public_taxonomies', __NAMESPACE__ . '\_bricks_fix_public_taxonomies' );
 
 /**
  * Removes support for Bricks' non-public post types conditionally.
  *
  * This solely affects The SEO Framework.
  *
- * @hook the_seo_framework_public_post_types 10
+ * @hook sgeobiz_seo_public_post_types 10
  * @since 5.1.0
  *
  * @param string[] $post_types The list of should-be public post types.
@@ -39,7 +39,7 @@ function _bricks_fix_public_post_types( $post_types ) {
  *
  * This solely affects The SEO Framework.
  *
- * @hook the_seo_framework_public_taxonomies 10
+ * @hook sgeobiz_seo_public_taxonomies 10
  * @since 5.1.0
  *
  * @param string[] $taxonomies The list of should-be public taxonomies.

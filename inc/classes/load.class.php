@@ -1,17 +1,17 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Facade\Load
+ * @package SGEOBIZ_SEO\Classes\Facade\Load
  *
  * This is the main file called.
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\is_headless;
+use function SGEOBIZ_SEO\is_headless;
 
-use The_SEO_Framework\Data;
+use SGEOBIZ_SEO\Data;
 
 /**
  * The SEO Framework plugin
@@ -31,10 +31,10 @@ use The_SEO_Framework\Data;
  */
 
 /**
- * Facade final class The_SEO_Framework\Load
+ * Facade final class SGEOBIZ_SEO\Load
  *
  * This class is unused internally, but is part of the public API.
- * It is accessible via function `tsf()`.
+ * It is accessible via function `sgeobiz()`.
  * Do not call this class directly.
  *
  * @since 2.8.0
@@ -49,15 +49,15 @@ use The_SEO_Framework\Data;
  *              6. Deprecated $script_debug
  *              7. Deprecated $seo_settings_page_slug
  *              8. Deprecated $seo_settings_page_hook
- *              9. Deprecated $the_seo_framework_debug
- *              10. Deprecated $the_seo_framework_use_transients
+ *              9. Deprecated $sgeobiz_seo_debug
+ *              10. Deprecated $sgeobiz_seo_use_transients
  * @api
  */
 final class Load extends Pool {
 
 	/**
 	 * @since 5.0.0
-	 * @var \The_SEO_Framework\Load This instance.
+	 * @var \SGEOBIZ_SEO\Load This instance.
 	 */
 	private static $instance;
 
@@ -79,7 +79,7 @@ final class Load extends Pool {
 	 * @since 2.8.0
 	 * @since 4.0.0 Now informs developer of invalid class instancing.
 	 * @since 4.1.4.Now constructs headlessness.
-	 * @since 5.0.0 Is now protected. Use `tsf()` or `the_seo_framework()` instead.
+	 * @since 5.0.0 Is now protected. Use `sgeobiz()` or `sgeobiz_seo()` instead.
 	 */
 	protected function __construct() { }
 
@@ -99,7 +99,7 @@ final class Load extends Pool {
 	 */
 	public function __set( $name, $value ) {
 
-		$this->_inaccessible_p_or_m( "tsf()->$name", 'unknown' );
+		$this->_inaccessible_p_or_m( "sgeobiz()->$name", 'unknown' );
 
 		// Invoke default behavior: Write variable if it's not protected.
 		if ( property_exists( $this, $name ) )
@@ -121,7 +121,7 @@ final class Load extends Pool {
 	 * @return mixed
 	 */
 	public function __get( $name ) {
-		$this->_inaccessible_p_or_m( "tsf()->$name", 'unknown' );
+		$this->_inaccessible_p_or_m( "sgeobiz()->$name", 'unknown' );
 	}
 
 	/**
@@ -142,7 +142,7 @@ final class Load extends Pool {
 		if ( \is_callable( [ $depr_class, $name ] ) )
 			return \call_user_func_array( [ $depr_class, $name ], $arguments );
 
-		$this->_inaccessible_p_or_m( "tsf()->$name()" );
+		$this->_inaccessible_p_or_m( "sgeobiz()->$name()" );
 	}
 
 	/**
@@ -190,7 +190,7 @@ final class Load extends Pool {
 	 * @param string $message A message explaining what has been done incorrectly.
 	 * @param string $handle  The method handler.
 	 */
-	public function _inaccessible_p_or_m( $p_or_m, $message = '', $handle = 'tsf()' ) {
+	public function _inaccessible_p_or_m( $p_or_m, $message = '', $handle = 'sgeobiz()' ) {
 		Internal\Debug::_inaccessible_p_or_m( $p_or_m, $message, $handle );
 	}
 }

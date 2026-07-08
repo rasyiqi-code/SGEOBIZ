@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Facade\Generate_Url
- * @subpackage The_SEO_Framework\Getters\URL
+ * @package SGEOBIZ_SEO\Classes\Facade\Generate_Url
+ * @subpackage SGEOBIZ_SEO\Getters\URL
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
  * The SEO Framework plugin
@@ -26,14 +26,14 @@ namespace The_SEO_Framework;
  */
 
 /**
- * Class The_SEO_Framework\Legacy_API
+ * Class SGEOBIZ_SEO\Legacy_API
  *
  * Holds various functions that relay to the new APIs.
  *
  * @NOTE: All static:: calls within this class are intentional, to allow overrides in deprecators.
  *
  * @since 5.0.0
- * You can access these methods via `tsf()` and `the_seo_framework()`.
+ * You can access these methods via `sgeobiz()` and `sgeobiz_seo()`.
  */
 class Legacy_API {
 
@@ -51,7 +51,7 @@ class Legacy_API {
 	 *
 	 * @param string|string[] $key Option name, or a map of indexes therefor.
 	 *                             If you send an empty array, you'll get all options.
-	 *                             Don't do that; use `tsf()->get_options()` instead.
+	 *                             Don't do that; use `sgeobiz()->get_options()` instead.
 	 * @return ?mixed The TSF option value. Null when not found.
 	 */
 	public static function get_option( $key ) {
@@ -255,7 +255,7 @@ class Legacy_API {
 
 	/**
 	 * Loads all admin scripts.
-	 * However, consider filtering `the_seo_framework_register_scripts` instead.
+	 * However, consider filtering `sgeobiz_seo_register_scripts` instead.
 	 *
 	 * May load more depending on the page requested.
 	 * `tsf` and `tsf-tt` will always be available.

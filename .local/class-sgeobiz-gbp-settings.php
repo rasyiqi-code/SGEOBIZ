@@ -13,7 +13,7 @@
  * @package SGEOBIZ
  */
 
-defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 class SGEOBIZ_GBP_Settings {
 
@@ -41,9 +41,9 @@ class SGEOBIZ_GBP_Settings {
 	 */
 	public function register_menu() {
 		add_submenu_page(
-			THE_SEO_FRAMEWORK_SITE_OPTIONS_SLUG,
-			__( 'SGEOBIZ: Profil Bisnis & AI', 'autodescription' ),
-			__( 'Profil Bisnis', 'autodescription' ),
+			SGEOBIZ_SEO_SITE_OPTIONS_SLUG,
+			__( 'SGEOBIZ: Profil Bisnis & AI', 'sgeobiz-seo' ),
+			__( 'Profil Bisnis', 'sgeobiz-seo' ),
 			'manage_options',
 			'sgeobiz-business-settings',
 			[ $this, 'render_page' ]

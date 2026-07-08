@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Helper\Migrate
- * @subpackage The_SEO_Framework\Migrate
+ * @package SGEOBIZ_SEO\Classes\Helper\Migrate
+ * @subpackage SGEOBIZ_SEO\Migrate
  */
 
-namespace The_SEO_Framework\Helper;
+namespace SGEOBIZ_SEO\Helper;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\umemo;
+use function SGEOBIZ_SEO\umemo;
 
 /**
  * The SEO Framework plugin
@@ -44,7 +44,7 @@ final class Migrate {
 	 * @todo test all [ 'extension', 'yoast', 'aioseo', 'rankmath', 'seopress' ]
 	 * @since 4.2.7
 	 * @since 4.2.8 Added SEOPress support.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `has_unprocessed_syntax`.
 	 *
 	 * @param string $text The text to evaluate
@@ -68,7 +68,7 @@ final class Migrate {
 	 * @since 4.2.7 1. Added wildcard `ct_`, and `cf_` detection.
 	 *              2. Added detection for various other types
 	 *              2. Removed wildcard `cs_` detection.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `has_yoast_syntax`.
 	 *
 	 * @param string $text The text to evaluate.
@@ -156,7 +156,7 @@ final class Migrate {
 	 *       Wank Math has no documentation on this list, but we sampled their code.
 	 * @since 4.2.7
 	 * @since 4.2.8 Actualized the variable list.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `has_rankmath_syntax`.
 	 *
 	 * @param string $text The text to evaluate.
@@ -260,7 +260,7 @@ final class Migrate {
 	 * @link <https://theseoframework.com/extensions/transport/#faq/what-data-is-transformed>
 	 *       SEOPress has no documentation on this list, but we sampled their code.
 	 * @since 4.2.8
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `has_seopress_syntax`.
 	 *
 	 * @param string $text The text to evaluate.

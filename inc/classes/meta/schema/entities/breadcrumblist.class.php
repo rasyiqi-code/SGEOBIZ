@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Meta\Schema\Entities\Breadcrumb
- * @subpackage The_SEO_Framework\Meta\Schema
+ * @package SGEOBIZ_SEO\Classes\Meta\Schema\Entities\Breadcrumb
+ * @subpackage SGEOBIZ_SEO\Meta\Schema
  */
 
-namespace The_SEO_Framework\Meta\Schema\Entities;
+namespace SGEOBIZ_SEO\Meta\Schema\Entities;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data\Filter\Sanitize,
 	Meta,
 };
@@ -35,7 +35,7 @@ use The_SEO_Framework\{
  *
  * @since 5.0.0
  * @access protected
- *         Access via tsf()->schema()->entities['BreadcrumbList'] instead.
+ *         Access via sgeobiz()->schema()->entities['BreadcrumbList'] instead.
  */
 final class BreadcrumbList extends Reference {
 

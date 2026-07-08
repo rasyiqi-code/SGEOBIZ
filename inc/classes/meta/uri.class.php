@@ -1,20 +1,20 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Meta
- * @subpackage The_SEO_Framework\Meta\URI
+ * @package SGEOBIZ_SEO\Classes\Meta
+ * @subpackage SGEOBIZ_SEO\Meta\URI
  */
 
-namespace The_SEO_Framework\Meta;
+namespace SGEOBIZ_SEO\Meta;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	umemo,
 	get_query_type_from_args,
 	normalize_generation_args,
 };
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper\Query,
 	Meta,
@@ -53,7 +53,7 @@ use The_SEO_Framework\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->uri() instead.
+ *         Use sgeobiz()->uri() instead.
  */
 class URI {
 
@@ -85,7 +85,7 @@ class URI {
 	 * @since 4.2.0 Now supports the `$args['pta']` index.
 	 * @since 4.2.3 Now accepts arguments publicly.
 	 * @since 5.0.0 1. No longer calls the query in the sitemap to remove pagination.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              3. Now always returns a sanitized URL.
 	 *
 	 * @param array|null $args The query arguments. Accepts 'id', 'tax', 'pta', and 'uid'.
@@ -647,7 +647,7 @@ class URI {
 	 * @since 4.1.2 1. Added back memoization.
 	 *              2. Reduced needless canonical URL generation when it wouldn't be processed anyway.
 	 * @since 5.0.0 1. Removed memoization thanks to optimization.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              3. Removed option checks (unintentionally)
 	 * @since 5.0.5 Reinstated missing option checks.
 	 * @todo make this a getter via $args.
@@ -726,7 +726,7 @@ class URI {
 	 * @since 4.2.0 1. Now supports the `$args['pta']` index.
 	 *              2. Now redirects post type archives.
 	 * @since 5.0.0 1. Now expects an ID before getting a post meta item.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param array|null $args    The query arguments. Accepts 'id', 'tax', 'pta', and 'uid'.
 	 *                            Leave null to autodetermine query.

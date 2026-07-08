@@ -1,16 +1,16 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Data\Plugin\Term
- * @subpackage The_SEO_Framework\Data\Plugin
+ * @package SGEOBIZ_SEO\Classes\Data\Plugin\Term
+ * @subpackage SGEOBIZ_SEO\Data\Plugin
  */
 
-namespace The_SEO_Framework\Data\Plugin;
+namespace SGEOBIZ_SEO\Data\Plugin;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\is_headless;
+use function SGEOBIZ_SEO\is_headless;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Helper\Query,
 	Helper\Taxonomy,
 	Traits\Property_Refresher,
@@ -39,7 +39,7 @@ use The_SEO_Framework\{
  * @since 5.0.0
  * @since 5.1.0 Added the Property_Refresher trait.
  * @access protected
- *         Use tsf()->data()->plugin()->term() instead.
+ *         Use sgeobiz()->data()->plugin()->term() instead.
  *
  * @NOTE: All static:: calls within this class are intentional due to Property_Refresher trait.
  */
@@ -58,7 +58,7 @@ class Term {
 	 * @since 4.0.0
 	 * @since 4.2.0 No longer accidentally returns an empty array on failure.
 	 * @since 5.0.0 1. Removed the third `$use_cache` parameter.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              3. Renamed from `get_term_meta_item`.
 	 *
 	 * @param string $item    The item to get.
@@ -90,7 +90,7 @@ class Term {
 	 *              2. Now considers headlessness.
 	 * @since 4.2.0 Now returns an empty array when the term's taxonomy isn't supported.
 	 * @since 5.0.0 1. Removed the second `$use_cache` parameter.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              3. Renamed from `get_term_meta`.
 	 * @since 5.1.0 Now returns the default meta if the term's taxonomy isn't supported.
 	 *
@@ -120,7 +120,7 @@ class Term {
 		if ( $is_headless ) {
 			$meta = [];
 		} else {
-			$meta = \get_term_meta( $term_id, \THE_SEO_FRAMEWORK_TERM_OPTIONS, true ) ?: [];
+			$meta = \get_term_meta( $term_id, \SGEOBIZ_SEO_TERM_OPTIONS, true ) ?: [];
 		}
 
 		/**
@@ -133,7 +133,7 @@ class Term {
 		 * @param bool  $is_headless Whether the meta are headless.
 		 */
 		return static::$meta_memo[ $term_id ] = \apply_filters(
-			'the_seo_framework_term_meta',
+			'sgeobiz_seo_term_meta',
 			array_merge(
 				static::get_default_meta( $term_id ),
 				$meta,
@@ -152,7 +152,7 @@ class Term {
 	 *              2. Added 'redirect' value.
 	 *              3. Added 'title_no_blog_name' value.
 	 *              4. Removed 'saved_flag' value.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `get_term_meta_defaults`.
 	 *              3. Added 'tw_card_type' value.
 	 *
@@ -166,7 +166,7 @@ class Term {
 		 * @param int   $term_id The current term ID.
 		 */
 		return (array) \apply_filters(
-			'the_seo_framework_term_meta_defaults',
+			'sgeobiz_seo_term_meta_defaults',
 			[
 				'doctitle'           => '',
 				'title_no_blog_name' => 0,
@@ -197,7 +197,7 @@ class Term {
 	 * @since 4.0.0
 	 * @since 4.0.2 1. Now tests for valid term ID in the term object.
 	 *              2. Now continues using the filtered term object.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `update_single_term_meta_item`.
 	 *
 	 * @param string $item     The item to update.
@@ -223,7 +223,7 @@ class Term {
 	 * @since 4.0.2 1. Now tests for valid term ID in the term object.
 	 *              2. Now continues using the filtered term object.
 	 * @since 5.0.0 1. Removed 3rd and 4th parameters ($tt_id and $taxonomy).
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              3. Renamed from `save_term_meta`.
 	 *
 	 * @param int   $term_id Term ID.
@@ -245,7 +245,7 @@ class Term {
 		 * @param int    $term_id  The term ID.
 		 */
 		$data = (array) \apply_filters(
-			'the_seo_framework_save_term_data',
+			'sgeobiz_seo_save_term_data',
 			array_merge(
 				static::get_default_meta( $term_id ),
 				$data,
@@ -256,7 +256,7 @@ class Term {
 		unset( static::$meta_memo[ $term_id ] );
 
 		// Do we want to cycle through the data, so we store only the non-defaults? @see save_post_meta()
-		\update_term_meta( $term_id, \THE_SEO_FRAMEWORK_TERM_OPTIONS, $data );
+		\update_term_meta( $term_id, \SGEOBIZ_SEO_TERM_OPTIONS, $data );
 	}
 
 	/**
@@ -266,7 +266,7 @@ class Term {
 	 *
 	 * @since 2.7.0
 	 * @since 4.0.0 Removed 2nd, unused, parameter.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `delete_term_meta`.
 	 * @ignore Unused internally. Public API.
 	 *
@@ -275,7 +275,7 @@ class Term {
 	public static function delete_meta( $term_id ) {
 
 		// If this results in an empty data string, all data has already been removed by WP core.
-		$data = \get_term_meta( $term_id, \THE_SEO_FRAMEWORK_TERM_OPTIONS, true );
+		$data = \get_term_meta( $term_id, \SGEOBIZ_SEO_TERM_OPTIONS, true );
 
 		if ( \is_array( $data ) ) {
 			foreach ( static::get_default_meta( $term_id ) as $key => $value )
@@ -287,9 +287,9 @@ class Term {
 
 		// Only delete when no values are left, because someone else might've filtered it.
 		if ( empty( $data ) ) {
-			\delete_term_meta( $term_id, \THE_SEO_FRAMEWORK_TERM_OPTIONS );
+			\delete_term_meta( $term_id, \SGEOBIZ_SEO_TERM_OPTIONS );
 		} else {
-			\update_term_meta( $term_id, \THE_SEO_FRAMEWORK_TERM_OPTIONS, $data );
+			\update_term_meta( $term_id, \SGEOBIZ_SEO_TERM_OPTIONS, $data );
 		}
 	}
 }

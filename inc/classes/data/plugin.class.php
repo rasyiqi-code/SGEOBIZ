@@ -1,16 +1,16 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Data\Plugin
- * @subpackage The_SEO_Framework\Data\Plugin
+ * @package SGEOBIZ_SEO\Classes\Data\Plugin
+ * @subpackage SGEOBIZ_SEO\Data\Plugin
  */
 
-namespace The_SEO_Framework\Data;
+namespace SGEOBIZ_SEO\Data;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\is_headless;
+use function SGEOBIZ_SEO\is_headless;
 
-use The_SEO_Framework\Traits\Property_Refresher;
+use SGEOBIZ_SEO\Traits\Property_Refresher;
 
 /**
  * The SEO Framework plugin
@@ -34,7 +34,7 @@ use The_SEO_Framework\Traits\Property_Refresher;
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->data()->plugin() instead.
+ *         Use sgeobiz()->data()->plugin() instead.
  *
  * @NOTE: All static:: calls within this class are intentional due to Property_Refresher trait.
  */
@@ -44,21 +44,21 @@ class Plugin {
 	/**
 	 * @since 5.0.0
 	 * @var ?array Holds 'all' TSF's options/settings.
-	 * @uses \THE_SEO_FRAMEWORK_SITE_OPTIONS
+	 * @uses \SGEOBIZ_SEO_SITE_OPTIONS
 	 */
 	private static $options_memo;
 
 	/**
 	 * @since 5.0.0
 	 * @var ?array Holds 'all' TSF's site cache.
-	 * @uses \THE_SEO_FRAMEWORK_SITE_CACHE
+	 * @uses \SGEOBIZ_SEO_SITE_CACHE
 	 */
 	private static $site_cache_memo;
 
 	/**
 	 * Flushes all option runtime cache.
 	 *
-	 * @hook "update_option_ . \THE_SEO_FRAMEWORK_SITE_OPTIONS" 0
+	 * @hook "update_option_ . \SGEOBIZ_SEO_SITE_OPTIONS" 0
 	 * @since 5.0.0
 	 */
 	public static function flush_cache() {
@@ -76,8 +76,8 @@ class Plugin {
 	 * @since 4.2.0 Now supports an option index as a $key.
 	 * @since 5.0.0 1. Removed $use_cache; the cache is now dynamically updated.
 	 *              2. $key is now variadic. Additional variables allow you to dig deeper in the cache.
-	 *              3. Moved from `\The_SEO_Framework\Load`.
-	 * @uses \THE_SEO_FRAMEWORK_SITE_OPTIONS
+	 *              3. Moved from `\SGEOBIZ_SEO\Load`.
+	 * @uses \SGEOBIZ_SEO_SITE_OPTIONS
 	 *
 	 * @param string ...$key Option name. Additional parameters will try get sub-values of the array.
 	 *                       When empty, it'll return all options. You should use get_options() instead.
@@ -119,14 +119,14 @@ class Plugin {
 		 * @param bool   $headless Whether the options are headless.
 		 */
 		return self::$options_memo = \apply_filters(
-			'the_seo_framework_get_options',
+			'sgeobiz_seo_get_options',
 			$is_headless
 				? Plugin\Setup::get_default_options()
 				: (
 					// May be empty during setup, let's return the defaults.
-					\get_option( \THE_SEO_FRAMEWORK_SITE_OPTIONS ) ?: Plugin\Setup::get_default_options()
+					\get_option( \SGEOBIZ_SEO_SITE_OPTIONS ) ?: Plugin\Setup::get_default_options()
 				),
-			\THE_SEO_FRAMEWORK_SITE_OPTIONS,
+			\SGEOBIZ_SEO_SITE_OPTIONS,
 			$is_headless,
 		);
 	}
@@ -135,7 +135,7 @@ class Plugin {
 	 * Updates options. Also updates the option cache if the settings aren't headless.
 	 *
 	 * @since 2.9.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @since 5.0.2 Now falls back to default for merge: If the option disappears for some reason, we won't crash.
 	 * @since 5.1.0 No longer considers headlessness. The headless filters are ought
 	 *              to stay in place throughout the request, affecting `get_option()`.
@@ -148,7 +148,7 @@ class Plugin {
 
 		// Get the latest known revision from the database.
 		$options = array_merge(
-			\get_option( \THE_SEO_FRAMEWORK_SITE_OPTIONS ) ?: Plugin\Setup::get_default_options(),
+			\get_option( \SGEOBIZ_SEO_SITE_OPTIONS ) ?: Plugin\Setup::get_default_options(),
 			\is_array( $option ) ? $option : [ $option => $value ],
 		);
 
@@ -157,7 +157,7 @@ class Plugin {
 		// But reset everything for PTA, because those rely entirely on the plugin options.
 		Plugin\PTA::refresh_static_properties();
 
-		return \update_option( \THE_SEO_FRAMEWORK_SITE_OPTIONS, $options, true );
+		return \update_option( \SGEOBIZ_SEO_SITE_OPTIONS, $options, true );
 	}
 
 	/**
@@ -189,7 +189,7 @@ class Plugin {
 		static::register_automated_refresh( 'site_cache_memo' );
 
 		return static::$site_cache_memo =
-			   \get_option( \THE_SEO_FRAMEWORK_SITE_CACHE )
+			   \get_option( \SGEOBIZ_SEO_SITE_CACHE )
 			?: Plugin\Setup::get_default_site_caches();
 	}
 
@@ -208,13 +208,13 @@ class Plugin {
 
 		// Get the latest known revision from the database.
 		$site_cache = array_merge(
-			\get_option( \THE_SEO_FRAMEWORK_SITE_CACHE ) ?: Plugin\Setup::get_default_site_caches(),
+			\get_option( \SGEOBIZ_SEO_SITE_CACHE ) ?: Plugin\Setup::get_default_site_caches(),
 			\is_array( $cache ) ? $cache : [ $cache => $value ],
 		);
 
 		static::$site_cache_memo = null;
 
-		return \update_option( \THE_SEO_FRAMEWORK_SITE_CACHE, $site_cache, true );
+		return \update_option( \SGEOBIZ_SEO_SITE_CACHE, $site_cache, true );
 	}
 
 	/**
@@ -228,13 +228,13 @@ class Plugin {
 	 */
 	public static function delete_site_cache( $cache ) {
 
-		$site_cache = \get_option( \THE_SEO_FRAMEWORK_SITE_CACHE ) ?: Plugin\Setup::get_default_site_caches();
+		$site_cache = \get_option( \SGEOBIZ_SEO_SITE_CACHE ) ?: Plugin\Setup::get_default_site_caches();
 
 		foreach ( (array) $cache as $key )
 			unset( $site_cache[ $key ] );
 
 		static::$site_cache_memo = null;
 
-		return \update_option( \THE_SEO_FRAMEWORK_SITE_CACHE, $site_cache, true );
+		return \update_option( \SGEOBIZ_SEO_SITE_CACHE, $site_cache, true );
 	}
 }

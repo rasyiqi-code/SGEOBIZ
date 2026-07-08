@@ -1,21 +1,21 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Meta
- * @subpackage The_SEO_Framework\Meta\Open_Graph
+ * @package SGEOBIZ_SEO\Classes\Meta
+ * @subpackage SGEOBIZ_SEO\Meta\Open_Graph
  */
 
-namespace The_SEO_Framework\Meta;
+namespace SGEOBIZ_SEO\Meta;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	coalesce_strlen,
 	get_query_type_from_args,
 	memo,
 	normalize_generation_args,
 };
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Data\Filter\Sanitize,
 	Helper\Query,
@@ -43,7 +43,7 @@ use The_SEO_Framework\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->open_graph() instead.
+ *         Use sgeobiz()->open_graph() instead.
  */
 class Open_Graph {
 
@@ -51,7 +51,7 @@ class Open_Graph {
 	 * Returns an array of the collected robots meta assertions.
 	 *
 	 * This only works when generate_robots_meta()'s $options value was given:
-	 * The_SEO_Framework\ROBOTS_ASSERT (0b100);
+	 * SGEOBIZ_SEO\ROBOTS_ASSERT (0b100);
 	 *
 	 * @since 5.0.0
 	 *

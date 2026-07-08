@@ -1,20 +1,20 @@
 <?php
 /**
- * @package The_SEO_Framework\Compat\Plugin\bbPress
- * @subpackage The_SEO_Framework\Compatibility
+ * @package SGEOBIZ_SEO\Compat\Plugin\bbPress
+ * @subpackage SGEOBIZ_SEO\Compatibility
  * @access private
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	get_query_type_from_args,
 	normalize_generation_args,
 };
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Data\Filter\Sanitize,
 	Helper\Query,
@@ -27,11 +27,11 @@ use The_SEO_Framework\{
  */
 \add_filter( 'bbp_title', [ Front\Title::class, 'set_document_title' ], 99 );
 
-\add_filter( 'the_seo_framework_title_from_generation', __NAMESPACE__ . '\_bbpress_filter_title', 10, 2 );
-\add_filter( 'the_seo_framework_seo_column_keys_order', __NAMESPACE__ . '\_bbpress_filter_order_keys' );
-\add_filter( 'the_seo_framework_do_adjust_archive_query', __NAMESPACE__ . '\_bbpress_filter_do_adjust_query', 10, 2 );
-\add_filter( 'the_seo_framework_robots_meta_array', __NAMESPACE__ . '\_bbpress_filter_robots', 10, 2 );
-\add_action( 'the_seo_framework_seo_bar', __NAMESPACE__ . '\_assert_bbpress_noindex_defaults_seo_bar', 10, 2 );
+\add_filter( 'sgeobiz_seo_title_from_generation', __NAMESPACE__ . '\_bbpress_filter_title', 10, 2 );
+\add_filter( 'sgeobiz_seo_seo_column_keys_order', __NAMESPACE__ . '\_bbpress_filter_order_keys' );
+\add_filter( 'sgeobiz_seo_do_adjust_archive_query', __NAMESPACE__ . '\_bbpress_filter_do_adjust_query', 10, 2 );
+\add_filter( 'sgeobiz_seo_robots_meta_array', __NAMESPACE__ . '\_bbpress_filter_robots', 10, 2 );
+\add_action( 'sgeobiz_seo_seo_bar', __NAMESPACE__ . '\_assert_bbpress_noindex_defaults_seo_bar', 10, 2 );
 
 /**
  * Override's The SEO Framework's auto-generated title with bbPress's on bbPress queries.
@@ -44,7 +44,7 @@ use The_SEO_Framework\{
  * We're going to trust Automattic/bbPress that they'll deprecate all functions called here, instead of removing them,
  * might they desire to add/improve new functionality.
  *
- * @hook the_seo_framework_title_from_generation 10
+ * @hook sgeobiz_seo_title_from_generation 10
  * @since 4.0.6
  * @source bbp_title()
  * @NOTE Do NOT call `bbp_title()` or apply filter `bbptitle` here, it'll cause an infinite loop.
@@ -193,7 +193,7 @@ function _bbpress_filter_title( $title, $args ) {
 /**
  * Filters the order keys for The SEO Bar.
  *
- * @hook the_seo_framework_seo_column_keys_order 10
+ * @hook sgeobiz_seo_seo_column_keys_order 10
  * @since 2.8.0
  *
  * @param array $current_keys The current column keys TSF looks for.
@@ -213,7 +213,7 @@ function _bbpress_filter_order_keys( $current_keys = [] ) {
 /**
  * Fixes bbPress exclusion of first reply, when the topic is set to be excluded everywhere else.
  *
- * @hook the_seo_framework_do_adjust_archive_query 10
+ * @hook sgeobiz_seo_do_adjust_archive_query 10
  * @since 3.0.3
  * @link <https://bbpress.trac.wordpress.org/ticket/2607> (regression)
  *
@@ -240,7 +240,7 @@ function _bbpress_filter_do_adjust_query( $adjust, $wp_query ) {
  *
  * This should actually only consider non-loop queries, for hidden forums can't be reached anyway.
  *
- * @hook the_seo_framework_robots_meta_array 10
+ * @hook sgeobiz_seo_robots_meta_array 10
  * @since 4.2.8
  *
  * @param array      $meta    {
@@ -308,7 +308,7 @@ function _bbpress_filter_robots( $meta, $args ) {
 /**
  * Appends noindex default checks to the noindex item of the SEO Bar for pages.
  *
- * @hook the_seo_framework_seo_bar 10
+ * @hook sgeobiz_seo_seo_bar 10
  * @since 4.2.8
  *
  * @param string $interpreter The interpreter class name.
@@ -349,9 +349,9 @@ function _assert_bbpress_noindex_defaults_seo_bar( $interpreter, $builder ) {
 		: $interpreter::STATE_UNKNOWN;
 
 	if ( 'forum' === $interpreter::$query['post_type'] ) {
-		$index_item['assess']['notpublic'] = \__( 'This is not a public forum.', 'autodescription' );
+		$index_item['assess']['notpublic'] = \__( 'This is not a public forum.', 'sgeobiz-seo' );
 	} else {
-		$index_item['assess']['notpublic'] = \__( 'This page is not part of a public forum.', 'autodescription' );
+		$index_item['assess']['notpublic'] = \__( 'This page is not part of a public forum.', 'sgeobiz-seo' );
 	}
 
 	// No amount of overriding will fix this -- the forum/topic/reply is publicly unreachable.

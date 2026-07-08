@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Helper\Guidelines
- * @subpackage The_SEO_Framework\Admin
+ * @package SGEOBIZ_SEO\Classes\Helper\Guidelines
+ * @subpackage SGEOBIZ_SEO\Admin
  */
 
-namespace The_SEO_Framework\Helper;
+namespace SGEOBIZ_SEO\Helper;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\memo;
+use function SGEOBIZ_SEO\memo;
 
 /**
  * The SEO Framework plugin
@@ -50,7 +50,7 @@ class Guidelines {
 	 * @since 3.1.0
 	 * @since 4.0.0 1. Now gives different values for various WordPress locales.
 	 *              2. Added $locale input parameter.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `get_input_guidelines()`.
 	 *
 	 * @TODO Consider splitting up search into Google, Bing, etc., as we might
@@ -114,7 +114,7 @@ class Guidelines {
 		 */
 		return memo(
 			(array) \apply_filters(
-				'the_seo_framework_input_guidelines',
+				'sgeobiz_seo_input_guidelines',
 				[
 					'title' => [
 						'search' => [
@@ -200,7 +200,7 @@ class Guidelines {
 	 *
 	 * @since 3.1.0
 	 * @since 4.0.0 Now added a short leading-dot version for ARIA labels.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Added memoization.
 	 *
 	 * @return array
@@ -208,28 +208,28 @@ class Guidelines {
 	public static function get_text_size_guidelines_i18n() {
 		return memo() ?? memo( [
 			'long'     => [
-				'empty'       => \esc_attr__( "There's no content.", 'autodescription' ),
-				'farTooShort' => \esc_attr__( "It's too short and it should have more information.", 'autodescription' ),
-				'tooShort'    => \esc_attr__( "It's short and it could have more information.", 'autodescription' ),
-				'tooLong'     => \esc_attr__( "It's long and it might get truncated in search.", 'autodescription' ),
-				'farTooLong'  => \esc_attr__( "It's too long and it will get truncated in search.", 'autodescription' ),
-				'good'        => \esc_attr__( 'Length is good.', 'autodescription' ),
+				'empty'       => \esc_attr__( "There's no content.", 'sgeobiz-seo' ),
+				'farTooShort' => \esc_attr__( "It's too short and it should have more information.", 'sgeobiz-seo' ),
+				'tooShort'    => \esc_attr__( "It's short and it could have more information.", 'sgeobiz-seo' ),
+				'tooLong'     => \esc_attr__( "It's long and it might get truncated in search.", 'sgeobiz-seo' ),
+				'farTooLong'  => \esc_attr__( "It's too long and it will get truncated in search.", 'sgeobiz-seo' ),
+				'good'        => \esc_attr__( 'Length is good.', 'sgeobiz-seo' ),
 			],
 			'short'    => [
-				'empty'       => \esc_attr_x( 'Empty', 'The text field is empty', 'autodescription' ),
-				'farTooShort' => \esc_attr__( 'Far too short', 'autodescription' ),
-				'tooShort'    => \esc_attr__( 'Too short', 'autodescription' ),
-				'tooLong'     => \esc_attr__( 'Too long', 'autodescription' ),
-				'farTooLong'  => \esc_attr__( 'Far too long', 'autodescription' ),
-				'good'        => \esc_attr__( 'Good', 'autodescription' ),
+				'empty'       => \esc_attr_x( 'Empty', 'The text field is empty', 'sgeobiz-seo' ),
+				'farTooShort' => \esc_attr__( 'Far too short', 'sgeobiz-seo' ),
+				'tooShort'    => \esc_attr__( 'Too short', 'sgeobiz-seo' ),
+				'tooLong'     => \esc_attr__( 'Too long', 'sgeobiz-seo' ),
+				'farTooLong'  => \esc_attr__( 'Far too long', 'sgeobiz-seo' ),
+				'good'        => \esc_attr__( 'Good', 'sgeobiz-seo' ),
 			],
 			'shortdot' => [
-				'empty'       => \esc_attr_x( 'Empty.', 'The text field is empty', 'autodescription' ),
-				'farTooShort' => \esc_attr__( 'Far too short.', 'autodescription' ),
-				'tooShort'    => \esc_attr__( 'Too short.', 'autodescription' ),
-				'tooLong'     => \esc_attr__( 'Too long.', 'autodescription' ),
-				'farTooLong'  => \esc_attr__( 'Far too long.', 'autodescription' ),
-				'good'        => \esc_attr__( 'Good.', 'autodescription' ),
+				'empty'       => \esc_attr_x( 'Empty.', 'The text field is empty', 'sgeobiz-seo' ),
+				'farTooShort' => \esc_attr__( 'Far too short.', 'sgeobiz-seo' ),
+				'tooShort'    => \esc_attr__( 'Too short.', 'sgeobiz-seo' ),
+				'tooLong'     => \esc_attr__( 'Too long.', 'sgeobiz-seo' ),
+				'farTooLong'  => \esc_attr__( 'Far too long.', 'sgeobiz-seo' ),
+				'good'        => \esc_attr__( 'Good.', 'sgeobiz-seo' ),
 			],
 		] );
 	}

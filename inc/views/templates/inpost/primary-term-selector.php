@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Templates\Inpost
- * @subpackage The_SEO_Framework\Admin\Edit\Inpost
+ * @package SGEOBIZ_SEO\Templates\Inpost
+ * @subpackage SGEOBIZ_SEO\Admin\Edit\Inpost
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
-use The_SEO_Framework\Admin\Settings\Layout\HTML;
+use SGEOBIZ_SEO\Admin\Settings\Layout\HTML;
 
 // phpcs:disable WordPress.WP.GlobalVariablesOverride -- This isn't the global scope.
 

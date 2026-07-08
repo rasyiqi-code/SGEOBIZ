@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Sitemap\XSL\Description
- * @subpackage The_SEO_Framework\Sitemap\XSL
+ * @package SGEOBIZ_SEO\Views\Sitemap\XSL\Description
+ * @subpackage SGEOBIZ_SEO\Sitemap\XSL
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data\Filter\Sanitize,
 	Helper\Format\Markdown,
 };
@@ -49,7 +49,7 @@ if ( Data\Plugin::get_option( 'sitemap_logo' ) ) {
 	 *     @type int    $2 The height in pixels.
 	 * }
 	 */
-	$_src = (array) \apply_filters( 'the_seo_framework_sitemap_logo', $_src );
+	$_src = (array) \apply_filters( 'sgeobiz_seo_sitemap_logo', $_src );
 
 	if ( ! empty( $_src[0] ) ) {
 		$logo = \sprintf(
@@ -76,7 +76,7 @@ printf(
 	),
 	\esc_xml(
 		Sanitize::metadata_content(
-			Data\Blog::get_public_blog_name() . ' &mdash; ' . \__( 'XML Sitemap', 'autodescription' ),
+			Data\Blog::get_public_blog_name() . ' &mdash; ' . \__( 'XML Sitemap', 'sgeobiz-seo' ),
 		),
 	),
 );
@@ -87,7 +87,7 @@ printf(
 	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- convert_markdown escapes.
 	echo Markdown::convert(
 		/* translators: URLs are in Markdown. Don't forget to localize the URLs. */
-		\esc_xml( \__( 'This is an optimized XML sitemap meant to be processed quickly by search engines like [Google](https://www.google.com/) or [Bing](https://www.bing.com/).', 'autodescription' ) ),
+		\esc_xml( \__( 'This is an optimized XML sitemap meant to be processed quickly by search engines like [Google](https://www.google.com/) or [Bing](https://www.bing.com/).', 'sgeobiz-seo' ) ),
 		[ 'a' ],
 		[ 'a_internal' => false ],
 	);
@@ -98,7 +98,7 @@ printf(
 	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- convert_markdown escapes.
 	echo Markdown::convert(
 		/* translators: URLs are in Markdown. Don't localize this URL. */
-		\esc_xml( \__( 'You can find more information on XML sitemaps at [sitemaps.org](https://www.sitemaps.org/).', 'autodescription' ) ),
+		\esc_xml( \__( 'You can find more information on XML sitemaps at [sitemaps.org](https://www.sitemaps.org/).', 'sgeobiz-seo' ) ),
 		[ 'a' ],
 		[ 'a_internal' => false ],
 	);

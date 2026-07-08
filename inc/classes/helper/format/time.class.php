@@ -1,16 +1,16 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Helper\Format\Time
- * @subpackage The_SEO_Framework\Formatting
+ * @package SGEOBIZ_SEO\Classes\Helper\Format\Time
+ * @subpackage SGEOBIZ_SEO\Formatting
  */
 
-namespace The_SEO_Framework\Helper\Format;
+namespace SGEOBIZ_SEO\Helper\Format;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\umemo;
+use function SGEOBIZ_SEO\umemo;
 
-use The_SEO_Framework\Data;
+use SGEOBIZ_SEO\Data;
 
 /**
  * The SEO Framework plugin
@@ -36,7 +36,7 @@ use The_SEO_Framework\Data;
  * @NOTE to self: This is also used in XHTML configurations. Keep it strict!
  *
  * @access protected
- *         Use tsf()->format()->time() instead.
+ *         Use sgeobiz()->format()->time() instead.
  */
 class Time {
 
@@ -100,7 +100,7 @@ class Time {
 		 * @param bool   True if time is requested, false if only date.
 		 */
 		return (string) \apply_filters(
-			'the_seo_framework_timestamp_format',
+			'sgeobiz_seo_timestamp_format',
 			$get_time ? 'Y-m-d\TH:i:sP' : 'Y-m-d', // Could use 'c', but that specification is ambiguous
 			$get_time,
 		);

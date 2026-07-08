@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Front\Front\Meta\Generator
- * @subpackage The_SEO_Framework\Meta\Facebook
+ * @package SGEOBIZ_SEO\Classes\Front\Front\Meta\Generator
+ * @subpackage SGEOBIZ_SEO\Meta\Facebook
  */
 
-namespace The_SEO_Framework\Front\Meta\Generator;
+namespace SGEOBIZ_SEO\Front\Meta\Generator;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Meta;
+use SGEOBIZ_SEO\Meta;
 
 /**
  * The SEO Framework plugin

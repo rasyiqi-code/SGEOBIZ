@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Helper\Redirect
- * @subpackage The_SEO_Framework\Query
+ * @package SGEOBIZ_SEO\Classes\Helper\Redirect
+ * @subpackage SGEOBIZ_SEO\Query
  */
 
-namespace The_SEO_Framework\Helper;
+namespace SGEOBIZ_SEO\Helper;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\memo;
+use function SGEOBIZ_SEO\memo;
 
 /**
  * The SEO Framework plugin
@@ -40,7 +40,7 @@ final class Redirect {
 	 * Memoizes the return value.
 	 *
 	 * @since 2.6.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return bool Whether external redirect is allowed.
 	 */
@@ -49,6 +49,6 @@ final class Redirect {
 		 * @since 2.1.0
 		 * @param bool $allowed Whether external redirect is allowed.
 		 */
-		return memo() ?? memo( (bool) \apply_filters( 'the_seo_framework_allow_external_redirect', true ) );
+		return memo() ?? memo( (bool) \apply_filters( 'sgeobiz_seo_allow_external_redirect', true ) );
 	}
 }

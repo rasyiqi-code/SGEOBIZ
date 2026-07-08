@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Sitemap\WP\Taxonomies
+ * @package SGEOBIZ_SEO\Classes\Sitemap\WP\Taxonomies
  * @subpackage WordPress\Sitemaps
  */
 
-namespace The_SEO_Framework\Sitemap\WP;
+namespace SGEOBIZ_SEO\Sitemap\WP;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Sitemap;
+use SGEOBIZ_SEO\Sitemap;
 
 /**
  * The SEO Framework plugin
@@ -31,7 +31,7 @@ use The_SEO_Framework\Sitemap;
  * Augments the WordPress Core 'taxonomies' sitemap.
  *
  * @since 4.1.2
- * @since 5.0.0 Moved from `\The_SEO_Framework\Builders\CoreSitemaps`.
+ * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Builders\CoreSitemaps`.
  *
  * @access private
  */

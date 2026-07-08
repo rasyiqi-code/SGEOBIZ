@@ -1,24 +1,24 @@
 <?php
 /**
- * @package The_SEO_Framework\Compat\Plugin\WPML
- * @subpackage The_SEO_Framework\Compatibility
+ * @package SGEOBIZ_SEO\Compat\Plugin\WPML
+ * @subpackage SGEOBIZ_SEO\Compatibility
  * @access private
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Helper\Query,
 	Meta\URI,
 };
 
-\add_filter( 'the_seo_framework_sitemap_endpoint_list', __NAMESPACE__ . '\_wpml_register_sitemap_languages', 20 );
-\add_action( 'the_seo_framework_cleared_sitemap_transients', __NAMESPACE__ . '\_wpml_flush_sitemap', 10 );
-\add_action( 'the_seo_framework_sitemap_header', __NAMESPACE__ . '\_wpml_sitemap_filter_display_translatables' );
-\add_action( 'the_seo_framework_sitemap_hpt_query_args', __NAMESPACE__ . '\_wpml_sitemap_filter_non_translatables' );
-\add_action( 'the_seo_framework_sitemap_nhpt_query_args', __NAMESPACE__ . '\_wpml_sitemap_filter_non_translatables' );
+\add_filter( 'sgeobiz_seo_sitemap_endpoint_list', __NAMESPACE__ . '\_wpml_register_sitemap_languages', 20 );
+\add_action( 'sgeobiz_seo_cleared_sitemap_transients', __NAMESPACE__ . '\_wpml_flush_sitemap', 10 );
+\add_action( 'sgeobiz_seo_sitemap_header', __NAMESPACE__ . '\_wpml_sitemap_filter_display_translatables' );
+\add_action( 'sgeobiz_seo_sitemap_hpt_query_args', __NAMESPACE__ . '\_wpml_sitemap_filter_non_translatables' );
+\add_action( 'sgeobiz_seo_sitemap_nhpt_query_args', __NAMESPACE__ . '\_wpml_sitemap_filter_non_translatables' );
 
 /**
  * Registers more sitemaps for the robots.txt to parse.
@@ -26,7 +26,7 @@ use The_SEO_Framework\{
  * This has no other intended effect. But default permalinks may react more tsf_sitemap query values,
  * specifically ?tsf_sitemap=_base_wpml_es&lang=es" (assumed, untested).
  *
- * @hook the_seo_framework_sitemap_endpoint_list 20
+ * @hook sgeobiz_seo_sitemap_endpoint_list 20
  * @since 5.0.5
  * @param array[] $list {
  *     A list of sitemap endpoints keyed by ID.
@@ -107,7 +107,7 @@ function _wpml_register_sitemap_languages( $list ) {
  * We didn't implement this in our default APIs because we want to trigger WP hooks.
  * Executing database queries directly bypass those. So, we do this afterward.
  *
- * @hook the_seo_framework_cleared_sitemap_transients 10
+ * @hook sgeobiz_seo_cleared_sitemap_transients 10
  * @since 3.1.0
  * @since 5.0.0 Removed clearing once-per-request restriction.
  * @global \wpdb $wpdb
@@ -134,7 +134,7 @@ function _wpml_flush_sitemap() {
  * Filters "display translatable" post types from the sitemap query arguments.
  * Only appends actually translated posts to the translated sitemap.
  *
- * @hook the_seo_framework_sitemap_header 10
+ * @hook sgeobiz_seo_sitemap_header 10
  * @since 4.1.4
  */
 function _wpml_sitemap_filter_display_translatables() {
@@ -146,8 +146,8 @@ function _wpml_sitemap_filter_display_translatables() {
  * Filters nontranslatable post types from the sitemap query arguments.
  * Only appends when the default sitemap language is not displayed.
  *
- * @hook the_seo_framework_sitemap_hpt_query_args 10
- * @hook the_seo_framework_sitemap_nhpt_query_args 10
+ * @hook sgeobiz_seo_sitemap_hpt_query_args 10
+ * @hook sgeobiz_seo_sitemap_nhpt_query_args 10
  * @since 4.1.4
  * @global \SitePress $sitepress
  *

@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Admin\Settings\Plugin
- * @subpackage The_SEO_Framework\Admin\Settings
+ * @package SGEOBIZ_SEO\Classes\Admin\Settings\Plugin
+ * @subpackage SGEOBIZ_SEO\Admin\Settings
  */
 
-namespace The_SEO_Framework\Admin\Settings;
+namespace SGEOBIZ_SEO\Admin\Settings;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Admin,
 	Helper\Post_Type,
 	Helper\Template,
@@ -38,7 +38,7 @@ use The_SEO_Framework\{
  *
  * @since 4.0.0
  * @since 5.0.0 1. Renamed from `SeoSettings` to `Plugin`.
- *              2. Moved from `\The_SEO_Framework\Bridges`.
+ *              2. Moved from `\SGEOBIZ_SEO\Bridges`.
  * @access private
  */
 final class Plugin {
@@ -46,9 +46,9 @@ final class Plugin {
 	/**
 	 * Outputs the SEO Settings page wrap.
 	 *
-	 * @hook toplevel_page_theseoframework-settings 10
+	 * @hook toplevel_page_sgeobiz-seo-settings 10
 	 * @since 4.0.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @since 5.0.1 Removed the registration of metaboxes.
 	 */
 	public static function prepare_settings_wrap() {
@@ -58,7 +58,7 @@ final class Plugin {
 			[ self::class, 'output_columns' ],
 		);
 		\add_action(
-			'the_seo_framework_setting_notices',
+			'sgeobiz_seo_setting_notices',
 			[ self::class, 'output_notices' ],
 		);
 
@@ -68,7 +68,7 @@ final class Plugin {
 	/**
 	 * Registers meta boxes on the Site SEO Settings page.
 	 *
-	 * @hook load-toplevel_page_theseoframework-settings 10
+	 * @hook load-toplevel_page_sgeobiz-seo-settings 10
 	 * @since 4.0.0
 	 * @since 5.0.0 Renamed from `_register_seo_settings_meta_boxes`.
 	 */
@@ -79,20 +79,20 @@ final class Plugin {
 		 * Set any to false if you wish the meta box to be removed.
 		 *
 		 * @since 2.2.4
-		 * @since 2.8.0 Added `the_seo_framework_general_metabox` filter.
-		 * @since 4.2.0 Added `the_seo_framework_post_type_archive_metabox` filter.
+		 * @since 2.8.0 Added `sgeobiz_seo_general_metabox` filter.
+		 * @since 4.2.0 Added `sgeobiz_seo_post_type_archive_metabox` filter.
 		 */
-		$general           = (bool) \apply_filters( 'the_seo_framework_general_metabox', true );
-		$title             = (bool) \apply_filters( 'the_seo_framework_title_metabox', true );
-		$description       = (bool) \apply_filters( 'the_seo_framework_description_metabox', true );
-		$robots            = (bool) \apply_filters( 'the_seo_framework_robots_metabox', true );
-		$home              = (bool) \apply_filters( 'the_seo_framework_home_metabox', true );
-		$post_type_archive = (bool) \apply_filters( 'the_seo_framework_post_type_archive_metabox', true );
-		$social            = (bool) \apply_filters( 'the_seo_framework_social_metabox', true );
-		$schema            = (bool) \apply_filters( 'the_seo_framework_schema_metabox', true );
-		$webmaster         = (bool) \apply_filters( 'the_seo_framework_webmaster_metabox', true );
-		$sitemap           = (bool) \apply_filters( 'the_seo_framework_sitemap_metabox', true );
-		$feed              = (bool) \apply_filters( 'the_seo_framework_feed_metabox', true );
+		$general           = (bool) \apply_filters( 'sgeobiz_seo_general_metabox', true );
+		$title             = (bool) \apply_filters( 'sgeobiz_seo_title_metabox', true );
+		$description       = (bool) \apply_filters( 'sgeobiz_seo_description_metabox', true );
+		$robots            = (bool) \apply_filters( 'sgeobiz_seo_robots_metabox', true );
+		$home              = (bool) \apply_filters( 'sgeobiz_seo_home_metabox', true );
+		$post_type_archive = (bool) \apply_filters( 'sgeobiz_seo_post_type_archive_metabox', true );
+		$social            = (bool) \apply_filters( 'sgeobiz_seo_social_metabox', true );
+		$schema            = (bool) \apply_filters( 'sgeobiz_seo_schema_metabox', true );
+		$webmaster         = (bool) \apply_filters( 'sgeobiz_seo_webmaster_metabox', true );
+		$sitemap           = (bool) \apply_filters( 'sgeobiz_seo_sitemap_metabox', true );
+		$feed              = (bool) \apply_filters( 'sgeobiz_seo_feed_metabox', true );
 
 		$settings_page_hook = Admin\Menu::get_page_hook_name();
 
@@ -100,7 +100,7 @@ final class Plugin {
 		if ( $general )
 			\add_meta_box(
 				'autodescription-general-settings',
-				\esc_html__( 'General Settings', 'autodescription' ),
+				\esc_html__( 'General Settings', 'sgeobiz-seo' ),
 				[ self::class, '_general_metabox' ],
 				$settings_page_hook,
 				'main',
@@ -110,7 +110,7 @@ final class Plugin {
 		if ( $title )
 			\add_meta_box(
 				'autodescription-title-settings',
-				\esc_html__( 'Title Settings', 'autodescription' ),
+				\esc_html__( 'Title Settings', 'sgeobiz-seo' ),
 				[ self::class, '_title_metabox' ],
 				$settings_page_hook,
 				'main',
@@ -120,7 +120,7 @@ final class Plugin {
 		if ( $description )
 			\add_meta_box(
 				'autodescription-description-settings',
-				\esc_html__( 'Description Meta Settings', 'autodescription' ),
+				\esc_html__( 'Description Meta Settings', 'sgeobiz-seo' ),
 				[ self::class, '_description_metabox' ],
 				$settings_page_hook,
 				'main',
@@ -130,7 +130,7 @@ final class Plugin {
 		if ( $social )
 			\add_meta_box(
 				'autodescription-social-settings',
-				\esc_html__( 'Social Meta Settings', 'autodescription' ),
+				\esc_html__( 'Social Meta Settings', 'sgeobiz-seo' ),
 				[ self::class, '_social_metabox' ],
 				$settings_page_hook,
 				'main',
@@ -140,7 +140,7 @@ final class Plugin {
 		if ( $home )
 			\add_meta_box(
 				'autodescription-homepage-settings',
-				\esc_html__( 'Homepage Settings', 'autodescription' ),
+				\esc_html__( 'Homepage Settings', 'sgeobiz-seo' ),
 				[ self::class, '_homepage_metabox' ],
 				$settings_page_hook,
 				'main',
@@ -149,7 +149,7 @@ final class Plugin {
 		if ( $post_type_archive && Post_Type::get_public_pta() )
 			\add_meta_box(
 				'autodescription-post-type-archive-settings',
-				\esc_html__( 'Post Type Archive Settings', 'autodescription' ),
+				\esc_html__( 'Post Type Archive Settings', 'sgeobiz-seo' ),
 				[ self::class, '_post_type_archive_metabox' ],
 				$settings_page_hook,
 				'main',
@@ -159,7 +159,7 @@ final class Plugin {
 		if ( $schema )
 			\add_meta_box(
 				'autodescription-schema-settings',
-				\esc_html__( 'Schema.org Settings', 'autodescription' ),
+				\esc_html__( 'Schema.org Settings', 'sgeobiz-seo' ),
 				[ self::class, '_schema_metabox' ],
 				$settings_page_hook,
 				'main',
@@ -169,7 +169,7 @@ final class Plugin {
 		if ( $robots )
 			\add_meta_box(
 				'autodescription-robots-settings',
-				\esc_html__( 'Robots Settings', 'autodescription' ),
+				\esc_html__( 'Robots Settings', 'sgeobiz-seo' ),
 				[ self::class, '_robots_metabox' ],
 				$settings_page_hook,
 				'main',
@@ -179,7 +179,7 @@ final class Plugin {
 		if ( $webmaster )
 			\add_meta_box(
 				'autodescription-webmaster-settings',
-				\esc_html__( 'Webmaster Meta Settings', 'autodescription' ),
+				\esc_html__( 'Webmaster Meta Settings', 'sgeobiz-seo' ),
 				[ self::class, '_webmaster_metabox' ],
 				$settings_page_hook,
 				'main',
@@ -189,7 +189,7 @@ final class Plugin {
 		if ( $sitemap )
 			\add_meta_box(
 				'autodescription-sitemap-settings',
-				\esc_html__( 'Sitemap Settings', 'autodescription' ),
+				\esc_html__( 'Sitemap Settings', 'sgeobiz-seo' ),
 				[ self::class, '_sitemaps_metabox' ],
 				$settings_page_hook,
 				'main',
@@ -199,7 +199,7 @@ final class Plugin {
 		if ( $feed )
 			\add_meta_box(
 				'autodescription-feed-settings',
-				\esc_html__( 'Feed Settings', 'autodescription' ),
+				\esc_html__( 'Feed Settings', 'sgeobiz-seo' ),
 				[ self::class, '_feed_metabox' ],
 				$settings_page_hook,
 				'main',
@@ -216,18 +216,18 @@ final class Plugin {
 		/**
 		 * @since 3.0.0
 		 */
-		\do_action( 'the_seo_framework_pre_seo_settings' );
+		\do_action( 'sgeobiz_seo_pre_seo_settings' );
 		Template::output_view( 'settings/wrap' );
 		/**
 		 * @since 3.0.0
 		 */
-		\do_action( 'the_seo_framework_pro_seo_settings' );
+		\do_action( 'sgeobiz_seo_pro_seo_settings' );
 	}
 
 	/**
 	 * Outputs SEO Settings columns.
 	 *
-	 * @hook toplevel_page_theseoframework-settings_settings_page_boxes 10
+	 * @hook toplevel_page_sgeobiz-seo-settings_settings_page_boxes 10
 	 * @since 4.0.0
 	 * @since 5.0.0 Renamed from `_output_columns`.
 	 */
@@ -238,10 +238,10 @@ final class Plugin {
 	/**
 	 * Outputs notices on SEO setting changes.
 	 *
-	 * @hook the_seo_framework_setting_notices 10
+	 * @hook sgeobiz_seo_setting_notices 10
 	 * @since 4.0.0
 	 * @since 4.0.5 This is no longer a static function.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `_do_settings_page_notices`.
 	 * @access private
 	 */
@@ -282,12 +282,12 @@ final class Plugin {
 		/**
 		 * @since 2.8.0
 		 */
-		\do_action( 'the_seo_framework_general_metabox_before' );
+		\do_action( 'sgeobiz_seo_general_metabox_before' );
 		Template::output_view( 'settings/metaboxes/general', 'main' );
 		/**
 		 * @since 2.8.0
 		 */
-		\do_action( 'the_seo_framework_general_metabox_after' );
+		\do_action( 'sgeobiz_seo_general_metabox_after' );
 	}
 
 	/**
@@ -359,12 +359,12 @@ final class Plugin {
 		/**
 		 * @since 2.5.0 or earlier.
 		 */
-		\do_action( 'the_seo_framework_title_metabox_before' );
+		\do_action( 'sgeobiz_seo_title_metabox_before' );
 		Template::output_view( 'settings/metaboxes/title', 'main' );
 		/**
 		 * @since 2.5.0 or earlier.
 		 */
-		\do_action( 'the_seo_framework_title_metabox_after' );
+		\do_action( 'sgeobiz_seo_title_metabox_after' );
 	}
 
 	/**
@@ -408,12 +408,12 @@ final class Plugin {
 		/**
 		 * @since 2.5.0 or earlier.
 		 */
-		\do_action( 'the_seo_framework_description_metabox_before' );
+		\do_action( 'sgeobiz_seo_description_metabox_before' );
 		Template::output_view( 'settings/metaboxes/description', 'main' );
 		/**
 		 * @since 2.5.0 or earlier.
 		 */
-		\do_action( 'the_seo_framework_description_metabox_after' );
+		\do_action( 'sgeobiz_seo_description_metabox_after' );
 	}
 
 	/**
@@ -425,12 +425,12 @@ final class Plugin {
 		/**
 		 * @since 2.5.0 or earlier.
 		 */
-		\do_action( 'the_seo_framework_robots_metabox_before' );
+		\do_action( 'sgeobiz_seo_robots_metabox_before' );
 		Template::output_view( 'settings/metaboxes/robots', 'main' );
 		/**
 		 * @since 2.5.0 or earlier.
 		 */
-		\do_action( 'the_seo_framework_robots_metabox_after' );
+		\do_action( 'sgeobiz_seo_robots_metabox_after' );
 	}
 
 	/**
@@ -473,12 +473,12 @@ final class Plugin {
 		/**
 		 * @since 2.5.0 or earlier.
 		 */
-		\do_action( 'the_seo_framework_homepage_metabox_before' );
+		\do_action( 'sgeobiz_seo_homepage_metabox_before' );
 		Template::output_view( 'settings/metaboxes/homepage', 'main' );
 		/**
 		 * @since 2.5.0 or earlier.
 		 */
-		\do_action( 'the_seo_framework_homepage_metabox_after' );
+		\do_action( 'sgeobiz_seo_homepage_metabox_after' );
 	}
 
 	/**
@@ -530,12 +530,12 @@ final class Plugin {
 		/**
 		 * @since 4.2.0
 		 */
-		\do_action( 'the_seo_framework_post_type_archive_before' );
+		\do_action( 'sgeobiz_seo_post_type_archive_before' );
 		Template::output_view( 'settings/metaboxes/post-type-archive', 'main' );
 		/**
 		 * @since 4.2.0
 		 */
-		\do_action( 'the_seo_framework_post_type_archive_after' );
+		\do_action( 'sgeobiz_seo_post_type_archive_after' );
 	}
 
 	/**
@@ -580,12 +580,12 @@ final class Plugin {
 		/**
 		 * @since 2.5.0 or earlier.
 		 */
-		\do_action( 'the_seo_framework_social_metabox_before' );
+		\do_action( 'sgeobiz_seo_social_metabox_before' );
 		Template::output_view( 'settings/metaboxes/social', 'main' );
 		/**
 		 * @since 2.5.0 or earlier.
 		 */
-		\do_action( 'the_seo_framework_social_metabox_after' );
+		\do_action( 'sgeobiz_seo_social_metabox_after' );
 	}
 
 	/**
@@ -647,12 +647,12 @@ final class Plugin {
 		/**
 		 * @since 2.5.0 or earlier.
 		 */
-		\do_action( 'the_seo_framework_webmaster_metabox_before' );
+		\do_action( 'sgeobiz_seo_webmaster_metabox_before' );
 		Template::output_view( 'settings/metaboxes/webmaster', 'main' );
 		/**
 		 * @since 2.5.0 or earlier.
 		 */
-		\do_action( 'the_seo_framework_webmaster_metabox_after' );
+		\do_action( 'sgeobiz_seo_webmaster_metabox_after' );
 	}
 
 	/**
@@ -665,12 +665,12 @@ final class Plugin {
 		/**
 		 * @since 2.5.0 or earlier.
 		 */
-		\do_action( 'the_seo_framework_sitemaps_metabox_before' );
+		\do_action( 'sgeobiz_seo_sitemaps_metabox_before' );
 		Template::output_view( 'settings/metaboxes/sitemaps', 'main' );
 		/**
 		 * @since 2.5.0 or earlier.
 		 */
-		\do_action( 'the_seo_framework_sitemaps_metabox_after' );
+		\do_action( 'sgeobiz_seo_sitemaps_metabox_after' );
 	}
 
 	/**
@@ -722,12 +722,12 @@ final class Plugin {
 		/**
 		 * @since 2.5.2
 		 */
-		\do_action( 'the_seo_framework_feed_metabox_before' );
+		\do_action( 'sgeobiz_seo_feed_metabox_before' );
 		Template::output_view( 'settings/metaboxes/feed', 'main' );
 		/**
 		 * @since 2.5.2
 		 */
-		\do_action( 'the_seo_framework_feed_metabox_after' );
+		\do_action( 'sgeobiz_seo_feed_metabox_after' );
 	}
 
 	/**
@@ -739,12 +739,12 @@ final class Plugin {
 		/**
 		 * @since 2.6.0
 		 */
-		\do_action( 'the_seo_framework_schema_metabox_before' );
+		\do_action( 'sgeobiz_seo_schema_metabox_before' );
 		Template::output_view( 'settings/metaboxes/schema', 'main' );
 		/**
 		 * @since 2.6.0
 		 */
-		\do_action( 'the_seo_framework_schema_metabox_after' );
+		\do_action( 'sgeobiz_seo_schema_metabox_after' );
 	}
 
 	/**

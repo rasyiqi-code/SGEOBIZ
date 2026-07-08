@@ -1,17 +1,17 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Helper\Query\Utils
- * @subpackage The_SEO_Framework\Query
+ * @package SGEOBIZ_SEO\Classes\Helper\Query\Utils
+ * @subpackage SGEOBIZ_SEO\Query
  */
 
-namespace The_SEO_Framework\Helper\Query;
+namespace SGEOBIZ_SEO\Helper\Query;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\memo;
+use function SGEOBIZ_SEO\memo;
 
-use The_SEO_Framework\Data;
-use The_SEO_Framework\Helper\{
+use SGEOBIZ_SEO\Data;
+use SGEOBIZ_SEO\Helper\{
 	Post_Type,
 	Query, // Yes, it is legal to share class and namespaces.
 	Taxonomy,
@@ -39,7 +39,7 @@ use The_SEO_Framework\Helper\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->query()->utils() instead.
+ *         Use sgeobiz()->query()->utils() instead.
  */
 class Utils {
 
@@ -66,7 +66,7 @@ class Utils {
 	 * @since 5.0.0 1. Removed detection for JSON(P) and XML type requests,
 	 *                 because these cannot be assumed as legitimate.
 	 *              2. Added `\is_customize_preview()` as unsupported.
-	 *              3. Moved from `\The_SEO_Framework\Load`.
+	 *              3. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              4. Also removed detection of `wp_doing_ajax()` and `wp_doing_cron()`,
 	 *                 this is now being handled by `_init_tsf()`.
 	 * @since 5.0.3 Now considers the query supported when the homepage is assigned a broken ID.
@@ -115,7 +115,7 @@ class Utils {
 		 * @since 4.0.0
 		 * @param bool $supported Whether the query supports SEO.
 		 */
-		return memo( (bool) \apply_filters( 'the_seo_framework_query_supports_seo', $supported ) );
+		return memo( (bool) \apply_filters( 'sgeobiz_seo_query_supports_seo', $supported ) );
 	}
 
 	/**
@@ -150,7 +150,7 @@ class Utils {
 	 * @since 4.2.7 1. Added detection `not_home_as_page`, specifically for query variable `search`.
 	 *              2. Improved detection for `cat` and `author`, where the value may only be numeric above 0.
 	 * @since 4.2.8 Now blocks any publicly registered variable requested to the home-as-page.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @since 5.0.5 Now detects `should_be_404`, specifically for query variable `sitemap` and `sitemap-subtype`.
 	 * @global \WP_Query $wp_query
 	 *
@@ -185,7 +185,7 @@ class Utils {
 		 * @param array $exploitables The exploitable endpoints by type.
 		 */
 		$exploitables = \apply_filters(
-			'the_seo_framework_exploitable_query_endpoints',
+			'sgeobiz_seo_exploitable_query_endpoints',
 			[
 				'numeric'          => [
 					'page_id',
@@ -281,7 +281,7 @@ class Utils {
 	 *
 	 * @since 2.6.0
 	 * @since 3.1.0 Removed caching.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return bool
 	 */
@@ -302,7 +302,7 @@ class Utils {
 
 	/**
 	 * Determines whether the blog page exists.
-	 * This is not always a "blog as page" -- for that, use `tsf()->query()->is_blog_as_page()`.
+	 * This is not always a "blog as page" -- for that, use `sgeobiz()->query()->is_blog_as_page()`.
 	 *
 	 * @since 5.0.4
 	 *

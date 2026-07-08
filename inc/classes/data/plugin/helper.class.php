@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Data\Plugin\Helper
- * @subpackage The_SEO_Framework\Data\Plugin
+ * @package SGEOBIZ_SEO\Classes\Data\Plugin\Helper
+ * @subpackage SGEOBIZ_SEO\Data\Plugin
  */
 
-namespace The_SEO_Framework\Data\Plugin;
+namespace SGEOBIZ_SEO\Data\Plugin;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
  * The SEO Framework plugin
@@ -30,7 +30,7 @@ namespace The_SEO_Framework\Data\Plugin;
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->data()->plugin()->helper() instead.
+ *         Use sgeobiz()->data()->plugin()->helper() instead.
  */
 class Helper {
 

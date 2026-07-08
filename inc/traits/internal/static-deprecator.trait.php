@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Traits\Internal\Deprecated
- * @subpackage The_SEO_Framework\Debug\Deprecated
+ * @package SGEOBIZ_SEO\Traits\Internal\Deprecated
+ * @subpackage SGEOBIZ_SEO\Debug\Deprecated
  */
 
-namespace The_SEO_Framework\Traits\Internal;
+namespace SGEOBIZ_SEO\Traits\Internal;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
  * The SEO Framework plugin
@@ -26,12 +26,12 @@ namespace The_SEO_Framework\Traits\Internal;
  */
 
 /**
- * Trait The_SEO_Framework\Traits\Internal\Static_Deprecator
+ * Trait SGEOBIZ_SEO\Traits\Internal\Static_Deprecator
  * Holds deprecation handler for static classes.
  *
  * @since 5.0.0
  * @access private
- * @see \The_SEO_Framework\Pool
+ * @see \SGEOBIZ_SEO\Pool
  *
  * @property class[] $subpool The class subpool store. Used in favor of memo() for a chain would become expensive.
  * @property string $colloquial_handle
@@ -77,7 +77,7 @@ trait Static_Deprecator {
 			$alternative = $deprecated['alternative'] ?? '';
 			$since       = $deprecated['since'] ?? '';
 
-			\tsf()->_inaccessible_p_or_m(
+			\sgeobiz()->_inaccessible_p_or_m(
 				"$$name",
 				trim(
 					\sprintf(
@@ -94,7 +94,7 @@ trait Static_Deprecator {
 			/**
 			 * For now, no deprecation is being handled; as no properties have been deprecated. Just removed.
 			 */
-			\tsf()->_inaccessible_p_or_m( "$$name", 'unknown' );
+			\sgeobiz()->_inaccessible_p_or_m( "$$name", 'unknown' );
 
 			// Invoke default behavior: Write variable if it's not protected.
 			if ( property_exists( static::class, $name ) )
@@ -120,7 +120,7 @@ trait Static_Deprecator {
 			$alternative = $deprecated['alternative'] ?? '';
 			$since       = $deprecated['since'] ?? '';
 
-			\tsf()->_inaccessible_p_or_m(
+			\sgeobiz()->_inaccessible_p_or_m(
 				"$$name",
 				trim(
 					\sprintf(
@@ -137,7 +137,7 @@ trait Static_Deprecator {
 			if ( $deprecated['fallback'] )
 				return $deprecated['fallback'];
 		} else {
-			\tsf()->_inaccessible_p_or_m( "$$name" );
+			\sgeobiz()->_inaccessible_p_or_m( "$$name" );
 		}
 	}
 
@@ -155,7 +155,7 @@ trait Static_Deprecator {
 		$deprecated = $this->deprecated_methods[ $name ] ?? '';
 
 		if ( $deprecated ) {
-			\tsf()->_deprecated_function(
+			\sgeobiz()->_deprecated_function(
 				\esc_html( "{$this->colloquial_handle}->$name()" ), // redundant escape
 				\esc_html( $deprecated['since'] ?? '' ),            // redundant escape
 				! empty( $deprecated['alternative'] )
@@ -168,7 +168,7 @@ trait Static_Deprecator {
 			if ( $fallback )
 				return \call_user_func_array( $fallback, $arguments );
 		} else {
-			\tsf()->_inaccessible_p_or_m( "{$this->colloquial_handle}->$name()" );
+			\sgeobiz()->_inaccessible_p_or_m( "{$this->colloquial_handle}->$name()" );
 		}
 	}
 
@@ -181,7 +181,7 @@ trait Static_Deprecator {
 	 * @param array  $arguments The method arguments.
 	 */
 	final public static function __callStatic( $name, $arguments ) { // phpcs:ignore Generic.CodeAnalysis -- abstract magic method.
-		\tsf()->_inaccessible_p_or_m(
+		\sgeobiz()->_inaccessible_p_or_m(
 			\esc_html( "$name()" ),
 			'Method is of unknown pool. Do not call pool methods statically! A fatal error might follow.',
 		);

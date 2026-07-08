@@ -1,17 +1,17 @@
 <?php
 /**
- * @package The_SEO_Framework\Compat\Plugin\wpForo
- * @subpackage The_SEO_Framework\Compatibility
+ * @package SGEOBIZ_SEO\Compat\Plugin\wpForo
+ * @subpackage SGEOBIZ_SEO\Compatibility
  * @access private
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Meta;
+use SGEOBIZ_SEO\Meta;
 
-\add_action( 'the_seo_framework_seo_bar', __NAMESPACE__ . '\_assert_wpforo_page_seo_bar' );
+\add_action( 'sgeobiz_seo_seo_bar', __NAMESPACE__ . '\_assert_wpforo_page_seo_bar' );
 \add_action( 'wpforo_before_init', __NAMESPACE__ . '\_wpforo_fix_page' );
 
 /**
@@ -23,23 +23,23 @@ use The_SEO_Framework\Meta;
  *              2. Now disables title override when wpForo Title SEO is enabled.
  * @since 4.2.8 1. Now supports wpForo 2.0+.
  *              2. Now disables TSF's output by default; for if their API disappears again.
- *              3. Now uses action `wpforo_before_init` instead of `the_seo_framework_init`.
+ *              3. Now uses action `wpforo_before_init` instead of `sgeobiz_seo_init`.
  */
 function _wpforo_fix_page() {
 
 	if ( \is_admin() || ! \function_exists( 'is_wpforo_page' ) || ! \is_wpforo_page() ) return;
 
 	if ( _wpforo_seo_title_enabled() ) { // phpcs:ignore TSF.Performance.Opcodes -- is local.
-		\add_filter( 'the_seo_framework_title_from_generation', __NAMESPACE__ . '\_wpforo_filter_pre_title', 10, 2 );
-		\add_filter( 'the_seo_framework_use_title_branding', '__return_false' );
+		\add_filter( 'sgeobiz_seo_title_from_generation', __NAMESPACE__ . '\_wpforo_filter_pre_title', 10, 2 );
+		\add_filter( 'sgeobiz_seo_use_title_branding', '__return_false' );
 	}
 
 	if ( _wpforo_seo_meta_enabled() ) { // phpcs:ignore TSF.Performance.Opcodes -- is local.
 		// Remove TSF's output: Twofold, may they change the order of operation in a future update.
 		_wpforo_disable_tsf_html_output(); // phpcs:ignore TSF.Performance.Opcodes -- is local.
 
-		// This won't run on wpForo at the time of writing (2.1.6), because action the_seo_framework_after_init already happened.
-		\add_action( 'the_seo_framework_after_init', __NAMESPACE__ . '\_wpforo_disable_tsf_html_output', 1 );
+		// This won't run on wpForo at the time of writing (2.1.6), because action sgeobiz_seo_after_init already happened.
+		\add_action( 'sgeobiz_seo_after_init', __NAMESPACE__ . '\_wpforo_disable_tsf_html_output', 1 );
 	} else {
 		// Remove WPForo's SEO meta output.
 		\remove_action( 'wp_head', 'wpforo_add_meta_tags', 1 );
@@ -51,7 +51,7 @@ function _wpforo_fix_page() {
 /**
  * Disables The SEO Framework's meta tag output on wpForo pages.
  *
- * @hook the_seo_framework_after_init 1
+ * @hook sgeobiz_seo_after_init 1
  * @since 3.1.2 Introduced as Lambda.
  * @since 4.0.5 Introduced as function.
  */
@@ -76,7 +76,7 @@ function _wpforo_filter_canonical_url( $canonical_url ) {
 /**
  * Fixes wpForo page Titles.
  *
- * @hook the_seo_framework_title_from_generation 10
+ * @hook sgeobiz_seo_title_from_generation 10
  * @since 2.9.2
  * @since 3.1.0 1. No longer emits an error when no wpForo title is presented.
  *              2. Updated to support new title generation.
@@ -104,7 +104,7 @@ function _wpforo_filter_pre_title( $title, $args ) {
 /**
  * Appends noindex default checks to the noindex item of the SEO Bar for pages.
  *
- * @hook the_seo_framework_seo_bar 10
+ * @hook sgeobiz_seo_seo_bar 10
  * @since 4.2.8
  *
  * @param string $interpreter The interpreter class name.
@@ -139,14 +139,14 @@ function _assert_wpforo_page_seo_bar( $interpreter ) {
 		}
 
 		$item['status'] = $interpreter::STATE_UNDEFINED;
-		$item['reason'] = \__( 'Cannot assert.', 'autodescription' );
+		$item['reason'] = \__( 'Cannot assert.', 'sgeobiz-seo' );
 
 		// Clear all assessments.
 		$item['assess'] = [];
 
 		$item['assess']['base'] = \sprintf(
 			// translators: %s = Plugin name.
-			\__( 'This is managed by plugin "%s."', 'autodescription' ),
+			\__( 'This is managed by plugin "%s."', 'sgeobiz-seo' ),
 			'wpForo Forum',
 		);
 	}

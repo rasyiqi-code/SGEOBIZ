@@ -1,11 +1,11 @@
 <?php
 /**
- * @package The_SEO_Framework\Bootstrap
+ * @package SGEOBIZ_SEO\Bootstrap
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_DB_VERSION' ) or die;
+\defined( 'SGEOBIZ_SEO_DB_VERSION' ) or die;
 
 /**
  * The SEO Framework plugin
@@ -29,7 +29,7 @@ namespace The_SEO_Framework;
  *
  * @since 3.1.0
  */
-\define( 'THE_SEO_FRAMEWORK_PRESENT', true );
+\define( 'SGEOBIZ_SEO_PRESENT', true );
 
 /**
  * The user capability required to access the extension overview page.
@@ -42,8 +42,8 @@ namespace The_SEO_Framework;
  * @since 4.1.0
  * @param string
  */
-\defined( 'THE_SEO_FRAMEWORK_SETTINGS_CAP' )
-	or \define( 'THE_SEO_FRAMEWORK_SETTINGS_CAP', 'manage_options' );
+\defined( 'SGEOBIZ_SEO_SETTINGS_CAP' )
+	or \define( 'SGEOBIZ_SEO_SETTINGS_CAP', 'manage_options' );
 
 /**
  * The user capability required to have SEO-fields on their profiles.
@@ -56,8 +56,8 @@ namespace The_SEO_Framework;
  * @since 4.1.0
  * @param string
  */
-\defined( 'THE_SEO_FRAMEWORK_AUTHOR_INFO_CAP' )
-	or \define( 'THE_SEO_FRAMEWORK_AUTHOR_INFO_CAP', 'edit_posts' );
+\defined( 'SGEOBIZ_SEO_AUTHOR_INFO_CAP' )
+	or \define( 'SGEOBIZ_SEO_AUTHOR_INFO_CAP', 'edit_posts' );
 
 /**
  * Enables the site-wide SEO debugging interface.
@@ -66,8 +66,8 @@ namespace The_SEO_Framework;
  * @since 5.0.0 Is now registered during plugin load.
  * @param bool
  */
-\defined( 'THE_SEO_FRAMEWORK_DEBUG' )
-	or \define( 'THE_SEO_FRAMEWORK_DEBUG', false );
+\defined( 'SGEOBIZ_SEO_DEBUG' )
+	or \define( 'SGEOBIZ_SEO_DEBUG', false );
 
 /**
  * The plugin's main settings page slug.
@@ -75,8 +75,8 @@ namespace The_SEO_Framework;
  * @since 5.0.0
  * @param bool
  */
-\defined( 'THE_SEO_FRAMEWORK_SITE_OPTIONS_SLUG' )
-	or \define( 'THE_SEO_FRAMEWORK_SITE_OPTIONS_SLUG', 'theseoframework-settings' );
+\defined( 'SGEOBIZ_SEO_SITE_OPTIONS_SLUG' )
+	or \define( 'SGEOBIZ_SEO_SITE_OPTIONS_SLUG', 'sgeobiz-seo-settings' );
 
 /**
  * The plugin options database option_name key.
@@ -86,7 +86,7 @@ namespace The_SEO_Framework;
  * @since 2.2.5
  * @since 5.0.0 Removed its filter.
  */
-\define( 'THE_SEO_FRAMEWORK_SITE_OPTIONS', 'autodescription-site-settings' );
+\define( 'SGEOBIZ_SEO_SITE_OPTIONS', 'sgeobiz-site-settings' );
 
 /**
  * Plugin term options key.
@@ -94,7 +94,7 @@ namespace The_SEO_Framework;
  * @since 2.7.0
  * @since 5.0.0 Removed its filter.
  */
-\define( 'THE_SEO_FRAMEWORK_TERM_OPTIONS', 'autodescription-term-settings' );
+\define( 'SGEOBIZ_SEO_TERM_OPTIONS', 'sgeobiz-term-settings' );
 
 /**
  * Plugin user term options key.
@@ -102,7 +102,7 @@ namespace The_SEO_Framework;
  * @since 2.7.0
  * @since 5.0.0 Removed its filter.
  */
-\define( 'THE_SEO_FRAMEWORK_USER_OPTIONS', 'autodescription-user-settings' );
+\define( 'SGEOBIZ_SEO_USER_OPTIONS', 'sgeobiz-user-settings' );
 
 /**
  * Plugin updates cache key.
@@ -111,7 +111,7 @@ namespace The_SEO_Framework;
  * @since 5.0.0 1. Removed its filter.
  *              2. Changed the default value from 'autodescription-updates-cache'.
  */
-\define( 'THE_SEO_FRAMEWORK_SITE_CACHE', 'autodescription-site-cache' );
+\define( 'SGEOBIZ_SEO_SITE_CACHE', 'sgeobiz-site-cache' );
 
 /**
  * The plugin folder URL. Has a trailing slash.
@@ -119,69 +119,69 @@ namespace The_SEO_Framework;
  *
  * @since 2.2.5
  */
-\define( 'THE_SEO_FRAMEWORK_DIR_URL', \plugin_dir_url( \THE_SEO_FRAMEWORK_PLUGIN_BASE_FILE ) );
+\define( 'SGEOBIZ_SEO_DIR_URL', \plugin_dir_url( \SGEOBIZ_SEO_PLUGIN_BASE_FILE ) );
 
 /**
  * The plugin file relative to the plugins dir. Does not have a trailing slash.
  *
  * @since 2.2.8
  */
-\define( 'THE_SEO_FRAMEWORK_PLUGIN_BASENAME', \plugin_basename( \THE_SEO_FRAMEWORK_PLUGIN_BASE_FILE ) );
+\define( 'SGEOBIZ_SEO_PLUGIN_BASENAME', \plugin_basename( \SGEOBIZ_SEO_PLUGIN_BASE_FILE ) );
 
 /**
  * The plugin folder absolute path. Used for calling php files.
  *
  * @since 2.2.5
  */
-\define( 'THE_SEO_FRAMEWORK_DIR_PATH', \dirname( \THE_SEO_FRAMEWORK_PLUGIN_BASE_FILE ) . \DIRECTORY_SEPARATOR );
+\define( 'SGEOBIZ_SEO_DIR_PATH', \dirname( \SGEOBIZ_SEO_PLUGIN_BASE_FILE ) . \DIRECTORY_SEPARATOR );
 
 /**
  * The plugin views folder absolute path.
  *
  * @since 2.7.0
  */
-\define( 'THE_SEO_FRAMEWORK_DIR_PATH_VIEWS', \THE_SEO_FRAMEWORK_DIR_PATH . 'inc' . \DIRECTORY_SEPARATOR . 'views' . \DIRECTORY_SEPARATOR );
+\define( 'SGEOBIZ_SEO_DIR_PATH_VIEWS', \SGEOBIZ_SEO_DIR_PATH . 'inc' . \DIRECTORY_SEPARATOR . 'views' . \DIRECTORY_SEPARATOR );
 
 /**
  * The plugin class folder absolute path.
  *
  * @since 2.2.9
  */
-\define( 'THE_SEO_FRAMEWORK_DIR_PATH_CLASS', \THE_SEO_FRAMEWORK_DIR_PATH . 'inc' . \DIRECTORY_SEPARATOR . 'classes' . \DIRECTORY_SEPARATOR );
+\define( 'SGEOBIZ_SEO_DIR_PATH_CLASS', \SGEOBIZ_SEO_DIR_PATH . 'inc' . \DIRECTORY_SEPARATOR . 'classes' . \DIRECTORY_SEPARATOR );
 
 /**
  * The plugin trait folder absolute path.
  *
  * @since 3.1.0
  */
-\define( 'THE_SEO_FRAMEWORK_DIR_PATH_TRAIT', \THE_SEO_FRAMEWORK_DIR_PATH . 'inc' . \DIRECTORY_SEPARATOR . 'traits' . \DIRECTORY_SEPARATOR );
+\define( 'SGEOBIZ_SEO_DIR_PATH_TRAIT', \SGEOBIZ_SEO_DIR_PATH . 'inc' . \DIRECTORY_SEPARATOR . 'traits' . \DIRECTORY_SEPARATOR );
 
 /**
  * The plugin interface folder absolute path.
  *
  * @since 2.8.0
  */
-\define( 'THE_SEO_FRAMEWORK_DIR_PATH_INTERFACE', \THE_SEO_FRAMEWORK_DIR_PATH . 'inc' . \DIRECTORY_SEPARATOR . 'interfaces' . \DIRECTORY_SEPARATOR );
+\define( 'SGEOBIZ_SEO_DIR_PATH_INTERFACE', \SGEOBIZ_SEO_DIR_PATH . 'inc' . \DIRECTORY_SEPARATOR . 'interfaces' . \DIRECTORY_SEPARATOR );
 
 /**
  * The plugin function folder absolute path.
  *
  * @since 2.2.9
  */
-\define( 'THE_SEO_FRAMEWORK_DIR_PATH_FUNCT', \THE_SEO_FRAMEWORK_DIR_PATH . 'inc' . \DIRECTORY_SEPARATOR . 'functions' . \DIRECTORY_SEPARATOR );
+\define( 'SGEOBIZ_SEO_DIR_PATH_FUNCT', \SGEOBIZ_SEO_DIR_PATH . 'inc' . \DIRECTORY_SEPARATOR . 'functions' . \DIRECTORY_SEPARATOR );
 
 /**
  * The plugin compatibility folder absolute path.
  *
  * @since 2.8.0
  */
-\define( 'THE_SEO_FRAMEWORK_DIR_PATH_COMPAT', \THE_SEO_FRAMEWORK_DIR_PATH . 'inc' . \DIRECTORY_SEPARATOR . 'compat' . \DIRECTORY_SEPARATOR );
+\define( 'SGEOBIZ_SEO_DIR_PATH_COMPAT', \SGEOBIZ_SEO_DIR_PATH . 'inc' . \DIRECTORY_SEPARATOR . 'compat' . \DIRECTORY_SEPARATOR );
 
 /**
  * Robots setting, ignore protection.
  *
  * @since 4.0.0
- * @see \The_SEO_Framework\Generate\robots_meta()
+ * @see \SGEOBIZ_SEO\Generate\robots_meta()
  */
 const ROBOTS_IGNORE_PROTECTION = 0b001;
 
@@ -189,7 +189,7 @@ const ROBOTS_IGNORE_PROTECTION = 0b001;
  * Robots setting, ignore settings.
  *
  * @since 4.0.0
- * @see \The_SEO_Framework\Generate\robots_meta()
+ * @see \SGEOBIZ_SEO\Generate\robots_meta()
  */
 const ROBOTS_IGNORE_SETTINGS = 0b010;
 
@@ -197,6 +197,6 @@ const ROBOTS_IGNORE_SETTINGS = 0b010;
  * Robots setting, enable asserting.
  *
  * @since 4.2.0
- * @see \The_SEO_Framework\Generate\robots_meta()
+ * @see \SGEOBIZ_SEO\Generate\robots_meta()
  */
 const ROBOTS_ASSERT = 0b100;

@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Sitemap\Cache
- * @subpackage The_SEO_Framework\Sitemap
+ * @package SGEOBIZ_SEO\Classes\Sitemap\Cache
+ * @subpackage SGEOBIZ_SEO\Sitemap
  */
 
-namespace The_SEO_Framework\Sitemap;
+namespace SGEOBIZ_SEO\Sitemap;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Data;
+use SGEOBIZ_SEO\Data;
 
 /**
  * The SEO Framework plugin
@@ -32,7 +32,7 @@ use The_SEO_Framework\Data;
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->sitemap()->cache() instead.
+ *         Use sgeobiz()->sitemap()->cache() instead.
  */
 class Cache {
 
@@ -65,11 +65,11 @@ class Cache {
 		/**
 		 * @since 5.0.0
 		 */
-		\do_action( 'the_seo_framework_cleared_sitemap_transients' );
+		\do_action( 'sgeobiz_seo_cleared_sitemap_transients' );
 
 		/**
 		 * @since 3.1.0
-		 * @since 5.0.0 Deprecated. Use action 'the_seo_framework_cleared_sitemap_transients' instead.
+		 * @since 5.0.0 Deprecated. Use action 'sgeobiz_seo_cleared_sitemap_transients' instead.
 		 *
 		 * @param string $type    The flush type. Comes in handy when you use a catch-all function.
 		 * @param int    $id      The post, page or TT ID. Defaults to Query::get_the_real_id().
@@ -77,7 +77,7 @@ class Cache {
 		 * @param array  $success Whether the action cleared. Set to always be true since deprecation.
 		 */
 		\do_action_deprecated(
-			'the_seo_framework_delete_cache_sitemap',
+			'sgeobiz_seo_delete_cache_sitemap',
 			[
 				'sitemap',
 				0,
@@ -85,7 +85,7 @@ class Cache {
 				[ true ],
 			],
 			'5.0.0 of The SEO Framework',
-			'the_seo_framework_cleared_sitemap_transients',
+			'sgeobiz_seo_cleared_sitemap_transients',
 		);
 	}
 

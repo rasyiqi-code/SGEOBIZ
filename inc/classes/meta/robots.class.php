@@ -1,19 +1,19 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Meta
- * @subpackage The_SEO_Framework\Meta\Robots
+ * @package SGEOBIZ_SEO\Classes\Meta
+ * @subpackage SGEOBIZ_SEO\Meta\Robots
  */
 
-namespace The_SEO_Framework\Meta;
+namespace SGEOBIZ_SEO\Meta;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	umemo,
 	normalize_generation_args,
 };
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper\Query,
 };
@@ -40,7 +40,7 @@ use The_SEO_Framework\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->robots() instead.
+ *         Use sgeobiz()->robots() instead.
  */
 class Robots {
 
@@ -48,7 +48,7 @@ class Robots {
 	 * Returns an array of the collected robots meta assertions.
 	 *
 	 * This only works when generate_robots_meta()'s $options value was given:
-	 * The_SEO_Framework\ROBOTS_ASSERT (0b100);
+	 * SGEOBIZ_SEO\ROBOTS_ASSERT (0b100);
 	 *
 	 * @since 5.0.0
 	 *
@@ -80,7 +80,7 @@ class Robots {
 	 *
 	 * @since 3.2.4
 	 * @since 5.0.0 1. Renamed from `get_robots_meta()`
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param array|null $args    The query arguments. Accepts 'id', 'tax', 'pta', and 'uid'.
 	 *                            Leave null to autodetermine query.
@@ -90,9 +90,9 @@ class Robots {
 	 * }
 	 * @param int <bit>  $options The options level. {
 	 *    0 = 0b000: Ignore nothing. Collect no assertions. (Default front-end.)
-	 *    1 = 0b001: Ignore protection. (\The_SEO_Framework\ROBOTS_IGNORE_PROTECTION)
-	 *    2 = 0b010: Ignore post/term setting. (\The_SEO_Framework\ROBOTS_IGNORE_SETTINGS)
-	 *    4 = 0b100: Collect assertions. (\The_SEO_Framework\ROBOTS_ASSERT)
+	 *    1 = 0b001: Ignore protection. (\SGEOBIZ_SEO\ROBOTS_IGNORE_PROTECTION)
+	 *    2 = 0b010: Ignore post/term setting. (\SGEOBIZ_SEO\ROBOTS_IGNORE_SETTINGS)
+	 *    4 = 0b100: Collect assertions. (\SGEOBIZ_SEO\ROBOTS_ASSERT)
 	 * }
 	 * @return array {
 	 *     The generated robots meta. Only values actualized for display are sent back.
@@ -161,13 +161,13 @@ class Robots {
 		 *                         Is null when the query is auto-determined.
 		 * @param int <bit>  $options The ignore level. {
 		 *    0 = 0b000: Ignore nothing. Collect nothing. (Default front-end.)
-		 *    1 = 0b001: Ignore protection. (\The_SEO_Framework\ROBOTS_IGNORE_PROTECTION)
-		 *    2 = 0b010: Ignore post/term setting. (\The_SEO_Framework\ROBOTS_IGNORE_SETTINGS)
-		 *    4 = 0b100: Collect assertions. (\The_SEO_Framework\ROBOTS_ASSERT)
+		 *    1 = 0b001: Ignore protection. (\SGEOBIZ_SEO\ROBOTS_IGNORE_PROTECTION)
+		 *    2 = 0b010: Ignore post/term setting. (\SGEOBIZ_SEO\ROBOTS_IGNORE_SETTINGS)
+		 *    4 = 0b100: Collect assertions. (\SGEOBIZ_SEO\ROBOTS_ASSERT)
 		 * }
 		 */
 		return array_filter( (array) \apply_filters(
-			'the_seo_framework_robots_meta_array',
+			'sgeobiz_seo_robots_meta_array',
 			$meta,
 			$args,
 			$options,
@@ -181,7 +181,7 @@ class Robots {
 	 * @since 4.0.5 The `$post_type` fallback now uses a real query ID, instead of `$GLOBALS['post']`;
 	 *              mitigating issues with singular-archives pages (blog, shop, etc.).
 	 * @since 4.1.1 Now tests for not empty, instead of isset. We no longer support PHP 5.4 since v4.0.0.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param string $type      Accepts 'noindex', 'nofollow', 'noarchive'.
 	 * @param string $post_type The post type, optional. Leave empty to autodetermine type.
@@ -199,7 +199,7 @@ class Robots {
 	 *
 	 * @since 4.1.0
 	 * @since 4.1.1 Now tests for not empty, instead of isset. We no longer support PHP 5.4 since v4.0.0.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param string $type     Accepts 'noindex', 'nofollow', 'noarchive'.
 	 * @param string $taxonomy The taxonomy, optional. Leave empty to autodetermine type.

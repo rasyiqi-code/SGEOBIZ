@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Traits\Property_Refresher
- * @subpackage The_SEO_Framework\Data
+ * @package SGEOBIZ_SEO\Traits\Property_Refresher
+ * @subpackage SGEOBIZ_SEO\Data
  */
 
-namespace The_SEO_Framework\Traits;
+namespace SGEOBIZ_SEO\Traits;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
  * The SEO Framework plugin
@@ -26,7 +26,7 @@ namespace The_SEO_Framework\Traits;
  */
 
 /**
- * Trait The_SEO_Framework\Traits\Property_Refresher
+ * Trait SGEOBIZ_SEO\Traits\Property_Refresher
  *
  * Creates functionality to flush properties.
  * Handy when dealing with multisite, where class properties need to be flushed

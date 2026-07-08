@@ -1,20 +1,20 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Internal\Debug
- * @subpackage The_SEO_Framework\Debug
+ * @package SGEOBIZ_SEO\Classes\Internal\Debug
+ * @subpackage SGEOBIZ_SEO\Debug
  */
 
-namespace The_SEO_Framework\Internal;
+namespace SGEOBIZ_SEO\Internal;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\memo;
+use function SGEOBIZ_SEO\memo;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Front,
 };
-use The_SEO_Framework\Helper\{
+use SGEOBIZ_SEO\Helper\{
 	Post_Type,
 	Query,
 	Taxonomy,
@@ -41,13 +41,13 @@ use The_SEO_Framework\Helper\{
  */
 
 /**
- * Singleton class The_SEO_Framework\Internal\Debug
+ * Singleton class SGEOBIZ_SEO\Internal\Debug
  *
  * Holds plugin debug functions.
  *
  * @since 2.8.0
  * @since 4.0.0 No longer implements an interface. It's implied.
- * @since 4.2.0 Changed namespace from \The_SEO_Framework to \The_SEO_Framework\Internal
+ * @since 4.2.0 Changed namespace from \SGEOBIZ_SEO to \SGEOBIZ_SEO\Internal
  * @since 5.0.0 Is now private. This was never meant to be public.
  * @access private
  */
@@ -94,18 +94,18 @@ final class Debug {
 			if ( isset( $replacement ) ) {
 				$message = \sprintf(
 					/* translators: 1: Function name, 2: 'Deprecated', 3: Plugin Version notification, 4: Replacement function */
-					\esc_html__( '%1$s is %2$s since version %3$s of The SEO Framework! Use %4$s instead.', 'autodescription' ),
+					\esc_html__( '%1$s is %2$s since version %3$s of The SEO Framework! Use %4$s instead.', 'sgeobiz-seo' ),
 					\esc_html( $function ),
-					'<strong>' . \esc_html__( 'deprecated', 'autodescription' ) . '</strong>',
+					'<strong>' . \esc_html__( 'deprecated', 'sgeobiz-seo' ) . '</strong>',
 					\esc_html( $version ) ?: 'unknown',
 					$replacement, // phpcs:ignore WordPress.Security.EscapeOutput -- See doc comment.
 				);
 			} else {
 				$message = \sprintf(
 					/* translators: 1: Function name, 2: 'Deprecated', 3: Plugin Version notification */
-					\esc_html__( '%1$s is %2$s since version %3$s of The SEO Framework with no alternative available.', 'autodescription' ),
+					\esc_html__( '%1$s is %2$s since version %3$s of The SEO Framework with no alternative available.', 'sgeobiz-seo' ),
 					\esc_html( $function ),
-					'<strong>' . \esc_html__( 'deprecated', 'autodescription' ) . '</strong>',
+					'<strong>' . \esc_html__( 'deprecated', 'sgeobiz-seo' ) . '</strong>',
 					\esc_html( $version ) ?: 'unknown',
 				);
 			}
@@ -154,14 +154,14 @@ final class Debug {
 
 			$ver_message = $version
 				/* translators: 1: plugin version */
-				? \sprintf( \__( '(This message was added in version %s of The SEO Framework.)', 'autodescription' ), $version )
+				? \sprintf( \__( '(This message was added in version %s of The SEO Framework.)', 'sgeobiz-seo' ), $version )
 				: '';
 
 			$message = \sprintf(
 				/* translators: 1: Function name, 2: 'Incorrectly', 3: Error message 4: Plugin Version notification */
-				\esc_html__( '%1$s was called %2$s. %3$s %4$s', 'autodescription' ),
+				\esc_html__( '%1$s was called %2$s. %3$s %4$s', 'sgeobiz-seo' ),
 				\esc_html( $function ),
-				'<strong>' . \esc_html__( 'incorrectly', 'autodescription' ) . '</strong>',
+				'<strong>' . \esc_html__( 'incorrectly', 'sgeobiz-seo' ) . '</strong>',
 				$message, // phpcs:ignore WordPress.Security.EscapeOutput -- See doc comment.
 				\esc_html( $ver_message ),
 			);
@@ -189,7 +189,7 @@ final class Debug {
 	 * @param string $message A message explaining what has been done incorrectly.
 	 * @param string $handle  The method handler.
 	 */
-	public static function _inaccessible_p_or_m( $p_or_m, $message = '', $handle = 'tsf()' ) {
+	public static function _inaccessible_p_or_m( $p_or_m, $message = '', $handle = 'sgeobiz()' ) {
 
 		/**
 		 * Fires when the inaccessible property or method is being used.
@@ -199,7 +199,7 @@ final class Debug {
 		 * @param string $p_or_m  The Property or Method.
 		 * @param string $message A message explaining what has been done incorrectly.
 		 */
-		\do_action( 'the_seo_framework_inaccessible_p_or_m_run', $p_or_m, $message );
+		\do_action( 'sgeobiz_seo_inaccessible_p_or_m_run', $p_or_m, $message );
 
 		/**
 		 * Filter whether to trigger an error for _doing_it_wrong() calls.
@@ -208,12 +208,12 @@ final class Debug {
 		 *
 		 * @param bool $trigger Whether to trigger the error for _doing_it_wrong() calls. Default true.
 		 */
-		if ( \WP_DEBUG && \apply_filters( 'the_seo_framework_inaccessible_p_or_m_trigger_error', true ) ) {
+		if ( \WP_DEBUG && \apply_filters( 'sgeobiz_seo_inaccessible_p_or_m_trigger_error', true ) ) {
 			$message = \sprintf(
 				/* translators: 1: Method or Property name, 2: "inaccessible", 3: Class name. 4: Message */
-				\esc_html__( '%1$s is %2$s in %3$s. %4$s', 'autodescription' ),
+				\esc_html__( '%1$s is %2$s in %3$s. %4$s', 'sgeobiz-seo' ),
 				'<code>' . \esc_html( $p_or_m ) . '</code>',
-				'<strong>' . \esc_html__( 'inaccessible', 'autodescription' ) . '</strong>',
+				'<strong>' . \esc_html__( 'inaccessible', 'sgeobiz-seo' ) . '</strong>',
 				\sprintf( '<b>%s</b>', \esc_html( $handle ) ),
 				\esc_html( $message ),
 			);
@@ -259,7 +259,7 @@ final class Debug {
 		foreach ( \array_slice( $backtrace, 3 ) as $trace ) {
 			if (
 				   isset( $trace['object'] )
-				&& is_a( $trace['object'], \the_seo_framework_class(), false )
+				&& is_a( $trace['object'], \sgeobiz_seo_class(), false )
 			) {
 				$error = $trace;
 				break;
@@ -334,7 +334,7 @@ final class Debug {
 			return;
 
 		if ( Query::is_seo_settings_page( true ) )
-			\add_filter( 'the_seo_framework_current_object_id', static fn() => Query::get_the_front_page_id() );
+			\add_filter( 'sgeobiz_seo_current_object_id', static fn() => Query::get_the_front_page_id() );
 
 		// phpcs:ignore WordPress.Security.EscapeOutput -- callee escapes.
 		Template::output_view( 'debug/header' );
@@ -365,7 +365,7 @@ final class Debug {
 	/**
 	 * Sets debug query cache.
 	 *
-	 * @hook the_seo_framework_do_before_output 10
+	 * @hook sgeobiz_seo_do_before_output 10
 	 * @since 3.1.0 Introduced in 2.8.0, but the name changed.
 	 * @access private
 	 */

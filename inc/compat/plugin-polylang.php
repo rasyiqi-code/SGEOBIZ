@@ -1,33 +1,33 @@
 <?php
 /**
- * @package The_SEO_Framework\Compat\Plugin\PolyLang
- * @subpackage The_SEO_Framework\Compatibility
+ * @package SGEOBIZ_SEO\Compat\Plugin\PolyLang
+ * @subpackage SGEOBIZ_SEO\Compatibility
  * @access private
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Helper\Query,
 	Meta\URI,
 };
 
-\add_action( 'the_seo_framework_sitemap_header', __NAMESPACE__ . '\_polylang_set_sitemap_language' );
-\add_filter( 'the_seo_framework_sitemap_endpoint_list', __NAMESPACE__ . '\_polylang_register_sitemap_languages', 20 );
-\add_filter( 'the_seo_framework_sitemap_hpt_query_args', __NAMESPACE__ . '\_polylang_sitemap_append_non_translatables' );
-\add_filter( 'the_seo_framework_sitemap_nhpt_query_args', __NAMESPACE__ . '\_polylang_sitemap_append_non_translatables' );
-\add_filter( 'the_seo_framework_title_from_custom_field', __NAMESPACE__ . '\pll__' );
-\add_filter( 'the_seo_framework_title_from_generation', __NAMESPACE__ . '\pll__' );
-\add_filter( 'the_seo_framework_custom_field_description', __NAMESPACE__ . '\pll__' );
-\add_filter( 'the_seo_framework_generated_description', __NAMESPACE__ . '\pll__' );
-\add_filter( 'the_seo_framework_front_init', __NAMESPACE__ . '\_hijack_polylang_home_url' );
+\add_action( 'sgeobiz_seo_sitemap_header', __NAMESPACE__ . '\_polylang_set_sitemap_language' );
+\add_filter( 'sgeobiz_seo_sitemap_endpoint_list', __NAMESPACE__ . '\_polylang_register_sitemap_languages', 20 );
+\add_filter( 'sgeobiz_seo_sitemap_hpt_query_args', __NAMESPACE__ . '\_polylang_sitemap_append_non_translatables' );
+\add_filter( 'sgeobiz_seo_sitemap_nhpt_query_args', __NAMESPACE__ . '\_polylang_sitemap_append_non_translatables' );
+\add_filter( 'sgeobiz_seo_title_from_custom_field', __NAMESPACE__ . '\pll__' );
+\add_filter( 'sgeobiz_seo_title_from_generation', __NAMESPACE__ . '\pll__' );
+\add_filter( 'sgeobiz_seo_custom_field_description', __NAMESPACE__ . '\pll__' );
+\add_filter( 'sgeobiz_seo_generated_description', __NAMESPACE__ . '\pll__' );
+\add_filter( 'sgeobiz_seo_front_init', __NAMESPACE__ . '\_hijack_polylang_home_url' );
 \add_filter( 'pll_home_url_white_list', __NAMESPACE__ . '\_polylang_allow_tsf_home_url' );
-\add_action( 'the_seo_framework_cleared_sitemap_transients', __NAMESPACE__ . '\_polylang_flush_sitemap' );
+\add_action( 'sgeobiz_seo_cleared_sitemap_transients', __NAMESPACE__ . '\_polylang_flush_sitemap' );
 \add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\_defunct_badly_coded_polylang_script', 11 );
-\add_filter( 'the_seo_framework_seo_column_keys_order', __NAMESPACE__ . '\_polylang_seo_column_keys_order' );
-\add_filter( 'the_seo_framework_supported_taxonomy', __NAMESPACE__ . '\_polylang_support_language_taxonomy', 10, 2 );
+\add_filter( 'sgeobiz_seo_seo_column_keys_order', __NAMESPACE__ . '\_polylang_seo_column_keys_order' );
+\add_filter( 'sgeobiz_seo_supported_taxonomy', __NAMESPACE__ . '\_polylang_support_language_taxonomy', 10, 2 );
 \add_action( 'pre_get_posts', __NAMESPACE__ . '\_polylang_translate_query_exclusions', 10000 );
 
 /**
@@ -36,7 +36,7 @@ use The_SEO_Framework\{
  * This has no other intended effect. But default permalinks may react more tsf_sitemap query values,
  * specifically ?tsf_sitemap=_base_polylang_es&lang=es" (assumed, untested).
  *
- * @hook the_seo_framework_sitemap_endpoint_list 20
+ * @hook sgeobiz_seo_sitemap_endpoint_list 20
  * @since 5.0.5
  * @param array[] $list {
  *     A list of sitemap endpoints keyed by ID.
@@ -107,7 +107,7 @@ function _polylang_register_sitemap_languages( $list ) {
  * This is a fallback solution because we get endless support requests for Polylang, and we wish that plugin would be
  * rewritten from scratch.
  *
- * @hook the_seo_framework_sitemap_header 10
+ * @hook sgeobiz_seo_sitemap_header 10
  * @since 4.1.2
  */
 function _polylang_set_sitemap_language() {
@@ -149,8 +149,8 @@ function _polylang_set_sitemap_language() {
  *      found "translated" by this query. This query, however, is forwarded to WP_Query, which Polylang can filter.
  *      It wouldn't surprise me if they added another black/white list for that. So, my investigation stops here.
  *
- * @hook the_seo_framework_sitemap_hpt_query_args 10
- * @hook the_seo_framework_sitemap_nhpt_query_args 10
+ * @hook sgeobiz_seo_sitemap_hpt_query_args 10
+ * @hook sgeobiz_seo_sitemap_nhpt_query_args 10
  * @since 4.1.2
  * @since 4.2.0 Now relies on the term_id, instead of mixing term_taxonomy_id and term_id.
  *              This is unlike Polylang, which relies on term_taxonomy_id somewhat consistently; however,
@@ -204,7 +204,7 @@ function _polylang_sitemap_append_non_translatables( $args ) {
  * TSF supports it only for query adjustment checks; admin taxonomy SEO support
  * remains unchanged.
  *
- * @hook the_seo_framework_supported_taxonomy 10
+ * @hook sgeobiz_seo_supported_taxonomy 10
  * @since 5.1.5
  * @link https://github.com/polylang/polylang/pull/1871 Partially supersedes this for pre_get_posts.
  *
@@ -293,10 +293,10 @@ function _polylang_translate_query_exclusions( $wp_query ) {
 /**
  * Enables string translation support on titles and descriptions.
  *
- * @hook the_seo_framework_title_from_custom_field 10
- * @hook the_seo_framework_title_from_generation 10
- * @hook the_seo_framework_generated_description 10
- * @hook the_seo_framework_custom_field_description 10
+ * @hook sgeobiz_seo_title_from_custom_field 10
+ * @hook sgeobiz_seo_title_from_generation 10
+ * @hook sgeobiz_seo_generated_description 10
+ * @hook sgeobiz_seo_custom_field_description 10
  * @since 3.1.0
  *
  * @param string $string The title or description
@@ -317,7 +317,7 @@ function pll__( $string ) {
  * We didn't implement this in our default APIs because we want to trigger WP hooks.
  * Executing database queries directly bypass those. So, we do this afterward.
  *
- * @hook the_seo_framework_cleared_sitemap_transients 10
+ * @hook sgeobiz_seo_cleared_sitemap_transients 10
  * @since 4.0.5
  * @since 5.0.0 Removed clearing once-per-request restriction.
  * @global \wpdb $wpdb
@@ -384,7 +384,7 @@ function _defunct_badly_coded_polylang_script() {
  * in Polylang's method (it being `apply_filters()`). This is of no functional impact but on the performance,
  * since that function is not in the allow/block lists.
  *
- * @hook the_seo_framework_front_init 10
+ * @hook sgeobiz_seo_front_init 10
  * @see https://github.com/polylang/polylang/issues/1422
  * @see https://github.com/sybrew/the-seo-framework/issues/665
  * @since 5.0.5
@@ -441,7 +441,7 @@ function _hijack_polylang_home_url() {
  */
 function _polylang_allow_tsf_home_url( $allow_list ) {
 
-	$allow_list[] = [ 'file' => \THE_SEO_FRAMEWORK_DIR_PATH ];
+	$allow_list[] = [ 'file' => \SGEOBIZ_SEO_DIR_PATH ];
 
 	return $allow_list;
 }

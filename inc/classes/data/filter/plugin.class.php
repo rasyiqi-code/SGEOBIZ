@@ -1,16 +1,16 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Data\Filter\Plugin
- * @subpackage The_SEO_Framework\Data\Plugin
+ * @package SGEOBIZ_SEO\Classes\Data\Filter\Plugin
+ * @subpackage SGEOBIZ_SEO\Data\Plugin
  */
 
-namespace The_SEO_Framework\Data\Filter;
+namespace SGEOBIZ_SEO\Data\Filter;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\has_run;
+use function SGEOBIZ_SEO\has_run;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper\Taxonomy,
 	Helper\Post_Type,
@@ -52,9 +52,9 @@ final class Plugin {
 	 * Filters the settings whenever updated.
 	 * Only hooked in admin.
 	 *
-	 * @hook "sanitize_option . THE_SEO_FRAMEWORK_SITE_OPTIONS" 10
+	 * @hook "sanitize_option . SGEOBIZ_SEO_SITE_OPTIONS" 10
 	 * @since 2.2.2
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `sanitize`.
 	 *
 	 * @param mixed  $value          The sanitized [sic] option value.
@@ -85,7 +85,7 @@ final class Plugin {
 		 * }
 		 */
 		$sanitizers = \apply_filters(
-			'the_seo_framework_settings_update_sanitizers',
+			'sgeobiz_seo_settings_update_sanitizers',
 			self::$sanitizers,
 		);
 
@@ -111,7 +111,7 @@ final class Plugin {
 	 * Add sanitization filters to sub-options.
 	 * Will only set filters if they don't already exists. This allows for other
 	 * developers to add their custom filters before we do --- use filter
-	 * `'sanitize_option_' . \THE_SEO_FRAMEWORK_SITE_OPTIONS`.
+	 * `'sanitize_option_' . \SGEOBIZ_SEO_SITE_OPTIONS`.
 	 *
 	 * @since 5.0.0
 	 *
@@ -141,7 +141,7 @@ final class Plugin {
 	 *
 	 * @since 2.8.0
 	 * @since 3.1.0 Added caching, preventing duplicate registrations.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `init_sanitizer_filters`.
 	 */
 	public static function register_sanitizers_jit() {

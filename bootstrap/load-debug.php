@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework
- * @subpackage The_SEO_Framework\Bootstrap
+ * @package SGEOBIZ_SEO
+ * @subpackage SGEOBIZ_SEO\Bootstrap
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Internal\Debug;
+use SGEOBIZ_SEO\Internal\Debug;
 
 /**
  * The SEO Framework plugin
@@ -27,6 +27,6 @@ use The_SEO_Framework\Internal\Debug;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-\add_action( 'the_seo_framework_do_before_output', [ Debug::class, '_set_debug_query_output_cache' ] );
+\add_action( 'sgeobiz_seo_do_before_output', [ Debug::class, '_set_debug_query_output_cache' ] );
 \add_action( 'admin_footer', [ Debug::class, '_do_debug_output' ] );
 \add_action( 'wp_footer', [ Debug::class, '_do_debug_output' ] );

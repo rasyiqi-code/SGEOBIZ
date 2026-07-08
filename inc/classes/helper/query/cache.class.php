@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Helper\Query\Cache
- * @subpackage The_SEO_Framework\Query
+ * @package SGEOBIZ_SEO\Classes\Helper\Query\Cache
+ * @subpackage SGEOBIZ_SEO\Query
  */
 
-namespace The_SEO_Framework\Helper\Query;
+namespace SGEOBIZ_SEO\Helper\Query;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Helper\Query; // Yes, it is legal to share class and namespaces.
+use SGEOBIZ_SEO\Helper\Query; // Yes, it is legal to share class and namespaces.
 
 /**
  * The SEO Framework plugin
@@ -32,7 +32,7 @@ use The_SEO_Framework\Helper\Query; // Yes, it is legal to share class and names
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->query()->cache() instead.
+ *         Use sgeobiz()->query()->cache() instead.
  */
 class Cache {
 
@@ -96,7 +96,7 @@ class Cache {
 	 *              3. Now returns false on WP CLI.
 	 * @since 3.2.2 No longer spits out errors on production websites.
 	 * @since 5.0.0 1. No longer accepts the $method parameter.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 * @global \WP_Query $wp_query
 	 * @global \WP_Screen|null $current_screen
 	 *
@@ -113,7 +113,7 @@ class Cache {
 		if ( isset( $GLOBALS['wp_query']->query ) || isset( $GLOBALS['current_screen'] ) )
 			return self::$can_cache_query = true;
 
-		if ( \THE_SEO_FRAMEWORK_DEBUG )
+		if ( \SGEOBIZ_SEO_DEBUG )
 			self::do_query_error_notice();
 
 		// Don't set yet.
@@ -126,7 +126,7 @@ class Cache {
 	 *
 	 * @since 3.0.0
 	 * @since 5.0.0 1. No longer accepts the method parameter.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param string $method The original caller method.
 	 */
@@ -147,14 +147,14 @@ class Cache {
 		/**
 		 * Search from the bottom up, for we want the first caller, not the last.
 		 *
-		 * This is unlike `The_SEO_Framework\Internal/Debug::get_error()` that searches
+		 * This is unlike `SGEOBIZ_SEO\Internal/Debug::get_error()` that searches
 		 * from top to bottom, because there we expect the user to directly call a
 		 * broken function in TSF; we clean up internal deprecations before public release.
 		 **/
 		foreach ( array_reverse( \array_slice( $backtrace, 3 ) ) as $trace ) {
 			if (
 				   isset( $trace['object'] )
-				&& is_a( $trace['object'], \the_seo_framework_class(), false )
+				&& is_a( $trace['object'], \sgeobiz_seo_class(), false )
 			) {
 				$error = $trace;
 				break;
@@ -167,7 +167,7 @@ class Cache {
 			$message .= " - In file: {$error['file']}";
 			$message .= " - On line: {$error['line']}";
 		}
-		\tsf()->_doing_it_wrong( \esc_html( $error['function'] ?? '' ), \esc_html( $message ), '2.9.0' );
+		\sgeobiz()->_doing_it_wrong( \esc_html( $error['function'] ?? '' ), \esc_html( $message ), '2.9.0' );
 
 		// Backtrace debugging, just once per request.
 		$depth = 10;

@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Admin
- * @subpackage The_SEO_Framework\Admin\Settings
+ * @package SGEOBIZ_SEO\Views\Admin
+ * @subpackage SGEOBIZ_SEO\Admin\Settings
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
 // phpcs:disable WordPress.WP.GlobalVariablesOverride -- This isn't the global scope.
 
@@ -36,22 +36,22 @@ $type    = '';
 
 switch ( $notice ) {
 	case 'updated':
-		$message = \__( 'SEO settings are saved, and the caches have been flushed.', 'autodescription' );
+		$message = \__( 'SEO settings are saved, and the caches have been flushed.', 'sgeobiz-seo' );
 		$type    = 'updated';
 		break;
 
 	case 'unchanged':
-		$message = \__( 'No SEO settings were changed, but the caches have been flushed.', 'autodescription' );
+		$message = \__( 'No SEO settings were changed, but the caches have been flushed.', 'sgeobiz-seo' );
 		$type    = 'info';
 		break;
 
 	case 'reset':
-		$message = \__( 'SEO settings are reset, and the caches have been flushed.', 'autodescription' );
+		$message = \__( 'SEO settings are reset, and the caches have been flushed.', 'sgeobiz-seo' );
 		$type    = 'warning';
 		break;
 
 	case 'error':
-		$message = \__( 'An unknown error occurred saving SEO settings.', 'autodescription' );
+		$message = \__( 'An unknown error occurred saving SEO settings.', 'sgeobiz-seo' );
 		$type    = 'error';
 }
 

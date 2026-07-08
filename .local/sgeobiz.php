@@ -8,7 +8,7 @@
  * @package SGEOBIZ
  */
 
-defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 // Konstanta jalur direktori .local
 define( 'SGEOBIZ_LOCAL_DIR', dirname( __FILE__ ) . DIRECTORY_SEPARATOR );
@@ -37,9 +37,9 @@ spl_autoload_register( 'sgeobiz_autoload' );
 
 /**
  * Boot semua modul SGEOBIZ.
- * Di-hook ke 'the_seo_framework_loaded' agar TSF sudah siap.
+ * Di-hook ke 'sgeobiz_seo_loaded' agar TSF sudah siap.
  */
-add_action( 'the_seo_framework_loaded', 'sgeobiz_boot', 10 );
+add_action( 'sgeobiz_seo_loaded', 'sgeobiz_boot', 10 );
 function sgeobiz_boot() {
 	// 1. Branding (white-label)
 	SGEOBIZ_Branding::init();

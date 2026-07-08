@@ -1,13 +1,13 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Admin\Lists\Table
+ * @package SGEOBIZ_SEO\Classes\Admin\Lists\Table
  */
 
-namespace The_SEO_Framework\Admin\Lists;
+namespace SGEOBIZ_SEO\Admin\Lists;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Helper\{
+use SGEOBIZ_SEO\Helper\{
 	Post_Type,
 	Query,
 	Taxonomy,
@@ -43,7 +43,7 @@ use The_SEO_Framework\Helper\{
  * Totally negligible.
  *
  * @since 4.0.0
- * @since 5.0.0 1. Moved from `\The_SEO_Framework\Bridges`.
+ * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Bridges`.
  *              2. Renamed from `ListTable`.
  * @access private
  */
@@ -268,7 +268,7 @@ abstract class Table {
 	 * This is a necessity as WordPress doesn't trigger actions on update.
 	 *
 	 * TODO bind to WordPress's function instead? Didn't we already do that?!
-	 * See: `tsfLe._hijackListeners()`; Although, that doesn't cover "adding" new items.
+	 * See: `sgeobizLe._hijackListeners()`; Although, that doesn't cover "adding" new items.
 	 *
 	 * @since 4.0.5
 	 * @NOTE: Do not bind to `tsfLeDispatchUpdate`, it's a private action.

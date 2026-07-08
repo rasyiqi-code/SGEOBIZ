@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Internal\Silencer
- * @subpackage The_SEO_Framework\Classes\Facade
+ * @package SGEOBIZ_SEO\Classes\Internal\Silencer
+ * @subpackage SGEOBIZ_SEO\Classes\Facade
  */
 
-namespace The_SEO_Framework\Internal;
+namespace SGEOBIZ_SEO\Internal;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 // phpcs:disable Generic.CodeAnalysis.UnusedFunctionParameter -- That's the whole premise of this file.
 
@@ -28,22 +28,22 @@ namespace The_SEO_Framework\Internal;
  */
 
 /**
- * Class The_SEO_Framework\Internal\Silencer
+ * Class SGEOBIZ_SEO\Internal\Silencer
  *
  * This is an empty class to silence invalid API calls when a class is soft-disabled.
  * This alleviates redundant checks throughout the plugin API.
  *
  * @since 3.1.0
- * @since 4.2.0 Changed namespace from \The_SEO_Framework to \The_SEO_Framework\Internal
- * @since 5.0.5 Repurposed for silencing the pool (\The_SEO_Framework\Pool).
+ * @since 4.2.0 Changed namespace from \SGEOBIZ_SEO to \SGEOBIZ_SEO\Internal
+ * @since 5.0.5 Repurposed for silencing the pool (\SGEOBIZ_SEO\Pool).
  * @access private
- * @property The_SEO_Framework\Internal\Silencer $instance
+ * @property SGEOBIZ_SEO\Internal\Silencer $instance
  */
 final class Silencer {
 
 	/**
 	 * @since 5.0.5
-	 * @var The_SEO_Framework\Internal\Silencer
+	 * @var SGEOBIZ_SEO\Internal\Silencer
 	 */
 	private static $instance;
 
@@ -54,7 +54,7 @@ final class Silencer {
 
 	/**
 	 * @since 5.0.5
-	 * @return The_SEO_Framework\Internal\Silencer
+	 * @return SGEOBIZ_SEO\Internal\Silencer
 	 */
 	public static function instance() {
 		return self::$instance ??= new self;

@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Front\Meta
- * @subpackage The_SEO_Framework\Front
+ * @package SGEOBIZ_SEO\Classes\Front\Meta
+ * @subpackage SGEOBIZ_SEO\Front
  */
 
-namespace The_SEO_Framework\Front\Meta;
+namespace SGEOBIZ_SEO\Front\Meta;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
  * The SEO Framework plugin
@@ -72,7 +72,7 @@ final class Tags {
 	 * Returns the registered callbacks by reference.
 	 *
 	 * @since 5.0.0
-	 * @see filter the_seo_framework_meta_generators.
+	 * @see filter sgeobiz_seo_meta_generators.
 	 *
 	 * @return callable[] Callbacks, passed by reference.
 	 */
@@ -84,7 +84,7 @@ final class Tags {
 	 * Returns the registered tag render data by reference.
 	 *
 	 * @since 5.0.0
-	 * @see filter the_seo_framework_meta_render_data.
+	 * @see filter sgeobiz_seo_meta_render_data.
 	 *
 	 * @return array[] The meta tags, passed by reference.
 	 */

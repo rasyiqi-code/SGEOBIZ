@@ -1,16 +1,16 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Data\Plugin\Post
- * @subpackage The_SEO_Framework\Data\Plugin
+ * @package SGEOBIZ_SEO\Classes\Data\Plugin\Post
+ * @subpackage SGEOBIZ_SEO\Data\Plugin
  */
 
-namespace The_SEO_Framework\Data\Plugin;
+namespace SGEOBIZ_SEO\Data\Plugin;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\is_headless;
+use function SGEOBIZ_SEO\is_headless;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper\Post_Type,
 	Helper\Query,
@@ -40,7 +40,7 @@ use The_SEO_Framework\{
  * @since 5.0.0
  * @since 5.1.0 Added the Property_Refresher trait.
  * @access protected
- *         Use tsf()->data()->plugin()->pta() instead.
+ *         Use sgeobiz()->data()->plugin()->pta() instead.
  *
  * @NOTE: All static:: calls within this class are intentional due to Property_Refresher trait.
  */
@@ -58,7 +58,7 @@ class PTA {
 	 *
 	 * @since 4.2.0
 	 * @since 5.0.0 1. Removed the third `$use_cache` parameter.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              3. Renamed from `get_post_type_archive_meta_item`.
 	 *
 	 * @param string $item      The item to get.
@@ -84,7 +84,7 @@ class PTA {
 	 * @since 4.2.0
 	 * @since 5.0.0 1. The first parameter may now be empty to autodetermine post type.
 	 *              2. Removed the second `$use_cache` parameter.
-	 *              3. Moved from `\The_SEO_Framework\Load`.
+	 *              3. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              4. Renamed from `get_post_type_archive_meta`.
 	 * @since 5.1.0 1. Now returns the default meta if the PTA isn't supported.
 	 *              2. Now registers `meta_memo` for automated refreshes.
@@ -127,7 +127,7 @@ class PTA {
 		 * @param bool  $headless  Whether the meta are headless.
 		 */
 		return static::$meta_memo[ $post_type ] = \apply_filters(
-			'the_seo_framework_post_type_archive_meta',
+			'sgeobiz_seo_post_type_archive_meta',
 			array_merge(
 				static::get_default_meta( $post_type ),
 				$meta,
@@ -141,7 +141,7 @@ class PTA {
 	 * Returns an array of all public post type archive option defaults.
 	 *
 	 * @since 4.2.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `get_all_post_type_archive_meta_defaults`.
 	 *
 	 * @return array[] The Post Type Archive Metadata default options
@@ -161,7 +161,7 @@ class PTA {
 	 * Returns an array of default post type archive meta.
 	 *
 	 * @since 4.2.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `get_post_type_archive_meta_defaults`.
 	 *              3. Added 'tw_card_type' value.
 	 *
@@ -175,7 +175,7 @@ class PTA {
 		 * @param int   $term_id The current term ID.
 		 */
 		return (array) \apply_filters(
-			'the_seo_framework_get_post_type_archive_meta_defaults',
+			'sgeobiz_seo_get_post_type_archive_meta_defaults',
 			[
 				'doctitle'           => '',
 				'title_no_blog_name' => 0,

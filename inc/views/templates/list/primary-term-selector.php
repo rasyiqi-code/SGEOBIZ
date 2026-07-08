@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Templates\List
- * @subpackage The_SEO_Framework\Admin\Edit\List
+ * @package SGEOBIZ_SEO\Templates\List
+ * @subpackage SGEOBIZ_SEO\Admin\Edit\List
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
 // phpcs:disable WordPress.WP.GlobalVariablesOverride -- This isn't the global scope.
 

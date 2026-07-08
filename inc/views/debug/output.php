@@ -1,16 +1,16 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Debug
- * @subpackage The_SEO_Framework\Debug
+ * @package SGEOBIZ_SEO\Views\Debug
+ * @subpackage SGEOBIZ_SEO\Debug
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
-use The_SEO_Framework\Internal\Debug;
+use SGEOBIZ_SEO\Internal\Debug;
 
-use The_SEO_Framework\Helper\{
+use SGEOBIZ_SEO\Helper\{
 	Post_Type,
 	Query,
 	Taxonomy,
@@ -64,8 +64,8 @@ if ( \is_admin() ) {
 				echo ' :: ';
 				echo \esc_html( "Type: $type" );
 				echo \esc_html( $mdash . 'ID: ' . $id );
-				echo \esc_html( $mdash . 'Plugin version: ' . THE_SEO_FRAMEWORK_VERSION );
-				echo \esc_html( $mdash . 'Plugin DB version: c' . \get_option( 'the_seo_framework_upgraded_db_version' ) . ' | e' . THE_SEO_FRAMEWORK_DB_VERSION );
+				echo \esc_html( $mdash . 'Plugin version: ' . SGEOBIZ_SEO_VERSION );
+				echo \esc_html( $mdash . 'Plugin DB version: c' . \get_option( 'sgeobiz_seo_upgraded_db_version' ) . ' | e' . SGEOBIZ_SEO_DB_VERSION );
 			}
 			?>
 		</h3>
@@ -87,8 +87,8 @@ if ( \is_admin() ) {
 			echo ' :: ';
 			echo 'Type: ' . \esc_html( $type );
 			echo \esc_html( $mdash . 'ID: ' . $id );
-			echo \esc_html( $mdash . 'Plugin version: ' . THE_SEO_FRAMEWORK_VERSION );
-			echo \esc_html( $mdash . 'Plugin DB version: c' . \get_option( 'the_seo_framework_upgraded_db_version' ) . ' | e' . THE_SEO_FRAMEWORK_DB_VERSION );
+			echo \esc_html( $mdash . 'Plugin version: ' . SGEOBIZ_SEO_VERSION );
+			echo \esc_html( $mdash . 'Plugin DB version: c' . \get_option( 'sgeobiz_seo_upgraded_db_version' ) . ' | e' . SGEOBIZ_SEO_DB_VERSION );
 			?>
 		</h3>
 		<div style="position:absolute;bottom:0;right:0;left:0;top:39px;margin:0;padding:0;background:#fff;border-radius:3px;overflow-x:hidden;z-index:9001">

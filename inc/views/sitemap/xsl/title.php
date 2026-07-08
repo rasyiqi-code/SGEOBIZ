@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Sitemap\XSL\Table
- * @subpackage The_SEO_Framework\Sitemap\XSL
+ * @package SGEOBIZ_SEO\Views\Sitemap\XSL\Table
+ * @subpackage SGEOBIZ_SEO\Sitemap\XSL
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
-use The_SEO_Framework\Data\Filter\Sanitize;
+use SGEOBIZ_SEO\Data\Filter\Sanitize;
 
 // phpcs:disable WordPress.WP.GlobalVariablesOverride -- This isn't the global scope.
 
@@ -29,7 +29,7 @@ use The_SEO_Framework\Data\Filter\Sanitize;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-$title    = \__( 'XML Sitemap', 'autodescription' );
+$title    = \__( 'XML Sitemap', 'sgeobiz-seo' );
 $sep      = Meta\Title::get_separator();
 $addition = Data\Blog::get_public_blog_name();
 

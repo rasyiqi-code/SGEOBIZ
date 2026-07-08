@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Sitemap\WP\Posts
+ * @package SGEOBIZ_SEO\Classes\Sitemap\WP\Posts
  * @subpackage WordPress\Sitemaps
  */
 
-namespace The_SEO_Framework\Sitemap\WP;
+namespace SGEOBIZ_SEO\Sitemap\WP;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Sitemap,
 	Helper\Format\Time,
@@ -35,7 +35,7 @@ use The_SEO_Framework\{
  * Augments the WordPress Core 'posts' sitemap.
  *
  * @since 4.1.2
- * @since 5.0.0 Moved from `\The_SEO_Framework\Builders\CoreSitemaps`.
+ * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Builders\CoreSitemaps`.
  *
  * @access private
  */
@@ -138,7 +138,7 @@ class Posts extends \WP_Sitemaps_Posts {
 					 * @param string $lastmod The lastmod time in SQL notation (`Y-m-d H:i:s`). Expected to explicitly follow that format!
 					 */
 					$lastmod = (string) \apply_filters(
-						'the_seo_framework_sitemap_blog_lastmod',
+						'sgeobiz_seo_sitemap_blog_lastmod',
 						$latests_posts[0]->post_date_gmt ?? '0000-00-00 00:00:00',
 					);
 

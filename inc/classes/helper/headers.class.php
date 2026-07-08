@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Helper\Headers
- * @subpackage The_SEO_Framework\Query
+ * @package SGEOBIZ_SEO\Classes\Helper\Headers
+ * @subpackage SGEOBIZ_SEO\Query
  */
 
-namespace The_SEO_Framework\Helper;
+namespace SGEOBIZ_SEO\Helper;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
  * The SEO Framework plugin
@@ -30,7 +30,7 @@ namespace The_SEO_Framework\Helper;
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->headers() instead.
+ *         Use sgeobiz()->headers() instead.
  */
 class Headers {
 
@@ -63,7 +63,7 @@ class Headers {
 	 * Sets the X-Robots tag headers to 'noindex'.
 	 *
 	 * @hook do_robots 9
-	 * @hook the_seo_framework_sitemap_header 10
+	 * @hook sgeobiz_seo_sitemap_header 10
 	 * @since 5.0.0
 	 */
 	public static function output_robots_noindex_headers() {
@@ -71,7 +71,7 @@ class Headers {
 		 * @since 4.0.5
 		 * @param bool $noindex Whether a noindex header must be set.
 		 */
-		if ( \apply_filters( 'the_seo_framework_set_noindex_header', true ) )
+		if ( \apply_filters( 'sgeobiz_seo_set_noindex_header', true ) )
 			headers_sent() or header( 'X-Robots-Tag: noindex', true );
 	}
 }

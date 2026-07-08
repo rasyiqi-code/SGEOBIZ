@@ -1,18 +1,18 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Admin\Metaboxes
- * @subpackage The_SEO_Framework\Admin\Settings
+ * @package SGEOBIZ_SEO\Views\Admin\Metaboxes
+ * @subpackage SGEOBIZ_SEO\Admin\Settings
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
-use The_SEO_Framework\Admin\Settings\Layout\{
+use SGEOBIZ_SEO\Admin\Settings\Layout\{
 	HTML,
 	Input,
 };
-use The_SEO_Framework\Helper\{
+use SGEOBIZ_SEO\Helper\{
 	Format\Markdown,
 	Post_Type,
 	Query,
@@ -47,27 +47,27 @@ switch ( $instance ) :
 
 		$tabs = [
 			'layout'      => [
-				'name'     => \__( 'Layout', 'autodescription' ),
+				'name'     => \__( 'Layout', 'sgeobiz-seo' ),
 				'callback' => [ $_settings_class, '_general_metabox_layout_tab' ],
 				'dashicon' => 'screenoptions',
 			],
 			'performance' => [
-				'name'     => \__( 'Performance', 'autodescription' ),
+				'name'     => \__( 'Performance', 'sgeobiz-seo' ),
 				'callback' => [ $_settings_class, '_general_metabox_performance_tab' ],
 				'dashicon' => 'performance',
 			],
 			'canonical'   => [
-				'name'     => \__( 'Canonical', 'autodescription' ),
+				'name'     => \__( 'Canonical', 'sgeobiz-seo' ),
 				'callback' => [ $_settings_class, '_general_metabox_canonical_tab' ],
 				'dashicon' => 'external',
 			],
 			'timestamps'  => [
-				'name'     => \__( 'Timestamps', 'autodescription' ),
+				'name'     => \__( 'Timestamps', 'sgeobiz-seo' ),
 				'callback' => [ $_settings_class, '_general_metabox_timestamps_tab' ],
 				'dashicon' => 'clock',
 			],
 			'exclusions'  => [
-				'name'     => \__( 'Exclusions', 'autodescription' ),
+				'name'     => \__( 'Exclusions', 'sgeobiz-seo' ),
 				'callback' => [ $_settings_class, '_general_metabox_exclusions_tab' ],
 				'dashicon' => 'editor-unlink',
 			],
@@ -79,34 +79,34 @@ switch ( $instance ) :
 			 * @since 2.8.0
 			 * @param array $tabs The default tabs.
 			 */
-			(array) \apply_filters( 'the_seo_framework_general_settings_tabs', $tabs ),
+			(array) \apply_filters( 'sgeobiz_seo_general_settings_tabs', $tabs ),
 		);
 		break;
 
 	case 'layout':
-		HTML::header_title( \__( 'Administrative Layout Settings', 'autodescription' ) );
-		HTML::description( \__( 'SEO hints and options are displayed throughout the dashboard.', 'autodescription' ) );
+		HTML::header_title( \__( 'Administrative Layout Settings', 'sgeobiz-seo' ) );
+		HTML::description( \__( 'SEO hints and options are displayed throughout the dashboard.', 'sgeobiz-seo' ) );
 
 		?>
 		<hr>
 		<?php
-		HTML::header_title( \__( 'SEO Bar Settings', 'autodescription' ) );
+		HTML::header_title( \__( 'SEO Bar Settings', 'sgeobiz-seo' ) );
 		HTML::wrap_fields(
 			[
 				Input::make_checkbox( [
 					'id'     => 'display_seo_bar_tables',
-					'label'  => \esc_html__( 'Display the SEO Bar in overview tables?', 'autodescription' ),
+					'label'  => \esc_html__( 'Display the SEO Bar in overview tables?', 'sgeobiz-seo' ),
 					'escape' => false,
 				] ),
 				Input::make_checkbox( [
 					'id'     => 'display_seo_bar_metabox',
-					'label'  => \esc_html__( 'Display the SEO Bar in the SEO Settings meta box?', 'autodescription' ),
+					'label'  => \esc_html__( 'Display the SEO Bar in the SEO Settings meta box?', 'sgeobiz-seo' ),
 					'escape' => false,
 				] ),
 				Input::make_checkbox( [
 					'id'     => 'seo_bar_low_contrast',
-					'label'  => \esc_html__( 'Use a reduced contrast color palette?', 'autodescription' ) . ' ' . HTML::make_info(
-						\__( 'If you find the SEO Bar distracting, this may help you focus better.', 'autodescription' ),
+					'label'  => \esc_html__( 'Use a reduced contrast color palette?', 'sgeobiz-seo' ) . ' ' . HTML::make_info(
+						\__( 'If you find the SEO Bar distracting, this may help you focus better.', 'sgeobiz-seo' ),
 						'',
 						false,
 					),
@@ -114,8 +114,8 @@ switch ( $instance ) :
 				] ),
 				Input::make_checkbox( [
 					'id'     => 'seo_bar_symbols',
-					'label'  => \esc_html__( 'Use symbols for warnings?', 'autodescription' ) . ' ' . HTML::make_info(
-						\__( 'If you have difficulty discerning colors, this may help you spot issues more easily.', 'autodescription' ),
+					'label'  => \esc_html__( 'Use symbols for warnings?', 'sgeobiz-seo' ) . ' ' . HTML::make_info(
+						\__( 'If you have difficulty discerning colors, this may help you spot issues more easily.', 'sgeobiz-seo' ),
 						'',
 						false,
 					),
@@ -128,16 +128,16 @@ switch ( $instance ) :
 		?>
 		<hr>
 		<?php
-		HTML::header_title( \__( 'Counter Settings', 'autodescription' ) );
+		HTML::header_title( \__( 'Counter Settings', 'sgeobiz-seo' ) );
 
 		$pixel_info = HTML::make_info(
-			\__( 'The pixel counter computes whether the input will fit on search engine result pages.', 'autodescription' ),
+			\__( 'The pixel counter computes whether the input will fit on search engine result pages.', 'sgeobiz-seo' ),
 			'https://docs.sgeobiz.com/',
 			false,
 		);
 
 		$character_info = HTML::make_info(
-			\__( 'The character counter is based on guidelines.', 'autodescription' ),
+			\__( 'The character counter is based on guidelines.', 'sgeobiz-seo' ),
 			'',
 			false,
 		);
@@ -146,12 +146,12 @@ switch ( $instance ) :
 			[
 				Input::make_checkbox( [
 					'id'     => 'display_pixel_counter',
-					'label'  => \esc_html__( 'Display pixel counters?', 'autodescription' ) . " $pixel_info",
+					'label'  => \esc_html__( 'Display pixel counters?', 'sgeobiz-seo' ) . " $pixel_info",
 					'escape' => false,
 				] ),
 				Input::make_checkbox( [
 					'id'     => 'display_character_counter',
-					'label'  => \esc_html__( 'Display character counters?', 'autodescription' ) . " $character_info",
+					'label'  => \esc_html__( 'Display character counters?', 'sgeobiz-seo' ) . " $character_info",
 					'escape' => false,
 				] ),
 			],
@@ -161,10 +161,10 @@ switch ( $instance ) :
 		?>
 		<hr>
 		<?php
-		HTML::header_title( \__( 'Option Field Settings', 'autodescription' ) );
+		HTML::header_title( \__( 'Option Field Settings', 'sgeobiz-seo' ) );
 
 		$term_info = HTML::make_info(
-			\__( 'Terms are entries in taxonomies, e.g., Categories and Tags.', 'autodescription' ),
+			\__( 'Terms are entries in taxonomies, e.g., Categories and Tags.', 'sgeobiz-seo' ),
 			'',
 			false,
 		);
@@ -173,51 +173,51 @@ switch ( $instance ) :
 			[
 				Input::make_checkbox( [
 					'id'     => 'display_list_edit_options',
-					'label'  => \esc_html__( 'Display quick-edit and bulk-edit option fields?', 'autodescription' ),
+					'label'  => \esc_html__( 'Display quick-edit and bulk-edit option fields?', 'sgeobiz-seo' ),
 					'escape' => false,
 				] ),
 				Input::make_checkbox( [
 					'id'     => 'display_term_edit_options',
-					'label'  => \esc_html__( 'Display term-edit option fields?', 'autodescription' ) . " $term_info",
+					'label'  => \esc_html__( 'Display term-edit option fields?', 'sgeobiz-seo' ) . " $term_info",
 					'escape' => false,
 				] ),
 				Input::make_checkbox( [
 					'id'     => 'display_user_edit_options',
-					'label'  => \esc_html__( 'Display user-edit option fields?', 'autodescription' ),
+					'label'  => \esc_html__( 'Display user-edit option fields?', 'sgeobiz-seo' ),
 					'escape' => false,
 				] ),
 			],
 			true,
 		);
 
-		HTML::description( \__( 'Note: Hiding option fields does not remove the data once stored in them.', 'autodescription' ) );
+		HTML::description( \__( 'Note: Hiding option fields does not remove the data once stored in them.', 'sgeobiz-seo' ) );
 		break;
 
 	case 'performance':
-		HTML::header_title( \__( 'Performance Settings', 'autodescription' ) );
-		HTML::description( \__( "Depending on your server's configuration, adjusting these settings can affect performance.", 'autodescription' ) );
+		HTML::header_title( \__( 'Performance Settings', 'sgeobiz-seo' ) );
+		HTML::description( \__( "Depending on your server's configuration, adjusting these settings can affect performance.", 'sgeobiz-seo' ) );
 
 		?>
 		<hr>
 		<?php
-		HTML::header_title( \__( 'Query Alteration Settings', 'autodescription' ) );
+		HTML::header_title( \__( 'Query Alteration Settings', 'sgeobiz-seo' ) );
 		HTML::description_noesc(
-			\esc_html__( "Altering the query allows for more control of the site's hierarchy.", 'autodescription' )
+			\esc_html__( "Altering the query allows for more control of the site's hierarchy.", 'sgeobiz-seo' )
 			. '<br>' .
-			\esc_html__( 'If your website has thousands of pages, these options can greatly affect database performance.', 'autodescription' ),
+			\esc_html__( 'If your website has thousands of pages, these options can greatly affect database performance.', 'sgeobiz-seo' ),
 		);
 
 		HTML::description_noesc(
-			\esc_html__( 'Altering the query in the database is more accurate, but can increase database query time.', 'autodescription' )
+			\esc_html__( 'Altering the query in the database is more accurate, but can increase database query time.', 'sgeobiz-seo' )
 			. '<br>' .
-			\esc_html__( 'Altering the query on the site is much faster, but can lead to inconsistent pagination. It can also lead to 404 error messages if all queried pages have been excluded.', 'autodescription' ),
+			\esc_html__( 'Altering the query on the site is much faster, but can lead to inconsistent pagination. It can also lead to 404 error messages if all queried pages have been excluded.', 'sgeobiz-seo' ),
 		);
 
 		$query_types = (array) \apply_filters(
-			'the_seo_framework_query_alteration_types',
+			'sgeobiz_seo_query_alteration_types',
 			[
-				'in_query'   => \_x( 'In the database', 'Perform query alteration: In the database', 'autodescription' ),
-				'post_query' => \_x( 'On the site', 'Perform query alteration: On the site', 'autodescription' ),
+				'in_query'   => \_x( 'In the database', 'Perform query alteration: In the database', 'sgeobiz-seo' ),
+				'post_query' => \_x( 'On the site', 'Perform query alteration: On the site', 'sgeobiz-seo' ),
 			],
 		);
 
@@ -243,7 +243,7 @@ switch ( $instance ) :
 			);
 		}
 
-		$perform_alteration_i18n = \esc_html__( 'Perform alteration:', 'autodescription' );
+		$perform_alteration_i18n = \esc_html__( 'Perform alteration:', 'sgeobiz-seo' );
 
 		$search_query_select_field = vsprintf(
 			'<label for="%1$s"><strong>%2$s</strong></label> <select name="%3$s" id="%1$s">%4$s</select>',
@@ -269,8 +269,8 @@ switch ( $instance ) :
 			[
 				Input::make_checkbox( [
 					'id'     => 'alter_search_query',
-					'label'  => \esc_html__( 'Enable search query alteration?', 'autodescription' )
-						. ' ' . HTML::make_info( \__( 'This allows you to exclude pages from on-site search results.', 'autodescription' ), '', false ),
+					'label'  => \esc_html__( 'Enable search query alteration?', 'sgeobiz-seo' )
+						. ' ' . HTML::make_info( \__( 'This allows you to exclude pages from on-site search results.', 'sgeobiz-seo' ), '', false ),
 					'escape' => false,
 				] ),
 				$search_query_select_field,
@@ -282,8 +282,8 @@ switch ( $instance ) :
 			[
 				Input::make_checkbox( [
 					'id'     => 'alter_archive_query',
-					'label'  => \esc_html__( 'Enable archive query alteration?', 'autodescription' )
-						. ' ' . HTML::make_info( \__( 'This allows you to exclude pages from on-site archive listings.', 'autodescription' ), '', false ),
+					'label'  => \esc_html__( 'Enable archive query alteration?', 'sgeobiz-seo' )
+						. ' ' . HTML::make_info( \__( 'This allows you to exclude pages from on-site archive listings.', 'sgeobiz-seo' ), '', false ),
 					'escape' => false,
 				] ),
 				$archive_query_select_field,
@@ -293,24 +293,24 @@ switch ( $instance ) :
 		break;
 
 	case 'canonical':
-		HTML::header_title( \__( 'Canonical URL Settings', 'autodescription' ) );
-		HTML::description( \__( 'The canonical URL meta tag urges search engines to go to the outputted URL.', 'autodescription' ) );
-		HTML::description( \__( 'If the canonical URL meta tag represents the visited page, then the search engine will crawl the visited page. Otherwise, the search engine may go to the outputted URL.', 'autodescription' ) );
+		HTML::header_title( \__( 'Canonical URL Settings', 'sgeobiz-seo' ) );
+		HTML::description( \__( 'The canonical URL meta tag urges search engines to go to the outputted URL.', 'sgeobiz-seo' ) );
+		HTML::description( \__( 'If the canonical URL meta tag represents the visited page, then the search engine will crawl the visited page. Otherwise, the search engine may go to the outputted URL.', 'sgeobiz-seo' ) );
 		?>
 		<hr>
 		<?php
-		HTML::header_title( \__( 'Scheme Settings', 'autodescription' ) );
-		HTML::description( \__( 'If your website is accessible via both HTTP as HTTPS, you may want to set this to HTTPS if not detected automatically. Secure connections are preferred by search engines.', 'autodescription' ) );
+		HTML::header_title( \__( 'Scheme Settings', 'sgeobiz-seo' ) );
+		HTML::description( \__( 'If your website is accessible via both HTTP as HTTPS, you may want to set this to HTTPS if not detected automatically. Secure connections are preferred by search engines.', 'sgeobiz-seo' ) );
 
 		$scheme_options  = '';
 		$detected_scheme = Meta\URI\Utils::detect_site_url_scheme();
 		$current_scheme  = Data\Plugin::get_option( 'canonical_scheme' );
 		$scheme_types    = (array) \apply_filters(
-			'the_seo_framework_canonical_scheme_types',
+			'sgeobiz_seo_canonical_scheme_types',
 			[
 				'automatic' => \sprintf(
 					/* translators: %s = HTTP or HTTPS */
-					\__( 'Detect automatically (%s)', 'autodescription' ),
+					\__( 'Detect automatically (%s)', 'sgeobiz-seo' ),
 					strtoupper( $detected_scheme ),
 				),
 				'http'      => 'HTTP',
@@ -331,7 +331,7 @@ switch ( $instance ) :
 				'<label for="%1$s"><strong>%2$s</strong></label> <select name="%3$s" id="%1$s" %4$s>%5$s</select>',
 				[
 					Input::get_field_id( 'canonical_scheme' ),
-					\esc_html_x( 'Preferred canonical URL scheme:', '= Detect Automatically, HTTPS, HTTP', 'autodescription' ),
+					\esc_html_x( 'Preferred canonical URL scheme:', '= Detect Automatically, HTTPS, HTTP', 'sgeobiz-seo' ),
 					Input::get_field_name( 'canonical_scheme' ),
 					HTML::make_data_attributes( [ 'values' => [ 'automatic' => $detected_scheme ] ] ),
 					$scheme_options,
@@ -342,15 +342,15 @@ switch ( $instance ) :
 		?>
 		<hr>
 		<?php
-		HTML::header_title( \__( 'Paginated Link Relationship Settings', 'autodescription' ) );
-		HTML::description( \__( 'Some search engines look for relations between the content of your pages. If you have pagination on a post or page, or have archives indexed, these options will help search engines look for the right page to display in the search results.', 'autodescription' ) );
-		HTML::description( \__( 'Enable these options to mitigate duplicated content issues.', 'autodescription' ) );
+		HTML::header_title( \__( 'Paginated Link Relationship Settings', 'sgeobiz-seo' ) );
+		HTML::description( \__( 'Some search engines look for relations between the content of your pages. If you have pagination on a post or page, or have archives indexed, these options will help search engines look for the right page to display in the search results.', 'sgeobiz-seo' ) );
+		HTML::description( \__( 'Enable these options to mitigate duplicated content issues.', 'sgeobiz-seo' ) );
 
 		$prev_next_posts_checkbox = Input::make_checkbox( [
 			'id'     => 'prev_next_posts',
 			'label'  => Markdown::convert(
 				/* translators: the backticks are Markdown! Preserve them as-is! */
-				\esc_html__( 'Add `rel` link tags to pages?', 'autodescription' ),
+				\esc_html__( 'Add `rel` link tags to pages?', 'sgeobiz-seo' ),
 				[ 'code' ],
 			),
 			'escape' => false,
@@ -360,7 +360,7 @@ switch ( $instance ) :
 			'id'     => 'prev_next_archives',
 			'label'  => Markdown::convert(
 				/* translators: the backticks are Markdown! Preserve them as-is! */
-				\esc_html__( 'Add `rel` link tags to archives?', 'autodescription' ),
+				\esc_html__( 'Add `rel` link tags to archives?', 'sgeobiz-seo' ),
 				[ 'code' ],
 			),
 			'escape' => false,
@@ -370,7 +370,7 @@ switch ( $instance ) :
 			'id'     => 'prev_next_frontpage',
 			'label'  => Markdown::convert(
 				/* translators: the backticks are Markdown! Preserve them as-is! */
-				\esc_html__( 'Add `rel` link tags to the homepage?', 'autodescription' ),
+				\esc_html__( 'Add `rel` link tags to the homepage?', 'sgeobiz-seo' ),
 				[ 'code' ],
 			),
 			'escape' => false,
@@ -381,19 +381,19 @@ switch ( $instance ) :
 
 	case 'timestamps':
 		/**
-		 * @see The_SEO_Framework\Helper\Format\Time::get_preferred_format()
+		 * @see SGEOBIZ_SEO\Helper\Format\Time::get_preferred_format()
 		 */
 		$timestamp_date     = gmdate( 'Y-m-d' );
 		$timestamp_datetime = gmdate( 'Y-m-d\TH:i:sP' ); // Could use 'c', but that specification is ambiguous
 
-		HTML::header_title( \__( 'Timestamp Settings', 'autodescription' ) );
-		HTML::description( \__( 'Timestamps help indicate when a page has been published and modified.', 'autodescription' ) );
+		HTML::header_title( \__( 'Timestamp Settings', 'sgeobiz-seo' ) );
+		HTML::description( \__( 'Timestamps help indicate when a page has been published and modified.', 'sgeobiz-seo' ) );
 		?>
 		<hr>
 
 		<fieldset>
-			<legend><?php HTML::header_title( \__( 'Timestamp Format Settings', 'autodescription' ) ); ?></legend>
-			<?php HTML::description( \__( 'This setting determines how specific the timestamp is.', 'autodescription' ) ); ?>
+			<legend><?php HTML::header_title( \__( 'Timestamp Format Settings', 'sgeobiz-seo' ) ); ?></legend>
+			<?php HTML::description( \__( 'This setting determines how specific the timestamp is.', 'sgeobiz-seo' ) ); ?>
 
 			<p id=sitemaps-timestamp-format class=tsf-fields>
 				<span class=tsf-toblock>
@@ -402,7 +402,7 @@ switch ( $instance ) :
 						<?php
 						// phpcs:ignore WordPress.Security.EscapeOutput -- code_wrap escapes.
 						echo HTML::code_wrap( $timestamp_date ), ' ', HTML::make_info(
-							\__( 'This outputs the complete date.', 'autodescription' ),
+							\__( 'This outputs the complete date.', 'sgeobiz-seo' ),
 						);
 						?>
 					</label>
@@ -413,7 +413,7 @@ switch ( $instance ) :
 						<?php
 						// phpcs:ignore WordPress.Security.EscapeOutput -- code_wrap escapes.
 						echo HTML::code_wrap( $timestamp_datetime ), ' ', HTML::make_info(
-							\__( 'This outputs the complete date including hours, minutes, seconds, and time zone.', 'autodescription' ),
+							\__( 'This outputs the complete date including hours, minutes, seconds, and time zone.', 'sgeobiz-seo' ),
 						);
 						?>
 					</label>
@@ -424,24 +424,24 @@ switch ( $instance ) :
 		break;
 
 	case 'exclusions':
-		HTML::header_title( \__( 'Exclusion Settings', 'autodescription' ) );
-		HTML::description( \__( 'Check these options to remove meta optimizations, SEO suggestions, and sitemap inclusions for selected post types and taxonomies.', 'autodescription' ) );
+		HTML::header_title( \__( 'Exclusion Settings', 'sgeobiz-seo' ) );
+		HTML::description( \__( 'Check these options to remove meta optimizations, SEO suggestions, and sitemap inclusions for selected post types and taxonomies.', 'sgeobiz-seo' ) );
 		HTML::attention_description_noesc( Markdown::convert(
 			\sprintf(
 				/* translators: backticks are code wraps. Markdown! */
-				\esc_html__( "Exclusions don't block search engines. If a post type is publicly queryable and shouldn't be indexed, don't exclude it. Instead, consider applying `noindex` via Robots Settings.", 'autodescription' ),
+				\esc_html__( "Exclusions don't block search engines. If a post type is publicly queryable and shouldn't be indexed, don't exclude it. Instead, consider applying `noindex` via Robots Settings.", 'sgeobiz-seo' ),
 				'#autodescription-robots-settings',
 			),
 			[ 'code' ],
 		) );
-		HTML::description( \__( 'Default post types and taxonomies can not be excluded.', 'autodescription' ) );
+		HTML::description( \__( 'Default post types and taxonomies can not be excluded.', 'sgeobiz-seo' ) );
 		?>
 
 		<hr>
 		<?php
-		HTML::header_title( \__( 'Post Type Exclusions', 'autodescription' ) );
-		HTML::description( \__( 'Select post types which should be excluded.', 'autodescription' ) );
-		HTML::description( \__( 'These settings apply to the post type pages and their terms. When terms are shared between post types, all their post types should be checked for this to have an effect.', 'autodescription' ) );
+		HTML::header_title( \__( 'Post Type Exclusions', 'sgeobiz-seo' ) );
+		HTML::description( \__( 'Select post types which should be excluded.', 'sgeobiz-seo' ) );
+		HTML::description( \__( 'These settings apply to the post type pages and their terms. When terms are shared between post types, all their post types should be checked for this to have an effect.', 'sgeobiz-seo' ) );
 
 		$forced_pt = Post_Type::get_all_forced_supported();
 		$boxes     = [];
@@ -470,9 +470,9 @@ switch ( $instance ) :
 		?>
 		<hr>
 		<?php
-		HTML::header_title( \__( 'Taxonomy Exclusions', 'autodescription' ) );
-		HTML::description( \__( 'Select taxonomies which should be excluded.', 'autodescription' ) );
-		HTML::description( \__( 'When taxonomies have all their bound post types excluded, they will inherit their exclusion status.', 'autodescription' ) );
+		HTML::header_title( \__( 'Taxonomy Exclusions', 'sgeobiz-seo' ) );
+		HTML::description( \__( 'Select taxonomies which should be excluded.', 'sgeobiz-seo' ) );
+		HTML::description( \__( 'When taxonomies have all their bound post types excluded, they will inherit their exclusion status.', 'sgeobiz-seo' ) );
 
 		$forced_tax = Taxonomy::get_all_forced_supported();
 		$boxes      = [];

@@ -1,15 +1,15 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Internal\Deprecated
- * @subpackage The_SEO_Framework\Debug\Deprecated
+ * @package SGEOBIZ_SEO\Classes\Internal\Deprecated
+ * @subpackage SGEOBIZ_SEO\Debug\Deprecated
  */
 
-namespace The_SEO_Framework\Internal;
+namespace SGEOBIZ_SEO\Internal;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 // Precautionary.
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	is_headless,
 	normalize_generation_args,
 	get_query_type_from_args,
@@ -18,7 +18,7 @@ use function The_SEO_Framework\{
 };
 
 // Precautionary.
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper,
 	Helper\Query,
@@ -43,15 +43,15 @@ use The_SEO_Framework\{
  */
 
 /**
- * Class The_SEO_Framework\Internal\Deprecated
+ * Class SGEOBIZ_SEO\Internal\Deprecated
  *
- * Contains all deprecated methods of `\tsf()`
+ * Contains all deprecated methods of `\sgeobiz()`
  *
  * @since 2.8.0
  * @since 3.1.0 Removed all methods deprecated in 3.0.0.
  * @since 4.0.0 Removed all methods deprecated in 3.1.0.
  * @since 4.1.4 Removed all methods deprecated in 4.0.0.
- * @since 4.2.0 1. Changed namespace from \The_SEO_Framework to \The_SEO_Framework\Internal
+ * @since 4.2.0 1. Changed namespace from \SGEOBIZ_SEO to \SGEOBIZ_SEO\Internal
  *              2. Removed all methods deprecated in 4.1.0.
  * @since 5.0.0 Removed all methods deprecated in 4.2.0
  * @since 5.1.3 Removed all methods deprecated in 5.0.0 (~24 months later)

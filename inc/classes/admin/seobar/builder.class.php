@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Admin\SEOBar\Builder
- * @subpackage The_SEO_Framework\SEOBar
+ * @package SGEOBIZ_SEO\Classes\Admin\SEOBar\Builder
+ * @subpackage SGEOBIZ_SEO\SEOBar
  */
 
-namespace The_SEO_Framework\Admin\SEOBar;
+namespace SGEOBIZ_SEO\Admin\SEOBar;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Data;
+use SGEOBIZ_SEO\Data;
 
 /**
  * The SEO Framework plugin
@@ -31,12 +31,12 @@ use The_SEO_Framework\Data;
  * Interprets the SEO Bar into an HTML item.
  *
  * @since 4.0.0
- * @since 5.0.0 1. Moved from `\The_SEO_Framework\Interpreters`
+ * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Interpreters`
  *              2. Renamed from `SEOBar`.
  *              3. The entire class is now static.
  * @since 5.1.5 No longer final.
  * @access protected
- *         Use tsf()->admin()->seobar() instead.
+ *         Use sgeobiz()->admin()->seobar() instead.
  */
 class Builder {
 
@@ -125,12 +125,12 @@ class Builder {
 		 * and reading `$builder::$query{_cache}`. Do not add tests here. Do not alter the query.
 		 *
 		 * @link Example: https://gist.github.com/sybrew/03dd428deadc860309879e1d5208e1c4
-		 * @see related (recommended) action 'the_seo_framework_seo_bar'
+		 * @see related (recommended) action 'sgeobiz_seo_seo_bar'
 		 * @since 4.0.0
 		 * @param string                                       $interpreter The current class name.
-		 * @param \The_SEO_Framework\Admin\SEOBar\Builder\Main $builder     The builder object.
+		 * @param \SGEOBIZ_SEO\Admin\SEOBar\Builder\Main $builder     The builder object.
 		 */
-		\do_action( 'the_seo_framework_prepare_seo_bar', self::class, $builder );
+		\do_action( 'sgeobiz_seo_prepare_seo_bar', self::class, $builder );
 
 		$items = &self::collect_seo_bar_items();
 
@@ -146,7 +146,7 @@ class Builder {
 		 * @param string $interpreter The interpreter class name.
 		 * @param object $builder     The builder's class instance.
 		 */
-		\do_action( 'the_seo_framework_seo_bar', self::class, $builder );
+		\do_action( 'sgeobiz_seo_seo_bar', self::class, $builder );
 
 		$bar = self::create_seo_bar( self::$items );
 
@@ -232,7 +232,7 @@ class Builder {
 	 *
 	 * @since 4.0.0
 	 * @since 4.2.8 1. Now returns a div wrap instead of a span, so we can bypass lack of display-inside browser support.
-	 *              2. Added tsf-tooltip-super-wrap said div wrap.
+	 *              2. Added sgeobiz-tooltip-super-wrap said div wrap.
 	 *
 	 * @param iterable $items The SEO Bar items.
 	 * @return string The SEO Bar
@@ -246,7 +246,7 @@ class Builder {
 
 		// Always return the wrap, may it be filled in via JS in the future.
 		return \sprintf(
-			'<div class="tsf-seo-bar tsf-tooltip-super-wrap"><span class=tsf-seo-bar-inner-wrap>%s</span></div>',
+			'<div class="sgeobiz-seo-bar sgeobiz-tooltip-super-wrap"><span class=sgeobiz-seo-bar-inner-wrap>%s</span></div>',
 			implode( $blocks ),
 		);
 	}
@@ -271,13 +271,13 @@ class Builder {
 
 		$gettext ??= [
 			/* translators: 1 = SEO Bar type title, 2 = Status reason. 3 = Assessments */
-			'aria'        => \_x( '%1$s: %2$s %3$s', 'SEO Bar ARIA assessment enumeration', 'autodescription' ),
+			'aria'        => \_x( '%1$s: %2$s %3$s', 'SEO Bar ARIA assessment enumeration', 'sgeobiz-seo' ),
 			/* translators: 1 = Assessment number (mind the %d (D)), 2 = Assessment explanation */
-			'enum'        => \_x( '%1$d: %2$s', 'assessment enumeration', 'autodescription' ),
+			'enum'        => \_x( '%1$d: %2$s', 'assessment enumeration', 'sgeobiz-seo' ),
 			/* translators: 1 = 'Assessment(s)', 2 = A list of assessments. */
-			'list'        => \_x( '%1$s: %2$s', 'assessment list', 'autodescription' ),
-			'assessment'  => \__( 'Assessment', 'autodescription' ),
-			'assessments' => \__( 'Assessments', 'autodescription' ),
+			'list'        => \_x( '%1$s: %2$s', 'assessment list', 'sgeobiz-seo' ),
+			'assessment'  => \__( 'Assessment', 'sgeobiz-seo' ),
+			'assessments' => \__( 'Assessments', 'sgeobiz-seo' ),
 		];
 
 		$use_symbols ??= (bool) Data\Plugin::get_option( 'seo_bar_symbols' );
@@ -358,7 +358,7 @@ class Builder {
 			);
 
 			yield \sprintf(
-				'<span class="tsf-seo-bar-section-wrap tsf-tooltip-wrap"><span class="tsf-seo-bar-item tsf-tooltip-item tsf-seo-bar-%1$s" title="%2$s" aria-label="%2$s" data-desc="%3$s" tabindex=0>%4$s</span></span>',
+				'<span class="sgeobiz-seo-bar-section-wrap sgeobiz-tooltip-wrap"><span class="sgeobiz-seo-bar-item sgeobiz-tooltip-item sgeobiz-seo-bar-%1$s" title="%2$s" aria-label="%2$s" data-desc="%3$s" tabindex=0>%4$s</span></span>',
 				$status,
 				\esc_attr( $aria ),
 				\esc_attr( $html ),

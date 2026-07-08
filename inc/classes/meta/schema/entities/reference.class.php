@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Meta\Schema\Entities\Reference
- * @subpackage The_SEO_Framework\Meta\Schema
+ * @package SGEOBIZ_SEO\Meta\Schema\Entities\Reference
+ * @subpackage SGEOBIZ_SEO\Meta\Schema
  */
 
-namespace The_SEO_Framework\Meta\Schema\Entities;
+namespace SGEOBIZ_SEO\Meta\Schema\Entities;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Meta;
+use SGEOBIZ_SEO\Meta;
 
 /**
  * The SEO Framework plugin
@@ -32,7 +32,7 @@ use The_SEO_Framework\Meta;
  *
  * @since 5.0.0
  * @access protected
- *         Access via tsf()->schema()->entities['Reference'] instead.
+ *         Access via sgeobiz()->schema()->entities['Reference'] instead.
  *         Note: This class is not meant to be used directly, but to be extended by other entities.
  *               So this "access" is for consistency's sake and probably has no good use case.
  *

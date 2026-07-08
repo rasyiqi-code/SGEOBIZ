@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Admin\Settings\Layout\Form
- * @subpackage The_SEO_Framework\Admin\Settings
+ * @package SGEOBIZ_SEO\Admin\Settings\Layout\Form
+ * @subpackage SGEOBIZ_SEO\Admin\Settings
  */
 
-namespace The_SEO_Framework\Admin\Settings\Layout;
+namespace SGEOBIZ_SEO\Admin\Settings\Layout;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data\Filter\Escape,
 	Helper\Format\Arrays,
 	Helper\Query,
@@ -35,12 +35,12 @@ use The_SEO_Framework\{
  * Interprets anything you send here into Form HTML. Or so it should.
  *
  * @since 4.1.4
- * @since 5.0.0 1. Moved from `\The_SEO_Framework\Interpreters`.
+ * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Interpreters`.
  *              2. The methods herein are now considered public.
  * @NOTE This and the methods herein will likely be deprecated in the future.
  *
  * @access protected
- *         Use tsf()->admin()->layout()->form() instead.
+ *         Use sgeobiz()->admin()->layout()->form() instead.
  */
 class Form {
 
@@ -147,13 +147,13 @@ class Form {
 	 */
 	public static function output_character_counter_wrap( $input_id, $display = true ) {
 		vprintf(
-			'<div class="tsf-counter-wrap hide-if-no-tsf-js" %s><span class=tsf-counter title="%s">%s</span><span class=tsf-ajax></span></div>',
+			'<div class="sgeobiz-counter-wrap hide-if-no-sgeobiz-js" %s><span class=sgeobiz-counter title="%s">%s</span><span class=tsf-ajax></span></div>',
 			[
 				( $display ? '' : 'style=display:none;' ),
-				\esc_attr__( 'Click to change the counter type', 'autodescription' ),
+				\esc_attr__( 'Click to change the counter type', 'sgeobiz-seo' ),
 				\sprintf(
 					/* translators: %s = number */
-					\esc_html__( 'Characters: %s', 'autodescription' ),
+					\esc_html__( 'Characters: %s', 'sgeobiz-seo' ),
 					\sprintf(
 						'<span id="%s">0</span>',
 						\esc_attr( "{$input_id}_chars" ),
@@ -174,16 +174,16 @@ class Form {
 	 */
 	public static function output_pixel_counter_wrap( $input_id, $type, $display = true ) {
 		vprintf(
-			'<div class="tsf-pixel-counter-wrap hide-if-no-tsf-js" %s>%s%s</div>',
+			'<div class="sgeobiz-pixel-counter-wrap hide-if-no-sgeobiz-js" %s>%s%s</div>',
 			[
 				( $display ? '' : 'style="display:none;"' ),
 				\sprintf(
-					'<div id="%s" class=tsf-tooltip-wrap>%s</div>',
+					'<div id="%s" class=sgeobiz-tooltip-wrap>%s</div>',
 					\esc_attr( "{$input_id}_pixels" ),
-					'<span class="tsf-pixel-counter-bar tsf-tooltip-item" aria-label data-desc tabindex=0><span class=tsf-pixel-counter-fluid></span></span>',
+					'<span class="sgeobiz-pixel-counter-bar sgeobiz-tooltip-item" aria-label data-desc tabindex=0><span class=sgeobiz-pixel-counter-fluid></span></span>',
 				),
 				\sprintf(
-					'<div class=tsf-pixel-shadow-wrap><span class="tsf-pixel-counter-shadow %s"></span></div>',
+					'<div class=sgeobiz-pixel-shadow-wrap><span class="sgeobiz-pixel-counter-shadow %s"></span></div>',
 					\esc_attr( "tsf-{$type}-pixel-counter-shadow" ),
 				),
 			],
@@ -250,7 +250,7 @@ class Form {
 				],
 				'i18n'         => [
 					'button_title' => '', // Redundant.
-					'button_text'  => \__( 'Select Image', 'autodescription' ),
+					'button_text'  => \__( 'Select Image', 'sgeobiz-seo' ),
 				],
 				'button_class' => [
 					'set'    => [
@@ -286,7 +286,7 @@ class Form {
 		);
 
 		$content .= <<<HTML
-			<span class=tsf-image-notifications data-for="{$s_id}"><span class=tsf-tooltip-wrap><span id="{$s_id}-preview" class="tsf-image-preview tsf-tooltip-item hidden" tabindex=0></span></span><span class=tsf-tooltip-wrap><span id="{$s_id}-image-warning" class="tsf-image-warning tsf-tooltip-item hidden" tabindex=0></span></span></span>
+			<span class=sgeobiz-image-notifications data-for="{$s_id}"><span class=sgeobiz-tooltip-wrap><span id="{$s_id}-preview" class="sgeobiz-image-preview sgeobiz-tooltip-item hidden" tabindex=0></span></span><span class=sgeobiz-tooltip-wrap><span id="{$s_id}-image-warning" class="sgeobiz-image-warning sgeobiz-tooltip-item hidden" tabindex=0></span></span></span>
 		HTML;
 
 		return $content;

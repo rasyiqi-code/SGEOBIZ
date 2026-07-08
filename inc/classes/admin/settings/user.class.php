@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Admin\Settings\User
- * @subpackage The_SEO_Framework\Admin\Edit\User
+ * @package SGEOBIZ_SEO\Classes\Admin\Settings\User
+ * @subpackage SGEOBIZ_SEO\Admin\Edit\User
  */
 
-namespace The_SEO_Framework\Admin\Settings;
+namespace SGEOBIZ_SEO\Admin\Settings;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper\Template,
 };
@@ -35,7 +35,7 @@ use The_SEO_Framework\{
  *
  * @since 4.1.4
  * @since 5.0.0 1. Renamed from `UserSettings` to `User`.
- *              2. Moved to `\The_SEO_Framework\Admin\Settings`.
+ *              2. Moved to `\SGEOBIZ_SEO\Admin\Settings`.
  * @access private
  */
 final class User {
@@ -76,13 +76,13 @@ final class User {
 		/**
 		 * @since 4.1.4
 		 */
-		\do_action( 'the_seo_framework_before_author_fields' );
+		\do_action( 'sgeobiz_seo_before_author_fields' );
 
 		Template::output_view( 'profile/settings', $user );
 
 		/**
 		 * @since 4.1.4
 		 */
-		\do_action( 'the_seo_framework_after_author_fields' );
+		\do_action( 'sgeobiz_seo_after_author_fields' );
 	}
 }

@@ -1,20 +1,20 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Meta
- * @subpackage The_SEO_Framework\Meta\Twitter
+ * @package SGEOBIZ_SEO\Classes\Meta
+ * @subpackage SGEOBIZ_SEO\Meta\Twitter
  */
 
-namespace The_SEO_Framework\Meta;
+namespace SGEOBIZ_SEO\Meta;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	coalesce_strlen,
 	get_query_type_from_args,
 	normalize_generation_args,
 };
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Data\Filter\Sanitize,
 	Helper\Query,
@@ -42,7 +42,7 @@ use The_SEO_Framework\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->twitter() instead.
+ *         Use sgeobiz()->twitter() instead.
  */
 class Twitter {
 
@@ -163,7 +163,7 @@ class Twitter {
 		 *                 These are used for settings population, validation, and sanitization.
 		 */
 		return \apply_filters(
-			'the_seo_framework_supported_twitter_card_types',
+			'sgeobiz_seo_supported_twitter_card_types',
 			[
 				'summary',
 				'summary_large_image',

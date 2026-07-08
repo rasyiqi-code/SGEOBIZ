@@ -1,16 +1,16 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Helper\Query
- * @subpackage The_SEO_Framework\Query
+ * @package SGEOBIZ_SEO\Classes\Helper\Query
+ * @subpackage SGEOBIZ_SEO\Query
  */
 
-namespace The_SEO_Framework\Helper;
+namespace SGEOBIZ_SEO\Helper;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\umemo;
+use function SGEOBIZ_SEO\umemo;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Admin,
 	Data,
 };
@@ -38,7 +38,7 @@ use The_SEO_Framework\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->query() instead.
+ *         Use sgeobiz()->query() instead.
  */
 class Query {
 
@@ -47,7 +47,7 @@ class Query {
 	 *
 	 * @since 4.0.5
 	 * @since 4.2.0 Now supports common archives without relying on the first post.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param int|WP_Post|null $post (Optional) Post ID or post object.
 	 * @return string|false Post type on success, false on failure.
@@ -79,7 +79,7 @@ class Query {
 	 * Returns the post type name from current screen.
 	 *
 	 * @since 3.1.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @global \WP_Screen $current_screen
 	 *
 	 * @return string
@@ -96,7 +96,7 @@ class Query {
 	 *
 	 * @since 2.5.0
 	 * @since 3.1.0 No longer checks if we can cache the query when $use_cache is false.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param bool $use_cache Whether to use the cache or not.
 	 * @return int|false The ID.
@@ -116,7 +116,7 @@ class Query {
 			 * @param int $id
 			 */
 			$id = \apply_filters(
-				'the_seo_framework_real_id',
+				'sgeobiz_seo_real_id',
 				\is_feed() ? \get_the_id() : 0,
 			);
 		}
@@ -127,7 +127,7 @@ class Query {
 		 * @param bool $use_cache Whether this value is stored in runtime caching.
 		 */
 		$id = (int) \apply_filters(
-			'the_seo_framework_current_object_id',
+			'sgeobiz_seo_current_object_id',
 			( $id ?? 0 ) ?: \get_queried_object_id(), // This catches most IDs. Even Post IDs.
 			$use_cache,
 		);
@@ -143,7 +143,7 @@ class Query {
 	 *
 	 * @since 2.7.0
 	 * @since 2.8.0 Removed WP 3.9 compat
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return int The admin ID.
 	 */
@@ -153,7 +153,7 @@ class Query {
 		 * @param int $id
 		 */
 		return (int) \apply_filters(
-			'the_seo_framework_current_admin_id',
+			'sgeobiz_seo_current_admin_id',
 			// Get in the loop first, fall back to globals or get parameters.
 			   \get_the_id()
 			?: self::get_admin_post_id()
@@ -165,7 +165,7 @@ class Query {
 	 * Returns the front page ID, if home is a page.
 	 *
 	 * @since 2.6.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return int the ID.
 	 */
@@ -197,10 +197,10 @@ class Query {
 	 * Fetches the Term ID on admin pages.
 	 *
 	 * @since 2.6.0
-	 * @since 2.6.6 Moved from class The_SEO_Framework_Term_Data.
+	 * @since 2.6.6 Moved from class SGEOBIZ_SEO_Term_Data.
 	 * @since 3.1.0 1. Removed WP 4.5 compat. Now uses global $tag_ID.
 	 *              2. Removed caching
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @global int $tag_ID
 	 *
 	 * @return int Term ID.
@@ -218,7 +218,7 @@ class Query {
 	 * @since 3.0.0
 	 * @since 3.1.0 1. Now works in the admin.
 	 *              2. Added memoization.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @global \WP_Screen $current_screen
 	 *
 	 * @return string The queried taxonomy type.
@@ -236,7 +236,7 @@ class Query {
 	 * Memoizes the return value.
 	 *
 	 * @since 4.1.4
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Now falls back to the current post type instead erroneously to a Boolean.
 	 *              3. Now memoizes the return value.
 	 *
@@ -256,7 +256,7 @@ class Query {
 	 *
 	 * @since 2.6.0
 	 * @since 4.0.0 Now reliably works on admin screens.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param mixed $attachment Attachment ID, title, slug, or array of such.
 	 * @return bool
@@ -280,7 +280,7 @@ class Query {
 	 * Detects attachments within the admin area.
 	 *
 	 * @since 4.0.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @see self::is_attachment()
 	 *
 	 * @return bool
@@ -298,7 +298,7 @@ class Query {
 	 *              2. Added caching.
 	 *              3. Now has a first parameter `$post`.
 	 * @since 4.0.6 Added a short-circuit on current-requests for `is_singular()`.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param int|WP_Post|null $post (Optional) Post ID or post object.
 	 * @return bool
@@ -323,7 +323,7 @@ class Query {
 				 * @param int|null $id                  The supplied post ID. Null when in the loop.
 				 */
 				(bool) \apply_filters(
-					'the_seo_framework_is_singular_archive',
+					'sgeobiz_seo_is_singular_archive',
 					self::is_blog_as_page( $id ),
 					$id,
 				),
@@ -335,7 +335,7 @@ class Query {
 	 * Detects archive pages. Also in admin.
 	 *
 	 * @since 2.6.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @global \WP_Query $wp_query
 	 *
 	 * @return bool
@@ -372,7 +372,7 @@ class Query {
 	 * Extends default WordPress is_archive() and determines screen in admin.
 	 *
 	 * @since 2.6.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @global \WP_Screen $current_screen
 	 *
 	 * @return bool Post Type is archive
@@ -392,7 +392,7 @@ class Query {
 	 * Detects Term edit screen in WP Admin.
 	 *
 	 * @since 2.6.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @global \WP_Screen $current_screen
 	 *
 	 * @return bool True if on Term Edit screen. False otherwise.
@@ -405,7 +405,7 @@ class Query {
 	 * Detects Post edit screen in WP Admin.
 	 *
 	 * @since 2.6.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @global \WP_Screen $current_screen
 	 *
 	 * @return bool We're on Post Edit screen.
@@ -418,7 +418,7 @@ class Query {
 	 * Detects Post or Archive Lists in Admin.
 	 *
 	 * @since 2.6.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @todo should be renamed to is_list_edit()
 	 * @global \WP_Screen $current_screen
 	 *
@@ -440,7 +440,7 @@ class Query {
 	 *
 	 * @since 4.1.4
 	 * @since 5.0.0 1. Now also tests network profile edit screens.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 * @global \WP_Screen $current_screen
 	 *
 	 * @return bool True if on Profile Edit screen. False otherwise.
@@ -462,7 +462,7 @@ class Query {
 	 * Detects author archives.
 	 *
 	 * @since 2.6.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param mixed $author Optional. User ID, nickname, nicename, or array of User IDs, nicknames, and nicenames
 	 * @return bool
@@ -485,7 +485,7 @@ class Query {
 	 * @since 2.6.0
 	 * @since 4.2.0 Added the first parameter to allow custom query testing.
 	 * @since 5.0.0 1. Renamed from `is_home()`.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 * @since 5.0.3 1. Will no longer validate `0` as a plausible blog page.
 	 *              2. Will no longer validate `is_home()` when the blog page is not assigned.
 	 *
@@ -512,7 +512,7 @@ class Query {
 	 *
 	 * @since 4.2.0
 	 * @since 5.0.0 1. Renamed from `is_home_as_page()`.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param int|WP_Post|null $post Optional. Post ID or post object.
 	 *                               Do not supply from WP_Query's main loop-query.
@@ -527,7 +527,7 @@ class Query {
 	 * Detects category archives.
 	 *
 	 * @since 2.6.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param mixed $category Optional. Category ID, name, slug, or array of Category IDs, names, and slugs.
 	 * @return bool
@@ -550,7 +550,7 @@ class Query {
 	 * @since 2.6.0
 	 * @since 3.1.0 No longer guesses category by name. It now only matches WordPress's built-in category.
 	 * @since 4.0.0 Removed caching.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return bool Post Type is category
 	 */
@@ -581,7 +581,7 @@ class Query {
 	 * or the `show_on_front` setting is somehow corrupted.
 	 *
 	 * @since 2.9.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return bool
 	 */
@@ -608,7 +608,7 @@ class Query {
 	 * @see self::is_static_front_page(), which adds an "is homepage static" check.
 	 *
 	 * @since 3.2.2
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param int $id The tested ID.
 	 * @return bool
@@ -623,7 +623,7 @@ class Query {
 	 *
 	 * @since 2.6.0
 	 * @since 4.0.0 Now tests for post type, which is more reliable.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @api not used internally, polar opposite of is_single().
 	 *
 	 * @param int|string|array $page Optional. Page ID, title, slug, or array of such. Default empty.
@@ -655,7 +655,7 @@ class Query {
 	 *
 	 * @since 2.6.0
 	 * @since 4.0.0 Now tests for post type, although redundant.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @see self::is_page()
 	 *
 	 * @return bool
@@ -674,7 +674,7 @@ class Query {
 	 *              2. Added is_singular() check, so get_the_id() won't cross with blog pages.
 	 *              3. Added current_user_can() check.
 	 *              4. Added wp_verify_nonce() check.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return bool
 	 */
@@ -701,7 +701,7 @@ class Query {
 	 *
 	 * @since 2.6.0
 	 * @since 2.9.4 Now always returns false in admin.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return bool
 	 */
@@ -715,7 +715,7 @@ class Query {
 	 *
 	 * @since 2.6.0
 	 * @since 4.0.0 Now tests for post type, which is more reliable.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param int|string|array $post Optional. Post ID, title, slug, or array of such. Default empty.
 	 * @return bool
@@ -743,8 +743,8 @@ class Query {
 	 *
 	 * @since 2.6.0
 	 * @since 4.0.0 Now no longer returns true on categories and tags.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
-	 * @see The_SEO_Framework_Query::is_single()
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
+	 * @see SGEOBIZ_SEO_Query::is_single()
 	 *
 	 * @return bool
 	 */
@@ -762,7 +762,7 @@ class Query {
 	 * @since 3.1.0 Now passes $post_types parameter in admin screens, only when it's an integer.
 	 * @since 4.0.0 No longer processes integers as input.
 	 * @since 4.2.4 No longer tests type of $post_types.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param string|string[] $post_types Optional. Post type or array of post types. Default empty string.
 	 * @return bool Post Type is singular
@@ -786,7 +786,7 @@ class Query {
 	 * @since 2.5.2
 	 * @since 3.1.0 Added $post_id parameter. When used, it'll only check for it.
 	 * @since 4.0.0 Removed first parameter.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @global \WP_Screen $current_screen
 	 *
 	 * @return bool Post Type is singular
@@ -829,7 +829,7 @@ class Query {
 	 * Detects tag archives.
 	 *
 	 * @since 2.6.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param mixed $tag Optional. Tag ID, name, slug, or array of Tag IDs, names, and slugs.
 	 * @return bool
@@ -853,7 +853,7 @@ class Query {
 	 * @since 2.6.0
 	 * @since 3.1.0 No longer guesses tag by name. It now only matches WordPress's built-in tag.
 	 * @since 4.0.0 Removed caching.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return bool Post Type is tag.
 	 */
@@ -865,7 +865,7 @@ class Query {
 	 * Detects taxonomy archives.
 	 *
 	 * @since 2.6.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @TODO add is_tax_admin() ?
 	 *
 	 * @param string|array     $taxonomy Optional. Taxonomy slug or slugs.
@@ -886,7 +886,7 @@ class Query {
 	 *
 	 * @since 4.0.5
 	 * @since 4.1.4 Added memoization.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param int|WP_Post|null $post (Optional) Post ID or post object.
 	 * @return bool
@@ -900,7 +900,7 @@ class Query {
 				 * @param bool $is_shop Whether the post ID is a shop.
 				 * @param int  $id      The current or supplied post ID.
 				 */
-				(bool) \apply_filters( 'the_seo_framework_is_shop', false, $post ),
+				(bool) \apply_filters( 'sgeobiz_seo_is_shop', false, $post ),
 				$post,
 			);
 	}
@@ -910,7 +910,7 @@ class Query {
 	 *
 	 * @since 4.0.5
 	 * @since 4.1.4 Added memoization.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param int|WP_Post|null $post (Optional) Post ID or post object.
 	 * @return bool True if on a WooCommerce Product page.
@@ -928,7 +928,7 @@ class Query {
 				 * @param bool $is_product
 				 * @param int|WP_Post|null $post (Optional) Post ID or post object.
 				 */
-				(bool) \apply_filters( 'the_seo_framework_is_product', false, $post ),
+				(bool) \apply_filters( 'sgeobiz_seo_is_product', false, $post ),
 				$post,
 			);
 	}
@@ -938,7 +938,7 @@ class Query {
 	 *
 	 * @since 4.0.5
 	 * @since 4.1.4 Added memoization.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return bool
 	 */
@@ -950,7 +950,7 @@ class Query {
 				 * @since 4.1.4 Now has its return value memoized.
 				 * @param bool $is_product_admin
 				 */
-				(bool) \apply_filters( 'the_seo_framework_is_product_admin', false ),
+				(bool) \apply_filters( 'sgeobiz_seo_is_product_admin', false ),
 			);
 	}
 
@@ -959,7 +959,7 @@ class Query {
 	 * Memoizes the return value.
 	 *
 	 * @since 2.8.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return bool True if SSL, false otherwise.
 	 */
@@ -975,7 +975,7 @@ class Query {
 	 * @since 2.6.0
 	 * @since 2.7.0 Added secure parameter.
 	 * @since 2.9.0 If $secure is false, the cache is no longer used.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @see self::is_menu_page() for security notification.
 	 *
 	 * @param bool $secure Whether to ignore the use of the second (insecure) parameter.
@@ -987,7 +987,7 @@ class Query {
 			return false;
 
 		if ( ! $secure )
-			return self::is_menu_page( '', \THE_SEO_FRAMEWORK_SITE_OPTIONS_SLUG );
+			return self::is_menu_page( '', \SGEOBIZ_SEO_SITE_OPTIONS_SLUG );
 
 		return Query\Cache::memo()
 			?? Query\Cache::memo( self::is_menu_page( Admin\Menu::get_page_hook_name() ) );
@@ -1007,7 +1007,7 @@ class Query {
 	 *
 	 * @since 2.2.2
 	 * @since 2.7.0 Added pageslug parameter.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @global string $page_hook the current page hook.
 	 *
 	 * @param string $pagehook The menu pagehook to compare to.
@@ -1039,7 +1039,7 @@ class Query {
 	 *              2. Now always returns 1 on the admin screens.
 	 * @since 4.2.8 Now returns the last page on pagination overflow,
 	 *              but only when we're on a paginated static frontpage.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return int (R>0) $page Always a positive number.
 	 */
@@ -1076,7 +1076,7 @@ class Query {
 	 * @since 2.6.0
 	 * @since 3.2.4 1. Added overflow protection.
 	 *              2. Now always returns 1 on the admin screens.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return int (R>0) $paged Always a positive number.
 	 */
@@ -1109,7 +1109,7 @@ class Query {
 	 *
 	 * @since 3.1.0
 	 * @since 3.2.4 Now only returns "1" in the admin.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @global \WP_Query $wp_query
 	 *
 	 * @return int
@@ -1177,7 +1177,7 @@ class Query {
 	 * @since 3.1.0 1. Now also works on archives.
 	 *              2. Now is public.
 	 * @since 3.2.4 Now always returns false on the admin pages.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return bool True if multipage.
 	 */
@@ -1253,7 +1253,7 @@ class Query {
 	 *
 	 * @since 2.9.2
 	 * @since 4.0.0 Now memoizes instead of populating class properties.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param bool $set Whether to set "doing sitemap".
 	 * @return bool
@@ -1269,7 +1269,7 @@ class Query {
 	 * @since 3.0.0
 	 * @since 3.2.2 1. Now no longer returns the latest post author ID on home-as-blog pages.
 	 *              2. Now always returns an integer.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param int $post_id The post ID to fetch the author from. Leave 0 to autodetermine.
 	 * @return int Post author ID on success, 0 on failure.
@@ -1296,7 +1296,7 @@ class Query {
 	 * To be used in AJAX, back-end and front-end.
 	 *
 	 * @since 2.7.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return int The user ID. 0 if user is not found.
 	 */
@@ -1317,7 +1317,7 @@ class Query {
 	 * @since 3.1.0
 	 * @since 3.2.0 1. Now detects the WP 5.0 block editor.
 	 *              2. Method is now public.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `is_gutenberg_page`.
 	 *              3. Now reads the current screen value.
 	 *

@@ -1,25 +1,25 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Meta
- * @subpackage The_SEO_Framework\Meta\Title
+ * @package SGEOBIZ_SEO\Classes\Meta
+ * @subpackage SGEOBIZ_SEO\Meta\Title
  */
 
-namespace The_SEO_Framework\Meta;
+namespace SGEOBIZ_SEO\Meta;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	coalesce_strlen,
 	get_query_type_from_args,
 	memo,
 	normalize_generation_args,
 };
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Data\Filter\Sanitize,
 };
-use The_SEO_Framework\Helper\{
+use SGEOBIZ_SEO\Helper\{
 	Post_Type,
 	Query,
 	Taxonomy,
@@ -47,7 +47,7 @@ use The_SEO_Framework\Helper\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->title() instead.
+ *         Use sgeobiz()->title() instead.
  */
 class Title {
 
@@ -87,7 +87,7 @@ class Title {
 	 * @since 4.0.0 Moved the filter to a separated method.
 	 * @since 4.1.0 Added the third $social parameter.
 	 * @since 4.2.0 Now supports the `$args['pta']` index.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Removed the second `$escape` parameter.
 	 *              3. Moved the third parameter to the second.
 	 * @since 5.1.3 Now runs the title through `Sanitize::metadata_content()`.
@@ -125,7 +125,7 @@ class Title {
 	 * @since 4.0.0 Moved the filter to a separated method.
 	 * @since 4.1.0 Added the third $social parameter.
 	 * @since 4.2.0 Now supports the `$args['pta']` index.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Removed the second `$escape` parameter.
 	 *              3. Moved the third parameter to the second.
 	 * @since 5.1.3 Now runs the title through `Sanitize::metadata_content()`.
@@ -159,7 +159,7 @@ class Title {
 	 * @since 4.2.0 1. The first parameter can now be voided.
 	 *              2. The first parameter is now rectified, so you can leave out indexes.
 	 *              3. Now supports the `$args['pta']` index.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param array|null $args   The query arguments. Accepts 'id', 'tax', 'pta', and 'uid'.
 	 *                           Leave null to autodetermine query.
@@ -185,7 +185,7 @@ class Title {
 		 *                          Is null when the query is auto-determined.
 		 */
 		return Sanitize::metadata_content( (string) \apply_filters(
-			'the_seo_framework_title_from_custom_field',
+			'sgeobiz_seo_title_from_custom_field',
 			$title,
 			$args,
 		) );
@@ -198,7 +198,7 @@ class Title {
 	 * @since 4.2.0 1. The first parameter can now be voided.
 	 *              2. The first parameter is now rectified, so you can leave out indexes.
 	 *              3. Now supports the `$args['pta']` index.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param array|null $args   The query arguments. Accepts 'id', 'tax', 'pta', and 'uid'.
 	 *                           Leave null to autodetermine query.
@@ -231,7 +231,7 @@ class Title {
 		 *                          Is null when the query is auto-determined.
 		 */
 		$title = (string) \apply_filters(
-			'the_seo_framework_title_from_generation',
+			'sgeobiz_seo_title_from_generation',
 			$title ?: self::get_untitled_title(),
 			$args,
 		);
@@ -247,7 +247,7 @@ class Title {
 	 *
 	 * @since 3.1.0
 	 * @since 4.2.0 Now supports the `$args['pta']` index.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param array|null $args The query arguments. Accepts 'id', 'tax', 'pta', and 'uid'.
 	 *                         Leave null to autodetermine query.
@@ -265,7 +265,7 @@ class Title {
 	 * @since 3.1.0
 	 * @since 3.2.2 Now tests for the static frontpage metadata prior getting fallback data.
 	 * @since 4.2.0 Can now return custom post type archive titles.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return string The custom title.
 	 */
@@ -451,7 +451,7 @@ class Title {
 		 * @param string                                    $prefix               The unmodified archive title prefix.
 		 */
 		return \apply_filters(
-			'the_seo_framework_generated_archive_title_items',
+			'sgeobiz_seo_generated_archive_title_items',
 			[
 				$title,
 				$prefix,
@@ -768,7 +768,7 @@ class Title {
 			 * @param string $title The 404 title.
 			 */
 			(string) \apply_filters(
-				'the_seo_framework_404_title',
+				'sgeobiz_seo_404_title',
 				\__( 'Page not found', 'default' ),
 			)
 		);
@@ -962,7 +962,7 @@ class Title {
 	 * Memoizes the return value.
 	 *
 	 * @since 2.6.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return string The trimmed tagline.
 	 */
@@ -978,7 +978,7 @@ class Title {
 	 * Returns title separator location.
 	 *
 	 * @since 2.6.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return string The separator location.
 	 */
@@ -990,7 +990,7 @@ class Title {
 	 * Returns title separator location for the front page.
 	 *
 	 * @since 2.6.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return string The Seplocation for the front page.
 	 */
@@ -1003,7 +1003,7 @@ class Title {
 	 * Memoizes the return value.
 	 *
 	 * @since 2.6.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return string The Separator.
 	 */
@@ -1014,7 +1014,7 @@ class Title {
 			 * @param string $eparator The title separator
 			 */
 			(string) \apply_filters(
-				'the_seo_framework_title_separator',
+				'sgeobiz_seo_title_separator',
 				(
 					Title\Utils::get_separator_list()[ Data\Plugin::get_option( 'title_separator' ) ]
 					?? '&#x2d;'

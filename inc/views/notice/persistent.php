@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Notice
- * @subpackage The_SEO_Framework\Admin\Notice
+ * @package SGEOBIZ_SEO\Views\Notice
+ * @subpackage SGEOBIZ_SEO\Admin\Notice
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
-use The_SEO_Framework\Admin\Settings\Layout\HTML;
+use SGEOBIZ_SEO\Admin\Settings\Layout\HTML;
 
 // phpcs:disable WordPress.WP.GlobalVariablesOverride -- This isn't the global scope.
 
@@ -67,7 +67,7 @@ $dismiss_title_i18n = \__( 'Dismiss this notice', 'default' );
 $nonce_action = Admin\Notice\Persistent::_get_dismiss_nonce_action( $sanitized_key );
 
 $button_js = \sprintf(
-	'<a class="hide-if-no-tsf-js tsf-dismiss" href="javascript:;" title="%s" %s></a>',
+	'<a class="hide-if-no-sgeobiz-js tsf-dismiss" href="javascript:;" title="%s" %s></a>',
 	\esc_attr( $dismiss_title_i18n ),
 	HTML::make_data_attributes( [
 		'key'   => $sanitized_key,
@@ -77,7 +77,7 @@ $button_js = \sprintf(
 );
 // We'll display this button even if this notice no longer repeats. This aligns with the user's expectation and offers control.
 $button_nojs = vsprintf(
-	'<form action="%s" method=post id="tsf-dismiss-notice[%s]" class=hide-if-tsf-js>%s</form>',
+	'<form action="%s" method=post id="tsf-dismiss-notice[%s]" class=hide-if-sgeobiz-js>%s</form>',
 	[
 		// Register this at removable_query_args? Ignore? No one cares, literally? Does anyone even read this? Hello!? HELLO!?!?
 		\esc_attr( \add_query_arg( [ 'tsf-dismissed-notice' => $sanitized_key ] ) ),

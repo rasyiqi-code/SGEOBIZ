@@ -1,20 +1,20 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Meta\Title
- * @subpackage The_SEO_Framework\Meta\Title
+ * @package SGEOBIZ_SEO\Classes\Meta\Title
+ * @subpackage SGEOBIZ_SEO\Meta\Title
  */
 
-namespace The_SEO_Framework\Meta\Title;
+namespace SGEOBIZ_SEO\Meta\Title;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	get_query_type_from_args,
 	memo,
 	normalize_generation_args,
 };
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper\Query,
 	Meta,
@@ -42,7 +42,7 @@ use The_SEO_Framework\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->title()->conditions() instead.
+ *         Use sgeobiz()->title()->conditions() instead.
  */
 class Conditions {
 
@@ -80,7 +80,7 @@ class Conditions {
 	 * Determines whether to add or remove title pagination additions.
 	 *
 	 * @since 3.2.4
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `use_title_pagination`.
 	 *
 	 * @param array|null $args The query arguments. Accepts 'id', 'tax', 'pta', and 'uid'.
@@ -105,7 +105,7 @@ class Conditions {
 	 * @since 3.2.2 Now differentiates from query and parameter input.
 	 * @since 4.1.0 Added the second $social parameter.
 	 * @since 4.2.0 Now supports the `$args['pta']` index.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `use_title_branding`.
 	 *
 	 * @param array|null  $args  The query arguments. Accepts 'id', 'tax', 'pta', and 'uid'.
@@ -169,7 +169,7 @@ class Conditions {
 		 * @param bool       $social Whether the title is meant for social display.
 		 */
 		return \apply_filters(
-			'the_seo_framework_use_title_branding',
+			'sgeobiz_seo_use_title_branding',
 			$use,
 			$args,
 			(bool) $social,
@@ -192,7 +192,7 @@ class Conditions {
 	 * Determines whether to add the title tagline for the post.
 	 *
 	 * @since 3.1.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `use_singular_title_branding`.
 	 *
 	 * @param int $id The post ID. Optional.
@@ -207,7 +207,7 @@ class Conditions {
 	 * Determines whether to add the title tagline for the term.
 	 *
 	 * @since 4.0.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `use_taxonomical_title_branding`.
 	 *
 	 * @param int $id The term ID. Optional.
@@ -237,7 +237,7 @@ class Conditions {
 	 * @since 3.1.0
 	 * @since 4.0.5 1: Added first parameter `$term`.
 	 *              2: Added filter.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param \WP_Term|\WP_User|\WP_Post_Type|null $term The Term object. Leave null to autodetermine query.
 	 * @return bool
@@ -249,7 +249,7 @@ class Conditions {
 		 * @param \WP_Term|\WP_User|\WP_Post_Type $term The current term object.
 		 */
 		return \apply_filters(
-			'the_seo_framework_use_archive_prefix',
+			'sgeobiz_seo_use_archive_prefix',
 			! Data\Plugin::get_option( 'title_rem_prefixes' ),
 			$term ?? \get_queried_object(),
 		);

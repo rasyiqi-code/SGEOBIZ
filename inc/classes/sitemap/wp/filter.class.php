@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Sitemap\WP\Filter
+ * @package SGEOBIZ_SEO\Classes\Sitemap\WP\Filter
  * @subpackage WordPress\Sitemaps
  */
 
-namespace The_SEO_Framework\Sitemap\WP;
+namespace SGEOBIZ_SEO\Sitemap\WP;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper\Query,
 	Sitemap,
@@ -36,8 +36,8 @@ use The_SEO_Framework\{
  *
  * @since 4.1.2
  * @since 5.0.0 1. Renamed from `Main`.
- *              2. Moved from ``The_SEO_Framework\Builders\CoreSitemaps\Main`.
- *              3. No longer extends `\The_SEO_Framework\Sitemap\Optimized\Main`.
+ *              2. Moved from ``SGEOBIZ_SEO\Builders\CoreSitemaps\Main`.
+ *              3. No longer extends `\SGEOBIZ_SEO\Sitemap\Optimized\Main`.
  * @access private
  */
 final class Filter {

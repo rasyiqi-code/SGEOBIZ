@@ -1,20 +1,20 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Meta\Description\Excerpt
- * @subpackage The_SEO_Framework\Meta\Description
+ * @package SGEOBIZ_SEO\Classes\Meta\Description\Excerpt
+ * @subpackage SGEOBIZ_SEO\Meta\Description
  */
 
-namespace The_SEO_Framework\Meta\Description;
+namespace SGEOBIZ_SEO\Meta\Description;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	get_query_type_from_args,
 	memo,
 	normalize_generation_args,
 };
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper\Query,
 	Helper\Format,
@@ -42,7 +42,7 @@ use The_SEO_Framework\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->description()->excerpt() instead.
+ *         Use sgeobiz()->description()->excerpt() instead.
  */
 class Excerpt {
 
@@ -64,7 +64,7 @@ class Excerpt {
 		 * @return string The post, term, pta, or user excerpt.
 		 */
 		return \apply_filters(
-			'the_seo_framework_get_excerpt',
+			'sgeobiz_seo_get_excerpt',
 			isset( $args )
 				? self::get_excerpt_from_args( $args )
 				: self::get_excerpt_from_query(),
@@ -156,7 +156,7 @@ class Excerpt {
 	private static function get_blog_page_excerpt() {
 		return \sprintf(
 			/* translators: %s = Blog page title. Front-end output. */
-			\__( 'Latest posts: %s', 'autodescription' ),
+			\__( 'Latest posts: %s', 'sgeobiz-seo' ),
 			Data\Blog::get_public_blog_name(),
 		);
 	}
@@ -185,15 +185,15 @@ class Excerpt {
 		 * @since 3.1.0
 		 * @since 5.1.0 Deprecated.
 		 * @deprecated
-		 * @see `\tsf()->format()->html()->extract_content()` to strip HTML tags neatly.
+		 * @see `\sgeobiz()->format()->html()->extract_content()` to strip HTML tags neatly.
 		 * @param string                 $excerpt The short circuit excerpt.
 		 * @param \WP_Term|\WP_Post_Type $object  The Term object or post type object.
 		 */
 		$excerpt = (string) \apply_filters_deprecated(
-			'the_seo_framework_generated_archive_excerpt',
+			'sgeobiz_seo_generated_archive_excerpt',
 			[ '', $object ],
 			'5.1.0 of The SEO Framework',
-			'the_seo_framework_get_excerpt',
+			'sgeobiz_seo_get_excerpt',
 		);
 
 		if ( $excerpt ) return $excerpt;
@@ -218,13 +218,13 @@ class Excerpt {
 				 * @param \WP_Term|\WP_Post_Type $object The post type object.
 				 */
 				$excerpt = (string) \apply_filters_deprecated(
-					'the_seo_framework_pta_description_excerpt',
+					'sgeobiz_seo_pta_description_excerpt',
 					[
 						$object->description ?? '',
 						$object,
 					],
 					'5.1.0 of The SEO Framework',
-					'the_seo_framework_get_excerpt',
+					'sgeobiz_seo_get_excerpt',
 				);
 			} else {
 				/**
@@ -236,10 +236,10 @@ class Excerpt {
 				 * @param \WP_Term $object    The Term object.
 				 */
 				$excerpt = (string) \apply_filters_deprecated(
-					'the_seo_framework_fallback_archive_description_excerpt',
+					'sgeobiz_seo_fallback_archive_description_excerpt',
 					[ '', $object ],
 					'5.1.0 of The SEO Framework',
-					'the_seo_framework_get_excerpt',
+					'sgeobiz_seo_get_excerpt',
 				);
 			}
 		} else {

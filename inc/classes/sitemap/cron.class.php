@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Sitemap\Cron
- * @subpackage The_SEO_Framework\Sitemap
+ * @package SGEOBIZ_SEO\Classes\Sitemap\Cron
+ * @subpackage SGEOBIZ_SEO\Sitemap
  */
 
-namespace The_SEO_Framework\Sitemap;
+namespace SGEOBIZ_SEO\Sitemap;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
  * The SEO Framework plugin
@@ -30,7 +30,7 @@ namespace The_SEO_Framework\Sitemap;
  *
  * @since 5.0.5
  * @access protected
- *         Use tsf()->sitemap()->cron() instead.
+ *         Use sgeobiz()->sitemap()->cron() instead.
  */
 class Cron {
 
@@ -40,7 +40,7 @@ class Cron {
 	 * @since 4.0.0
 	 * @since 4.1.0 Now returns whether the cron engagement was successful.
 	 * @since 4.1.2 Now registers before and after cron hooks. They should run subsequentially when successful.
-	 * @since 5.0.5 Moved from `The_SEO_Framework\Sitemap\Ping` and renamed from `engage_ping_cron`.
+	 * @since 5.0.5 Moved from `SGEOBIZ_SEO\Sitemap\Ping` and renamed from `engage_ping_cron`.
 	 *
 	 * @return bool True on success, false on failure.
 	 */

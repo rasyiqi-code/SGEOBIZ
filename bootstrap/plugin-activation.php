@@ -1,15 +1,15 @@
 <?php
 /**
- * @package The_SEO_Framework\Bootstrap\Install
+ * @package SGEOBIZ_SEO\Bootstrap\Install
  */
 
-namespace The_SEO_Framework\Bootstrap;
+namespace SGEOBIZ_SEO\Bootstrap;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\is_headless;
+use function SGEOBIZ_SEO\is_headless;
 
-use The_SEO_Framework\Helper\Compatibility;
+use SGEOBIZ_SEO\Helper\Compatibility;
 
 /**
  * The SEO Framework plugin
@@ -33,11 +33,11 @@ Compatibility::try_plugin_conflict_notification();
 turn_on_autoloading: if ( ! is_headless( 'settings' ) ) {
 	$options = [];
 
-	if ( false !== \get_option( \THE_SEO_FRAMEWORK_SITE_OPTIONS ) )
-		$options[] = \THE_SEO_FRAMEWORK_SITE_OPTIONS;
+	if ( false !== \get_option( \SGEOBIZ_SEO_SITE_OPTIONS ) )
+		$options[] = \SGEOBIZ_SEO_SITE_OPTIONS;
 
-	if ( false !== \get_option( \THE_SEO_FRAMEWORK_SITE_CACHE ) )
-		$options[] = \THE_SEO_FRAMEWORK_SITE_CACHE;
+	if ( false !== \get_option( \SGEOBIZ_SEO_SITE_CACHE ) )
+		$options[] = \SGEOBIZ_SEO_SITE_CACHE;
 
 	\wp_set_options_autoload( $options, true );
 }

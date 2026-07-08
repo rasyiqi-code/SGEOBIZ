@@ -1,19 +1,19 @@
 <?php
 /**
- * @package The_SEO_Framework\Bootstrap\Install
+ * @package SGEOBIZ_SEO\Bootstrap\Install
  */
 
-namespace The_SEO_Framework\Bootstrap;
+namespace SGEOBIZ_SEO\Bootstrap;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 // phpcs:disable TSF.Performance.Opcodes.ShouldHaveNamespaceEscape -- Too many scoped funcs. Test me once in a while.
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Admin,
 	Data,
 };
-use The_SEO_Framework\Helper\{
+use SGEOBIZ_SEO\Helper\{
 	Format\Markdown,
 	Query,
 };
@@ -48,10 +48,10 @@ use The_SEO_Framework\Helper\{
  *       It's a generator/iterator, so we must wait to PHP>5.5 support.
  */
 
-\add_action( 'init', 'The_SEO_Framework\Bootstrap\_do_upgrade', 20 );
-\add_action( 'the_seo_framework_upgraded', 'The_SEO_Framework\Bootstrap\_prepare_upgrade_notice', 99, 2 );
-\add_action( 'the_seo_framework_upgraded', 'The_SEO_Framework\Bootstrap\_prepare_upgrade_suggestion', 100, 2 );
-\add_action( 'the_seo_framework_downgraded', 'The_SEO_Framework\Bootstrap\_prepare_downgrade_notice', 99, 2 );
+\add_action( 'init', 'SGEOBIZ_SEO\Bootstrap\_do_upgrade', 20 );
+\add_action( 'sgeobiz_seo_upgraded', 'SGEOBIZ_SEO\Bootstrap\_prepare_upgrade_notice', 99, 2 );
+\add_action( 'sgeobiz_seo_upgraded', 'SGEOBIZ_SEO\Bootstrap\_prepare_upgrade_suggestion', 100, 2 );
+\add_action( 'sgeobiz_seo_downgraded', 'SGEOBIZ_SEO\Bootstrap\_prepare_downgrade_notice', 99, 2 );
 
 /**
  * Returns the version set before upgrading began.
@@ -65,7 +65,7 @@ function _previous_db_version() {
 
 	static $memo;
 
-	return $memo ??= \get_option( 'the_seo_framework_upgraded_db_version', '0' );
+	return $memo ??= \get_option( 'sgeobiz_seo_upgraded_db_version', '0' );
 }
 
 /**
@@ -119,7 +119,7 @@ function _do_upgrade() {
 	// Register this AFTER the lock is set. Otherwise, it may clear the lock in another thread.
 	// This releases the lock when the upgrade crashes or when we forget to unlock it...
 	// ...if the database connection is still valid; otherwise, we'll have to wait for the $timeout to pass.
-	register_shutdown_function( 'The_SEO_Framework\Bootstrap\_release_upgrade_lock' );
+	register_shutdown_function( 'SGEOBIZ_SEO\Bootstrap\_release_upgrade_lock' );
 
 	\wp_raise_memory_limit( 'tsf_upgrade' );
 
@@ -139,16 +139,16 @@ function _do_upgrade() {
 
 	$previous_version = _previous_db_version();
 
-	if ( ! \get_option( 'the_seo_framework_initial_db_version' ) ) {
-		// Sets to previous if previous is known. This is a late addition. New sites default to \THE_SEO_FRAMEWORK_DB_VERSION.
-		\update_option( 'the_seo_framework_initial_db_version', $previous_version ?: \THE_SEO_FRAMEWORK_DB_VERSION, false );
+	if ( ! \get_option( 'sgeobiz_seo_initial_db_version' ) ) {
+		// Sets to previous if previous is known. This is a late addition. New sites default to \SGEOBIZ_SEO_DB_VERSION.
+		\update_option( 'sgeobiz_seo_initial_db_version', $previous_version ?: \SGEOBIZ_SEO_DB_VERSION, false );
 	}
 
 	// Don't run the upgrade cycle if the user downgraded. Downgrade, instead.
-	if ( $previous_version > \THE_SEO_FRAMEWORK_DB_VERSION ) {
+	if ( $previous_version > \SGEOBIZ_SEO_DB_VERSION ) {
 		// Novel idea: Allow webmasters to register custom upgrades. Maybe later. See file PHPDoc's TODO.
 		// If we do, add it in function _downgrade()'s loop instead.
-		// \do_action( 'the_seo_framework_do_downgrade', $previous_version, \THE_SEO_FRAMEWORK_DB_VERSION );
+		// \do_action( 'sgeobiz_seo_do_downgrade', $previous_version, \SGEOBIZ_SEO_DB_VERSION );
 
 		$current_version = _downgrade( $previous_version );
 
@@ -158,11 +158,11 @@ function _do_upgrade() {
 		 * @param string $previous_version The previous version the site downgraded from, if any.
 		 * @param string $current_version  The current version of the site.
 		 */
-		\do_action( 'the_seo_framework_downgraded', (string) $previous_version, (string) $current_version );
+		\do_action( 'sgeobiz_seo_downgraded', (string) $previous_version, (string) $current_version );
 	} else {
 		// Novel idea: Allow webmasters to register custom upgrades. Maybe later. See file PHPDoc's TODO.
 		// If we do, add it in function _upgrade()'s loop instead.
-		// \do_action( 'the_seo_framework_do_upgrade', $previous_version, \THE_SEO_FRAMEWORK_DB_VERSION );
+		// \do_action( 'sgeobiz_seo_do_upgrade', $previous_version, \SGEOBIZ_SEO_DB_VERSION );
 
 		$current_version = _upgrade( $previous_version );
 
@@ -173,7 +173,7 @@ function _do_upgrade() {
 		 * @param string $previous_version The previous version the site upgraded from, if any.
 		 * @param string $current_version The current version of the site.
 		 */
-		\do_action( 'the_seo_framework_upgraded', (string) $previous_version, (string) $current_version );
+		\do_action( 'sgeobiz_seo_upgraded', (string) $previous_version, (string) $current_version );
 	}
 }
 
@@ -310,9 +310,9 @@ function _release_upgrade_lock() {
  * @param string|int $version The actual database version.
  * @return string The actual database version.
  */
-function _set_version( $version = \THE_SEO_FRAMEWORK_DB_VERSION ) {
+function _set_version( $version = \SGEOBIZ_SEO_DB_VERSION ) {
 
-	\update_option( 'the_seo_framework_upgraded_db_version', (string) $version, true );
+	\update_option( 'sgeobiz_seo_upgraded_db_version', (string) $version, true );
 
 	return (string) $version;
 }
@@ -347,13 +347,13 @@ function _set_to_current_version() {
 	\wp_cache_delete( 'alloptions', 'options' );
 
 	// The option update might've failed. Try to obtain the latest version.
-	return (string) \get_option( 'the_seo_framework_upgraded_db_version' );
+	return (string) \get_option( 'sgeobiz_seo_upgraded_db_version' );
 }
 
 /**
  * Prepares a notice when the downgrade is completed.
  *
- * @hook the_seo_framework_downgraded 99
+ * @hook sgeobiz_seo_downgraded 99
  * @since 4.1.1
  * @TODO Add browser cache flush notice? Or set a pragma/cache-control header?
  *       Users that remove query strings (thanks to YSlow) are to blame, though.
@@ -371,7 +371,7 @@ function _prepare_downgrade_notice( $previous_version, $current_version ) {
 			Markdown::convert(
 				\sprintf(
 					/* translators: %1$s = New, lower version number, surrounded in markdown-backticks. %2$s = Old, higher version number, surrounded in markdown-backticks. */
-					\esc_html__( 'Your website has been downgraded successfully to use The SEO Framework at database version `%1$s` from `%2$s`.', 'autodescription' ),
+					\esc_html__( 'Your website has been downgraded successfully to use The SEO Framework at database version `%1$s` from `%2$s`.', 'sgeobiz-seo' ),
 					\esc_html( $current_version ),
 					\esc_html( $previous_version ),
 				),
@@ -398,7 +398,7 @@ function _prepare_downgrade_notice( $previous_version, $current_version ) {
 /**
  * Prepares a notice when the upgrade is completed.
  *
- * @hook the_seo_framework_upgraded 99
+ * @hook sgeobiz_seo_upgraded 99
  * @since 4.0.0
  * @since 4.1.0 1. Moved admin notice user capability check here.
  *              2. Now registers persistent notice for the update version.
@@ -422,7 +422,7 @@ function _prepare_upgrade_notice( $previous_version, $current_version ) {
 			Markdown::convert(
 				\sprintf(
 					/* translators: %s = Version number, surrounded in markdown-backticks. */
-					\esc_html__( 'Thank you for updating The SEO Framework! Your website has been upgraded successfully to use The SEO Framework at database version `%s`.', 'autodescription' ),
+					\esc_html__( 'Thank you for updating The SEO Framework! Your website has been upgraded successfully to use The SEO Framework at database version `%s`.', 'sgeobiz-seo' ),
 					\esc_html( $current_version ),
 				),
 				[ 'code' ],
@@ -443,18 +443,18 @@ function _prepare_upgrade_notice( $previous_version, $current_version ) {
 			],
 		);
 	} elseif ( ! $previous_version && $current_version ) { // User successfully installed.
-		$network_mode = (bool) ( \get_site_option( 'active_sitewide_plugins' )[ \THE_SEO_FRAMEWORK_PLUGIN_BASENAME ] ?? false );
+		$network_mode = (bool) ( \get_site_option( 'active_sitewide_plugins' )[ \SGEOBIZ_SEO_PLUGIN_BASENAME ] ?? false );
 
 		// Only show notices when not in network mode, or on main site otherwise.
 		if ( ! $network_mode || \is_main_site() ) {
 			Admin\Notice\Persistent::register_notice(
 				\sprintf(
 					'<p>%s</p><p>%s</p>',
-					\esc_html__( 'The SEO Framework automatically optimizes your website for search engines and social media.', 'autodescription' ),
+					\esc_html__( 'The SEO Framework automatically optimizes your website for search engines and social media.', 'sgeobiz-seo' ),
 					Markdown::convert(
 						\sprintf(
 							/* translators: %s = Link, markdown. */
-							\esc_html__( 'To take full advantage of all SEO features, please follow our [5-minute setup guide](%s).', 'autodescription' ),
+							\esc_html__( 'To take full advantage of all SEO features, please follow our [5-minute setup guide](%s).', 'sgeobiz-seo' ),
 							'https://theseoframework.com/docs/seo-plugin-setup/' // Use https://tsf.fyi/docs/setup ? Needless redirection...
 						),
 						[ 'a' ],
@@ -527,7 +527,7 @@ function _prepare_upgrade_notice( $previous_version, $current_version ) {
 				Markdown::convert(
 					\sprintf(
 						/* translators: 1: SEO plugin name(s), 2: link to guide, in Markdown! */
-						\esc_html__( 'The SEO Framework detected metadata from %1$s. Whenever you are set, read our [migration guide](%2$s).', 'autodescription' ),
+						\esc_html__( 'The SEO Framework detected metadata from %1$s. Whenever you are set, read our [migration guide](%2$s).', 'sgeobiz-seo' ),
 						\esc_html(
 							\count( $found_titles ) > 1
 								? \wp_sprintf_l( '%l', $found_titles )
@@ -546,7 +546,7 @@ function _prepare_upgrade_notice( $previous_version, $current_version ) {
 				'escape' => false,
 			],
 			[
-				'screens'      => [ 'edit', 'edit-tags', 'dashboard', 'toplevel_page_theseoframework-settings' ],
+				'screens'      => [ 'edit', 'edit-tags', 'dashboard', 'toplevel_page_sgeobiz-seo-settings' ],
 				'excl_screens' => [],
 				'capability'   => 'activate_plugins',
 				'user'         => 0,
@@ -560,7 +560,7 @@ function _prepare_upgrade_notice( $previous_version, $current_version ) {
 /**
  * Enqueues and outputs an Extension Manager suggestion.
  *
- * @hook the_seo_framework_upgraded 100
+ * @hook sgeobiz_seo_upgraded 100
  * @since 3.1.0
  * @since 3.2.2 No longer suggests when the user is new.
  * @since 3.2.4 Moved upgrade suggestion call to applicable file.
@@ -576,9 +576,9 @@ function _prepare_upgrade_suggestion( $previous_version, $current_version ) { //
 	if ( ! $previous_version ) return;
 
 	// Can this even run twice? Let's play it safe to prevent crashes.
-	if ( \The_SEO_Framework\has_run( __METHOD__ ) ) return;
+	if ( \SGEOBIZ_SEO\has_run( __METHOD__ ) ) return;
 
-	require \THE_SEO_FRAMEWORK_DIR_PATH_FUNCT . 'upgrade-suggestion.php';
+	require \SGEOBIZ_SEO_DIR_PATH_FUNCT . 'upgrade-suggestion.php';
 }
 
 /**
@@ -601,7 +601,7 @@ function _add_upgrade_notice( $notice = '' ) {
 		],
 		[
 			'excl_screens' => [ 'post', 'term', 'upload', 'media', 'plugin-editor', 'plugin-install', 'themes' ],
-			'capability'   => \THE_SEO_FRAMEWORK_SETTINGS_CAP,
+			'capability'   => \SGEOBIZ_SEO_SETTINGS_CAP,
 		],
 	);
 }
@@ -613,7 +613,7 @@ function _add_upgrade_notice( $notice = '' ) {
  */
 function _do_upgrade_1() {
 	// Here, `Plugin\Setup::get_default_options()` will get called 3 times in a row. Alas.
-	\add_option( \THE_SEO_FRAMEWORK_SITE_OPTIONS, Data\Plugin\Setup::get_default_options(), '', true );
+	\add_option( \SGEOBIZ_SEO_SITE_OPTIONS, Data\Plugin\Setup::get_default_options(), '', true );
 }
 
 /**
@@ -630,10 +630,10 @@ function _do_upgrade_2701() {
 	if ( $term_meta ) {
 
 		foreach ( (array) $term_meta as $term_id => $meta )
-			\add_term_meta( $term_id, \THE_SEO_FRAMEWORK_TERM_OPTIONS, $meta, true );
+			\add_term_meta( $term_id, \SGEOBIZ_SEO_TERM_OPTIONS, $meta, true );
 
 		// Rudimentary test for remaining ~300 users of earlier versions passed, set initial version to 2600.
-		\update_option( 'the_seo_framework_initial_db_version', '2600', false );
+		\update_option( 'sgeobiz_seo_initial_db_version', '2600', false );
 	}
 }
 
@@ -645,7 +645,7 @@ function _do_upgrade_2701() {
 function _do_upgrade_2802() {
 
 	// Delete old values from database. Removes backwards compatibility. 2701 is intentional.
-	if ( \get_option( 'the_seo_framework_initial_db_version' ) < '2701' )
+	if ( \get_option( 'sgeobiz_seo_initial_db_version' ) < '2701' )
 		\delete_option( 'autodescription-term-meta' );
 }
 
@@ -658,12 +658,12 @@ function _do_upgrade_2802() {
  */
 function _do_upgrade_2900() {
 
-	if ( \get_option( 'the_seo_framework_initial_db_version' ) < '2900' ) {
+	if ( \get_option( 'sgeobiz_seo_initial_db_version' ) < '2900' ) {
 		$card_type = trim( Data\Plugin::get_option( 'twitter_card' ) );
 		if ( 'photo' === $card_type ) {
 			Data\Plugin::update_option( 'twitter_card', 'summary_large_image' );
 			_add_upgrade_notice(
-				\__( 'Twitter Photo Cards have been deprecated. Your site now uses Summary Cards when applicable.', 'autodescription' ),
+				\__( 'Twitter Photo Cards have been deprecated. Your site now uses Summary Cards when applicable.', 'sgeobiz-seo' ),
 			);
 		}
 	}
@@ -680,13 +680,13 @@ function _do_upgrade_2900() {
  */
 function _do_upgrade_3001() {
 
-	if ( \get_option( 'the_seo_framework_initial_db_version' ) < '3001' ) {
+	if ( \get_option( 'sgeobiz_seo_initial_db_version' ) < '3001' ) {
 		// Only show notice if old option exists. Falls back to default upgrader otherwise.
 		$sitemap_timestamps = Data\Plugin::get_option( 'sitemap_timestamps' );
 		if ( '' !== $sitemap_timestamps ) {
 			Data\Plugin::update_option( 'timestamps_format', (string) (int) $sitemap_timestamps );
 			_add_upgrade_notice(
-				\__( 'The previous sitemap timestamp settings have been converted into new global timestamp settings.', 'autodescription' ),
+				\__( 'The previous sitemap timestamp settings have been converted into new global timestamp settings.', 'sgeobiz-seo' ),
 			);
 		} else {
 			Data\Plugin::update_option( 'timestamps_format', '1' );
@@ -709,11 +709,11 @@ function _do_upgrade_3001() {
  *
  * @since 3.1.0
  * @since 4.1.1 No longer tests for default options.
- * @since 5.0.0 Removed THE_SEO_FRAMEWORK_SITE_CACHE settings registration. (See 5001)
+ * @since 5.0.0 Removed SGEOBIZ_SEO_SITE_CACHE settings registration. (See 5001)
  */
 function _do_upgrade_3103() {
 
-	if ( \get_option( 'the_seo_framework_initial_db_version' ) < '3103' ) {
+	if ( \get_option( 'sgeobiz_seo_initial_db_version' ) < '3103' ) {
 		// Transport title separator (option name typo).
 		Data\Plugin::update_option(
 			'title_separator',
@@ -757,7 +757,7 @@ function _do_upgrade_3103() {
  */
 function _do_upgrade_3300() {
 
-	if ( \get_option( 'the_seo_framework_initial_db_version' ) < '3300' ) {
+	if ( \get_option( 'sgeobiz_seo_initial_db_version' ) < '3300' ) {
 		// Remove old rewrite rules.
 		unset(
 			$GLOBALS['wp_rewrite']->extra_rules_top['sitemap\.xml$'],
@@ -778,7 +778,7 @@ function _do_upgrade_3300() {
 		}
 
 		_add_upgrade_notice(
-			\__( 'The positions in the "Meta Title Additions Location" setting for the homepage have been reversed, left to right, but the output has not been changed. If you must downgrade for some reason, remember to switch the location back again.', 'autodescription' ),
+			\__( 'The positions in the "Meta Title Additions Location" setting for the homepage have been reversed, left to right, but the output has not been changed. If you must downgrade for some reason, remember to switch the location back again.', 'sgeobiz-seo' ),
 		);
 	}
 }
@@ -795,7 +795,7 @@ function _do_upgrade_3300() {
  */
 function _do_upgrade_4051() {
 
-	if ( \get_option( 'the_seo_framework_initial_db_version' ) < '4051' ) {
+	if ( \get_option( 'sgeobiz_seo_initial_db_version' ) < '4051' ) {
 		Data\Plugin::update_option( 'advanced_query_protection', 0 );
 		Data\Plugin::update_option( 'index_the_feed', 0 );
 		Data\Plugin::update_option( 'baidu_verification', '' );
@@ -816,7 +816,7 @@ function _do_upgrade_4051() {
  */
 function _do_upgrade_4103() {
 
-	if ( \get_option( 'the_seo_framework_initial_db_version' ) < '4103' ) {
+	if ( \get_option( 'sgeobiz_seo_initial_db_version' ) < '4103' ) {
 		Data\Plugin::update_option( 'disabled_taxonomies', [] );
 		Data\Plugin::update_option( 'sitemap_logo_url', '' );
 		Data\Plugin::update_option( 'sitemap_logo_id', 0 );
@@ -856,21 +856,21 @@ function _do_upgrade_4103() {
  */
 function _do_upgrade_4110() {
 
-	if ( \get_option( 'the_seo_framework_initial_db_version' ) < '4110' ) {
+	if ( \get_option( 'sgeobiz_seo_initial_db_version' ) < '4110' ) {
 		Data\Plugin::update_option( 'oembed_use_og_title', 0 );
 		Data\Plugin::update_option( 'oembed_use_social_image', 0 ); // Defaults to 1 for new sites!
 	}
 }
 
 /**
- * Removes the global `the_seo_framework_tested_upgrade_version` option.
+ * Removes the global `sgeobiz_seo_tested_upgrade_version` option.
  *
  * @since 4.2.0
  */
 function _do_upgrade_4200() {
 
-	if ( \get_option( 'the_seo_framework_initial_db_version' ) < '4200' )
-		\delete_option( 'the_seo_framework_tested_upgrade_version' );
+	if ( \get_option( 'sgeobiz_seo_initial_db_version' ) < '4200' )
+		\delete_option( 'sgeobiz_seo_tested_upgrade_version' );
 }
 
 /**
@@ -880,15 +880,15 @@ function _do_upgrade_4200() {
  */
 function _do_upgrade_4270() {
 
-	if ( \get_option( 'the_seo_framework_initial_db_version' ) < '4270' )
+	if ( \get_option( 'sgeobiz_seo_initial_db_version' ) < '4270' )
 		Data\Plugin::update_option( 'auto_description_html_method', 'fast' );
 }
 
 /**
- * Registers option `THE_SEO_FRAMEWORK_SITE_CACHE`.
+ * Registers option `SGEOBIZ_SEO_SITE_CACHE`.
  * Deletes the static cache for exclusions.
  * Changes `auto_descripton_html_method` to `auto_description_html_method`. (typo) cspell:ignore descripton
- * Changes option `autodescription-updates-cache` to constant value THE_SEO_FRAMEWORK_SITE_CACHE.
+ * Changes option `autodescription-updates-cache` to constant value SGEOBIZ_SEO_SITE_CACHE.
  * Enables `ld_json_enabled` only if any structured data function used to be active.
  * Sets `homepage_twitter_card_type` to an empty string (aka default).
  *
@@ -898,9 +898,9 @@ function _do_upgrade_4270() {
 function _do_upgrade_5001() {
 
 	// Not a public "setting" -- only add the option to prevent additional db-queries when it's yet to be populated.
-	\add_option( \THE_SEO_FRAMEWORK_SITE_CACHE, Data\Plugin\Setup::get_default_site_caches(), '', true );
+	\add_option( \SGEOBIZ_SEO_SITE_CACHE, Data\Plugin\Setup::get_default_site_caches(), '', true );
 
-	if ( \get_option( 'the_seo_framework_initial_db_version' ) < '5001' ) {
+	if ( \get_option( 'sgeobiz_seo_initial_db_version' ) < '5001' ) {
 		Data\Plugin::update_option(
 			'auto_description_html_method',
 			Data\Plugin::get_option( 'auto_descripton_html_method' ) ?: 'fast',
@@ -909,7 +909,7 @@ function _do_upgrade_5001() {
 		$site_cache = \get_option( 'autodescription-updates-cache' ) ?: [];
 		if ( $site_cache ) {
 			// Try to use the options API as much as possible, instead of using $wpdb->update().
-			\update_option( \THE_SEO_FRAMEWORK_SITE_CACHE, $site_cache, true );
+			\update_option( \SGEOBIZ_SEO_SITE_CACHE, $site_cache, true );
 			// The option holds only generated data that can be regenerated easily.
 			// On downgrade, this will be repopulated.
 			\delete_option( 'autodescription-updates-cache' );
@@ -961,7 +961,7 @@ function _do_upgrade_5001() {
  */
 function _do_upgrade_5050() {
 
-	if ( \get_option( 'the_seo_framework_initial_db_version' ) < '5050' ) {
+	if ( \get_option( 'sgeobiz_seo_initial_db_version' ) < '5050' ) {
 		Data\Plugin::update_option(
 			'sitemap_cron_prerender',
 			Data\Plugin::get_option( 'ping_use_cron_prerender' ) ?: 0,
@@ -976,7 +976,7 @@ function _do_upgrade_5050() {
  */
 function _do_upgrade_5100() {
 
-	if ( \get_option( 'the_seo_framework_initial_db_version' ) < '5100' ) {
+	if ( \get_option( 'sgeobiz_seo_initial_db_version' ) < '5100' ) {
 		Data\Plugin::update_option( [
 			'robotstxt_block_ai'  => 0,
 			'robotstxt_block_seo' => 0,
@@ -994,7 +994,7 @@ function _do_upgrade_5100() {
  */
 function _do_upgrade_5130() {
 
-	if ( \get_option( 'the_seo_framework_initial_db_version' ) < '5130' )
+	if ( \get_option( 'sgeobiz_seo_initial_db_version' ) < '5130' )
 		Data\Plugin::update_option( [
 			'display_list_edit_options' => 1,
 			'display_term_edit_options' => 1,
@@ -1009,6 +1009,6 @@ function _do_upgrade_5130() {
  */
 function _do_upgrade_5140() {
 
-	if ( \get_option( 'the_seo_framework_initial_db_version' ) < '5140' )
+	if ( \get_option( 'sgeobiz_seo_initial_db_version' ) < '5140' )
 		Data\Plugin::update_option( 'breadcrumb_use_meta_title', 1 );
 }

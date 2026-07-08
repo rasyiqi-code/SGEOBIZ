@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Front\Query
- * @subpackage The_SEO_Framework\Feed
+ * @package SGEOBIZ_SEO\Classes\Front\Query
+ * @subpackage SGEOBIZ_SEO\Feed
  */
 
-namespace The_SEO_Framework\Front;
+namespace SGEOBIZ_SEO\Front;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper,
 	Helper\Query\Exclusion,
@@ -45,7 +45,7 @@ final class Query {
 	 * @hook pre_get_posts 9999
 	 * @since 2.9.4
 	 * @since 3.0.0 Exchanged meta query for post__not_in query.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `_alter_search_query_in`.
 	 * @since 5.1.5 Now also tests the effective search query vars.
 	 * @see Twenty Fourteen theme @source \Featured_Content::pre_get_posts()
@@ -80,7 +80,7 @@ final class Query {
 	 *
 	 * @hook the_posts 10
 	 * @since 2.9.4
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `alter_search_query_post`.
 	 * @since 5.1.3 Now verifies that the search query is actually set.
 	 * @since 5.1.5 Now also tests the effective search query vars.
@@ -109,7 +109,7 @@ final class Query {
 	 * @hook pre_get_posts 9999
 	 * @since 2.9.4
 	 * @since 3.0.0 Exchanged meta query for post__not_in query.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `_alter_archive_query_in`.
 	 * @see Twenty Fourteen theme @source \Featured_Content::pre_get_posts()
 	 * @access private
@@ -146,7 +146,7 @@ final class Query {
 	 *
 	 * @hook the_posts 10
 	 * @since 2.9.4
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `_alter_archive_query_post`.
 	 * @access private
 	 *
@@ -206,7 +206,7 @@ final class Query {
 	 * @since 4.2.0 Improved supported taxonomy loop.
 	 * @since 4.2.6 Added check for `did_action( 'wp_loaded' )` early, before queries are tested and cached.
 	 * @since 4.2.7 No longer affects the sitemap query.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param \WP_Query $wp_query WP_Query object.
 	 * @return bool
@@ -215,7 +215,7 @@ final class Query {
 
 		static $has_filter;
 
-		$has_filter ??= \has_filter( 'the_seo_framework_do_adjust_archive_query' );
+		$has_filter ??= \has_filter( 'sgeobiz_seo_do_adjust_archive_query' );
 
 		/**
 		 * This filter affects both 'search-"archives"' and terms/taxonomies.
@@ -224,7 +224,7 @@ final class Query {
 		 * @param bool      $adjust   True is unblocked (do adjustment), false is blocked (don't do adjustment).
 		 * @param \WP_Query $wp_query The current query.
 		 */
-		if ( $has_filter && ! \apply_filters( 'the_seo_framework_do_adjust_archive_query', true, $wp_query ) )
+		if ( $has_filter && ! \apply_filters( 'sgeobiz_seo_do_adjust_archive_query', true, $wp_query ) )
 			return true;
 
 		if ( ! \did_action( 'wp_loaded' ) )

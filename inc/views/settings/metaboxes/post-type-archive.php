@@ -1,19 +1,19 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Admin\Metaboxes
- * @subpackage The_SEO_Framework\Admin\Settings
+ * @package SGEOBIZ_SEO\Views\Admin\Metaboxes
+ * @subpackage SGEOBIZ_SEO\Admin\Settings
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
-use The_SEO_Framework\Admin\Settings\Layout\{
+use SGEOBIZ_SEO\Admin\Settings\Layout\{
 	Form,
 	HTML,
 	Input,
 };
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data\Filter\Sanitize,
 	Helper\Compatibility,
 	Helper\Post_Type,
@@ -45,7 +45,7 @@ use The_SEO_Framework\{
 switch ( $instance ) :
 	case 'main':
 		HTML::description(
-			\__( 'Post type archives (PTA) are unique archives displaying all pages for a post type. Since PTAs lack an administrative interface, their SEO settings are displayed here.', 'autodescription' )
+			\__( 'Post type archives (PTA) are unique archives displaying all pages for a post type. Since PTAs lack an administrative interface, their SEO settings are displayed here.', 'sgeobiz-seo' )
 		);
 
 		?>
@@ -73,7 +73,7 @@ switch ( $instance ) :
 		?>
 		<div id=tsf-post-type-archive-header-wrap class=tsf-fields style=display:none>
 			<div id=tsf-post-type-archive-select-wrap>
-				<label for=tsf-post-type-archive-selector><?php \esc_html_e( 'Select archive to edit:', 'autodescription' ); ?></label>
+				<label for=tsf-post-type-archive-selector><?php \esc_html_e( 'Select archive to edit:', 'sgeobiz-seo' ); ?></label>
 				<select id=tsf-post-type-archive-selector></select>
 			</div>
 		</div>
@@ -95,19 +95,19 @@ switch ( $instance ) :
 			$args = compact( 'post_type', 'generator_args', 'options' );
 			$tabs = [
 				'general'    => [
-					'name'     => \__( 'General', 'autodescription' ),
+					'name'     => \__( 'General', 'sgeobiz-seo' ),
 					'callback' => [ $_settings_class, '_post_type_archive_metabox_general_tab' ],
 					'dashicon' => 'admin-generic',
 					'args'     => $args,
 				],
 				'social'     => [
-					'name'     => \__( 'Social', 'autodescription' ),
+					'name'     => \__( 'Social', 'sgeobiz-seo' ),
 					'callback' => [ $_settings_class, '_post_type_archive_metabox_social_tab' ],
 					'dashicon' => 'share',
 					'args'     => $args,
 				],
 				'visibility' => [
-					'name'     => \__( 'Visibility', 'autodescription' ),
+					'name'     => \__( 'Visibility', 'sgeobiz-seo' ),
 					'callback' => [ $_settings_class, '_post_type_archive_metabox_visibility_tab' ],
 					'dashicon' => 'visibility',
 					'args'     => $args,
@@ -118,7 +118,7 @@ switch ( $instance ) :
 			printf(
 				'<div class="tsf-post-type-archive-wrap%s" %s>',
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Shut it, noob.
-				$post_type_index ? ' hide-if-tsf-js' : '',
+				$post_type_index ? ' hide-if-sgeobiz-js' : '',
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- This escapes.
 				HTML::make_data_attributes( [ 'postType' => $post_type ] )
 			);
@@ -131,14 +131,14 @@ switch ( $instance ) :
 						[
 							\sprintf(
 								/* translators: 1 = Post Type Archive name */
-								\esc_html__( 'Editing archive of %s', 'autodescription' ),
+								\esc_html__( 'Editing archive of %s', 'sgeobiz-seo' ),
 								\esc_html( $post_types_data[ $post_type ]['label'] ),
 							),
 							\esc_html( $post_type ),
 							\sprintf(
 								'<span class=tsf-post-type-archive-link><a href="%s" target=_blank rel=noopener>[%s]</a></span>',
 								\esc_url( $post_types_data[ $post_type ]['url'] ),
-								\esc_html__( 'View archive', 'autodescription' ),
+								\esc_html__( 'View archive', 'sgeobiz-seo' ),
 							),
 						],
 					) );
@@ -147,7 +147,7 @@ switch ( $instance ) :
 				<div class="tsf-post-type-archive-if-excluded hidden">
 					<?php
 					HTML::attention_description(
-						\__( "This post type is excluded, so settings won't have any effect.", 'autodescription' )
+						\__( "This post type is excluded, so settings won't have any effect.", 'sgeobiz-seo' )
 					)
 					?>
 				</div>
@@ -155,7 +155,7 @@ switch ( $instance ) :
 					<?php
 					if ( Compatibility::get_active_conflicting_plugin_types()['multilingual'] ) {
 						HTML::attention(
-							\__( 'A multilingual plugin has been detected and text entered below may not be translated.', 'autodescription' )
+							\__( 'A multilingual plugin has been detected and text entered below may not be translated.', 'sgeobiz-seo' )
 						);
 					}
 
@@ -167,7 +167,7 @@ switch ( $instance ) :
 						 * @param string $post_type The post type archive's name.
 						 */
 						(array) \apply_filters(
-							'the_seo_framework_post_type_archive_settings_tabs',
+							'sgeobiz_seo_post_type_archive_settings_tabs',
 							$tabs,
 							$post_type,
 						)
@@ -177,7 +177,7 @@ switch ( $instance ) :
 			</div>
 			<?php
 			// Output only the first time.
-			$post_type_index++ or print( '<hr class=hide-if-tsf-js>' );
+			$post_type_index++ or print( '<hr class=hide-if-sgeobiz-js>' );
 		}
 		break;
 
@@ -186,11 +186,11 @@ switch ( $instance ) :
 		?>
 		<p>
 			<label for="<?php Input::field_id( $args['options']['doctitle'] ); ?>" class=tsf-toblock>
-				<strong><?php \esc_html_e( 'Meta Title', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( 'Meta Title', 'sgeobiz-seo' ); ?></strong>
 				<?php
 					echo ' ';
 					HTML::make_info(
-						\__( 'The meta title can be used to determine the title used on search engine result pages.', 'autodescription' ),
+						\__( 'The meta title can be used to determine the title used on search engine result pages.', 'sgeobiz-seo' ),
 						'https://developers.google.com/search/docs/advanced/appearance/title-link',
 					);
 				?>
@@ -237,7 +237,7 @@ switch ( $instance ) :
 		<div class=tsf-title-tagline-toggle>
 		<?php
 			$info = HTML::make_info(
-				\__( 'Use this when you want to rearrange the title parts manually.', 'autodescription' ),
+				\__( 'Use this when you want to rearrange the title parts manually.', 'sgeobiz-seo' ),
 				'',
 				false,
 			);
@@ -245,7 +245,7 @@ switch ( $instance ) :
 			HTML::wrap_fields(
 				Input::make_checkbox( [
 					'id'     => $args['options']['title_no_blog_name'],
-					'label'  => \esc_html__( 'Remove the site title?', 'autodescription' ) . " $info",
+					'label'  => \esc_html__( 'Remove the site title?', 'sgeobiz-seo' ) . " $info",
 					'value'  => Data\Plugin\PTA::get_meta_item( 'title_no_blog_name', $args['post_type'] ),
 					'escape' => false,
 				] ),
@@ -258,11 +258,11 @@ switch ( $instance ) :
 
 		<p>
 			<label for="<?php Input::field_id( $args['options']['description'] ); ?>" class=tsf-toblock>
-				<strong><?php \esc_html_e( 'Meta Description', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( 'Meta Description', 'sgeobiz-seo' ); ?></strong>
 				<?php
 					echo ' ';
 					HTML::make_info(
-						\__( 'The meta description can be used to determine the text used under the title on search engine results pages.', 'autodescription' ),
+						\__( 'The meta description can be used to determine the text used under the title on search engine results pages.', 'sgeobiz-seo' ),
 						'https://developers.google.com/search/docs/advanced/appearance/snippet',
 					);
 				?>
@@ -320,13 +320,13 @@ switch ( $instance ) :
 		);
 
 		/* translators: %s = default option value */
-		$_default_i18n      = \__( 'Default (%s)', 'autodescription' );
+		$_default_i18n      = \__( 'Default (%s)', 'sgeobiz-seo' );
 		$tw_supported_cards = Meta\Twitter::get_supported_cards();
 
 		?>
 		<p>
 			<label for="<?php Input::field_id( $args['options']['og_title'] ); ?>" class=tsf-toblock>
-				<strong><?php \esc_html_e( 'Open Graph Title', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( 'Open Graph Title', 'sgeobiz-seo' ); ?></strong>
 			</label>
 		</p>
 		<?php
@@ -342,7 +342,7 @@ switch ( $instance ) :
 
 		<p>
 			<label for="<?php Input::field_id( $args['options']['og_description'] ); ?>" class=tsf-toblock>
-				<strong><?php \esc_html_e( 'Open Graph Description', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( 'Open Graph Description', 'sgeobiz-seo' ); ?></strong>
 			</label>
 		</p>
 		<?php
@@ -360,7 +360,7 @@ switch ( $instance ) :
 
 		<p>
 			<label for="<?php Input::field_id( $args['options']['tw_title'] ); ?>" class=tsf-toblock>
-				<strong><?php \esc_html_e( 'Twitter Title', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( 'Twitter Title', 'sgeobiz-seo' ); ?></strong>
 			</label>
 		</p>
 		<?php
@@ -376,7 +376,7 @@ switch ( $instance ) :
 
 		<p>
 			<label for="<?php Input::field_id( $args['options']['tw_description'] ); ?>" class=tsf-toblock>
-				<strong><?php \esc_html_e( 'Twitter Description', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( 'Twitter Description', 'sgeobiz-seo' ); ?></strong>
 			</label>
 		</p>
 		<?php
@@ -392,10 +392,10 @@ switch ( $instance ) :
 
 		<p>
 			<label for="<?php Input::field_id( $args['options']['tw_card_type'] ); ?>" class=tsf-toblock>
-				<strong><?php \esc_html_e( 'Twitter Card Type', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( 'Twitter Card Type', 'sgeobiz-seo' ); ?></strong>
 				<?php
 				HTML::make_info(
-					\__( 'The Twitter Card type controls the link preview layout. On X, the summary card shows a small thumbnail beside truncated title and description; the large-image card overlays the title on the image with no description. On Discord, the image appears small at the side or large below; both card types show the description.', 'autodescription' ),
+					\__( 'The Twitter Card type controls the link preview layout. On X, the summary card shows a small thumbnail beside truncated title and description; the large-image card overlays the title on the image with no description. On Discord, the image appears small at the side or large below; both card types show the description.', 'sgeobiz-seo' ),
 					'https://docs.sgeobiz.com/',
 				);
 				?>
@@ -426,10 +426,10 @@ switch ( $instance ) :
 
 		<p>
 			<label for="<?= \esc_attr( "tsf_pta_socialimage_{$args['post_type']}" ) ?>-url">
-				<strong><?php \esc_html_e( 'Social Image URL', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( 'Social Image URL', 'sgeobiz-seo' ); ?></strong>
 				<?php
 				HTML::make_info(
-					\__( "The social image URL can be used by search engines and social networks alike. It's best to use an image with a 1.91:1 aspect ratio that is at least 1200px wide for universal support.", 'autodescription' ),
+					\__( "The social image URL can be used by search engines and social networks alike. It's best to use an image with a 1.91:1 aspect ratio that is at least 1200px wide for universal support.", 'sgeobiz-seo' ),
 					'https://developers.facebook.com/docs/sharing/best-practices#images',
 				);
 				?>
@@ -439,7 +439,7 @@ switch ( $instance ) :
 			<input class=large-text type=url name="<?php Input::field_name( $args['options']['social_image_url'] ); ?>" id="<?= \esc_attr( "tsf_pta_socialimage_{$args['post_type']}" ) ?>-url" placeholder="<?= \esc_url( Meta\Image::get_first_generated_image_url( $args['generator_args'], 'social' ) ) ?>" value="<?= \esc_url( Data\Plugin\PTA::get_meta_item( 'social_image_url', $args['post_type'] ) ) ?>">
 			<input type=hidden name="<?php Input::field_name( $args['options']['social_image_id'] ); ?>" id="<?= \esc_attr( "tsf_pta_socialimage_{$args['post_type']}" ) ?>-id" value="<?= \absint( Data\Plugin\PTA::get_meta_item( 'social_image_id', $args['post_type'] ) ) ?>" disabled class=tsf-enable-media-if-js>
 		</p>
-		<p class=hide-if-no-tsf-js>
+		<p class=hide-if-no-sgeobiz-js>
 			<?php
 			// phpcs:disable WordPress.Security.EscapeOutput -- get_image_uploader_form escapes. (phpcs breaks here, so we use disable)
 			echo Form::get_image_uploader_form( [ 'id' => "tsf_pta_socialimage_{$args['post_type']}" ] );
@@ -455,11 +455,11 @@ switch ( $instance ) :
 		?>
 		<p>
 			<label for="<?php Input::field_id( $args['options']['canonical'] ); ?>" class=tsf-toblock>
-				<strong><?php \esc_html_e( 'Canonical URL', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( 'Canonical URL', 'sgeobiz-seo' ); ?></strong>
 				<?php
 					echo ' ';
 					HTML::make_info(
-						\__( 'This urges search engines to go to the outputted URL.', 'autodescription' ),
+						\__( 'This urges search engines to go to the outputted URL.', 'sgeobiz-seo' ),
 						'https://developers.google.com/search/docs/advanced/crawling/consolidate-duplicate-urls',
 					);
 				?>
@@ -488,44 +488,44 @@ switch ( $instance ) :
 			'noindex'   => [
 				'force_on'    => 'index',
 				'force_off'   => 'noindex',
-				'label'       => \__( 'Indexing', 'autodescription' ),
+				'label'       => \__( 'Indexing', 'sgeobiz-seo' ),
 				'_defaultOn'  => 'index',
 				'_defaultOff' => 'noindex',
 				'_value'      => Data\Plugin\PTA::get_meta_item( 'noindex', $args['post_type'] ),
 				'_info'       => [
-					\__( 'This tells search engines not to show this term in their search results.', 'autodescription' ),
+					\__( 'This tells search engines not to show this term in their search results.', 'sgeobiz-seo' ),
 					'https://developers.google.com/search/docs/advanced/crawling/block-indexing',
 				],
 			],
 			'nofollow'  => [
 				'force_on'    => 'follow',
 				'force_off'   => 'nofollow',
-				'label'       => \__( 'Link following', 'autodescription' ),
+				'label'       => \__( 'Link following', 'sgeobiz-seo' ),
 				'_defaultOn'  => 'follow',
 				'_defaultOff' => 'nofollow',
 				'_value'      => Data\Plugin\PTA::get_meta_item( 'nofollow', $args['post_type'] ),
 				'_info'       => [
-					\__( 'This tells search engines not to follow links on this term.', 'autodescription' ),
+					\__( 'This tells search engines not to follow links on this term.', 'sgeobiz-seo' ),
 					'https://developers.google.com/search/docs/advanced/guidelines/qualify-outbound-links',
 				],
 			],
 			'noarchive' => [
 				'force_on'    => 'archive',
 				'force_off'   => 'noarchive',
-				'label'       => \__( 'Archiving', 'autodescription' ),
+				'label'       => \__( 'Archiving', 'sgeobiz-seo' ),
 				'_defaultOn'  => 'archive',
 				'_defaultOff' => 'noarchive',
 				'_value'      => Data\Plugin\PTA::get_meta_item( 'noarchive', $args['post_type'] ),
 				'_info'       => [
-					\__( 'This tells search engines not to save a cached copy of this term.', 'autodescription' ),
+					\__( 'This tells search engines not to save a cached copy of this term.', 'sgeobiz-seo' ),
 					'https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#directives',
 				],
 			],
 		];
 
 		/* translators: %s = default option value */
-		$_default_i18n         = \__( 'Default (%s)', 'autodescription' );
-		$_default_unknown_i18n = \__( 'Default (unknown)', 'autodescription' );
+		$_default_i18n         = \__( 'Default (%s)', 'sgeobiz-seo' );
+		$_default_unknown_i18n = \__( 'Default (unknown)', 'sgeobiz-seo' );
 
 		foreach ( $robots_settings as $_r_type => $_rs ) {
 			// phpcs:enable WordPress.Security.EscapeOutput
@@ -568,11 +568,11 @@ switch ( $instance ) :
 
 		<p>
 			<label for="<?php Input::field_id( $args['options']['redirect'] ); ?>" class=tsf-toblock>
-				<strong><?php \esc_html_e( '301 Redirect URL', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( '301 Redirect URL', 'sgeobiz-seo' ); ?></strong>
 				<?php
 					echo ' ';
 					HTML::make_info(
-						\__( 'This will force visitors to go to another URL.', 'autodescription' ),
+						\__( 'This will force visitors to go to another URL.', 'sgeobiz-seo' ),
 						'https://developers.google.com/search/docs/crawling-indexing/301-redirects',
 					);
 				?>

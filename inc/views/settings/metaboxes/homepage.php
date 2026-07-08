@@ -1,20 +1,20 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Admin\Metaboxes
- * @subpackage The_SEO_Framework\Admin\Settings
+ * @package SGEOBIZ_SEO\Views\Admin\Metaboxes
+ * @subpackage SGEOBIZ_SEO\Admin\Settings
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
-use The_SEO_Framework\Admin\Settings\Layout\{
+use SGEOBIZ_SEO\Admin\Settings\Layout\{
 	Form,
 	HTML,
 	Input,
 };
-use The_SEO_Framework\Data\Filter\Sanitize;
-use The_SEO_Framework\Helper\{
+use SGEOBIZ_SEO\Data\Filter\Sanitize;
+use SGEOBIZ_SEO\Helper\{
 	Compatibility,
 	Format\Markdown,
 	Query,
@@ -47,16 +47,16 @@ $generator_args = [ 'id' => $home_id ];
 
 switch ( $instance ) :
 	case 'main':
-		HTML::description( \__( 'These settings will take precedence over the settings set within the homepage edit screen, if any.', 'autodescription' ) );
+		HTML::description( \__( 'These settings will take precedence over the settings set within the homepage edit screen, if any.', 'sgeobiz-seo' ) );
 
 		if ( Compatibility::get_active_conflicting_plugin_types()['multilingual'] ) {
-			$_multilingual_warning = \esc_html__( 'A multilingual plugin has been detected and text entered below may not be translated.', 'autodescription' );
+			$_multilingual_warning = \esc_html__( 'A multilingual plugin has been detected and text entered below may not be translated.', 'sgeobiz-seo' );
 			if ( $home_id ) {
 				$_multilingual_warning .= '<br>' . Markdown::convert(
 					\sprintf(
 						/* translators: %s = Homepage URL markdown */
-						\esc_html__( 'Edit the fields on the [homepage](%s) instead.', 'autodescription' ),
-						\esc_url( \admin_url( "post.php?post={$home_id}&action=edit#tsf-inpost-box" ) ),
+						\esc_html__( 'Edit the fields on the [homepage](%s) instead.', 'sgeobiz-seo' ),
+						\esc_url( \admin_url( "post.php?post={$home_id}&action=edit#sgeobiz-inpost-box" ) ),
 					),
 					[ 'a' ],
 					[ 'a_internal' => false ] // opens in new tab.
@@ -70,22 +70,22 @@ switch ( $instance ) :
 		<?php
 		$tabs = [
 			'general'    => [
-				'name'     => \__( 'General', 'autodescription' ),
+				'name'     => \__( 'General', 'sgeobiz-seo' ),
 				'callback' => [ Admin\Settings\Plugin::class, '_homepage_metabox_general_tab' ],
 				'dashicon' => 'admin-generic',
 			],
 			'additions'  => [
-				'name'     => \__( 'Additions', 'autodescription' ),
+				'name'     => \__( 'Additions', 'sgeobiz-seo' ),
 				'callback' => [ Admin\Settings\Plugin::class, '_homepage_metabox_additions_tab' ],
 				'dashicon' => 'plus-alt2',
 			],
 			'social'     => [
-				'name'     => \__( 'Social', 'autodescription' ),
+				'name'     => \__( 'Social', 'sgeobiz-seo' ),
 				'callback' => [ Admin\Settings\Plugin::class, '_homepage_metabox_social_tab' ],
 				'dashicon' => 'share',
 			],
 			'visibility' => [
-				'name'     => \__( 'Visibility', 'autodescription' ),
+				'name'     => \__( 'Visibility', 'sgeobiz-seo' ),
 				'callback' => [ Admin\Settings\Plugin::class, '_homepage_metabox_visibility_tab' ],
 				'dashicon' => 'visibility',
 			],
@@ -97,7 +97,7 @@ switch ( $instance ) :
 			 * @since 2.6.0
 			 * @param array $tabs The default tabs.
 			 */
-			(array) \apply_filters( 'the_seo_framework_homepage_settings_tabs', $tabs ),
+			(array) \apply_filters( 'sgeobiz_seo_homepage_settings_tabs', $tabs ),
 		);
 		break;
 
@@ -105,11 +105,11 @@ switch ( $instance ) :
 		?>
 		<p>
 			<label for="<?php Input::field_id( 'homepage_title' ); ?>" class=tsf-toblock>
-				<strong><?php \esc_html_e( 'Meta Title', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( 'Meta Title', 'sgeobiz-seo' ); ?></strong>
 				<?php
 					echo ' ';
 					HTML::make_info(
-						\__( 'The meta title can be used to determine the title used on search engine result pages.', 'autodescription' ),
+						\__( 'The meta title can be used to determine the title used on search engine result pages.', 'sgeobiz-seo' ),
 						'https://developers.google.com/search/docs/advanced/appearance/title-link',
 					);
 				?>
@@ -152,21 +152,21 @@ switch ( $instance ) :
 			?>
 		</p>
 		<?php
-		HTML::description( \__( 'Note: It is best to only write the site or brand name here. Use additions to decorate the title instead.', 'autodescription' ) );
+		HTML::description( \__( 'Note: It is best to only write the site or brand name here. Use additions to decorate the title instead.', 'sgeobiz-seo' ) );
 
 		if ( $home_id && \strlen( Data\Plugin\Post::get_meta_item( '_genesis_title', $home_id ) ) )
-			HTML::description( \__( 'Note: The title placeholder is fetched from the Page SEO Settings on the homepage.', 'autodescription' ) );
+			HTML::description( \__( 'Note: The title placeholder is fetched from the Page SEO Settings on the homepage.', 'sgeobiz-seo' ) );
 
 		?>
 		<hr>
 
 		<p>
 			<label for="<?php Input::field_id( 'homepage_description' ); ?>" class=tsf-toblock>
-				<strong><?php \esc_html_e( 'Meta Description', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( 'Meta Description', 'sgeobiz-seo' ); ?></strong>
 				<?php
 					echo ' ';
 					HTML::make_info(
-						\__( 'The meta description can be used to determine the text used under the title on search engine results pages.', 'autodescription' ),
+						\__( 'The meta description can be used to determine the text used under the title on search engine results pages.', 'sgeobiz-seo' ),
 						'https://developers.google.com/search/docs/advanced/appearance/snippet',
 					);
 				?>
@@ -211,7 +211,7 @@ switch ( $instance ) :
 
 		if ( $home_id && \strlen( Data\Plugin\Post::get_meta_item( '_genesis_description', $home_id ) ) ) {
 			HTML::description(
-				\__( 'Note: The description placeholder is fetched from the Page SEO Settings on the homepage.', 'autodescription' )
+				\__( 'Note: The description placeholder is fetched from the Page SEO Settings on the homepage.', 'sgeobiz-seo' )
 			);
 		}
 		break;
@@ -237,7 +237,7 @@ switch ( $instance ) :
 		?>
 		<p>
 			<label for="<?php Input::field_id( 'homepage_title_tagline' ); ?>" class=tsf-toblock>
-				<strong><?php \esc_html_e( 'Meta Title Additions', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( 'Meta Title Additions', 'sgeobiz-seo' ); ?></strong>
 			</label>
 		</p>
 		<p>
@@ -249,7 +249,7 @@ switch ( $instance ) :
 			HTML::wrap_fields(
 				Input::make_checkbox( [
 					'id'    => 'homepage_tagline',
-					'label' => \__( 'Add Meta Title Additions to the homepage title?', 'autodescription' ),
+					'label' => \__( 'Add Meta Title Additions to the homepage title?', 'sgeobiz-seo' ),
 				] ),
 				true,
 			);
@@ -259,13 +259,13 @@ switch ( $instance ) :
 		<hr>
 
 		<fieldset>
-			<legend><?php HTML::header_title( \__( 'Meta Title Additions Location', 'autodescription' ) ); ?></legend>
+			<legend><?php HTML::header_title( \__( 'Meta Title Additions Location', 'sgeobiz-seo' ) ); ?></legend>
 
 			<p id=tsf-home-title-location class=tsf-fields>
 				<span class=tsf-toblock>
 					<input type=radio name="<?php Input::field_name( 'home_title_location' ); ?>" id="<?php Input::field_id( 'home_title_location_left' ); ?>" value=left <?php \checked( Data\Plugin::get_option( 'home_title_location' ), 'left' ); ?>>
 					<label for="<?php Input::field_id( 'home_title_location_left' ); ?>">
-						<span><?php \esc_html_e( 'Left:', 'autodescription' ); ?></span>
+						<span><?php \esc_html_e( 'Left:', 'sgeobiz-seo' ); ?></span>
 						<?php
 						// phpcs:ignore WordPress.Security.EscapeOutput -- $example_left is already escaped.
 						echo HTML::code_wrap_noesc( $example_left );
@@ -275,7 +275,7 @@ switch ( $instance ) :
 				<span class=tsf-toblock>
 					<input type=radio name="<?php Input::field_name( 'home_title_location' ); ?>" id="<?php Input::field_id( 'home_title_location_right' ); ?>" value=right <?php \checked( Data\Plugin::get_option( 'home_title_location' ), 'right' ); ?>>
 					<label for="<?php Input::field_id( 'home_title_location_right' ); ?>">
-						<span><?php \esc_html_e( 'Right:', 'autodescription' ); ?></span>
+						<span><?php \esc_html_e( 'Right:', 'sgeobiz-seo' ); ?></span>
 						<?php
 						// phpcs:ignore WordPress.Security.EscapeOutput -- $example_right is already escaped.
 						echo HTML::code_wrap_noesc( $example_right );
@@ -289,7 +289,7 @@ switch ( $instance ) :
 
 	case 'social':
 		/* translators: %s = default option value */
-		$_default_i18n      = \__( 'Default (%s)', 'autodescription' );
+		$_default_i18n      = \__( 'Default (%s)', 'sgeobiz-seo' );
 		$tw_supported_cards = Meta\Twitter::get_supported_cards();
 
 		$custom_title    = '';
@@ -368,7 +368,7 @@ switch ( $instance ) :
 		?>
 		<p>
 			<label for="<?php Input::field_id( 'homepage_og_title' ); ?>" class=tsf-toblock>
-				<strong><?php \esc_html_e( 'Open Graph Title', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( 'Open Graph Title', 'sgeobiz-seo' ); ?></strong>
 			</label>
 		</p>
 		<?php
@@ -384,14 +384,14 @@ switch ( $instance ) :
 		<?php
 		if ( \strlen( $custom_og_title ) ) {
 			HTML::description(
-				\__( 'Note: The title placeholder is fetched from the Page SEO Settings on the homepage.', 'autodescription' ),
+				\__( 'Note: The title placeholder is fetched from the Page SEO Settings on the homepage.', 'sgeobiz-seo' ),
 			);
 		}
 		?>
 
 		<p>
 			<label for="<?php Input::field_id( 'homepage_og_description' ); ?>" class=tsf-toblock>
-				<strong><?php \esc_html_e( 'Open Graph Description', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( 'Open Graph Description', 'sgeobiz-seo' ); ?></strong>
 			</label>
 		</p>
 		<?php
@@ -407,7 +407,7 @@ switch ( $instance ) :
 		<?php
 		if ( \strlen( $custom_og_desc ) ) {
 			HTML::description(
-				\__( 'Note: The description placeholder is fetched from the Page SEO Settings on the homepage.', 'autodescription' )
+				\__( 'Note: The description placeholder is fetched from the Page SEO Settings on the homepage.', 'sgeobiz-seo' )
 			);
 		}
 		?>
@@ -415,7 +415,7 @@ switch ( $instance ) :
 
 		<p>
 			<label for="<?php Input::field_id( 'homepage_twitter_title' ); ?>" class=tsf-toblock>
-				<strong><?php \esc_html_e( 'Twitter Title', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( 'Twitter Title', 'sgeobiz-seo' ); ?></strong>
 			</label>
 		</p>
 		<?php
@@ -431,14 +431,14 @@ switch ( $instance ) :
 		<?php
 		if ( \strlen( $custom_og_title ) || \strlen( $custom_tw_title ) ) {
 			HTML::description(
-				\__( 'Note: The title placeholder is fetched from the Page SEO Settings on the homepage.', 'autodescription' ),
+				\__( 'Note: The title placeholder is fetched from the Page SEO Settings on the homepage.', 'sgeobiz-seo' ),
 			);
 		}
 		?>
 
 		<p>
 			<label for="<?php Input::field_id( 'homepage_twitter_description' ); ?>" class=tsf-toblock>
-				<strong><?php \esc_html_e( 'Twitter Description', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( 'Twitter Description', 'sgeobiz-seo' ); ?></strong>
 			</label>
 		</p>
 		<?php
@@ -454,17 +454,17 @@ switch ( $instance ) :
 		<?php
 		if ( \strlen( $custom_og_desc ) || \strlen( $custom_tw_desc ) ) {
 			HTML::description(
-				\__( 'Note: The description placeholder is fetched from the Page SEO Settings on the homepage.', 'autodescription' ),
+				\__( 'Note: The description placeholder is fetched from the Page SEO Settings on the homepage.', 'sgeobiz-seo' ),
 			);
 		}
 		?>
 
 		<p>
 			<label for="<?php Input::field_id( 'homepage_twitter_card_type' ); ?>" class=tsf-toblock>
-				<strong><?php \esc_html_e( 'Twitter Card Type', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( 'Twitter Card Type', 'sgeobiz-seo' ); ?></strong>
 				<?php
 				HTML::make_info(
-					\__( 'The Twitter Card type controls the link preview layout. On X, the summary card shows a small thumbnail beside truncated title and description; the large-image card overlays the title on the image with no description. On Discord, the image appears small at the side or large below; both card types show the description.', 'autodescription' ),
+					\__( 'The Twitter Card type controls the link preview layout. On X, the summary card shows a small thumbnail beside truncated title and description; the large-image card overlays the title on the image with no description. On Discord, the image appears small at the side or large below; both card types show the description.', 'sgeobiz-seo' ),
 					'https://docs.sgeobiz.com/',
 				);
 				?>
@@ -495,21 +495,21 @@ switch ( $instance ) :
 		<?php
 		if ( $custom_tw_card ) {
 			HTML::description(
-				\__( 'Note: The default Twitter Card Type is fetched from the Page SEO Settings on the homepage.', 'autodescription' )
+				\__( 'Note: The default Twitter Card Type is fetched from the Page SEO Settings on the homepage.', 'sgeobiz-seo' )
 			);
 		}
 		?>
 		<hr>
 		<?php
-		HTML::header_title( \__( 'Social Image Settings', 'autodescription' ) );
-		HTML::description( \__( 'A social image can be displayed when your homepage is shared. It is a great way to grab attention.', 'autodescription' ) );
+		HTML::header_title( \__( 'Social Image Settings', 'sgeobiz-seo' ) );
+		HTML::description( \__( 'A social image can be displayed when your homepage is shared. It is a great way to grab attention.', 'sgeobiz-seo' ) );
 		?>
 		<p>
 			<label for=tsf_homepage_socialimage-url>
-				<strong><?php \esc_html_e( 'Social Image URL', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( 'Social Image URL', 'sgeobiz-seo' ); ?></strong>
 				<?php
 				HTML::make_info(
-					\__( "The social image URL can be used by search engines and social networks alike. It's best to use an image with a 1.91:1 aspect ratio that is at least 1200px wide for universal support.", 'autodescription' ),
+					\__( "The social image URL can be used by search engines and social networks alike. It's best to use an image with a 1.91:1 aspect ratio that is at least 1200px wide for universal support.", 'sgeobiz-seo' ),
 					'https://developers.facebook.com/docs/sharing/best-practices#images',
 				);
 				?>
@@ -519,7 +519,7 @@ switch ( $instance ) :
 			<input class=large-text type=url name="<?php Input::field_name( 'homepage_social_image_url' ); ?>" id=tsf_homepage_socialimage-url placeholder="<?= \esc_url( $image_placeholder ) ?>" value="<?= \esc_url( Data\Plugin::get_option( 'homepage_social_image_url' ) ) ?>">
 			<input type=hidden name="<?php Input::field_name( 'homepage_social_image_id' ); ?>" id=tsf_homepage_socialimage-id value="<?= \absint( Data\Plugin::get_option( 'homepage_social_image_id' ) ) ?>" disabled class=tsf-enable-media-if-js>
 		</p>
-		<p class=hide-if-no-tsf-js>
+		<p class=hide-if-no-sgeobiz-js>
 			<?php
 			// phpcs:disable WordPress.Security.EscapeOutput -- get_image_uploader_form escapes. (phpcs breaks here, so we use disable)
 			echo Form::get_image_uploader_form( [ 'id' => 'tsf_homepage_socialimage' ] );
@@ -529,7 +529,7 @@ switch ( $instance ) :
 		<?php
 		if ( $custom_image ) {
 			HTML::description(
-				\__( 'Note: The image placeholder is fetched from the Page SEO Settings on the homepage.', 'autodescription' )
+				\__( 'Note: The image placeholder is fetched from the Page SEO Settings on the homepage.', 'sgeobiz-seo' )
 			);
 		}
 		break;
@@ -562,11 +562,11 @@ switch ( $instance ) :
 		?>
 		<p>
 			<label for="<?php Input::field_id( 'homepage_canonical' ); ?>" class=tsf-toblock>
-				<strong><?php \esc_html_e( 'Canonical URL', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( 'Canonical URL', 'sgeobiz-seo' ); ?></strong>
 				<?php
 					echo ' ';
 					HTML::make_info(
-						\__( 'This urges search engines to go to the outputted URL.', 'autodescription' ),
+						\__( 'This urges search engines to go to the outputted URL.', 'sgeobiz-seo' ),
 						'https://developers.google.com/search/docs/advanced/crawling/consolidate-duplicate-urls',
 					);
 				?>
@@ -605,25 +605,25 @@ switch ( $instance ) :
 				'- %s',
 				\sprintf(
 					'<a href="%s" title="%s" target=_blank class=attention>%s</a>',
-					\esc_url( \admin_url( "post.php?post=$home_id&action=edit#tsf-inpost-box" ) ),
-					\esc_attr_x( 'Edit homepage page settings', 'Bear with me: the homepage can be edited globally, or via its page. Thus "homepage page".', 'autodescription' ),
-					\esc_html__( 'Overwritten by page settings', 'autodescription' ),
+					\esc_url( \admin_url( "post.php?post=$home_id&action=edit#sgeobiz-inpost-box" ) ),
+					\esc_attr_x( 'Edit homepage page settings', 'Bear with me: the homepage can be edited globally, or via its page. Thus "homepage page".', 'sgeobiz-seo' ),
+					\esc_html__( 'Overwritten by page settings', 'sgeobiz-seo' ),
 				)
 			);
 		}
 
-		HTML::header_title( \__( 'Robots Meta Settings', 'autodescription' ) );
+		HTML::header_title( \__( 'Robots Meta Settings', 'sgeobiz-seo' ) );
 
 		$i_label = \sprintf(
 			/* translators: 1: Option label, 2: [?] option info note, 3: Optional warning */
-			\esc_html_x( '%1$s %2$s %3$s', 'robots setting', 'autodescription' ),
+			\esc_html_x( '%1$s %2$s %3$s', 'robots setting', 'sgeobiz-seo' ),
 			Markdown::convert(
 				/* translators: the backticks are Markdown! Preserve them as-is! */
-				\esc_html__( 'Apply `noindex` to the homepage?', 'autodescription' ),
+				\esc_html__( 'Apply `noindex` to the homepage?', 'sgeobiz-seo' ),
 				[ 'code' ],
 			),
 			HTML::make_info(
-				\__( 'This tells search engines not to show this page in their search results.', 'autodescription' ),
+				\__( 'This tells search engines not to show this page in their search results.', 'sgeobiz-seo' ),
 				'https://developers.google.com/search/docs/advanced/crawling/block-indexing',
 				false,
 			),
@@ -632,14 +632,14 @@ switch ( $instance ) :
 
 		$f_label = \sprintf(
 			/* translators: 1: Option label, 2: [?] option info note, 3: Optional warning */
-			\esc_html_x( '%1$s %2$s %3$s', 'robots setting', 'autodescription' ),
+			\esc_html_x( '%1$s %2$s %3$s', 'robots setting', 'sgeobiz-seo' ),
 			Markdown::convert(
 				/* translators: the backticks are Markdown! Preserve them as-is! */
-				\esc_html__( 'Apply `nofollow` to the homepage?', 'autodescription' ),
+				\esc_html__( 'Apply `nofollow` to the homepage?', 'sgeobiz-seo' ),
 				[ 'code' ],
 			),
 			HTML::make_info(
-				\__( 'This tells search engines not to follow links on this page.', 'autodescription' ),
+				\__( 'This tells search engines not to follow links on this page.', 'sgeobiz-seo' ),
 				'https://developers.google.com/search/docs/advanced/guidelines/qualify-outbound-links',
 				false,
 			),
@@ -648,21 +648,21 @@ switch ( $instance ) :
 
 		$a_label = \sprintf(
 			/* translators: 1: Option label, 2: [?] option info note, 3: Optional warning */
-			\esc_html_x( '%1$s %2$s %3$s', 'robots setting', 'autodescription' ),
+			\esc_html_x( '%1$s %2$s %3$s', 'robots setting', 'sgeobiz-seo' ),
 			Markdown::convert(
 				/* translators: the backticks are Markdown! Preserve them as-is! */
-				\esc_html__( 'Apply `noarchive` to the homepage?', 'autodescription' ),
+				\esc_html__( 'Apply `noarchive` to the homepage?', 'sgeobiz-seo' ),
 				[ 'code' ],
 			),
 			HTML::make_info(
-				\__( 'This tells search engines not to save a cached copy of this page.', 'autodescription' ),
+				\__( 'This tells search engines not to save a cached copy of this page.', 'sgeobiz-seo' ),
 				'https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#directives',
 				false,
 			),
 			$noarchive_post ? $checked_home : '',
 		);
 
-		HTML::attention_description( \__( 'Warning: No public website should ever apply "noindex" or "nofollow" to the homepage.', 'autodescription' ) );
+		HTML::attention_description( \__( 'Warning: No public website should ever apply "noindex" or "nofollow" to the homepage.', 'sgeobiz-seo' ) );
 
 		HTML::wrap_fields(
 			[
@@ -690,8 +690,8 @@ switch ( $instance ) :
 				Markdown::convert(
 					\sprintf(
 						/* translators: %s = Homepage URL markdown */
-						\esc_html__( 'Note: These options may be overwritten by the [page settings](%s).', 'autodescription' ),
-						\esc_url( \admin_url( "post.php?post=$home_id&action=edit#tsf-inpost-box" ) ),
+						\esc_html__( 'Note: These options may be overwritten by the [page settings](%s).', 'sgeobiz-seo' ),
+						\esc_url( \admin_url( "post.php?post=$home_id&action=edit#sgeobiz-inpost-box" ) ),
 					),
 					[ 'a' ],
 					[ 'a_internal' => false ],
@@ -702,15 +702,15 @@ switch ( $instance ) :
 
 		<hr>
 		<?php
-		HTML::header_title( \__( 'Homepage Pagination Robots Settings', 'autodescription' ) );
-		HTML::description( \__( "If your homepage is paginated and outputs content that's also found elsewhere on the website, enabling this option may prevent duplicate content.", 'autodescription' ) );
+		HTML::header_title( \__( 'Homepage Pagination Robots Settings', 'sgeobiz-seo' ) );
+		HTML::description( \__( "If your homepage is paginated and outputs content that's also found elsewhere on the website, enabling this option may prevent duplicate content.", 'sgeobiz-seo' ) );
 
 		HTML::wrap_fields(
 			Input::make_checkbox( [
 				'id'     => 'home_paged_noindex',
 				'label'  => Markdown::convert(
 					/* translators: the backticks are Markdown! Preserve them as-is! */
-					\esc_html__( 'Apply `noindex` to every second or later page on the homepage?', 'autodescription' ),
+					\esc_html__( 'Apply `noindex` to every second or later page on the homepage?', 'sgeobiz-seo' ),
 					[ 'code' ],
 				),
 				'escape' => false,
@@ -722,11 +722,11 @@ switch ( $instance ) :
 
 		<p>
 			<label for="<?php Input::field_id( 'homepage_redirect' ); ?>" class=tsf-toblock>
-				<strong><?php \esc_html_e( '301 Redirect URL', 'autodescription' ); ?></strong>
+				<strong><?php \esc_html_e( '301 Redirect URL', 'sgeobiz-seo' ); ?></strong>
 				<?php
 					echo ' ';
 					HTML::make_info(
-						\__( 'This will force visitors to go to another URL.', 'autodescription' ),
+						\__( 'This will force visitors to go to another URL.', 'sgeobiz-seo' ),
 						'https://developers.google.com/search/docs/crawling-indexing/301-redirects',
 					);
 				?>

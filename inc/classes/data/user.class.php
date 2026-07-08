@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Data\Post
- * @subpackage The_SEO_Framework\Data
+ * @package SGEOBIZ_SEO\Classes\Data\Post
+ * @subpackage SGEOBIZ_SEO\Data
  */
 
-namespace The_SEO_Framework\Data;
+namespace SGEOBIZ_SEO\Data;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\umemo;
+use function SGEOBIZ_SEO\umemo;
 
 /**
  * The SEO Framework plugin
@@ -32,7 +32,7 @@ use function The_SEO_Framework\umemo;
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->data()->user() instead.
+ *         Use sgeobiz()->data()->user() instead.
  */
 class User {
 
@@ -70,7 +70,7 @@ class User {
 				// Neither the stored nor cloned user object switches with switch_to_blog(); let's fix that:
 				$_user->for_site( $user_blog->userblog_id );
 
-				$user_has_cap = $_user->has_cap( \THE_SEO_FRAMEWORK_AUTHOR_INFO_CAP );
+				$user_has_cap = $_user->has_cap( \SGEOBIZ_SEO_AUTHOR_INFO_CAP );
 
 				\restore_current_blog();
 				// There's no need to switch back $_user for it's a clone.
@@ -82,7 +82,7 @@ class User {
 			return $user_has_cap ?? false;
 		}
 
-		return $user->has_cap( \THE_SEO_FRAMEWORK_AUTHOR_INFO_CAP );
+		return $user->has_cap( \SGEOBIZ_SEO_AUTHOR_INFO_CAP );
 	}
 
 	/**

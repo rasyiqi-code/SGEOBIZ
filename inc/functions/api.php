@@ -1,10 +1,10 @@
 <?php
 /**
- * @package The_SEO_Framework\API
+ * @package SGEOBIZ_SEO\API
  */
 
 namespace {
-	defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+	defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 }
 
 /**
@@ -34,15 +34,15 @@ namespace {
 	 *
 	 * @since 4.2.0
 	 * @since 5.0.0 Now always returns TSF's object.
-	 * @see `the_seo_framework()` alias.
+	 * @see `sgeobiz_seo()` alias.
 	 * @see inc\classes\pool.class.php for factory API functions;
-	 *      e.g., `tsf()->query()->is_sitemap()`
+	 *      e.g., `sgeobiz()->query()->is_sitemap()`
 	 * @api
 	 *
-	 * @return The_SEO_Framework\Load
+	 * @return SGEOBIZ_SEO\Load
 	 */
-	function tsf() {
-		return \The_SEO_Framework\Load::get_instance();
+	function sgeobiz() {
+		return \SGEOBIZ_SEO\Load::get_instance();
 	}
 
 	/**
@@ -54,13 +54,13 @@ namespace {
 	 *
 	 * @since 2.2.5
 	 * @since 5.0.0 Now always returns TSF's object.
-	 * @see `tsf()` alias.
+	 * @see `sgeobiz()` alias.
 	 * @api
 	 *
-	 * @return The_SEO_Framework\Load
+	 * @return SGEOBIZ_SEO\Load
 	 */
-	function the_seo_framework() {
-		return \The_SEO_Framework\Load::get_instance();
+	function sgeobiz_seo() {
+		return \SGEOBIZ_SEO\Load::get_instance();
 	}
 
 	/**
@@ -72,8 +72,8 @@ namespace {
 	 *
 	 * @return string The database version. '0' if version isn't found.
 	 */
-	function the_seo_framework_db_version() {
-		return (string) get_option( 'the_seo_framework_upgraded_db_version', '0' );
+	function sgeobiz_seo_db_version() {
+		return (string) get_option( 'sgeobiz_seo_upgraded_db_version', '0' );
 	}
 
 	/**
@@ -87,8 +87,8 @@ namespace {
 	 *
 	 * @return string|bool The SEO Framework class name. False if The SEO Framework isn't loaded (yet).
 	 */
-	function the_seo_framework_class() {
-		return get_class( tsf() );
+	function sgeobiz_seo_class() {
+		return get_class( sgeobiz() );
 	}
 
 	/**
@@ -101,7 +101,7 @@ namespace {
 	 * @param array $atts The shortcode attributes.
 	 * @return string The breadcrumbs.
 	 */
-	function tsf_breadcrumb( $atts = [] ) {
+	function sgeobiz_breadcrumb( $atts = [] ) {
 
 		$atts = shortcode_atts(
 			[
@@ -111,7 +111,7 @@ namespace {
 				'title' => null,
 			],
 			$atts,
-			'tsf_breadcrumb',
+			'sgeobiz_breadcrumb',
 		);
 
 		// Extract a valid class; it'll be of an escaped kind.
@@ -124,11 +124,11 @@ namespace {
 			'use_meta_title' => isset( $atts['title'] ) ? 'meta' === $atts['title'] : null,
 		];
 
-		$crumbs = \The_SEO_Framework\Meta\Breadcrumbs::get_breadcrumb_list( null, $options );
+		$crumbs = \SGEOBIZ_SEO\Meta\Breadcrumbs::get_breadcrumb_list( null, $options );
 		$count  = count( $crumbs );
 		$items  = [];
 
-		$home = \The_SEO_Framework\coalesce_strlen( $atts['home'] ) ?? $crumbs[0]['name'];
+		$home = \SGEOBIZ_SEO\coalesce_strlen( $atts['home'] ) ?? $crumbs[0]['name'];
 
 		if ( 1 === $count ) {
 			$items[] = sprintf(
@@ -166,7 +166,7 @@ namespace {
 		 * @param string $class The class name of the breadcrumb wrapper.
 		 */
 		$css = (array) apply_filters(
-			'the_seo_framework_breadcrumb_shortcode_css',
+			'sgeobiz_seo_breadcrumb_shortcode_css',
 			[
 				"nav.$class ol"                            => [
 					'display:inline',
@@ -208,7 +208,7 @@ namespace {
 		 * @param string $style  The CSS style element appended.
 		 */
 		return apply_filters(
-			'the_seo_framework_breadcrumb_shortcode_output',
+			'sgeobiz_seo_breadcrumb_shortcode_output',
 			"$nav$style",
 			$crumbs,
 			$nav,
@@ -217,7 +217,7 @@ namespace {
 	}
 }
 
-namespace The_SEO_Framework {
+namespace SGEOBIZ_SEO {
 
 	/**
 	 * Tells the headless state of the plugin.
@@ -237,17 +237,17 @@ namespace The_SEO_Framework {
 		static $is_headless;
 
 		if ( ! isset( $is_headless ) ) {
-			if ( \defined( 'THE_SEO_FRAMEWORK_HEADLESS' ) ) {
+			if ( \defined( 'SGEOBIZ_SEO_HEADLESS' ) ) {
 				$is_headless = [
 					'meta'     => true,
 					'settings' => true,
 					'user'     => true,
 				];
 
-				\is_array( \THE_SEO_FRAMEWORK_HEADLESS )
+				\is_array( \SGEOBIZ_SEO_HEADLESS )
 					and $is_headless = array_map(
 						'wp_validate_boolean',
-						array_merge( $is_headless, \THE_SEO_FRAMEWORK_HEADLESS ),
+						array_merge( $is_headless, \SGEOBIZ_SEO_HEADLESS ),
 					);
 			} else {
 				$is_headless = [
@@ -295,7 +295,7 @@ namespace The_SEO_Framework {
 	/**
 	 * Determines the type of request from the arguments.
 	 *
-	 * Hint: Use `tsf()->query()->is_static_front_page()` to determine if 'single' is the frontpage.
+	 * Hint: Use `sgeobiz()->query()->is_static_front_page()` to determine if 'single' is the frontpage.
 	 *
 	 * @since 5.0.0
 	 *

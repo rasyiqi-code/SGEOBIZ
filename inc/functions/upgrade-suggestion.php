@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Suggestion
- * @subpackage The_SEO_Framework\Bootstrap\Install
+ * @package SGEOBIZ_SEO\Suggestion
+ * @subpackage SGEOBIZ_SEO\Bootstrap\Install
  */
 
-namespace The_SEO_Framework\Suggestion;
+namespace SGEOBIZ_SEO\Suggestion;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Admin,
 	Helper\Format\Markdown,
 };

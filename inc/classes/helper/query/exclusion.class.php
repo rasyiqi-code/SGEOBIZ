@@ -1,17 +1,17 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Helper\Query\Exclusion
- * @subpackage The_SEO_Framework\Query
+ * @package SGEOBIZ_SEO\Classes\Helper\Query\Exclusion
+ * @subpackage SGEOBIZ_SEO\Query
  */
 
-namespace The_SEO_Framework\Helper\Query;
+namespace SGEOBIZ_SEO\Helper\Query;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\is_headless;
+use function SGEOBIZ_SEO\is_headless;
 
-use The_SEO_Framework\Data;
-use The_SEO_Framework\Helper\{
+use SGEOBIZ_SEO\Data;
+use SGEOBIZ_SEO\Helper\{
 	Post_Type,
 	Taxonomy,
 };
@@ -38,7 +38,7 @@ use The_SEO_Framework\Helper\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->query()->exclusion() instead.
+ *         Use sgeobiz()->query()->exclusion() instead.
  */
 class Exclusion {
 
@@ -47,7 +47,7 @@ class Exclusion {
 	 *
 	 * @hook wp_insert_post 10
 	 * @hook attachment_updated 10
-	 * @hook "update_option_ . THE_SEO_FRAMEWORK_SITE_OPTIONS" 10
+	 * @hook "update_option_ . SGEOBIZ_SEO_SITE_OPTIONS" 10
 	 * @since 5.0.0
 	 *
 	 * @return bool True on success, false on failure.
@@ -66,7 +66,7 @@ class Exclusion {
 	 * @since 4.1.4 1. Now tests against post type exclusions.
 	 *              2. Now considers headlessness. This method runs only on the front-end.
 	 * @since 5.0.0 1. Now uses the static cache methods instead of non-expiring-transients.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return array {
 	 *     The excluded post IDs.

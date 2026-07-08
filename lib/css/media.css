@@ -1,21 +1,21 @@
-.tsf-image-notifications {
+.sgeobiz-image-notifications {
 	line-height: 1;
 	vertical-align: bottom;
 }
 
 .tsf-set-image-button.button,
 .tsf-remove-image-button.button,
-.tsf-image-preview,
-.tsf-image-warning {
+.sgeobiz-image-preview,
+.sgeobiz-image-warning {
 	margin-inline-end: 8px;
 }
 
-.tsf-image-preview,
-.tsf-image-warning {
+.sgeobiz-image-preview,
+.sgeobiz-image-warning {
 	font-size: 22px;
 }
 
-:where( .tsf-image-preview, .tsf-image-warning ):after {
+:where( .sgeobiz-image-preview, .sgeobiz-image-warning ):after {
 	content: "\f128";
 	display: inline-block;
 	line-height: 1;
@@ -24,7 +24,7 @@
 	font-weight: 400;
 	vertical-align: baseline;
 }
-.tsf-image-warning::after {
+.sgeobiz-image-warning::after {
 	content: "\f534";
 }
 .tsf-media-warning::after {

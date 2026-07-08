@@ -1,10 +1,10 @@
 <?php
 /**
- * @package The_SEO_Framework\API
- * @subpackage The_SEO_Framework\Debug\Deprecated
+ * @package SGEOBIZ_SEO\API
+ * @subpackage SGEOBIZ_SEO\Debug\Deprecated
  */
 
-defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
  * The SEO Framework plugin

@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Admin\Settings\Layout\HTML
- * @subpackage The_SEO_Framework\Admin\Settings
+ * @package SGEOBIZ_SEO\Admin\Settings\Layout\HTML
+ * @subpackage SGEOBIZ_SEO\Admin\Settings
  */
 
-namespace The_SEO_Framework\Admin\Settings\Layout;
+namespace SGEOBIZ_SEO\Admin\Settings\Layout;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Data\Filter\Escape;
+use SGEOBIZ_SEO\Data\Filter\Escape;
 
 /**
  * The SEO Framework plugin
@@ -31,12 +31,12 @@ use The_SEO_Framework\Data\Filter\Escape;
  * Interprets anything you send here into HTML. Or so it should.
  *
  * @since 4.1.4
- * @since 5.0.0 1. Moved from `\The_SEO_Framework\Interpreters`.
+ * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Interpreters`.
  *              2. The methods herein are now considered public.
  * @NOTE This and the methods herein will likely be deprecated in the future.
  *
  * @access protected
- *         Use tsf()->admin()->layout()->html() instead.
+ *         Use sgeobiz()->admin()->layout()->html() instead.
  */
 class HTML {
 
@@ -219,18 +219,18 @@ class HTML {
 
 		if ( $link ) {
 			$output = \sprintf(
-				'<a href="%1$s" class="tsf-tooltip-item tsf-help" target=_blank rel="nofollow noreferrer noopener" title="%2$s" data-desc="%2$s">[?]</a>',
+				'<a href="%1$s" class="sgeobiz-tooltip-item tsf-help" target=_blank rel="nofollow noreferrer noopener" title="%2$s" data-desc="%2$s">[?]</a>',
 				\esc_url( $link, [ 'https', 'http' ] ),
 				\esc_attr( $description ),
 			);
 		} else {
 			$output = \sprintf(
-				'<span class="tsf-tooltip-item tsf-help" title="%1$s" data-desc="%1$s" tabindex=0>[?]</span>',
+				'<span class="sgeobiz-tooltip-item tsf-help" title="%1$s" data-desc="%1$s" tabindex=0>[?]</span>',
 				\esc_attr( $description ),
 			);
 		}
 
-		$output = \sprintf( '<span class=tsf-tooltip-wrap>%s</span>', $output );
+		$output = \sprintf( '<span class=sgeobiz-tooltip-wrap>%s</span>', $output );
 
 		if ( $echo ) {
 			// phpcs:ignore WordPress.Security.EscapeOutput

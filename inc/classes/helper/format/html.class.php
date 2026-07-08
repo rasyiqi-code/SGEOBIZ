@@ -1,16 +1,16 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Helper\Format\Color
- * @subpackage The_SEO_Framework\Formatting
+ * @package SGEOBIZ_SEO\Classes\Helper\Format\Color
+ * @subpackage SGEOBIZ_SEO\Formatting
  */
 
-namespace The_SEO_Framework\Helper\Format;
+namespace SGEOBIZ_SEO\Helper\Format;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\umemo;
+use function SGEOBIZ_SEO\umemo;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Data\Filter\Sanitize,
 };
@@ -38,17 +38,17 @@ use The_SEO_Framework\{
  * @since 5.0.0
  *
  * @access protected
- *         Use tsf()->format()->html() instead.
+ *         Use sgeobiz()->format()->html() instead.
  */
 class HTML {
 
 	/**
 	 * Strips all URLs that are placed on new lines. These are prone to be embeds.
 	 *
-	 * This might leave stray line feeds. Use `tsf()->sanitize()->newline_to_space()` to fix that.
+	 * This might leave stray line feeds. Use `sgeobiz()->sanitize()->newline_to_space()` to fix that.
 	 *
 	 * @since 3.1.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @see \WP_Embed::autoembed()
 	 *
 	 * @param string $content The content to look for embed.
@@ -61,10 +61,10 @@ class HTML {
 	/**
 	 * Strips all URLs that are placed in paragraphs on their own. These are prone to be embeds.
 	 *
-	 * This might leave stray line feeds. Use `tsf()->sanitize()->newline_to_space()` to fix that.
+	 * This might leave stray line feeds. Use `sgeobiz()->sanitize()->newline_to_space()` to fix that.
 	 *
 	 * @since 3.1.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Improved regex to reflect absurd HTML.
 	 * @see \WP_Embed::autoembed()
 	 * @link <https://regex101.com/r/hjHjgp/2>
@@ -105,7 +105,7 @@ class HTML {
 	 *                 those from '$args' so it falls through to `strip_tags()`.
 	 *              8. Added preparation memoization using cache delimiters `$args['space']` and `$args['clear']`.
 	 * @since 4.2.8 Elements with that start with exactly the same text as others won't be preemptively closed.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @since 5.1.3 1. Added 'body' and 'style' to the phrase elements.
 	 *              2. Added conditional "NO_JIT" modifier for huge inputs to prevent abortion due to suspected memory issues.
 	 *              3. Improved regex pattern to ignore bitwise operators (<<) encountered in scripts. Also prevents recursive
@@ -298,7 +298,7 @@ class HTML {
 	 *              2. Now returns an empty string when something falsesque is returned.
 	 *              3. Removed the third `$escape` parameter.
 	 *              4. The second parameter is changed from `$allow_shortcodes`
-	 *              5. Moved from `\The_SEO_Framework\Load`.
+	 *              5. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              6. Renamed from `s_excerpt`.
 	 *
 	 * @param string $html The HTML to extract content from.
@@ -339,10 +339,10 @@ class HTML {
 		 *
 		 * @since 5.0.5
 		 * @param array $strip_args The content stripping arguments, associative.
-		 *                          Refer to the second parameter of `\The_SEO_Framework\Helper\Format\HTML::strip_tags_cs()`.
+		 *                          Refer to the second parameter of `\SGEOBIZ_SEO\Helper\Format\HTML::strip_tags_cs()`.
 		 */
 		$strip_args = (array) \apply_filters(
-			'the_seo_framework_extract_content_strip_args',
+			'sgeobiz_seo_extract_content_strip_args',
 			[
 				'space'  =>
 					[ 'article', 'br', 'blockquote', 'details', 'div', 'hr', 'p', 'section' ],
@@ -361,7 +361,7 @@ class HTML {
 		 * @param bool $allow_shortcodes Whether to allow shortcodes.
 		 * @param array $args The extraction parameters.
 		 */
-		if ( ! $args['allow_shortcodes'] || ! \apply_filters( 'the_seo_framework_allow_excerpt_shortcode_tags', false, $args ) )
+		if ( ! $args['allow_shortcodes'] || ! \apply_filters( 'sgeobiz_seo_allow_excerpt_shortcode_tags', false, $args ) )
 			$html = \strip_shortcodes( $html );
 
 		$html = self::strip_tags_cs( $html, $strip_args );

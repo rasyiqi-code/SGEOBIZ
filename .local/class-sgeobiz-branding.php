@@ -17,7 +17,7 @@
  * @package SGEOBIZ
  */
 
-defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 class SGEOBIZ_Branding {
 
@@ -30,7 +30,7 @@ class SGEOBIZ_Branding {
 		// ── Menu & Halaman ────────────────────────────────────────────────
 
 		// Ganti args menu utama TSF (judul halaman + label menu + icon)
-		add_filter( 'the_seo_framework_top_menu_args', [ $instance, 'filter_menu_args' ] );
+		add_filter( 'sgeobiz_seo_top_menu_args', [ $instance, 'filter_menu_args' ] );
 
 		// Ganti nama menu "SEO" di sidebar secara langsung (fallback jika filter di atas tidak cukup)
 		add_action( 'admin_menu', [ $instance, 'rename_admin_menu' ], 999 );
@@ -39,7 +39,7 @@ class SGEOBIZ_Branding {
 
 		// Ganti action links: Settings, Extensions, Pricing
 		add_filter(
-			'plugin_action_links_' . THE_SEO_FRAMEWORK_PLUGIN_BASENAME,
+			'plugin_action_links_' . SGEOBIZ_SEO_PLUGIN_BASENAME,
 			[ $instance, 'filter_action_links' ],
 			20
 		);
@@ -53,11 +53,11 @@ class SGEOBIZ_Branding {
 		// ── HTML Comment Indicator di <head> ─────────────────────────────
 		// TSF menampilkan "The SEO Framework by Sybre Waaijer" di comment HTML
 		// Sudah diganti di head.class.php via sed, filter ini sebagai double-safety
-		add_filter( 'the_seo_framework_indicator', [ $instance, 'filter_indicator' ] );
+		add_filter( 'sgeobiz_seo_indicator', [ $instance, 'filter_indicator' ] );
 
 		// ── Extensions Button di Settings Page ───────────────────────────
 		// Sembunyikan tombol "Extensions" yang mengarah ke TSF
-		add_filter( 'the_seo_framework_show_extension_suggestions', '__return_false' );
+		add_filter( 'sgeobiz_seo_show_extension_suggestions', '__return_false' );
 	}
 
 	/**
@@ -90,14 +90,14 @@ class SGEOBIZ_Branding {
 
 	/**
 	 * Rename menu sidebar secara langsung (fallback).
-	 * Dibutuhkan karena filter 'the_seo_framework_top_menu_args' bisa di-memo
+	 * Dibutuhkan karena filter 'sgeobiz_seo_top_menu_args' bisa di-memo
 	 * sebelum filter ini terpasang.
 	 */
 	public function rename_admin_menu() {
 		global $menu, $submenu;
 
 		foreach ( $menu as $pos => $item ) {
-			if ( isset( $item[2] ) && $item[2] === THE_SEO_FRAMEWORK_SITE_OPTIONS_SLUG ) {
+			if ( isset( $item[2] ) && $item[2] === SGEOBIZ_SEO_SITE_OPTIONS_SLUG ) {
 				// Pertahankan badge (angka notifikasi) jika ada
 				$badge = '';
 				if ( isset( $item[0] ) && str_contains( (string) $item[0], '<span' ) ) {
@@ -111,8 +111,8 @@ class SGEOBIZ_Branding {
 		}
 
 		// Ganti label submenu pertama (= judul halaman utama)
-		if ( isset( $submenu[ THE_SEO_FRAMEWORK_SITE_OPTIONS_SLUG ][0] ) ) {
-			$submenu[ THE_SEO_FRAMEWORK_SITE_OPTIONS_SLUG ][0][0] = 'SGEOBIZ SEO Settings';
+		if ( isset( $submenu[ SGEOBIZ_SEO_SITE_OPTIONS_SLUG ][0] ) ) {
+			$submenu[ SGEOBIZ_SEO_SITE_OPTIONS_SLUG ][0][0] = 'SGEOBIZ SEO Settings';
 		}
 	}
 
@@ -153,7 +153,7 @@ class SGEOBIZ_Branding {
 	 * @return array
 	 */
 	public function filter_row_meta( $links, $file ) {
-		if ( $file !== THE_SEO_FRAMEWORK_PLUGIN_BASENAME ) {
+		if ( $file !== SGEOBIZ_SEO_PLUGIN_BASENAME ) {
 			return $links;
 		}
 
@@ -186,7 +186,7 @@ class SGEOBIZ_Branding {
 
 		// Aktif di semua halaman yang berkaitan dengan SGEOBIZ/TSF
 		$tsf_screens = [
-			THE_SEO_FRAMEWORK_SITE_OPTIONS_SLUG,
+			SGEOBIZ_SEO_SITE_OPTIONS_SLUG,
 			'seo_page_sgeobiz-business-settings',
 		];
 

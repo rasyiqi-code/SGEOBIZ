@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Admin\Script\AJAX
- * @subpackage The_SEO_Framework\Scripts
+ * @package SGEOBIZ_SEO\Classes\Admin\Script\AJAX
+ * @subpackage SGEOBIZ_SEO\Scripts
  */
 
-namespace The_SEO_Framework\Admin\Script;
+namespace SGEOBIZ_SEO\Admin\Script;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Admin,
 	Data,
 	Data\Filter\Sanitize,
@@ -41,7 +41,7 @@ use The_SEO_Framework\{
  * they're with their relatives.
  *
  * @since 4.1.4
- * @since 5.0.0 Moved from `\The_SEO_Framework\Bridges`
+ * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Bridges`
  * @access private
  */
 final class AJAX {
@@ -49,7 +49,7 @@ final class AJAX {
 	/**
 	 * Clears persistent notice on user request (clicked Dismiss icon) via AJAX.
 	 *
-	 * @hook wp_ajax_tsf_dismiss_notice 10
+	 * @hook wp_ajax_sgeobiz_dismiss_notice 10
 	 * @since 4.1.0
 	 * @since 4.2.0 Now cleans response header.
 	 * @since 5.0.0 Removed _wp_ajax_ from the plugin name.
@@ -86,7 +86,7 @@ final class AJAX {
 	/**
 	 * Handles counter option update on AJAX request for users that can edit posts.
 	 *
-	 * @hook wp_ajax_tsf_update_counter 10
+	 * @hook wp_ajax_sgeobiz_update_counter 10
 	 * @since 3.1.0 Introduced in 2.6.0, but the name changed.
 	 * @since 4.2.0 1. Now uses wp.ajax instead of $.ajax.
 	 *              2. No longer tests if settings-saving was successful.
@@ -135,10 +135,10 @@ final class AJAX {
 	 *                In any case, that's still incorrect, and I gave up on communicating this;
 	 *                We're not editing the image, we're creating a new one!
 	 *           2. It now only accepts TSF own AJAX nonces.
-	 *           3. It now only accepts context 'tsf-image'
+	 *           3. It now only accepts context 'sgeobiz-image'
 	 *           4. It no longer accepts a default context.
 	 *
-	 * @hook wp_ajax_tsf_crop_image 10
+	 * @hook wp_ajax_sgeobiz_crop_image 10
 	 * @since 3.1.0 Introduced in 2.9.0, but the name changed.
 	 * @since 4.2.0 Now cleans response header.
 	 * @since 4.2.5 1. Backported cropping support for WebP (WP 5.9).
@@ -154,7 +154,7 @@ final class AJAX {
 		Utils::check_ajax_capability_referer( 'upload_files' );
 
 		if ( ! isset( $_POST['id'], $_POST['context'], $_POST['cropDetails'] ) )
-			\wp_send_json_error( [ 'message' => \esc_js( \__( 'Invalid request.', 'autodescription' ) ) ] );
+			\wp_send_json_error( [ 'message' => \esc_js( \__( 'Invalid request.', 'sgeobiz-seo' ) ) ] );
 
 		$attachment_id = \absint( $_POST['id'] );
 
@@ -169,7 +169,7 @@ final class AJAX {
 			\wp_send_json_error( [ 'message' => \esc_js( \__( 'Image could not be processed.', 'default' ) ) ] );
 
 		switch ( $context ) {
-			case 'tsf-image':
+			case 'sgeobiz-image':
 				/**
 				 * Fires before a cropped image is saved.
 				 *
@@ -257,7 +257,7 @@ final class AJAX {
 	/**
 	 * Gets a various post data for Gutenberg / Block Editor on save.
 	 *
-	 * @hook wp_ajax_tsf_update_post_data 10
+	 * @hook wp_ajax_sgeobiz_update_post_data 10
 	 * @since 4.0.0
 	 * @since 4.2.0 Now uses wp.ajax, instead of $.ajax
 	 * @since 5.0.0 Removed _wp_ajax_ from the plugin name.
@@ -359,7 +359,7 @@ final class AJAX {
 	 * See WP Core `post_categories_meta_box()` -- exercising the same assumptions.
 	 * There's no capability check to view terms; a flaw in WP Core.
 	 *
-	 * @hook wp_ajax_tsf_get_term_parent_slugs 10
+	 * @hook wp_ajax_sgeobiz_get_term_parent_slugs 10
 	 * @since 5.1.0
 	 * @access private
 	 */
@@ -402,7 +402,7 @@ final class AJAX {
 	 * Albeit customizer, cache, requests, blocks, templates, CSS, menus, fonts, templates... it's all a post type.
 	 * This moronic abuse of the Post Type API exist because Gutenberg needed to speedrun features for it flopped.
 	 *
-	 * @hook wp_ajax_tsf_get_post_parent_slugs 10
+	 * @hook wp_ajax_sgeobiz_get_post_parent_slugs 10
 	 * @since 5.1.0
 	 * @access private
 	 */
@@ -452,7 +452,7 @@ final class AJAX {
 	 * assume that any user that can edit posts can also view all other post authors.
 	 * See WP Core `post_author_meta_box()` -- exercising the same assumptions.
 	 *
-	 * @hook wp_ajax_tsf_get_author_slug 10
+	 * @hook wp_ajax_sgeobiz_get_author_slug 10
 	 * @since 5.1.0
 	 * @access private
 	 */

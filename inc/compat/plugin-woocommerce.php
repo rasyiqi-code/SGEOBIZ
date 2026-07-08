@@ -1,33 +1,33 @@
 <?php
 /**
- * @package The_SEO_Framework\Compat\Plugin\WooCommerce
- * @subpackage The_SEO_Framework\Compatibility
+ * @package SGEOBIZ_SEO\Compat\Plugin\WooCommerce
+ * @subpackage SGEOBIZ_SEO\Compatibility
  * @access private
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\get_query_type_from_args;
+use function SGEOBIZ_SEO\get_query_type_from_args;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Data\Filter\Sanitize,
 	Helper\Query,
 };
 
 \add_action( 'woocommerce_init', __NAMESPACE__ . '\_init_wc_compat' );
-\add_filter( 'the_seo_framework_real_id', __NAMESPACE__ . '\_set_real_id_wc_shop' );
-\add_filter( 'the_seo_framework_is_singular_archive', __NAMESPACE__ . '\_set_shop_singular_archive', 10, 2 );
-\add_filter( 'the_seo_framework_is_shop', __NAMESPACE__ . '\_set_wc_is_shop', 10, 2 );
-\add_filter( 'the_seo_framework_is_product', __NAMESPACE__ . '\_set_wc_is_product', 10, 2 );
-\add_filter( 'the_seo_framework_is_product_admin', __NAMESPACE__ . '\_set_wc_is_product_admin' );
-\add_filter( 'the_seo_framework_robots_meta_array', __NAMESPACE__ . '\_set_wc_noindex_defaults', 10, 3 );
-\add_action( 'the_seo_framework_seo_bar', __NAMESPACE__ . '\_assert_wc_noindex_defaults_seo_bar', 10, 2 );
-\add_filter( 'the_seo_framework_image_generation_params', __NAMESPACE__ . '\_adjust_wc_image_generation_params', 10, 2 );
-\add_filter( 'the_seo_framework_public_post_type_archives', __NAMESPACE__ . '\_filter_public_wc_post_type_archives' );
-\add_filter( 'the_seo_framework_generated_archive_title_items', __NAMESPACE__ . '\_filter_wc_shop_pta_title_items', 10, 2 );
+\add_filter( 'sgeobiz_seo_real_id', __NAMESPACE__ . '\_set_real_id_wc_shop' );
+\add_filter( 'sgeobiz_seo_is_singular_archive', __NAMESPACE__ . '\_set_shop_singular_archive', 10, 2 );
+\add_filter( 'sgeobiz_seo_is_shop', __NAMESPACE__ . '\_set_wc_is_shop', 10, 2 );
+\add_filter( 'sgeobiz_seo_is_product', __NAMESPACE__ . '\_set_wc_is_product', 10, 2 );
+\add_filter( 'sgeobiz_seo_is_product_admin', __NAMESPACE__ . '\_set_wc_is_product_admin' );
+\add_filter( 'sgeobiz_seo_robots_meta_array', __NAMESPACE__ . '\_set_wc_noindex_defaults', 10, 3 );
+\add_action( 'sgeobiz_seo_seo_bar', __NAMESPACE__ . '\_assert_wc_noindex_defaults_seo_bar', 10, 2 );
+\add_filter( 'sgeobiz_seo_image_generation_params', __NAMESPACE__ . '\_adjust_wc_image_generation_params', 10, 2 );
+\add_filter( 'sgeobiz_seo_public_post_type_archives', __NAMESPACE__ . '\_filter_public_wc_post_type_archives' );
+\add_filter( 'sgeobiz_seo_generated_archive_title_items', __NAMESPACE__ . '\_filter_wc_shop_pta_title_items', 10, 2 );
 
 /**
  * Initializes (late) WooCommerce compatibility.
@@ -102,7 +102,7 @@ function _is_shop( $post = null ) {
 /**
  * Sets the correct shop ID on the shop page, but only if the shop is registered as page.
  *
- * @hook the_seo_framework_real_id 10
+ * @hook sgeobiz_seo_real_id 10
  * @since 4.0.5
  *
  * @param int $id The current ID.
@@ -116,7 +116,7 @@ function _set_real_id_wc_shop( $id ) {
 /**
  * Sets singular archives for the WC shop page, but only if the shop is registered as page.
  *
- * @hook the_seo_framework_is_singular_archive 10
+ * @hook sgeobiz_seo_is_singular_archive 10
  * @since 4.0.5
  *
  * @param bool     $is_singular_archive Whether the post ID is a singular archive.
@@ -131,7 +131,7 @@ function _set_shop_singular_archive( $is_singular_archive, $id ) {
 /**
  * Sets the is_shop query.
  *
- * @hook the_seo_framework_is_shop 10
+ * @hook sgeobiz_seo_is_shop 10
  * @since 4.0.5
  * @since 4.1.4 Now handles the assertion fully.
  * @TODO is this redundant for TSF? -> yes. lol. It's used nowhere, for now...
@@ -148,7 +148,7 @@ function _set_wc_is_shop( $is_shop, $post ) {
 /**
  * Sets the is_product query.
  *
- * @hook the_seo_framework_is_product 10
+ * @hook sgeobiz_seo_is_product 10
  * @since 4.0.5
  * @since 4.1.4 Now handles the assertion fully.
  *
@@ -169,7 +169,7 @@ function _set_wc_is_product( $is_product, $post ) {
 /**
  * Sets the is_product_admin query.
  *
- * @hook the_seo_framework_is_product_admin 10
+ * @hook sgeobiz_seo_is_product_admin 10
  * @since 4.0.5
  * @since 4.1.4 Now handles the assertion fully.
  * @TODO is this redundant for TSF? Yup. This very much is because we do not show an interface for OG types.
@@ -187,7 +187,7 @@ function _set_wc_is_product_admin( $is_product_admin ) {
 /**
  * Sets 'noindex' default values for WooCommerce's restrictive pages.
  *
- * @hook the_seo_framework_robots_meta_array 10
+ * @hook sgeobiz_seo_robots_meta_array 10
  * @since 4.1.4
  * @since 4.2.8 Now uses `Query::is_singular()` instead of `is_singular()` (for debug support).
  *
@@ -205,8 +205,8 @@ function _set_wc_is_product_admin( $is_product_admin ) {
  *                            Is null when the query is auto-determined.
  * @param int <bit>  $options The generator settings. {
  *    0 = 0b00: Ignore nothing.
- *    1 = 0b01: Ignore protection. (\The_SEO_Framework\ROBOTS_IGNORE_PROTECTION)
- *    2 = 0b10: Ignore post/term setting. (\The_SEO_Framework\ROBOTS_IGNORE_SETTINGS)
+ *    1 = 0b01: Ignore protection. (\SGEOBIZ_SEO\ROBOTS_IGNORE_PROTECTION)
+ *    2 = 0b10: Ignore post/term setting. (\SGEOBIZ_SEO\ROBOTS_IGNORE_SETTINGS)
  *    3 = 0b11: Ignore protection and post/term setting.
  * }
  * @return array
@@ -240,7 +240,7 @@ function _set_wc_noindex_defaults( $meta, $args, $options ) {
 
 	// Set the default to 'noindex' if settings are ignored, or if the setting is set to "default" (0).
 	if (
-		   $options & \The_SEO_Framework\ROBOTS_IGNORE_SETTINGS
+		   $options & \SGEOBIZ_SEO\ROBOTS_IGNORE_SETTINGS
 		|| 0 === Sanitize::qubit( Data\Plugin\Post::get_meta_item( '_genesis_noindex', $page_id ) )
 	) {
 		$meta['noindex'] = 'noindex';
@@ -252,7 +252,7 @@ function _set_wc_noindex_defaults( $meta, $args, $options ) {
 /**
  * Appends noindex default checks to the noindex item of the SEO Bar for pages.
  *
- * @hook the_seo_framework_seo_bar 10
+ * @hook sgeobiz_seo_seo_bar 10
  * @since 4.1.4
  *
  * @param string $interpreter The interpreter class name.
@@ -279,13 +279,13 @@ function _assert_wc_noindex_defaults_seo_bar( $interpreter, $builder ) {
 		? $interpreter::STATE_OKAY
 		: $interpreter::STATE_UNKNOWN;
 
-	$index_item['assess']['recommends'] = \__( 'WooCommerce recommends not indexing this dynamic page.', 'autodescription' );
+	$index_item['assess']['recommends'] = \__( 'WooCommerce recommends not indexing this dynamic page.', 'sgeobiz-seo' );
 }
 
 /**
  * Adjusts image generation parameters.
  *
- * @hook the_seo_framework_image_generation_params 10
+ * @hook sgeobiz_seo_image_generation_params 10
  * @since 4.0.5 (introduced @ 4.0.0, renamed to prevent conflict).
  * @since 4.2.0 Now supports the `$args['pta']` index.
  * @since 4.2.8 Fixed the taxonomy query for the admin area.
@@ -335,7 +335,7 @@ function _adjust_wc_image_generation_params( $params, $args ) {
 /**
  * Generates image URLs and IDs from the WooCommerce product gallery entries.
  *
- * @hook the_seo_framework_public_post_type_archives 10
+ * @hook sgeobiz_seo_public_post_type_archives 10
  * @since 4.0.0
  * @since 4.2.0 Now supports the `$args['pta']` index.
  * @generator
@@ -423,7 +423,7 @@ function _get_product_category_thumbnail_image_details( $args = null, $size = 'f
  * This is because the shop page is singular, singular_archive, shop, and post_type_archive,
  * and can even be is_static_front_page (but not is_real_front_page if queried /shop/ instead of /).
  *
- * @hook the_seo_framework_public_post_type_archives 10
+ * @hook sgeobiz_seo_public_post_type_archives 10
  * @since 4.2.8
  *
  * @param string[] $post_types The public post type archive names.
@@ -441,7 +441,7 @@ function _filter_public_wc_post_type_archives( $post_types ) {
 /**
  * Filters the shop page title items when it's an actual Post Type Archive.
  *
- * @filter the_seo_framework_generated_archive_title_items 10
+ * @filter sgeobiz_seo_generated_archive_title_items 10
  * @since 5.0.0
  *
  * @param String[title,prefix,title_without_prefix] $items  The generated archive title items.

@@ -1,16 +1,16 @@
 <?php
 /**
- * @package The_SEO_Framework\Compat\Theme\Genesis
- * @subpackage The_SEO_Framework\Compatibility
+ * @package SGEOBIZ_SEO\Compat\Theme\Genesis
+ * @subpackage SGEOBIZ_SEO\Compatibility
  * @access private
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 \add_filter( 'genesis_detect_seo_plugins', __NAMESPACE__ . '\_disable_genesis_seo' );
-\add_filter( 'the_seo_framework_term_meta_defaults', __NAMESPACE__ . '\_genesis_get_term_meta', 10, 2 );
+\add_filter( 'sgeobiz_seo_term_meta_defaults', __NAMESPACE__ . '\_genesis_get_term_meta', 10, 2 );
 
 /**
  * Removes the Genesis SEO meta boxes on the SEO Settings page
@@ -25,7 +25,7 @@ function _disable_genesis_seo() {
 		'classes'   => [],
 		'functions' => [],
 		'constants' => [
-			'THE_SEO_FRAMEWORK_PRESENT',
+			'SGEOBIZ_SEO_PRESENT',
 		],
 	];
 }
@@ -33,7 +33,7 @@ function _disable_genesis_seo() {
 /**
  * Returns Genesis term meta.
  *
- * @hook the_seo_framework_term_meta_defaults 10
+ * @hook sgeobiz_seo_term_meta_defaults 10
  * @since 2.8.0
  * @since 3.1.0 Now filters empty fields.
  * @TODO remove or shift this, so that we can reduce what's stored in the database via s_term_meta?

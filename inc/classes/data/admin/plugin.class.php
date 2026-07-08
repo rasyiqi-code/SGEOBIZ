@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Data\Admin\Plugin
- * @subpackage The_SEO_Framework\Data
+ * @package SGEOBIZ_SEO\Classes\Data\Admin\Plugin
+ * @subpackage SGEOBIZ_SEO\Data
  */
 
-namespace The_SEO_Framework\Data\Admin;
+namespace SGEOBIZ_SEO\Data\Admin;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Admin, // Yes, it is legal to share class and namespace.
 	Data,
 	Helper\Query,
@@ -49,14 +49,14 @@ final class Plugin {
 	 * @since 2.9.0 Removed reset options check, see check_options_reset().
 	 * @since 3.1.0 Removed settings field existence check.
 	 * @since 4.0.0 Now checks if the option exists before adding it. Shaves 20μs...
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Is now marked private.
 	 *              3. No longer adds options to the database, this is taken care off at `bootstrap\upgrade.php`.
 	 */
 	public static function register_settings() {
 		\register_setting(
-			\THE_SEO_FRAMEWORK_SITE_OPTIONS,
-			\THE_SEO_FRAMEWORK_SITE_OPTIONS,
+			\SGEOBIZ_SEO_SITE_OPTIONS,
+			\SGEOBIZ_SEO_SITE_OPTIONS,
 			[
 				'type' => 'array',
 			],
@@ -72,18 +72,18 @@ final class Plugin {
 	public static function process_settings_update() {
 
 		if (
-			   empty( $_POST[ \THE_SEO_FRAMEWORK_SITE_OPTIONS ] )
-			|| ! \is_array( $_POST[ \THE_SEO_FRAMEWORK_SITE_OPTIONS ] )
+			   empty( $_POST[ \SGEOBIZ_SEO_SITE_OPTIONS ] )
+			|| ! \is_array( $_POST[ \SGEOBIZ_SEO_SITE_OPTIONS ] )
 		) return;
 
 		// This is also handled in /wp-admin/options.php. Nevertheless, one might register outside of scope.
-		if ( ! \current_user_can( \THE_SEO_FRAMEWORK_SETTINGS_CAP ) )
+		if ( ! \current_user_can( \SGEOBIZ_SEO_SETTINGS_CAP ) )
 			return;
 
 		// This is also handled in /wp-admin/options.php. Nevertheless, one might register outside of scope.
-		\check_admin_referer( \THE_SEO_FRAMEWORK_SITE_OPTIONS . '-options', '_wpnonce' );
+		\check_admin_referer( \SGEOBIZ_SEO_SITE_OPTIONS . '-options', '_wpnonce' );
 
-		if ( ! empty( $_POST[ \THE_SEO_FRAMEWORK_SITE_OPTIONS ]['tsf-settings-reset'] ) ) {
+		if ( ! empty( $_POST[ \SGEOBIZ_SEO_SITE_OPTIONS ]['tsf-settings-reset'] ) ) {
 			self::process_settings_reset();
 		} else {
 			self::process_settings_submission();
@@ -116,7 +116,7 @@ final class Plugin {
 		Data\Plugin::update_site_cache( 'settings_notice', $state );
 
 		// We're still processing the update; redirect to volitilize all triggers.
-		Admin\Utils::redirect( \THE_SEO_FRAMEWORK_SITE_OPTIONS_SLUG );
+		Admin\Utils::redirect( \SGEOBIZ_SEO_SITE_OPTIONS_SLUG );
 	}
 
 	/**
@@ -139,14 +139,14 @@ final class Plugin {
 		// Set backward compatibility. This runs after the sanitization.
 		/* // phpcs:ignore -- Nothing to set backward compat for, still in place because API is enforced.
 		\add_filter(
-			'pre_update_option_' . \THE_SEO_FRAMEWORK_SITE_OPTIONS,
+			'pre_update_option_' . \SGEOBIZ_SEO_SITE_OPTIONS,
 			[ self::class, 'set_backward_compatibility' ],
 		);
 		*/
 
 		// This submission uses WordPress built-in option stores, bypassing Data\Plugin. Hence, we flush:
 		\add_action(
-			'update_option_' . \THE_SEO_FRAMEWORK_SITE_OPTIONS,
+			'update_option_' . \SGEOBIZ_SEO_SITE_OPTIONS,
 			[ Data\Plugin::class, 'flush_cache' ],
 			0
 		);
@@ -157,23 +157,23 @@ final class Plugin {
 		// WordPress resorts the settings array; so, right after a save, we do claim that the settings are updated.
 		// This is benign.
 		\add_action(
-			'update_option_' . \THE_SEO_FRAMEWORK_SITE_OPTIONS,
+			'update_option_' . \SGEOBIZ_SEO_SITE_OPTIONS,
 			[ self::class, 'set_option_updated_notice' ],
 		);
 
 		\add_action(
-			'update_option_' . \THE_SEO_FRAMEWORK_SITE_OPTIONS,
+			'update_option_' . \SGEOBIZ_SEO_SITE_OPTIONS,
 			[ self::class, 'update_db_version' ],
 			12,
 		);
 
 		\add_action(
-			'update_option_' . \THE_SEO_FRAMEWORK_SITE_OPTIONS,
+			'update_option_' . \SGEOBIZ_SEO_SITE_OPTIONS,
 			[ Sitemap\Registry::class, 'refresh_sitemaps' ],
 		);
 		// Mitigate race condition. If options change affecting the "excluded post", repopulate it.
 		\add_action(
-			'update_option_' . \THE_SEO_FRAMEWORK_SITE_OPTIONS,
+			'update_option_' . \SGEOBIZ_SEO_SITE_OPTIONS,
 			[ Query\Exclusion::class, 'clear_excluded_post_ids_cache' ],
 		);
 	}
@@ -181,9 +181,9 @@ final class Plugin {
 	/**
 	 * Sets the settings notice cache to "updated".
 	 *
-	 * @hook "update_option_ . THE_SEO_FRAMEWORK_SITE_OPTIONS" 10
+	 * @hook "update_option_ . SGEOBIZ_SEO_SITE_OPTIONS" 10
 	 * @since 4.0.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `_set_option_updated_notice`.
 	 */
 	public static function set_option_updated_notice() {
@@ -196,12 +196,12 @@ final class Plugin {
 	 * This prevents errors when users go back to an earlier version, where options
 	 * might be different from a future (or past, since v4.1.0) one.
 	 *
-	 * @hook "update_option_ . THE_SEO_FRAMEWORK_SITE_OPTIONS" 12
+	 * @hook "update_option_ . SGEOBIZ_SEO_SITE_OPTIONS" 12
 	 * @since 3.0.6
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 */
 	public static function update_db_version() {
-		\update_option( 'the_seo_framework_upgraded_db_version', \THE_SEO_FRAMEWORK_DB_VERSION, true );
+		\update_option( 'sgeobiz_seo_upgraded_db_version', \SGEOBIZ_SEO_DB_VERSION, true );
 	}
 
 	/**
@@ -213,7 +213,7 @@ final class Plugin {
 	 * @since 4.1.0 1. Added taxonomical robots options backward compat.
 	 *              2. Added the first two parameters.
 	 * @since 4.2.5 Emptied and is no longer enqueued.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `_set_backward_compatibility`.
 	 *
 	 * @param mixed $options The new, unserialized option values.

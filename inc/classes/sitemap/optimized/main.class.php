@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Sitemap\Optimized\Main
- * @subpackage The_SEO_Framework\Sitemap
+ * @package SGEOBIZ_SEO\Classes\Sitemap\Optimized\Main
+ * @subpackage SGEOBIZ_SEO\Sitemap
  */
 
-namespace The_SEO_Framework\Sitemap\Optimized;
+namespace SGEOBIZ_SEO\Sitemap\Optimized;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Sitemap,
 };
@@ -34,9 +34,9 @@ use The_SEO_Framework\{
  * Generates the sitemap.
  *
  * @since 4.0.0
- * @since 4.2.0 Renamed from `The_SEO_Framework\Builders\Sitemap`
+ * @since 4.2.0 Renamed from `SGEOBIZ_SEO\Builders\Sitemap`
  * @since 5.0.0 1. No longer holds the `$tsf` property.
- *              2. Moved from `\The_SEO_Framework\Builders\Sitemap\Main`.
+ *              2. Moved from `\SGEOBIZ_SEO\Builders\Sitemap\Main`.
  * @access public
  */
 abstract class Main {

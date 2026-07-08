@@ -1,27 +1,27 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Post
- * @subpackage The_SEO_Framework\Admin\Post
+ * @package SGEOBIZ_SEO\Views\Post
+ * @subpackage SGEOBIZ_SEO\Admin\Post
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
-use const The_SEO_Framework\{
+use const SGEOBIZ_SEO\{
 	ROBOTS_IGNORE_SETTINGS,
 	ROBOTS_IGNORE_PROTECTION,
 };
 
-use function The_SEO_Framework\coalesce_strlen;
+use function SGEOBIZ_SEO\coalesce_strlen;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data\Filter\Sanitize,
 	Helper\Post_Type,
 	Helper\Query,
 	Helper\Taxonomy,
 };
-use The_SEO_Framework\Admin\Settings\Layout\{
+use SGEOBIZ_SEO\Admin\Settings\Layout\{
 	Form,
 	HTML,
 	Input,
@@ -61,17 +61,17 @@ switch ( $instance ) :
 	case 'main':
 		$default_tabs = [
 			'general'    => [
-				'name'     => \__( 'General', 'autodescription' ),
+				'name'     => \__( 'General', 'sgeobiz-seo' ),
 				'callback' => [ Admin\Settings\Post::class, 'general_tab' ],
 				'dashicon' => 'admin-generic',
 			],
 			'social'     => [
-				'name'     => \__( 'Social', 'autodescription' ),
+				'name'     => \__( 'Social', 'sgeobiz-seo' ),
 				'callback' => [ Admin\Settings\Post::class, 'social_tab' ],
 				'dashicon' => 'share',
 			],
 			'visibility' => [
-				'name'     => \__( 'Visibility', 'autodescription' ),
+				'name'     => \__( 'Visibility', 'sgeobiz-seo' ),
 				'callback' => [ Admin\Settings\Post::class, 'visibility_tab' ],
 				'dashicon' => 'visibility',
 			],
@@ -86,7 +86,7 @@ switch ( $instance ) :
 		 * @param array $default_tabs The default tabs.
 		 * @param null  $depr         The post type label. Deprecated.
 		 */
-		$tabs = (array) \apply_filters( 'the_seo_framework_inpost_settings_tabs', $default_tabs, null );
+		$tabs = (array) \apply_filters( 'sgeobiz_seo_inpost_settings_tabs', $default_tabs, null );
 
 		echo '<div class="tsf-flex tsf-flex-inside-wrap">';
 		Admin\Settings\Post::flex_nav_tab_wrapper( 'inpost', $tabs );
@@ -100,7 +100,7 @@ switch ( $instance ) :
 				<div class="tsf-flex-setting-label tsf-flex">
 					<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
 						<div class="tsf-flex-setting-label-item tsf-flex">
-							<div><strong><?php \esc_html_e( 'Doing it Right', 'autodescription' ); ?></strong></div>
+							<div><strong><?php \esc_html_e( 'Doing it Right', 'sgeobiz-seo' ); ?></strong></div>
 							<div><span class=tsf-ajax></span></div>
 						</div>
 					</div>
@@ -147,11 +147,11 @@ switch ( $instance ) :
 			<div class="tsf-flex-setting-label tsf-flex">
 				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
 					<label for=autodescription_title class="tsf-flex-setting-label-item tsf-flex">
-						<div><strong><?php \esc_html_e( 'Meta Title', 'autodescription' ); ?></strong></div>
+						<div><strong><?php \esc_html_e( 'Meta Title', 'sgeobiz-seo' ); ?></strong></div>
 						<div>
 							<?php
 							HTML::make_info(
-								\__( 'The meta title can be used to determine the title used on search engine result pages.', 'autodescription' ),
+								\__( 'The meta title can be used to determine the title used on search engine result pages.', 'sgeobiz-seo' ),
 								'https://developers.google.com/search/docs/advanced/appearance/title-link',
 							);
 							?>
@@ -195,16 +195,16 @@ switch ( $instance ) :
 							<input type=checkbox id=autodescription_title_no_blogname value=1 <?php \checked( $title_no_blogname_value ); ?> disabled>
 							<input type=hidden name="autodescription[_tsf_title_no_blogname]" value="<?= (int) $title_no_blogname_value ?>">
 							<?php
-							\esc_html_e( 'Remove the site title?', 'autodescription' );
+							\esc_html_e( 'Remove the site title?', 'sgeobiz-seo' );
 							echo ' ';
-							HTML::make_info( \__( 'For the homepage, this option must be managed on the SEO Settings page.', 'autodescription' ) );
+							HTML::make_info( \__( 'For the homepage, this option must be managed on the SEO Settings page.', 'sgeobiz-seo' ) );
 						} else {
 							?>
 							<input type=checkbox name="autodescription[_tsf_title_no_blogname]" id=autodescription_title_no_blogname value=1 <?php \checked( $title_no_blogname_value ); ?>>
 							<?php
-							\esc_html_e( 'Remove the site title?', 'autodescription' );
+							\esc_html_e( 'Remove the site title?', 'sgeobiz-seo' );
 							echo ' ';
-							HTML::make_info( \__( 'Use this when you want to rearrange the title parts manually.', 'autodescription' ) );
+							HTML::make_info( \__( 'Use this when you want to rearrange the title parts manually.', 'sgeobiz-seo' ) );
 						}
 						?>
 					</label>
@@ -216,11 +216,11 @@ switch ( $instance ) :
 			<div class="tsf-flex-setting-label tsf-flex">
 				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
 					<label for=autodescription_description class="tsf-flex-setting-label-item tsf-flex">
-						<div><strong><?php \esc_html_e( 'Meta Description', 'autodescription' ); ?></strong></div>
+						<div><strong><?php \esc_html_e( 'Meta Description', 'sgeobiz-seo' ); ?></strong></div>
 						<div>
 							<?php
 							HTML::make_info(
-								\__( 'The meta description can be used to determine the text used under the title on search engine results pages.', 'autodescription' ),
+								\__( 'The meta description can be used to determine the text used under the title on search engine results pages.', 'sgeobiz-seo' ),
 								'https://developers.google.com/search/docs/advanced/appearance/snippet',
 							);
 							?>
@@ -321,7 +321,7 @@ switch ( $instance ) :
 			<div class="tsf-flex-setting-label tsf-flex">
 				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
 					<label for=autodescription_og_title class="tsf-flex-setting-label-item tsf-flex">
-						<div><strong><?php \esc_html_e( 'Open Graph Title', 'autodescription' ); ?></strong></div>
+						<div><strong><?php \esc_html_e( 'Open Graph Title', 'sgeobiz-seo' ); ?></strong></div>
 					</label>
 					<?php
 					Data\Plugin::get_option( 'display_character_counter' )
@@ -340,7 +340,7 @@ switch ( $instance ) :
 			<div class="tsf-flex-setting-label tsf-flex">
 				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
 					<label for=autodescription_og_description class="tsf-flex-setting-label-item tsf-flex">
-						<div><strong><?php \esc_html_e( 'Open Graph Description', 'autodescription' ); ?></strong></div>
+						<div><strong><?php \esc_html_e( 'Open Graph Description', 'sgeobiz-seo' ); ?></strong></div>
 					</label>
 					<?php
 					Data\Plugin::get_option( 'display_character_counter' )
@@ -357,7 +357,7 @@ switch ( $instance ) :
 			<div class="tsf-flex-setting-label tsf-flex">
 				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
 					<label for=autodescription_twitter_title class="tsf-flex-setting-label-item tsf-flex">
-						<div><strong><?php \esc_html_e( 'Twitter Title', 'autodescription' ); ?></strong></div>
+						<div><strong><?php \esc_html_e( 'Twitter Title', 'sgeobiz-seo' ); ?></strong></div>
 					</label>
 					<?php
 					Data\Plugin::get_option( 'display_character_counter' )
@@ -376,7 +376,7 @@ switch ( $instance ) :
 			<div class="tsf-flex-setting-label tsf-flex">
 				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
 					<label for=autodescription_twitter_description class="tsf-flex-setting-label-item tsf-flex">
-						<div><strong><?php \esc_html_e( 'Twitter Description', 'autodescription' ); ?></strong></div>
+						<div><strong><?php \esc_html_e( 'Twitter Description', 'sgeobiz-seo' ); ?></strong></div>
 					</label>
 					<?php
 					Data\Plugin::get_option( 'display_character_counter' )
@@ -397,11 +397,11 @@ switch ( $instance ) :
 			<div class="tsf-flex-setting-label tsf-flex">
 				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
 					<label for=autodescription_twitter_card_type class="tsf-flex-setting-label-item tsf-flex">
-						<div><strong><?php \esc_html_e( 'Twitter Card Type', 'autodescription' ); ?></strong></div>
+						<div><strong><?php \esc_html_e( 'Twitter Card Type', 'sgeobiz-seo' ); ?></strong></div>
 						<div>
 							<?php
 							HTML::make_info(
-								\__( 'The Twitter Card type controls the link preview layout. On X, the summary card shows a small thumbnail beside truncated title and description; the large-image card overlays the title on the image with no description. On Discord, the image appears small at the side or large below; both card types show the description.', 'autodescription' ),
+								\__( 'The Twitter Card type controls the link preview layout. On X, the summary card shows a small thumbnail beside truncated title and description; the large-image card overlays the title on the image with no description. On Discord, the image appears small at the side or large below; both card types show the description.', 'sgeobiz-seo' ),
 								'https://docs.sgeobiz.com/',
 							);
 							?>
@@ -412,7 +412,7 @@ switch ( $instance ) :
 			<div class="tsf-flex-setting-input tsf-flex">
 				<?php
 				/* translators: %s = default option value */
-				$_default_i18n      = \__( 'Default (%s)', 'autodescription' );
+				$_default_i18n      = \__( 'Default (%s)', 'sgeobiz-seo' );
 				$tw_supported_cards = Meta\Twitter::get_supported_cards();
 
 				// phpcs:disable WordPress.Security.EscapeOutput -- make_single_select_form() escapes.
@@ -446,11 +446,11 @@ switch ( $instance ) :
 			<div class="tsf-flex-setting-label tsf-flex">
 				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
 					<label for=autodescription_socialimage-url class="tsf-flex-setting-label-item tsf-flex">
-						<div><strong><?php \esc_html_e( 'Social Image URL', 'autodescription' ); ?></strong></div>
+						<div><strong><?php \esc_html_e( 'Social Image URL', 'sgeobiz-seo' ); ?></strong></div>
 						<div>
 							<?php
 							HTML::make_info(
-								\__( "The social image URL can be used by search engines and social networks alike. It's best to use an image with a 1.91:1 aspect ratio that is at least 1200px wide for universal support.", 'autodescription' ),
+								\__( "The social image URL can be used by search engines and social networks alike. It's best to use an image with a 1.91:1 aspect ratio that is at least 1200px wide for universal support.", 'sgeobiz-seo' ),
 								'https://developers.facebook.com/docs/sharing/best-practices#images',
 							);
 							?>
@@ -461,7 +461,7 @@ switch ( $instance ) :
 			<div class="tsf-flex-setting-input tsf-flex">
 				<input class=large-text type=url name="autodescription[_social_image_url]" id=autodescription_socialimage-url placeholder="<?= \esc_url( $image_placeholder ) ?>" value="<?= \esc_url( $meta['_social_image_url'] ) ?>" autocomplete=off>
 				<input type=hidden name="autodescription[_social_image_id]" id=autodescription_socialimage-id value="<?= \absint( $meta['_social_image_id'] ) ?>" disabled class=tsf-enable-media-if-js>
-				<div class="hide-if-no-tsf-js tsf-social-image-buttons">
+				<div class="hide-if-no-sgeobiz-js tsf-social-image-buttons">
 					<?php
 					// phpcs:disable WordPress.Security.EscapeOutput -- get_image_uploader_form escapes. (phpcs breaks here, so we use disable)
 					echo Form::get_image_uploader_form( [ 'id' => 'autodescription_socialimage' ] );
@@ -499,7 +499,7 @@ switch ( $instance ) :
 				'option'    => '_genesis_noindex',
 				'force_on'  => 'index',
 				'force_off' => 'noindex',
-				'label'     => \__( 'Indexing', 'autodescription' ),
+				'label'     => \__( 'Indexing', 'sgeobiz-seo' ),
 				'_default'  => empty( $r_defaults['noindex'] ) ? 'index' : 'noindex',
 			],
 			'nofollow'  => [
@@ -507,7 +507,7 @@ switch ( $instance ) :
 				'option'    => '_genesis_nofollow',
 				'force_on'  => 'follow',
 				'force_off' => 'nofollow',
-				'label'     => \__( 'Link following', 'autodescription' ),
+				'label'     => \__( 'Link following', 'sgeobiz-seo' ),
 				'_default'  => empty( $r_defaults['nofollow'] ) ? 'follow' : 'nofollow',
 			],
 			'noarchive' => [
@@ -515,7 +515,7 @@ switch ( $instance ) :
 				'option'    => '_genesis_noarchive',
 				'force_on'  => 'archive',
 				'force_off' => 'noarchive',
-				'label'     => \__( 'Archiving', 'autodescription' ),
+				'label'     => \__( 'Archiving', 'sgeobiz-seo' ),
 				'_default'  => empty( $r_defaults['noarchive'] ) ? 'archive' : 'noarchive',
 			],
 		];
@@ -525,11 +525,11 @@ switch ( $instance ) :
 			<div class="tsf-flex-setting-label tsf-flex">
 				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
 					<label for=autodescription_canonical class="tsf-flex-setting-label-item tsf-flex">
-						<div><strong><?php \esc_html_e( 'Canonical URL', 'autodescription' ); ?></strong></div>
+						<div><strong><?php \esc_html_e( 'Canonical URL', 'sgeobiz-seo' ); ?></strong></div>
 						<div>
 						<?php
 							HTML::make_info(
-								\__( 'This urges search engines to go to the outputted URL.', 'autodescription' ),
+								\__( 'This urges search engines to go to the outputted URL.', 'sgeobiz-seo' ),
 								'https://developers.google.com/search/docs/advanced/crawling/consolidate-duplicate-urls',
 							);
 						?>
@@ -626,11 +626,11 @@ switch ( $instance ) :
 			<div class="tsf-flex-setting-label tsf-flex">
 				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
 					<div class="tsf-flex-setting-label-item tsf-flex">
-						<div><strong><?php \esc_html_e( 'Robots Meta Settings', 'autodescription' ); ?></strong></div>
+						<div><strong><?php \esc_html_e( 'Robots Meta Settings', 'sgeobiz-seo' ); ?></strong></div>
 						<div>
 						<?php
 							HTML::make_info(
-								\__( 'These directives may urge robots not to display, follow links on, or create a cached copy of this page.', 'autodescription' ),
+								\__( 'These directives may urge robots not to display, follow links on, or create a cached copy of this page.', 'sgeobiz-seo' ),
 								'https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#directives',
 							);
 						?>
@@ -640,11 +640,11 @@ switch ( $instance ) :
 					if ( $is_static_front_page ) {
 						printf(
 							'<div class=tsf-flex-setting-label-sub-item><span class="description attention">%s</span></div>',
-							\esc_html__( 'Warning: No public site should ever apply "noindex" or "nofollow" to the homepage.', 'autodescription' ),
+							\esc_html__( 'Warning: No public site should ever apply "noindex" or "nofollow" to the homepage.', 'sgeobiz-seo' ),
 						);
 						printf(
 							'<div class=tsf-flex-setting-label-sub-item><span class=description>%s</span></div>',
-							\esc_html__( 'Note: A non-default selection here will overwrite the global homepage SEO settings.', 'autodescription' ),
+							\esc_html__( 'Note: A non-default selection here will overwrite the global homepage SEO settings.', 'sgeobiz-seo' ),
 						);
 					}
 					?>
@@ -665,7 +665,7 @@ switch ( $instance ) :
 						<div class="tsf-flex-setting-input tsf-flex">
 						<?php
 							/* translators: %s = default option value */
-							$_default_i18n = \__( 'Default (%s)', 'autodescription' );
+							$_default_i18n = \__( 'Default (%s)', 'sgeobiz-seo' );
 
 							// phpcs:disable WordPress.Security.EscapeOutput -- make_single_select_form() escapes.
 							echo Form::make_single_select_form( [
@@ -704,7 +704,7 @@ switch ( $instance ) :
 			<div class="tsf-flex-setting-label tsf-flex">
 				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
 					<div class="tsf-flex-setting-label-item tsf-flex">
-						<div><strong><?php \esc_html_e( 'Archive Settings', 'autodescription' ); ?></strong></div>
+						<div><strong><?php \esc_html_e( 'Archive Settings', 'sgeobiz-seo' ); ?></strong></div>
 					</div>
 				</div>
 			</div>
@@ -713,7 +713,7 @@ switch ( $instance ) :
 				<div class=tsf-checkbox-wrapper>
 					<label for=autodescription_exclude_local_search><input type=checkbox name="autodescription[exclude_local_search]" id=autodescription_exclude_local_search value=1 <?php \checked( $meta['exclude_local_search'] ); ?>>
 						<?php
-						\esc_html_e( 'Exclude this page from all search queries on this site.', 'autodescription' );
+						\esc_html_e( 'Exclude this page from all search queries on this site.', 'sgeobiz-seo' );
 						?>
 					</label>
 				</div>
@@ -722,7 +722,7 @@ switch ( $instance ) :
 				<div class=tsf-checkbox-wrapper>
 					<label for=autodescription_exclude_from_archive><input type=checkbox name="autodescription[exclude_from_archive]" id=autodescription_exclude_from_archive value=1 <?php \checked( $meta['exclude_from_archive'] ); ?>>
 						<?php
-						\esc_html_e( 'Exclude this page from all archive queries on this site.', 'autodescription' );
+						\esc_html_e( 'Exclude this page from all archive queries on this site.', 'sgeobiz-seo' );
 						?>
 					</label>
 				</div>
@@ -736,12 +736,12 @@ switch ( $instance ) :
 				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
 					<label for=autodescription_redirect class="tsf-flex-setting-label-item tsf-flex">
 						<div>
-							<strong><?php \esc_html_e( '301 Redirect URL', 'autodescription' ); ?></strong>
+							<strong><?php \esc_html_e( '301 Redirect URL', 'sgeobiz-seo' ); ?></strong>
 						</div>
 						<div>
 							<?php
 							HTML::make_info(
-								\__( 'This will force visitors to go to another URL.', 'autodescription' ),
+								\__( 'This will force visitors to go to another URL.', 'sgeobiz-seo' ),
 								'https://developers.google.com/search/docs/crawling-indexing/301-redirects',
 							);
 							?>

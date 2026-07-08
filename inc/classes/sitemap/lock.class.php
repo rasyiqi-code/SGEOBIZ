@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Sitemap\Cache
- * @subpackage The_SEO_Framework\Sitemap
+ * @package SGEOBIZ_SEO\Classes\Sitemap\Cache
+ * @subpackage SGEOBIZ_SEO\Sitemap
  */
 
-namespace The_SEO_Framework\Sitemap;
+namespace SGEOBIZ_SEO\Sitemap;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Helper;
+use SGEOBIZ_SEO\Helper;
 
 /**
  * The SEO Framework plugin
@@ -32,7 +32,7 @@ use The_SEO_Framework\Helper;
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->sitemap()->lock() instead.
+ *         Use sgeobiz()->sitemap()->lock() instead.
  */
 class Lock {
 
@@ -40,7 +40,7 @@ class Lock {
 	 * Returns the sitemap's lock cache ID.
 	 *
 	 * @since 4.1.2
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Bridges\Sitemap`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Bridges\Sitemap`.
 	 *
 	 * @param string $sitemap_id The sitemap ID.
 	 * @return string|false The sitemap lock key. False when key is invalid.
@@ -60,7 +60,7 @@ class Lock {
 	 * Outputs a '503: Service Unavailable' header and no-cache headers.
 	 *
 	 * @since 4.1.2
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Bridges\Sitemap`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Bridges\Sitemap`.
 	 *
 	 * @param string $sitemap_id The sitemap ID.
 	 */
@@ -77,11 +77,11 @@ class Lock {
 		if ( $timeout ) {
 			printf(
 				/* translators: %d = number of seconds */
-				\esc_html__( 'Sitemap is locked for %d seconds. Try again later.', 'autodescription' ),
+				\esc_html__( 'Sitemap is locked for %d seconds. Try again later.', 'sgeobiz-seo' ),
 				(int) ( $timeout - time() ),
 			);
 		} else {
-			\esc_html_e( 'Sitemap is locked temporarily. Try again later.', 'autodescription' );
+			\esc_html_e( 'Sitemap is locked temporarily. Try again later.', 'sgeobiz-seo' );
 		}
 
 		echo "\n";
@@ -94,7 +94,7 @@ class Lock {
 	 *
 	 * @since 4.1.2
 	 * @since 4.2.1 Now considers "unlimited" execution time (0) that'd've prevented locks altogether.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Bridges\Sitemap`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Bridges\Sitemap`.
 	 *
 	 * @param string $sitemap_id The sitemap ID.
 	 * @return bool True on success, false on failure.
@@ -121,7 +121,7 @@ class Lock {
 	 * Unlocks a sitemap for the current blog & locale and $sitemap_id.
 	 *
 	 * @since 4.1.2
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Bridges\Sitemap`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Bridges\Sitemap`.
 	 *
 	 * @param string $sitemap_id The sitemap ID.
 	 * @return bool True on success, false on failure.
@@ -137,7 +137,7 @@ class Lock {
 	 * Tells whether a sitemap is locked for the current blog & locale and $sitemap_id.
 	 *
 	 * @since 4.1.2
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Bridges\Sitemap`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Bridges\Sitemap`.
 	 *
 	 * @param string $sitemap_id The sitemap ID.
 	 * @return bool|int False if not locked, the lock UNIX release time otherwise.

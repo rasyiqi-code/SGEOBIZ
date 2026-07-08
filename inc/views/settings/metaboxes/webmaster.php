@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Admin\Metaboxes
- * @subpackage The_SEO_Framework\Admin\Settings
+ * @package SGEOBIZ_SEO\Views\Admin\Metaboxes
+ * @subpackage SGEOBIZ_SEO\Admin\Settings
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
-use The_SEO_Framework\Admin\Settings\Layout\{
+use SGEOBIZ_SEO\Admin\Settings\Layout\{
 	HTML,
 	Input,
 };
@@ -42,9 +42,9 @@ switch ( $instance ) : // Quite useless, but prepared for expansion.
 		$settings = [
 			'google'    => [
 				'setting'     => 'google_verification',
-				'label'       => \__( 'Google Search Console Verification Code', 'autodescription' ),
+				'label'       => \__( 'Google Search Console Verification Code', 'sgeobiz-seo' ),
 				'info'        => HTML::make_info(
-					\__( 'Get the Google verification code.', 'autodescription' ),
+					\__( 'Get the Google verification code.', 'sgeobiz-seo' ),
 					'https://search.google.com/search-console/ownership?resource_id=' . rawurlencode( $site_url ),
 					false,
 				),
@@ -52,9 +52,9 @@ switch ( $instance ) : // Quite useless, but prepared for expansion.
 			],
 			'bing'      => [
 				'setting'     => 'bing_verification',
-				'label'       => \__( 'Bing Webmaster Verification Code', 'autodescription' ),
+				'label'       => \__( 'Bing Webmaster Verification Code', 'sgeobiz-seo' ),
 				'info'        => HTML::make_info(
-					\__( 'Get the Bing verification code.', 'autodescription' ),
+					\__( 'Get the Bing verification code.', 'sgeobiz-seo' ),
 					'https://www.bing.com/webmaster/home/addsite?addurl=' . rawurlencode( $site_url ),
 					false,
 				),
@@ -62,9 +62,9 @@ switch ( $instance ) : // Quite useless, but prepared for expansion.
 			],
 			'yandex'    => [
 				'setting'     => 'yandex_verification',
-				'label'       => \__( 'Yandex Webmaster Verification Code', 'autodescription' ),
+				'label'       => \__( 'Yandex Webmaster Verification Code', 'sgeobiz-seo' ),
 				'info'        => HTML::make_info(
-					\__( 'Get the Yandex verification code.', 'autodescription' ),
+					\__( 'Get the Yandex verification code.', 'sgeobiz-seo' ),
 					'https://webmaster.yandex.com/sites/add/?hostName=' . rawurlencode( $site_url ),
 					false,
 				),
@@ -73,9 +73,9 @@ switch ( $instance ) : // Quite useless, but prepared for expansion.
 			'baidu'     => [
 				'setting'     => 'baidu_verification',
 				/* translators: literal translation from '百度搜索资源平台'-Code */
-				'label'       => \__( 'Baidu Search Resource Platform Code', 'autodescription' ),
+				'label'       => \__( 'Baidu Search Resource Platform Code', 'sgeobiz-seo' ),
 				'info'        => HTML::make_info(
-					\__( 'Get the Baidu verification code.', 'autodescription' ),
+					\__( 'Get the Baidu verification code.', 'sgeobiz-seo' ),
 					'https://ziyuan.baidu.com/login/index?u=/site/siteadd',
 					false,
 				),
@@ -83,9 +83,9 @@ switch ( $instance ) : // Quite useless, but prepared for expansion.
 			],
 			'pinterest' => [
 				'setting'     => 'pint_verification',
-				'label'       => \__( 'Pinterest Analytics Verification Code', 'autodescription' ),
+				'label'       => \__( 'Pinterest Analytics Verification Code', 'sgeobiz-seo' ),
 				'info'        => HTML::make_info(
-					\__( 'Get the Pinterest verification code.', 'autodescription' ),
+					\__( 'Get the Pinterest verification code.', 'sgeobiz-seo' ),
 					'https://analytics.pinterest.com/',
 					false,
 				),
@@ -93,9 +93,9 @@ switch ( $instance ) : // Quite useless, but prepared for expansion.
 			],
 		];
 
-		HTML::header_title( \__( 'Webmaster Integration Settings', 'autodescription' ) );
-		HTML::description( \__( "When adding your website to Google, Bing and other Webmaster Tools, you'll be asked to add a code or file to your website for verification purposes. These options will help you easily integrate those codes.", 'autodescription' ) );
-		HTML::description( \__( "Verifying your website has no SEO value whatsoever. But you might gain added benefits such as search ranking insights to help you improve your website's content.", 'autodescription' ) );
+		HTML::header_title( \__( 'Webmaster Integration Settings', 'sgeobiz-seo' ) );
+		HTML::description( \__( "When adding your website to Google, Bing and other Webmaster Tools, you'll be asked to add a code or file to your website for verification purposes. These options will help you easily integrate those codes.", 'sgeobiz-seo' ) );
+		HTML::description( \__( "Verifying your website has no SEO value whatsoever. But you might gain added benefits such as search ranking insights to help you improve your website's content.", 'sgeobiz-seo' ) );
 
 		?>
 		<hr>

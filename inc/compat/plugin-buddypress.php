@@ -1,20 +1,20 @@
 <?php
 /**
- * @package The_SEO_Framework\Compat\Plugin\BuddyPress
- * @subpackage The_SEO_Framework\Compatibility
+ * @package SGEOBIZ_SEO\Compat\Plugin\BuddyPress
+ * @subpackage SGEOBIZ_SEO\Compatibility
  * @access private
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-\add_filter( 'the_seo_framework_meta_generator_pools', __NAMESPACE__ . '\_buddypress_filter_generator_pools' );
+\add_filter( 'sgeobiz_seo_meta_generator_pools', __NAMESPACE__ . '\_buddypress_filter_generator_pools' );
 
 /**
  * Changes the meta render data for BuddyPress profiles.
  *
- * @hook the_seo_framework_meta_generator_pools 10
+ * @hook sgeobiz_seo_meta_generator_pools 10
  * @since 5.0.0
  *
  * @param string[] $generator_pools A list of tag pools requested for the current query.

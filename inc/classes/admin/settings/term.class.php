@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Admin\Settings\Post
- * @subpackage The_SEO_Framework\Admin\Edit\Term
+ * @package SGEOBIZ_SEO\Classes\Admin\Settings\Post
+ * @subpackage SGEOBIZ_SEO\Admin\Edit\Term
  */
 
-namespace The_SEO_Framework\Admin\Settings;
+namespace SGEOBIZ_SEO\Admin\Settings;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper\Query,
 	Helper\Taxonomy,
@@ -37,7 +37,7 @@ use The_SEO_Framework\{
  *
  * @since 4.0.0
  * @since 5.0.0 1. Renamed from `TermSettings` to `Term`.
- *              2. Moved to `\The_SEO_Framework\Admin\Settings`.
+ *              2. Moved to `\SGEOBIZ_SEO\Admin\Settings`.
  * @access private
  */
 final class Term {
@@ -64,7 +64,7 @@ final class Term {
 			 * @param int $priority The meta box term priority.
 			 *                      Defaults to a high priority, this box is seen soon below the default edit inputs.
 			 */
-			(int) \apply_filters( 'the_seo_framework_term_metabox_priority', 0 ),
+			(int) \apply_filters( 'sgeobiz_seo_term_metabox_priority', 0 ),
 			2,
 		);
 	}
@@ -88,13 +88,13 @@ final class Term {
 		/**
 		 * @since 2.9.0
 		 */
-		\do_action( 'the_seo_framework_pre_tt_inpost_box' );
+		\do_action( 'sgeobiz_seo_pre_tt_inpost_box' );
 
 		Template::output_view( 'term/settings', $term, $taxonomy );
 
 		/**
 		 * @since 2.9.0
 		 */
-		\do_action( 'the_seo_framework_pro_tt_inpost_box' );
+		\do_action( 'sgeobiz_seo_pro_tt_inpost_box' );
 	}
 }

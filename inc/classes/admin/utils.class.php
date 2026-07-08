@@ -1,13 +1,13 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Admin\Utils
+ * @package SGEOBIZ_SEO\Classes\Admin\Utils
  */
 
-namespace The_SEO_Framework\Admin;
+namespace SGEOBIZ_SEO\Admin;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Helper\Format\Markdown;
+use SGEOBIZ_SEO\Helper\Format\Markdown;
 
 /**
  * The SEO Framework plugin
@@ -31,7 +31,7 @@ use The_SEO_Framework\Helper\Format\Markdown;
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->admin()->utils() instead.
+ *         Use sgeobiz()->admin()->utils() instead.
  */
 class Utils {
 
@@ -44,7 +44,7 @@ class Utils {
 	 * @since 2.9.3 1. Query arguments work again (regression 2.9.2).
 	 *              2. Now only accepts http and https protocols.
 	 * @since 4.2.0 Now allows query arguments with value 0|'0'.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `admin_redirect`.
 	 *              3. Now bails with an explanatory error when the page doesn't exist.
 	 * @TODO WP 5.2/5.4+ will cause this method to never run on wp_die().
@@ -89,7 +89,7 @@ class Utils {
 				Markdown::convert(
 					\sprintf(
 						/* translators: %s = Redirect URL markdown */
-						\esc_html__( 'There has been an error redirecting. Refresh the page or follow [this link](%s).', 'autodescription' ),
+						\esc_html__( 'There has been an error redirecting. Refresh the page or follow [this link](%s).', 'sgeobiz-seo' ),
 						\esc_url( $target ),
 					),
 					[ 'a' ],
@@ -105,7 +105,7 @@ class Utils {
 	 * Whether to display Extension Manager suggestions to the user based on several conditions.
 	 *
 	 * @since 4.2.4
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `_display_extension_suggestions`.
 	 * @uses TSF_DISABLE_SUGGESTIONS Set that to true if you don't like us.
 	 *

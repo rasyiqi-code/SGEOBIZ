@@ -1,23 +1,23 @@
 <?php
 /**
- * @package The_SEO_Framework\Compat\Plugin\EDD
- * @subpackage The_SEO_Framework\Compatibility
+ * @package SGEOBIZ_SEO\Compat\Plugin\EDD
+ * @subpackage SGEOBIZ_SEO\Compatibility
  * @access private
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Helper\Query;
+use SGEOBIZ_SEO\Helper\Query;
 
-\add_filter( 'the_seo_framework_is_product', __NAMESPACE__ . '\_set_edd_is_product', 10, 2 );
-\add_filter( 'the_seo_framework_is_product_admin', __NAMESPACE__ . '\_set_edd_is_product_admin' );
+\add_filter( 'sgeobiz_seo_is_product', __NAMESPACE__ . '\_set_edd_is_product', 10, 2 );
+\add_filter( 'sgeobiz_seo_is_product_admin', __NAMESPACE__ . '\_set_edd_is_product_admin' );
 
 /**
  * Sets the is_product query.
  *
- * @hook the_seo_framework_is_product 10
+ * @hook sgeobiz_seo_is_product 10
  * @since 4.0.5
  *
  * @param bool             $is_product Whether this is a product page.
@@ -38,7 +38,7 @@ function _set_edd_is_product( $is_product, $post ) {
 /**
  * Sets the is_product_admin query.
  *
- * @hook the_seo_framework_is_product_admin 10
+ * @hook sgeobiz_seo_is_product_admin 10
  * @since 4.0.5
  * @TODO is this redundant for TSF?
  *

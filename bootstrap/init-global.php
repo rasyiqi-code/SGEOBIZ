@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework
- * @subpackage The_SEO_Framework\Bootstrap
+ * @package SGEOBIZ_SEO
+ * @subpackage SGEOBIZ_SEO\Bootstrap
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Helper\{
+use SGEOBIZ_SEO\Helper\{
 	Headers,
 	Query,
 };
@@ -32,9 +32,9 @@ use The_SEO_Framework\Helper\{
 
 // Load the plugin's text domain first.
 \load_plugin_textdomain(
-	'autodescription',
+	'sgeobiz-seo',
 	false,
-	\dirname( \THE_SEO_FRAMEWORK_PLUGIN_BASENAME ) . \DIRECTORY_SEPARATOR . 'language',
+	\dirname( \SGEOBIZ_SEO_PLUGIN_BASENAME ) . \DIRECTORY_SEPARATOR . 'language',
 );
 
 // Output noindex headers when an XMLRPC request is detected. There are no hooks, test inline.
@@ -48,4 +48,4 @@ if ( \defined( 'XMLRPC_REQUEST' ) && \XMLRPC_REQUEST )
 \add_filter( 'robots_txt', [ RobotsTXT\Main::class, 'get_robots_txt' ], 10, 2 );
 
 // Register the TSF breadcrumb shortcode.
-\add_shortcode( 'tsf_breadcrumb', 'tsf_breadcrumb' );
+\add_shortcode( 'sgeobiz_breadcrumb', 'sgeobiz_breadcrumb' );

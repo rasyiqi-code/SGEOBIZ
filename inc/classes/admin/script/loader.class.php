@@ -1,20 +1,20 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Admin\Script\Loader
- * @subpackage The_SEO_Framework\Scripts
+ * @package SGEOBIZ_SEO\Classes\Admin\Script\Loader
+ * @subpackage SGEOBIZ_SEO\Scripts
  */
 
-namespace The_SEO_Framework\Admin\Script;
+namespace SGEOBIZ_SEO\Admin\Script;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\has_run;
+use function SGEOBIZ_SEO\has_run;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Meta,
 };
-use The_SEO_Framework\Helper\{
+use SGEOBIZ_SEO\Helper\{
 	Compatibility,
 	Guidelines,
 	Format\Arrays,
@@ -42,7 +42,7 @@ use The_SEO_Framework\Helper\{
 
 /**
  * Prepares admin GUI scripts. Auto-invokes everything the moment this file is required.
- * Relies on \The_SEO_Framework\Admin\Script\Registry to register and load scripts.
+ * Relies on \SGEOBIZ_SEO\Admin\Script\Registry to register and load scripts.
  *
  * What's a state, and what's a param?
  * - states may and are expected to be changed, like a page title.
@@ -50,9 +50,9 @@ use The_SEO_Framework\Helper\{
  *
  * @since 5.0.0
  * @since 5.1.5 No longer final.
- * @see \The_SEO_Framework\Admin\Script\Registry
+ * @see \SGEOBIZ_SEO\Admin\Script\Registry
  * @access protected
- *         Use tsf()->admin()->scripts()->loader() instead.
+ *         Use sgeobiz()->admin()->scripts()->loader() instead.
  */
 class Loader {
 
@@ -162,11 +162,11 @@ class Loader {
 		 *              2. Added $loader parameter.
 		 * @since 4.2.7 Consolidated all input scripts into a list.
 		 * @param array  $scripts  The default CSS and JS loader settings.
-		 * @param string $registry The \The_SEO_Framework\Admin\Script\Registry registry class name.
-		 * @param string $loader   The \The_SEO_Framework\Admin\Script\Loader loader class name.
+		 * @param string $registry The \SGEOBIZ_SEO\Admin\Script\Registry registry class name.
+		 * @param string $loader   The \SGEOBIZ_SEO\Admin\Script\Loader loader class name.
 		 */
 		$scripts = \apply_filters(
-			'the_seo_framework_scripts',
+			'sgeobiz_seo_scripts',
 			// Flattening is 3% of this method's total time, we can improve by simplifying the getters above like do_meta_output().
 			Arrays::flatten_list( $scripts ),
 			Registry::class,
@@ -215,37 +215,37 @@ class Loader {
 		return [
 			// Load TSF-utils first. TODO split the TSF object so that they will no longer become reliant upon eachother.
 			[
-				'id'       => 'tsf-utils',
+				'id'       => 'sgeobiz-utils',
 				'type'     => 'js',
 				'deps'     => [],
 				'autoload' => true,
 				'name'     => 'utils',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 			],
 			[
-				'id'       => 'tsf',
+				'id'       => 'sgeobiz',
 				'type'     => 'css',
 				'deps'     => [ 'dashicons' ],
 				'autoload' => true,
-				'name'     => 'tsf',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/css/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'name'     => 'sgeobiz',
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/css/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 			],
 			[
-				'id'       => 'tsf',
+				'id'       => 'sgeobiz',
 				'type'     => 'js',
-				'deps'     => [ 'tsf-utils' ],
+				'deps'     => [ 'sgeobiz-utils' ],
 				'autoload' => true,
-				'name'     => 'tsf',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'name'     => 'sgeobiz',
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 				'l10n'     => [
-					'name' => 'tsfL10n',
+					'name' => 'sgeobizL10n',
 					'data' => [
 						'nonces' => [
 							/**
-							 * Use THE_SEO_FRAMEWORK_SETTINGS_CAP ?... might conflict with other nonces.
+							 * Use SGEOBIZ_SEO_SETTINGS_CAP ?... might conflict with other nonces.
 							 * -> Just add it to the end, if it matches the existing ones, that's fine (just double work).
 							 * If we do this, also add it to "states" or something.
 							 */
@@ -260,58 +260,58 @@ class Loader {
 				],
 			],
 			[
-				'id'       => 'tsf-tt',
+				'id'       => 'sgeobiz-tt',
 				'type'     => 'css',
 				'deps'     => [],
 				'autoload' => true,
 				'name'     => 'tt',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/css/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/css/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 				'inline'   => [
-					'.tsf-tooltip-text-wrap'    => [
+					'.sgeobiz-tooltip-text-wrap'    => [
 						'background-color:{{$bg_accent}}',
 						'color:{{$rel_bg_accent}}',
 					],
-					'.tsf-tooltip-text-wrap *'  => [
+					'.sgeobiz-tooltip-text-wrap *'  => [
 						'color:{{$rel_bg_accent}}',
 					],
-					'.tsf-tooltip-arrow::after' => [
+					'.sgeobiz-tooltip-arrow::after' => [
 						'border-top-color:{{$bg_accent}}',
 					],
-					'.tsf-tooltip-down .tsf-tooltip-arrow::after' => [
+					'.sgeobiz-tooltip-down .sgeobiz-tooltip-arrow::after' => [
 						'border-bottom-color:{{$bg_accent}}',
 					],
-					'.tsf-tooltip-text'         => [
+					'.sgeobiz-tooltip-text'         => [
 						\is_rtl() ? 'direction:rtl' : '',
 					],
 				],
 			],
 			[
-				'id'       => 'tsf-tt',
+				'id'       => 'sgeobiz-tt',
 				'type'     => 'js',
-				'deps'     => [ 'tsf' ],
+				'deps'     => [ 'sgeobiz' ],
 				'autoload' => true,
 				'name'     => 'tt',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 			],
 			[
-				'id'       => 'tsf-ui',
+				'id'       => 'sgeobiz-ui',
 				'type'     => 'css',
-				'deps'     => [ 'tsf', 'dashicons' ],
+				'deps'     => [ 'sgeobiz', 'dashicons' ],
 				'autoload' => true,
 				'name'     => 'ui',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/css/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/css/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 			],
 			[
-				'id'       => 'tsf-ui',
+				'id'       => 'sgeobiz-ui',
 				'type'     => 'js',
-				'deps'     => [ 'tsf', 'tsf-utils', 'jquery' ],
+				'deps'     => [ 'sgeobiz', 'sgeobiz-utils', 'jquery' ],
 				'autoload' => true,
 				'name'     => 'ui',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 			],
 		];
 	}
@@ -326,18 +326,18 @@ class Loader {
 	public static function get_ays_scripts() {
 		return [
 			[
-				'id'       => 'tsf-ays',
+				'id'       => 'sgeobiz-ays',
 				'type'     => 'js',
-				'deps'     => [ 'tsf', 'tsf-utils' ],
+				'deps'     => [ 'sgeobiz', 'sgeobiz-utils' ],
 				'autoload' => true,
 				'name'     => 'ays',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 				'l10n'     => [
-					'name' => 'tsfAysL10n',
+					'name' => 'sgeobizAysL10n',
 					'data' => [
 						'i18n' => [
-							'saveAlert' => \__( 'The changes you made will be lost if you navigate away from this page.', 'autodescription' ),
+							'saveAlert' => \__( 'The changes you made will be lost if you navigate away from this page.', 'sgeobiz-seo' ),
 						],
 					],
 				],
@@ -357,30 +357,30 @@ class Loader {
 	 */
 	public static function get_list_edit_scripts() {
 
-		$deps = [ 'tsf-title', 'tsf-description', 'tsf-canonical', 'tsf-postslugs', 'tsf-termslugs', 'tsf-authorslugs', 'tsf', 'tsf-tt', 'tsf-utils' ];
+		$deps = [ 'sgeobiz-title', 'sgeobiz-description', 'sgeobiz-canonical', 'sgeobiz-postslugs', 'sgeobiz-termslugs', 'sgeobiz-authorslugs', 'sgeobiz', 'sgeobiz-tt', 'sgeobiz-utils' ];
 
 		// tsf-pt-le is only registered on singular admin (post list) pages, not term list pages.
 		if ( Query::is_singular_admin() )
-			$deps[] = 'tsf-pt-le';
+			$deps[] = 'sgeobiz-pt-le';
 
 		return [
 			[
-				'id'       => 'tsf-le',
+				'id'       => 'sgeobiz-le',
 				'type'     => 'css',
-				'deps'     => [ 'tsf' ],
+				'deps'     => [ 'sgeobiz' ],
 				'autoload' => true,
 				'name'     => 'le',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/css/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/css/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 			],
 			[
-				'id'       => 'tsf-le',
+				'id'       => 'sgeobiz-le',
 				'type'     => 'js',
 				'deps'     => $deps,
 				'autoload' => true,
 				'name'     => 'le',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 			],
 		];
 	}
@@ -399,24 +399,24 @@ class Loader {
 
 		return [
 			[
-				'id'       => 'tsf-settings',
+				'id'       => 'sgeobiz-settings',
 				'type'     => 'css',
-				'deps'     => [ 'tsf', 'tsf-tt', 'wp-color-picker', 'dashicons' ],
+				'deps'     => [ 'sgeobiz', 'sgeobiz-tt', 'wp-color-picker', 'dashicons' ],
 				'autoload' => true,
 				'name'     => 'settings',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/css/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/css/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 			],
 			[
-				'id'       => 'tsf-settings',
+				'id'       => 'sgeobiz-settings',
 				'type'     => 'js',
-				'deps'     => [ 'jquery', 'tsf-ays', 'tsf-title', 'tsf-description', 'tsf-social', 'tsf-canonical', 'tsf', 'tsf-tabs', 'tsf-tt', 'wp-color-picker', 'wp-util' ],
+				'deps'     => [ 'jquery', 'sgeobiz-ays', 'sgeobiz-title', 'sgeobiz-description', 'sgeobiz-social', 'sgeobiz-canonical', 'sgeobiz', 'sgeobiz-tabs', 'sgeobiz-tt', 'wp-color-picker', 'wp-util' ],
 				'autoload' => true,
 				'name'     => 'settings',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 				'l10n'     => [
-					'name' => 'tsfSettingsL10n',
+					'name' => 'sgeobizSettingsL10n',
 					'data' => [
 						'states' => [
 							'isFrontPrivate'   => $front_id && Data\Post::is_private( $front_id ),
@@ -456,13 +456,13 @@ class Loader {
 
 		return [
 			[
-				'id'       => 'tsf-post',
+				'id'       => 'sgeobiz-post',
 				'type'     => 'css',
-				'deps'     => [ 'tsf-tt', 'tsf', 'tsf-ui' ],
+				'deps'     => [ 'sgeobiz-tt', 'sgeobiz', 'sgeobiz-ui' ],
 				'autoload' => true,
 				'name'     => 'post',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/css/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/css/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 				'inline'   => [
 					'.tsf-flex-nav-tab .tsf-flex-nav-tab-radio:checked + .tsf-flex-nav-tab-label' => [
 						'box-shadow:0 -2px 0 0 {{$color_accent}} inset, 0 0 0 0 {{$color_accent}} inset',
@@ -473,15 +473,15 @@ class Loader {
 				],
 			],
 			[
-				'id'       => 'tsf-post',
+				'id'       => 'sgeobiz-post',
 				'type'     => 'js',
-				'deps'     => [ 'tsf-ays', 'tsf-title', 'tsf-description', 'tsf-social', 'tsf-canonical', 'tsf-postslugs', 'tsf-termslugs', 'tsf-authorslugs', 'tsf-tabs', 'tsf-tt', 'tsf-utils', 'tsf-ui', 'tsf' ],
+				'deps'     => [ 'sgeobiz-ays', 'sgeobiz-title', 'sgeobiz-description', 'sgeobiz-social', 'sgeobiz-canonical', 'sgeobiz-postslugs', 'sgeobiz-termslugs', 'sgeobiz-authorslugs', 'sgeobiz-tabs', 'sgeobiz-tt', 'sgeobiz-utils', 'sgeobiz-ui', 'sgeobiz' ],
 				'autoload' => true,
 				'name'     => 'post',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 				'l10n'     => [
-					'name' => 'tsfPostL10n',
+					'name' => 'sgeobizPostL10n',
 					'data' => [
 						'states' => [
 							'isPrivate'       => Data\Post::is_private( $id ),
@@ -535,24 +535,24 @@ class Loader {
 
 		return [
 			[
-				'id'       => 'tsf-term',
+				'id'       => 'sgeobiz-term',
 				'type'     => 'css',
-				'deps'     => [ 'tsf-tt', 'tsf' ],
+				'deps'     => [ 'sgeobiz-tt', 'sgeobiz' ],
 				'autoload' => true,
 				'name'     => 'term',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/css/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/css/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 			],
 			[
-				'id'       => 'tsf-term',
+				'id'       => 'sgeobiz-term',
 				'type'     => 'js',
-				'deps'     => [ 'tsf-ays', 'tsf-title', 'tsf-description', 'tsf-social', 'tsf-canonical', 'tsf-termslugs', 'tsf-tt', 'tsf' ],
+				'deps'     => [ 'sgeobiz-ays', 'sgeobiz-title', 'sgeobiz-description', 'sgeobiz-social', 'sgeobiz-canonical', 'sgeobiz-termslugs', 'sgeobiz-tt', 'sgeobiz' ],
 				'autoload' => true,
 				'name'     => 'term',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 				'l10n'     => [
-					'name' => 'tsfTermL10n',
+					'name' => 'sgeobizTermL10n',
 					'data' => [
 						'params' => [
 							'additionsForcedDisabled' => $additions_forced_disabled,
@@ -582,13 +582,13 @@ class Loader {
 	public static function get_gutenberg_compat_scripts() {
 		return [
 			[
-				'id'       => 'tsf-gbc',
+				'id'       => 'sgeobiz-gbc',
 				'type'     => 'js',
-				'deps'     => [ 'jquery', 'tsf', 'tsf-utils', 'wp-editor', 'wp-data', 'react' ],
+				'deps'     => [ 'jquery', 'sgeobiz', 'sgeobiz-utils', 'wp-editor', 'wp-data', 'react' ],
 				'autoload' => true,
 				'name'     => 'gbc',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 			],
 		];
 	}
@@ -603,13 +603,13 @@ class Loader {
 	 */
 	public static function get_tabs_scripts() {
 		return [
-			'id'       => 'tsf-tabs',
+			'id'       => 'sgeobiz-tabs',
 			'type'     => 'js',
-			'deps'     => [ 'tsf-utils', 'tsf-ui' ],
+			'deps'     => [ 'sgeobiz-utils', 'sgeobiz-ui' ],
 			'autoload' => true,
 			'name'     => 'tabs',
-			'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-			'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+			'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+			'ver'      => \SGEOBIZ_SEO_VERSION,
 		];
 	}
 
@@ -618,50 +618,50 @@ class Loader {
 	 *
 	 * @since 4.0.0
 	 * @since 4.1.2 Removed redundant button titles.
-	 * @since 5.1.0 Added tsf-media CSS. Added `tsfMediaL10n.warning`.
+	 * @since 5.1.0 Added tsf-media CSS. Added `sgeobizMediaL10n.warning`.
 	 *
 	 * @return array The script params.
 	 */
 	public static function get_media_scripts() {
 		return [
 			[
-				'id'       => 'tsf-media',
+				'id'       => 'sgeobiz-media',
 				'type'     => 'css',
 				'deps'     => [],
 				'autoload' => true,
 				'name'     => 'media',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/css/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/css/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 			],
 			[
-				'id'       => 'tsf-media',
+				'id'       => 'sgeobiz-media',
 				'type'     => 'js',
-				'deps'     => [ 'media', 'tsf', 'tsf-utils', 'tsf-tt' ],
+				'deps'     => [ 'media', 'sgeobiz', 'sgeobiz-utils', 'sgeobiz-tt' ],
 				'autoload' => true,
 				'name'     => 'media',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 				'l10n'     => [
-					'name' => 'tsfMediaL10n',
+					'name' => 'sgeobizMediaL10n',
 					'data' => [
 						'labels'  => [
 							'social' => [
-								'imgSelect'      => \esc_attr__( 'Select Image', 'autodescription' ),
+								'imgSelect'      => \esc_attr__( 'Select Image', 'sgeobiz-seo' ),
 								'imgSelectTitle' => '',
-								'imgChange'      => \esc_attr__( 'Change Image', 'autodescription' ),
-								'imgRemove'      => \esc_attr__( 'Remove Image', 'autodescription' ),
+								'imgChange'      => \esc_attr__( 'Change Image', 'sgeobiz-seo' ),
+								'imgRemove'      => \esc_attr__( 'Remove Image', 'sgeobiz-seo' ),
 								'imgRemoveTitle' => '',
-								'imgFrameTitle'  => \esc_attr_x( 'Select Social Image', 'Frame title', 'autodescription' ),
-								'imgFrameButton' => \esc_attr__( 'Use this image', 'autodescription' ),
+								'imgFrameTitle'  => \esc_attr_x( 'Select Social Image', 'Frame title', 'sgeobiz-seo' ),
+								'imgFrameButton' => \esc_attr__( 'Use this image', 'sgeobiz-seo' ),
 							],
 							'logo'   => [
-								'imgSelect'      => \esc_attr__( 'Select Logo', 'autodescription' ),
+								'imgSelect'      => \esc_attr__( 'Select Logo', 'sgeobiz-seo' ),
 								'imgSelectTitle' => '',
-								'imgChange'      => \esc_attr__( 'Change Logo', 'autodescription' ),
-								'imgRemove'      => \esc_attr__( 'Remove Logo', 'autodescription' ),
+								'imgChange'      => \esc_attr__( 'Change Logo', 'sgeobiz-seo' ),
+								'imgRemove'      => \esc_attr__( 'Remove Logo', 'sgeobiz-seo' ),
 								'imgRemoveTitle' => '',
-								'imgFrameTitle'  => \esc_attr_x( 'Select Logo', 'Frame title', 'autodescription' ),
-								'imgFrameButton' => \esc_attr__( 'Use this image', 'autodescription' ),
+								'imgFrameTitle'  => \esc_attr_x( 'Select Logo', 'Frame title', 'sgeobiz-seo' ),
+								'imgFrameButton' => \esc_attr__( 'Use this image', 'sgeobiz-seo' ),
 							],
 						],
 						'warning' => [
@@ -674,7 +674,7 @@ class Loader {
 							],
 							'forbiddenTypes' => [
 								'all' => [
-									// See The_SEO_Framework\Data\Filter\Sanitize::image_details().
+									// See SGEOBIZ_SEO\Data\Filter\Sanitize::image_details().
 									'apng' => 'image/apng',
 									'bmp'  => 'image/bmp',
 									'ico'  => 'image/x-icon',
@@ -685,11 +685,11 @@ class Loader {
 								],
 							],
 							'i18n'           => [
-								'notLoaded'    => \esc_attr__( 'The image file could not be loaded.', 'autodescription' ),
+								'notLoaded'    => \esc_attr__( 'The image file could not be loaded.', 'sgeobiz-seo' ),
 								/* translators: %s is the file extension. */
-								'extWarned'    => \esc_attr__( 'The file extension "%s" is not supported on all platforms, which could prevent this image from being displayed.', 'autodescription' ),
+								'extWarned'    => \esc_attr__( 'The file extension "%s" is not supported on all platforms, which could prevent this image from being displayed.', 'sgeobiz-seo' ),
 								/* translators: %s is the file extension. */
-								'extForbidden' => \esc_attr__( 'The file extension "%s" is not supported. Choose a different file.', 'autodescription' ),
+								'extForbidden' => \esc_attr__( 'The file extension "%s" is not supported. Choose a different file.', 'sgeobiz-seo' ),
 							],
 						],
 						'nonce'   => Utils::create_ajax_capability_nonce( 'upload_files' ),
@@ -709,15 +709,15 @@ class Loader {
 	 */
 	public static function get_title_scripts() {
 		return [
-			'id'       => 'tsf-title',
+			'id'       => 'sgeobiz-title',
 			'type'     => 'js',
-			'deps'     => [ 'tsf' ],
+			'deps'     => [ 'sgeobiz' ],
 			'autoload' => true,
 			'name'     => 'title',
-			'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-			'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+			'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+			'ver'      => \SGEOBIZ_SEO_VERSION,
 			'l10n'     => [
-				'name' => 'tsfTitleL10n',
+				'name' => 'sgeobizTitleL10n',
 				'data' => [
 					'states' => [
 						'titleSeparator'  => Utils::decode_entities( Meta\Title::get_separator() ),
@@ -748,13 +748,13 @@ class Loader {
 	 */
 	public static function get_description_scripts() {
 		return [
-			'id'       => 'tsf-description',
+			'id'       => 'sgeobiz-description',
 			'type'     => 'js',
-			'deps'     => [ 'tsf' ],
+			'deps'     => [ 'sgeobiz' ],
 			'autoload' => true,
 			'name'     => 'description',
-			'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-			'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+			'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+			'ver'      => \SGEOBIZ_SEO_VERSION,
 		];
 	}
 
@@ -768,13 +768,13 @@ class Loader {
 	 */
 	public static function get_social_scripts() {
 		return [
-			'id'       => 'tsf-social',
+			'id'       => 'sgeobiz-social',
 			'type'     => 'js',
-			'deps'     => [ 'tsf', 'tsf-utils' ],
+			'deps'     => [ 'sgeobiz', 'sgeobiz-utils' ],
 			'autoload' => true,
 			'name'     => 'social',
-			'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-			'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+			'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+			'ver'      => \SGEOBIZ_SEO_VERSION,
 		];
 	}
 
@@ -793,15 +793,15 @@ class Loader {
 
 		return [
 			[
-				'id'       => 'tsf-canonical',
+				'id'       => 'sgeobiz-canonical',
 				'type'     => 'js',
-				'deps'     => [ 'tsf', 'tsf-utils' ],
+				'deps'     => [ 'sgeobiz', 'sgeobiz-utils' ],
 				'autoload' => true,
 				'name'     => 'canonical',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 				'l10n'     => [
-					'name' => 'tsfCanonicalL10n',
+					'name' => 'sgeobizCanonicalL10n',
 					'data' => [
 						'params' => [
 							'usingPermalinks' => $wp_rewrite->using_permalinks(),
@@ -824,31 +824,31 @@ class Loader {
 				],
 			],
 			[
-				'id'       => 'tsf-postslugs',
+				'id'       => 'sgeobiz-postslugs',
 				'type'     => 'js',
 				'deps'     => [],
 				'autoload' => false, // Not all screens require this.
 				'name'     => 'postslugs',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 			],
 			[
-				'id'       => 'tsf-termslugs',
+				'id'       => 'sgeobiz-termslugs',
 				'type'     => 'js',
 				'deps'     => [],
 				'autoload' => false, // Not all screens require this.
 				'name'     => 'termslugs',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 			],
 			[
-				'id'       => 'tsf-authorslugs',
+				'id'       => 'sgeobiz-authorslugs',
 				'type'     => 'js',
 				'deps'     => [],
 				'autoload' => false, // Not all screens require this.
 				'name'     => 'authorslugs',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 			],
 		];
 	}
@@ -882,31 +882,31 @@ class Loader {
 				'primary' => $primary_term_id, // if 0, it'll use hints from the interface.
 				'i18n'    => [
 					/* translators: %s = term name */
-					'selectPrimary' => \sprintf( \esc_html__( 'Select primary %s', 'autodescription' ), $singular_name ),
+					'selectPrimary' => \sprintf( \esc_html__( 'Select primary %s', 'sgeobiz-seo' ), $singular_name ),
 				],
 			];
 		}
 
 		if ( $is_list_edit ) {
 			$vars = [
-				'id'   => 'tsf-pt-le',
+				'id'   => 'sgeobiz-pt-le',
 				'name' => 'pt-le',
 			];
-			$deps = [ 'tsf', 'wp-util' ];
+			$deps = [ 'sgeobiz', 'wp-util' ];
 		} else {
 			// If not list edit, we're in the post editor.
 			if ( Query::is_block_editor() ) {
 				$vars = [
-					'id'   => 'tsf-pt-gb',
+					'id'   => 'sgeobiz-pt-gb',
 					'name' => 'pt-gb',
 				];
-				$deps = [ 'tsf', 'tsf-ays', 'wp-hooks', 'wp-element', 'wp-components', 'wp-data', 'wp-util' ];
+				$deps = [ 'sgeobiz', 'sgeobiz-ays', 'wp-hooks', 'wp-element', 'wp-components', 'wp-data', 'wp-util' ];
 			} else {
 				$vars = [
-					'id'   => 'tsf-pt',
+					'id'   => 'sgeobiz-pt',
 					'name' => 'pt',
 				];
-				$deps = [ 'tsf', 'tsf-ays', 'wp-util' ];
+				$deps = [ 'sgeobiz', 'sgeobiz-ays', 'wp-util' ];
 			}
 		}
 
@@ -916,13 +916,13 @@ class Loader {
 
 		return [
 			[
-				'id'       => 'tsf-pt',
+				'id'       => 'sgeobiz-pt',
 				'type'     => 'css',
-				'deps'     => [ 'tsf-tt' ],
+				'deps'     => [ 'sgeobiz-tt' ],
 				'autoload' => true,
 				'name'     => 'pt',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/css/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/css/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 			],
 			[
 				'id'       => $vars['id'],
@@ -930,10 +930,10 @@ class Loader {
 				'deps'     => $deps,
 				'autoload' => true,
 				'name'     => $vars['name'],
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 				'l10n'     => [
-					'name' => 'tsfPTL10n',
+					'name' => 'sgeobizPTL10n',
 					'data' => [
 						'taxonomies' => $taxonomies,
 					],
@@ -955,31 +955,31 @@ class Loader {
 	public static function get_counter_scripts() {
 		return [
 			[
-				'id'       => 'tsf-c',
+				'id'       => 'sgeobiz-c',
 				'type'     => 'css',
-				'deps'     => [ 'tsf-tt' ],
+				'deps'     => [ 'sgeobiz-tt' ],
 				'autoload' => true,
-				'name'     => 'tsfc',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/css/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'name'     => 'sgeobizc',
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/css/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 			],
 			[
-				'id'       => 'tsf-c',
+				'id'       => 'sgeobiz-c',
 				'type'     => 'js',
-				'deps'     => [ 'tsf-tt', 'tsf' ],
+				'deps'     => [ 'sgeobiz-tt', 'sgeobiz' ],
 				'autoload' => true,
 				'name'     => 'c',
-				'base'     => \THE_SEO_FRAMEWORK_DIR_URL . 'lib/js/',
-				'ver'      => \THE_SEO_FRAMEWORK_VERSION,
+				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
+				'ver'      => \SGEOBIZ_SEO_VERSION,
 				'l10n'     => [
-					'name' => 'tsfCL10n',
+					'name' => 'sgeobizCL10n',
 					'data' => [
 						'guidelines'  => Guidelines::get_text_size_guidelines(),
 						'counterType' => \absint( Data\Plugin\User::get_meta_item( 'counter_type' ) ),
 						'i18n'        => [
 							'guidelines' => Guidelines::get_text_size_guidelines_i18n(),
 							/* translators: Pixel counter. 1: number (value), 2: number (guideline) */
-							'pixelsUsed' => \esc_attr__( '%1$d out of %2$d pixels are used.', 'autodescription' ),
+							'pixelsUsed' => \esc_attr__( '%1$d out of %2$d pixels are used.', 'sgeobiz-seo' ),
 						],
 					],
 				],

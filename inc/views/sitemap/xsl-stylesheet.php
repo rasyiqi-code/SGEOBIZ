@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Sitemap
- * @subpackage The_SEO_Framework\Sitemap
+ * @package SGEOBIZ_SEO\Views\Sitemap
+ * @subpackage SGEOBIZ_SEO\Sitemap
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
 // phpcs:disable WordPress.WP.GlobalVariablesOverride -- This isn't the global scope.
 
@@ -43,10 +43,10 @@ echo '<?xml version="1.0" encoding="UTF-8"?>', "\n";
 				<?php
 				/**
 				 * @since 3.1.0
-				 * @param \The_SEO_Framework\Load Alias of `tsf()`
+				 * @param \SGEOBIZ_SEO\Load Alias of `sgeobiz()`
 				 * @TODO 5.1.0 Remove first parameter. It's useless now.
 				 */
-				\do_action( 'the_seo_framework_xsl_head', \tsf() );
+				\do_action( 'sgeobiz_seo_xsl_head', \sgeobiz() );
 				?>
 			</head>
 			<body class="<?= \is_rtl() ? 'rtl' : 'ltr' ?>">
@@ -55,10 +55,10 @@ echo '<?xml version="1.0" encoding="UTF-8"?>', "\n";
 						<?php
 						/**
 						 * @since 3.1.0
-						 * @param \The_SEO_Framework\Load Alias of `tsf()`
+						 * @param \SGEOBIZ_SEO\Load Alias of `sgeobiz()`
 						 * @TODO 5.1.0 Remove first parameter. It's useless now.
 						 */
-						\do_action( 'the_seo_framework_xsl_description', \tsf() );
+						\do_action( 'sgeobiz_seo_xsl_description', \sgeobiz() );
 						?>
 					</div>
 				</div>
@@ -67,10 +67,10 @@ echo '<?xml version="1.0" encoding="UTF-8"?>', "\n";
 						<?php
 						/**
 						 * @since 3.1.0
-						 * @param \The_SEO_Framework\Load Alias of `tsf()`
+						 * @param \SGEOBIZ_SEO\Load Alias of `sgeobiz()`
 						 * @TODO 5.1.0 Remove first parameter. It's useless now.
 						 */
-						\do_action( 'the_seo_framework_xsl_content', \tsf() );
+						\do_action( 'sgeobiz_seo_xsl_content', \sgeobiz() );
 						?>
 					</div>
 				</div>
@@ -79,10 +79,10 @@ echo '<?xml version="1.0" encoding="UTF-8"?>', "\n";
 						<?php
 						/**
 						 * @since 3.1.0
-						 * @param \The_SEO_Framework\Load Alias of `tsf()`
+						 * @param \SGEOBIZ_SEO\Load Alias of `sgeobiz()`
 						 * @TODO 5.1.0 Remove first parameter. It's useless now.
 						 */
-						\do_action( 'the_seo_framework_xsl_footer', \tsf() );
+						\do_action( 'sgeobiz_seo_xsl_footer', \sgeobiz() );
 						?>
 					</div>
 				</div>

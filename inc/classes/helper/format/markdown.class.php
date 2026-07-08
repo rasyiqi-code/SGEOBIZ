@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Helper\Format\Markdown
- * @subpackage The_SEO_Framework\Formatting
+ * @package SGEOBIZ_SEO\Classes\Helper\Format\Markdown
+ * @subpackage SGEOBIZ_SEO\Formatting
  */
 
-namespace The_SEO_Framework\Helper\Format;
+namespace SGEOBIZ_SEO\Helper\Format;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
  * The SEO Framework plugin
@@ -29,12 +29,12 @@ namespace The_SEO_Framework\Helper\Format;
  * Holds methods for Markdown conversion.
  *
  * @since 4.1.4
- * @since 5.0.0 Moved from `\The_SEO_Framework\Interpreters\Markdown`.
+ * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Interpreters\Markdown`.
  *
  * @NOTE to self: This is also used in XHTML configurations. Keep it strict!
  *
  * @access protected
- *         Use tsf()->format()->markdown() instead.
+ *         Use sgeobiz()->format()->markdown() instead.
  */
 class Markdown {
 
@@ -46,7 +46,7 @@ class Markdown {
 	 *
 	 * @since 4.1.4
 	 * @since 4.2.8 No longer blocks text with either { or } from being parsed.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Interpreters\Markdown`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Interpreters\Markdown`.
 	 * @link https://wordpress.org/plugins/about/readme.txt
 	 *
 	 * @param string $text    The text that might contain markdown. Expected to be escaped.
@@ -121,7 +121,7 @@ class Markdown {
 	 *
 	 * @since 4.1.4
 	 * @since 4.2.8 No longer blocks text with either { or } from being parsed.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Interpreters\Markdown`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Interpreters\Markdown`.
 	 *
 	 * @param string $text The input text.
 	 * @return string
@@ -147,7 +147,7 @@ class Markdown {
 	 *
 	 * @since 4.1.4
 	 * @since 4.2.8 No longer blocks text with either { or } from being parsed.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Interpreters\Markdown`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Interpreters\Markdown`.
 	 *
 	 * @param string $text The input text.
 	 * @return string
@@ -172,7 +172,7 @@ class Markdown {
 	 *
 	 * @since 4.1.4
 	 * @since 4.2.8 No longer blocks text with either { or } from being parsed.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Interpreters\Markdown`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Interpreters\Markdown`.
 	 *
 	 * @param string $text The input text.
 	 * @return string
@@ -197,7 +197,7 @@ class Markdown {
 	 *
 	 * @since 4.1.4
 	 * @since 4.2.8 No longer blocks text with either { or } from being parsed.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Interpreters\Markdown`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Interpreters\Markdown`.
 	 *
 	 * @param string $text The input text.
 	 * @return string
@@ -221,7 +221,7 @@ class Markdown {
 	 * Makes header h1~6 elements.
 	 *
 	 * @since 4.1.4
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Interpreters\Markdown`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Interpreters\Markdown`.
 	 *
 	 * @param string $text The input text.
 	 * @param string $type The header type. Accepts `/h[1-6]{1}/`.
@@ -259,7 +259,7 @@ class Markdown {
 	 * @since 4.1.4
 	 * @since 4.2.8 1. No longer blocks text with either { or } from being parsed.
 	 *              2. No longer blocks URLs with either ( or ) from being parsed.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Interpreters\Markdown`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Interpreters\Markdown`.
 	 * @since 5.1.3 Now allows parentheses in URLs before the final closing parenthesis. They must be balanced, though.
 	 *
 	 * @param string $text     The input text.

@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Data\Filter\Term
- * @subpackage The_SEO_Framework\Data\Term
+ * @package SGEOBIZ_SEO\Classes\Data\Filter\Term
+ * @subpackage SGEOBIZ_SEO\Data\Term
  */
 
-namespace The_SEO_Framework\Data\Filter;
+namespace SGEOBIZ_SEO\Data\Filter;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Meta;
+use SGEOBIZ_SEO\Meta;
 
 /**
  * The SEO Framework plugin

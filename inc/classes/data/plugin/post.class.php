@@ -1,16 +1,16 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Data\Plugin\Post
- * @subpackage The_SEO_Framework\Data\Plugin
+ * @package SGEOBIZ_SEO\Classes\Data\Plugin\Post
+ * @subpackage SGEOBIZ_SEO\Data\Plugin
  */
 
-namespace The_SEO_Framework\Data\Plugin;
+namespace SGEOBIZ_SEO\Data\Plugin;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\is_headless;
+use function SGEOBIZ_SEO\is_headless;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper\Post_Type,
 	Helper\Query,
@@ -40,7 +40,7 @@ use The_SEO_Framework\{
  * @since 5.0.0
  * @since 5.1.0 Added the Property_Refresher trait.
  * @access protected
- *         Use tsf()->data()->plugin()->post() instead.
+ *         Use sgeobiz()->data()->plugin()->post() instead.
  *
  * @NOTE: All static:: calls within this class are intentional due to Property_Refresher trait.
  */
@@ -69,7 +69,7 @@ class Post {
 	 * @since 4.0.0
 	 * @since 4.0.1 Now obtains the real ID when none is supplied.
 	 * @since 5.0.0 1. Removed the third `$use_cache` parameter.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              3. Renamed from `get_post_meta_item`.
 	 *
 	 * @param string $item      The item to get.
@@ -98,7 +98,7 @@ class Post {
 	 * @since 4.1.4 1. Now returns an empty array when the post type isn't supported.
 	 *              2. Now considers headlessness.
 	 * @since 5.0.0 1. Removed the third `$use_cache` parameter.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              3. Renamed from `get_post_meta`.
 	 * @since 5.1.0 Now returns the default meta if the post type isn't supported.
 	 *
@@ -153,7 +153,7 @@ class Post {
 		 * @param bool  $headless Whether the meta are headless.
 		 */
 		return static::$meta_memo[ $post_id ] = \apply_filters(
-			'the_seo_framework_post_meta',
+			'sgeobiz_seo_post_meta',
 			array_merge( $defaults, $meta ),
 			$post_id,
 			$is_headless,
@@ -168,7 +168,7 @@ class Post {
 	 * WordPress's cache, where they cast many filters and redundantly sanitize the object.
 	 *
 	 * @since 4.0.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `get_post_meta_defaults`.
 	 *
 	 * @param int $post_id The post ID.
@@ -184,7 +184,7 @@ class Post {
 		 * @param \WP_Post $post    Post object.
 		 */
 		return (array) \apply_filters(
-			'the_seo_framework_post_meta_defaults',
+			'sgeobiz_seo_post_meta_defaults',
 			[
 				'_genesis_title'          => '',
 				'_tsf_title_no_blogname'  => 0, // The prefix I should've used from the start...
@@ -215,7 +215,7 @@ class Post {
 	 * as it reprocesses all post meta.
 	 *
 	 * @since 4.0.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `update_single_post_meta_item`.
 	 *
 	 * @param string       $item    The item to update.
@@ -239,7 +239,7 @@ class Post {
 	 *
 	 * @since 4.0.0
 	 * @since 4.1.4 Removed deprecated filter.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `save_post_meta`.
 	 *
 	 * @param int|\WP_Post $post_id The post ID. Also accepts Post objects.
@@ -263,7 +263,7 @@ class Post {
 		 * @param int   $post The post object.
 		 */
 		$data = (array) \apply_filters(
-			'the_seo_framework_save_post_meta',
+			'sgeobiz_seo_save_post_meta',
 			array_merge(
 				static::get_default_meta( $post_id ),
 				$data,
@@ -303,7 +303,7 @@ class Post {
 	 * @since 5.0.0 1. Now always tries to return a term if none is set manually.
 	 *              2. Now returns `null` instead of `false` on failure.
 	 *              3. Now considers headlessness.
-	 *              4. Moved from `\The_SEO_Framework\Load`.
+	 *              4. Moved from `\SGEOBIZ_SEO\Load`.
 	 * @since 5.0.2 Now selects the last child of a primary term if its parent has the lowest ID.
 	 * @since 5.1.0 Now returns a valid primary term if the selected one is gone.
 	 *
@@ -383,7 +383,7 @@ class Post {
 		 * @param bool      $is_headless Whether the meta are headless.
 		 */
 		static::$pt_memo[ $post_id ][ $taxonomy ] = \apply_filters(
-			'the_seo_framework_primary_term',
+			'sgeobiz_seo_primary_term',
 			$primary_term,
 			$post_id,
 			$taxonomy,
@@ -399,7 +399,7 @@ class Post {
 	 * @since 3.0.0
 	 * @since 4.1.5 1. Now validates if the stored term ID's term exists (for the post or at all).
 	 *              2. The first and second parameters are now required.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param int    $post_id  The post ID.
 	 * @param string $taxonomy The taxonomy name.
@@ -413,7 +413,7 @@ class Post {
 	 * Updates the primary term ID for post.
 	 *
 	 * @since 3.0.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param int|null $post_id  The post ID.
 	 * @param string   $taxonomy The taxonomy name.

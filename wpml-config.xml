@@ -11,7 +11,7 @@
 		<custom-field action="translate">_twitter_description</custom-field>
 	</custom-fields>
 	<admin-texts>
-		<key name="autodescription-site-settings">
+		<key name="sgeobiz-site-settings">
 			<key name="homepage_description" />
 			<key name="homepage_title" />
 			<key name="homepage_social_image_url" />

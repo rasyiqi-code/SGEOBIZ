@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Admin\Notice\Persistent
- * @subpackage The_SEO_Framework\Admin\Notice
+ * @package SGEOBIZ_SEO\Classes\Admin\Notice\Persistent
+ * @subpackage SGEOBIZ_SEO\Admin\Notice
  */
 
-namespace The_SEO_Framework\Admin\Notice;
+namespace SGEOBIZ_SEO\Admin\Notice;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper\Query,
 	Helper\Template,
@@ -36,7 +36,7 @@ use The_SEO_Framework\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->admin()->notice()->persistent() instead.
+ *         Use sgeobiz()->admin()->notice()->persistent() instead.
  */
 class Persistent {
 
@@ -45,7 +45,7 @@ class Persistent {
 	 *
 	 * @since 4.1.0
 	 * @since 4.1.3 Now handles timeout values below -1 gracefully, by purging the whole notification gracelessly.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `register_dismissible_persistent_notice`.
 	 *
 	 * @param string $message    The notice message. Expected to be escaped if $escape is false.
@@ -92,7 +92,7 @@ class Persistent {
 		$conditions += [
 			'screens'      => [],
 			'excl_screens' => [],
-			'capability'   => \THE_SEO_FRAMEWORK_SETTINGS_CAP,
+			'capability'   => \SGEOBIZ_SEO_SETTINGS_CAP,
 			'user'         => 0,
 			'count'        => 1,
 			'timeout'      => -1,
@@ -119,7 +119,7 @@ class Persistent {
 	 * When the threshold is reached, the notice is deleted.
 	 *
 	 * @since 4.1.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. The second parameter is no longer passed by reference.
 	 *
 	 * @param string $key   The notice key.
@@ -153,7 +153,7 @@ class Persistent {
 	 * Clears a persistent notice by key.
 	 *
 	 * @since 4.1.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param string $key The notice key.
 	 * @return bool True on success, false on failure.
@@ -171,7 +171,7 @@ class Persistent {
 	 * Clears all registered persistent notices. Useful after upgrade.
 	 *
 	 * @since 4.1.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return bool True on success, false on failure.
 	 */
@@ -185,7 +185,7 @@ class Persistent {
 	 * @since 4.1.0
 	 * @since 4.1.4 1. Now 'public', marked private.
 	 *              2. Now uses underscores instead of dashes.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `_get_dismiss_notice_nonce_action`.
 	 * @access private
 	 *
@@ -202,7 +202,7 @@ class Persistent {
 	 * @hook admin_notices 10
 	 * @since 4.1.0
 	 * @since 4.1.2 Now only ignores timeout values of -1 to test against.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `output_dismissible_persistent_notices`.
 	 * @access private
 	 */
@@ -238,7 +238,7 @@ class Persistent {
 	 *
 	 * @hook admin_init 10
 	 * @since 4.1.0
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @access private
 	 */
 	public static function _dismiss_notice() {

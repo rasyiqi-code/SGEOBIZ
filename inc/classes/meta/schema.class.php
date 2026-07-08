@@ -1,19 +1,19 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Meta
- * @subpackage The_SEO_Framework\Meta\Schema
+ * @package SGEOBIZ_SEO\Classes\Meta
+ * @subpackage SGEOBIZ_SEO\Meta\Schema
  */
 
-namespace The_SEO_Framework\Meta;
+namespace SGEOBIZ_SEO\Meta;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	get_query_type_from_args,
 	normalize_generation_args,
 };
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper\Format\Arrays,
 	Helper\Query,
@@ -41,7 +41,7 @@ use The_SEO_Framework\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->schema() instead.
+ *         Use sgeobiz()->schema() instead.
  */
 class Schema {
 
@@ -85,7 +85,7 @@ class Schema {
 		$builders_queue = [];
 		// Queue array_merge for improved performance.
 		foreach ( $primaries as $class )
-			$builders_queue[] = ( "\The_SEO_Framework\Meta\Schema\Entities\\$class" )::BUILDERS;
+			$builders_queue[] = ( "\SGEOBIZ_SEO\Meta\Schema\Entities\\$class" )::BUILDERS;
 
 		/**
 		 * @since 5.0.0
@@ -94,7 +94,7 @@ class Schema {
 		 *                                    Is null when being autodetermined.
 		 */
 		$entity_builders = \apply_filters(
-			'the_seo_framework_schema_entity_builders',
+			'sgeobiz_seo_schema_entity_builders',
 			array_merge( ...$builders_queue ),
 			$args,
 		);
@@ -109,7 +109,7 @@ class Schema {
 		 * filters for breadcrumb and page titles. Use this only if those aren't available.
 		 *
 		 * Use this only to adjust write dynamic references.
-		 * Use `the_seo_framework_schema_graph_data` for direct alteration instead.
+		 * Use `sgeobiz_seo_schema_graph_data` for direct alteration instead.
 		 *
 		 * @since 5.1.0
 		 * @param array[]    $graph A sequential list of graph entities.
@@ -117,7 +117,7 @@ class Schema {
 		 *                          Is null when the query is autodetermined.
 		 */
 		$graph = \apply_filters(
-			'the_seo_framework_schema_queued_graph_data',
+			'sgeobiz_seo_schema_queued_graph_data',
 			$graph,
 			$args,
 		);
@@ -140,7 +140,7 @@ class Schema {
 		 *                          Is null when the query is autodetermined.
 		 */
 		$graph = \apply_filters(
-			'the_seo_framework_schema_graph_data',
+			'sgeobiz_seo_schema_graph_data',
 			$graph,
 			$args,
 		);

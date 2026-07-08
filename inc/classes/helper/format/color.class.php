@@ -1,12 +1,12 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Helper\Format\Color
- * @subpackage The_SEO_Framework\Formatting
+ * @package SGEOBIZ_SEO\Classes\Helper\Format\Color
+ * @subpackage SGEOBIZ_SEO\Formatting
  */
 
-namespace The_SEO_Framework\Helper\Format;
+namespace SGEOBIZ_SEO\Helper\Format;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
  * The SEO Framework plugin
@@ -31,7 +31,7 @@ namespace The_SEO_Framework\Helper\Format;
  * @since 5.0.0
  *
  * @access protected
- *         Use tsf()->format()->color() instead.
+ *         Use sgeobiz()->format()->color() instead.
  */
 class Color {
 
@@ -44,7 +44,7 @@ class Color {
 	 * @since 3.0.4 Now uses WCAG's relative luminance formula.
 	 * @since 4.2.0 Optimized code, but it now has some rounding changes at the end. This could
 	 *              offset the returned values by 1/255th.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @link https://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-contrast
 	 * @link https://www.w3.org/WAI/GL/wiki/Relative_luminance
 	 *

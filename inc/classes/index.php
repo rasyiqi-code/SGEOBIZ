@@ -1,6 +1,6 @@
 <?php
 /**
- * # Main namespace: The_SEO_Framework
+ * # Main namespace: SGEOBIZ_SEO
  *
  * Class folder tree:
  *   - admin

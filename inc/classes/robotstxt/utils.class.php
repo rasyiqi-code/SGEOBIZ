@@ -1,16 +1,16 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\RobotsTXT\Utils
- * @subpackage The_SEO_Framework\RobotsTXT
+ * @package SGEOBIZ_SEO\Classes\RobotsTXT\Utils
+ * @subpackage SGEOBIZ_SEO\RobotsTXT
  */
 
-namespace The_SEO_Framework\RobotsTXT;
+namespace SGEOBIZ_SEO\RobotsTXT;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\umemo;
+use function SGEOBIZ_SEO\umemo;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper\Query,
 	Meta,
@@ -38,7 +38,7 @@ use The_SEO_Framework\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->robotstxt()->utils() instead.
+ *         Use sgeobiz()->robotstxt()->utils() instead.
  */
 class Utils {
 
@@ -150,7 +150,7 @@ class Utils {
 		 * @param array $type   The agent type requested by the method caller.
 		 */
 		return (array) \apply_filters(
-			'the_seo_framework_robots_blocked_user_agents',
+			'sgeobiz_seo_robots_blocked_user_agents',
 			$agents ?? [],
 			$type,
 		);
@@ -184,7 +184,7 @@ class Utils {
 	 *
 	 * @since 2.9.2
 	 * @since 4.0.2 Now uses the preferred URL scheme.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 * @since 5.1.0 Now memoizes the return value.
 	 *
 	 * @return string URL location of robots.txt. Unescaped.

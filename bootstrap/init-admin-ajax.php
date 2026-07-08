@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework
- * @subpackage The_SEO_Framework\Bootstrap
+ * @package SGEOBIZ_SEO
+ * @subpackage SGEOBIZ_SEO\Bootstrap
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Admin\Script\AJAX;
+use SGEOBIZ_SEO\Admin\Script\AJAX;
 
 /**
  * The SEO Framework plugin
@@ -33,22 +33,22 @@ use The_SEO_Framework\Admin\Script\AJAX;
  */
 
 // Admin AJAX for notice dismissal.
-\add_action( 'wp_ajax_tsf_dismiss_notice', [ AJAX::class, 'dismiss_notice' ] );
+\add_action( 'wp_ajax_sgeobiz_dismiss_notice', [ AJAX::class, 'dismiss_notice' ] );
 
 // Admin AJAX for cropping images.
-\add_action( 'wp_ajax_tsf_crop_image', [ AJAX::class, 'crop_image' ] );
+\add_action( 'wp_ajax_sgeobiz_crop_image', [ AJAX::class, 'crop_image' ] );
 
 // Admin AJAX for counter options.
-\add_action( 'wp_ajax_tsf_update_counter', [ AJAX::class, 'update_counter_type' ] );
+\add_action( 'wp_ajax_sgeobiz_update_counter', [ AJAX::class, 'update_counter_type' ] );
 
 // Admin AJAX for Gutenberg data update.
-\add_action( 'wp_ajax_tsf_update_post_data', [ AJAX::class, 'get_post_data' ] );
+\add_action( 'wp_ajax_sgeobiz_update_post_data', [ AJAX::class, 'get_post_data' ] );
 
 // Admin AJAX for Term slug fetching.
-\add_action( 'wp_ajax_tsf_get_term_parent_slugs', [ AJAX::class, 'get_term_parent_slugs' ] );
+\add_action( 'wp_ajax_sgeobiz_get_term_parent_slugs', [ AJAX::class, 'get_term_parent_slugs' ] );
 
 // Admin AJAX for Post slug fetching.
-\add_action( 'wp_ajax_tsf_get_post_parent_slugs', [ AJAX::class, 'get_post_parent_slugs' ] );
+\add_action( 'wp_ajax_sgeobiz_get_post_parent_slugs', [ AJAX::class, 'get_post_parent_slugs' ] );
 
 // Admin AJAX for Author slug fetching.
-\add_action( 'wp_ajax_tsf_get_author_slug', [ AJAX::class, 'get_author_slug' ] );
+\add_action( 'wp_ajax_sgeobiz_get_author_slug', [ AJAX::class, 'get_author_slug' ] );

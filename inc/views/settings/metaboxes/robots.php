@@ -1,19 +1,19 @@
 <?php
 /**
- * @package The_SEO_Framework\Views\Admin\Metaboxes
- * @subpackage The_SEO_Framework\Admin\Settings
+ * @package SGEOBIZ_SEO\Views\Admin\Metaboxes
+ * @subpackage SGEOBIZ_SEO\Admin\Settings
  */
 
-namespace The_SEO_Framework;
+namespace SGEOBIZ_SEO;
 
-( \defined( 'THE_SEO_FRAMEWORK_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
+( \defined( 'SGEOBIZ_SEO_PRESENT' ) and Helper\Template::verify_secret( $secret ) ) or die;
 
-use The_SEO_Framework\Admin\Settings\Layout\{
+use SGEOBIZ_SEO\Admin\Settings\Layout\{
 	HTML,
 	Input,
 };
-use The_SEO_Framework\Data\Filter\Escape;
-use The_SEO_Framework\Helper\{
+use SGEOBIZ_SEO\Data\Filter\Escape;
+use SGEOBIZ_SEO\Helper\{
 	Format\Markdown,
 	Post_Type,
 	Query,
@@ -46,20 +46,20 @@ switch ( $instance ) :
 	case 'main':
 		$global_types = [
 			'author' => [
-				'i18n'     => \__( 'Author pages', 'autodescription' ),
+				'i18n'     => \__( 'Author pages', 'sgeobiz-seo' ),
 				'i18ntype' => 'plural',
 			],
 			'date'   => [
-				'i18n'     => \__( 'Date archives', 'autodescription' ),
+				'i18n'     => \__( 'Date archives', 'sgeobiz-seo' ),
 				'i18ntype' => 'plural',
 			],
 			'search' => [
-				'i18n'     => \__( 'Search pages', 'autodescription' ),
+				'i18n'     => \__( 'Search pages', 'sgeobiz-seo' ),
 				'i18ntype' => 'plural',
 			],
 			// Must be last for proper <hr> styling!
 			'site'   => [
-				'i18n'     => \_x( 'the entire site', '...for the entire site', 'autodescription' ),
+				'i18n'     => \_x( 'the entire site', '...for the entire site', 'sgeobiz-seo' ),
 				'i18ntype' => 'singular',
 			],
 		];
@@ -71,27 +71,27 @@ switch ( $instance ) :
 		$robots = [
 			'noindex'   => [
 				'value' => 'noindex',
-				'desc'  => \__( 'These options can prevent indexing of the selected archives and pages. If you enable this, search engines will be urged to remove the selected archives or pages from their result pages.', 'autodescription' ),
+				'desc'  => \__( 'These options can prevent indexing of the selected archives and pages. If you enable this, search engines will be urged to remove the selected archives or pages from their result pages.', 'sgeobiz-seo' ),
 			],
 			'nofollow'  => [
 				'value' => 'nofollow',
-				'desc'  => \__( 'These options can prevent links from being followed on the selected archives and pages. If you enable this, the selected archives or pages in-page links will gain no SEO value, including your internal links.', 'autodescription' ),
+				'desc'  => \__( 'These options can prevent links from being followed on the selected archives and pages. If you enable this, the selected archives or pages in-page links will gain no SEO value, including your internal links.', 'sgeobiz-seo' ),
 			],
 			'noarchive' => [
 				'value' => 'noarchive',
-				'desc'  => \__( 'These options can prevent caching of the selected archives and pages. If you enable this, bots are urged not create a cached copy of the selected archives or pages.', 'autodescription' ),
+				'desc'  => \__( 'These options can prevent caching of the selected archives and pages. If you enable this, bots are urged not create a cached copy of the selected archives or pages.', 'sgeobiz-seo' ),
 			],
 		];
 
 		$tabs = [
 			'general'   => [
-				'name'     => \__( 'General', 'autodescription' ),
+				'name'     => \__( 'General', 'sgeobiz-seo' ),
 				'callback' => [ Admin\Settings\Plugin::class, '_robots_metabox_general_tab' ],
 				'dashicon' => 'admin-generic',
 				'args'     => '',
 			],
 			'index'     => [
-				'name'     => \__( 'Indexing', 'autodescription' ),
+				'name'     => \__( 'Indexing', 'sgeobiz-seo' ),
 				'callback' => [ Admin\Settings\Plugin::class, '_robots_metabox_no_tab' ],
 				'dashicon' => 'filter',
 				'args'     => [
@@ -102,7 +102,7 @@ switch ( $instance ) :
 				],
 			],
 			'follow'    => [
-				'name'     => \__( 'Following', 'autodescription' ),
+				'name'     => \__( 'Following', 'sgeobiz-seo' ),
 				'callback' => [ Admin\Settings\Plugin::class, '_robots_metabox_no_tab' ],
 				'dashicon' => 'editor-unlink',
 				'args'     => [
@@ -113,7 +113,7 @@ switch ( $instance ) :
 				],
 			],
 			'archive'   => [
-				'name'     => \__( 'Archiving', 'autodescription' ),
+				'name'     => \__( 'Archiving', 'sgeobiz-seo' ),
 				'callback' => [ Admin\Settings\Plugin::class, '_robots_metabox_no_tab' ],
 				'dashicon' => 'download',
 				'args'     => [
@@ -136,70 +136,70 @@ switch ( $instance ) :
 			 * @since 2.2.4
 			 * @param array $tabs The default tabs.
 			 */
-			(array) \apply_filters( 'the_seo_framework_robots_settings_tabs', $tabs )
+			(array) \apply_filters( 'sgeobiz_seo_robots_settings_tabs', $tabs )
 		);
 		break;
 
 	case 'general':
-		HTML::header_title( \__( 'Advanced Query Protection', 'autodescription' ) );
-		HTML::description( \__( 'Some URL queries can cause WordPress to show faux archives. When search engines spot these, they will crawl and index them, which may cause a drop in ranking. Advanced query protection will prevent robots from indexing these archives.', 'autodescription' ) );
+		HTML::header_title( \__( 'Advanced Query Protection', 'sgeobiz-seo' ) );
+		HTML::description( \__( 'Some URL queries can cause WordPress to show faux archives. When search engines spot these, they will crawl and index them, which may cause a drop in ranking. Advanced query protection will prevent robots from indexing these archives.', 'sgeobiz-seo' ) );
 
 		HTML::wrap_fields(
 			Input::make_checkbox( [
 				'id'    => 'advanced_query_protection',
-				'label' => \__( 'Enable advanced query protection?', 'autodescription' ),
+				'label' => \__( 'Enable advanced query protection?', 'sgeobiz-seo' ),
 			] ),
 			true,
 		);
 		?>
 		<hr>
 		<?php
-		HTML::header_title( \__( 'Paginated Archive Settings', 'autodescription' ) );
-		HTML::description( \__( "Paginated archive pages make for lousy landing pages. However, search engines stop looking for links on pages that aren't indexed, and most search engines recognize paginated pages, so keeping them indexed is often useful.", 'autodescription' ) );
+		HTML::header_title( \__( 'Paginated Archive Settings', 'sgeobiz-seo' ) );
+		HTML::description( \__( "Paginated archive pages make for lousy landing pages. However, search engines stop looking for links on pages that aren't indexed, and most search engines recognize paginated pages, so keeping them indexed is often useful.", 'sgeobiz-seo' ) );
 
 		HTML::wrap_fields(
 			Input::make_checkbox( [
 				'id'     => 'paged_noindex',
 				'label'  => Markdown::convert(
 					/* translators: the backticks are Markdown! Preserve them as-is! */
-					\esc_html__( 'Apply `noindex` to every second or later archive page?', 'autodescription' ),
+					\esc_html__( 'Apply `noindex` to every second or later archive page?', 'sgeobiz-seo' ),
 					[ 'code' ],
 				),
 				'escape' => false,
 			] ),
 			true,
 		);
-		HTML::description( \__( 'This option does not affect the homepage; it uses a different one.', 'autodescription' ) );
+		HTML::description( \__( 'This option does not affect the homepage; it uses a different one.', 'sgeobiz-seo' ) );
 		?>
 		<hr>
 		<?php
-		HTML::header_title( \__( 'Copyright Directive Settings', 'autodescription' ) );
-		HTML::description( \__( "Some search engines allow you to control copyright directives on the content they aggregate. It's best to allow some content to be taken by these aggregators, as that can improve contextualized exposure via snippets and previews. When left unspecified, regional regulations may apply. It is up to the aggregator to honor these requests.", 'autodescription' ) );
+		HTML::header_title( \__( 'Copyright Directive Settings', 'sgeobiz-seo' ) );
+		HTML::description( \__( "Some search engines allow you to control copyright directives on the content they aggregate. It's best to allow some content to be taken by these aggregators, as that can improve contextualized exposure via snippets and previews. When left unspecified, regional regulations may apply. It is up to the aggregator to honor these requests.", 'sgeobiz-seo' ) );
 
 		HTML::wrap_fields(
 			Input::make_checkbox( [
 				'id'    => 'set_copyright_directives',
-				'label' => \__( 'Specify aggregator copyright compliance directives?', 'autodescription' ),
+				'label' => \__( 'Specify aggregator copyright compliance directives?', 'sgeobiz-seo' ),
 			] ),
 			true,
 		);
 
 		$_text_snippet_types = [
 			'default' => [
-				-1 => \__( 'Unlimited', 'autodescription' ),
-				0  => \_x( 'None, disallow snippet', 'quantity: zero', 'autodescription' ),
+				-1 => \__( 'Unlimited', 'sgeobiz-seo' ),
+				0  => \_x( 'None, disallow snippet', 'quantity: zero', 'sgeobiz-seo' ),
 			],
 		];
 		foreach ( range( 1, 600, 1 ) as $_n ) {
 			/* translators: %d = number */
-			$_text_snippet_types['number'][ $_n ] = \sprintf( \_n( '%d character', '%d characters', $_n, 'autodescription' ), $_n );
+			$_text_snippet_types['number'][ $_n ] = \sprintf( \_n( '%d character', '%d characters', $_n, 'sgeobiz-seo' ), $_n );
 		}
 		$text_snippet_options = '';
 		$_current             = Data\Plugin::get_option( 'max_snippet_length' );
 		foreach ( $_text_snippet_types as $_type => $_values ) {
 			$_label = 'default' === $_type
-				? \__( 'Standard directive', 'autodescription' )
-				: \__( 'Granular directive', 'autodescription' );
+				? \__( 'Standard directive', 'sgeobiz-seo' )
+				: \__( 'Granular directive', 'sgeobiz-seo' );
 
 			$_options = '';
 			foreach ( $_values as $_value => $_name ) {
@@ -220,15 +220,15 @@ switch ( $instance ) :
 				<p class=description>%6$s</p>',
 				[
 					Input::get_field_id( 'max_snippet_length' ),
-					\esc_html__( 'Maximum text snippet length', 'autodescription' ),
+					\esc_html__( 'Maximum text snippet length', 'sgeobiz-seo' ),
 					Input::get_field_name( 'max_snippet_length' ),
 					$text_snippet_options,
 					HTML::make_info(
-						\__( 'This may limit the text snippet length for all pages on this site.', 'autodescription' ),
+						\__( 'This may limit the text snippet length for all pages on this site.', 'sgeobiz-seo' ),
 						'',
 						false,
 					),
-					\esc_html__( "This directive also imposes a limit on meta descriptions and structured data, which unintentionally restricts the amount of information you can share. Therefore, it's best to use at least a 320 character limit.", 'autodescription' ),
+					\esc_html__( "This directive also imposes a limit on meta descriptions and structured data, which unintentionally restricts the amount of information you can share. Therefore, it's best to use at least a 320 character limit.", 'sgeobiz-seo' ),
 				],
 			),
 			true,
@@ -237,9 +237,9 @@ switch ( $instance ) :
 		$image_preview_options = '';
 		$_current              = Data\Plugin::get_option( 'max_image_preview' );
 		$_image_preview_types  = [
-			'none'     => \_x( 'None, disallow preview', 'quantity: zero', 'autodescription' ),
-			'standard' => \__( 'Thumbnail or standard size', 'autodescription' ),
-			'large'    => \__( 'Large or full size', 'autodescription' ),
+			'none'     => \_x( 'None, disallow preview', 'quantity: zero', 'sgeobiz-seo' ),
+			'standard' => \__( 'Thumbnail or standard size', 'sgeobiz-seo' ),
+			'large'    => \__( 'Large or full size', 'sgeobiz-seo' ),
 		];
 		foreach ( $_image_preview_types as $_value => $_name ) {
 			$image_preview_options .= \sprintf(
@@ -255,11 +255,11 @@ switch ( $instance ) :
 				<p><select name="%3$s" id="%1$s">%4$s</select></p>',
 				[
 					Input::get_field_id( 'max_image_preview' ),
-					\esc_html__( 'Maximum image preview size', 'autodescription' ),
+					\esc_html__( 'Maximum image preview size', 'sgeobiz-seo' ),
 					Input::get_field_name( 'max_image_preview' ),
 					$image_preview_options,
 					HTML::make_info(
-						\__( 'This may limit the image preview size for all images from this site.', 'autodescription' ),
+						\__( 'This may limit the image preview size for all images from this site.', 'sgeobiz-seo' ),
 						'',
 						false,
 					),
@@ -270,20 +270,20 @@ switch ( $instance ) :
 
 		$_video_snippet_types = [
 			'default' => [
-				-1 => \__( 'Full video preview', 'autodescription' ),
-				0  => \_x( 'None, still image only', 'quantity: zero', 'autodescription' ),
+				-1 => \__( 'Full video preview', 'sgeobiz-seo' ),
+				0  => \_x( 'None, still image only', 'quantity: zero', 'sgeobiz-seo' ),
 			],
 		];
 		foreach ( range( 1, 600, 1 ) as $_n ) {
 			/* translators: %d = number */
-			$_video_snippet_types['number'][ $_n ] = \sprintf( \_n( '%d second', '%d seconds', $_n, 'autodescription' ), $_n );
+			$_video_snippet_types['number'][ $_n ] = \sprintf( \_n( '%d second', '%d seconds', $_n, 'sgeobiz-seo' ), $_n );
 		}
 		$video_preview_options = '';
 		$_current              = Data\Plugin::get_option( 'max_video_preview' );
 		foreach ( $_video_snippet_types as $_type => $_values ) {
 			$_label = 'default' === $_type
-				? \__( 'Standard directive', 'autodescription' )
-				: \__( 'Granular directive', 'autodescription' );
+				? \__( 'Standard directive', 'sgeobiz-seo' )
+				: \__( 'Granular directive', 'sgeobiz-seo' );
 
 			$_options = '';
 			foreach ( $_values as $_value => $_name ) {
@@ -303,11 +303,11 @@ switch ( $instance ) :
 				<p><select name="%3$s" id="%1$s">%4$s</select></p>',
 				[
 					Input::get_field_id( 'max_video_preview' ),
-					\esc_html__( 'Maximum video preview length', 'autodescription' ),
+					\esc_html__( 'Maximum video preview length', 'sgeobiz-seo' ),
 					Input::get_field_name( 'max_video_preview' ),
 					$video_preview_options,
 					HTML::make_info(
-						\__( 'This may limit the video preview length for all videos on this site.', 'autodescription' ),
+						\__( 'This may limit the video preview length for all videos on this site.', 'sgeobiz-seo' ),
 						'',
 						false,
 					),
@@ -324,26 +324,26 @@ switch ( $instance ) :
 		$ro_i18n  = $args['robots']['desc'];
 
 		/* translators: SINGULAR. 1 = noindex/nofollow/noarchive, 2 = The entire site */
-		$apply_x_to_y_i18n_singular = \esc_html_x( 'Apply %1$s to %2$s?', 'singular', 'autodescription' );
+		$apply_x_to_y_i18n_singular = \esc_html_x( 'Apply %1$s to %2$s?', 'singular', 'sgeobiz-seo' );
 		/* translators: PLURAL. 1 = noindex/nofollow/noarchive, 2 = Archives, Posts, Pages, etc. */
-		$apply_x_to_y_i18n_plural = \esc_html_x( 'Apply %1$s to %2$s?', 'plural', 'autodescription' );
+		$apply_x_to_y_i18n_plural = \esc_html_x( 'Apply %1$s to %2$s?', 'plural', 'sgeobiz-seo' );
 
 		$ro_name_wrapped = HTML::code_wrap( $ro_value );
 
-		HTML::header_title( \__( 'Robots Meta Settings', 'autodescription' ) );
+		HTML::header_title( \__( 'Robots Meta Settings', 'sgeobiz-seo' ) );
 		HTML::description( $ro_i18n );
 		?>
 		<hr>
 		<?php
-		HTML::header_title( \__( 'Post Type Settings', 'autodescription' ) );
-		HTML::description( \__( 'These settings apply to the post type pages and their terms. When terms are shared between post types, all their post types should be checked for this to have an effect.', 'autodescription' ) );
+		HTML::header_title( \__( 'Post Type Settings', 'sgeobiz-seo' ) );
+		HTML::description( \__( 'These settings apply to the post type pages and their terms. When terms are shared between post types, all their post types should be checked for this to have an effect.', 'sgeobiz-seo' ) );
 
 		// When the post OR page post types are available, show this warning.
 		if (
 			   \in_array( $ro_value, [ 'noindex', 'nofollow' ], true )
 			&& array_intersect( $args['post_types'], [ 'post', 'page' ] )
 		) {
-			HTML::attention_description( \__( 'Warning: No site should enable these options for Posts and Pages.', 'autodescription' ) );
+			HTML::attention_description( \__( 'Warning: No site should enable these options for Posts and Pages.', 'sgeobiz-seo' ) );
 		}
 
 		$checkboxes = [];
@@ -376,8 +376,8 @@ switch ( $instance ) :
 		?>
 		<hr>
 		<?php
-		HTML::header_title( \__( 'Taxonomy Settings', 'autodescription' ) );
-		HTML::description( \__( "These settings apply to the taxonomies of post types. When taxonomies have all their bound post types' options checked, they will inherit their status.", 'autodescription' ) );
+		HTML::header_title( \__( 'Taxonomy Settings', 'sgeobiz-seo' ) );
+		HTML::description( \__( "These settings apply to the taxonomies of post types. When taxonomies have all their bound post types' options checked, they will inherit their status.", 'sgeobiz-seo' ) );
 
 		$tax_option_id = Data\Plugin\Helper::get_robots_option_index( 'taxonomy', $ro_value );
 
@@ -411,8 +411,8 @@ switch ( $instance ) :
 		?>
 		<hr>
 		<?php
-		HTML::header_title( \__( 'Global Settings', 'autodescription' ) );
-		HTML::description( \__( 'These settings apply to other globally registered content types.', 'autodescription' ) );
+		HTML::header_title( \__( 'Global Settings', 'sgeobiz-seo' ) );
+		HTML::description( \__( 'These settings apply to other globally registered content types.', 'sgeobiz-seo' ) );
 
 		$checkboxes = '';
 		foreach ( $args['global_types'] as $type => $data ) {
@@ -433,7 +433,7 @@ switch ( $instance ) :
 				if ( \in_array( $ro_value, [ 'noindex', 'nofollow' ], true ) )
 					$checkboxes .= \sprintf(
 						'<p><span class="description attention">%s</span></p>',
-						\esc_html__( 'Warning: No public site should ever enable this option.', 'autodescription' )
+						\esc_html__( 'Warning: No public site should ever enable this option.', 'sgeobiz-seo' )
 					);
 			}
 
@@ -453,15 +453,15 @@ switch ( $instance ) :
 	case 'robotstxt':
 		$robots_url = RobotsTXT\Utils::get_robots_txt_url();
 
-		HTML::header_title( \__( 'Robots.txt Settings', 'autodescription' ) );
+		HTML::header_title( \__( 'Robots.txt Settings', 'sgeobiz-seo' ) );
 
-		HTML::description( \__( 'When good web crawlers want to visit your site, they will first look for robots.txt to learn what they may access.', 'autodescription' ) );
+		HTML::description( \__( 'When good web crawlers want to visit your site, they will first look for robots.txt to learn what they may access.', 'sgeobiz-seo' ) );
 
 		if ( $robots_url ) {
 			HTML::description_noesc( \sprintf(
 				'<a href="%s" target=_blank rel=noopener>%s</a>',
 				\esc_url( $robots_url, [ 'https', 'http' ] ),
-				\esc_html__( 'View the robots.txt output.', 'autodescription' ),
+				\esc_html__( 'View the robots.txt output.', 'sgeobiz-seo' ),
 			) );
 		}
 
@@ -469,24 +469,24 @@ switch ( $instance ) :
 
 		if ( RobotsTXT\Utils::has_root_robots_txt() ) {
 			HTML::attention_description(
-				\__( 'Note: A robots.txt file has been detected in the root folder of your website, so these settings have no effect.', 'autodescription' )
+				\__( 'Note: A robots.txt file has been detected in the root folder of your website, so these settings have no effect.', 'sgeobiz-seo' )
 			);
 			echo '<hr>';
 		} elseif ( ! $robots_url ) {
 			if ( Data\Blog::is_subdirectory_installation() ) {
 				HTML::attention_description(
-					\__( 'Note: This site is installed in a subdirectory, so robots.txt files cannot be generated or used.', 'autodescription' )
+					\__( 'Note: This site is installed in a subdirectory, so robots.txt files cannot be generated or used.', 'sgeobiz-seo' )
 				);
 				echo '<hr>';
 			} elseif ( ! Query\Utils::using_pretty_permalinks() ) {
 				HTML::attention_description(
-					\__( 'Note: This site is using the plain permalink structure, so no robots.txt file can be generated.', 'autodescription' )
+					\__( 'Note: This site is using the plain permalink structure, so no robots.txt file can be generated.', 'sgeobiz-seo' )
 				);
 				HTML::description_noesc(
 					Markdown::convert(
 						\sprintf(
 							/* translators: 1 = Link to settings, Markdown. 2 = example input, also markdown! Preserve the Markdown as-is! */
-							\esc_html__( 'Change your [Permalink Settings](%1$s). Recommended structure: `%2$s`.', 'autodescription' ),
+							\esc_html__( 'Change your [Permalink Settings](%1$s). Recommended structure: `%2$s`.', 'sgeobiz-seo' ),
 							\esc_url( \admin_url( 'options-permalink.php' ), [ 'https', 'http' ] ),
 							'/%category%/%postname%/',
 						),
@@ -500,7 +500,7 @@ switch ( $instance ) :
 
 		if ( RobotsTXT\Utils::get_blocked_user_agents( 'ai' ) ) {
 			$info = HTML::make_info(
-				\__( 'Discover which AI crawlers are being blocked.', 'autodescription' ),
+				\__( 'Discover which AI crawlers are being blocked.', 'sgeobiz-seo' ),
 				'https://docs.sgeobiz.com/',
 				false,
 			);
@@ -508,8 +508,8 @@ switch ( $instance ) :
 			HTML::wrap_fields(
 				Input::make_checkbox( [
 					'id'          => 'robotstxt_block_ai',
-					'label'       => \esc_html__( 'Block AI crawlers?', 'autodescription' ) . " $info",
-					'description' => \esc_html__( 'This blocks many crawlers that use your content to train language models.', 'autodescription' ),
+					'label'       => \esc_html__( 'Block AI crawlers?', 'sgeobiz-seo' ) . " $info",
+					'description' => \esc_html__( 'This blocks many crawlers that use your content to train language models.', 'sgeobiz-seo' ),
 					'escape'      => false,
 				] ),
 				true,
@@ -518,7 +518,7 @@ switch ( $instance ) :
 
 		if ( RobotsTXT\Utils::get_blocked_user_agents( 'seo' ) ) {
 			$info = HTML::make_info(
-				\__( 'Discover which SEO crawlers are being blocked.', 'autodescription' ),
+				\__( 'Discover which SEO crawlers are being blocked.', 'sgeobiz-seo' ),
 				'https://docs.sgeobiz.com/',
 				false,
 			);
@@ -526,8 +526,8 @@ switch ( $instance ) :
 			HTML::wrap_fields(
 				Input::make_checkbox( [
 					'id'          => 'robotstxt_block_seo',
-					'label'       => \esc_html__( 'Block SEO marketing crawlers?', 'autodescription' ) . " $info",
-					'description' => \esc_html__( 'This blocks many crawlers that analyze your site for ranking insights that might benefit competitors.', 'autodescription' ),
+					'label'       => \esc_html__( 'Block SEO marketing crawlers?', 'sgeobiz-seo' ) . " $info",
+					'description' => \esc_html__( 'This blocks many crawlers that analyze your site for ranking insights that might benefit competitors.', 'sgeobiz-seo' ),
 					'escape'      => false,
 				] ),
 				true,

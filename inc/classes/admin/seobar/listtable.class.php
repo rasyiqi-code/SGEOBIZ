@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Admin\SEOBar\ListTable
- * @subpackage The_SEO_Framework\SEOBar
+ * @package SGEOBIZ_SEO\Classes\Admin\SEOBar\ListTable
+ * @subpackage SGEOBIZ_SEO\SEOBar
  */
 
-namespace The_SEO_Framework\Admin\SEOBar;
+namespace SGEOBIZ_SEO\Admin\SEOBar;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\Admin;
+use SGEOBIZ_SEO\Admin;
 
 /**
  * The SEO Framework plugin
@@ -34,7 +34,7 @@ use The_SEO_Framework\Admin;
  * PHP should deprecate list() and array().
  *
  * @since 4.0.0
- * @since 5.0.0 1. Moved from `\The_SEO_Framework\Bridges`.
+ * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Bridges`.
  *              2. Renamed from `SEOBar`.
  * @access private
  */
@@ -44,7 +44,7 @@ final class ListTable extends Admin\Lists\Table {
 	 * @since 4.0.0
 	 * @var string The column name.
 	 */
-	private $column_name = 'tsf-seo-bar-wrap';
+	private $column_name = 'sgeobiz-seo-bar-wrap';
 
 	/**
 	 * Setups class and prepares quick edit.
@@ -90,7 +90,7 @@ final class ListTable extends Admin\Lists\Table {
 		 * @param string[] $order_keys The keys where the SEO column may be prepended to.
 		 *                             The first key found will be used.
 		 */
-		$order_keys = (array) \apply_filters( 'the_seo_framework_seo_column_keys_order', $order_keys );
+		$order_keys = (array) \apply_filters( 'sgeobiz_seo_seo_column_keys_order', $order_keys );
 
 		foreach ( $order_keys as $key ) {
 			// Put value in $offset, if not false, break loop.

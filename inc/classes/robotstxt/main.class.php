@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\RobotsTXT\Main
- * @subpackage The_SEO_Framework\RobotsTXT
+ * @package SGEOBIZ_SEO\Classes\RobotsTXT\Main
+ * @subpackage SGEOBIZ_SEO\RobotsTXT
  */
 
-namespace The_SEO_Framework\RobotsTXT;
+namespace SGEOBIZ_SEO\RobotsTXT;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper\Compatibility,
 	Helper\Query,
@@ -39,7 +39,7 @@ use The_SEO_Framework\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->robotstxt() instead.
+ *         Use sgeobiz()->robotstxt() instead.
  */
 class Main {
 
@@ -90,10 +90,10 @@ class Main {
 		 * @param bool $disallow Whether to disallow robots queries.
 		 */
 		$disallow_queries = \apply_filters_deprecated(
-			'the_seo_framework_robots_disallow_queries',
+			'sgeobiz_seo_robots_disallow_queries',
 			[ false ],
 			'5.1.0 of The SEO Framework',
-			'the_seo_framework_robots_txt_sections'
+			'sgeobiz_seo_robots_txt_sections'
 		) ? '/*?*'
 		  : '';
 
@@ -137,7 +137,7 @@ class Main {
 		 * @param string $site_path The determined site path. Use this path to prefix URLs.
 		 */
 		$robots_sections = (array) \apply_filters(
-			'the_seo_framework_robots_txt_sections',
+			'sgeobiz_seo_robots_txt_sections',
 			[
 				'deprecated_before' => [
 					/**
@@ -148,10 +148,10 @@ class Main {
 					 *                    Don't forget to add line breaks ( "\n" )!
 					 */
 					'raw'      => (string) \apply_filters_deprecated(
-						'the_seo_framework_robots_txt_pre',
+						'sgeobiz_seo_robots_txt_pre',
 						[ '' ],
 						'5.1.0 of The SEO Framework',
-						'the_seo_framework_robots_txt_sections',
+						'sgeobiz_seo_robots_txt_sections',
 					),
 					'priority' => 0,
 				],
@@ -177,10 +177,10 @@ class Main {
 					 *                    Don't forget to add line breaks ( "\n" )!
 					 */
 					'raw'      => (string) \apply_filters_deprecated(
-						'the_seo_framework_robots_txt_pro',
+						'sgeobiz_seo_robots_txt_pro',
 						[ '' ],
 						'5.1.0 of The SEO Framework',
-						'the_seo_framework_robots_txt_sections',
+						'sgeobiz_seo_robots_txt_sections',
 					),
 					'priority' => 500,
 				],
@@ -225,6 +225,6 @@ class Main {
 		 * @since 4.0.5
 		 * @param string $output The robots.txt output.
 		 */
-		return (string) \apply_filters( 'the_seo_framework_robots_txt', $output );
+		return (string) \apply_filters( 'sgeobiz_seo_robots_txt', $output );
 	}
 }

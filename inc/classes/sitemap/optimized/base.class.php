@@ -1,20 +1,20 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Sitemap\Optimized\Base
- * @subpackage The_SEO_Framework\Sitemap
+ * @package SGEOBIZ_SEO\Classes\Sitemap\Optimized\Base
+ * @subpackage SGEOBIZ_SEO\Sitemap
  */
 
-namespace The_SEO_Framework\Sitemap\Optimized;
+namespace SGEOBIZ_SEO\Sitemap\Optimized;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Data\Filter\Escape,
 	Meta,
 	Sitemap,
 };
-use The_SEO_Framework\Helper\{
+use SGEOBIZ_SEO\Helper\{
 	Format\Time,
 	Post_Type,
 	Query,
@@ -41,8 +41,8 @@ use The_SEO_Framework\Helper\{
  * Generates the base sitemap.
  *
  * @since 4.0.0
- * @since 4.2.0 Renamed from `\The_SEO_Framework\Builders\Sitemap_Base`.
- * @since 5.0.0 Moved from `\The_SEO_Framework\Builders\Sitemap`.
+ * @since 4.2.0 Renamed from `\SGEOBIZ_SEO\Builders\Sitemap_Base`.
+ * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Builders\Sitemap`.
  *
  * @access private
  *
@@ -154,7 +154,7 @@ class Base extends Main {
 	 * @since 4.0.0 1. Now assesses all public post types, in favor of qubit options.
 	 *              2. Improved performance by a factor of two+.
 	 *              3. Renamed method from "generate_sitemap" to abstract extension "build_sitemap".
-	 *              4. Moved to \The_SEO_Framework\Builders\Sitemap\Base
+	 *              4. Moved to \SGEOBIZ_SEO\Builders\Sitemap\Base
 	 * @override
 	 * @slow The queried results are not stored in WP Post's cache, which would allow direct access
 	 *       to all values of the post (if requested). This is because we're using
@@ -168,9 +168,9 @@ class Base extends Main {
 
 		/**
 		 * @since 4.2.7
-		 * @param \The_SEO_Framework\Sitemap\Optimized\Base
+		 * @param \SGEOBIZ_SEO\Sitemap\Optimized\Base
 		 */
-		\do_action( 'the_seo_framework_build_sitemap_base', $this );
+		\do_action( 'sgeobiz_seo_build_sitemap_base', $this );
 
 		$content         = '';
 		$this->url_count = 0;
@@ -181,7 +181,7 @@ class Base extends Main {
 		 * @since 2.2.9
 		 * @param bool $timestamp Whether to display the timestamp.
 		 */
-		$timestamp = (bool) \apply_filters( 'the_seo_framework_sitemap_timestamp', true );
+		$timestamp = (bool) \apply_filters( 'sgeobiz_seo_sitemap_timestamp', true );
 
 		if ( $timestamp )
 			$content .= \sprintf(
@@ -189,9 +189,9 @@ class Base extends Main {
 				\sprintf(
 					$this->base_is_prerendering
 						/* translators: %s = timestamp */
-						? \esc_html__( 'Sitemap is prerendered on %s', 'autodescription' )
+						? \esc_html__( 'Sitemap is prerendered on %s', 'sgeobiz-seo' )
 						/* translators: %s = timestamp */
-						: \esc_html__( 'Sitemap is generated on %s', 'autodescription' ),
+						: \esc_html__( 'Sitemap is generated on %s', 'sgeobiz-seo' ),
 					\current_time( 'Y-m-d H:i:s \G\M\T' ),
 				),
 			);
@@ -208,7 +208,7 @@ class Base extends Main {
 		 * @since 4.0.0
 		 * @param array $post_types The supported post types.
 		 */
-		$post_types = (array) \apply_filters( 'the_seo_framework_sitemap_supported_post_types', $post_types );
+		$post_types = (array) \apply_filters( 'sgeobiz_seo_sitemap_supported_post_types', $post_types );
 
 		$non_hierarchical_post_types = [];
 		$hierarchical_post_types     = [];
@@ -241,7 +241,7 @@ class Base extends Main {
 			 * @link <https://w.org/support/topic/sitemap-and-memory-exhaustion/#post-13331896>
 			 */
 			$_args = (array) \apply_filters(
-				'the_seo_framework_sitemap_hpt_query_args',
+				'sgeobiz_seo_sitemap_hpt_query_args',
 				[
 					'posts_per_page' => $_hierarchical_posts_limit + \count( $_exclude_ids ),
 					'post_type'      => $hierarchical_post_types,
@@ -274,7 +274,7 @@ class Base extends Main {
 			 * @param array $args The query arguments.
 			 */
 			$_args = (array) \apply_filters(
-				'the_seo_framework_sitemap_nhpt_query_args',
+				'sgeobiz_seo_sitemap_nhpt_query_args',
 				[
 					// phpcs:ignore WordPress.WP.PostsPerPage -- This is a sitemap, it will be slow.
 					'posts_per_page' => Sitemap\Utils::get_sitemap_post_limit( 'nonhierarchical' ),
@@ -307,7 +307,7 @@ class Base extends Main {
 		 * @param int[] $non_hierarchical_post_ids The post IDs from non-hierarchical post types.
 		 */
 		$_items      = (array) \apply_filters(
-			'the_seo_framework_sitemap_items',
+			'sgeobiz_seo_sitemap_items',
 			array_merge( $hierarchical_post_ids, $non_hierarchical_post_ids ),
 			$hierarchical_post_ids,
 			$non_hierarchical_post_ids,
@@ -333,7 +333,7 @@ class Base extends Main {
 		 * NOTE to devs: Use this filter if you want to let the generator build the string (lower memory usage).
 		 * This filter also keeps track toward the sitemap limit via $count.
 		 */
-		if ( \has_filter( 'the_seo_framework_sitemap_additional_urls' ) ) {
+		if ( \has_filter( 'sgeobiz_seo_sitemap_additional_urls' ) ) {
 			foreach ( $this->generate_additional_base_urls(
 				[
 					'show_modified' => $show_modified,
@@ -359,7 +359,7 @@ class Base extends Main {
 		 * }
 		 */
 		$extend = (string) \apply_filters(
-			'the_seo_framework_sitemap_extend',
+			'sgeobiz_seo_sitemap_extend',
 			'',
 			[
 				'show_modified' => $show_modified,
@@ -443,7 +443,7 @@ class Base extends Main {
 						 * @param string $lastmod The lastmod time in SQL notation (`Y-m-d H:i:s`). Expected to explicitly follow that format!
 						 */
 						$_values['lastmod'] = (string) \apply_filters(
-							'the_seo_framework_sitemap_blog_lastmod',
+							'sgeobiz_seo_sitemap_blog_lastmod',
 							strtotime( $_publish_post ) > strtotime( $_lastmod_blog )
 								? $_publish_post
 								: $_lastmod_blog,
@@ -479,7 +479,7 @@ class Base extends Main {
 					 * @param string $lastmod The lastmod time in SQL notation (`Y-m-d H:i:s`). Expected to explicitly follow that format!
 					 */
 					$_values['lastmod'] = (string) \apply_filters(
-						'the_seo_framework_sitemap_blog_lastmod',
+						'sgeobiz_seo_sitemap_blog_lastmod',
 						$latests_posts[0]->post_date_gmt ?? '0000-00-00 00:00:00',
 					);
 				}
@@ -602,7 +602,7 @@ class Base extends Main {
 		 *     @type int  $count         Estimate: The total sitemap items before adding additional URLs.
 		 * }
 		 */
-		$custom_urls = (array) \apply_filters( 'the_seo_framework_sitemap_additional_urls', [], $args );
+		$custom_urls = (array) \apply_filters( 'sgeobiz_seo_sitemap_additional_urls', [], $args );
 
 		foreach ( $custom_urls as $url => $values ) {
 			if ( ! \is_array( $values ) ) {

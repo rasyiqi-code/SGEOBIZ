@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Data\Admin\Post
- * @subpackage The_SEO_Framework\Data
+ * @package SGEOBIZ_SEO\Classes\Data\Admin\Post
+ * @subpackage SGEOBIZ_SEO\Data
  */
 
-namespace The_SEO_Framework\Data\Admin;
+namespace SGEOBIZ_SEO\Data\Admin;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Helper\Taxonomy,
 };
@@ -72,7 +72,7 @@ final class Post {
 	 * @since 4.0.0 1. Renamed from `inpost_seo_save`
 	 *              2. Now allows updating during `WP_CRON`.
 	 *              3. Now allows updating during `WP_AJAX`.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `_update_post_meta`.
 	 * @access private
 	 *
@@ -86,7 +86,7 @@ final class Post {
 		} elseif ( ! empty( $_REQUEST['autodescription-bulk'] ) ) {
 			// This is sent via GET. Keep using $_REQUEST for future-compatibility.
 			self::update_via_bulk_edit( $post_id );
-		} elseif ( ! empty( $_POST['autodescription'] ) ) {
+		} elseif ( ! empty( $_POST['sgeobiz-seo'] ) ) {
 			self::update_via_post_edit( $post_id );
 		}
 
@@ -100,7 +100,7 @@ final class Post {
 	 * @since 3.0.0
 	 * @since 4.0.0 1. Now allows updating during `WP_CRON`.
 	 *              2. Now allows updating during `WP_AJAX`.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `_save_inpost_primary_term`.
 	 * @since 5.1.3 Now supports quick-edit and bulk-edit.
 	 *
@@ -129,7 +129,7 @@ final class Post {
 		if ( empty( $post_type ) ) return;
 
 		// Determine edit type: post-edit, quick-edit, or bulk-edit
-		if ( ! empty( $_POST['autodescription'] ) ) {
+		if ( ! empty( $_POST['sgeobiz-seo'] ) ) {
 			// Post-edit
 			foreach ( Taxonomy::get_hierarchical( 'names', $post_type ) as $taxonomy ) {
 				if ( ! \wp_verify_nonce(
@@ -141,7 +141,7 @@ final class Post {
 				Data\Plugin\Post::update_primary_term_id(
 					$post_id,
 					$taxonomy,
-					\absint( $_POST['autodescription'][ "_primary_term_{$taxonomy}" ] ?? 0 ),
+					\absint( $_POST['sgeobiz-seo'][ "_primary_term_{$taxonomy}" ] ?? 0 ),
 				);
 			}
 		} elseif ( ! empty( $_POST['autodescription-quick'] ) ) {
@@ -194,7 +194,7 @@ final class Post {
 	 * Overwrites all of the post meta on post-edit.
 	 *
 	 * @since 4.0.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `update_post_edit_post_meta`.
 	 *
 	 * @param int $post_id The post ID.
@@ -226,7 +226,7 @@ final class Post {
 		// Trim, sanitize, and save the metadata.
 		Data\Plugin\Post::save_meta(
 			$post_id,
-			(array) \wp_unslash( $_POST['autodescription'] ),
+			(array) \wp_unslash( $_POST['sgeobiz-seo'] ),
 		);
 	}
 
@@ -235,7 +235,7 @@ final class Post {
 	 *
 	 * @since 4.0.0
 	 * @since 4.1.0 Allowed title and description parsing.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `update_quick_edit_post_meta`.
 	 *
 	 * @param int $post_id The post ID.
@@ -294,7 +294,7 @@ final class Post {
 	 * Overwrites a park of the post meta on bulk-edit.
 	 *
 	 * @since 4.0.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `update_bulk_edit_post_meta`.
 	 *
 	 * @param int $post_id The post ID.

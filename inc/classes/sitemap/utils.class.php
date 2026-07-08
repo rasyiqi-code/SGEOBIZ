@@ -1,18 +1,18 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Sitemap\Utils
- * @subpackage The_SEO_Framework\Sitemap
+ * @package SGEOBIZ_SEO\Classes\Sitemap\Utils
+ * @subpackage SGEOBIZ_SEO\Sitemap
  */
 
-namespace The_SEO_Framework\Sitemap;
+namespace SGEOBIZ_SEO\Sitemap;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use const The_SEO_Framework\ROBOTS_IGNORE_PROTECTION;
+use const SGEOBIZ_SEO\ROBOTS_IGNORE_PROTECTION;
 
-use function The_SEO_Framework\memo;
+use function SGEOBIZ_SEO\memo;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Data\Filter\Sanitize,
 	Meta,
@@ -40,7 +40,7 @@ use The_SEO_Framework\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->sitemap()->utils() instead.
+ *         Use sgeobiz()->sitemap()->utils() instead.
  */
 class Utils {
 
@@ -63,7 +63,7 @@ class Utils {
 		 * @param bool $hierarchical Whether the query is for hierarchical post types or not.
 		 */
 		return (int) \apply_filters(
-			'the_seo_framework_sitemap_post_limit',
+			'sgeobiz_seo_sitemap_post_limit',
 			Data\Plugin::get_option( 'sitemap_query_limit' ),
 			'hierarchical' === $type,
 		);
@@ -88,7 +88,7 @@ class Utils {
 			 * @since 3.1.0 '0' is accepted again.
 			 * @param int[] $excluded Sequential list of excluded IDs: [ int ...post_id ]
 			 */
-			$excluded = (array) \apply_filters( 'the_seo_framework_sitemap_exclude_ids', [] );
+			$excluded = (array) \apply_filters( 'sgeobiz_seo_sitemap_exclude_ids', [] );
 
 			// isset() is faster than in_array(). And since we memoize, it's faster to flip.
 			$excluded = $excluded ? array_flip( $excluded ) : [];
@@ -137,7 +137,7 @@ class Utils {
 			 * @since 4.0.0
 			 * @param int[] $excluded Sequential list of excluded IDs: [ int ...term_id ]
 			 */
-			$excluded = (array) \apply_filters( 'the_seo_framework_sitemap_exclude_term_ids', [] );
+			$excluded = (array) \apply_filters( 'sgeobiz_seo_sitemap_exclude_term_ids', [] );
 
 			// isset() is faster than in_array(). And since we memoize, it's faster to flip.
 			$excluded = $excluded ? array_flip( $excluded ) : [];
@@ -178,7 +178,7 @@ class Utils {
 	 *
 	 * @since 2.8.0
 	 * @since 4.0.5 Changed default colors to be more in line with WordPress.
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param bool $get_defaults Whether to get the default colors.
 	 * @return array The sitemap colors.
@@ -210,7 +210,7 @@ class Utils {
 	 * Memoizes the return value.
 	 *
 	 * @since 4.1.2
-	 * @since 5.0.0 Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @return bool
 	 */

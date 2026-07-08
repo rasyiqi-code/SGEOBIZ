@@ -1,14 +1,14 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Data\Plugin\Setup
- * @subpackage The_SEO_Framework\Data\Plugin\Settings
+ * @package SGEOBIZ_SEO\Classes\Data\Plugin\Setup
+ * @subpackage SGEOBIZ_SEO\Data\Plugin\Settings
  */
 
-namespace The_SEO_Framework\Data\Plugin;
+namespace SGEOBIZ_SEO\Data\Plugin;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use The_SEO_Framework\{
+use SGEOBIZ_SEO\{
 	Data,
 	Traits\Property_Refresher,
 };
@@ -35,7 +35,7 @@ use The_SEO_Framework\{
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->data()->plugin()->setup() instead.
+ *         Use sgeobiz()->data()->plugin()->setup() instead.
  *
  * @NOTE: All static:: calls within this class are intentional due to Property_Refresher trait.
  */
@@ -63,7 +63,7 @@ class Setup {
 	 */
 	public static function reset_options() {
 
-		$success = \update_option( \THE_SEO_FRAMEWORK_SITE_OPTIONS, static::get_default_options(), true );
+		$success = \update_option( \SGEOBIZ_SEO_SITE_OPTIONS, static::get_default_options(), true );
 
 		if ( $success )
 			Data\Plugin::refresh_static_properties();
@@ -79,7 +79,7 @@ class Setup {
 	 *              2. Removed second parameter (`$use_cache`).
 	 *              3. Now always memoizes.
 	 * @since 5.0.0 1. $key is now variadic. Additional variables allow you to dig deeper in the cache.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param string ...$key Option name. Additional parameters will try get sub-values of the array.
 	 *                       When empty, it'll return all options. You should use get_default_options() instead.
@@ -100,7 +100,7 @@ class Setup {
 	 *
 	 * @since 4.2.0
 	 * @since 5.0.0 1. $key is now variadic. Additional variables allow you to dig deeper in the cache.
-	 *              2. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Moved from `\SGEOBIZ_SEO\Load`.
 	 *
 	 * @param string ...$key Option name. Additional parameters will try get sub-values of the array.
 	 *                       When empty, it'll return all options. You should use get_warned_options() instead.
@@ -120,7 +120,7 @@ class Setup {
 	 * Holds default site options.
 	 *
 	 * @since 2.6.0
-	 * @since 3.1.0 Now applies filters 'the_seo_framework_default_site_options'
+	 * @since 3.1.0 Now applies filters 'sgeobiz_seo_default_site_options'
 	 * @since 4.0.0 `home_title_location` is now switched from right to left, or vice-versa.
 	 * @since 4.2.4 `max_image_preview` now defaults to `large`, from `standard`, matching WordPress's default.
 	 * @since 4.2.7 Added `auto_description_html_method`, defaults to `fast`.
@@ -142,7 +142,7 @@ class Setup {
 		 * @param array $options The default site options.
 		 */
 		return static::$default_options = (array) \apply_filters(
-			'the_seo_framework_default_site_options',
+			'sgeobiz_seo_default_site_options',
 			[
 				// General. Performance.
 				'alter_search_query'  => 1, // Search query adjustments.
@@ -368,7 +368,7 @@ class Setup {
 	 *
 	 * @since 2.6.0
 	 * @since 2.9.0 Removed all non-warned settings.
-	 * @since 3.1.0 Now applies the "the_seo_framework_warned_site_options" filter.
+	 * @since 3.1.0 Now applies the "sgeobiz_seo_warned_site_options" filter.
 	 * @since 4.1.0 Added robots' post type setting warnings.
 	 * @since 4.2.0 Now memoizes its return value.
 	 *
@@ -394,7 +394,7 @@ class Setup {
 		 * @param array $options The warned site options.
 		 */
 		return static::$warned_options = (array) \apply_filters(
-			'the_seo_framework_warned_site_options',
+			'sgeobiz_seo_warned_site_options',
 			[
 				'title_rem_additions' => 1, // Title remove additions.
 				'site_noindex'        => 1, // Site Page robots noindex.

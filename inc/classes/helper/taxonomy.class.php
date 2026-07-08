@@ -1,19 +1,19 @@
 <?php
 /**
- * @package The_SEO_Framework\Classes\Helper\Taxonomy
- * @subpackage The_SEO_Framework\Query
+ * @package SGEOBIZ_SEO\Classes\Helper\Taxonomy
+ * @subpackage SGEOBIZ_SEO\Query
  */
 
-namespace The_SEO_Framework\Helper;
+namespace SGEOBIZ_SEO\Helper;
 
-\defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+\defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-use function The_SEO_Framework\{
+use function SGEOBIZ_SEO\{
 	memo,
 	umemo,
 };
 
-use The_SEO_Framework\Data;
+use SGEOBIZ_SEO\Data;
 
 /**
  * The SEO Framework plugin
@@ -37,7 +37,7 @@ use The_SEO_Framework\Data;
  *
  * @since 5.0.0
  * @access protected
- *         Use tsf()->taxonomy() instead.
+ *         Use sgeobiz()->taxonomy() instead.
  */
 class Taxonomy {
 
@@ -49,8 +49,8 @@ class Taxonomy {
 	 * @since 4.0.0 1. Now returns true if at least one post type for the taxonomy is supported.
 	 *              2. Now uses `is_post_type_supported()` instead of `is_post_type_disabled()`.
 	 * @since 4.1.0 1. Now also checks for the option `disabled_taxonomies`.
-	 *              2. Now applies filters `the_seo_framework_taxonomy_disabled`.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 *              2. Now applies filters `sgeobiz_seo_taxonomy_disabled`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `is_taxonomy_disabled`.
 	 *
 	 * @param ?string $taxonomy The taxonomy name. Leave null to automatically determine.
@@ -81,7 +81,7 @@ class Taxonomy {
 		 * @param ?string $taxonomy The taxonomy name. Left null to automatically determine.
 		 */
 		return \apply_filters(
-			'the_seo_framework_taxonomy_disabled',
+			'sgeobiz_seo_taxonomy_disabled',
 			$disabled,
 			$taxonomy,
 		);
@@ -94,7 +94,7 @@ class Taxonomy {
 	 * and whether the taxonomy is public and rewritable.
 	 *
 	 * @since 4.0.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `is_taxonomy_supported`.
 	 *
 	 * @param string $taxonomy Optional. The taxonomy name.
@@ -111,7 +111,7 @@ class Taxonomy {
 		 * @param string $post_type_evaluated The evaluated post type.
 		 */
 		return (bool) \apply_filters(
-			'the_seo_framework_supported_taxonomy',
+			'sgeobiz_seo_supported_taxonomy',
 			(
 				   $taxonomy
 				&& ! self::is_disabled( $taxonomy )
@@ -125,7 +125,7 @@ class Taxonomy {
 	 * Returns a list of all supported taxonomies.
 	 *
 	 * @since 4.2.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `get_supported_taxonomies`.
 	 *
 	 * @return string[] All supported taxonomies.
@@ -142,7 +142,7 @@ class Taxonomy {
 	 * Memoizes the return value.
 	 *
 	 * @since 4.1.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `get_public_taxonomies`.
 	 *              3. Is now public.
 	 *
@@ -159,7 +159,7 @@ class Taxonomy {
 				 * @param string[] $taxonomies The public taxonomies.
 				 */
 				(array) \apply_filters(
-					'the_seo_framework_public_taxonomies',
+					'sgeobiz_seo_public_taxonomies',
 					array_filter(
 						array_unique( array_merge(
 							self::get_all_forced_supported(),
@@ -180,7 +180,7 @@ class Taxonomy {
 	 *
 	 * @since 4.1.0
 	 * @since 4.2.0 Removed memoization.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `get_forced_supported_taxonomies`.
 	 *              3. Is now public.
 	 *
@@ -192,7 +192,7 @@ class Taxonomy {
 		 * @param string[] $forced Forced supported taxonomies.
 		 */
 		return (array) \apply_filters(
-			'the_seo_framework_forced_supported_taxonomies',
+			'sgeobiz_seo_forced_supported_taxonomies',
 			array_values( \get_taxonomies( [
 				'public'   => true,
 				'_builtin' => true,
@@ -204,7 +204,7 @@ class Taxonomy {
 	 * Returns a list of post types shared with the taxonomy.
 	 *
 	 * @since 4.0.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `get_post_types_from_taxonomy`.
 	 *
 	 * @param string $taxonomy Optional. The taxonomy to check. Defaults to current screen/query taxonomy.
@@ -224,7 +224,7 @@ class Taxonomy {
 	 * @since 3.0.0
 	 * @since 4.0.5 The `$post_type` fallback now uses a real query ID, instead of `$GLOBALS['post']`.
 	 * @since 4.1.0 Now filters taxonomies more graciously--expecting broken taxonomies returned in the filter.
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `get_hierarchical_taxonomies_as`.
 	 *
 	 * @param string $get       What to get. Accepts 'names' or 'objects'.
@@ -251,7 +251,7 @@ class Taxonomy {
 	 * Returns the taxonomy type object label. Either plural or singular.
 	 *
 	 * @since 3.1.0
-	 * @since 5.0.0 1. Moved from `\The_SEO_Framework\Load`.
+	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `get_taxonomy_label`.
 	 *              3. The first parameter is now optional.
 	 *
