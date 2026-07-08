@@ -54,7 +54,7 @@
 .sgeobiz-seo-bar {
 	display: block;
 	width: 100%;
-	max-width: 90px;
+	max-width: 80px;
 	padding: 0;
 	margin: 0;
 }
@@ -65,26 +65,25 @@
 	border: none;
 	padding: 0;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	flex-wrap: nowrap;
-	gap: 2px;
-	justify-content: flex-start;
-	align-items: center;
+	gap: 3px;
+	align-items: stretch;
 	box-shadow: none;
 }
 
 .sgeobiz-seo-bar-section-wrap {
 	min-width: unset;
 	flex: 0 0 auto;
-	display: flex;
-	justify-content: center;
+	display: block;
+	width: 100%;
 }
 
 .sgeobiz-seo-bar-item {
 	display: block;
-	width: 11px;
-	height: 20px;
-	border-radius: 2px;
+	width: 100%;
+	height: 5px;
+	border-radius: 1px;
 	border: none;
 	color: transparent;
 	font-size: 0;
@@ -97,8 +96,8 @@
 }
 
 .sgeobiz-seo-bar-item:hover {
-	transform: scaleY(1.3) scaleX(1.1);
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+	transform: scaleX(1.15) scaleY(1.5);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 	filter: brightness(1.1);
 	z-index: 10;
 }
