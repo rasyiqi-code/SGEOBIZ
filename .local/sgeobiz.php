@@ -59,4 +59,7 @@ function sgeobiz_boot() {
 
 	// 6. Auto Silo Related Links ( Internal Linking Pyramid )
 	SGEOBIZ_Silo_Links::init();
+
+	// 7. Redirect 404 / Artikel Dihapus ke Homepage secara 301
+	SGEOBIZ_Redirect_404::init();
 }
