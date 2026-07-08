@@ -742,15 +742,47 @@ body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
     grid-column: span 2 !important;
 }
 
-/* Ensure larger inputs span full-width inside grid */
+/* Ensure larger inputs span full-width inside grid (except selects inside select groups) */
 .sgeobiz-premium-theme .sgeobiz-fields textarea,
-.sgeobiz-premium-theme .sgeobiz-fields select,
+.sgeobiz-premium-theme .sgeobiz-fields > select,
 .sgeobiz-premium-theme .sgeobiz-fields input[type="text"],
 .sgeobiz-premium-theme .sgeobiz-fields input[type="url"],
 .sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-select-wrap,
 .sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-select-block {
     grid-column: span 2 !important;
     width: 100% !important;
+}
+
+/* Select Group Card (Borderless flat gray card) */
+.sgeobiz-premium-theme .sgeobiz-select-group {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 12px 16px !important;
+    background: #f1f5f9 !important;
+    border-radius: 8px !important;
+    margin: 0 !important;
+}
+
+.sgeobiz-premium-theme .sgeobiz-select-group label {
+    display: block !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: #64748b !important; /* Slate 500 */
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin: 0 0 6px 0 !important;
+    background: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+.sgeobiz-premium-theme .sgeobiz-select-group select {
+    display: block !important;
+    width: 100% !important;
+    grid-column: auto !important; /* Reset span 2 */
 }
 
 /* Responsive collapse on mobile */
@@ -762,7 +794,7 @@ body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
     .sgeobiz-premium-theme .sgeobiz-fields p.description,
     .sgeobiz-premium-theme .sgeobiz-fields .description,
     .sgeobiz-premium-theme .sgeobiz-fields textarea,
-    .sgeobiz-premium-theme .sgeobiz-fields select,
+    .sgeobiz-premium-theme .sgeobiz-fields > select,
     .sgeobiz-premium-theme .sgeobiz-fields input[type="text"],
     .sgeobiz-premium-theme .sgeobiz-fields input[type="url"],
     .sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-select-wrap,
