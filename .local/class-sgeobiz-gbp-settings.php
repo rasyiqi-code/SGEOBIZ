@@ -379,13 +379,28 @@ class SGEOBIZ_GBP_Settings {
 			'latitude'        => (float) ( $post['business_lat'] ?? 0 ),
 			'longitude'       => (float) ( $post['business_lng'] ?? 0 ),
 
-			// Sosial media
-			'facebook'        => esc_url_raw( $post['social_facebook'] ?? '' ),
-			'instagram'       => esc_url_raw( $post['social_instagram'] ?? '' ),
-			'tokopedia'       => esc_url_raw( $post['social_tokopedia'] ?? '' ),
-			'shopee'          => esc_url_raw( $post['social_shopee'] ?? '' ),
-			'tiktok'          => esc_url_raw( $post['social_tiktok'] ?? '' ),
+			// Media Sosial
+			'facebook'            => esc_url_raw( $post['social_facebook'] ?? '' ),
+			'instagram'           => esc_url_raw( $post['social_instagram'] ?? '' ),
+			'tiktok'              => esc_url_raw( $post['social_tiktok'] ?? '' ),
+			'youtube'             => esc_url_raw( $post['social_youtube'] ?? '' ),
+			'twitter'             => esc_url_raw( $post['social_twitter'] ?? '' ),
+			'linkedin'            => esc_url_raw( $post['social_linkedin'] ?? '' ),
+			'threads'             => esc_url_raw( $post['social_threads'] ?? '' ),
+			'pinterest'           => esc_url_raw( $post['social_pinterest'] ?? '' ),
+
+			// Marketplace
+			'tokopedia'           => esc_url_raw( $post['social_tokopedia'] ?? '' ),
+			'shopee'              => esc_url_raw( $post['social_shopee'] ?? '' ),
+			'lazada'              => esc_url_raw( $post['social_lazada'] ?? '' ),
+			'bukalapak'           => esc_url_raw( $post['social_bukalapak'] ?? '' ),
+			'blibli'              => esc_url_raw( $post['social_blibli'] ?? '' ),
+
+			// Google & Food Delivery
 			'google_business_url' => esc_url_raw( $post['social_google_business'] ?? '' ),
+			'gofood'              => esc_url_raw( $post['social_gofood'] ?? '' ),
+			'grabfood'            => esc_url_raw( $post['social_grabfood'] ?? '' ),
+			'shopeefood'          => esc_url_raw( $post['social_shopeefood'] ?? '' ),
 
 			// Logo bisnis (attachment ID)
 			'logo_id'         => absint( $post['business_logo_id'] ?? 0 ),
@@ -512,16 +527,41 @@ class SGEOBIZ_GBP_Settings {
 
 		// ── Bagian 4: Sosial Media & Marketplace ─────────────────────────
 		echo '<div class="sgeobiz-section">';
-		echo '<h2>Media Sosial & Marketplace</h2>';
+		echo '<h2>Media Sosial &amp; Marketplace</h2>';
+
+		// Sub-bagian: Media Sosial
+		echo '<h3 style="font-size:13px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin:0 0 10px;">Media Sosial</h3>';
 		echo '<div class="sgeobiz-row-2">';
-		$this->field( 'social_facebook', 'Facebook URL', $d( 'facebook' ), 'url' );
-		$this->field( 'social_instagram', 'Instagram URL', $d( 'instagram' ), 'url' );
-		$this->field( 'social_tokopedia', 'Tokopedia URL', $d( 'tokopedia' ), 'url' );
-		$this->field( 'social_shopee', 'Shopee URL', $d( 'shopee' ), 'url' );
-		$this->field( 'social_tiktok', 'TikTok URL', $d( 'tiktok' ), 'url' );
-		$this->field( 'social_google_business', 'Google Business Profile / Maps URL', $d( 'google_business_url' ), 'url' );
+		$this->field_url( 'social_facebook',  'Facebook',  $d( 'facebook' ),  'https://facebook.com/namabisnis' );
+		$this->field_url( 'social_instagram', 'Instagram', $d( 'instagram' ), 'https://instagram.com/namabisnis' );
+		$this->field_url( 'social_tiktok',    'TikTok',    $d( 'tiktok' ),    'https://tiktok.com/@namabisnis' );
+		$this->field_url( 'social_youtube',   'YouTube',   $d( 'youtube' ),   'https://youtube.com/@namabisnis' );
+		$this->field_url( 'social_twitter',   'Twitter / X', $d( 'twitter' ), 'https://x.com/namabisnis' );
+		$this->field_url( 'social_linkedin',  'LinkedIn',  $d( 'linkedin' ),  'https://linkedin.com/company/namabisnis' );
+		$this->field_url( 'social_threads',   'Threads',   $d( 'threads' ),   'https://threads.net/@namabisnis' );
+		$this->field_url( 'social_pinterest', 'Pinterest', $d( 'pinterest' ), 'https://pinterest.com/namabisnis' );
 		echo '</div>';
+
+		// Sub-bagian: Marketplace
+		echo '<h3 style="font-size:13px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin:20px 0 10px;">Marketplace</h3>';
+		echo '<div class="sgeobiz-row-2">';
+		$this->field_url( 'social_tokopedia',  'Tokopedia',  $d( 'tokopedia' ),  'https://tokopedia.com/namabisnis' );
+		$this->field_url( 'social_shopee',     'Shopee',     $d( 'shopee' ),     'https://shopee.co.id/namabisnis' );
+		$this->field_url( 'social_lazada',     'Lazada',     $d( 'lazada' ),     'https://lazada.co.id/shop/namabisnis' );
+		$this->field_url( 'social_bukalapak',  'Bukalapak',  $d( 'bukalapak' ),  'https://bukalapak.com/u/namabisnis' );
+		$this->field_url( 'social_blibli',     'Blibli',     $d( 'blibli' ),     'https://blibli.com/merchant/namabisnis' );
 		echo '</div>';
+
+		// Sub-bagian: Google & Food Delivery
+		echo '<h3 style="font-size:13px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin:20px 0 10px;">Google &amp; Pesan Antar Makanan</h3>';
+		echo '<div class="sgeobiz-row-2">';
+		$this->field_url( 'social_google_business', 'Google Business / Maps', $d( 'google_business_url' ), 'https://maps.app.goo.gl/xxxxx' );
+		$this->field_url( 'social_gofood',     'GoFood (Gojek)',  $d( 'gofood' ),     'https://gofood.co.id/...' );
+		$this->field_url( 'social_grabfood',   'GrabFood',       $d( 'grabfood' ),   'https://food.grab.com/...' );
+		$this->field_url( 'social_shopeefood', 'ShopeeFood',     $d( 'shopeefood' ), 'https://shopeefood.co.id/...' );
+		echo '</div>';
+
+		echo '</div>'; // end section
 
 		// ── Bagian 5: Jam Operasional ─────────────────────────────────────
 		echo '<div class="sgeobiz-section">';
@@ -580,6 +620,21 @@ class SGEOBIZ_GBP_Settings {
 		echo "<div class='sgeobiz-field'>";
 		echo "<label for='{$name}'>{$label}" . ( $required ? ' <span style="color:red">*</span>' : '' ) . '</label>';
 		echo "<input type='{$type}' id='{$name}' name='{$name}' value='{$value}'{$req}>";
+		echo '</div>';
+	}
+
+	/**
+	 * Helper render field URL dengan placeholder dan ikon platform.
+	 *
+	 * @param string $name        Nama field (name attribute).
+	 * @param string $label       Label platform.
+	 * @param string $value       Nilai tersimpan.
+	 * @param string $placeholder Contoh URL.
+	 */
+	private function field_url( $name, $label, $value = '', $placeholder = '' ) {
+		echo "<div class='sgeobiz-field'>";
+		echo "<label for='{$name}'>{$label}</label>";
+		echo "<input type='url' id='{$name}' name='{$name}' value='{$value}' placeholder='" . esc_attr( $placeholder ) . "'>";
 		echo '</div>';
 	}
 
