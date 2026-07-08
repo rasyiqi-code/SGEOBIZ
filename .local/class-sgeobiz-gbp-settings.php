@@ -125,12 +125,12 @@ class SGEOBIZ_GBP_Settings {
 				box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3), 0 4px 6px -2px rgba(79, 70, 229, 0.15) !important;
 			}
 			.sgeobiz-settings-container {
-				padding: 30px;
+				padding: 20px 30px;
 				background: #ffffff !important;
 			}
 			.sgeobiz-section {
-				margin-bottom: 30px;
-				padding-bottom: 24px;
+				margin-bottom: 20px;
+				padding-bottom: 16px;
 				border-bottom: 1px solid #f1f5f9;
 			}
 			.sgeobiz-section:last-child {
@@ -140,20 +140,20 @@ class SGEOBIZ_GBP_Settings {
 			}
 			.sgeobiz-section h2 {
 				margin-top: 0;
-				margin-bottom: 20px;
-				font-size: 16px;
+				margin-bottom: 12px;
+				font-size: 15px;
 				font-weight: 700;
 				color: #1e293b;
 			}
 			.sgeobiz-field {
-				margin-bottom: 20px;
+				margin-bottom: 12px;
 				display: flex;
 				flex-direction: column;
-				gap: 8px;
+				gap: 4px;
 			}
 			.sgeobiz-field label {
 				font-weight: 600;
-				font-size: 14px;
+				font-size: 13px;
 				color: #1e293b;
 			}
 			.sgeobiz-field input[type="text"],
@@ -163,7 +163,7 @@ class SGEOBIZ_GBP_Settings {
 			.sgeobiz-field textarea {
 				border: 1px solid #cbd5e1 !important;
 				border-radius: 8px !important;
-				padding: 8px 12px !important;
+				padding: 6px 10px !important;
 				font-size: 13px !important;
 				background: #ffffff !important;
 				color: #334155 !important;
@@ -184,7 +184,7 @@ class SGEOBIZ_GBP_Settings {
 			.sgeobiz-row-2 {
 				display: grid;
 				grid-template-columns: 1fr 1fr;
-				gap: 20px;
+				gap: 16px;
 			}
 			@media (max-width: 782px) {
 				.sgeobiz-row-2 {
@@ -195,16 +195,16 @@ class SGEOBIZ_GBP_Settings {
 			.sgeobiz-hours-grid {
 				display: grid;
 				grid-template-columns: 120px 140px 140px 100px;
-				gap: 12px;
+				gap: 10px;
 				align-items: center;
-				margin-bottom: 12px;
+				margin-bottom: 8px;
 				font-size: 13px;
 				color: #334155;
 			}
 			.sgeobiz-hours-grid input[type="time"] {
 				border: 1px solid #cbd5e1 !important;
 				border-radius: 8px !important;
-				padding: 6px 12px !important;
+				padding: 4px 10px !important;
 				font-size: 13px !important;
 			}
 			/* Toggle switch untuk Jam Operasional Tutup */
