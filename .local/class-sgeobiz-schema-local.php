@@ -1,16 +1,11 @@
 <?php
 /**
- * SGEOBIZ Schema Local — Output JSON-LD LocalBusiness
+ * SGEOBIZ Schema Local — Integrasi JSON-LD LocalBusiness ke Graph Utama
  *
- * Meng-inject schema JSON-LD ke <head> website untuk:
- * - LocalBusiness (semua tipe bisnis Indonesia)
- * - GeoCoordinates (koordinat GPS)
- * - OpeningHoursSpecification (jam operasional per hari)
- * - ContactPoint (telepon, WhatsApp)
- * - SameAs (link sosial media & marketplace)
- * - ImageObject (logo bisnis)
+ * Menggabungkan schema LocalBusiness dan lokasi cabang Indonesia ke dalam
+ * graph Schema.org utama (@graph) bawaan SGEOBIZ SEO agar saling terhubung.
  *
- * Plugin-agnostic: bekerja dengan atau tanpa WooCommerce.
+ * Taktik ini sangat disukai Google dibanding tag script terpisah.
  *
  * @package SGEOBIZ
  */
@@ -20,58 +15,77 @@ defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 class SGEOBIZ_Schema_Local {
 
 	/**
-	 * Daftarkan hook output schema di front-end.
+	 * Pasang hook filter untuk mengintegrasikan schema ke graph utama.
 	 */
 	public static function init() {
 		$instance = new self();
 
-		// Inject JSON-LD ke <head> — priority 5 agar lebih awal dari SGEOBIZ
-		add_action( 'wp_head', [ $instance, 'output_schema' ], 5 );
+		// Hook ke filter graph data bawaan SGEOBIZ SEO
+		add_filter( 'sgeobiz_seo_schema_graph_data', [ $instance, 'integrate_to_graph' ], 10, 2 );
 	}
 
 	/**
-	 * Output blok JSON-LD LocalBusiness ke halaman front-end.
-	 * Hanya muncul jika data bisnis sudah diisi.
+	 * Integrasikan LocalBusiness & cabang ke dalam graph `@graph` utama.
+	 *
+	 * @param array      $graph Array berisi node graph Schema.org bawaan.
+	 * @param array|null $args  Query arguments.
+	 * @return array Graph yang sudah dimodifikasi.
 	 */
-	public function output_schema() {
+	public function integrate_to_graph( array $graph, $args = null ) {
 		$data = SGEOBIZ_GBP_Settings::get_business_data();
 
-		// Jangan output jika nama bisnis belum diisi
+		// Jangan lakukan integrasi jika nama bisnis belum diisi
 		if ( empty( $data['business_name'] ) ) {
-			return;
+			return $graph;
 		}
 
-		$schema = $this->build_schema( $data );
+		$local_id = home_url( '#localbusiness' );
 
-		if ( empty( $schema ) ) {
-			return;
+		// 1. Bangun schema LocalBusiness utama (tanpa @context karena bagian dari graph)
+		$local_schema = $this->build_schema( $data, $local_id );
+
+		if ( ! empty( $local_schema ) ) {
+			$graph[] = $local_schema;
 		}
 
-		// Output JSON-LD
-		echo "\n<!-- SGEOBIZ SEO: LocalBusiness Schema -->\n";
-		echo '<script type="application/ld+json">';
-		echo wp_json_encode( $schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT );
-		echo "</script>\n";
+		// 2. Hubungkan entitas WebPage ke LocalBusiness kita
+		foreach ( $graph as &$entity ) {
+			if ( ! isset( $entity['@type'] ) ) {
+				continue;
+			}
 
-		// Jika ada cabang, output masing-masing
-		if ( ! empty( $data['locations'] ) ) {
-			$this->output_branch_schemas( $data );
+			$types = (array) $entity['@type'];
+			if ( in_array( 'WebPage', $types, true ) || in_array( 'CollectionPage', $types, true ) ) {
+				// Tautkan about dan publisher ke LocalBusiness
+				$entity['about']     = [ '@id' => $local_id ];
+				$entity['publisher'] = [ '@id' => $local_id ];
+			}
 		}
+		unset( $entity );
+
+		// 3. Tambahkan cabang-cabang (locations) jika ada ke dalam graph
+		$branches = $this->build_branch_schemas( $data, $local_id );
+		if ( ! empty( $branches ) ) {
+			$graph = array_merge( $graph, $branches );
+		}
+
+		return $graph;
 	}
 
 	/**
 	 * Bangun array schema LocalBusiness dari data bisnis.
 	 *
-	 * @param array $data Data bisnis dari SGEOBIZ_GBP_Settings.
+	 * @param array  $data Data bisnis dari SGEOBIZ_GBP_Settings.
+	 * @param string $id   Schema ID unik.
 	 * @return array Schema JSON-LD.
 	 */
-	private function build_schema( array $data ) {
+	private function build_schema( array $data, $id ) {
 		$type = $data['business_type'] ?? 'LocalBusiness';
 
 		$schema = [
-			'@context' => 'https://schema.org',
-			'@type'    => $type,
-			'name'     => $data['business_name'],
+			'@type' => $type,
+			'@id'   => $id,
+			'name'  => $data['business_name'],
 		];
 
 		// URL bisnis
@@ -156,9 +170,6 @@ class SGEOBIZ_Schema_Local {
 			$schema['sameAs'] = $same_as;
 		}
 
-		// PriceRange (opsional — bisa dikembangkan nanti)
-		// $schema['priceRange'] = '$$';
-
 		return $schema;
 	}
 
@@ -192,7 +203,6 @@ class SGEOBIZ_Schema_Local {
 
 	/**
 	 * Bangun array OpeningHoursSpecification dari data jam operasional.
-	 * Mengelompokkan hari dengan jam yang sama untuk efisiensi.
 	 *
 	 * @param array $hours Data jam per hari.
 	 * @return array
@@ -213,12 +223,11 @@ class SGEOBIZ_Schema_Local {
 			'sunday'    => 'Sunday',
 		];
 
-		// Kelompokkan hari dengan jam buka/tutup yang sama
 		$grouped = [];
 		foreach ( $day_map as $key => $schema_day ) {
 			$h = $hours[ $key ] ?? [];
 			if ( ! empty( $h['closed'] ) ) {
-				continue; // Lewati hari tutup
+				continue;
 			}
 			$open  = $h['open']  ?? '08:00';
 			$close = $h['close'] ?? '17:00';
@@ -260,28 +269,30 @@ class SGEOBIZ_Schema_Local {
 	}
 
 	/**
-	 * Output schema untuk setiap cabang bisnis.
+	 * Buat list schema untuk setiap cabang bisnis.
 	 *
-	 * @param array $data Data bisnis utama (berisi key 'locations').
+	 * @param array  $data     Data bisnis utama.
+	 * @param string $parent_id ID schema bisnis utama.
+	 * @return array List schema cabang.
 	 */
-	private function output_branch_schemas( array $data ) {
+	private function build_branch_schemas( array $data, $parent_id ) {
 		$locations = $data['locations'] ?? [];
 
 		if ( empty( $locations ) ) {
-			return;
+			return [];
 		}
 
 		$type = $data['business_type'] ?? 'LocalBusiness';
+		$branches = [];
 
-		echo "\n<!-- SGEOBIZ SEO: Branch Locations Schema -->\n";
-		foreach ( $locations as $loc ) {
+		foreach ( $locations as $index => $loc ) {
 			if ( empty( $loc['name'] ) ) {
 				continue;
 			}
 
 			$branch = [
-				'@context' => 'https://schema.org',
 				'@type'    => $type,
+				'@id'      => home_url( '#localbusiness-branch-' . ( $index + 1 ) ),
 				'name'     => $loc['name'],
 				'address'  => [
 					'@type'           => 'PostalAddress',
@@ -305,16 +316,14 @@ class SGEOBIZ_Schema_Local {
 				];
 			}
 
-			// Cabang tetap referensi ke bisnis utama
+			// Cabang tetap terhubung ke bisnis utama (Parent)
 			$branch['parentOrganization'] = [
-				'@type' => $type,
-				'name'  => $data['business_name'],
-				'url'   => ! empty( $data['website'] ) ? $data['website'] : home_url( '/' ),
+				'@id' => $parent_id,
 			];
 
-			echo '<script type="application/ld+json">';
-			echo wp_json_encode( $branch, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT );
-			echo "</script>\n";
+			$branches[] = $branch;
 		}
+
+		return $branches;
 	}
 }
