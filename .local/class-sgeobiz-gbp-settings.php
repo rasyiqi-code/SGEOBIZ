@@ -37,6 +37,7 @@ class SGEOBIZ_GBP_Settings {
 		add_action( 'admin_head', [ $instance, 'print_styles' ] );
 		add_action( 'wp_ajax_sgeobiz_dismiss_ad', [ $instance, 'ajax_dismiss_ad' ] );
 		add_action( 'wp_dashboard_setup', [ $instance, 'register_dashboard_widget' ] );
+		add_action( 'wp_login', [ $instance, 'clear_dismiss_on_login' ], 10, 2 );
 	}
 
 	/**
@@ -45,6 +46,16 @@ class SGEOBIZ_GBP_Settings {
 	public function ajax_dismiss_ad() {
 		update_user_meta( get_current_user_id(), 'sgeobiz_dismissed_ad_crediblemark', 1 );
 		wp_send_json_success();
+	}
+
+	/**
+	 * Reset status tutup iklan ketika pengguna (admin) login kembali.
+	 *
+	 * @param string  $user_login Username pengguna.
+	 * @param WP_User $user       Objek user WordPress.
+	 */
+	public function clear_dismiss_on_login( $user_login, $user ) {
+		delete_user_meta( $user->ID, 'sgeobiz_dismissed_ad_crediblemark' );
 	}
 
 	/**
@@ -58,6 +69,17 @@ class SGEOBIZ_GBP_Settings {
 				__( 'Rekomendasi Kredibilitas Bisnis', 'sgeobiz-seo' ),
 				[ $this, 'render_dashboard_ad_widget' ]
 			);
+
+			// Pindahkan widget ke urutan pertama (paling atas kolom normal)
+			global $wp_meta_boxes;
+			if ( isset( $wp_meta_boxes['dashboard']['normal']['core']['sgeobiz_crediblemark_ad_widget'] ) ) {
+				$my_widget = $wp_meta_boxes['dashboard']['normal']['core']['sgeobiz_crediblemark_ad_widget'];
+				unset( $wp_meta_boxes['dashboard']['normal']['core']['sgeobiz_crediblemark_ad_widget'] );
+				$wp_meta_boxes['dashboard']['normal']['core'] = array_merge(
+					[ 'sgeobiz_crediblemark_ad_widget' => $my_widget ],
+					$wp_meta_boxes['dashboard']['normal']['core']
+				);
+			}
 		}
 	}
 
