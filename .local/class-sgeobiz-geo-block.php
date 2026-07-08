@@ -22,9 +22,39 @@ class SGEOBIZ_GEO_Block {
 		
 		// Daftarkan shortcode [ringkasan_geo]
 		add_shortcode( 'ringkasan_geo', [ $instance, 'render_shortcode' ] );
+
+		// Otomatis inject ringkasan dari metabox ke bagian atas konten artikel di front-end
+		add_filter( 'the_content', [ $instance, 'auto_inject_geo_summary' ], 8 );
 		
 		// Daftarkan inline CSS di front-end untuk memberikan visualisasi premium
 		add_action( 'wp_enqueue_scripts', [ $instance, 'enqueue_frontend_styles' ] );
+	}
+
+	/**
+	 * Otomatis inject ringkasan GEO di awal artikel jika field diisi di editor.
+	 *
+	 * @param string $content HTML konten.
+	 * @return string HTML konten termodifikasi.
+	 */
+	public function auto_inject_geo_summary( $content ) {
+		if ( ! is_singular( 'post' ) || ! in_the_loop() || ! is_main_query() ) {
+			return $content;
+		}
+
+		$post_id     = get_the_ID();
+		$geo_summary = $post_id ? get_post_meta( $post_id, '_sgeobiz_geo_summary', true ) : '';
+
+		if ( ! empty( $geo_summary ) ) {
+			// Jika user sudah menulis shortcode secara manual di dalam pos, abaikan auto-inject
+			if ( has_shortcode( $content, 'ringkasan_geo' ) || strpos( $content, 'ringkasan-artikel-geo' ) !== false ) {
+				return $content;
+			}
+
+			$html    = $this->render_html( $geo_summary );
+			$content = $html . $content;
+		}
+
+		return $content;
 	}
 
 	/**
@@ -38,7 +68,16 @@ class SGEOBIZ_GEO_Block {
 		if ( empty( $content ) ) {
 			return '';
 		}
+		return $this->render_html( $content );
+	}
 
+	/**
+	 * Bangun HTML wrapper premium untuk GEO block.
+	 *
+	 * @param string $content Teks ringkasan.
+	 * @return string HTML output.
+	 */
+	private function render_html( string $content ): string {
 		// Bersihkan tag bersarang tapi pertahankan format teks dasar
 		$clean_content = wp_kses_post( $content );
 

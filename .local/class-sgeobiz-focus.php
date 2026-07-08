@@ -62,6 +62,7 @@ class SGEOBIZ_Focus {
 	 */
 	public function add_focus_meta_defaults( $defaults, $post_id ) {
 		$defaults['_sgeobiz_focus_keywords'] = '';
+		$defaults['_sgeobiz_geo_summary']    = '';
 		return $defaults;
 	}
 
@@ -83,6 +84,9 @@ class SGEOBIZ_Focus {
 			} else {
 				$data['_sgeobiz_focus_keywords'] = sanitize_text_field( trim( $data['_sgeobiz_focus_keywords'] ) );
 			}
+		}
+		if ( isset( $data['_sgeobiz_geo_summary'] ) ) {
+			$data['_sgeobiz_geo_summary'] = sanitize_textarea_field( $data['_sgeobiz_geo_summary'] );
 		}
 		return $data;
 	}
@@ -131,7 +135,8 @@ class SGEOBIZ_Focus {
 		}
 		
 		// Selalu sediakan 3 input field
-		$keywords = array_pad( $keywords, 3, '' );
+		$keywords    = array_pad( $keywords, 3, '' );
+		$geo_summary = $post_id ? get_post_meta( $post_id, '_sgeobiz_geo_summary', true ) : '';
 		?>
 		<div class="sgeobiz-focus-container">
 			<!-- Header & Informasi Singkat -->
@@ -179,6 +184,20 @@ class SGEOBIZ_Focus {
 						</div>
 					</div>
 				<?php endfor; ?>
+			</div>
+
+			<!-- Ringkasan Cepat AI (GEO Answer Box) -->
+			<div class="sgeobiz-focus-geo-summary-wrap" style="margin-top: 24px; padding: 18px; background: #fafafa; border: 1px solid #e2e8f0; border-radius: 8px;">
+				<label for="sgeobiz_geo_summary" style="display: block; font-weight: 600; color: #1e293b; margin-bottom: 6px; font-size: 14px;">Ringkasan Cepat AI (GEO Answer Box)</label>
+				<p class="description" style="margin: 0 0 10px 0; color: #64748b; font-size: 12px; line-height: 1.4;">
+					Tulis ringkasan singkat artikel Anda (40-60 kata). Teks ini akan digunakan sebagai target penelusuran suara (Speakable) dan cuplikan jawaban mesin AI (Google AI Overviews).
+				</p>
+				<textarea id="sgeobiz_geo_summary" 
+					name="sgeobiz-seo[_sgeobiz_geo_summary]" 
+					rows="3" 
+					placeholder="Tulis ringkasan ringkas, padat informasi, langsung menjawab topik utama..." 
+					class="large-text" 
+					style="width: 100%; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; font-size: 13px; font-family: inherit; box-shadow: inset 0 1px 2px rgba(0,0,0,0.05); resize: vertical;"><?php echo esc_textarea( $geo_summary ); ?></textarea>
 			</div>
 
 			<!-- Navigation Subjek Aktif untuk Detail Analisis -->
