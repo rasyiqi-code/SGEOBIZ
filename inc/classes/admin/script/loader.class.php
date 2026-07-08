@@ -405,7 +405,7 @@ class Loader {
 				'autoload' => true,
 				'name'     => 'settings',
 				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/css/',
-				'ver'      => \SGEOBIZ_SEO_VERSION,
+				'ver'      => \SGEOBIZ_SEO_VERSION . '.' . time(),
 			],
 			[
 				'id'       => 'sgeobiz-settings',
@@ -414,7 +414,7 @@ class Loader {
 				'autoload' => true,
 				'name'     => 'settings',
 				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/js/',
-				'ver'      => \SGEOBIZ_SEO_VERSION,
+				'ver'      => \SGEOBIZ_SEO_VERSION . '.' . time(),
 				'l10n'     => [
 					'name' => 'sgeobizSettingsL10n',
 					'data' => [
