@@ -3,7 +3,6 @@ layout: default
 title: Fitur
 nav_order: 3
 has_children: true
-permalink: /fitur/
 ---
 
 # Fitur SGEOBIZ SEO

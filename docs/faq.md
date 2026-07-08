@@ -2,7 +2,6 @@
 layout: default
 title: FAQ
 nav_order: 5
-permalink: /faq/
 ---
 
 # Pertanyaan yang Sering Diajukan (FAQ)

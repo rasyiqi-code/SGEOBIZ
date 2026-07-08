@@ -3,7 +3,6 @@ layout: default
 title: Panduan Pengaturan
 nav_order: 2
 has_children: true
-permalink: /panduan/
 ---
 
 # Panduan Pengaturan

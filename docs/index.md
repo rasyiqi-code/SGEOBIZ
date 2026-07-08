@@ -3,7 +3,6 @@ layout: home
 title: Beranda
 nav_order: 1
 description: "SGEOBIZ SEO — Plugin SEO terlengkap dan tercepat untuk WordPress, dioptimalkan untuk bisnis lokal Indonesia."
-permalink: /
 ---
 
 # SGEOBIZ SEO
