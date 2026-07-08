@@ -73,6 +73,26 @@ final class Plugin {
 	 * @since 5.0.0 Renamed from `_register_seo_settings_meta_boxes`.
 	 */
 	public static function register_seo_settings_meta_boxes() {
+		// Pastikan semua metabox kita selalu ter-render di HTML (tidak disembunyikan oleh Screen Options user)
+		\add_filter( 'hidden_meta_boxes', function( $hidden, $screen ) {
+			if ( $screen && $screen->id === 'toplevel_page_sgeobiz-seo-settings' ) {
+				$our_boxes = [
+					'autodescription-general-settings',
+					'autodescription-title-settings',
+					'autodescription-description-settings',
+					'autodescription-social-settings',
+					'autodescription-homepage-settings',
+					'autodescription-post-type-archive-settings',
+					'autodescription-schema-settings',
+					'autodescription-robots-settings',
+					'autodescription-webmaster-settings',
+					'autodescription-sitemap-settings',
+					'autodescription-feed-settings',
+				];
+				$hidden = \array_diff( $hidden, $our_boxes );
+			}
+			return $hidden;
+		}, 10, 2 );
 
 		/**
 		 * Various meta box filters.
