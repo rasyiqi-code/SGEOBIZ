@@ -411,9 +411,14 @@ body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
 .sgeobiz-nav-tab-wrapper {
     border-bottom: 2px solid #e2e8f0 !important;
     padding: 0 !important;
-    margin: 0 0 20px 0 !important;
+    margin: 0 0 10px 0 !important; /* Margin bawah tab dirapatkan */
     display: flex !important;
     gap: 16px !important;
+}
+
+/* Rapatkan konten tab dengan tab-wrapper di atasnya */
+.sgeobiz-nav-tab-content {
+    margin: 8px 0 0 0 !important;
 }
 
 .sgeobiz-nav-tab-label {
