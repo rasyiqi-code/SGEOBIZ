@@ -64,7 +64,7 @@ class SGEOBIZ_GBP_Settings {
 	public function render_settings_ad() {
 		$dismissed_ad = get_user_meta( get_current_user_id(), 'sgeobiz_dismissed_ad_crediblemark', true );
 		if ( ! $dismissed_ad ) {
-			echo '<div class="sgeobiz-ad-box" id="sgeobiz-ad-crediblemark" style="margin-top: 20px;">';
+			echo '<div class="sgeobiz-ad-box" id="sgeobiz-ad-crediblemark" style="display:none; margin-top: 12px; margin-bottom: 12px;">';
 			echo '  <span class="sgeobiz-ad-close" onclick="sgeobizDismissAd()">&times;</span>';
 			echo '  <div class="sgeobiz-ad-content">';
 			echo '      <h3>Jasa Pembuatan Template dan Plugin Khusus Eksklusif</h3>';
@@ -76,20 +76,22 @@ class SGEOBIZ_GBP_Settings {
 			echo '  </div>';
 			echo '</div>';
 			
-			// Ajax script untuk simpan status dismiss ke user meta
-			// Jalankan SETELAH settings.js selesai rekonstruksi DOM (window.load)
+			// Sembunyikan dulu di posisi salah, pindah ke benar, lalu tampilkan — cegah flash posisi
 			echo '<script>';
 			echo 'jQuery(window).on("load", function() {';
-			echo '  var box = document.getElementById("sgeobiz-ad-crediblemark");';
-			echo '  var container = document.querySelector(".sgeobiz-settings-container");';
-			echo '  if (box && container) {';
-			echo '    container.parentNode.insertBefore(box, container);';
+			echo '  var box = jQuery("#sgeobiz-ad-crediblemark");';
+			echo '  var $container = jQuery(".sgeobiz-settings-container");';
+			echo '  if (box.length && $container.length) {';
+			echo '    $container.before(box);';
+			echo '    box.fadeIn(250);';
+			echo '  } else if (box.length) {';
+			echo '    box.fadeIn(250);';
 			echo '  }';
 			echo '});';
 			echo 'function sgeobizDismissAd() {';
-			echo '  var box = document.getElementById("sgeobiz-ad-crediblemark");';
-			echo '  if(box) { box.style.display = "none"; }';
-			echo '  jQuery.post(ajaxurl, { action: "sgeobiz_dismiss_ad" });';
+			echo '  jQuery("#sgeobiz-ad-crediblemark").fadeOut(200, function() {';
+			echo '    jQuery.post(ajaxurl, { action: "sgeobiz_dismiss_ad" });';
+			echo '  });';
 			echo '}';
 			echo '</script>';
 		}
