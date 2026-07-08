@@ -75,6 +75,8 @@ class Menu {
 			$menu['callback'],
 		);
 
+		\add_filter( 'parent_file', [ self::class, 'highlight_submenu' ] );
+
 		// Daftarkan sub-menu individual untuk deep-link: [page_title, menu_title]
 		$sub_menus = [
 			'title'        => [ \esc_html__( 'Title Settings - SEO', 'sgeobiz-seo' ), \esc_html__( 'Judul', 'sgeobiz-seo' ) ],
@@ -209,5 +211,24 @@ class Menu {
 				$notice_i18n,
 			)
 		);
+	}
+
+	/**
+	 * Sorot submenu yang aktif di sidebar admin secara dinamis berdasarkan parameter section.
+	 *
+	 * @param string $parent_file Berkas induk saat ini.
+	 * @return string
+	 */
+	public static function highlight_submenu( $parent_file ) {
+		global $submenu_file, $plugin_page;
+
+		if ( 'sgeobiz-seo-settings' === $plugin_page ) {
+			$section = isset( $_GET['section'] ) ? sanitize_text_field( $_GET['section'] ) : '';
+			if ( $section ) {
+				$submenu_file = 'sgeobiz-seo-settings&section=' . $section;
+			}
+		}
+
+		return $parent_file;
 	}
 }
