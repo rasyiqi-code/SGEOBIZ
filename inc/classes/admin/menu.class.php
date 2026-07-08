@@ -69,7 +69,7 @@ class Menu {
 		\add_submenu_page(
 			$menu['menu_slug'],
 			\esc_html__( 'General Settings - SGEOBIZ SEO', 'sgeobiz-seo' ),
-			\esc_html__( 'Umum', 'sgeobiz-seo' ),
+			\esc_html__( 'General', 'sgeobiz-seo' ),
 			$menu['capability'],
 			$menu['menu_slug'], // Gunakan parent slug agar link pertama me-rename judul menu default
 			$menu['callback'],
