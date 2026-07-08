@@ -89,7 +89,7 @@ class SGEOBIZ_GBP_Settings {
 				background: #ffffff !important;
 			}
 			.sgeobiz-topbar {
-				padding: 24px 30px;
+				padding: 12px 24px;
 				background: #ffffff;
 				border-bottom: 1px solid #f1f5f9;
 				display: flex;
@@ -98,13 +98,13 @@ class SGEOBIZ_GBP_Settings {
 			}
 			.sgeobiz-topbar-title {
 				margin: 0;
-				font-size: 20px;
+				font-size: 16px;
 				font-weight: 700;
 				color: #0f172a;
 			}
 			.sgeobiz-topbar-actions {
 				display: flex;
-				gap: 10px;
+				gap: 8px;
 			}
 			/* Save button override */
 			.sgeobiz-topbar-actions .button-primary {
@@ -113,12 +113,13 @@ class SGEOBIZ_GBP_Settings {
 				color: #fff !important;
 				font-weight: 600 !important;
 				border-radius: 6px !important;
-				padding: 0 20px !important;
-				height: 38px !important;
-				line-height: 38px !important;
+				padding: 0 16px !important;
+				height: 32px !important;
+				line-height: 32px !important;
 				box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2), 0 2px 4px -1px rgba(79, 70, 229, 0.1) !important;
 				cursor: pointer !important;
 				transition: transform 0.2s, box-shadow 0.2s !important;
+				font-size: 12px !important;
 			}
 			.sgeobiz-topbar-actions .button-primary:hover {
 				transform: translateY(-1px);
