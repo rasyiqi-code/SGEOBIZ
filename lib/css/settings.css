@@ -366,39 +366,45 @@ body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
 .sgeobiz-premium-theme input[type="checkbox"] {
     -webkit-appearance: none;
     appearance: none;
-    width: 40px;
-    height: 20px;
-    background-color: #cbd5e1;
-    border-radius: 10px;
-    position: relative;
-    cursor: pointer;
-    outline: none;
-    transition: background-color 0.2s ease;
-    vertical-align: middle;
+    width: 40px !important;
+    height: 20px !important;
+    background-color: #cbd5e1 !important;
+    border-radius: 10px !important;
+    position: relative !important;
+    cursor: pointer !important;
+    outline: none !important;
+    transition: background-color 0.2s ease !important;
+    vertical-align: middle !important;
     margin-right: 8px !important;
     border: none !important;
     box-shadow: none !important;
 }
 
 .sgeobiz-premium-theme input[type="checkbox"]:checked {
-    background-color: #6366f1;
+    background-color: #6366f1 !important;
 }
 
 .sgeobiz-premium-theme input[type="checkbox"]::before {
-    content: "";
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background-color: white;
-    top: 2px;
-    left: 2px;
-    transition: transform 0.2s ease;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    content: "" !important;
+    position: absolute !important;
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: 50% !important;
+    background-color: #ffffff !important;
+    top: 2px !important;
+    left: 2px !important;
+    margin: 0 !important;
+    transition: transform 0.2s ease !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+    float: none !important;
+    display: block !important;
 }
 
 .sgeobiz-premium-theme input[type="checkbox"]:checked::before {
-    transform: translateX(20px);
+    content: "" !important;
+    transform: translateX(20px) !important;
+    background-color: #ffffff !important;
+    margin: 0 !important;
 }
 
 /* Tab Headers inside postbox */
