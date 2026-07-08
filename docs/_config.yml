@@ -1,4 +1,4 @@
-theme: just-the-docs
+remote_theme: just-the-docs/just-the-docs
 title: SGEOBIZ SEO — Dokumentasi
 description: Plugin SEO terlengkap untuk WordPress, dioptimalkan untuk bisnis lokal Indonesia.
 baseurl: "/SGEOBIZ"
@@ -27,7 +27,7 @@ search:
 gh_edit_link: true
 gh_edit_link_text: "Edit halaman ini di GitHub"
 gh_edit_repository: "https://github.com/rasyiqi-code/SGEOBIZ"
-gh_edit_branch: "main"
+gh_edit_branch: "master"
 gh_edit_source: docs
 gh_edit_view_mode: "tree"
 
