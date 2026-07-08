@@ -105,14 +105,20 @@ namespace {
 
 		$atts = shortcode_atts(
 			[
-				'sep'   => '\203A',
-				'home'  => __( 'Home', 'default' ), // defined in wp_page_menu()
-				'class' => 'sgeobiz-breadcrumb',
-				'title' => null,
+				'sep'          => '\203A',
+				'home'         => __( 'Home', 'default' ), // defined in wp_page_menu()
+				'class'        => 'sgeobiz-breadcrumb',
+				'title'        => null,
+				'hide_home'    => false,
+				'hide_current' => false,
 			],
 			$atts,
 			'sgeobiz_breadcrumb',
 		);
+
+		// Konversi tipe input ke boolean secara andal
+		$hide_home    = filter_var( $atts['hide_home'], FILTER_VALIDATE_BOOLEAN );
+		$hide_current = filter_var( $atts['hide_current'], FILTER_VALIDATE_BOOLEAN );
 
 		// Extract a valid class; it'll be of an escaped kind.
 		preg_match( '/-?[a-z_]+[a-z\d_-]*/i', $atts['class'], $matches );
@@ -131,13 +137,26 @@ namespace {
 		$home = \SGEOBIZ_SEO\coalesce_strlen( $atts['home'] ) ?? $crumbs[0]['name'];
 
 		if ( 1 === $count ) {
-			$items[] = sprintf(
-				'<span aria-current="page">%s</span>',
-				esc_html( $home ),
-			);
+			if ( ! $hide_home ) {
+				$items[] = sprintf(
+					'<span aria-current="page">%s</span>',
+					esc_html( $home ),
+				);
+			}
 		} else {
 			foreach ( $crumbs as $i => $crumb ) {
-				if ( ( $count - 1 ) === $i ) {
+				$is_home    = ( 0 === $i );
+				$is_current = ( ( $count - 1 ) === $i );
+
+				// Lewati jika diatur untuk disembunyikan
+				if ( $is_home && $hide_home ) {
+					continue;
+				}
+				if ( $is_current && $hide_current ) {
+					continue;
+				}
+
+				if ( $is_current ) {
 					$items[] = sprintf(
 						'<span aria-current="page">%s</span>',
 						esc_html( $crumb['name'] ),
@@ -146,7 +165,7 @@ namespace {
 					$items[] = sprintf(
 						'<a href="%s">%s</a>',
 						esc_url( $crumb['url'] ),
-						esc_html( 0 === $i ? $home : $crumb['name'] ),
+						esc_html( $is_home ? $home : $crumb['name'] ),
 					);
 				}
 			}
