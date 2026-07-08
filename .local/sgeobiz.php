@@ -18,13 +18,21 @@ add_filter( 'plugin_locale', function( $locale, $domain ) {
 	return $locale;
 }, 100, 2 );
 
-// Muat ulang textdomain agar perubahan lokalisasi Bahasa Indonesia langsung aktif
+// Intersept pemuatan mofile sgeobiz-seo dan paksa menggunakan berkas bahasa Indonesia absolut kita
+// Ini menyelesaikan masalah path relative symlink pada lingkungan dev
+add_filter( 'load_textdomain_mofile', function( $mofile, $domain ) {
+	if ( 'sgeobiz-seo' === $domain ) {
+		$custom_mo = dirname( dirname( __FILE__ ) ) . DIRECTORY_SEPARATOR . 'language' . DIRECTORY_SEPARATOR . 'sgeobiz-seo-id_ID.mo';
+		if ( file_exists( $custom_mo ) ) {
+			return $custom_mo;
+		}
+	}
+	return $mofile;
+}, 100, 2 );
+
+// Muat ulang textdomain agar perubahan lokalisasi Bahasa Indonesia langsung aktif secara mutlak
 unload_textdomain( 'sgeobiz-seo' );
-load_plugin_textdomain(
-	'sgeobiz-seo',
-	false,
-	dirname( SGEOBIZ_SEO_PLUGIN_BASENAME ) . DIRECTORY_SEPARATOR . 'language'
-);
+load_plugin_textdomain( 'sgeobiz-seo' );
 
 // Konstanta jalur direktori .local
 define( 'SGEOBIZ_LOCAL_DIR', dirname( __FILE__ ) . DIRECTORY_SEPARATOR );
