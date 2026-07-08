@@ -42,7 +42,7 @@ class SGEOBIZ_GBP_Settings {
 	public function register_menu() {
 		add_submenu_page(
 			SGEOBIZ_SEO_SITE_OPTIONS_SLUG,
-			__( 'SGEOBIZ: Profil Bisnis & AI', 'sgeobiz-seo' ),
+			__( 'SGEOBIZ: Profil Bisnis', 'sgeobiz-seo' ),
 			__( 'Profil Bisnis', 'sgeobiz-seo' ),
 			'manage_options',
 			'sgeobiz-business-settings',
@@ -95,9 +95,6 @@ class SGEOBIZ_GBP_Settings {
 
 		$data = $this->sanitize_business_data( $_POST );
 		update_option( self::OPTION_KEY, $data );
-
-		$api_data = $this->sanitize_api_data( $_POST );
-		update_option( self::API_KEY_OPTION, $api_data );
 
 		add_settings_error(
 			'sgeobiz_settings',
@@ -192,19 +189,7 @@ class SGEOBIZ_GBP_Settings {
 		];
 	}
 
-	/**
-	 * Sanitasi data API keys dari POST.
-	 *
-	 * @param array $post Data $_POST.
-	 * @return array
-	 */
-	private function sanitize_api_data( $post ) {
-		return [
-			'gemini'  => sanitize_text_field( $post['api_gemini'] ?? '' ),
-			'openai'  => sanitize_text_field( $post['api_openai'] ?? '' ),
-			'provider' => sanitize_text_field( $post['ai_provider'] ?? 'gemini' ),
-		];
-	}
+
 
 	/**
 	 * Ambil data bisnis yang tersimpan.
@@ -215,14 +200,7 @@ class SGEOBIZ_GBP_Settings {
 		return (array) get_option( self::OPTION_KEY, [] );
 	}
 
-	/**
-	 * Ambil API keys yang tersimpan.
-	 *
-	 * @return array
-	 */
-	public static function get_api_data() {
-		return (array) get_option( self::API_KEY_OPTION, [] );
-	}
+
 
 	/**
 	 * Render halaman settings lengkap.
@@ -233,7 +211,6 @@ class SGEOBIZ_GBP_Settings {
 		}
 
 		$data     = self::get_business_data();
-		$api_data = self::get_api_data();
 
 		$d = function ( $key, $default = '' ) use ( $data ) {
 			return isset( $data[ $key ] ) ? esc_attr( $data[ $key ] ) : esc_attr( $default );
@@ -345,22 +322,7 @@ class SGEOBIZ_GBP_Settings {
 		echo '<script>function sgeobizPickLogo(){ var frame=wp.media({title:"Pilih Logo Bisnis",button:{text:"Gunakan Logo"},multiple:false});frame.on("select",function(){var att=frame.state().get("selection").first().toJSON();document.getElementById("sgeobiz_logo_id").value=att.id;});frame.open();}</script>';
 		echo '</div>';
 
-		// ── Bagian 7: AI Settings ─────────────────────────────────────────
-		echo '<div class="sgeobiz-section">';
-		echo '<h2>Pengaturan AI <span class="sgeobiz-badge">AI Meta Generator</span></h2>';
-		echo '<p>API key untuk fitur generate SEO title &amp; description otomatis di editor post.</p>';
 
-		$ai_providers = [ 'gemini' => 'Google Gemini (Direkomendasikan)', 'openai' => 'OpenAI GPT-4o' ];
-		$this->field_select( 'ai_provider', 'Provider AI Utama', $ai_providers, $api_data['provider'] ?? 'gemini' );
-
-		echo '<div class="sgeobiz-field"><label>Google Gemini API Key</label>';
-		echo '<input type="password" name="api_gemini" value="' . esc_attr( $api_data['gemini'] ?? '' ) . '" autocomplete="off" style="max-width:480px">';
-		echo '<small>Dapatkan di: <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></small></div>';
-
-		echo '<div class="sgeobiz-field"><label>OpenAI API Key (opsional)</label>';
-		echo '<input type="password" name="api_openai" value="' . esc_attr( $api_data['openai'] ?? '' ) . '" autocomplete="off" style="max-width:480px">';
-		echo '<small>Dapatkan di: <a href="https://platform.openai.com/api-keys" target="_blank">OpenAI Platform</a></small></div>';
-		echo '</div>';
 
 		// ── Submit ─────────────────────────────────────────────────────────
 		echo '<p>';
