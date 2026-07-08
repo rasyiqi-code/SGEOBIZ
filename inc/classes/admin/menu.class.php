@@ -68,7 +68,7 @@ class Menu {
 
 		\add_submenu_page(
 			$menu['menu_slug'],
-			\esc_html__( 'Pengaturan Umum - SGEOBIZ SEO', 'sgeobiz-seo' ),
+			\esc_html__( 'Pengaturan Umum - SEO', 'sgeobiz-seo' ),
 			\esc_html__( 'Umum', 'sgeobiz-seo' ),
 			$menu['capability'],
 			$menu['menu_slug'], // Gunakan parent slug agar link pertama me-rename judul menu default
@@ -77,15 +77,15 @@ class Menu {
 
 		// Daftarkan sub-menu individual untuk deep-link: [page_title, menu_title]
 		$sub_menus = [
-			'title'        => [ \esc_html__( 'Title Settings - SGEOBIZ SEO', 'sgeobiz-seo' ), \esc_html__( 'Judul', 'sgeobiz-seo' ) ],
-			'description'  => [ \esc_html__( 'Description Meta Settings - SGEOBIZ SEO', 'sgeobiz-seo' ), \esc_html__( 'Deskripsi Meta', 'sgeobiz-seo' ) ],
-			'social'       => [ \esc_html__( 'Social Meta Settings - SGEOBIZ SEO', 'sgeobiz-seo' ), \esc_html__( 'Media Sosial', 'sgeobiz-seo' ) ],
-			'homepage'     => [ \esc_html__( 'Homepage Settings - SGEOBIZ SEO', 'sgeobiz-seo' ), \esc_html__( 'Homepage', 'sgeobiz-seo' ) ],
-			'schema'       => [ \esc_html__( 'Schema.org Settings - SGEOBIZ SEO', 'sgeobiz-seo' ), \esc_html__( 'Schema.org', 'sgeobiz-seo' ) ],
-			'robots'       => [ \esc_html__( 'Robots Settings - SGEOBIZ SEO', 'sgeobiz-seo' ), \esc_html__( 'Robots', 'sgeobiz-seo' ) ],
-			'webmaster'    => [ \esc_html__( 'Webmaster Meta Settings - SGEOBIZ SEO', 'sgeobiz-seo' ), \esc_html__( 'Webmaster', 'sgeobiz-seo' ) ],
-			'sitemap'      => [ \esc_html__( 'Sitemap Settings - SGEOBIZ SEO', 'sgeobiz-seo' ), \esc_html__( 'Sitemap', 'sgeobiz-seo' ) ],
-			'feed'         => [ \esc_html__( 'Feed Settings - SGEOBIZ SEO', 'sgeobiz-seo' ), \esc_html__( 'Feed', 'sgeobiz-seo' ) ],
+			'title'        => [ \esc_html__( 'Title Settings - SEO', 'sgeobiz-seo' ), \esc_html__( 'Judul', 'sgeobiz-seo' ) ],
+			'description'  => [ \esc_html__( 'Description Meta Settings - SEO', 'sgeobiz-seo' ), \esc_html__( 'Deskripsi Meta', 'sgeobiz-seo' ) ],
+			'social'       => [ \esc_html__( 'Social Meta Settings - SEO', 'sgeobiz-seo' ), \esc_html__( 'Media Sosial', 'sgeobiz-seo' ) ],
+			'homepage'     => [ \esc_html__( 'Homepage Settings - SEO', 'sgeobiz-seo' ), \esc_html__( 'Homepage', 'sgeobiz-seo' ) ],
+			'schema'       => [ \esc_html__( 'Schema.org Settings - SEO', 'sgeobiz-seo' ), \esc_html__( 'Schema.org', 'sgeobiz-seo' ) ],
+			'robots'       => [ \esc_html__( 'Robots Settings - SEO', 'sgeobiz-seo' ), \esc_html__( 'Robots', 'sgeobiz-seo' ) ],
+			'webmaster'    => [ \esc_html__( 'Webmaster Meta Settings - SEO', 'sgeobiz-seo' ), \esc_html__( 'Webmaster', 'sgeobiz-seo' ) ],
+			'sitemap'      => [ \esc_html__( 'Sitemap Settings - SEO', 'sgeobiz-seo' ), \esc_html__( 'Sitemap', 'sgeobiz-seo' ) ],
+			'feed'         => [ \esc_html__( 'Feed Settings - SEO', 'sgeobiz-seo' ), \esc_html__( 'Feed', 'sgeobiz-seo' ) ],
 		];
 
 		foreach ( $sub_menus as $slug => $titles ) {
@@ -129,8 +129,8 @@ class Menu {
 		return memo( \apply_filters(
 			'sgeobiz_seo_top_menu_args',
 			[
-				'page_title' => \esc_html__( 'Pengaturan SGEOBIZ SEO', 'sgeobiz-seo' ),
-				'menu_title' => \esc_html__( 'SGEOBIZ SEO', 'sgeobiz-seo' )
+				'page_title' => \esc_html__( 'Pengaturan SEO', 'sgeobiz-seo' ),
+				'menu_title' => \esc_html__( 'SEO', 'sgeobiz-seo' )
 					. ( $issue_count ? self::get_issue_badge( $issue_count ) : '' ),
 				'capability' => \SGEOBIZ_SEO_SETTINGS_CAP,
 				'menu_slug'  => \SGEOBIZ_SEO_SITE_OPTIONS_SLUG,
