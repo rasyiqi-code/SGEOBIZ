@@ -34,6 +34,7 @@ class SGEOBIZ_GBP_Settings {
 		add_action( 'admin_menu', [ $instance, 'register_menu' ], 20 );
 		add_action( 'admin_init', [ $instance, 'handle_save' ] );
 		add_action( 'admin_enqueue_scripts', [ $instance, 'enqueue_assets' ] );
+		add_action( 'admin_head', [ $instance, 'print_styles' ] );
 	}
 
 	/**
@@ -56,13 +57,10 @@ class SGEOBIZ_GBP_Settings {
 	 * @param string $hook Hook halaman admin saat ini.
 	 */
 	public function enqueue_assets( $hook ) {
-		if ( $hook !== 'seo_page_sgeobiz-business-settings' ) {
-			return;
+		$screen = get_current_screen();
+		if ( $screen && str_contains( $screen->id, 'sgeobiz-business-settings' ) ) {
+			\wp_enqueue_media();
 		}
-
-		\wp_enqueue_media();
-
-		\add_action( 'admin_head', [ $this, 'print_styles' ] );
 	}
 
 	/**
