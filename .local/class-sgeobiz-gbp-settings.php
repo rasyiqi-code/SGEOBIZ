@@ -64,7 +64,8 @@ class SGEOBIZ_GBP_Settings {
 	public function render_settings_ad() {
 		$dismissed_ad = get_user_meta( get_current_user_id(), 'sgeobiz_dismissed_ad_crediblemark', true );
 		if ( ! $dismissed_ad ) {
-			echo '<div class="sgeobiz-ad-box" id="sgeobiz-ad-crediblemark" style="display:none; margin-top: 12px; margin-bottom: 12px;">';
+			// Render HTML iklan — hidden, JS yang posisikan setelah DOM settings.js selesai
+			echo '<div class="sgeobiz-ad-box" id="sgeobiz-ad-crediblemark" style="display:none; margin-top:12px; margin-bottom:12px;">';
 			echo '  <span class="sgeobiz-ad-close" onclick="sgeobizDismissAd()">&times;</span>';
 			echo '  <div class="sgeobiz-ad-content">';
 			echo '      <h3>Jasa Pembuatan Template dan Plugin Khusus Eksklusif</h3>';
@@ -75,25 +76,26 @@ class SGEOBIZ_GBP_Settings {
 			echo '      </div>';
 			echo '  </div>';
 			echo '</div>';
-			
-			// Sembunyikan dulu di posisi salah, pindah ke benar, lalu tampilkan — cegah flash posisi
-			echo '<script>';
-			echo 'jQuery(window).on("load", function() {';
-			echo '  var box = jQuery("#sgeobiz-ad-crediblemark");';
-			echo '  var $container = jQuery(".sgeobiz-settings-container");';
-			echo '  if (box.length && $container.length) {';
-			echo '    $container.before(box);';
-			echo '    box.fadeIn(250);';
-			echo '  } else if (box.length) {';
-			echo '    box.fadeIn(250);';
-			echo '  }';
-			echo '});';
-			echo 'function sgeobizDismissAd() {';
-			echo '  jQuery("#sgeobiz-ad-crediblemark").fadeOut(200, function() {';
-			echo '    jQuery.post(ajaxurl, { action: "sgeobiz_dismiss_ad" });';
-			echo '  });';
-			echo '}';
-			echo '</script>';
+
+			// Inject via wp_add_inline_script → menempel ke sgeobiz-settings handle
+			// Sehingga berjalan SETELAH settings.js selesai rekonstruksi DOM — zero flash
+			\wp_add_inline_script( 'sgeobiz-settings', '
+				jQuery(document).ready(function($) {
+					var $box = $("#sgeobiz-ad-crediblemark");
+					var $container = $(".sgeobiz-settings-container");
+					if ($box.length && $container.length) {
+						$container.before($box);
+						$box.fadeIn(250);
+					} else if ($box.length) {
+						$box.fadeIn(250);
+					}
+				});
+				function sgeobizDismissAd() {
+					jQuery("#sgeobiz-ad-crediblemark").fadeOut(200, function() {
+						jQuery.post(ajaxurl, { action: "sgeobiz_dismiss_ad" });
+					});
+				}
+			' );
 		}
 	}
 
