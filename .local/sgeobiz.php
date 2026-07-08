@@ -65,4 +65,7 @@ function sgeobiz_boot() {
 
 	// 8. Automated HTML Semantic Sanitizer ( H1 tunggal & Heading Hierarchy logis )
 	SGEOBIZ_Semantic_HTML_Sanitizer::init();
+
+	// 9. HTTP 304 Not Modified Cache Optimizer ( Crawl Budget Hack )
+	SGEOBIZ_HTTP_304::init();
 }
