@@ -47,51 +47,51 @@
 }
 
 .fixed .column-sgeobiz-seo-bar-wrap {
-	width: 120px;
+	width: 100px;
 	vertical-align: middle;
 }
 
 .sgeobiz-seo-bar {
 	display: block;
 	width: 100%;
-	max-width: 110px;
+	max-width: 90px;
 	padding: 0;
-	margin: 0 auto;
+	margin: 0;
 }
 
 .sgeobiz-seo-bar-inner-wrap {
-	border-radius: 6px;
-	background: #f8fafc;
-	border: 1px solid #cbd5e1;
-	padding: 5px;
+	border-radius: 0;
+	background: transparent;
+	border: none;
+	padding: 0;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
-	gap: 4px;
-	justify-content: space-between;
+	gap: 2px;
+	justify-content: flex-start;
 	align-items: center;
-	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+	box-shadow: none;
 }
 
 .sgeobiz-seo-bar-section-wrap {
 	min-width: unset;
-	flex: 1 1 auto;
+	flex: 0 0 auto;
 	display: flex;
 	justify-content: center;
 }
 
 .sgeobiz-seo-bar-item {
 	display: block;
-	width: 10px;
+	width: 11px;
 	height: 20px;
-	border-radius: 3px;
+	border-radius: 2px;
 	border: none;
 	color: transparent;
 	font-size: 0;
 	line-height: 0;
 	text-shadow: none;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-	transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.15s ease, box-shadow 0.15s ease;
+	box-shadow: none;
+	transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.15s ease;
 	cursor: pointer;
 	position: relative;
 }
