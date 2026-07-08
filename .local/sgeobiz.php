@@ -36,7 +36,7 @@ load_plugin_textdomain( 'sgeobiz-seo' );
 
 // Konstanta jalur direktori .local
 define( 'SGEOBIZ_LOCAL_DIR', dirname( __FILE__ ) . DIRECTORY_SEPARATOR );
-define( 'SGEOBIZ_VERSION', '1.0.1' );
+define( 'SGEOBIZ_VERSION', '1.0.2' );
 
 /**
  * Autoload kelas SGEOBIZ dari folder .local.
