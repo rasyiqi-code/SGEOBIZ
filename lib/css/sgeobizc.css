@@ -13,16 +13,16 @@
 	will-change: contents;
 }
 
-.tsf-count-bad {
+.sgeobiz-count-bad {
 	color: #d63638;
 }
-.tsf-count-okay {
+.sgeobiz-count-okay {
 	color: #ffae00;
 }
-.tsf-count-good {
+.sgeobiz-count-good {
 	color: #00a32a;
 }
-.tsf-count-unknown {
+.sgeobiz-count-unknown {
 	color: #2271b1;
 }
 
@@ -35,23 +35,23 @@
 	text-align: center;
 	vertical-align: baseline;
 }
-.sgeobiz-counter-one.tsf-count-bad {
+.sgeobiz-counter-one.sgeobiz-count-bad {
 	background-color: #d63638;
 }
-.sgeobiz-counter-one.tsf-count-okay {
+.sgeobiz-counter-one.sgeobiz-count-okay {
 	background-color: #ffae00;
 }
-.sgeobiz-counter-one.tsf-count-good {
+.sgeobiz-counter-one.sgeobiz-count-good {
 	background-color: #00a32a;
 }
-.sgeobiz-counter-one.tsf-count-unknown {
+.sgeobiz-counter-one.sgeobiz-count-unknown {
 	background-color: #4f94d4;
 }
 
 /* START Pixel Counters */
 
 /* Temporarily fix for SEO settings page. Remove me SGEOBIZ 6.0 */
-.tsf-nav-tab-content .sgeobiz-pixel-counter-wrap {
+.sgeobiz-nav-tab-content .sgeobiz-pixel-counter-wrap {
 	margin-inline-start: 1px;
 	max-width: 99%;
 }
@@ -98,8 +98,8 @@
 	background-color: #00a32a;
 }
 
-.tsf-description-pixel-counter-shadow,
-.tsf-title-pixel-counter-shadow {
+.sgeobiz-description-pixel-counter-shadow,
+.sgeobiz-title-pixel-counter-shadow {
 	position: absolute;
 	inset-inline-start: 0;
 	top: 0;
@@ -121,6 +121,6 @@
 	font-weight: 400;
 }
 
-.tsf-description-pixel-counter-shadow {
+.sgeobiz-description-pixel-counter-shadow {
 	font-size: 13px;
 }

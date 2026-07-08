@@ -107,7 +107,7 @@ namespace {
 			[
 				'sep'   => '\203A',
 				'home'  => __( 'Home', 'default' ), // defined in wp_page_menu()
-				'class' => 'tsf-breadcrumb',
+				'class' => 'sgeobiz-breadcrumb',
 				'title' => null,
 			],
 			$atts,
@@ -117,7 +117,7 @@ namespace {
 		// Extract a valid class; it'll be of an escaped kind.
 		preg_match( '/-?[a-z_]+[a-z\d_-]*/i', $atts['class'], $matches );
 
-		$class = $matches[0] ?? 'tsf-breadcrumb';
+		$class = $matches[0] ?? 'sgeobiz-breadcrumb';
 		$sep   = esc_html( $atts['sep'] );
 
 		$options = [

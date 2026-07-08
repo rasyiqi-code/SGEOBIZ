@@ -135,7 +135,7 @@ switch ( $instance ) :
 			true,
 		);
 		?>
-		<div id=tsf-social-settings-wrapper>
+		<div id=sgeobiz-social-settings-wrapper>
 			<hr>
 			<?php
 			HTML::header_title( \__( 'Social Title Settings', 'sgeobiz-seo' ) );
@@ -175,19 +175,19 @@ switch ( $instance ) :
 				?>
 			</div>
 			<p>
-				<label for=tsf_fb_socialimage-url>
+				<label for=sgeobiz_fb_socialimage-url>
 					<strong><?php \esc_html_e( 'Social Image Fallback URL', 'sgeobiz-seo' ); ?></strong>
 					<?php HTML::make_info( \__( 'When no image is available from the page or term, this fallback image will be used instead.', 'sgeobiz-seo' ), 'https://developers.facebook.com/docs/sharing/best-practices#images' ); ?>
 				</label>
 			</p>
 			<p>
-				<input class=large-text type=url name="<?php Input::field_name( 'social_image_fb_url' ); ?>" id=tsf_fb_socialimage-url value="<?= \esc_url( Data\Plugin::get_option( 'social_image_fb_url' ) ) ?>">
-				<input type=hidden name="<?php Input::field_name( 'social_image_fb_id' ); ?>" id=tsf_fb_socialimage-id value="<?= \absint( Data\Plugin::get_option( 'social_image_fb_id' ) ) ?>" disabled class=tsf-enable-media-if-js>
+				<input class=large-text type=url name="<?php Input::field_name( 'social_image_fb_url' ); ?>" id=sgeobiz_fb_socialimage-url value="<?= \esc_url( Data\Plugin::get_option( 'social_image_fb_url' ) ) ?>">
+				<input type=hidden name="<?php Input::field_name( 'social_image_fb_id' ); ?>" id=sgeobiz_fb_socialimage-id value="<?= \absint( Data\Plugin::get_option( 'social_image_fb_id' ) ) ?>" disabled class=sgeobiz-enable-media-if-js>
 			</p>
 			<p class=hide-if-no-sgeobiz-js>
 				<?php
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped.
-				echo Form::get_image_uploader_form( [ 'id' => 'tsf_fb_socialimage' ] );
+				echo Form::get_image_uploader_form( [ 'id' => 'sgeobiz_fb_socialimage' ] );
 				?>
 			</p>
 		</div>
@@ -202,7 +202,7 @@ switch ( $instance ) :
 			</label>
 		</p>
 		<p>
-			<input type=text name="<?php Input::field_name( 'theme_color' ); ?>" class=tsf-color-picker id="<?php Input::field_id( 'theme_color' ); ?>" value="<?= \esc_attr( $theme_color ) ?>" data-tsf-default-color="">
+			<input type=text name="<?php Input::field_name( 'theme_color' ); ?>" class=sgeobiz-color-picker id="<?php Input::field_id( 'theme_color' ); ?>" value="<?= \esc_attr( $theme_color ) ?>" data-sgeobiz-default-color="">
 		</p>
 		<hr>
 		<?php
@@ -281,7 +281,7 @@ switch ( $instance ) :
 		?>
 		<hr>
 
-		<fieldset id=tsf-twitter-cards>
+		<fieldset id=sgeobiz-twitter-cards>
 			<legend>
 				<h4>
 					<?php
@@ -303,11 +303,11 @@ switch ( $instance ) :
 			);
 			?>
 
-			<p class=tsf-fields>
+			<p class=sgeobiz-fields>
 			<?php
 			foreach ( $supported_twitter_cards as $type ) {
 				?>
-				<span class=tsf-toblock>
+				<span class=sgeobiz-toblock>
 					<input type=radio name="<?php Input::field_name( 'twitter_card' ); ?>" id="<?php Input::field_id( "twitter_card_{$type}" ); ?>" value="<?= \esc_attr( $type ) ?>" <?php \checked( Data\Plugin::get_option( 'twitter_card' ), $type ); ?>>
 					<label for="<?php Input::field_id( "twitter_card_{$type}" ); ?>">
 						<span>
@@ -332,7 +332,7 @@ switch ( $instance ) :
 		?>
 
 		<p>
-			<label for="<?php Input::field_id( 'twitter_site' ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( 'twitter_site' ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( 'Website Twitter Profile', 'sgeobiz-seo' ); ?></strong>
 				<?php
 				echo ' ';
@@ -348,7 +348,7 @@ switch ( $instance ) :
 		</p>
 
 		<p>
-			<label for="<?php Input::field_id( 'twitter_creator' ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( 'twitter_creator' ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( 'Twitter Author Fallback Profile', 'sgeobiz-seo' ); ?></strong>
 				<?php
 				echo ' ';

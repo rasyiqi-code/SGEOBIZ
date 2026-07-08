@@ -28,10 +28,10 @@ namespace SGEOBIZ_SEO;
  */
 
 ?>
-<div class="tsf-flex-setting tsf-flex" id=tsf-is-homepage-warning>
-	<div class="tsf-flex-setting-input tsf-flex">
-		<div class="tsf-flex-setting-input-inner-wrap tsf-flex">
-			<div class="tsf-flex-setting-input-item tsf-flex">
+<div class="sgeobiz-flex-setting sgeobiz-flex" id=sgeobiz-is-homepage-warning>
+	<div class="sgeobiz-flex-setting-input sgeobiz-flex">
+		<div class="sgeobiz-flex-setting-input-inner-wrap sgeobiz-flex">
+			<div class="sgeobiz-flex-setting-input-item sgeobiz-flex">
 				<span>
 					<?php
 					\esc_html_e( 'The fields below may be overwritten by the Homepage Settings found on the SEO Settings page.', 'sgeobiz-seo' );

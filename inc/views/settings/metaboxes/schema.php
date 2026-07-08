@@ -93,7 +93,7 @@ switch ( $instance ) :
 		);
 
 		?>
-		<div id=tsf-advanced-structured-data-settings-wrapper>
+		<div id=sgeobiz-advanced-structured-data-settings-wrapper>
 			<hr>
 			<?php
 			HTML::header_title( \__( 'Advanced Structured Data', 'sgeobiz-seo' ) );
@@ -181,7 +181,7 @@ switch ( $instance ) :
 		<p>
 			<input type=text name="<?php Input::field_name( 'knowledge_name' ); ?>" class=large-text id="<?php Input::field_id( 'knowledge_name' ); ?>" placeholder="<?= \esc_attr( Data\Blog::get_public_blog_name() ) ?>" value="<?= \esc_attr( Data\Plugin::get_option( 'knowledge_name' ) ) ?>" autocomplete=off>
 		</p>
-		<div id=tsf-logo-structured-data-settings-wrapper>
+		<div id=sgeobiz-logo-structured-data-settings-wrapper>
 			<hr>
 			<?php
 			HTML::header_title( \__( 'Organization logo', 'sgeobiz-seo' ) );
@@ -200,7 +200,7 @@ switch ( $instance ) :
 
 			$logo_placeholder = Meta\Image::get_first_generated_image_url( [ 'id' => 0 ], 'organization' );
 			?>
-			<div id=tsf-logo-upload-structured-data-settings-wrapper>
+			<div id=sgeobiz-logo-upload-structured-data-settings-wrapper>
 				<p>
 					<label for=knowledge_logo-url>
 						<strong><?php \esc_html_e( 'Logo URL', 'sgeobiz-seo' ); ?></strong>

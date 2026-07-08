@@ -36,8 +36,8 @@ namespace SGEOBIZ_SEO;
  */
 if ( \count( $tabs ) > 1 ) {
 	?>
-	<div class="tsf-flex tsf-flex-nav-tab-wrapper tsf-flex-hide-if-no-js" id="<?= \esc_attr( "tsf-flex-{$id}-tabs-wrapper" ) ?>">
-		<div class="tsf-flex tsf-flex-nav-tab-inner">
+	<div class="sgeobiz-flex sgeobiz-flex-nav-tab-wrapper sgeobiz-flex-hide-if-no-js" id="<?= \esc_attr( "sgeobiz-flex-{$id}-tabs-wrapper" ) ?>">
+		<div class="sgeobiz-flex sgeobiz-flex-nav-tab-inner">
 			<?php
 			$tab_index = 1;
 
@@ -45,24 +45,24 @@ if ( \count( $tabs ) > 1 ) {
 				$dashicon   = $value['dashicon'] ?? '';
 				$label_name = $value['name'] ?? '';
 
-				$wrapper_id     = \esc_attr( "tsf-flex-nav-tab-{$tab}" );
-				$wrapper_active = 1 === $tab_index ? 'tsf-flex-nav-tab-active' : '';
+				$wrapper_id     = \esc_attr( "sgeobiz-flex-nav-tab-{$tab}" );
+				$wrapper_active = 1 === $tab_index ? 'sgeobiz-flex-nav-tab-active' : '';
 
 				$input_checked = 1 === $tab_index ? 'checked' : '';
-				$input_id      = \esc_attr( "tsf-flex-{$id}-tab-{$tab}" );
-				$input_name    = \esc_attr( "tsf-flex-{$id}-tabs" );
+				$input_id      = \esc_attr( "sgeobiz-flex-{$id}-tab-{$tab}" );
+				$input_name    = \esc_attr( "sgeobiz-flex-{$id}-tabs" );
 
 				if ( $dashicon )
-					$dashicon = \sprintf( '<span class="tsf-flex dashicons %s tsf-flex-nav-dashicon"></span>', \esc_attr( "dashicons-$dashicon" ) );
+					$dashicon = \sprintf( '<span class="sgeobiz-flex dashicons %s sgeobiz-flex-nav-dashicon"></span>', \esc_attr( "dashicons-$dashicon" ) );
 
 				if ( $label_name )
-					$label_name = \sprintf( '<span class="tsf-flex tsf-flex-nav-name">%s</span>', \esc_attr( $label_name ) );
+					$label_name = \sprintf( '<span class="sgeobiz-flex sgeobiz-flex-nav-name">%s</span>', \esc_attr( $label_name ) );
 
 				// phpcs:disable WordPress.Security.EscapeOutput.HeredocOutputNotEscaped -- All output below is escaped.
 				echo <<<HTML
-				<div class="tsf-flex tsf-flex-nav-tab tsf-flex $wrapper_active" id="$wrapper_id">
-					<input type=radio class="tsf-flex-nav-tab-radio tsf-input-not-saved" id="$input_id" name="$input_name" $input_checked>
-					<label for="$input_id" class="tsf-flex tsf-flex-nav-tab-label">
+				<div class="sgeobiz-flex sgeobiz-flex-nav-tab sgeobiz-flex $wrapper_active" id="$wrapper_id">
+					<input type=radio class="sgeobiz-flex-nav-tab-radio sgeobiz-input-not-saved" id="$input_id" name="$input_name" $input_checked>
+					<label for="$input_id" class="sgeobiz-flex sgeobiz-flex-nav-tab-label">
 						$dashicon
 						$label_name
 					</label>

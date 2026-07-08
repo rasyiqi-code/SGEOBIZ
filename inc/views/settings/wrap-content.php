@@ -41,14 +41,14 @@ $tab_index = 1;
  */
 foreach ( $tabs as $tab => $args ) {
 
-	$radio_id    = "tsf-{$id}-tab-{$tab}-content";
-	$radio_class = "tsf-{$id}-tabs-content";
+	$radio_id    = "sgeobiz-{$id}-tab-{$tab}-content";
+	$radio_class = "sgeobiz-{$id}-tabs-content";
 
 	// Current tab for JS.
-	$current_class = 1 === $tab_index ? ' tsf-nav-tab-content-active' : '';
+	$current_class = 1 === $tab_index ? ' sgeobiz-nav-tab-content-active' : '';
 
 	?>
-	<div class="tsf-nav-tab-content <?= \esc_attr( $radio_class . $current_class ) ?>" id="<?= \esc_attr( $radio_id ) ?>" >
+	<div class="sgeobiz-nav-tab-content <?= \esc_attr( $radio_class . $current_class ) ?>" id="<?= \esc_attr( $radio_id ) ?>" >
 		<?php
 		// No-JS tabs.
 		if ( $show_tabs ) {
@@ -56,10 +56,10 @@ foreach ( $tabs as $tab => $args ) {
 			$name     = $args['name'] ?? '';
 
 			?>
-			<div class="hide-if-sgeobiz-js tsf-nav-tab-content-no-js">
-				<div class="tsf-tab tsf-nav-tab-no-js">
-					<span class="tsf-nav-tab-label tsf-nav-tab-active">
-						<?= $dashicon ? '<span class="dashicons dashicons-' . \esc_attr( $dashicon ) . ' tsf-dashicons-tabs"></span>' : '' ?>
+			<div class="hide-if-sgeobiz-js sgeobiz-nav-tab-content-no-js">
+				<div class="sgeobiz-tab sgeobiz-nav-tab-no-js">
+					<span class="sgeobiz-nav-tab-label sgeobiz-nav-tab-active">
+						<?= $dashicon ? '<span class="dashicons dashicons-' . \esc_attr( $dashicon ) . ' sgeobiz-dashicons-tabs"></span>' : '' ?>
 						<?= $name ? '<span>' . \esc_html( $name ) . '</span>' : '' ?>
 					</span>
 				</div>

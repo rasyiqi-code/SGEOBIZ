@@ -49,16 +49,16 @@ final class Post {
 	 */
 	public const SAVE_NONCES = [
 		'post-edit'  => [
-			'name'   => 'tsf_post_nonce_name',
-			'action' => 'tsf_post_nonce_action',
+			'name'   => 'sgeobiz_post_nonce_name',
+			'action' => 'sgeobiz_post_nonce_action',
 		],
 		'quick-edit' => [
-			'name'   => 'tsf_post_nonce_name',
-			'action' => 'tsf_post_nonce_action',
+			'name'   => 'sgeobiz_post_nonce_name',
+			'action' => 'sgeobiz_post_nonce_action',
 		],
 		'bulk-edit'  => [
-			'name'   => 'tsf_post_nonce_name',
-			'action' => 'tsf_post_nonce_action',
+			'name'   => 'sgeobiz_post_nonce_name',
+			'action' => 'sgeobiz_post_nonce_action',
 		],
 	];
 

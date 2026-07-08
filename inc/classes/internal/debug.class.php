@@ -249,7 +249,7 @@ final class Debug {
 		/**
 		 * Always one step before SGEOBIZ:
 		 * 0 = caller of this func
-		 * 1 = tsf debugger
+		 * 1 = sgeobiz debugger
 		 * 2 = debugger container
 		 * 3 = container caller
 		 */

@@ -48,28 +48,28 @@ final class PluginTable {
 	 */
 	public static function add_plugin_action_links( $links = [] ) {
 
-		$tsf_links = [];
+		$sgeobiz_links = [];
 
 		if ( ! is_headless( 'settings' ) ) {
-			$tsf_links['settings'] = \sprintf(
+			$sgeobiz_links['settings'] = \sprintf(
 				'<a href="%s">%s</a>',
 				\esc_url( \admin_url( 'admin.php?page=' . \SGEOBIZ_SEO_SITE_OPTIONS_SLUG ) ),
 				\esc_html__( 'Settings', 'sgeobiz-seo' ),
 			);
 		}
 
-		$tsf_links['tsfem']   = \sprintf(
+		$sgeobiz_links['sgeobizem']   = \sprintf(
 			'<a href="%s" rel="noreferrer noopener" target=_blank>%s</a>',
 			'https://sgeobiz.com/extensions/',
 			\esc_html_x( 'Extensions', 'Plugin extensions', 'sgeobiz-seo' ),
 		);
-		$tsf_links['pricing'] = \sprintf(
+		$sgeobiz_links['pricing'] = \sprintf(
 			'<a href="%s" rel="noreferrer noopener" target=_blank>%s</a>',
 			'https://sgeobiz.com/pricing/',
 			\esc_html_x( 'Pricing', 'Plugin pricing', 'sgeobiz-seo' ),
 		);
 
-		return array_merge( $tsf_links, $links );
+		return array_merge( $sgeobiz_links, $links );
 	}
 
 	/**

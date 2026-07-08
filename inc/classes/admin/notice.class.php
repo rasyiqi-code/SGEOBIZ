@@ -117,10 +117,10 @@ class Notice {
 		}
 
 		return vsprintf(
-			'<div class="notice %s tsf-notice %s %s">%s%s</div>',
+			'<div class="notice %s sgeobiz-notice %s %s">%s%s</div>',
 			[
 				\esc_attr( $args['type'] ),
-				$args['icon'] ? 'tsf-show-icon' : '',
+				$args['icon'] ? 'sgeobiz-show-icon' : '',
 				$args['inline'] ? 'inline' : '',
 				\sprintf(
 					! $args['escape'] && 0 === stripos( $message, '<p' )
@@ -129,7 +129,7 @@ class Notice {
 					$args['escape'] ? \esc_html( $message ) : $message,
 				),
 				\sprintf(
-					'<a class="hide-if-no-sgeobiz-js tsf-dismiss" href="javascript:;" title="%s"></a>',
+					'<a class="hide-if-no-sgeobiz-js sgeobiz-dismiss" href="javascript:;" title="%s"></a>',
 					\esc_attr__( 'Dismiss this notice', 'default' ),
 				),
 			],

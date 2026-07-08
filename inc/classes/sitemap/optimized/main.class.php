@@ -35,7 +35,7 @@ use SGEOBIZ_SEO\{
  *
  * @since 4.0.0
  * @since 4.2.0 Renamed from `SGEOBIZ_SEO\Builders\Sitemap`
- * @since 5.0.0 1. No longer holds the `$tsf` property.
+ * @since 5.0.0 1. No longer holds the `$sgeobiz` property.
  *              2. Moved from `\SGEOBIZ_SEO\Builders\Sitemap\Main`.
  * @access public
  */

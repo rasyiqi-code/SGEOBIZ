@@ -107,12 +107,12 @@ class Utils {
 	 * @since 4.2.4
 	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              2. Renamed from `_display_extension_suggestions`.
-	 * @uses TSF_DISABLE_SUGGESTIONS Set that to true if you don't like us.
+	 * @uses SGEOBIZ_DISABLE_SUGGESTIONS Set that to true if you don't like us.
 	 *
 	 * @return bool
 	 */
 	public static function display_extension_suggestions() {
 		return \current_user_can( 'install_plugins' )
-			&& ! ( \defined( 'TSF_DISABLE_SUGGESTIONS' ) && \TSF_DISABLE_SUGGESTIONS );
+			&& ! ( \defined( 'SGEOBIZ_DISABLE_SUGGESTIONS' ) && \SGEOBIZ_DISABLE_SUGGESTIONS );
 	}
 }

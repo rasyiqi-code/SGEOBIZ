@@ -159,7 +159,7 @@ class Input {
 		}
 
 		return \sprintf(
-			'<span class=tsf-toblock>%s</span>%s',
+			'<span class=sgeobiz-toblock>%s</span>%s',
 			vsprintf(
 				'<label for="%s"%s>%s</label>',
 				[
@@ -180,7 +180,7 @@ class Input {
 				],
 			),
 			$args['description']
-				? \sprintf( '<p class="description tsf-option-spacer">%s</p>', $args['description'] )
+				? \sprintf( '<p class="description sgeobiz-option-spacer">%s</p>', $args['description'] )
 				: '',
 		);
 	}
@@ -195,8 +195,8 @@ class Input {
 	 */
 	public static function get_conditional_checked_classes( ...$key ) {
 		return [
-			Data\Plugin\Setup::get_default_option( ...$key ) ? 'tsf-default-selected' : '',
-			Data\Plugin\Setup::get_warned_option( ...$key ) ? 'tsf-warning-selected' : '',
+			Data\Plugin\Setup::get_default_option( ...$key ) ? 'sgeobiz-default-selected' : '',
+			Data\Plugin\Setup::get_warned_option( ...$key ) ? 'sgeobiz-warning-selected' : '',
 		];
 	}
 
@@ -215,12 +215,12 @@ class Input {
 			implode(
 				'',
 				[
-					'<span id="tsf-title-reference_%1$s" class="tsf-title-reference hidden wp-exclude-emoji" data-for="%1$s"></span>',
-					'<span id="tsf-title-noadditions-reference_%1$s" class="tsf-title-noadditions-reference hidden wp-exclude-emoji" data-for="%1$s"></span>',
-					'<span class=tsf-title-offset-wrap><span id="tsf-title-offset_%1$s" class="tsf-title-offset wp-exclude-emoji hide-if-no-sgeobiz-js" data-for="%1$s"></span></span>',
-					'<span id="tsf-title-placeholder-additions_%1$s" class="tsf-title-placeholder-additions wp-exclude-emoji hide-if-no-sgeobiz-js" data-for="%1$s"></span>',
-					'<span id="tsf-title-placeholder-prefix_%1$s" class="tsf-title-placeholder-prefix wp-exclude-emoji hide-if-no-sgeobiz-js" data-for="%1$s"></span>',
-					'<span id="tsf-title-data_%1$s" class="hidden wp-exclude-emoji" data-for="%1$s" %2$s></span>',
+					'<span id="sgeobiz-title-reference_%1$s" class="sgeobiz-title-reference hidden wp-exclude-emoji" data-for="%1$s"></span>',
+					'<span id="sgeobiz-title-noadditions-reference_%1$s" class="sgeobiz-title-noadditions-reference hidden wp-exclude-emoji" data-for="%1$s"></span>',
+					'<span class=sgeobiz-title-offset-wrap><span id="sgeobiz-title-offset_%1$s" class="sgeobiz-title-offset wp-exclude-emoji hide-if-no-sgeobiz-js" data-for="%1$s"></span></span>',
+					'<span id="sgeobiz-title-placeholder-additions_%1$s" class="sgeobiz-title-placeholder-additions wp-exclude-emoji hide-if-no-sgeobiz-js" data-for="%1$s"></span>',
+					'<span id="sgeobiz-title-placeholder-prefix_%1$s" class="sgeobiz-title-placeholder-prefix wp-exclude-emoji hide-if-no-sgeobiz-js" data-for="%1$s"></span>',
+					'<span id="sgeobiz-title-data_%1$s" class="hidden wp-exclude-emoji" data-for="%1$s" %2$s></span>',
 				],
 			),
 			[
@@ -242,7 +242,7 @@ class Input {
 	 */
 	public static function output_js_social_data( $group, $settings ) {
 		vprintf(
-			'<span id="tsf-social-data_%1$s" class="hidden wp-exclude-emoji" data-group="%1$s" %2$s></span>',
+			'<span id="sgeobiz-social-data_%1$s" class="hidden wp-exclude-emoji" data-group="%1$s" %2$s></span>',
 			[
 				\esc_attr( $group ),
 				// phpcs:ignore WordPress.Security.EscapeOutput -- make_data_attributes escapes.
@@ -266,8 +266,8 @@ class Input {
 			implode(
 				'',
 				[
-					'<span id="tsf-description-reference_%1$s" class="hidden wp-exclude-emoji" data-for="%1$s" ></span>',
-					'<span id="tsf-description-data_%1$s" class="hidden wp-exclude-emoji" data-for="%1$s" %2$s ></span>',
+					'<span id="sgeobiz-description-reference_%1$s" class="hidden wp-exclude-emoji" data-for="%1$s" ></span>',
+					'<span id="sgeobiz-description-data_%1$s" class="hidden wp-exclude-emoji" data-for="%1$s" %2$s ></span>',
 				],
 			),
 			[
@@ -288,7 +288,7 @@ class Input {
 	 */
 	public static function output_js_canonical_data( $id, $data ) {
 		vprintf(
-			'<span id="tsf-canonical-data_%1$s" class="hidden wp-exclude-emoji" data-for="%1$s" %2$s ></span>',
+			'<span id="sgeobiz-canonical-data_%1$s" class="hidden wp-exclude-emoji" data-for="%1$s" %2$s ></span>',
 			[
 				\esc_attr( $id ),
 				// phpcs:ignore WordPress.Security.EscapeOutput -- make_data_attributes escapes.

@@ -83,7 +83,7 @@ final class Plugin {
 		// This is also handled in /wp-admin/options.php. Nevertheless, one might register outside of scope.
 		\check_admin_referer( \SGEOBIZ_SEO_SITE_OPTIONS . '-options', '_wpnonce' );
 
-		if ( ! empty( $_POST[ \SGEOBIZ_SEO_SITE_OPTIONS ]['tsf-settings-reset'] ) ) {
+		if ( ! empty( $_POST[ \SGEOBIZ_SEO_SITE_OPTIONS ]['sgeobiz-settings-reset'] ) ) {
 			self::process_settings_reset();
 		} else {
 			self::process_settings_submission();

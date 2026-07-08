@@ -46,9 +46,9 @@ final class Advanced_Query_Protection {
 	 * @generator
 	 */
 	public static function generate_advanced_query_protection() {
-		yield 'tsf:aqp' => [
+		yield 'sgeobiz:aqp' => [
 			'attributes' => [
-				'name'  => 'tsf:aqp',
+				'name'  => 'sgeobiz:aqp',
 				'value' => '1',
 			],
 		];

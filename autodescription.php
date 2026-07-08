@@ -141,7 +141,7 @@ unset( $_sgeobiz_local );
 // Debug: Not to be used on production websites as it dumps and/or disables all kinds of stuff everywhere.
 //        This is here as an easily accessible toolset used solely for the development of this plugin.
 //
-// Headless tip: ?tsf_headless[meta]=0&tsf_headless[settings]=0&tsf_headless[user]=0
+// Headless tip: ?sgeobiz_headless[meta]=0&sgeobiz_headless[settings]=0&sgeobiz_headless[user]=0
 //
 // add_action( 'plugins_loaded', function () { if ( is_super_admin() ) {
 // if ( is_admin() ) {
@@ -150,7 +150,7 @@ unset( $_sgeobiz_local );
 // 	( $_GET['reset_tsf_upgrade'] ?? 0 ) and delete_option( 'sgeobiz_seo_upgraded_db_version' ) and delete_option( 'sgeobiz_seo_initial_db_version' );
 // 	( $_GET['downgrade_tsf'] ?? 0 ) and update_option( 'sgeobiz_seo_upgraded_db_version', (string) (int) $_GET['downgrade_tsf'], true );
 // 	( $_GET['downgrade_tsf_initial'] ?? 0 ) and update_option( 'sgeobiz_seo_initial_db_version', (string) (int) $_GET['downgrade_tsf_initial'], false );
-// 	( $_GET['tsf_headless'] ?? 0 ) and define( 'SGEOBIZ_SEO_HEADLESS', $_GET['tsf_headless'] === 'true' ?: $_GET['tsf_headless'] );
+// 	( $_GET['sgeobiz_headless'] ?? 0 ) and define( 'SGEOBIZ_SEO_HEADLESS', $_GET['sgeobiz_headless'] === 'true' ?: $_GET['sgeobiz_headless'] );
 // 	add_action( 'admin_footer', function () { print( '<script>jQuery.migrateMute=true;</script>' ); } );
 // }
 // }},0);

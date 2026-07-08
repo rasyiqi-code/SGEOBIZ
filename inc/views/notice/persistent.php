@@ -67,7 +67,7 @@ $dismiss_title_i18n = \__( 'Dismiss this notice', 'default' );
 $nonce_action = Admin\Notice\Persistent::_get_dismiss_nonce_action( $sanitized_key );
 
 $button_js = \sprintf(
-	'<a class="hide-if-no-sgeobiz-js tsf-dismiss" href="javascript:;" title="%s" %s></a>',
+	'<a class="hide-if-no-sgeobiz-js sgeobiz-dismiss" href="javascript:;" title="%s" %s></a>',
 	\esc_attr( $dismiss_title_i18n ),
 	HTML::make_data_attributes( [
 		'key'   => $sanitized_key,
@@ -77,17 +77,17 @@ $button_js = \sprintf(
 );
 // We'll display this button even if this notice no longer repeats. This aligns with the user's expectation and offers control.
 $button_nojs = vsprintf(
-	'<form action="%s" method=post id="tsf-dismiss-notice[%s]" class=hide-if-sgeobiz-js>%s</form>',
+	'<form action="%s" method=post id="sgeobiz-dismiss-notice[%s]" class=hide-if-sgeobiz-js>%s</form>',
 	[
 		// Register this at removable_query_args? Ignore? No one cares, literally? Does anyone even read this? Hello!? HELLO!?!?
-		\esc_attr( \add_query_arg( [ 'tsf-dismissed-notice' => $sanitized_key ] ) ),
+		\esc_attr( \add_query_arg( [ 'sgeobiz-dismissed-notice' => $sanitized_key ] ) ),
 		$sanitized_key,
 		implode(
 			'',
 			[
-				\wp_nonce_field( $nonce_action, 'tsf_notice_nonce', true, false ),
+				\wp_nonce_field( $nonce_action, 'sgeobiz_notice_nonce', true, false ),
 				vsprintf(
-					'<button class=tsf-dismiss type=submit name=tsf-notice-submit id=tsf-notice-submit[%s] value=%s title="%s">%s</button>',
+					'<button class=sgeobiz-dismiss type=submit name=sgeobiz-notice-submit id=sgeobiz-notice-submit[%s] value=%s title="%s">%s</button>',
 					[
 						$sanitized_key,
 						$sanitized_key,
@@ -101,10 +101,10 @@ $button_nojs = vsprintf(
 );
 
 vprintf(
-	'<div class="notice %s tsf-notice %s">%s%s</div>',
+	'<div class="notice %s sgeobiz-notice %s">%s%s</div>',
 	[
 		\esc_attr( $args['type'] ),
-		( $args['icon'] ? 'tsf-show-icon' : '' ),
+		( $args['icon'] ? 'sgeobiz-show-icon' : '' ),
 		\sprintf(
 			! $args['escape'] && 0 === stripos( $message, '<p' )
 				? '%s'

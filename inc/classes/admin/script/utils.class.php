@@ -82,7 +82,7 @@ final class Utils {
 	 */
 	public static function create_ajax_capability_nonce( $capability, ...$args ) {
 		return \current_user_can( $capability, ...$args )
-			? \wp_create_nonce( "tsf-ajax-$capability" )
+			? \wp_create_nonce( "sgeobiz-ajax-$capability" )
 			: '';
 	}
 
@@ -107,7 +107,7 @@ final class Utils {
 	public static function check_ajax_capability_referer( $capability, ...$args ) {
 
 		if ( \current_user_can( $capability, ...$args ) )
-			return \check_ajax_referer( "tsf-ajax-$capability", 'nonce', true );
+			return \check_ajax_referer( "sgeobiz-ajax-$capability", 'nonce', true );
 
 		\wp_die( -1, 403 );
 	}

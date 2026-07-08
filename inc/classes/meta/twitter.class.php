@@ -90,9 +90,9 @@ class Twitter {
 				case 'single':
 					if ( Query::is_static_front_page( $args['id'] ) ) {
 						$card = Data\Plugin::get_option( 'homepage_twitter_card_type' )
-							?: Data\Plugin\Post::get_meta_item( '_tsf_twitter_card_type', $args['id'] );
+							?: Data\Plugin\Post::get_meta_item( '_sgeobiz_twitter_card_type', $args['id'] );
 					} else {
-						$card = Data\Plugin\Post::get_meta_item( '_tsf_twitter_card_type', $args['id'] );
+						$card = Data\Plugin\Post::get_meta_item( '_sgeobiz_twitter_card_type', $args['id'] );
 					}
 					break;
 				case 'term':
@@ -108,12 +108,12 @@ class Twitter {
 			if ( Query::is_real_front_page() ) {
 				if ( Query::is_static_front_page() ) {
 					$card = Data\Plugin::get_option( 'homepage_twitter_card_type' )
-						 ?: Data\Plugin\Post::get_meta_item( '_tsf_twitter_card_type' );
+						 ?: Data\Plugin\Post::get_meta_item( '_sgeobiz_twitter_card_type' );
 				} else {
 					$card = Data\Plugin::get_option( 'homepage_twitter_card_type' );
 				}
 			} elseif ( Query::is_singular() ) {
-				$card = Data\Plugin\Post::get_meta_item( '_tsf_twitter_card_type' );
+				$card = Data\Plugin\Post::get_meta_item( '_sgeobiz_twitter_card_type' );
 			} elseif ( Query::is_editable_term() ) {
 				$card = Data\Plugin\Term::get_meta_item( 'tw_card_type' );
 			} elseif ( \is_post_type_archive() ) {

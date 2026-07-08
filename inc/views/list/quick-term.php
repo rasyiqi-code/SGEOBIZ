@@ -62,7 +62,7 @@ $robots_settings = [
 ];
 
 ?>
-<div class=tsf-quick-edit-columns>
+<div class=sgeobiz-quick-edit-columns>
 	<?php
 	\wp_nonce_field(
 		Data\Admin\Term::SAVE_NONCES['quick-edit']['action'],
@@ -78,7 +78,7 @@ $robots_settings = [
 	?>
 	<fieldset class=inline-edit-col-full>
 		<legend class=inline-edit-legend><?php \esc_html_e( 'General SEO Settings', 'sgeobiz-seo' ); ?></legend>
-		<div class="inline-edit-col tsf-le-wide-complex-column">
+		<div class="inline-edit-col sgeobiz-le-wide-complex-column">
 			<label for=autodescription-quick[doctitle]>
 				<span class=title><?php \esc_html_e( 'Meta Title', 'sgeobiz-seo' ); ?></span>
 			</label>
@@ -88,14 +88,14 @@ $robots_settings = [
 			Data\Plugin::get_option( 'display_pixel_counter' )
 				and Form::output_pixel_counter_wrap( 'autodescription-quick[doctitle]', 'title' );
 			?>
-			<div class="tsf-pad-input tsf-title-wrap">
+			<div class="sgeobiz-pad-input sgeobiz-title-wrap">
 				<input type=text id=autodescription-quick[doctitle] name=autodescription-quick[doctitle]>
 				<?php
 				Input::output_js_title_data( 'autodescription-quick[doctitle]', [] );
 				?>
 			</div>
 		</div>
-		<div class="inline-edit-col tsf-le-wide-complex-column">
+		<div class="inline-edit-col sgeobiz-le-wide-complex-column">
 			<label for=autodescription-quick[description]>
 				<span class=title><?php \esc_html_e( 'Meta Description', 'sgeobiz-seo' ); ?></span>
 			</label>
@@ -105,7 +105,7 @@ $robots_settings = [
 			Data\Plugin::get_option( 'display_pixel_counter' )
 				and Form::output_pixel_counter_wrap( 'autodescription-quick[description]', 'description' );
 			?>
-			<div class=tsf-pad-input>
+			<div class=sgeobiz-pad-input>
 				<textarea id=autodescription-quick[description] name=autodescription-quick[description] rows=3 cols=22></textarea>
 				<?php
 				Input::output_js_description_data( 'autodescription-quick[description]', [] );
@@ -118,7 +118,7 @@ $robots_settings = [
 		<div class=inline-edit-col>
 			<label>
 				<span class=title><?php \esc_html_e( 'Canonical URL', 'sgeobiz-seo' ); ?></span>
-				<span class=tsf-inline-input>
+				<span class=sgeobiz-inline-input>
 					<input type=url id=autodescription-quick[canonical] name=autodescription-quick[canonical]>
 				</span>
 			</label>
@@ -151,7 +151,7 @@ $robots_settings = [
 			<div class="inline-edit-group wp-clearfix">
 				<label>
 					<span class=title><?php \esc_html_e( '301 Redirect URL', 'sgeobiz-seo' ); ?></span>
-					<span class=tsf-inline-input>
+					<span class=sgeobiz-inline-input>
 						<input type=url id=autodescription-quick[redirect] name=autodescription-quick[redirect]>
 					</span>
 				</label>

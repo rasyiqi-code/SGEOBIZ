@@ -30,9 +30,9 @@ use SGEOBIZ_SEO\Admin\Settings\Layout\Input;
  */
 
 if (
-	   \function_exists( 'tsf_extension_manager' )
+	   \function_exists( 'sgeobiz_extension_manager' )
 	&& \in_array(
-		\tsf_extension_manager()->seo_extensions_page_slug ?? null,
+		\sgeobiz_extension_manager()->seo_extensions_page_slug ?? null,
 		array_column( $GLOBALS['submenu'][ \SGEOBIZ_SEO_SITE_OPTIONS_SLUG ] ?? [], 2 ),
 		true,
 	)
@@ -40,7 +40,7 @@ if (
 	$_extensions_button = \sprintf(
 		'<a href="%s" class=button>%s</a>',
 		// menu_page_url() escapes
-		\menu_page_url( \tsf_extension_manager()->seo_extensions_page_slug, false ),
+		\menu_page_url( \sgeobiz_extension_manager()->seo_extensions_page_slug, false ),
 		\esc_html_x( 'Extensions', 'Plugin extensions', 'sgeobiz-seo' ),
 	);
 } else {
@@ -65,7 +65,7 @@ $_ays_reset    = \esc_js( \__( 'Are you sure you want to reset all SEO settings 
 $_reset_button = \get_submit_button(
 	\__( 'Reset Settings', 'sgeobiz-seo' ),
 	[ 'secondary' ],
-	Input::get_field_name( 'tsf-settings-reset' ),
+	Input::get_field_name( 'sgeobiz-settings-reset' ),
 	false,
 	[
 		'id'      => '', // we output this twice, don't set ID.
@@ -76,15 +76,15 @@ $_reset_button = \get_submit_button(
 $hook_name = Admin\Menu::get_page_hook_name();
 
 ?>
-<div class="wrap tsf-metaboxes">
-	<form id=tsf-settings method=post action=options.php autocomplete=off data-form-type=other>
+<div class="wrap sgeobiz-metaboxes">
+	<form id=sgeobiz-settings method=post action=options.php autocomplete=off data-form-type=other>
 		<?php \wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false ); ?>
 		<?php \wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false ); ?>
 		<?php \settings_fields( \SGEOBIZ_SEO_SITE_OPTIONS ); ?>
 
-		<div class=tsf-top-wrap>
+		<div class=sgeobiz-top-wrap>
 			<h1><?= \esc_html( \get_admin_page_title() ) ?></h1>
-			<div class="tsf-top-buttons tsf-end">
+			<div class="sgeobiz-top-buttons sgeobiz-end">
 				<?php
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- submit_button() escapes (mostly...)
 				echo $_save_button, $_reset_button, $_extensions_button;
@@ -102,14 +102,14 @@ $hook_name = Admin\Menu::get_page_hook_name();
 		\do_action( "{$hook_name}_settings_page_boxes", $hook_name );
 		?>
 
-		<div class=tsf-bottom-wrap>
-			<div class="tsf-bottom-buttons tsf-start">
+		<div class=sgeobiz-bottom-wrap>
+			<div class="sgeobiz-bottom-buttons sgeobiz-start">
 				<?php
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- submit_button() escapes (mostly...)
 				echo $_extensions_button;
 				?>
 			</div>
-			<div class="tsf-bottom-buttons tsf-end">
+			<div class="sgeobiz-bottom-buttons sgeobiz-end">
 				<?php
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- submit_button() escapes (mostly...)
 				echo $_save_button;

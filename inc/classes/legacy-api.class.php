@@ -258,7 +258,7 @@ class Legacy_API {
 	 * However, consider filtering `sgeobiz_seo_register_scripts` instead.
 	 *
 	 * May load more depending on the page requested.
-	 * `tsf` and `tsf-tt` will always be available.
+	 * `sgeobiz` and `sgeobiz-tt` will always be available.
 	 *
 	 * @since 5.0.0
 	 * @api

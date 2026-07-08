@@ -33,7 +33,7 @@ use SGEOBIZ_SEO\{
  */
 
 /**
- * This file holds functions for installing TSFEM.
+ * This file holds functions for installing SGEOBIZEM.
  * This file will only be called ONCE on plugin install, or upgrade from pre-v3.0.6.
  *
  * @since 3.0.6
@@ -49,7 +49,7 @@ _prepare( $previous_version, $current_version );
  * The notice is automatically dismissed after X views, and it can be ignored without reappearing.
  *
  * @since 3.0.6
- * @since 4.1.0 1. Now tests TSFEM 2.4.0 requirements.
+ * @since 4.1.0 1. Now tests SGEOBIZEM 2.4.0 requirements.
  *              2. Removed the user capability requirement, and forwarded that to `_suggest_extension_manager()`.
  *              3. Can now run on the front-end without crashing.
  *              4. Added the first two parameters, $previous_version and $current_version.
@@ -69,13 +69,13 @@ function _prepare( $previous_version, $current_version ) {
 	// phpcs:ignore Universal.Operators.StrictComparisons.LooseEqual -- might be mixed types.
 	if ( $previous_version == $current_version ) return;
 	// 1
-	if ( \defined( 'TSF_DISABLE_SUGGESTIONS' ) && \TSF_DISABLE_SUGGESTIONS ) return;
+	if ( \defined( 'SGEOBIZ_DISABLE_SUGGESTIONS' ) && \SGEOBIZ_DISABLE_SUGGESTIONS ) return;
 	// 2
 	if ( ! \is_main_site() ) return;
 
 	$show_sale = true;
-	if ( \function_exists( 'tsf_extension_manager' ) && method_exists( \tsf_extension_manager(), 'is_connected_user' ) ) {
-		$show_sale = ! \tsf_extension_manager()->is_connected_user();
+	if ( \function_exists( 'sgeobiz_extension_manager' ) && method_exists( \sgeobiz_extension_manager(), 'is_connected_user' ) ) {
+		$show_sale = ! \sgeobiz_extension_manager()->is_connected_user();
 	}
 	if ( $show_sale ) {
 		// phpcs:ignore SGEOBIZ.Performance.Opcodes.ShouldHaveNamespaceEscape

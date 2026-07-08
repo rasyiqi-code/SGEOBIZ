@@ -271,13 +271,13 @@ abstract class Table {
 	 * See: `sgeobizLe._hijackListeners()`; Although, that doesn't cover "adding" new items.
 	 *
 	 * @since 4.0.5
-	 * @NOTE: Do not bind to `tsfLeDispatchUpdate`, it's a private action.
-	 *        Bind to `tsfLeUpdated` instead, which is debounced and should only run once.
+	 * @NOTE: Do not bind to `sgeobizLeDispatchUpdate`, it's a private action.
+	 *        Bind to `sgeobizLeUpdated` instead, which is debounced and should only run once.
 	 *
 	 * @return string The triggering script.
 	 */
 	protected function get_ajax_dispatch_updated_event() {
-		return "<script>'use strict';(()=>document.dispatchEvent(new Event('tsfLeDispatchUpdate')))();</script>";
+		return "<script>'use strict';(()=>document.dispatchEvent(new Event('sgeobizLeDispatchUpdate')))();</script>";
 	}
 
 	/**

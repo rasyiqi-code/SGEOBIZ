@@ -199,7 +199,7 @@ class Conditions {
 	 * @return bool
 	 */
 	private static function use_post_branding( $id = 0 ) {
-		return ! Data\Plugin\Post::get_meta_item( '_tsf_title_no_blogname', $id )
+		return ! Data\Plugin\Post::get_meta_item( '_sgeobiz_title_no_blogname', $id )
 			&& ! Data\Plugin::get_option( 'title_rem_additions' );
 	}
 

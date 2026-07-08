@@ -193,7 +193,7 @@ class HTML {
 		if ( \is_array( $input ) )
 			$input = implode( "\n", $input );
 
-		$output = "<div class=tsf-fields>$input</div>";
+		$output = "<div class=sgeobiz-fields>$input</div>";
 
 		if ( $echo ) {
 			// phpcs:ignore WordPress.Security.EscapeOutput -- Escape your $input prior!
@@ -219,13 +219,13 @@ class HTML {
 
 		if ( $link ) {
 			$output = \sprintf(
-				'<a href="%1$s" class="sgeobiz-tooltip-item tsf-help" target=_blank rel="nofollow noreferrer noopener" title="%2$s" data-desc="%2$s">[?]</a>',
+				'<a href="%1$s" class="sgeobiz-tooltip-item sgeobiz-help" target=_blank rel="nofollow noreferrer noopener" title="%2$s" data-desc="%2$s">[?]</a>',
 				\esc_url( $link, [ 'https', 'http' ] ),
 				\esc_attr( $description ),
 			);
 		} else {
 			$output = \sprintf(
-				'<span class="sgeobiz-tooltip-item tsf-help" title="%1$s" data-desc="%1$s" tabindex=0>[?]</span>',
+				'<span class="sgeobiz-tooltip-item sgeobiz-help" title="%1$s" data-desc="%1$s" tabindex=0>[?]</span>',
 				\esc_attr( $description ),
 			);
 		}

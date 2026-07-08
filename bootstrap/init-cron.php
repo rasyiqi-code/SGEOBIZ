@@ -31,7 +31,7 @@ if (
 	&& Data\Plugin::get_option( 'sitemaps_output' )
 ) {
 	\add_action(
-		'tsf_sitemap_cron_hook_before',
+		'sgeobiz_sitemap_cron_hook_before',
 		[ Sitemap\Optimized\Base::class, 'prerender_sitemap' ],
 	);
 }

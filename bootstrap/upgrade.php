@@ -44,7 +44,7 @@ use SGEOBIZ_SEO\Helper\{
  * @since 3.2.4 Applied namespacing to this file. All method names have changed.
  * @since 4.1.1 No longer memoizes the previous version early. This should help bypass the cache flush.
  * @access private
- * @TODO convert to class, see \TSF_Extension_Manager\Upgrader
+ * @TODO convert to class, see \SGEOBIZ_Extension_Manager\Upgrader
  *       It's a generator/iterator, so we must wait to PHP>5.5 support.
  */
 
@@ -121,7 +121,7 @@ function _do_upgrade() {
 	// ...if the database connection is still valid; otherwise, we'll have to wait for the $timeout to pass.
 	register_shutdown_function( 'SGEOBIZ_SEO\Bootstrap\_release_upgrade_lock' );
 
-	\wp_raise_memory_limit( 'tsf_upgrade' );
+	\wp_raise_memory_limit( 'sgeobiz_upgrade' );
 
 	$ini_max_execution_time = (int) ini_get( 'max_execution_time' );
 	if ( 0 !== $ini_max_execution_time && \function_exists( 'set_time_limit' ) )
@@ -238,7 +238,7 @@ function _upgrade( $previous_version ) {
  * @return string
  */
 function _get_lock_option() {
-	return 'tsf_upgrade.lock';
+	return 'sgeobiz_upgrade.lock';
 }
 
 /**

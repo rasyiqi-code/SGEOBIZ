@@ -50,8 +50,8 @@ class Cron {
 
 		// Because WordPress sorts the actions, we can't be sure if they're scrambled. Therefore: skew timing.
 		// Note that when WP_CRON_LOCK_TIMEOUT expires, the subsequent actions will run, regardless if previous was successful.
-		return \wp_schedule_single_event( ++$when, 'tsf_sitemap_cron_hook_before' )
-			&& \wp_schedule_single_event( ++$when, 'tsf_sitemap_cron_hook' )
-			&& \wp_schedule_single_event( ++$when, 'tsf_sitemap_cron_hook_after' );
+		return \wp_schedule_single_event( ++$when, 'sgeobiz_sitemap_cron_hook_before' )
+			&& \wp_schedule_single_event( ++$when, 'sgeobiz_sitemap_cron_hook' )
+			&& \wp_schedule_single_event( ++$when, 'sgeobiz_sitemap_cron_hook_after' );
 	}
 }

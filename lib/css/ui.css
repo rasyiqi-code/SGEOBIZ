@@ -1,13 +1,13 @@
 /**
  * Dismissible Notices.
  */
-.notice.tsf-notice {
+.notice.sgeobiz-notice {
 	position: relative;
 	padding-inline-end: 38px;
 	clear: both;
 }
 
-.tsf-notice.tsf-show-icon p::before {
+.sgeobiz-notice.sgeobiz-show-icon p::before {
 	content: '';
 	margin-inline-end: 12px;
 	background: 0 0;
@@ -22,30 +22,30 @@
 	-webkit-font-smoothing: antialiased;
 }
 
-.error.tsf-notice.tsf-show-icon p::before {
+.error.sgeobiz-notice.sgeobiz-show-icon p::before {
 	color: #d63638;
 	content: "\f534";
 }
 
-.notice-warning.tsf-notice.tsf-show-icon p::before {
+.notice-warning.sgeobiz-notice.sgeobiz-show-icon p::before {
 	color: #dba617;
 	content: "\f227";
 }
 
-.notice-info.tsf-notice.tsf-show-icon p::before {
+.notice-info.sgeobiz-notice.sgeobiz-show-icon p::before {
 	color: #67a8e4;
 	font-size: 16px;
 	content: "\f223";
 }
 
-.updated.tsf-notice.tsf-show-icon p::before {
+.updated.sgeobiz-notice.sgeobiz-show-icon p::before {
 	color: #00a32a;
 	font-size: 16px;
 	content: "\f147";
 }
 
 /* Specific because common.css overrides via `.updated a` */
-.tsf-notice .tsf-dismiss {
+.sgeobiz-notice .sgeobiz-dismiss {
 	position: absolute;
 	top: 0;
 	inset-inline-end: 0;
@@ -58,18 +58,18 @@
 	text-decoration: none;
 }
 
-.tsf-dismiss:hover {
+.sgeobiz-dismiss:hover {
 	color: #d63638;
 }
 
-.tsf-dismiss:focus {
+.sgeobiz-dismiss:focus {
 	outline: none;
 	box-shadow:
 		0 0 0 1px #5b9dd9,
 		0 0 2px 1px rgba( 30, 140, 190, .8);
 }
 
-.tsf-dismiss::before {
+.sgeobiz-dismiss::before {
 	background: 0 0;
 	color: currentColor;
 	content: "\f153";
@@ -84,13 +84,13 @@
 }
 
 @media screen and ( max-width: 782px ) {
-	.notice.tsf-notice,
-	.wp-core-ui .notice.tsf-notice {
+	.notice.sgeobiz-notice,
+	.wp-core-ui .notice.sgeobiz-notice {
 		padding-inline-end: 46px;
 	}
 }
 
-@keyframes tsf-fade-in {
+@keyframes sgeobiz-fade-in {
 	0% {
 		opacity: 0;
 	}
@@ -99,7 +99,7 @@
 	}
 }
 
-@keyframes tsf-fade-out {
+@keyframes sgeobiz-fade-out {
 	0% {
 		opacity: 1;
 	}

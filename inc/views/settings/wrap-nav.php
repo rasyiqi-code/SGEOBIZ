@@ -36,7 +36,7 @@ namespace SGEOBIZ_SEO;
  */
 if ( \count( $tabs ) > 1 ) {
 	?>
-	<div class="tsf-nav-tab-wrapper hide-if-no-sgeobiz-js" id="<?= \esc_attr( "$id-tabs-wrapper" ) ?>">
+	<div class="sgeobiz-nav-tab-wrapper hide-if-no-sgeobiz-js" id="<?= \esc_attr( "$id-tabs-wrapper" ) ?>">
 		<?php
 		$tab_index = 1;
 
@@ -45,19 +45,19 @@ if ( \count( $tabs ) > 1 ) {
 			$name     = $args['name'] ?? '';
 
 			printf(
-				'<div class=tsf-tab>%s</div>',
+				'<div class=sgeobiz-tab>%s</div>',
 				vsprintf(
-					'<input type=radio class="tsf-nav-tab-radio tsf-input-not-saved" id=%1$s name="%2$s" %3$s><label for=%1$s class=tsf-nav-tab-label>%4$s</label>',
+					'<input type=radio class="sgeobiz-nav-tab-radio sgeobiz-input-not-saved" id=%1$s name="%2$s" %3$s><label for=%1$s class=sgeobiz-nav-tab-label>%4$s</label>',
 					[
-						\esc_attr( "tsf-$id-tab-$tab" ),
-						\esc_attr( "tsf-$id-tabs" ),
+						\esc_attr( "sgeobiz-$id-tab-$tab" ),
+						\esc_attr( "sgeobiz-$id-tabs" ),
 						1 === $tab_index ? 'checked' : '', // phpcs:ignore WordPress.Security.EscapeOutput -- plaintext.
 						\sprintf(
 							'%s%s',
 							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- bug in EscapeOutputSniff
-							$dashicon ? '<span class="dashicons dashicons-' . \esc_attr( $dashicon ) . ' tsf-dashicons-tabs"></span>' : '',
+							$dashicon ? '<span class="dashicons dashicons-' . \esc_attr( $dashicon ) . ' sgeobiz-dashicons-tabs"></span>' : '',
 							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- bug in EscapeOutputSniff
-							$name ? '<span class=tsf-nav-desktop>' . \esc_attr( $name ) . '</span>' : '',
+							$name ? '<span class=sgeobiz-nav-desktop>' . \esc_attr( $name ) . '</span>' : '',
 						),
 					],
 				),

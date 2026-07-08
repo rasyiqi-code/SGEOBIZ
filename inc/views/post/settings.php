@@ -88,7 +88,7 @@ switch ( $instance ) :
 		 */
 		$tabs = (array) \apply_filters( 'sgeobiz_seo_inpost_settings_tabs', $default_tabs, null );
 
-		echo '<div class="tsf-flex tsf-flex-inside-wrap">';
+		echo '<div class="sgeobiz-flex sgeobiz-flex-inside-wrap">';
 		Admin\Settings\Post::flex_nav_tab_wrapper( 'inpost', $tabs );
 		echo '</div>';
 		break;
@@ -96,16 +96,16 @@ switch ( $instance ) :
 	case 'general':
 		if ( Data\Plugin::get_option( 'display_seo_bar_metabox' ) ) {
 			?>
-			<div class="tsf-flex-setting tsf-flex" id=tsf-doing-it-right-wrap>
-				<div class="tsf-flex-setting-label tsf-flex">
-					<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
-						<div class="tsf-flex-setting-label-item tsf-flex">
+			<div class="sgeobiz-flex-setting sgeobiz-flex" id=sgeobiz-doing-it-right-wrap>
+				<div class="sgeobiz-flex-setting-label sgeobiz-flex">
+					<div class="sgeobiz-flex-setting-label-inner-wrap sgeobiz-flex">
+						<div class="sgeobiz-flex-setting-label-item sgeobiz-flex">
 							<div><strong><?php \esc_html_e( 'Doing it Right', 'sgeobiz-seo' ); ?></strong></div>
-							<div><span class=tsf-ajax></span></div>
+							<div><span class=sgeobiz-ajax></span></div>
 						</div>
 					</div>
 				</div>
-				<div class="tsf-flex-setting-input tsf-flex">
+				<div class="sgeobiz-flex-setting-input sgeobiz-flex">
 					<?php
 					// phpcs:ignore WordPress.Security.EscapeOutput -- generate_bar() escapes.
 					echo Admin\SEOBar\Builder::generate_bar( $generator_args );
@@ -143,10 +143,10 @@ switch ( $instance ) :
 		}
 
 		?>
-		<div class="tsf-flex-setting tsf-flex">
-			<div class="tsf-flex-setting-label tsf-flex">
-				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
-					<label for=autodescription_title class="tsf-flex-setting-label-item tsf-flex">
+		<div class="sgeobiz-flex-setting sgeobiz-flex">
+			<div class="sgeobiz-flex-setting-label sgeobiz-flex">
+				<div class="sgeobiz-flex-setting-label-inner-wrap sgeobiz-flex">
+					<label for=autodescription_title class="sgeobiz-flex-setting-label-item sgeobiz-flex">
 						<div><strong><?php \esc_html_e( 'Meta Title', 'sgeobiz-seo' ); ?></strong></div>
 						<div>
 							<?php
@@ -165,8 +165,8 @@ switch ( $instance ) :
 					?>
 				</div>
 			</div>
-			<div class="tsf-flex-setting-input tsf-flex">
-				<div class=tsf-title-wrap>
+			<div class="sgeobiz-flex-setting-input sgeobiz-flex">
+				<div class=sgeobiz-title-wrap>
 					<input class=large-text type=text name="autodescription[_genesis_title]" id=autodescription_title value="<?= \esc_html( Sanitize::metadata_content( $meta['_genesis_title'] ) ) ?>" autocomplete=off data-form-type=other>
 					<?php
 					Input::output_js_title_data(
@@ -185,22 +185,22 @@ switch ( $instance ) :
 					?>
 				</div>
 
-				<div class=tsf-checkbox-wrapper>
+				<div class=sgeobiz-checkbox-wrapper>
 					<label for=autodescription_title_no_blogname>
 						<?php
-						$title_no_blogname_value = $meta['_tsf_title_no_blogname'];
+						$title_no_blogname_value = $meta['_sgeobiz_title_no_blogname'];
 						if ( $is_static_front_page ) {
 							// Disable the input, and hide the previously stored value.
 							?>
 							<input type=checkbox id=autodescription_title_no_blogname value=1 <?php \checked( $title_no_blogname_value ); ?> disabled>
-							<input type=hidden name="autodescription[_tsf_title_no_blogname]" value="<?= (int) $title_no_blogname_value ?>">
+							<input type=hidden name="autodescription[_sgeobiz_title_no_blogname]" value="<?= (int) $title_no_blogname_value ?>">
 							<?php
 							\esc_html_e( 'Remove the site title?', 'sgeobiz-seo' );
 							echo ' ';
 							HTML::make_info( \__( 'For the homepage, this option must be managed on the SEO Settings page.', 'sgeobiz-seo' ) );
 						} else {
 							?>
-							<input type=checkbox name="autodescription[_tsf_title_no_blogname]" id=autodescription_title_no_blogname value=1 <?php \checked( $title_no_blogname_value ); ?>>
+							<input type=checkbox name="autodescription[_sgeobiz_title_no_blogname]" id=autodescription_title_no_blogname value=1 <?php \checked( $title_no_blogname_value ); ?>>
 							<?php
 							\esc_html_e( 'Remove the site title?', 'sgeobiz-seo' );
 							echo ' ';
@@ -212,10 +212,10 @@ switch ( $instance ) :
 			</div>
 		</div>
 
-		<div class="tsf-flex-setting tsf-flex">
-			<div class="tsf-flex-setting-label tsf-flex">
-				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
-					<label for=autodescription_description class="tsf-flex-setting-label-item tsf-flex">
+		<div class="sgeobiz-flex-setting sgeobiz-flex">
+			<div class="sgeobiz-flex-setting-label sgeobiz-flex">
+				<div class="sgeobiz-flex-setting-label-inner-wrap sgeobiz-flex">
+					<label for=autodescription_description class="sgeobiz-flex-setting-label-item sgeobiz-flex">
 						<div><strong><?php \esc_html_e( 'Meta Description', 'sgeobiz-seo' ); ?></strong></div>
 						<div>
 							<?php
@@ -234,7 +234,7 @@ switch ( $instance ) :
 					?>
 				</div>
 			</div>
-			<div class="tsf-flex-setting-input tsf-flex">
+			<div class="sgeobiz-flex-setting-input sgeobiz-flex">
 				<textarea class=large-text name="autodescription[_genesis_description]" id=autodescription_description rows=4 cols=4 autocomplete=off><?= \esc_html( Sanitize::metadata_content( $meta['_genesis_description'] ) ) ?></textarea>
 				<?php
 				Input::output_js_description_data(
@@ -317,10 +317,10 @@ switch ( $instance ) :
 		);
 
 		?>
-		<div class="tsf-flex-setting tsf-flex" <?= $show_og ? '' : 'style=display:none' ?>>
-			<div class="tsf-flex-setting-label tsf-flex">
-				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
-					<label for=autodescription_og_title class="tsf-flex-setting-label-item tsf-flex">
+		<div class="sgeobiz-flex-setting sgeobiz-flex" <?= $show_og ? '' : 'style=display:none' ?>>
+			<div class="sgeobiz-flex-setting-label sgeobiz-flex">
+				<div class="sgeobiz-flex-setting-label-inner-wrap sgeobiz-flex">
+					<label for=autodescription_og_title class="sgeobiz-flex-setting-label-item sgeobiz-flex">
 						<div><strong><?php \esc_html_e( 'Open Graph Title', 'sgeobiz-seo' ); ?></strong></div>
 					</label>
 					<?php
@@ -329,17 +329,17 @@ switch ( $instance ) :
 					?>
 				</div>
 			</div>
-			<div class="tsf-flex-setting-input tsf-flex">
-				<div id=tsf-og-title-wrap>
-					<input class=large-text type=text name="autodescription[_open_graph_title]" id=autodescription_og_title value="<?= \esc_html( Sanitize::metadata_content( $meta['_open_graph_title'] ) ) ?>" autocomplete=off data-form-type=other data-tsf-social-group=autodescription_social_singular data-tsf-social-type=ogTitle>
+			<div class="sgeobiz-flex-setting-input sgeobiz-flex">
+				<div id=sgeobiz-og-title-wrap>
+					<input class=large-text type=text name="autodescription[_open_graph_title]" id=autodescription_og_title value="<?= \esc_html( Sanitize::metadata_content( $meta['_open_graph_title'] ) ) ?>" autocomplete=off data-form-type=other data-sgeobiz-social-group=autodescription_social_singular data-sgeobiz-social-type=ogTitle>
 				</div>
 			</div>
 		</div>
 
-		<div class="tsf-flex-setting tsf-flex" <?= $show_og ? '' : 'style=display:none' ?>>
-			<div class="tsf-flex-setting-label tsf-flex">
-				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
-					<label for=autodescription_og_description class="tsf-flex-setting-label-item tsf-flex">
+		<div class="sgeobiz-flex-setting sgeobiz-flex" <?= $show_og ? '' : 'style=display:none' ?>>
+			<div class="sgeobiz-flex-setting-label sgeobiz-flex">
+				<div class="sgeobiz-flex-setting-label-inner-wrap sgeobiz-flex">
+					<label for=autodescription_og_description class="sgeobiz-flex-setting-label-item sgeobiz-flex">
 						<div><strong><?php \esc_html_e( 'Open Graph Description', 'sgeobiz-seo' ); ?></strong></div>
 					</label>
 					<?php
@@ -348,15 +348,15 @@ switch ( $instance ) :
 					?>
 				</div>
 			</div>
-			<div class="tsf-flex-setting-input tsf-flex">
-				<textarea class=large-text name="autodescription[_open_graph_description]" id=autodescription_og_description rows=3 cols=4 autocomplete=off data-tsf-social-group=autodescription_social_singular data-tsf-social-type=ogDesc><?= \esc_html( Sanitize::metadata_content( $meta['_open_graph_description'] ) ) ?></textarea>
+			<div class="sgeobiz-flex-setting-input sgeobiz-flex">
+				<textarea class=large-text name="autodescription[_open_graph_description]" id=autodescription_og_description rows=3 cols=4 autocomplete=off data-sgeobiz-social-group=autodescription_social_singular data-sgeobiz-social-type=ogDesc><?= \esc_html( Sanitize::metadata_content( $meta['_open_graph_description'] ) ) ?></textarea>
 			</div>
 		</div>
 
-		<div class="tsf-flex-setting tsf-flex" <?= $show_tw ? '' : 'style=display:none' ?>>
-			<div class="tsf-flex-setting-label tsf-flex">
-				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
-					<label for=autodescription_twitter_title class="tsf-flex-setting-label-item tsf-flex">
+		<div class="sgeobiz-flex-setting sgeobiz-flex" <?= $show_tw ? '' : 'style=display:none' ?>>
+			<div class="sgeobiz-flex-setting-label sgeobiz-flex">
+				<div class="sgeobiz-flex-setting-label-inner-wrap sgeobiz-flex">
+					<label for=autodescription_twitter_title class="sgeobiz-flex-setting-label-item sgeobiz-flex">
 						<div><strong><?php \esc_html_e( 'Twitter Title', 'sgeobiz-seo' ); ?></strong></div>
 					</label>
 					<?php
@@ -365,17 +365,17 @@ switch ( $instance ) :
 					?>
 				</div>
 			</div>
-			<div class="tsf-flex-setting-input tsf-flex">
-				<div id=tsf-twitter-title-wrap>
-					<input class=large-text type=text name="autodescription[_twitter_title]" id=autodescription_twitter_title value="<?= \esc_html( Sanitize::metadata_content( $meta['_twitter_title'] ) ) ?>" autocomplete=off data-form-type=other data-tsf-social-group=autodescription_social_singular data-tsf-social-type=twTitle>
+			<div class="sgeobiz-flex-setting-input sgeobiz-flex">
+				<div id=sgeobiz-twitter-title-wrap>
+					<input class=large-text type=text name="autodescription[_twitter_title]" id=autodescription_twitter_title value="<?= \esc_html( Sanitize::metadata_content( $meta['_twitter_title'] ) ) ?>" autocomplete=off data-form-type=other data-sgeobiz-social-group=autodescription_social_singular data-sgeobiz-social-type=twTitle>
 				</div>
 			</div>
 		</div>
 
-		<div class="tsf-flex-setting tsf-flex" <?= $show_tw ? '' : 'style=display:none' ?>>
-			<div class="tsf-flex-setting-label tsf-flex">
-				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
-					<label for=autodescription_twitter_description class="tsf-flex-setting-label-item tsf-flex">
+		<div class="sgeobiz-flex-setting sgeobiz-flex" <?= $show_tw ? '' : 'style=display:none' ?>>
+			<div class="sgeobiz-flex-setting-label sgeobiz-flex">
+				<div class="sgeobiz-flex-setting-label-inner-wrap sgeobiz-flex">
+					<label for=autodescription_twitter_description class="sgeobiz-flex-setting-label-item sgeobiz-flex">
 						<div><strong><?php \esc_html_e( 'Twitter Description', 'sgeobiz-seo' ); ?></strong></div>
 					</label>
 					<?php
@@ -384,8 +384,8 @@ switch ( $instance ) :
 					?>
 				</div>
 			</div>
-			<div class="tsf-flex-setting-input tsf-flex">
-				<textarea class=large-text name="autodescription[_twitter_description]" id=autodescription_twitter_description rows=3 cols=4 autocomplete=off data-tsf-social-group=autodescription_social_singular data-tsf-social-type=twDesc><?php // phpcs:ignore Squiz.PHP.EmbeddedPhp -- textarea element's content is input. Do not add spaces/tabs/lines: the php tag should stick to >.
+			<div class="sgeobiz-flex-setting-input sgeobiz-flex">
+				<textarea class=large-text name="autodescription[_twitter_description]" id=autodescription_twitter_description rows=3 cols=4 autocomplete=off data-sgeobiz-social-group=autodescription_social_singular data-sgeobiz-social-type=twDesc><?php // phpcs:ignore Squiz.PHP.EmbeddedPhp -- textarea element's content is input. Do not add spaces/tabs/lines: the php tag should stick to >.
 					// Textareas don't require sanitization in HTML5... other than removing the closing </textarea> tag...?
 					echo \esc_html( Sanitize::metadata_content( $meta['_twitter_description'] ) );
 				// phpcs:ignore Squiz.PHP.EmbeddedPhp
@@ -393,10 +393,10 @@ switch ( $instance ) :
 			</div>
 		</div>
 
-		<div class="tsf-flex-setting tsf-flex" <?= $show_tw ? '' : 'style=display:none' ?>>
-			<div class="tsf-flex-setting-label tsf-flex">
-				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
-					<label for=autodescription_twitter_card_type class="tsf-flex-setting-label-item tsf-flex">
+		<div class="sgeobiz-flex-setting sgeobiz-flex" <?= $show_tw ? '' : 'style=display:none' ?>>
+			<div class="sgeobiz-flex-setting-label sgeobiz-flex">
+				<div class="sgeobiz-flex-setting-label-inner-wrap sgeobiz-flex">
+					<label for=autodescription_twitter_card_type class="sgeobiz-flex-setting-label-item sgeobiz-flex">
 						<div><strong><?php \esc_html_e( 'Twitter Card Type', 'sgeobiz-seo' ); ?></strong></div>
 						<div>
 							<?php
@@ -409,7 +409,7 @@ switch ( $instance ) :
 					</label>
 				</div>
 			</div>
-			<div class="tsf-flex-setting-input tsf-flex">
+			<div class="sgeobiz-flex-setting-input sgeobiz-flex">
 				<?php
 				/* translators: %s = default option value */
 				$_default_i18n      = \__( 'Default (%s)', 'sgeobiz-seo' );
@@ -418,14 +418,14 @@ switch ( $instance ) :
 				// phpcs:disable WordPress.Security.EscapeOutput -- make_single_select_form() escapes.
 				echo Form::make_single_select_form( [
 					'id'       => 'autodescription_twitter_card_type',
-					'class'    => 'tsf-select-block',
-					'name'     => 'autodescription[_tsf_twitter_card_type]',
+					'class'    => 'sgeobiz-select-block',
+					'name'     => 'autodescription[_sgeobiz_twitter_card_type]',
 					'label'    => '',
 					'options'  => array_merge(
 						[ '' => \sprintf( $_default_i18n, $_twitter_card ) ],
 						array_combine( $tw_supported_cards, $tw_supported_cards ),
 					),
-					'selected' => $meta['_tsf_twitter_card_type'],
+					'selected' => $meta['_sgeobiz_twitter_card_type'],
 				] );
 				// phpcs:enable WordPress.Security.EscapeOutput
 				?>
@@ -442,10 +442,10 @@ switch ( $instance ) :
 		}
 
 		?>
-		<div class="tsf-flex-setting tsf-flex">
-			<div class="tsf-flex-setting-label tsf-flex">
-				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
-					<label for=autodescription_socialimage-url class="tsf-flex-setting-label-item tsf-flex">
+		<div class="sgeobiz-flex-setting sgeobiz-flex">
+			<div class="sgeobiz-flex-setting-label sgeobiz-flex">
+				<div class="sgeobiz-flex-setting-label-inner-wrap sgeobiz-flex">
+					<label for=autodescription_socialimage-url class="sgeobiz-flex-setting-label-item sgeobiz-flex">
 						<div><strong><?php \esc_html_e( 'Social Image URL', 'sgeobiz-seo' ); ?></strong></div>
 						<div>
 							<?php
@@ -458,10 +458,10 @@ switch ( $instance ) :
 					</label>
 				</div>
 			</div>
-			<div class="tsf-flex-setting-input tsf-flex">
+			<div class="sgeobiz-flex-setting-input sgeobiz-flex">
 				<input class=large-text type=url name="autodescription[_social_image_url]" id=autodescription_socialimage-url placeholder="<?= \esc_url( $image_placeholder ) ?>" value="<?= \esc_url( $meta['_social_image_url'] ) ?>" autocomplete=off>
-				<input type=hidden name="autodescription[_social_image_id]" id=autodescription_socialimage-id value="<?= \absint( $meta['_social_image_id'] ) ?>" disabled class=tsf-enable-media-if-js>
-				<div class="hide-if-no-sgeobiz-js tsf-social-image-buttons">
+				<input type=hidden name="autodescription[_social_image_id]" id=autodescription_socialimage-id value="<?= \absint( $meta['_social_image_id'] ) ?>" disabled class=sgeobiz-enable-media-if-js>
+				<div class="hide-if-no-sgeobiz-js sgeobiz-social-image-buttons">
 					<?php
 					// phpcs:disable WordPress.Security.EscapeOutput -- get_image_uploader_form escapes. (phpcs breaks here, so we use disable)
 					echo Form::get_image_uploader_form( [ 'id' => 'autodescription_socialimage' ] );
@@ -521,10 +521,10 @@ switch ( $instance ) :
 		];
 
 		?>
-		<div class="tsf-flex-setting tsf-flex">
-			<div class="tsf-flex-setting-label tsf-flex">
-				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
-					<label for=autodescription_canonical class="tsf-flex-setting-label-item tsf-flex">
+		<div class="sgeobiz-flex-setting sgeobiz-flex">
+			<div class="sgeobiz-flex-setting-label sgeobiz-flex">
+				<div class="sgeobiz-flex-setting-label-inner-wrap sgeobiz-flex">
+					<label for=autodescription_canonical class="sgeobiz-flex-setting-label-item sgeobiz-flex">
 						<div><strong><?php \esc_html_e( 'Canonical URL', 'sgeobiz-seo' ); ?></strong></div>
 						<div>
 						<?php
@@ -537,7 +537,7 @@ switch ( $instance ) :
 					</label>
 				</div>
 			</div>
-			<div class="tsf-flex-setting-input tsf-flex">
+			<div class="sgeobiz-flex-setting-input sgeobiz-flex">
 				<input class=large-text type=url name="autodescription[_genesis_canonical_uri]" id=autodescription_canonical placeholder="<?= \esc_url( $default_canonical ) ?>" value="<?= \esc_url( $meta['_genesis_canonical_uri'] ) ?>" autocomplete=off>
 				<?php
 				$post_type   = Query::get_admin_post_type();
@@ -622,10 +622,10 @@ switch ( $instance ) :
 			</div>
 		</div>
 
-		<div class="tsf-flex-setting tsf-flex">
-			<div class="tsf-flex-setting-label tsf-flex">
-				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
-					<div class="tsf-flex-setting-label-item tsf-flex">
+		<div class="sgeobiz-flex-setting sgeobiz-flex">
+			<div class="sgeobiz-flex-setting-label sgeobiz-flex">
+				<div class="sgeobiz-flex-setting-label-inner-wrap sgeobiz-flex">
+					<div class="sgeobiz-flex-setting-label-item sgeobiz-flex">
 						<div><strong><?php \esc_html_e( 'Robots Meta Settings', 'sgeobiz-seo' ); ?></strong></div>
 						<div>
 						<?php
@@ -639,30 +639,30 @@ switch ( $instance ) :
 					<?php
 					if ( $is_static_front_page ) {
 						printf(
-							'<div class=tsf-flex-setting-label-sub-item><span class="description attention">%s</span></div>',
+							'<div class=sgeobiz-flex-setting-label-sub-item><span class="description attention">%s</span></div>',
 							\esc_html__( 'Warning: No public site should ever apply "noindex" or "nofollow" to the homepage.', 'sgeobiz-seo' ),
 						);
 						printf(
-							'<div class=tsf-flex-setting-label-sub-item><span class=description>%s</span></div>',
+							'<div class=sgeobiz-flex-setting-label-sub-item><span class=description>%s</span></div>',
 							\esc_html__( 'Note: A non-default selection here will overwrite the global homepage SEO settings.', 'sgeobiz-seo' ),
 						);
 					}
 					?>
 				</div>
 			</div>
-			<div class="tsf-flex-setting-input tsf-flex">
+			<div class="sgeobiz-flex-setting-input sgeobiz-flex">
 				<?php
 				foreach ( $r_settings as $_s ) {
 					?>
-					<div class="tsf-flex-setting tsf-flex">
-						<div class="tsf-flex-setting-label tsf-flex">
-							<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
-								<label for="<?= \esc_attr( $_s['id'] ) ?>" class="tsf-flex-setting-label-item tsf-flex">
+					<div class="sgeobiz-flex-setting sgeobiz-flex">
+						<div class="sgeobiz-flex-setting-label sgeobiz-flex">
+							<div class="sgeobiz-flex-setting-label-inner-wrap sgeobiz-flex">
+								<label for="<?= \esc_attr( $_s['id'] ) ?>" class="sgeobiz-flex-setting-label-item sgeobiz-flex">
 									<div><strong><?= \esc_html( $_s['label'] ) ?></strong></div>
 								</label>
 							</div>
 						</div>
-						<div class="tsf-flex-setting-input tsf-flex">
+						<div class="sgeobiz-flex-setting-input sgeobiz-flex">
 						<?php
 							/* translators: %s = default option value */
 							$_default_i18n = \__( 'Default (%s)', 'sgeobiz-seo' );
@@ -670,7 +670,7 @@ switch ( $instance ) :
 							// phpcs:disable WordPress.Security.EscapeOutput -- make_single_select_form() escapes.
 							echo Form::make_single_select_form( [
 								'id'       => $_s['id'],
-								'class'    => 'tsf-select-block',
+								'class'    => 'sgeobiz-select-block',
 								'name'     => \sprintf( 'autodescription[%s]', $_s['option'] ),
 								'label'    => '',
 								'options'  => [
@@ -700,17 +700,17 @@ switch ( $instance ) :
 		?>
 
 		<?php if ( $can_do_archive_query || $can_do_search_query ) : ?>
-		<div class="tsf-flex-setting tsf-flex">
-			<div class="tsf-flex-setting-label tsf-flex">
-				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
-					<div class="tsf-flex-setting-label-item tsf-flex">
+		<div class="sgeobiz-flex-setting sgeobiz-flex">
+			<div class="sgeobiz-flex-setting-label sgeobiz-flex">
+				<div class="sgeobiz-flex-setting-label-inner-wrap sgeobiz-flex">
+					<div class="sgeobiz-flex-setting-label-item sgeobiz-flex">
 						<div><strong><?php \esc_html_e( 'Archive Settings', 'sgeobiz-seo' ); ?></strong></div>
 					</div>
 				</div>
 			</div>
-			<div class="tsf-flex-setting-input tsf-flex">
+			<div class="sgeobiz-flex-setting-input sgeobiz-flex">
 				<?php if ( $can_do_search_query ) : ?>
-				<div class=tsf-checkbox-wrapper>
+				<div class=sgeobiz-checkbox-wrapper>
 					<label for=autodescription_exclude_local_search><input type=checkbox name="autodescription[exclude_local_search]" id=autodescription_exclude_local_search value=1 <?php \checked( $meta['exclude_local_search'] ); ?>>
 						<?php
 						\esc_html_e( 'Exclude this page from all search queries on this site.', 'sgeobiz-seo' );
@@ -719,7 +719,7 @@ switch ( $instance ) :
 				</div>
 				<?php endif; ?>
 				<?php if ( $can_do_archive_query ) : ?>
-				<div class=tsf-checkbox-wrapper>
+				<div class=sgeobiz-checkbox-wrapper>
 					<label for=autodescription_exclude_from_archive><input type=checkbox name="autodescription[exclude_from_archive]" id=autodescription_exclude_from_archive value=1 <?php \checked( $meta['exclude_from_archive'] ); ?>>
 						<?php
 						\esc_html_e( 'Exclude this page from all archive queries on this site.', 'sgeobiz-seo' );
@@ -731,10 +731,10 @@ switch ( $instance ) :
 		</div>
 		<?php endif; ?>
 
-		<div class="tsf-flex-setting tsf-flex">
-			<div class="tsf-flex-setting-label tsf-flex">
-				<div class="tsf-flex-setting-label-inner-wrap tsf-flex">
-					<label for=autodescription_redirect class="tsf-flex-setting-label-item tsf-flex">
+		<div class="sgeobiz-flex-setting sgeobiz-flex">
+			<div class="sgeobiz-flex-setting-label sgeobiz-flex">
+				<div class="sgeobiz-flex-setting-label-inner-wrap sgeobiz-flex">
+					<label for=autodescription_redirect class="sgeobiz-flex-setting-label-item sgeobiz-flex">
 						<div>
 							<strong><?php \esc_html_e( '301 Redirect URL', 'sgeobiz-seo' ); ?></strong>
 						</div>
@@ -749,7 +749,7 @@ switch ( $instance ) :
 					</label>
 				</div>
 			</div>
-			<div class="tsf-flex-setting-input tsf-flex">
+			<div class="sgeobiz-flex-setting-input sgeobiz-flex">
 				<input class=large-text type=url name="autodescription[redirect]" id=autodescription_redirect value="<?= \esc_url( $meta['redirect'] ) ?>" autocomplete=off>
 			</div>
 		</div>

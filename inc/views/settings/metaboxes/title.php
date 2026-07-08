@@ -45,8 +45,8 @@ switch ( $instance ) :
 		$blogname = \esc_html( Data\Blog::get_public_blog_name() );
 		$sep      = \esc_html( Meta\Title::get_separator() );
 
-		$additions_left  = "<span class=tsf-title-additions-js><span class=tsf-site-title-js>$blogname</span><span class=tsf-sep-js> $sep </span></span>";
-		$additions_right = "<span class=tsf-title-additions-js><span class=tsf-sep-js> $sep </span><span class=tsf-site-title-js>$blogname</span></span>";
+		$additions_left  = "<span class=sgeobiz-title-additions-js><span class=sgeobiz-site-title-js>$blogname</span><span class=sgeobiz-sep-js> $sep </span></span>";
+		$additions_right = "<span class=sgeobiz-title-additions-js><span class=sgeobiz-sep-js> $sep </span><span class=sgeobiz-site-title-js>$blogname</span></span>";
 
 		$latest_post_id = Data\Post::get_latest_post_id();
 		$latest_cat_id  = Data\Term::get_latest_term_id( 'category' );
@@ -85,13 +85,13 @@ switch ( $instance ) :
 			HTML::header_title( \__( 'Example Page Title Output', 'sgeobiz-seo' ) );
 			?>
 			<p>
-				<span class="tsf-title-additions-example-left hidden">
+				<span class="sgeobiz-title-additions-example-left hidden">
 					<?php
 					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped.
 					echo HTML::code_wrap_noesc( $example_post_left );
 					?>
 				</span>
-				<span class="tsf-title-additions-example-right hidden">
+				<span class="sgeobiz-title-additions-example-right hidden">
 					<?php
 					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped.
 					echo HTML::code_wrap_noesc( $example_post_right );
@@ -101,25 +101,25 @@ switch ( $instance ) :
 
 			<?php HTML::header_title( \__( 'Example Archive Title Output', 'sgeobiz-seo' ) ); ?>
 			<p>
-				<span class="tsf-title-additions-example-left tsf-title-tax-prefix hidden">
+				<span class="sgeobiz-title-additions-example-left sgeobiz-title-tax-prefix hidden">
 					<?php
 					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped.
 					echo HTML::code_wrap_noesc( $example_tax_left_full );
 					?>
 				</span>
-				<span class="tsf-title-additions-example-right tsf-title-tax-prefix hidden">
+				<span class="sgeobiz-title-additions-example-right sgeobiz-title-tax-prefix hidden">
 					<?php
 					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped.
 					echo HTML::code_wrap_noesc( $example_tax_right_full );
 					?>
 				</span>
-				<span class="tsf-title-additions-example-left tsf-title-tax-noprefix hidden">
+				<span class="sgeobiz-title-additions-example-left sgeobiz-title-tax-noprefix hidden">
 					<?php
 					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped.
 					echo HTML::code_wrap_noesc( $example_tax_left );
 					?>
 				</span>
-				<span class="tsf-title-additions-example-right tsf-title-tax-noprefix hidden">
+				<span class="sgeobiz-title-additions-example-right sgeobiz-title-tax-noprefix hidden">
 					<?php
 					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped.
 					echo HTML::code_wrap_noesc( $example_tax_right );
@@ -133,7 +133,7 @@ switch ( $instance ) :
 		if (
 			   Admin\Utils::display_extension_suggestions()
 			&& ! \current_theme_supports( 'title-tag' )
-			&& ! \defined( 'TSFEM_E_TITLE_FIX' )
+			&& ! \defined( 'SGEOBIZEM_E_TITLE_FIX' )
 		) {
 			?>
 			<h4>
@@ -204,7 +204,7 @@ switch ( $instance ) :
 			<?php
 			HTML::description( \__( 'If the title consists of multiple parts, then the separator will go in-between them.', 'sgeobiz-seo' ) );
 			?>
-			<p id=tsf-title-separator class=tsf-fields>
+			<p id=sgeobiz-title-separator class=sgeobiz-fields>
 			<?php
 			foreach ( $title_separator as $name => $html ) {
 				vprintf(
@@ -257,11 +257,11 @@ switch ( $instance ) :
 		$homepage_has_option = \__( 'This option does not affect the homepage; it uses a different one.', 'sgeobiz-seo' );
 		?>
 		<p>
-			<label for="<?php Input::field_id( 'site_title' ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( 'site_title' ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( 'Site Title', 'sgeobiz-seo' ); ?></strong>
 			</label>
 		</p>
-		<p class=tsf-title-wrap>
+		<p class=sgeobiz-title-wrap>
 			<input type=text name="<?php Input::field_name( 'site_title' ); ?>" class=large-text id="<?php Input::field_id( 'site_title' ); ?>" placeholder="<?= \esc_html( Sanitize::metadata_content( Data\Blog::get_filtered_blog_name() ) ) ?>" value="<?= \esc_html( Sanitize::metadata_content( Data\Plugin::get_option( 'site_title' ) ) ) ?>" autocomplete=off>
 		</p>
 		<?php
@@ -271,8 +271,8 @@ switch ( $instance ) :
 
 		<fieldset>
 			<legend><?php HTML::header_title( \__( 'Site Title Location', 'sgeobiz-seo' ) ); ?></legend>
-			<p id=tsf-title-location class=tsf-fields>
-				<span class=tsf-toblock>
+			<p id=sgeobiz-title-location class=sgeobiz-fields>
+				<span class=sgeobiz-toblock>
 					<input type=radio name="<?php Input::field_name( 'title_location' ); ?>" id="<?php Input::field_id( 'title_location_left' ); ?>" value=left <?php \checked( Data\Plugin::get_option( 'title_location' ), 'left' ); ?>>
 					<label for="<?php Input::field_id( 'title_location_left' ); ?>">
 						<span><?php \esc_html_e( 'Left:', 'sgeobiz-seo' ); ?></span>
@@ -282,7 +282,7 @@ switch ( $instance ) :
 						?>
 					</label>
 				</span>
-				<span class=tsf-toblock>
+				<span class=sgeobiz-toblock>
 					<input type=radio name="<?php Input::field_name( 'title_location' ); ?>" id="<?php Input::field_id( 'title_location_right' ); ?>" value=right <?php \checked( Data\Plugin::get_option( 'title_location' ), 'right' ); ?>>
 					<label for="<?php Input::field_id( 'title_location_right' ); ?>">
 						<span><?php \esc_html_e( 'Right:', 'sgeobiz-seo' ); ?></span>
@@ -299,7 +299,7 @@ switch ( $instance ) :
 		<hr>
 
 		<?php HTML::header_title( \__( 'Site Title Removal', 'sgeobiz-seo' ) ); ?>
-		<div id=tsf-title-additions-toggle>
+		<div id=sgeobiz-title-additions-toggle>
 			<?php
 			$info = HTML::make_info(
 				\__( 'Always brand your titles. Search engines may ignore your titles with this feature enabled.', 'sgeobiz-seo' ),
@@ -331,7 +331,7 @@ switch ( $instance ) :
 		<hr>
 
 		<?php HTML::header_title( \__( 'Archive Title Prefixes', 'sgeobiz-seo' ) ); ?>
-		<div id=tsf-title-prefixes-toggle>
+		<div id=sgeobiz-title-prefixes-toggle>
 			<?php
 			$info = HTML::make_info(
 				\__( "The prefix helps visitors and search engines determine what kind of page they're visiting.", 'sgeobiz-seo' ),

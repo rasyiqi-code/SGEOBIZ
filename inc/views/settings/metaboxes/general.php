@@ -395,8 +395,8 @@ switch ( $instance ) :
 			<legend><?php HTML::header_title( \__( 'Timestamp Format Settings', 'sgeobiz-seo' ) ); ?></legend>
 			<?php HTML::description( \__( 'This setting determines how specific the timestamp is.', 'sgeobiz-seo' ) ); ?>
 
-			<p id=sitemaps-timestamp-format class=tsf-fields>
-				<span class=tsf-toblock>
+			<p id=sitemaps-timestamp-format class=sgeobiz-fields>
+				<span class=sgeobiz-toblock>
 					<input type=radio name="<?php Input::field_name( 'timestamps_format' ); ?>" id="<?php Input::field_id( 'timestamps_format_0' ); ?>" value=0 <?php \checked( Data\Plugin::get_option( 'timestamps_format' ), '0' ); ?>>
 					<label for="<?php Input::field_id( 'timestamps_format_0' ); ?>">
 						<?php
@@ -407,7 +407,7 @@ switch ( $instance ) :
 						?>
 					</label>
 				</span>
-				<span class=tsf-toblock>
+				<span class=sgeobiz-toblock>
 					<input type=radio name="<?php Input::field_name( 'timestamps_format' ); ?>" id="<?php Input::field_id( 'timestamps_format_1' ); ?>" value=1 <?php \checked( Data\Plugin::get_option( 'timestamps_format' ), '1' ); ?>>
 					<label for="<?php Input::field_id( 'timestamps_format_1' ); ?>">
 						<?php
@@ -458,7 +458,7 @@ switch ( $instance ) :
 
 			$boxes[] = Input::make_checkbox( [
 				'id'       => [ 'disabled_post_types', $post_type ],
-				'class'    => 'tsf-excluded-post-types',
+				'class'    => 'sgeobiz-excluded-post-types',
 				'label'    => $_label,
 				'escape'   => false,
 				'disabled' => \in_array( $post_type, $forced_pt, true ),
@@ -489,7 +489,7 @@ switch ( $instance ) :
 
 			$boxes[] = Input::make_checkbox( [
 				'id'       => [ 'disabled_taxonomies', $taxonomy ], // disabled_taxonomies is the option name.
-				'class'    => 'tsf-excluded-taxonomies',
+				'class'    => 'sgeobiz-excluded-taxonomies',
 				'label'    => $_label,
 				'escape'   => false,
 				'disabled' => \in_array( $taxonomy, $forced_tax, true ),

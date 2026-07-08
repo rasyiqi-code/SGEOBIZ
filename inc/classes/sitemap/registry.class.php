@@ -191,7 +191,7 @@ class Registry {
 			/**
 			 * @since 4.0.0
 			 * @since 4.0.2 Made the endpoints' regex case-insensitive.
-			 * @link Example: https://github.com/sybrew/tsf-term-sitemap
+			 * @link Example: https://github.com/sybrew/sgeobiz-term-sitemap
 			 * @param array[] $list {
 			 *     A list of sitemap endpoints keyed by ID.
 			 *
@@ -517,7 +517,7 @@ class Registry {
 		} else {
 			// Yes, we know. This is not really checking for standardized query-variables.
 			// It's straightforward and doesn't mess with the rest of the site, however.
-			$path = "$base_path$prefix?tsf-sitemap=";
+			$path = "$base_path$prefix?sgeobiz-sitemap=";
 
 			$use_query_var = true;
 		}

@@ -13,7 +13,7 @@ use SGEOBIZ_SEO\Admin\Settings\Layout\HTML;
 // phpcs:disable WordPress.WP.GlobalVariablesOverride -- This isn't the global scope.
 
 ?>
-<script type=text/html id=tmpl-tsf-primary-term-selector>
+<script type=text/html id=tmpl-sgeobiz-primary-term-selector>
 	<input type=hidden id="autodescription[_primary_term_{{data.taxonomy.name}}]" name="autodescription[_primary_term_{{data.taxonomy.name}}]" value="{{data.taxonomy.primary}}">
 	<?php
 	\wp_nonce_field(

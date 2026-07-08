@@ -187,7 +187,7 @@ class Post {
 			'sgeobiz_seo_post_meta_defaults',
 			[
 				'_genesis_title'          => '',
-				'_tsf_title_no_blogname'  => 0, // The prefix I should've used from the start...
+				'_sgeobiz_title_no_blogname'  => 0, // The prefix I should've used from the start...
 				'_genesis_description'    => '',
 				'_genesis_canonical_uri'  => '',
 				'redirect'                => '', // FIXME: Will be displayed in custom fields when set...
@@ -202,7 +202,7 @@ class Post {
 				'_open_graph_description' => '',
 				'_twitter_title'          => '',
 				'_twitter_description'    => '',
-				'_tsf_twitter_card_type'  => '',
+				'_sgeobiz_twitter_card_type'  => '',
 			],
 			$post_id ?: Query::get_the_real_id(),
 		);

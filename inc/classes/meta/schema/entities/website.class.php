@@ -86,9 +86,9 @@ final class WebSite extends Reference {
 				'target'      => [
 					'@type'       => 'EntryPoint',
 					'urlTemplate' => str_replace(
-						'tsf_search_term_string',
+						'sgeobiz_search_term_string',
 						'{search_term_string}',
-						Meta\URI::get_bare_search_url( 'tsf_search_term_string' ),
+						Meta\URI::get_bare_search_url( 'sgeobiz_search_term_string' ),
 					),
 				],
 				'query-input' => 'required name=search_term_string',

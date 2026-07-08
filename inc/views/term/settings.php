@@ -109,7 +109,7 @@ $_default_i18n = \__( 'Default (%s)', 'sgeobiz-seo' );
 ?>
 <h2><?php \esc_html_e( 'General SEO Settings', 'sgeobiz-seo' ); ?></h2>
 
-<table class="form-table tsf-term-meta">
+<table class="form-table sgeobiz-term-meta">
 	<tbody>
 		<?php
 		if ( Data\Plugin::get_option( 'display_seo_bar_metabox' ) ) {
@@ -147,7 +147,7 @@ $_default_i18n = \__( 'Default (%s)', 'sgeobiz-seo' );
 				?>
 			</th>
 			<td>
-				<div class=tsf-title-wrap>
+				<div class=sgeobiz-title-wrap>
 					<input type=text name="autodescription-meta[doctitle]" id="autodescription-meta[doctitle]" value="<?= \esc_html( Sanitize::metadata_content( $meta['doctitle'] ) ) ?>" size=40 autocomplete=off data-form-type=other>
 					<?php
 					Input::output_js_title_data(
@@ -165,7 +165,7 @@ $_default_i18n = \__( 'Default (%s)', 'sgeobiz-seo' );
 					);
 					?>
 				</div>
-				<label for="autodescription-meta[title_no_blog_name]" class=tsf-term-checkbox-wrap>
+				<label for="autodescription-meta[title_no_blog_name]" class=sgeobiz-term-checkbox-wrap>
 					<input type=checkbox name="autodescription-meta[title_no_blog_name]" id="autodescription-meta[title_no_blog_name]" value=1 <?php \checked( Data\Plugin\Term::get_meta_item( 'title_no_blog_name' ) ); ?>>
 					<?php
 					\esc_html_e( 'Remove the site title?', 'sgeobiz-seo' );
@@ -238,7 +238,7 @@ Input::output_js_social_data(
 );
 ?>
 
-<table class="form-table tsf-term-meta">
+<table class="form-table sgeobiz-term-meta">
 	<tbody>
 		<tr class=form-field <?= $show_og ? '' : 'style=display:none' ?>>
 			<th scope=row valign=top>
@@ -251,8 +251,8 @@ Input::output_js_social_data(
 				?>
 			</th>
 			<td>
-				<div id=tsf-og-title-wrap>
-					<input name="autodescription-meta[og_title]" id="autodescription-meta[og_title]" type=text value="<?= \esc_html( Sanitize::metadata_content( $meta['og_title'] ) ) ?>" size=40 autocomplete=off data-form-type=other data-tsf-social-group=autodescription_social_tt data-tsf-social-type=ogTitle>
+				<div id=sgeobiz-og-title-wrap>
+					<input name="autodescription-meta[og_title]" id="autodescription-meta[og_title]" type=text value="<?= \esc_html( Sanitize::metadata_content( $meta['og_title'] ) ) ?>" size=40 autocomplete=off data-form-type=other data-sgeobiz-social-group=autodescription_social_tt data-sgeobiz-social-type=ogTitle>
 				</div>
 			</td>
 		</tr>
@@ -268,7 +268,7 @@ Input::output_js_social_data(
 				?>
 			</th>
 			<td>
-				<textarea name="autodescription-meta[og_description]" id="autodescription-meta[og_description]" rows=4 cols=50 class=large-text autocomplete=off data-tsf-social-group=autodescription_social_tt data-tsf-social-type=ogDesc><?= \esc_html( Sanitize::metadata_content( $meta['og_description'] ) ) ?></textarea>
+				<textarea name="autodescription-meta[og_description]" id="autodescription-meta[og_description]" rows=4 cols=50 class=large-text autocomplete=off data-sgeobiz-social-group=autodescription_social_tt data-sgeobiz-social-type=ogDesc><?= \esc_html( Sanitize::metadata_content( $meta['og_description'] ) ) ?></textarea>
 			</td>
 		</tr>
 
@@ -283,8 +283,8 @@ Input::output_js_social_data(
 				?>
 			</th>
 			<td>
-				<div id=tsf-tw-title-wrap>
-					<input name="autodescription-meta[tw_title]" id="autodescription-meta[tw_title]" type=text value="<?= \esc_html( Sanitize::metadata_content( $meta['tw_title'] ) ) ?>" size=40 autocomplete=off data-form-type=other data-tsf-social-group=autodescription_social_tt data-tsf-social-type=twTitle>
+				<div id=sgeobiz-tw-title-wrap>
+					<input name="autodescription-meta[tw_title]" id="autodescription-meta[tw_title]" type=text value="<?= \esc_html( Sanitize::metadata_content( $meta['tw_title'] ) ) ?>" size=40 autocomplete=off data-form-type=other data-sgeobiz-social-group=autodescription_social_tt data-sgeobiz-social-type=twTitle>
 				</div>
 			</td>
 		</tr>
@@ -300,7 +300,7 @@ Input::output_js_social_data(
 				?>
 			</th>
 			<td>
-				<textarea name="autodescription-meta[tw_description]" id="autodescription-meta[tw_description]" rows=4 cols=50 class=large-text autocomplete=off data-tsf-social-group=autodescription_social_tt data-tsf-social-type=twDesc><?= \esc_html( Sanitize::metadata_content( $meta['tw_description'] ) ) ?></textarea>
+				<textarea name="autodescription-meta[tw_description]" id="autodescription-meta[tw_description]" rows=4 cols=50 class=large-text autocomplete=off data-sgeobiz-social-group=autodescription_social_tt data-sgeobiz-social-type=twDesc><?= \esc_html( Sanitize::metadata_content( $meta['tw_description'] ) ) ?></textarea>
 			</td>
 		</tr>
 
@@ -322,7 +322,7 @@ Input::output_js_social_data(
 				// phpcs:disable WordPress.Security.EscapeOutput -- make_single_select_form() escapes.
 				echo Form::make_single_select_form( [
 					'id'       => 'autodescription-meta[tw_card_type]',
-					'class'    => 'tsf-term-select-wrap',
+					'class'    => 'sgeobiz-term-select-wrap',
 					'name'     => 'autodescription-meta[tw_card_type]',
 					'options'  => array_merge(
 						[ '' => \sprintf( $_default_i18n, Meta\Twitter::get_generated_card_type( $generator_args ) ) ],
@@ -350,8 +350,8 @@ Input::output_js_social_data(
 			</th>
 			<td>
 				<input type=url name="autodescription-meta[social_image_url]" id=autodescription_meta_socialimage-url placeholder="<?= \esc_attr( $image_placeholder ) ?>" value="<?= \esc_attr( $meta['social_image_url'] ) ?>" size=40 autocomplete=off>
-				<input type=hidden name="autodescription-meta[social_image_id]" id=autodescription_meta_socialimage-id value="<?= \absint( $meta['social_image_id'] ) ?>" disabled class=tsf-enable-media-if-js>
-				<div class="hide-if-no-sgeobiz-js tsf-term-button-wrap">
+				<input type=hidden name="autodescription-meta[social_image_id]" id=autodescription_meta_socialimage-id value="<?= \absint( $meta['social_image_id'] ) ?>" disabled class=sgeobiz-enable-media-if-js>
+				<div class="hide-if-no-sgeobiz-js sgeobiz-term-button-wrap">
 					<?php
 					// phpcs:disable WordPress.Security.EscapeOutput -- get_image_uploader_form escapes. (phpcs breaks here, so we use disable)
 					echo Form::get_image_uploader_form( [ 'id' => 'autodescription_meta_socialimage' ] );
@@ -365,7 +365,7 @@ Input::output_js_social_data(
 
 <h2><?php \esc_html_e( 'Visibility SEO Settings', 'sgeobiz-seo' ); ?></h2>
 
-<table class="form-table tsf-term-meta">
+<table class="form-table sgeobiz-term-meta">
 	<tbody>
 		<tr class=form-field>
 			<th scope=row valign=top>
@@ -434,7 +434,7 @@ Input::output_js_social_data(
 					// phpcs:disable WordPress.Security.EscapeOutput -- make_single_select_form() escapes.
 					echo Form::make_single_select_form( [
 						'id'       => $_s['id'],
-						'class'    => 'tsf-term-select-wrap',
+						'class'    => 'sgeobiz-term-select-wrap',
 						'name'     => $_s['name'],
 						'label'    => $_s['label'],
 						'options'  => [

@@ -77,13 +77,13 @@ final class Post {
 					$value = Sanitize::redirect_url( $value );
 					break;
 
-				case '_tsf_title_no_blogname':
+				case '_sgeobiz_title_no_blogname':
 				case 'exclude_local_search':
 				case 'exclude_from_archive':
 					$value = Sanitize::boolean_integer( $value );
 					break;
 
-				case '_tsf_twitter_card_type':
+				case '_sgeobiz_twitter_card_type':
 					if ( ! \in_array( $value, Meta\Twitter::get_supported_cards(), true ) )
 						$value = ''; // default
 					break;

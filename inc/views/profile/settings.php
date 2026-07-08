@@ -33,14 +33,14 @@ use const SGEOBIZ_SEO\ROBOTS_IGNORE_SETTINGS;
 [ $user ] = $view_args;
 
 $fields = [
-	'tsf-user-meta[facebook_page]' => [
+	'sgeobiz-user-meta[facebook_page]' => [
 		'name'        => \__( 'Facebook profile page', 'sgeobiz-seo' ),
 		'type'        => 'url',
 		'placeholder' => \_x( 'https://www.facebook.com/YourPersonalProfile', 'Example Facebook Personal URL', 'sgeobiz-seo' ),
 		'value'       => Data\Plugin\User::get_meta_item( 'facebook_page', $user->ID ),
 		'class'       => '',
 	],
-	'tsf-user-meta[twitter_page]'  => [
+	'sgeobiz-user-meta[twitter_page]'  => [
 		'name'        => \__( 'X profile handle', 'sgeobiz-seo' ),
 		'type'        => 'text',
 		'placeholder' => \_x( '@your-personal-username', 'X @username', 'sgeobiz-seo' ),

@@ -3,8 +3,8 @@
 	vertical-align: bottom;
 }
 
-.tsf-set-image-button.button,
-.tsf-remove-image-button.button,
+.sgeobiz-set-image-button.button,
+.sgeobiz-remove-image-button.button,
 .sgeobiz-image-preview,
 .sgeobiz-image-warning {
 	margin-inline-end: 8px;
@@ -27,9 +27,9 @@
 .sgeobiz-image-warning::after {
 	content: "\f534";
 }
-.tsf-media-warning::after {
+.sgeobiz-media-warning::after {
 	color: #ffae00;
 }
-.tsf-media-error::after {
+.sgeobiz-media-error::after {
 	color: #d63638;
 }

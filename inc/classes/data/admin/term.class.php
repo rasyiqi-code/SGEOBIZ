@@ -46,12 +46,12 @@ final class Term {
 	 */
 	public const SAVE_NONCES = [
 		'term-edit'  => [
-			'name'   => 'tsf_term_nonce_name',
-			'action' => 'tsf_term_nonce_action',
+			'name'   => 'sgeobiz_term_nonce_name',
+			'action' => 'sgeobiz_term_nonce_action',
 		],
 		'quick-edit' => [
-			'name'   => 'tsf_term_nonce_name',
-			'action' => 'tsf_term_nonce_action',
+			'name'   => 'sgeobiz_term_nonce_name',
+			'action' => 'sgeobiz_term_nonce_action',
 		],
 	];
 

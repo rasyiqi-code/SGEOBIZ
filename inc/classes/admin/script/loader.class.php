@@ -351,7 +351,7 @@ class Loader {
 	 * @since 4.0.0
 	 * @since 4.1.0 Now depends on title and description scripts.
 	 * @since 4.2.0 No longer registers l10n (data).
-	 * @since 5.1.3 tsf-pt-le dependency is now conditional on singular admin pages.
+	 * @since 5.1.3 sgeobiz-pt-le dependency is now conditional on singular admin pages.
 	 *
 	 * @return array The script params.
 	 */
@@ -359,7 +359,7 @@ class Loader {
 
 		$deps = [ 'sgeobiz-title', 'sgeobiz-description', 'sgeobiz-canonical', 'sgeobiz-postslugs', 'sgeobiz-termslugs', 'sgeobiz-authorslugs', 'sgeobiz', 'sgeobiz-tt', 'sgeobiz-utils' ];
 
-		// tsf-pt-le is only registered on singular admin (post list) pages, not term list pages.
+		// sgeobiz-pt-le is only registered on singular admin (post list) pages, not term list pages.
 		if ( Query::is_singular_admin() )
 			$deps[] = 'sgeobiz-pt-le';
 
@@ -464,10 +464,10 @@ class Loader {
 				'base'     => \SGEOBIZ_SEO_DIR_URL . 'lib/css/',
 				'ver'      => \SGEOBIZ_SEO_VERSION,
 				'inline'   => [
-					'.tsf-flex-nav-tab .tsf-flex-nav-tab-radio:checked + .tsf-flex-nav-tab-label' => [
+					'.sgeobiz-flex-nav-tab .sgeobiz-flex-nav-tab-radio:checked + .sgeobiz-flex-nav-tab-label' => [
 						'box-shadow:0 -2px 0 0 {{$color_accent}} inset, 0 0 0 0 {{$color_accent}} inset',
 					],
-					'.tsf-flex-nav-tab .tsf-flex-nav-tab-radio:focus + .tsf-flex-nav-tab-label:not(.tsf-no-focus-ring)' => [
+					'.sgeobiz-flex-nav-tab .sgeobiz-flex-nav-tab-radio:focus + .sgeobiz-flex-nav-tab-label:not(.sgeobiz-no-focus-ring)' => [
 						'box-shadow:0 -2px 0 0 {{$color_accent}} inset, 0 0 0 1px {{$color_accent}} inset',
 					],
 				],
@@ -618,7 +618,7 @@ class Loader {
 	 *
 	 * @since 4.0.0
 	 * @since 4.1.2 Removed redundant button titles.
-	 * @since 5.1.0 Added tsf-media CSS. Added `sgeobizMediaL10n.warning`.
+	 * @since 5.1.0 Added sgeobiz-media CSS. Added `sgeobizMediaL10n.warning`.
 	 *
 	 * @return array The script params.
 	 */

@@ -353,7 +353,7 @@ switch ( $instance ) :
 		foreach ( $args['post_types'] as $post_type ) {
 			$checkboxes[] = Input::make_checkbox( [
 				'id'     => [ $pt_option_id, $post_type ],
-				'class'  => 'tsf-robots-post-types',
+				'class'  => 'sgeobiz-robots-post-types',
 				'label'  => \sprintf(
 					// RTL supported: Because the post types are Roman, browsers enforce the order.
 					'%s &ndash; <code>%s</code>',
@@ -386,7 +386,7 @@ switch ( $instance ) :
 		foreach ( $args['taxonomies'] as $taxonomy ) {
 			$checkboxes[] = Input::make_checkbox( [
 				'id'     => [ $tax_option_id, $taxonomy ],
-				'class'  => 'tsf-robots-taxonomies',
+				'class'  => 'sgeobiz-robots-taxonomies',
 				'label'  => \sprintf(
 					// RTL supported: Because the post types are Roman, browsers enforce the order.
 					'%s &ndash; <code>%s</code>',
@@ -428,7 +428,7 @@ switch ( $instance ) :
 
 			// Add warning if it's 'site'.
 			if ( 'site' === $type ) {
-				$checkboxes .= '<hr class=tsf-option-spacer>';
+				$checkboxes .= '<hr class=sgeobiz-option-spacer>';
 
 				if ( \in_array( $ro_value, [ 'noindex', 'nofollow' ], true ) )
 					$checkboxes .= \sprintf(
@@ -439,7 +439,7 @@ switch ( $instance ) :
 
 			$checkboxes .= Input::make_checkbox( [
 				'id'     => $id,
-				'class'  => 'site' === $type ? 'tsf-robots-site' : 'tsf-robots-globals',
+				'class'  => 'site' === $type ? 'sgeobiz-robots-site' : 'sgeobiz-robots-globals',
 				'label'  => $label,
 				'escape' => false,
 				'data'   => [

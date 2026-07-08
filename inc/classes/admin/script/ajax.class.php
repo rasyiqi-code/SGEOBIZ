@@ -60,7 +60,7 @@ final class AJAX {
 		Helper\Headers::clean_response_header();
 
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- We require the POST data to find locally stored nonces.
-		$key = $_POST['tsf_dismiss_key'] ?? '';
+		$key = $_POST['sgeobiz_dismiss_key'] ?? '';
 
 		if ( ! $key )
 			\wp_send_json_error( null, 400 );
@@ -74,7 +74,7 @@ final class AJAX {
 
 		if (
 			   ! \current_user_can( $notices[ $key ]['conditions']['capability'] )
-			|| ! \check_ajax_referer( Admin\Notice\Persistent::_get_dismiss_nonce_action( $key ), 'tsf_dismiss_nonce', false )
+			|| ! \check_ajax_referer( Admin\Notice\Persistent::_get_dismiss_nonce_action( $key ), 'sgeobiz_dismiss_nonce', false )
 		) {
 			\wp_die( -1, 403 );
 		}

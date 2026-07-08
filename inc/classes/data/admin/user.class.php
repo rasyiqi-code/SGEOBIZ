@@ -47,8 +47,8 @@ final class User {
 	 */
 	public const SAVE_NONCES = [
 		'user-edit' => [
-			'name'   => 'tsf_user_nonce_name',
-			'action' => 'tsf_user_nonce_action',
+			'name'   => 'sgeobiz_user_nonce_name',
+			'action' => 'sgeobiz_user_nonce_action',
 		],
 	];
 
@@ -68,7 +68,7 @@ final class User {
 	 */
 	public static function update_meta( $user_id ) {
 
-		if ( empty( $_POST['tsf-user-meta'] ) ) return;
+		if ( empty( $_POST['sgeobiz-user-meta'] ) ) return;
 
 		if ( ! \current_user_can( 'edit_user', $user_id ) ) return;
 
@@ -83,7 +83,7 @@ final class User {
 		// This is because we only update a portion of the meta.
 		$data = array_merge(
 			Data\Plugin\User::get_meta( $user_id ),
-			(array) ( $_POST['tsf-user-meta'] ?? [] ),
+			(array) ( $_POST['sgeobiz-user-meta'] ?? [] ),
 		);
 
 		Data\Plugin\User::save_meta( $user_id, $data );

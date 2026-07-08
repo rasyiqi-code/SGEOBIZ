@@ -193,7 +193,7 @@ class Persistent {
 	 * @return string The sanitized nonce action.
 	 */
 	public static function _get_dismiss_nonce_action( $key ) {
-		return \sanitize_key( "tsf-notice-nonce-$key" );
+		return \sanitize_key( "sgeobiz-notice-nonce-$key" );
 	}
 
 	/**
@@ -244,7 +244,7 @@ class Persistent {
 	public static function _dismiss_notice() {
 
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- We require the POST data to find locally stored nonces.
-		$key = \sanitize_key( $_POST['tsf-notice-submit'] ?? '' );
+		$key = \sanitize_key( $_POST['sgeobiz-notice-submit'] ?? '' );
 
 		if ( ! $key ) return;
 
@@ -254,9 +254,9 @@ class Persistent {
 		if ( empty( $notices[ $key ]['conditions']['capability'] ) ) return;
 
 		if (
-			   empty( $_POST['tsf_notice_nonce'] )
+			   empty( $_POST['sgeobiz_notice_nonce'] )
 			|| ! \current_user_can( $notices[ $key ]['conditions']['capability'] )
-			|| ! \wp_verify_nonce( $_POST['tsf_notice_nonce'], self::_get_dismiss_nonce_action( $key ) )
+			|| ! \wp_verify_nonce( $_POST['sgeobiz_notice_nonce'], self::_get_dismiss_nonce_action( $key ) )
 		) {
 			\wp_die( -1, 403 );
 		}

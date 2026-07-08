@@ -110,7 +110,7 @@ class Cache {
 	 * @return string The transient prefix of the sitemap.
 	 */
 	public static function get_transient_prefix() {
-		return 'tsf_sitemap_';
+		return 'sgeobiz_sitemap_';
 	}
 
 	/**

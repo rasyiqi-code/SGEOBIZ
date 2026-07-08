@@ -89,7 +89,7 @@ final class Author extends Reference {
 			return '';
 
 		return Meta\URI::get_bare_front_page_url()
-			. '#/schema/' . current( (array) static::$type ) . '/' . \wp_hash( "tsf+$author_id" );
+			. '#/schema/' . current( (array) static::$type ) . '/' . \wp_hash( "sgeobiz+$author_id" );
 	}
 
 	/**

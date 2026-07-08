@@ -65,16 +65,16 @@ switch ( $instance ) :
 		}
 
 		printf(
-			'<span class=hidden id=tsf-post-type-archive-data %s></span>',
+			'<span class=hidden id=sgeobiz-post-type-archive-data %s></span>',
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- This escapes.
 			HTML::make_data_attributes( [ 'postTypes' => $post_types_data ] )
 		);
 
 		?>
-		<div id=tsf-post-type-archive-header-wrap class=tsf-fields style=display:none>
-			<div id=tsf-post-type-archive-select-wrap>
-				<label for=tsf-post-type-archive-selector><?php \esc_html_e( 'Select archive to edit:', 'sgeobiz-seo' ); ?></label>
-				<select id=tsf-post-type-archive-selector></select>
+		<div id=sgeobiz-post-type-archive-header-wrap class=sgeobiz-fields style=display:none>
+			<div id=sgeobiz-post-type-archive-select-wrap>
+				<label for=sgeobiz-post-type-archive-selector><?php \esc_html_e( 'Select archive to edit:', 'sgeobiz-seo' ); ?></label>
+				<select id=sgeobiz-post-type-archive-selector></select>
 			</div>
 		</div>
 		<?php
@@ -116,18 +116,18 @@ switch ( $instance ) :
 
 			// Hide subsequent wraps to prevent layout shifts (bounce) during load: They get hidden by JS anyway.
 			printf(
-				'<div class="tsf-post-type-archive-wrap%s" %s>',
+				'<div class="sgeobiz-post-type-archive-wrap%s" %s>',
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Shut it, noob.
 				$post_type_index ? ' hide-if-sgeobiz-js' : '',
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- This escapes.
 				HTML::make_data_attributes( [ 'postType' => $post_type ] )
 			);
 			?>
-				<div class=tsf-post-type-header>
+				<div class=sgeobiz-post-type-header>
 					<?php
 					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- it is.
 					echo HTML::get_header_title( vsprintf(
-						'%s &ndash; <span class=tsf-post-type-archive-details><code>%s</code> %s</span>',
+						'%s &ndash; <span class=sgeobiz-post-type-archive-details><code>%s</code> %s</span>',
 						[
 							\sprintf(
 								/* translators: 1 = Post Type Archive name */
@@ -136,7 +136,7 @@ switch ( $instance ) :
 							),
 							\esc_html( $post_type ),
 							\sprintf(
-								'<span class=tsf-post-type-archive-link><a href="%s" target=_blank rel=noopener>[%s]</a></span>',
+								'<span class=sgeobiz-post-type-archive-link><a href="%s" target=_blank rel=noopener>[%s]</a></span>',
 								\esc_url( $post_types_data[ $post_type ]['url'] ),
 								\esc_html__( 'View archive', 'sgeobiz-seo' ),
 							),
@@ -144,14 +144,14 @@ switch ( $instance ) :
 					) );
 					?>
 				</div>
-				<div class="tsf-post-type-archive-if-excluded hidden">
+				<div class="sgeobiz-post-type-archive-if-excluded hidden">
 					<?php
 					HTML::attention_description(
 						\__( "This post type is excluded, so settings won't have any effect.", 'sgeobiz-seo' )
 					)
 					?>
 				</div>
-				<div class=tsf-post-type-archive-if-not-excluded>
+				<div class=sgeobiz-post-type-archive-if-not-excluded>
 					<?php
 					if ( Compatibility::get_active_conflicting_plugin_types()['multilingual'] ) {
 						HTML::attention(
@@ -185,7 +185,7 @@ switch ( $instance ) :
 		[ , $args ] = $view_args;
 		?>
 		<p>
-			<label for="<?php Input::field_id( $args['options']['doctitle'] ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( $args['options']['doctitle'] ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( 'Meta Title', 'sgeobiz-seo' ); ?></strong>
 				<?php
 					echo ' ';
@@ -208,7 +208,7 @@ switch ( $instance ) :
 			(bool) Data\Plugin::get_option( 'display_pixel_counter' )
 		);
 		?>
-		<p class=tsf-title-wrap>
+		<p class=sgeobiz-title-wrap>
 			<input type=text name="<?php Input::field_name( $args['options']['doctitle'] ); ?>" class=large-text id="<?php Input::field_id( $args['options']['doctitle'] ); ?>" value="<?= \esc_html( Sanitize::metadata_content( Data\Plugin\PTA::get_meta_item( 'doctitle', $args['post_type'] ) ) ) ?>" autocomplete=off>
 			<?php
 			$pto = \get_post_type_object( $args['post_type'] );
@@ -234,7 +234,7 @@ switch ( $instance ) :
 			?>
 		</p>
 
-		<div class=tsf-title-tagline-toggle>
+		<div class=sgeobiz-title-tagline-toggle>
 		<?php
 			$info = HTML::make_info(
 				\__( 'Use this when you want to rearrange the title parts manually.', 'sgeobiz-seo' ),
@@ -257,7 +257,7 @@ switch ( $instance ) :
 		<hr>
 
 		<p>
-			<label for="<?php Input::field_id( $args['options']['description'] ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( $args['options']['description'] ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( 'Meta Description', 'sgeobiz-seo' ); ?></strong>
 				<?php
 					echo ' ';
@@ -325,7 +325,7 @@ switch ( $instance ) :
 
 		?>
 		<p>
-			<label for="<?php Input::field_id( $args['options']['og_title'] ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( $args['options']['og_title'] ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( 'Open Graph Title', 'sgeobiz-seo' ); ?></strong>
 			</label>
 		</p>
@@ -337,11 +337,11 @@ switch ( $instance ) :
 		);
 		?>
 		<p>
-			<input type=text name="<?php Input::field_name( $args['options']['og_title'] ); ?>" class=large-text id="<?php Input::field_id( $args['options']['og_title'] ); ?>" value="<?= \esc_html( Sanitize::metadata_content( Data\Plugin\PTA::get_meta_item( 'og_title', $args['post_type'] ) ) ) ?>" autocomplete=off data-tsf-social-group=<?= \esc_attr( "pta_social_settings_{$args['post_type']}" ) ?> data-tsf-social-type=ogTitle>
+			<input type=text name="<?php Input::field_name( $args['options']['og_title'] ); ?>" class=large-text id="<?php Input::field_id( $args['options']['og_title'] ); ?>" value="<?= \esc_html( Sanitize::metadata_content( Data\Plugin\PTA::get_meta_item( 'og_title', $args['post_type'] ) ) ) ?>" autocomplete=off data-sgeobiz-social-group=<?= \esc_attr( "pta_social_settings_{$args['post_type']}" ) ?> data-sgeobiz-social-type=ogTitle>
 		</p>
 
 		<p>
-			<label for="<?php Input::field_id( $args['options']['og_description'] ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( $args['options']['og_description'] ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( 'Open Graph Description', 'sgeobiz-seo' ); ?></strong>
 			</label>
 		</p>
@@ -353,13 +353,13 @@ switch ( $instance ) :
 		);
 		?>
 		<p>
-			<textarea name="<?php Input::field_name( $args['options']['og_description'] ); ?>" class=large-text id="<?php Input::field_id( $args['options']['og_description'] ); ?>" rows=3 cols=70 autocomplete=off data-tsf-social-group=<?= \esc_attr( "pta_social_settings_{$args['post_type']}" ) ?> data-tsf-social-type=ogDesc><?= \esc_attr( Data\Plugin\PTA::get_meta_item( 'og_description', $args['post_type'] ) ) ?></textarea>
+			<textarea name="<?php Input::field_name( $args['options']['og_description'] ); ?>" class=large-text id="<?php Input::field_id( $args['options']['og_description'] ); ?>" rows=3 cols=70 autocomplete=off data-sgeobiz-social-group=<?= \esc_attr( "pta_social_settings_{$args['post_type']}" ) ?> data-sgeobiz-social-type=ogDesc><?= \esc_attr( Data\Plugin\PTA::get_meta_item( 'og_description', $args['post_type'] ) ) ?></textarea>
 		</p>
 
 		<hr>
 
 		<p>
-			<label for="<?php Input::field_id( $args['options']['tw_title'] ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( $args['options']['tw_title'] ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( 'Twitter Title', 'sgeobiz-seo' ); ?></strong>
 			</label>
 		</p>
@@ -371,11 +371,11 @@ switch ( $instance ) :
 		);
 		?>
 		<p>
-			<input type=text name="<?php Input::field_name( $args['options']['tw_title'] ); ?>" class=large-text id="<?php Input::field_id( $args['options']['tw_title'] ); ?>" value="<?= \esc_html( Sanitize::metadata_content( Data\Plugin\PTA::get_meta_item( 'tw_title', $args['post_type'] ) ) ) ?>" autocomplete=off data-tsf-social-group=<?= \esc_attr( "pta_social_settings_{$args['post_type']}" ) ?> data-tsf-social-type=twTitle>
+			<input type=text name="<?php Input::field_name( $args['options']['tw_title'] ); ?>" class=large-text id="<?php Input::field_id( $args['options']['tw_title'] ); ?>" value="<?= \esc_html( Sanitize::metadata_content( Data\Plugin\PTA::get_meta_item( 'tw_title', $args['post_type'] ) ) ) ?>" autocomplete=off data-sgeobiz-social-group=<?= \esc_attr( "pta_social_settings_{$args['post_type']}" ) ?> data-sgeobiz-social-type=twTitle>
 		</p>
 
 		<p>
-			<label for="<?php Input::field_id( $args['options']['tw_description'] ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( $args['options']['tw_description'] ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( 'Twitter Description', 'sgeobiz-seo' ); ?></strong>
 			</label>
 		</p>
@@ -387,11 +387,11 @@ switch ( $instance ) :
 		);
 		?>
 		<p>
-			<textarea name="<?php Input::field_name( $args['options']['tw_description'] ); ?>" class=large-text id="<?php Input::field_id( $args['options']['tw_description'] ); ?>" rows=3 cols=70 autocomplete=off data-tsf-social-group=<?= \esc_attr( "pta_social_settings_{$args['post_type']}" ) ?> data-tsf-social-type=twDesc><?= \esc_attr( Data\Plugin\PTA::get_meta_item( 'tw_description', $args['post_type'] ) ) ?></textarea>
+			<textarea name="<?php Input::field_name( $args['options']['tw_description'] ); ?>" class=large-text id="<?php Input::field_id( $args['options']['tw_description'] ); ?>" rows=3 cols=70 autocomplete=off data-sgeobiz-social-group=<?= \esc_attr( "pta_social_settings_{$args['post_type']}" ) ?> data-sgeobiz-social-type=twDesc><?= \esc_attr( Data\Plugin\PTA::get_meta_item( 'tw_description', $args['post_type'] ) ) ?></textarea>
 		</p>
 
 		<p>
-			<label for="<?php Input::field_id( $args['options']['tw_card_type'] ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( $args['options']['tw_card_type'] ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( 'Twitter Card Type', 'sgeobiz-seo' ); ?></strong>
 				<?php
 				HTML::make_info(
@@ -406,7 +406,7 @@ switch ( $instance ) :
 			// phpcs:disable WordPress.Security.EscapeOutput -- make_single_select_form() escapes.
 			echo Form::make_single_select_form( [
 				'id'       => Input::get_field_id( $args['options']['tw_card_type'] ),
-				'class'    => 'tsf-select-block',
+				'class'    => 'sgeobiz-select-block',
 				'name'     => Input::get_field_name( $args['options']['tw_card_type'] ),
 				'label'    => '',
 				'options'  => array_merge(
@@ -425,7 +425,7 @@ switch ( $instance ) :
 		<hr>
 
 		<p>
-			<label for="<?= \esc_attr( "tsf_pta_socialimage_{$args['post_type']}" ) ?>-url">
+			<label for="<?= \esc_attr( "sgeobiz_pta_socialimage_{$args['post_type']}" ) ?>-url">
 				<strong><?php \esc_html_e( 'Social Image URL', 'sgeobiz-seo' ); ?></strong>
 				<?php
 				HTML::make_info(
@@ -436,13 +436,13 @@ switch ( $instance ) :
 			</label>
 		</p>
 		<p>
-			<input class=large-text type=url name="<?php Input::field_name( $args['options']['social_image_url'] ); ?>" id="<?= \esc_attr( "tsf_pta_socialimage_{$args['post_type']}" ) ?>-url" placeholder="<?= \esc_url( Meta\Image::get_first_generated_image_url( $args['generator_args'], 'social' ) ) ?>" value="<?= \esc_url( Data\Plugin\PTA::get_meta_item( 'social_image_url', $args['post_type'] ) ) ?>">
-			<input type=hidden name="<?php Input::field_name( $args['options']['social_image_id'] ); ?>" id="<?= \esc_attr( "tsf_pta_socialimage_{$args['post_type']}" ) ?>-id" value="<?= \absint( Data\Plugin\PTA::get_meta_item( 'social_image_id', $args['post_type'] ) ) ?>" disabled class=tsf-enable-media-if-js>
+			<input class=large-text type=url name="<?php Input::field_name( $args['options']['social_image_url'] ); ?>" id="<?= \esc_attr( "sgeobiz_pta_socialimage_{$args['post_type']}" ) ?>-url" placeholder="<?= \esc_url( Meta\Image::get_first_generated_image_url( $args['generator_args'], 'social' ) ) ?>" value="<?= \esc_url( Data\Plugin\PTA::get_meta_item( 'social_image_url', $args['post_type'] ) ) ?>">
+			<input type=hidden name="<?php Input::field_name( $args['options']['social_image_id'] ); ?>" id="<?= \esc_attr( "sgeobiz_pta_socialimage_{$args['post_type']}" ) ?>-id" value="<?= \absint( Data\Plugin\PTA::get_meta_item( 'social_image_id', $args['post_type'] ) ) ?>" disabled class=sgeobiz-enable-media-if-js>
 		</p>
 		<p class=hide-if-no-sgeobiz-js>
 			<?php
 			// phpcs:disable WordPress.Security.EscapeOutput -- get_image_uploader_form escapes. (phpcs breaks here, so we use disable)
-			echo Form::get_image_uploader_form( [ 'id' => "tsf_pta_socialimage_{$args['post_type']}" ] );
+			echo Form::get_image_uploader_form( [ 'id' => "sgeobiz_pta_socialimage_{$args['post_type']}" ] );
 			// phpcs:enable WordPress.Security.EscapeOutput
 			?>
 		</p>
@@ -454,7 +454,7 @@ switch ( $instance ) :
 		$default_canonical = Meta\URI::get_generated_url( $args['generator_args'] );
 		?>
 		<p>
-			<label for="<?php Input::field_id( $args['options']['canonical'] ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( $args['options']['canonical'] ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( 'Canonical URL', 'sgeobiz-seo' ); ?></strong>
 				<?php
 					echo ' ';
@@ -547,7 +547,7 @@ switch ( $instance ) :
 			// phpcs:disable WordPress.Security.EscapeOutput -- make_single_select_form() escapes.
 			echo Form::make_single_select_form( [
 				'id'       => Input::get_field_id( $args['options'][ $_r_type ] ),
-				'class'    => 'tsf-select-block',
+				'class'    => 'sgeobiz-select-block',
 				'name'     => Input::get_field_name( $args['options'][ $_r_type ] ),
 				'label'    => '',
 				'options'  => [
@@ -567,7 +567,7 @@ switch ( $instance ) :
 		<hr>
 
 		<p>
-			<label for="<?php Input::field_id( $args['options']['redirect'] ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( $args['options']['redirect'] ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( '301 Redirect URL', 'sgeobiz-seo' ); ?></strong>
 				<?php
 					echo ' ';

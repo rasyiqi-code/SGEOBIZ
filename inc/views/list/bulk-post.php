@@ -59,7 +59,7 @@ $robots_settings = [
 ];
 
 ?>
-<div class=tsf-quick-edit-columns>
+<div class=sgeobiz-quick-edit-columns>
 	<?php
 	\wp_nonce_field(
 		Data\Admin\Post::SAVE_NONCES['bulk-edit']['action'],

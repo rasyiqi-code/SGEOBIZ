@@ -23,8 +23,8 @@ use SGEOBIZ_SEO\{
 /**
  * Registers more sitemaps for the robots.txt to parse.
  *
- * This has no other intended effect. But default permalinks may react more tsf_sitemap query values,
- * specifically ?tsf_sitemap=_base_wpml_es&lang=es" (assumed, untested).
+ * This has no other intended effect. But default permalinks may react more sgeobiz_sitemap query values,
+ * specifically ?sgeobiz_sitemap=_base_wpml_es&lang=es" (assumed, untested).
  *
  * @hook sgeobiz_seo_sitemap_endpoint_list 20
  * @since 5.0.5

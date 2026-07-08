@@ -124,8 +124,8 @@ class SGEOBIZ_Branding {
 	 * @return array
 	 */
 	public function filter_action_links( $links ) {
-		// Hapus key 'tsfem' (Extensions) dan 'pricing' dari SGEOBIZ
-		unset( $links['tsfem'], $links['pricing'] );
+		// Hapus key 'sgeobizem' (Extensions) dan 'pricing' dari SGEOBIZ
+		unset( $links['sgeobizem'], $links['pricing'] );
 
 		// Tambahkan link SGEOBIZ di awal
 		$sgeobiz_links = [];
@@ -185,13 +185,13 @@ class SGEOBIZ_Branding {
 		}
 
 		// Aktif di semua halaman yang berkaitan dengan SGEOBIZ/SGEOBIZ
-		$tsf_screens = [
+		$sgeobiz_screens = [
 			SGEOBIZ_SEO_SITE_OPTIONS_SLUG,
 			'seo_page_sgeobiz-business-settings',
 		];
 
 		$is_tsf_screen = str_contains( (string) $screen->id, 'theseoframework' )
-			|| in_array( $screen->id, $tsf_screens, true )
+			|| in_array( $screen->id, $sgeobiz_screens, true )
 			|| ( isset( $screen->base ) && str_contains( (string) $screen->base, 'theseoframework' ) );
 
 		if ( $is_tsf_screen ) {

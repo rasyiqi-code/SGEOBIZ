@@ -49,7 +49,7 @@ final class ListEdit extends Admin\Lists\Table {
 	 * @since 4.0.0
 	 * @var string The column name.
 	 */
-	private $column_name = 'tsf-quick-edit';
+	private $column_name = 'sgeobiz-quick-edit';
 
 	/**
 	 * Setups class and prepares quick edit.
@@ -251,7 +251,7 @@ final class ListEdit extends Admin\Lists\Table {
 		printf(
 			// '<span class=hidden id=%s data-le="%s"></span>',
 			'<span class=hidden id=%s %s></span>',
-			\sprintf( 'tsfLeData[%s]', (int) $post_id ),
+			\sprintf( 'sgeobizLeData[%s]', (int) $post_id ),
 			// phpcs:ignore WordPress.Security.EscapeOutput -- make_data_attributes escapes.
 			HTML::make_data_attributes( [ 'le' => $data ] ),
 		);
@@ -389,7 +389,7 @@ final class ListEdit extends Admin\Lists\Table {
 		printf(
 			// '<span class=hidden id=%s data-le-post-data="%s"></span>',
 			'<span class=hidden id=%s %s></span>',
-			\sprintf( 'tsfLePostData[%s]', (int) $post_id ),
+			\sprintf( 'sgeobizLePostData[%s]', (int) $post_id ),
 			// phpcs:disable WordPress.Security.EscapeOutput -- make_data_attributes escapes.
 			HTML::make_data_attributes( [
 				'lePostData' => [
@@ -402,7 +402,7 @@ final class ListEdit extends Admin\Lists\Table {
 		printf(
 			// '<span class=hidden id=%s data-le-title="%s"></span>',
 			'<span class=hidden id=%s %s></span>',
-			\sprintf( 'tsfLeTitleData[%s]', (int) $post_id ),
+			\sprintf( 'sgeobizLeTitleData[%s]', (int) $post_id ),
 			// phpcs:disable WordPress.Security.EscapeOutput -- make_data_attributes escapes.
 			HTML::make_data_attributes( [
 				'leTitle' => [
@@ -418,7 +418,7 @@ final class ListEdit extends Admin\Lists\Table {
 		printf(
 			// '<span class=hidden id=%s data-le-description="%s"></span>',
 			'<span class=hidden id=%s %s></span>',
-			\sprintf( 'tsfLeDescriptionData[%s]', (int) $post_id ),
+			\sprintf( 'sgeobizLeDescriptionData[%s]', (int) $post_id ),
 			// phpcs:disable WordPress.Security.EscapeOutput -- make_data_attributes escapes.
 			HTML::make_data_attributes( [
 				'leDescription' => [
@@ -431,7 +431,7 @@ final class ListEdit extends Admin\Lists\Table {
 		printf(
 			// '<span class=hidden id=%s data-le-canonical="%s"></span>',
 			'<span class=hidden id=%s %s></span>',
-			\sprintf( 'tsfLeCanonicalData[%s]', (int) $post_id ),
+			\sprintf( 'sgeobizLeCanonicalData[%s]', (int) $post_id ),
 			// phpcs:disable WordPress.Security.EscapeOutput -- make_data_attributes escapes.
 			HTML::make_data_attributes( [
 				'leCanonical' => [
@@ -574,7 +574,7 @@ final class ListEdit extends Admin\Lists\Table {
 
 		$container .= \sprintf(
 			'<span class=hidden id=%s %s></span>',
-			\sprintf( 'tsfLeData[%s]', (int) $term_id ),
+			\sprintf( 'sgeobizLeData[%s]', (int) $term_id ),
 			// phpcs:ignore WordPress.Security.EscapeOutput -- make_data_attributes escapes.
 			HTML::make_data_attributes( [ 'le' => $data ] ),
 		);
@@ -589,7 +589,7 @@ final class ListEdit extends Admin\Lists\Table {
 
 		$container .= \sprintf(
 			'<span class=hidden id=%s %s></span>',
-			\sprintf( 'tsfLeTitleData[%s]', (int) $term_id ),
+			\sprintf( 'sgeobizLeTitleData[%s]', (int) $term_id ),
 			// phpcs:ignore WordPress.Security.EscapeOutput -- make_data_attributes escapes.
 			HTML::make_data_attributes( [
 				'leTitle' => [
@@ -604,7 +604,7 @@ final class ListEdit extends Admin\Lists\Table {
 		);
 		$container .= \sprintf(
 			'<span class=hidden id=%s %s></span>',
-			\sprintf( 'tsfLeDescriptionData[%s]', (int) $term_id ),
+			\sprintf( 'sgeobizLeDescriptionData[%s]', (int) $term_id ),
 			// phpcs:ignore WordPress.Security.EscapeOutput -- make_data_attributes escapes.
 			HTML::make_data_attributes( [
 				'leDescription' => [
@@ -615,7 +615,7 @@ final class ListEdit extends Admin\Lists\Table {
 		);
 		$container .= \sprintf(
 			'<span class=hidden id=%s %s></span>',
-			\sprintf( 'tsfLeCanonicalData[%s]', (int) $term_id ),
+			\sprintf( 'sgeobizLeCanonicalData[%s]', (int) $term_id ),
 			// phpcs:ignore WordPress.Security.EscapeOutput -- make_data_attributes escapes.
 			HTML::make_data_attributes( [
 				'leCanonical' => [

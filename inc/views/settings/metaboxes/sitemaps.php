@@ -180,7 +180,7 @@ switch ( $instance ) :
 		<?php
 		HTML::description( \__( 'Consider lowering this value when the sitemap shows a white screen or notifies you of memory exhaustion.', 'sgeobiz-seo' ) );
 		?>
-		<div id=tsf-sitemap-transient-cache-settings>
+		<div id=sgeobiz-sitemap-transient-cache-settings>
 			<hr>
 			<?php
 			HTML::header_title( \__( 'Transient Cache Settings', 'sgeobiz-seo' ) );
@@ -197,7 +197,7 @@ switch ( $instance ) :
 			);
 
 			?>
-			<div id=tsf-sitemap-prerendering-settings>
+			<div id=sgeobiz-sitemap-prerendering-settings>
 				<?php
 				HTML::wrap_fields(
 					Input::make_checkbox( [
@@ -331,7 +331,7 @@ switch ( $instance ) :
 			</label>
 		</p>
 		<p>
-			<input type=text name="<?php Input::field_name( 'sitemap_color_main' ); ?>" class=tsf-color-picker id="<?php Input::field_id( 'sitemap_color_main' ); ?>" placeholder="<?= \esc_attr( $default_colors['main'] ) ?>" value="<?= \esc_attr( $current_colors['main'] ) ?>" data-tsf-default-color="<?= \esc_attr( $default_colors['main'] ) ?>">
+			<input type=text name="<?php Input::field_name( 'sitemap_color_main' ); ?>" class=sgeobiz-color-picker id="<?php Input::field_id( 'sitemap_color_main' ); ?>" placeholder="<?= \esc_attr( $default_colors['main'] ) ?>" value="<?= \esc_attr( $current_colors['main'] ) ?>" data-sgeobiz-default-color="<?= \esc_attr( $default_colors['main'] ) ?>">
 		</p>
 
 		<p>
@@ -340,7 +340,7 @@ switch ( $instance ) :
 			</label>
 		</p>
 		<p>
-			<input type=text name="<?php Input::field_name( 'sitemap_color_accent' ); ?>" class=tsf-color-picker id="<?php Input::field_id( 'sitemap_color_accent' ); ?>" placeholder="<?= \esc_attr( $default_colors['accent'] ) ?>" value="<?= \esc_attr( $current_colors['accent'] ) ?>" data-tsf-default-color="<?= \esc_attr( $default_colors['accent'] ) ?>">
+			<input type=text name="<?php Input::field_name( 'sitemap_color_accent' ); ?>" class=sgeobiz-color-picker id="<?php Input::field_id( 'sitemap_color_accent' ); ?>" placeholder="<?= \esc_attr( $default_colors['accent'] ) ?>" value="<?= \esc_attr( $current_colors['accent'] ) ?>" data-sgeobiz-default-color="<?= \esc_attr( $default_colors['accent'] ) ?>">
 		</p>
 
 		<hr>

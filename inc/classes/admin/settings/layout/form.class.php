@@ -147,7 +147,7 @@ class Form {
 	 */
 	public static function output_character_counter_wrap( $input_id, $display = true ) {
 		vprintf(
-			'<div class="sgeobiz-counter-wrap hide-if-no-sgeobiz-js" %s><span class=sgeobiz-counter title="%s">%s</span><span class=tsf-ajax></span></div>',
+			'<div class="sgeobiz-counter-wrap hide-if-no-sgeobiz-js" %s><span class=sgeobiz-counter title="%s">%s</span><span class=sgeobiz-ajax></span></div>',
 			[
 				( $display ? '' : 'style=display:none;' ),
 				\esc_attr__( 'Click to change the counter type', 'sgeobiz-seo' ),
@@ -184,7 +184,7 @@ class Form {
 				),
 				\sprintf(
 					'<div class=sgeobiz-pixel-shadow-wrap><span class="sgeobiz-pixel-counter-shadow %s"></span></div>',
-					\esc_attr( "tsf-{$type}-pixel-counter-shadow" ),
+					\esc_attr( "sgeobiz-{$type}-pixel-counter-shadow" ),
 				),
 			],
 		);
@@ -270,7 +270,7 @@ class Form {
 		$s_id = \esc_attr( $args['id'] );
 
 		$content = vsprintf(
-			'<button type=button data-href="%s" class="tsf-set-image-button %s" title="%s" id="%s-select" %s>%s</button>',
+			'<button type=button data-href="%s" class="sgeobiz-set-image-button %s" title="%s" id="%s-select" %s>%s</button>',
 			[
 				\esc_url( \get_upload_iframe_src( 'image', $args['post_id'] ) ),
 				\esc_attr( implode( ' ', (array) $args['button_class']['set'] ) ),

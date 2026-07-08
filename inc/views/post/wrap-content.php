@@ -41,14 +41,14 @@ $tab_index = 1;
  */
 foreach ( $tabs as $tab => $args ) {
 
-	$radio_id    = "tsf-flex-{$id}-tab-{$tab}-content";
-	$radio_class = "tsf-flex-{$id}-tabs-content";
+	$radio_id    = "sgeobiz-flex-{$id}-tab-{$tab}-content";
+	$radio_class = "sgeobiz-flex-{$id}-tabs-content";
 
 	// Current tab for JS.
-	$current_class = 1 === $tab_index ? ' tsf-flex-tab-content-active' : '';
+	$current_class = 1 === $tab_index ? ' sgeobiz-flex-tab-content-active' : '';
 
 	?>
-	<div class="tsf-flex tsf-flex-tab-content <?= \esc_attr( $radio_class . $current_class ) ?>" id="<?= \esc_attr( $radio_id ) ?>" >
+	<div class="sgeobiz-flex sgeobiz-flex-tab-content <?= \esc_attr( $radio_class . $current_class ) ?>" id="<?= \esc_attr( $radio_id ) ?>" >
 		<?php
 		// No-JS tabs.
 		if ( $show_tabs ) {
@@ -56,11 +56,11 @@ foreach ( $tabs as $tab => $args ) {
 			$label_name = $args['name'] ?? '';
 
 			?>
-			<div class="tsf-flex tsf-flex-hide-if-js tsf-flex-tabs-content-no-js">
-				<div class="tsf-flex tsf-flex-nav-tab tsf-flex-tab-no-js">
-					<span class="tsf-flex tsf-flex-nav-tab">
-						<?= $dashicon ? '<span class="tsf-flex dashicons dashicons-' . \esc_attr( $dashicon ) . ' tsf-flex-nav-dashicon"></span>' : '' ?>
-						<?= $label_name ? '<span class="tsf-flex tsf-flex-nav-name">' . \esc_html( $label_name ) . '</span>' : '' ?>
+			<div class="sgeobiz-flex sgeobiz-flex-hide-if-js sgeobiz-flex-tabs-content-no-js">
+				<div class="sgeobiz-flex sgeobiz-flex-nav-tab sgeobiz-flex-tab-no-js">
+					<span class="sgeobiz-flex sgeobiz-flex-nav-tab">
+						<?= $dashicon ? '<span class="sgeobiz-flex dashicons dashicons-' . \esc_attr( $dashicon ) . ' sgeobiz-flex-nav-dashicon"></span>' : '' ?>
+						<?= $label_name ? '<span class="sgeobiz-flex sgeobiz-flex-nav-name">' . \esc_html( $label_name ) . '</span>' : '' ?>
 					</span>
 				</div>
 			</div>

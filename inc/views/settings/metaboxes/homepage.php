@@ -104,7 +104,7 @@ switch ( $instance ) :
 	case 'general':
 		?>
 		<p>
-			<label for="<?php Input::field_id( 'homepage_title' ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( 'homepage_title' ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( 'Meta Title', 'sgeobiz-seo' ); ?></strong>
 				<?php
 					echo ' ';
@@ -127,7 +127,7 @@ switch ( $instance ) :
 			(bool) Data\Plugin::get_option( 'display_pixel_counter' ),
 		);
 		?>
-		<p class=tsf-title-wrap>
+		<p class=sgeobiz-title-wrap>
 			<input type=text name="<?php Input::field_name( 'homepage_title' ); ?>" class=large-text id="<?php Input::field_id( 'homepage_title' ); ?>" value="<?= \esc_html( Sanitize::metadata_content( Data\Plugin::get_option( 'homepage_title' ) ) ) ?>" autocomplete=off>
 			<?php
 			$post_meta_title = $home_id ? Sanitize::metadata_content( Data\Plugin\Post::get_meta_item( '_genesis_title', $home_id ) ) : '';
@@ -161,7 +161,7 @@ switch ( $instance ) :
 		<hr>
 
 		<p>
-			<label for="<?php Input::field_id( 'homepage_description' ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( 'homepage_description' ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( 'Meta Description', 'sgeobiz-seo' ); ?></strong>
 				<?php
 					echo ' ';
@@ -231,12 +231,12 @@ switch ( $instance ) :
 		$_example_separator = \esc_html( Meta\Title::get_separator() );
 
 		// TODO very readable.
-		$example_left  = "<em><span class=tsf-custom-blogname-js><span class=tsf-custom-tagline-js>$_example_blogname</span><span class=tsf-sep-js> $_example_separator </span></span><span class=tsf-custom-title-js>$_example_title</span></em>";
-		$example_right = "<em><span class=tsf-custom-title-js>$_example_title</span><span class=tsf-custom-blogname-js><span class=tsf-sep-js> $_example_separator </span><span class=tsf-custom-tagline-js>$_example_blogname</span></span></em>";
+		$example_left  = "<em><span class=sgeobiz-custom-blogname-js><span class=sgeobiz-custom-tagline-js>$_example_blogname</span><span class=sgeobiz-sep-js> $_example_separator </span></span><span class=sgeobiz-custom-title-js>$_example_title</span></em>";
+		$example_right = "<em><span class=sgeobiz-custom-title-js>$_example_title</span><span class=sgeobiz-custom-blogname-js><span class=sgeobiz-sep-js> $_example_separator </span><span class=sgeobiz-custom-tagline-js>$_example_blogname</span></span></em>";
 
 		?>
 		<p>
-			<label for="<?php Input::field_id( 'homepage_title_tagline' ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( 'homepage_title_tagline' ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( 'Meta Title Additions', 'sgeobiz-seo' ); ?></strong>
 			</label>
 		</p>
@@ -244,7 +244,7 @@ switch ( $instance ) :
 			<input type=text name="<?php Input::field_name( 'homepage_title_tagline' ); ?>" class=large-text id="<?php Input::field_id( 'homepage_title_tagline' ); ?>" placeholder="<?= \esc_html( Sanitize::metadata_content( Data\Blog::get_filtered_blog_description() ) ) ?>" value="<?= \esc_html( Sanitize::metadata_content( Data\Plugin::get_option( 'homepage_title_tagline' ) ) ) ?>" autocomplete=off>
 		</p>
 
-		<div class=tsf-title-tagline-toggle>
+		<div class=sgeobiz-title-tagline-toggle>
 		<?php
 			HTML::wrap_fields(
 				Input::make_checkbox( [
@@ -261,8 +261,8 @@ switch ( $instance ) :
 		<fieldset>
 			<legend><?php HTML::header_title( \__( 'Meta Title Additions Location', 'sgeobiz-seo' ) ); ?></legend>
 
-			<p id=tsf-home-title-location class=tsf-fields>
-				<span class=tsf-toblock>
+			<p id=sgeobiz-home-title-location class=sgeobiz-fields>
+				<span class=sgeobiz-toblock>
 					<input type=radio name="<?php Input::field_name( 'home_title_location' ); ?>" id="<?php Input::field_id( 'home_title_location_left' ); ?>" value=left <?php \checked( Data\Plugin::get_option( 'home_title_location' ), 'left' ); ?>>
 					<label for="<?php Input::field_id( 'home_title_location_left' ); ?>">
 						<span><?php \esc_html_e( 'Left:', 'sgeobiz-seo' ); ?></span>
@@ -272,7 +272,7 @@ switch ( $instance ) :
 						?>
 					</label>
 				</span>
-				<span class=tsf-toblock>
+				<span class=sgeobiz-toblock>
 					<input type=radio name="<?php Input::field_name( 'home_title_location' ); ?>" id="<?php Input::field_id( 'home_title_location_right' ); ?>" value=right <?php \checked( Data\Plugin::get_option( 'home_title_location' ), 'right' ); ?>>
 					<label for="<?php Input::field_id( 'home_title_location_right' ); ?>">
 						<span><?php \esc_html_e( 'Right:', 'sgeobiz-seo' ); ?></span>
@@ -311,7 +311,7 @@ switch ( $instance ) :
 			$custom_tw_title = Sanitize::metadata_content( Data\Plugin\Post::get_meta_item( '_twitter_title', $home_id ) );
 			$custom_tw_desc  = Sanitize::metadata_content( Data\Plugin\Post::get_meta_item( '_twitter_description', $home_id ) );
 
-			$custom_tw_card  = Data\Plugin\Post::get_meta_item( '_tsf_twitter_card_type', $home_id );
+			$custom_tw_card  = Data\Plugin\Post::get_meta_item( '_sgeobiz_twitter_card_type', $home_id );
 			$tw_card_default = \in_array( $custom_tw_card, $tw_supported_cards, true )
 				? $custom_tw_card
 				: Meta\Twitter::get_generated_card_type( $generator_args );
@@ -367,7 +367,7 @@ switch ( $instance ) :
 
 		?>
 		<p>
-			<label for="<?php Input::field_id( 'homepage_og_title' ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( 'homepage_og_title' ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( 'Open Graph Title', 'sgeobiz-seo' ); ?></strong>
 			</label>
 		</p>
@@ -379,7 +379,7 @@ switch ( $instance ) :
 		);
 		?>
 		<p>
-			<input type=text name="<?php Input::field_name( 'homepage_og_title' ); ?>" class=large-text id="<?php Input::field_id( 'homepage_og_title' ); ?>" value="<?= \esc_html( Sanitize::metadata_content( Data\Plugin::get_option( 'homepage_og_title' ) ) ) ?>" autocomplete=off data-tsf-social-group=homepage_social_settings data-tsf-social-type=ogTitle>
+			<input type=text name="<?php Input::field_name( 'homepage_og_title' ); ?>" class=large-text id="<?php Input::field_id( 'homepage_og_title' ); ?>" value="<?= \esc_html( Sanitize::metadata_content( Data\Plugin::get_option( 'homepage_og_title' ) ) ) ?>" autocomplete=off data-sgeobiz-social-group=homepage_social_settings data-sgeobiz-social-type=ogTitle>
 		</p>
 		<?php
 		if ( \strlen( $custom_og_title ) ) {
@@ -390,7 +390,7 @@ switch ( $instance ) :
 		?>
 
 		<p>
-			<label for="<?php Input::field_id( 'homepage_og_description' ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( 'homepage_og_description' ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( 'Open Graph Description', 'sgeobiz-seo' ); ?></strong>
 			</label>
 		</p>
@@ -402,7 +402,7 @@ switch ( $instance ) :
 		);
 		?>
 		<p>
-			<textarea name="<?php Input::field_name( 'homepage_og_description' ); ?>" class=large-text id="<?php Input::field_id( 'homepage_og_description' ); ?>" rows=3 cols=70 autocomplete=off data-tsf-social-group=homepage_social_settings data-tsf-social-type=ogDesc><?= \esc_attr( Data\Plugin::get_option( 'homepage_og_description' ) ) ?></textarea>
+			<textarea name="<?php Input::field_name( 'homepage_og_description' ); ?>" class=large-text id="<?php Input::field_id( 'homepage_og_description' ); ?>" rows=3 cols=70 autocomplete=off data-sgeobiz-social-group=homepage_social_settings data-sgeobiz-social-type=ogDesc><?= \esc_attr( Data\Plugin::get_option( 'homepage_og_description' ) ) ?></textarea>
 		</p>
 		<?php
 		if ( \strlen( $custom_og_desc ) ) {
@@ -414,7 +414,7 @@ switch ( $instance ) :
 		<hr>
 
 		<p>
-			<label for="<?php Input::field_id( 'homepage_twitter_title' ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( 'homepage_twitter_title' ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( 'Twitter Title', 'sgeobiz-seo' ); ?></strong>
 			</label>
 		</p>
@@ -426,7 +426,7 @@ switch ( $instance ) :
 		);
 		?>
 		<p>
-			<input type=text name="<?php Input::field_name( 'homepage_twitter_title' ); ?>" class=large-text id="<?php Input::field_id( 'homepage_twitter_title' ); ?>" value="<?= \esc_html( Sanitize::metadata_content( Data\Plugin::get_option( 'homepage_twitter_title' ) ) ) ?>" autocomplete=off data-tsf-social-group=homepage_social_settings data-tsf-social-type=twTitle>
+			<input type=text name="<?php Input::field_name( 'homepage_twitter_title' ); ?>" class=large-text id="<?php Input::field_id( 'homepage_twitter_title' ); ?>" value="<?= \esc_html( Sanitize::metadata_content( Data\Plugin::get_option( 'homepage_twitter_title' ) ) ) ?>" autocomplete=off data-sgeobiz-social-group=homepage_social_settings data-sgeobiz-social-type=twTitle>
 		</p>
 		<?php
 		if ( \strlen( $custom_og_title ) || \strlen( $custom_tw_title ) ) {
@@ -437,7 +437,7 @@ switch ( $instance ) :
 		?>
 
 		<p>
-			<label for="<?php Input::field_id( 'homepage_twitter_description' ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( 'homepage_twitter_description' ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( 'Twitter Description', 'sgeobiz-seo' ); ?></strong>
 			</label>
 		</p>
@@ -449,7 +449,7 @@ switch ( $instance ) :
 		);
 		?>
 		<p>
-			<textarea name="<?php Input::field_name( 'homepage_twitter_description' ); ?>" class=large-text id="<?php Input::field_id( 'homepage_twitter_description' ); ?>" rows=3 cols=70 autocomplete=off data-tsf-social-group=homepage_social_settings data-tsf-social-type=twDesc><?= \esc_attr( Data\Plugin::get_option( 'homepage_twitter_description' ) ) ?></textarea>
+			<textarea name="<?php Input::field_name( 'homepage_twitter_description' ); ?>" class=large-text id="<?php Input::field_id( 'homepage_twitter_description' ); ?>" rows=3 cols=70 autocomplete=off data-sgeobiz-social-group=homepage_social_settings data-sgeobiz-social-type=twDesc><?= \esc_attr( Data\Plugin::get_option( 'homepage_twitter_description' ) ) ?></textarea>
 		</p>
 		<?php
 		if ( \strlen( $custom_og_desc ) || \strlen( $custom_tw_desc ) ) {
@@ -460,7 +460,7 @@ switch ( $instance ) :
 		?>
 
 		<p>
-			<label for="<?php Input::field_id( 'homepage_twitter_card_type' ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( 'homepage_twitter_card_type' ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( 'Twitter Card Type', 'sgeobiz-seo' ); ?></strong>
 				<?php
 				HTML::make_info(
@@ -475,7 +475,7 @@ switch ( $instance ) :
 			// phpcs:disable WordPress.Security.EscapeOutput -- make_single_select_form() escapes.
 			echo Form::make_single_select_form( [
 				'id'       => Input::get_field_id( 'homepage_twitter_card_type' ),
-				'class'    => 'tsf-select-block',
+				'class'    => 'sgeobiz-select-block',
 				'name'     => Input::get_field_name( 'homepage_twitter_card_type' ),
 				'label'    => '',
 				'options'  => array_merge(
@@ -505,7 +505,7 @@ switch ( $instance ) :
 		HTML::description( \__( 'A social image can be displayed when your homepage is shared. It is a great way to grab attention.', 'sgeobiz-seo' ) );
 		?>
 		<p>
-			<label for=tsf_homepage_socialimage-url>
+			<label for=sgeobiz_homepage_socialimage-url>
 				<strong><?php \esc_html_e( 'Social Image URL', 'sgeobiz-seo' ); ?></strong>
 				<?php
 				HTML::make_info(
@@ -516,13 +516,13 @@ switch ( $instance ) :
 			</label>
 		</p>
 		<p>
-			<input class=large-text type=url name="<?php Input::field_name( 'homepage_social_image_url' ); ?>" id=tsf_homepage_socialimage-url placeholder="<?= \esc_url( $image_placeholder ) ?>" value="<?= \esc_url( Data\Plugin::get_option( 'homepage_social_image_url' ) ) ?>">
-			<input type=hidden name="<?php Input::field_name( 'homepage_social_image_id' ); ?>" id=tsf_homepage_socialimage-id value="<?= \absint( Data\Plugin::get_option( 'homepage_social_image_id' ) ) ?>" disabled class=tsf-enable-media-if-js>
+			<input class=large-text type=url name="<?php Input::field_name( 'homepage_social_image_url' ); ?>" id=sgeobiz_homepage_socialimage-url placeholder="<?= \esc_url( $image_placeholder ) ?>" value="<?= \esc_url( Data\Plugin::get_option( 'homepage_social_image_url' ) ) ?>">
+			<input type=hidden name="<?php Input::field_name( 'homepage_social_image_id' ); ?>" id=sgeobiz_homepage_socialimage-id value="<?= \absint( Data\Plugin::get_option( 'homepage_social_image_id' ) ) ?>" disabled class=sgeobiz-enable-media-if-js>
 		</p>
 		<p class=hide-if-no-sgeobiz-js>
 			<?php
 			// phpcs:disable WordPress.Security.EscapeOutput -- get_image_uploader_form escapes. (phpcs breaks here, so we use disable)
-			echo Form::get_image_uploader_form( [ 'id' => 'tsf_homepage_socialimage' ] );
+			echo Form::get_image_uploader_form( [ 'id' => 'sgeobiz_homepage_socialimage' ] );
 			// phpcs:enable WordPress.Security.EscapeOutput
 			?>
 		</p>
@@ -561,7 +561,7 @@ switch ( $instance ) :
 
 		?>
 		<p>
-			<label for="<?php Input::field_id( 'homepage_canonical' ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( 'homepage_canonical' ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( 'Canonical URL', 'sgeobiz-seo' ); ?></strong>
 				<?php
 					echo ' ';
@@ -721,7 +721,7 @@ switch ( $instance ) :
 		<hr>
 
 		<p>
-			<label for="<?php Input::field_id( 'homepage_redirect' ); ?>" class=tsf-toblock>
+			<label for="<?php Input::field_id( 'homepage_redirect' ); ?>" class=sgeobiz-toblock>
 				<strong><?php \esc_html_e( '301 Redirect URL', 'sgeobiz-seo' ); ?></strong>
 				<?php
 					echo ' ';

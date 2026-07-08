@@ -38,7 +38,7 @@ use SGEOBIZ_SEO\{
 /**
  * Prepares the Post Settings meta box interface.
  *
- * TODO carry over what we implemented in TSFEM, and make that the standard.
+ * TODO carry over what we implemented in SGEOBIZEM, and make that the standard.
  *
  * @since 4.0.0
  * @since 5.0.0 1. Renamed from `PostSettings` to `Post`.
