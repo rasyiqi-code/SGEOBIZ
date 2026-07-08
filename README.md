@@ -5,7 +5,7 @@
 [![WordPress](https://img.shields.io/badge/WordPress-6.7%2B-blue?logo=wordpress)](https://wordpress.org)
 [![PHP](https://img.shields.io/badge/PHP-7.4%2B-purple?logo=php)](https://php.net)
 [![License](https://img.shields.io/badge/License-GPLv3-green)](https://www.gnu.org/licenses/gpl-3.0.html)
-[![Version](https://img.shields.io/badge/Version-1.0.0-orange)](https://github.com/sgeobiz/sgeobiz-seo/releases)
+[![Version](https://img.shields.io/badge/Version-1.0.0-orange)](https://github.com/rasyiqi-code/SGEOBIZ/releases)
 
 ---
 
@@ -138,7 +138,7 @@ sgeobiz-seo/
 
 ## Dokumentasi
 
-📖 Dokumentasi lengkap tersedia di: **[sgeobiz.com/docs](https://sgeobiz.com/docs/)**
+📖 Dokumentasi lengkap tersedia di: **[rasyiqi-code.github.io/SGEOBIZ](https://rasyiqi-code.github.io/SGEOBIZ/)**
 
 | Halaman | Link |
 |---|---|
@@ -154,16 +154,16 @@ sgeobiz-seo/
 ## Kontribusi
 
 Plugin ini dikembangkan oleh tim **SGEOBIZ**. Kontribusi dalam bentuk:
-- 🐛 Bug report — buka [Issues](https://github.com/sgeobiz/sgeobiz-seo/issues)
-- 💡 Feature request — buka [Discussions](https://github.com/sgeobiz/sgeobiz-seo/discussions)
+- 🐛 Bug report — buka [Issues](https://github.com/rasyiqi-code/SGEOBIZ/issues)
+- 💡 Feature request — buka [Discussions](https://github.com/rasyiqi-code/SGEOBIZ/discussions)
 - 🔀 Pull request — fork → branch → PR
 
 ### Development Setup
 
 ```bash
 # Clone repo
-git clone https://github.com/sgeobiz/sgeobiz-seo.git
-cd sgeobiz-seo
+git clone https://github.com/rasyiqi-code/SGEOBIZ.git
+cd SGEOBIZ
 
 # Build CSS (modular source → compiled)
 python3 scripts/build_settings.py
@@ -204,7 +204,6 @@ the Free Software Foundation, version 3 of the License.
 
 ## Dukungan
 
-- 🌐 Website: [sgeobiz.com](https://sgeobiz.com/)
-- 📖 Dokumentasi: [sgeobiz.com/docs](https://sgeobiz.com/docs/)
-- 💬 Support: [sgeobiz.com/support](https://sgeobiz.com/support/)
-- 🐛 Issues: [GitHub Issues](https://github.com/sgeobiz/sgeobiz-seo/issues)
+- 🌐 GitHub: [github.com/rasyiqi-code/SGEOBIZ](https://github.com/rasyiqi-code/SGEOBIZ)
+- 📖 Dokumentasi: [rasyiqi-code.github.io/SGEOBIZ](https://rasyiqi-code.github.io/SGEOBIZ/)
+- 🐛 Issues: [GitHub Issues](https://github.com/rasyiqi-code/SGEOBIZ/issues)

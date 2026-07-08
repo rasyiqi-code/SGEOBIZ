@@ -14,7 +14,7 @@ Otomatis, akurat, dan dioptimalkan untuk bisnis lokal Indonesia.
 {: .fs-6 .fw-300 }
 
 [Mulai Sekarang](#instalasi){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[Lihat di GitHub](https://github.com/sgeobiz/sgeobiz-seo){: .btn .fs-5 .mb-4 .mb-md-0 }
+[Lihat di GitHub](https://github.com/rasyiqi-code/SGEOBIZ){: .btn .fs-5 .mb-4 .mb-md-0 }
 
 ---
 

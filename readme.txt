@@ -136,6 +136,6 @@ Rilis awal SGEOBIZ SEO. Tidak ada upgrade dari versi sebelumnya.
 
 == Other Notes ==
 
-Dokumentasi lengkap tersedia di: https://sgeobiz.com/docs/
+Dokumentasi lengkap tersedia di: https://rasyiqi-code.github.io/SGEOBIZ/
 
-Untuk dukungan teknis, kunjungi: https://sgeobiz.com/support/
+Kode sumber tersedia di: https://github.com/rasyiqi-code/SGEOBIZ
