@@ -68,7 +68,7 @@ class Utils {
 	 *              2. Added `\is_customize_preview()` as unsupported.
 	 *              3. Moved from `\SGEOBIZ_SEO\Load`.
 	 *              4. Also removed detection of `wp_doing_ajax()` and `wp_doing_cron()`,
-	 *                 this is now being handled by `_init_tsf()`.
+	 *                 this is now being handled by `_init_sgeobiz()`.
 	 * @since 5.0.3 Now considers the query supported when the homepage is assigned a broken ID.
 	 *
 	 * @return bool

@@ -23,7 +23,7 @@ use SGEOBIZ_SEO\{
 \add_filter( 'sgeobiz_seo_custom_field_description', __NAMESPACE__ . '\pll__' );
 \add_filter( 'sgeobiz_seo_generated_description', __NAMESPACE__ . '\pll__' );
 \add_filter( 'sgeobiz_seo_front_init', __NAMESPACE__ . '\_hijack_polylang_home_url' );
-\add_filter( 'pll_home_url_white_list', __NAMESPACE__ . '\_polylang_allow_tsf_home_url' );
+\add_filter( 'pll_home_url_white_list', __NAMESPACE__ . '\_polylang_allow_sgeobiz_home_url' );
 \add_action( 'sgeobiz_seo_cleared_sitemap_transients', __NAMESPACE__ . '\_polylang_flush_sitemap' );
 \add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\_defunct_badly_coded_polylang_script', 11 );
 \add_filter( 'sgeobiz_seo_seo_column_keys_order', __NAMESPACE__ . '\_polylang_seo_column_keys_order' );
@@ -439,7 +439,7 @@ function _hijack_polylang_home_url() {
  *                               which files using home_url() calls must be filtered.
  * @return string[]
  */
-function _polylang_allow_tsf_home_url( $allow_list ) {
+function _polylang_allow_sgeobiz_home_url( $allow_list ) {
 
 	$allow_list[] = [ 'file' => \SGEOBIZ_SEO_DIR_PATH ];
 

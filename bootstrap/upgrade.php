@@ -934,21 +934,21 @@ function _do_upgrade_5001() {
 		// Cleanup leftover from SGEOBIZ 3.0.0 ~ 3.1.0. Sans trailing _, since it doesn't support multilingual.
 		$wpdb->query( $wpdb->prepare(
 			"DELETE FROM $wpdb->options WHERE option_name LIKE %s",
-			$wpdb->esc_like( "_transient_tsf_exclude_0_{$GLOBALS['blog_id']}" ) . '%',
+			$wpdb->esc_like( "_transient_sgeobiz_exclude_0_{$GLOBALS['blog_id']}" ) . '%',
 		) );
 		$wpdb->query( $wpdb->prepare(
 			"DELETE FROM $wpdb->options WHERE option_name LIKE %s",
-			$wpdb->esc_like( "_transient_timeout_tsf_exclude_0_{$GLOBALS['blog_id']}" ) . '%',
+			$wpdb->esc_like( "_transient_timeout_sgeobiz_exclude_0_{$GLOBALS['blog_id']}" ) . '%',
 		) );
 
 		// Cleanup from 3.1.0 ~ 4.2.8. This data will be rebuilt automatically.
 		$wpdb->query( $wpdb->prepare(
 			"DELETE FROM $wpdb->options WHERE option_name LIKE %s",
-			$wpdb->esc_like( "_transient_tsf_exclude_1_{$GLOBALS['blog_id']}_" ) . '%',
+			$wpdb->esc_like( "_transient_sgeobiz_exclude_1_{$GLOBALS['blog_id']}_" ) . '%',
 		) );
 		$wpdb->query( $wpdb->prepare(
 			"DELETE FROM $wpdb->options WHERE option_name LIKE %s",
-			$wpdb->esc_like( "_transient_timeout_tsf_exclude_1_{$GLOBALS['blog_id']}_" ) . '%',
+			$wpdb->esc_like( "_transient_timeout_sgeobiz_exclude_1_{$GLOBALS['blog_id']}_" ) . '%',
 		) );
 	}
 }

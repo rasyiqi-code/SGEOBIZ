@@ -190,9 +190,9 @@ class SGEOBIZ_Branding {
 			'seo_page_sgeobiz-business-settings',
 		];
 
-		$is_tsf_screen = str_contains( (string) $screen->id, 'theseoframework' )
+		$is_tsf_screen = str_contains( (string) $screen->id, 'sgeobiz-seo-settings' )
 			|| in_array( $screen->id, $sgeobiz_screens, true )
-			|| ( isset( $screen->base ) && str_contains( (string) $screen->base, 'theseoframework' ) );
+			|| ( isset( $screen->base ) && str_contains( (string) $screen->base, 'sgeobiz-seo-settings' ) );
 
 		if ( $is_tsf_screen ) {
 			return sprintf(

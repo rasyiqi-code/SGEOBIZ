@@ -28,7 +28,7 @@ namespace SGEOBIZ_SEO;
 // Always load autoloader -- plugin (de)activation rely on these. We prepend because we safely assume ours is fastest.
 spl_autoload_register( 'SGEOBIZ_SEO\_autoload_classes', true, true );
 
-\add_action( 'plugins_loaded', 'SGEOBIZ_SEO\_load_tsf', 5 );
+\add_action( 'plugins_loaded', 'SGEOBIZ_SEO\_load_sgeobiz', 5 );
 \add_action( 'activate_' . \SGEOBIZ_SEO_PLUGIN_BASENAME, 'SGEOBIZ_SEO\_do_plugin_activation' );
 \add_action( 'deactivate_' . \SGEOBIZ_SEO_PLUGIN_BASENAME, 'SGEOBIZ_SEO\_do_plugin_deactivation' );
 
@@ -42,7 +42,7 @@ spl_autoload_register( 'SGEOBIZ_SEO\_autoload_classes', true, true );
  * @since 5.0.0
  * @access private
  */
-function _load_tsf() {
+function _load_sgeobiz() {
 	/**
 	 * @since 2.3.7
 	 * @param bool $load Set to false to prevent loading SGEOBIZ.
@@ -53,7 +53,7 @@ function _load_tsf() {
 
 		require \SGEOBIZ_SEO_BOOTSTRAP_PATH . 'init-compat.php';
 
-		\add_action( 'init', 'SGEOBIZ_SEO\_init_tsf', 0 );
+		\add_action( 'init', 'SGEOBIZ_SEO\_init_sgeobiz', 0 );
 
 		if ( \is_admin() ) {
 			/**
@@ -78,10 +78,10 @@ function _load_tsf() {
  * @since 3.1.0
  * @since 5.0.0 1. Is no longer responsible for the loading.
  *              2. Moved from plugins_loaded to init.
- * @see namespace\_load_tsf().
+ * @see namespace\_load_sgeobiz().
  * @access private
  */
-function _init_tsf() {
+function _init_sgeobiz() {
 
 	/**
 	 * @since 2.8.0

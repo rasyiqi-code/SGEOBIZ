@@ -147,9 +147,9 @@ unset( $_sgeobiz_local );
 // if ( is_admin() ) {
 // 	define( 'SGEOBIZ_SEO_DEBUG', true );
 // 	delete_option( 'sgeobiz_seo_upgraded_db_version' );
-// 	( $_GET['reset_tsf_upgrade'] ?? 0 ) and delete_option( 'sgeobiz_seo_upgraded_db_version' ) and delete_option( 'sgeobiz_seo_initial_db_version' );
-// 	( $_GET['downgrade_tsf'] ?? 0 ) and update_option( 'sgeobiz_seo_upgraded_db_version', (string) (int) $_GET['downgrade_tsf'], true );
-// 	( $_GET['downgrade_tsf_initial'] ?? 0 ) and update_option( 'sgeobiz_seo_initial_db_version', (string) (int) $_GET['downgrade_tsf_initial'], false );
+// 	( $_GET['reset_sgeobiz_upgrade'] ?? 0 ) and delete_option( 'sgeobiz_seo_upgraded_db_version' ) and delete_option( 'sgeobiz_seo_initial_db_version' );
+// 	( $_GET['downgrade_sgeobiz'] ?? 0 ) and update_option( 'sgeobiz_seo_upgraded_db_version', (string) (int) $_GET['downgrade_sgeobiz'], true );
+// 	( $_GET['downgrade_sgeobiz_initial'] ?? 0 ) and update_option( 'sgeobiz_seo_initial_db_version', (string) (int) $_GET['downgrade_sgeobiz_initial'], false );
 // 	( $_GET['sgeobiz_headless'] ?? 0 ) and define( 'SGEOBIZ_SEO_HEADLESS', $_GET['sgeobiz_headless'] === 'true' ?: $_GET['sgeobiz_headless'] );
 // 	add_action( 'admin_footer', function () { print( '<script>jQuery.migrateMute=true;</script>' ); } );
 // }

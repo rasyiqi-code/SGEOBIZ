@@ -36,10 +36,10 @@ function _wpforo_fix_page() {
 
 	if ( _wpforo_seo_meta_enabled() ) { // phpcs:ignore SGEOBIZ.Performance.Opcodes -- is local.
 		// Remove SGEOBIZ's output: Twofold, may they change the order of operation in a future update.
-		_wpforo_disable_tsf_html_output(); // phpcs:ignore SGEOBIZ.Performance.Opcodes -- is local.
+		_wpforo_disable_sgeobiz_html_output(); // phpcs:ignore SGEOBIZ.Performance.Opcodes -- is local.
 
 		// This won't run on wpForo at the time of writing (2.1.6), because action sgeobiz_seo_after_init already happened.
-		\add_action( 'sgeobiz_seo_after_init', __NAMESPACE__ . '\_wpforo_disable_tsf_html_output', 1 );
+		\add_action( 'sgeobiz_seo_after_init', __NAMESPACE__ . '\_wpforo_disable_sgeobiz_html_output', 1 );
 	} else {
 		// Remove WPForo's SEO meta output.
 		\remove_action( 'wp_head', 'wpforo_add_meta_tags', 1 );
@@ -55,7 +55,7 @@ function _wpforo_fix_page() {
  * @since 3.1.2 Introduced as Lambda.
  * @since 4.0.5 Introduced as function.
  */
-function _wpforo_disable_tsf_html_output() {
+function _wpforo_disable_sgeobiz_html_output() {
 	\remove_action( 'wp_head', [ Front\Meta\Head::class, 'print_wrap_and_tags' ], 1 );
 }
 

@@ -93,7 +93,7 @@ final class Utils {
 	 *
 	 * @since 3.1.0 Introduced in 2.9.0, but the name changed.
 	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.
-	 *              2. Renamed from `_check_tsf_ajax_referer`.
+	 *              2. Renamed from `_check_sgeobiz_ajax_referer`.
 	 * @since 5.1.0 Added the `...$args` parameter.
 	 * @access private
 	 *

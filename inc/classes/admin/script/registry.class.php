@@ -138,7 +138,7 @@ final class Registry {
 		// These fail when called in the body.
 		\add_action( 'admin_enqueue_scripts', [ Loader::class, 'init' ], 0 );
 		\add_filter( 'admin_body_class', [ self::class, '_add_body_class' ] );
-		\add_action( 'in_admin_header', [ self::class, '_print_tsfjs_script' ] );
+		\add_action( 'in_admin_header', [ self::class, '_print_sgeobizjs_script' ] );
 
 		\add_action( 'admin_enqueue_scripts', [ self::class, '_prepare_admin_scripts' ], 1 ); // Magic number: we likely run at priority 0. Add 1.
 		\add_action( 'admin_footer', [ self::class, '_output_templates' ], 999 ); // Magic number: later is less likely to collide?
@@ -200,7 +200,7 @@ final class Registry {
 	 * @since 5.0.0 Is now static.
 	 * @access private
 	 */
-	public static function _print_tsfjs_script() {
+	public static function _print_sgeobizjs_script() {
 		echo "<script>(()=>{const a=0;document.body.classList.replace('sgeobiz-no-js','sgeobiz-js')})()</script>";
 	}
 
