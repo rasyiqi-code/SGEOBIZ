@@ -252,6 +252,10 @@ input.sgeobiz-nav-tab-radio {
 	margin: 1.33em auto;
 }
 
+body.js .sgeobiz-nav-tab-content {
+	display: none;
+}
+
 body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
 	display: block;
 }
