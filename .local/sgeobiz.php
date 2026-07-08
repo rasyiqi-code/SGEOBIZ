@@ -71,4 +71,10 @@ function sgeobiz_boot() {
 
 	// 10. Auto Image SEO Optimizer ( Alt Tag & File Name Renamer )
 	SGEOBIZ_Auto_Alt_Image::init();
+
+	// 11. GEO Graph Optimizer ( Speakable Schema & Author sameAs )
+	SGEOBIZ_Schema_GEO::init();
+
+	// 12. Real-Time IndexNow API Client ( Instant AI Indexing )
+	SGEOBIZ_IndexNow::init();
 }

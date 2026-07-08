@@ -67,12 +67,17 @@ class SGEOBIZ_Semantic_HTML_Sanitizer {
 
 			$new_tag = 'h' . $current_level;
 
-			// Jika ada perubahan tingkatan tag, lakukan replace di HTML draf
-			if ( $new_tag !== $raw_tag ) {
-				$replacement = "<{$new_tag}{$attributes}>{$inner_content}</{$new_tag}>";
-				// Replace tag asli dengan tag yang sudah disembuhkan secara presisi
-				$content = str_replace( $original_tag, $replacement, $content );
+			// Tambahkan ID otomatis jika belum diset (Jump link untuk AI Overviews)
+			$has_id = preg_match( '/\bid\s*=\s*(["\'])(.*?)\1/is', $attributes );
+			if ( ! $has_id ) {
+				$slug = sanitize_title( wp_strip_all_tags( $inner_content ) );
+				if ( ! empty( $slug ) ) {
+					$attributes = ' id="' . esc_attr( $slug ) . '"' . $attributes;
+				}
 			}
+
+			$replacement = "<{$new_tag}{$attributes}>{$inner_content}</{$new_tag}>";
+			$content = str_replace( $original_tag, $replacement, $content );
 
 			// Catat tingkat heading saat ini untuk perbandingan berikutnya
 			$prev_level = $current_level;
