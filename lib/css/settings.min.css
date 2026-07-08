@@ -539,3 +539,88 @@ body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
 .wp-header-end {
     display: none !important;
 }
+
+/* ==========================================================================
+   SGEOBIZ FORM-TABLE GRID LAYOUT OVERRIDES
+   ========================================================================== */
+
+.sgeobiz-dashboard {
+    max-width: 1200px !important; /* Batasi lebar agar tetap nyaman dibaca */
+}
+
+.sgeobiz-premium-theme .form-table {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    border-collapse: collapse;
+}
+
+.sgeobiz-premium-theme .form-table tbody {
+    display: block !important;
+    width: 100% !important;
+}
+
+.sgeobiz-premium-theme .form-table tr {
+    display: flex !important;
+    flex-direction: column !important;
+    margin-bottom: 24px !important;
+    padding-bottom: 20px !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    width: 100% !important;
+}
+
+.sgeobiz-premium-theme .form-table tr:last-child {
+    border-bottom: none !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.sgeobiz-premium-theme .form-table th {
+    display: block !important;
+    width: 100% !important;
+    padding: 0 0 10px 0 !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #1e293b !important; /* Slate 800 */
+    text-align: left;
+}
+
+.sgeobiz-premium-theme .form-table td {
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+}
+
+/* Form descriptions */
+.sgeobiz-premium-theme p.description,
+.sgeobiz-premium-theme .description {
+    font-size: 12px !important;
+    color: #64748b !important;
+    margin-top: 6px !important;
+    line-height: 1.5 !important;
+}
+
+/* Radio buttons & Checkbox labels alignment */
+.sgeobiz-premium-theme label {
+    font-size: 13px !important;
+    color: #334155 !important;
+    vertical-align: middle;
+}
+
+.sgeobiz-premium-theme input[type="radio"] {
+    border: 1px solid #cbd5e1 !important;
+    width: 16px !important;
+    height: 16px !important;
+    margin-top: -2px !important;
+    margin-right: 6px !important;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.sgeobiz-premium-theme input[type="radio"]:checked::before {
+    background-color: #6366f1 !important;
+    width: 8px !important;
+    height: 8px !important;
+    margin: 3px !important;
+}
+
