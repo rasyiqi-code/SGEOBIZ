@@ -358,19 +358,19 @@ class SGEOBIZ_GBP_Settings {
 				border: 1px solid #f59e0b !important;
 				border-left: 5px solid #d97706 !important;
 				border-radius: 12px !important;
-				padding: 20px !important;
+				padding: 12px 16px !important;
 				margin-bottom: 24px !important;
 				position: relative !important;
 				box-shadow: 0 4px 6px -1px rgba(217, 119, 6, 0.05), 0 2px 4px -2px rgba(217, 119, 6, 0.05) !important;
 				display: flex;
 				flex-direction: column;
-				gap: 8px;
+				gap: 4px;
 			}
 			.sgeobiz-ad-close {
 				position: absolute !important;
-				top: 12px !important;
-				right: 16px !important;
-				font-size: 20px !important;
+				top: 8px !important;
+				right: 12px !important;
+				font-size: 18px !important;
 				font-weight: bold !important;
 				color: #b45309 !important;
 				cursor: pointer !important;
@@ -383,32 +383,32 @@ class SGEOBIZ_GBP_Settings {
 				display: inline-block !important;
 				background: #d97706 !important;
 				color: #ffffff !important;
-				padding: 2px 8px !important;
-				font-size: 10px !important;
+				padding: 2px 6px !important;
+				font-size: 9px !important;
 				font-weight: 700 !important;
 				text-transform: uppercase !important;
 				border-radius: 4px !important;
 				letter-spacing: 0.5px !important;
-				margin-bottom: 6px !important;
+				margin-bottom: 2px !important;
 				width: max-content !important;
 			}
 			.sgeobiz-ad-box h3 {
 				margin: 0 !important;
-				font-size: 15px !important;
+				font-size: 13px !important;
 				color: #78350f !important;
 				font-weight: 700 !important;
 			}
 			.sgeobiz-ad-box p {
 				margin: 0 !important;
-				font-size: 13px !important;
+				font-size: 12px !important;
 				color: #92400e !important;
-				line-height: 1.5 !important;
+				line-height: 1.4 !important;
 			}
-			.sgeobiz-ad-box a {
+			.sgeobiz-ad-box p a {
 				color: #b45309 !important;
 				text-decoration: underline !important;
 			}
-			.sgeobiz-ad-box a:hover {
+			.sgeobiz-ad-box p a:hover {
 				color: #78350f !important;
 			}
 			.sgeobiz-ad-button {
@@ -416,14 +416,18 @@ class SGEOBIZ_GBP_Settings {
 				background: linear-gradient(135deg, #d97706, #b45309) !important;
 				color: #ffffff !important;
 				font-weight: 600 !important;
-				padding: 8px 16px !important;
+				padding: 6px 12px !important;
 				border-radius: 6px !important;
 				text-decoration: none !important;
-				font-size: 12px !important;
-				margin-top: 8px !important;
+				font-size: 11px !important;
+				margin-top: 4px !important;
 				width: max-content !important;
 				box-shadow: 0 2px 4px rgba(217, 119, 6, 0.2) !important;
 				transition: transform 0.2s, box-shadow 0.2s !important;
+			}
+			.sgeobiz-ad-box .sgeobiz-ad-button {
+				color: #ffffff !important;
+				text-decoration: none !important;
 			}
 			.sgeobiz-ad-button:hover {
 				transform: translateY(-1px) !important;
