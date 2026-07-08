@@ -1,1 +1,541 @@
-.sgeobiz-metaboxes{box-sizing:border-box;max-width:740px;padding-bottom:20px}.sgeobiz-top-wrap{margin-bottom:8px}.sgeobiz-bottom-wrap,.sgeobiz-top-wrap{width:100%;display:flex;justify-content:space-between;flex:1 1 100%;flex-flow:row wrap;gap:10px}.sgeobiz-top-buttons{padding:9px 0 4px}.sgeobiz-bottom-buttons,.sgeobiz-top-buttons{display:flex;flex:1 1 auto;justify-content:start;flex-flow:row wrap;gap:10px}.sgeobiz-bottom-buttons.sgeobiz-end,.sgeobiz-top-buttons.sgeobiz-end{justify-content:flex-end}@media screen and (max-width:782px){.sgeobiz-bottom-buttons.sgeobiz-end,.sgeobiz-bottom-wrap,.sgeobiz-top-buttons.sgeobiz-end,.sgeobiz-top-wrap{justify-content:start}.sgeobiz-bottom-buttons,.sgeobiz-top-buttons{width:100%}}.sgeobiz-metaboxes .sgeobiz-bottom-buttons>*,.sgeobiz-metaboxes .sgeobiz-top-buttons>*{text-align:center}.sgeobiz-metaboxes .metabox-holder{clear:both}#sgeobiz-title-separator{display:table;width:100%;border-collapse:collapse;border-spacing:0}#sgeobiz-title-separator input{position:absolute;width:0;height:0;opacity:0;margin:0;padding:0;border:0;z-index:-1;-webkit-appearance:none;-moz-appearance:none;appearance:none}#sgeobiz-title-separator label{display:inline-block;width:auto;min-width:28px;min-height:28px;margin:3px;-moz-margin-end:1.5px;-moz-margin-start:1.5px;padding:0 4px;border:1px solid #ccc;line-height:28px;text-align:center;cursor:pointer;box-shadow:-1px -1px 1px #aaa inset;font-size:16px}#sgeobiz-title-separator label:hover{box-shadow:1px 1px 1px #aaa inset;background-color:#fff}#sgeobiz-title-separator input:checked+label{box-shadow:1px 1px 1px #333 inset;background-color:#fff}#sgeobiz-title-separator input:focus+label:not(.sgeobiz-no-focus-ring){box-shadow:0 0 1px 1px #333 inset}#sgeobiz-home-title-location,#sgeobiz-title-location{display:block}#sgeobiz-home-title-location label>span,#sgeobiz-title-location label>span{display:inline-block;min-width:60px;vertical-align:baseline}.sgeobiz-title-additions-example-left code,.sgeobiz-title-additions-example-right code,.sgeobiz-title-additions-js{white-space:pre-wrap}.sgeobiz-title-additions-location-hidden,.sgeobiz-title-tax-prefix-hidden{display:none}#sgeobiz-post-type-archive-header-wrap{display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;vertical-align:top;gap:1.625em 4ch}#sgeobiz-post-type-archive-select-wrap{display:flex;flex-flow:row wrap;gap:1em;align-items:center}#sgeobiz-post-type-archive-select-wrap label{font-weight:600}#sgeobiz-post-type-archive-header-wrap h4{margin:0}.sgeobiz-post-type-archive-link{display:inline-block}.sgeobiz-post-type-archive-if-excluded p:last-of-type{margin-bottom:0}.sgeobiz-select-block>select:last-of-type{margin-bottom:14px}.sgeobiz-nav-tab-no-js,.sgeobiz-nav-tab-wrapper{position:relative;clear:both;width:100%;display:inline-block;border-bottom:1px solid #ccc;line-height:inherit;padding:8px 12px 0;margin:-4px -12px}.sgeobiz-nav-tab-label{float:inline-start;border:1px solid #ccc;margin-inline-start:.5em;margin-bottom:-1px;padding:1ch 2ch;font-size:12px;background:#f1f1f1;color:#555;font-weight:600;border-radius:3px 3px 0 0;cursor:pointer}.sgeobiz-nav-desktop{margin-left:7px}.sgeobiz-dashicons-tabs{font-size:initial;display:inline;vertical-align:text-bottom}input.sgeobiz-nav-tab-radio{position:absolute;width:0;height:0;opacity:0;margin:0;padding:0;border:0;z-index:-1;-webkit-appearance:none;-moz-appearance:none;appearance:none}.sgeobiz-nav-tab-active,.sgeobiz-nav-tab-radio:checked+label{background-color:inherit;border-bottom-color:#fff;color:#000}.sgeobiz-nav-tab-radio:focus+label:not(.sgeobiz-no-focus-ring){box-shadow:0 0 0 1px #5b9dd9,0 0 2px 1px rgba(30,140,190,.8);border-color:#fff}.sgeobiz-nav-tab-content{margin:1.33em auto 0}.sgeobiz-nav-tab-content select{width:100%;max-width:max-content;text-overflow:ellipsis}.sgeobiz-nav-tab-content-no-js{margin:1.33em auto}body.js .sgeobiz-nav-tab-content{display:none}body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active{display:block}
+.sgeobiz-metaboxes {
+	box-sizing: border-box;
+	max-width: 740px;
+	padding-bottom: 20px;
+}
+
+.sgeobiz-top-wrap {
+	/* About half of notification height */
+	margin-bottom: 8px;
+}
+
+.sgeobiz-top-wrap,
+.sgeobiz-bottom-wrap {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex: 1 1 100%;
+	flex-flow: row wrap;
+	gap: 10px;
+}
+
+/* Matches .wrap h1 */
+.sgeobiz-top-buttons {
+	padding: 9px 0 4px;
+}
+.sgeobiz-top-buttons,
+.sgeobiz-bottom-buttons {
+	display: flex;
+	flex: 1 1 auto;
+	justify-content: start;
+	flex-flow: row wrap;
+	gap: 10px;
+}
+.sgeobiz-top-buttons.sgeobiz-end,
+.sgeobiz-bottom-buttons.sgeobiz-end {
+	justify-content: flex-end;
+}
+
+@media screen and ( max-width: 782px ) {
+	.sgeobiz-top-wrap,
+	.sgeobiz-bottom-wrap,
+	.sgeobiz-top-buttons.sgeobiz-end,
+	.sgeobiz-bottom-buttons.sgeobiz-end {
+		justify-content: start;
+	}
+	.sgeobiz-top-buttons,
+	.sgeobiz-bottom-buttons {
+		width: 100%;
+	}
+}
+
+.sgeobiz-metaboxes .sgeobiz-top-buttons > *,
+.sgeobiz-metaboxes .sgeobiz-bottom-buttons > * {
+	text-align: center;
+}
+
+.sgeobiz-metaboxes .metabox-holder {
+	clear: both;
+}
+
+#sgeobiz-title-separator {
+	display: table;
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+#sgeobiz-title-separator input {
+	position: absolute;
+	width: 0;
+	height: 0;
+	opacity: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	z-index: -1;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+#sgeobiz-title-separator label {
+	display: inline-block;
+	width: auto;
+	min-width: 28px;
+	min-height: 28px;
+	margin: 3px;
+	-moz-margin-end: 1.5px;
+	-moz-margin-start: 1.5px;
+	padding: 0 4px;
+	border: 1px solid #ccc;
+	line-height: 28px;
+	text-align: center;
+	cursor: pointer;
+	box-shadow: -1px -1px 1px #aaa inset;
+	font-size: 16px;
+}
+
+#sgeobiz-title-separator label:hover {
+	box-shadow: 1px 1px 1px #aaa inset;
+	background-color: #fff;
+}
+
+#sgeobiz-title-separator input:checked + label {
+	box-shadow: 1px 1px 1px #333 inset;
+	background-color: #fff;
+}
+
+#sgeobiz-title-separator input:focus + label:not( .sgeobiz-no-focus-ring ) {
+	box-shadow: 0px 0px 1px 1px #333 inset;
+}
+
+#sgeobiz-title-location,
+#sgeobiz-home-title-location {
+	display: block;
+}
+
+#sgeobiz-title-location label > span,
+#sgeobiz-home-title-location label > span {
+	display: inline-block;
+	min-width: 60px;
+	vertical-align: baseline;
+}
+
+.sgeobiz-title-additions-js,
+.sgeobiz-title-additions-example-left code,
+.sgeobiz-title-additions-example-right code {
+	white-space: pre-wrap;
+}
+
+.sgeobiz-title-additions-location-hidden,
+.sgeobiz-title-tax-prefix-hidden {
+	display: none;
+}
+
+#sgeobiz-post-type-archive-header-wrap {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+	vertical-align: top;
+	gap: 1.625em 4ch;
+}
+
+#sgeobiz-post-type-archive-select-wrap {
+	display: flex;
+	flex-flow: row wrap;
+	gap: 1em;
+	align-items: center;
+}
+
+#sgeobiz-post-type-archive-select-wrap label {
+	font-weight: 600;
+}
+
+#sgeobiz-post-type-archive-header-wrap h4 {
+	margin: 0;
+}
+
+.sgeobiz-post-type-archive-link {
+	display: inline-block;
+}
+
+.sgeobiz-post-type-archive-if-excluded p:last-of-type {
+	margin-bottom: 0;
+}
+
+/** @overrides sgeobiz.css */
+.sgeobiz-select-block > select:last-of-type {
+	margin-bottom: 14px;
+}
+
+/**
+ * Start Tabs.
+ */
+.sgeobiz-nav-tab-no-js,
+.sgeobiz-nav-tab-wrapper {
+	position: relative;
+	clear: both;
+	width: 100%;
+	display: inline-block;
+	border-bottom: 1px solid #ccc;
+	line-height: inherit;
+	padding: 8px 12px 0;
+	margin: -4px -12px;
+}
+
+.sgeobiz-nav-tab-label {
+	float: inline-start;
+	border: 1px solid #ccc;
+	margin-inline-start: .5em;
+	margin-bottom: -1px;
+	padding: 1ch 2ch;
+	font-size: 12px;
+	background: #f1f1f1;
+	color: #555;
+	font-weight: 600;
+	border-radius: 3px 3px 0 0;
+	cursor: pointer;
+}
+
+.sgeobiz-nav-desktop {
+	margin-left: 7px;
+}
+
+.sgeobiz-dashicons-tabs {
+	font-size: initial;
+	display: inline;
+	vertical-align: text-bottom;
+}
+
+input.sgeobiz-nav-tab-radio {
+	position: absolute;
+	width: 0;
+	height: 0;
+	opacity: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	z-index: -1;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.sgeobiz-nav-tab-radio:checked + label,
+.sgeobiz-nav-tab-active {
+	background-color: inherit;
+	border-bottom-color: #fff;
+	color: #000;
+}
+
+/* make all border colors #fff, so it doesn't look skewed */
+.sgeobiz-nav-tab-radio:focus + label:not( .sgeobiz-no-focus-ring ) {
+	box-shadow:
+		0 0 0 1px #5b9dd9,
+		0 0 2px 1px rgba( 30, 140, 190, .8 );
+	border-color: #fff;
+}
+
+.sgeobiz-nav-tab-content {
+	margin: 1.33em auto 0;
+}
+
+.sgeobiz-nav-tab-content select {
+	width: 100%;
+	max-width: max-content;
+	text-overflow: ellipsis;
+}
+
+.sgeobiz-nav-tab-content-no-js {
+	margin: 1.33em auto;
+}
+
+body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
+	display: block;
+}
+
+/* ==========================================================================
+   SGEOBIZ SEO PREMIUM DASHBOARD THEME
+   ========================================================================== */
+
+.sgeobiz-metaboxes.sgeobiz-premium-theme {
+    max-width: 100% !important;
+    margin: 10px 20px 0 0 !important;
+}
+
+.sgeobiz-dashboard {
+    display: flex;
+    min-height: 700px;
+    background: #f8fafc;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+/* Sidebar */
+.sgeobiz-sidebar {
+    width: 260px;
+    background: #0f172a; /* Slate 900 */
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    color: #94a3b8;
+    flex-shrink: 0;
+}
+
+.sgeobiz-sidebar-brand {
+    padding: 0 24px 24px 24px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #f8fafc;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #1e293b;
+}
+
+.sgeobiz-sidebar-brand .dashicons {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    color: #818cf8;
+}
+
+.sgeobiz-sidebar-menu {
+    list-style: none;
+    margin: 20px 0 0 0;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.sgeobiz-sidebar-item {
+    padding: 12px 24px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-left: 4px solid transparent;
+    display: flex;
+    align-items: center;
+}
+
+.sgeobiz-sidebar-item:hover {
+    color: #f1f5f9;
+    background: #1e293b;
+}
+
+.sgeobiz-sidebar-item.active {
+    color: #ffffff;
+    background: #1e293b;
+    border-left-color: #6366f1; /* Indigo */
+    font-weight: 600;
+}
+
+.sgeobiz-sidebar-footer {
+    padding: 0 24px;
+    font-size: 11px;
+    color: #475569;
+}
+
+/* Main Area */
+.sgeobiz-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background: #f8fafc;
+}
+
+.sgeobiz-topbar {
+    padding: 20px 30px;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sgeobiz-topbar-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.sgeobiz-topbar-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* Override WP Buttons */
+.sgeobiz-topbar-actions .button-primary,
+.sgeobiz-bottom-buttons .button-primary {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed) !important;
+    border: none !important;
+    color: #fff !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+    padding: 0 20px !important;
+    height: 38px !important;
+    line-height: 38px !important;
+    box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2), 0 2px 4px -1px rgba(79, 70, 229, 0.1) !important;
+    cursor: pointer !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+}
+
+.sgeobiz-topbar-actions .button-primary:hover,
+.sgeobiz-bottom-buttons .button-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3), 0 4px 6px -2px rgba(79, 70, 229, 0.15) !important;
+}
+
+.sgeobiz-topbar-actions .button-secondary {
+    border-radius: 6px !important;
+    padding: 0 16px !important;
+    height: 38px !important;
+    line-height: 36px !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #475569 !important;
+    font-weight: 600 !important;
+    background: #ffffff !important;
+}
+
+/* Postbox Container */
+.sgeobiz-settings-container {
+    padding: 30px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+/* Clean Postbox Card */
+.sgeobiz-settings-container .postbox {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -1px rgba(0,0,0,0.02) !important;
+    margin-bottom: 0 !important;
+}
+
+.sgeobiz-settings-container .postbox .postbox-header {
+    border-bottom: 1px solid #f1f5f9 !important;
+    padding: 16px 24px !important;
+    background: #ffffff !important;
+}
+
+.sgeobiz-settings-container .postbox .postbox-header h2 {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.sgeobiz-settings-container .postbox .inside {
+    padding: 24px !important;
+    margin: 0 !important;
+}
+
+/* Toggle Switches */
+.sgeobiz-premium-theme input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 40px;
+    height: 20px;
+    background-color: #cbd5e1;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.2s ease;
+    vertical-align: middle;
+    margin-right: 8px !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.sgeobiz-premium-theme input[type="checkbox"]:checked {
+    background-color: #6366f1;
+}
+
+.sgeobiz-premium-theme input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: white;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.sgeobiz-premium-theme input[type="checkbox"]:checked::before {
+    transform: translateX(20px);
+}
+
+/* Tab Headers inside postbox */
+.sgeobiz-nav-tab-wrapper {
+    border-bottom: 2px solid #e2e8f0 !important;
+    padding: 0 !important;
+    margin: 0 0 20px 0 !important;
+    display: flex !important;
+    gap: 16px !important;
+}
+
+.sgeobiz-nav-tab-label {
+    background: none !important;
+    border: none !important;
+    padding: 10px 4px !important;
+    color: #64748b !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    margin: 0 !important;
+    border-bottom: 2px solid transparent !important;
+    border-radius: 0 !important;
+    transition: all 0.2s ease !important;
+}
+
+.sgeobiz-nav-tab-label:hover {
+    color: #475569 !important;
+}
+
+.sgeobiz-nav-tab-radio:checked + label {
+    color: #6366f1 !important;
+    border-bottom-color: #6366f1 !important;
+}
+
+/* Inputs styling */
+.sgeobiz-premium-theme input[type="text"],
+.sgeobiz-premium-theme input[type="url"],
+.sgeobiz-premium-theme textarea,
+.sgeobiz-premium-theme select {
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+    background: #ffffff !important;
+    color: #334155 !important;
+    box-shadow: none !important;
+    transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+
+.sgeobiz-premium-theme input[type="text"]:focus,
+.sgeobiz-premium-theme input[type="url"]:focus,
+.sgeobiz-premium-theme textarea:focus,
+.sgeobiz-premium-theme select:focus {
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+    outline: none !important;
+}
+
+/* Hide WP original elements */
+.sgeobiz-bottom-wrap {
+    display: none !important;
+}
+.wp-header-end {
+    display: none !important;
+}
