@@ -36,8 +36,8 @@ class SGEOBIZ_GBP_Settings {
 		add_action( 'admin_enqueue_scripts', [ $instance, 'enqueue_assets' ] );
 		add_action( 'admin_head', [ $instance, 'print_styles' ] );
 		add_action( 'wp_ajax_sgeobiz_dismiss_ad', [ $instance, 'ajax_dismiss_ad' ] );
-		add_action( 'wp_dashboard_setup', [ $instance, 'register_dashboard_widget' ] );
 		add_action( 'wp_login', [ $instance, 'clear_dismiss_on_login' ], 10, 2 );
+		add_action( 'sgeobiz_seo_setting_notices', [ $instance, 'render_settings_ad' ] );
 	}
 
 	/**
@@ -59,52 +59,32 @@ class SGEOBIZ_GBP_Settings {
 	}
 
 	/**
-	 * Daftarkan widget iklan di Dashboard utama WordPress.
+	 * Render widget iklan di Halaman Utama Pengaturan SEO.
 	 */
-	public function register_dashboard_widget() {
+	public function render_settings_ad() {
 		$dismissed_ad = get_user_meta( get_current_user_id(), 'sgeobiz_dismissed_ad_crediblemark', true );
 		if ( ! $dismissed_ad ) {
-			wp_add_dashboard_widget(
-				'sgeobiz_crediblemark_ad_widget',
-				__( 'Jasa Template &amp; Plugin Khusus Eksklusif', 'sgeobiz-seo' ),
-				[ $this, 'render_dashboard_ad_widget' ]
-			);
-
-			// Pindahkan widget ke urutan pertama (paling atas kolom normal)
-			global $wp_meta_boxes;
-			if ( isset( $wp_meta_boxes['dashboard']['normal']['core']['sgeobiz_crediblemark_ad_widget'] ) ) {
-				$my_widget = $wp_meta_boxes['dashboard']['normal']['core']['sgeobiz_crediblemark_ad_widget'];
-				unset( $wp_meta_boxes['dashboard']['normal']['core']['sgeobiz_crediblemark_ad_widget'] );
-				$wp_meta_boxes['dashboard']['normal']['core'] = array_merge(
-					[ 'sgeobiz_crediblemark_ad_widget' => $my_widget ],
-					$wp_meta_boxes['dashboard']['normal']['core']
-				);
-			}
+			echo '<div class="sgeobiz-ad-box" id="sgeobiz-ad-crediblemark" style="margin-top: 20px;">';
+			echo '  <span class="sgeobiz-ad-close" onclick="sgeobizDismissAd()">&times;</span>';
+			echo '  <div class="sgeobiz-ad-content">';
+			echo '      <h3>Jasa Pembuatan Template dan Plugin Khusus Eksklusif</h3>';
+			echo '      <p>Butuh website kustom yang cepat dan teroptimasi SEO? Tim profesional <strong><a href="https://crediblemark.com/" target="_blank">CredibleMark.com</a></strong> menyediakan jasa pembuatan template dan plugin khusus eksklusif bebas bloatware (anti builder) yang ringan, cepat, mandiri tanpa ketergantungan plugin eksternal, dan berkinerja tinggi.</p>';
+			echo '      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">';
+			echo '        <a href="https://crediblemark.com/" target="_blank" class="sgeobiz-ad-button" style="margin-top:0 !important;">Kunjungi CredibleMark.com</a>';
+			echo '        <a href="https://wa.me/6285183131249" target="_blank" class="sgeobiz-ad-button" style="margin-top:0 !important; background:linear-gradient(135deg, #22c55e, #15803d) !important; box-shadow: 0 2px 4px rgba(34, 197, 94, 0.2) !important;">Hubungi WhatsApp (+62 851-8313-1249)</a>';
+			echo '      </div>';
+			echo '  </div>';
+			echo '</div>';
+			
+			// Ajax script untuk simpan status dismiss ke user meta
+			echo '<script>';
+			echo 'function sgeobizDismissAd() {';
+			echo '  var box = document.getElementById("sgeobiz-ad-crediblemark");';
+			echo '  if(box) { box.style.display = "none"; }';
+			echo '  jQuery.post(ajaxurl, { action: "sgeobiz_dismiss_ad" });';
+			echo '}';
+			echo '</script>';
 		}
-	}
-
-	/**
-	 * Render widget iklan di Dashboard utama WordPress.
-	 */
-	public function render_dashboard_ad_widget() {
-		echo '<div class="sgeobiz-dashboard-ad" id="sgeobiz-ad-crediblemark">';
-		echo '  <span class="sgeobiz-ad-close" onclick="sgeobizDismissAd()" style="float:right; font-weight:bold; cursor:pointer; font-size:16px;">&times;</span>';
-		echo '  <h4 style="margin: 0 0 6px 0; font-size:14px; font-weight:700; color:#78350f;">Jasa Pembuatan Template dan Plugin Khusus Eksklusif</h4>';
-		echo '  <p style="margin:0 0 12px 0; font-size:13px; line-height:1.5; color:#92400e;">Butuh website kustom yang cepat dan teroptimasi SEO? Tim profesional <strong><a href="https://crediblemark.com/" target="_blank">CredibleMark.com</a></strong> menyediakan jasa pembuatan template dan plugin khusus eksklusif bebas bloatware (anti builder) yang ringan, cepat, mandiri tanpa ketergantungan plugin eksternal, dan berkinerja tinggi.</p>';
-		echo '  <div style="display:flex; gap:8px; flex-wrap:wrap;">';
-		echo '    <a href="https://crediblemark.com/" target="_blank" class="button button-primary" style="background: linear-gradient(135deg, #d97706, #b45309) !important; border:none !important; box-shadow:none !important; text-shadow:none !important; color:#fff !important; font-weight:600 !important; border-radius:6px !important;">Kunjungi CredibleMark</a>';
-		echo '    <a href="https://wa.me/6285183131249" target="_blank" class="button button-secondary" style="border: 1px solid #cbd5e1 !important; color:#475569 !important; font-weight:600 !important; border-radius:6px !important; background:#fff !important;">Hubungi via WhatsApp (+62 851-8313-1249)</a>';
-		echo '  </div>';
-		echo '</div>';
-		
-		// Script penutup via AJAX
-		echo '<script>';
-		echo 'function sgeobizDismissAd() {';
-		echo '  var widget = document.getElementById("sgeobiz_crediblemark_ad_widget");';
-		echo '  if(widget) { widget.style.display = "none"; }';
-		echo '  jQuery.post(ajaxurl, { action: "sgeobiz_dismiss_ad" });';
-		echo '}';
-		echo '</script>';
 	}
 
 	/**
