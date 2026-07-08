@@ -389,12 +389,13 @@ class SGEOBIZ_GBP_Settings {
 			'threads'             => esc_url_raw( $post['social_threads'] ?? '' ),
 			'pinterest'           => esc_url_raw( $post['social_pinterest'] ?? '' ),
 
-			// Marketplace
+			// Marketplace (aktif per 2025)
 			'tokopedia'           => esc_url_raw( $post['social_tokopedia'] ?? '' ),
 			'shopee'              => esc_url_raw( $post['social_shopee'] ?? '' ),
 			'lazada'              => esc_url_raw( $post['social_lazada'] ?? '' ),
-			'bukalapak'           => esc_url_raw( $post['social_bukalapak'] ?? '' ),
 			'blibli'              => esc_url_raw( $post['social_blibli'] ?? '' ),
+			'zalora'              => esc_url_raw( $post['social_zalora'] ?? '' ),
+			// Bukalapak: sejak Jan 2025 hanya layanan virtual (pulsa, token listrik), bukan marketplace fisik
 
 			// Google & Food Delivery
 			'google_business_url' => esc_url_raw( $post['social_google_business'] ?? '' ),
@@ -545,11 +546,11 @@ class SGEOBIZ_GBP_Settings {
 		// Sub-bagian: Marketplace
 		echo '<h3 style="font-size:13px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin:20px 0 10px;">Marketplace</h3>';
 		echo '<div class="sgeobiz-row-2">';
-		$this->field_url( 'social_tokopedia',  'Tokopedia',  $d( 'tokopedia' ),  'https://tokopedia.com/namabisnis' );
-		$this->field_url( 'social_shopee',     'Shopee',     $d( 'shopee' ),     'https://shopee.co.id/namabisnis' );
-		$this->field_url( 'social_lazada',     'Lazada',     $d( 'lazada' ),     'https://lazada.co.id/shop/namabisnis' );
-		$this->field_url( 'social_bukalapak',  'Bukalapak',  $d( 'bukalapak' ),  'https://bukalapak.com/u/namabisnis' );
-		$this->field_url( 'social_blibli',     'Blibli',     $d( 'blibli' ),     'https://blibli.com/merchant/namabisnis' );
+		$this->field_url( 'social_tokopedia', 'Tokopedia',        $d( 'tokopedia' ), 'https://tokopedia.com/namabisnis' );
+		$this->field_url( 'social_shopee',    'Shopee',           $d( 'shopee' ),    'https://shopee.co.id/namabisnis' );
+		$this->field_url( 'social_lazada',    'Lazada',           $d( 'lazada' ),    'https://lazada.co.id/shop/namabisnis' );
+		$this->field_url( 'social_blibli',    'Blibli',           $d( 'blibli' ),    'https://blibli.com/merchant/namabisnis' );
+		$this->field_url( 'social_zalora',    'Zalora (fashion)', $d( 'zalora' ),    'https://zalora.co.id/...' );
 		echo '</div>';
 
 		// Sub-bagian: Google & Food Delivery
