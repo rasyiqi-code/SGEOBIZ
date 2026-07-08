@@ -68,4 +68,7 @@ function sgeobiz_boot() {
 
 	// 9. HTTP 304 Not Modified Cache Optimizer ( Crawl Budget Hack )
 	SGEOBIZ_HTTP_304::init();
+
+	// 10. Auto Image SEO Optimizer ( Alt Tag & File Name Renamer )
+	SGEOBIZ_Auto_Alt_Image::init();
 }
