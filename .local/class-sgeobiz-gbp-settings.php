@@ -667,6 +667,27 @@ class SGEOBIZ_GBP_Settings {
 			echo '</script>';
 		}
 
+		// ── Bagian: Bagikan & Dukung Proyek ──────────────────────────────────
+		echo '<div class="sgeobiz-section" style="border-bottom: 1px solid #f1f5f9; padding-bottom: 20px; margin-bottom: 20px;">';
+		echo '  <h2 style="margin-top: 0; margin-bottom: 8px; font-size: 15px; font-weight: 700; color: #1e293b;">Bagikan &amp; Dukung Proyek SEO</h2>';
+		echo '  <p style="margin: 0 0 12px 0; font-size: 13px; color: #64748b;">Sukai plugin ini? Bantu bagikan ke media sosial Anda untuk mendukung pengembangan lebih lanjut:</p>';
+		echo '  <div class="sgeobiz-share-buttons" style="display:flex; gap:10px; flex-wrap:wrap;">';
+		
+		$plugin_url   = urlencode( 'https://github.com/rasyiqi-code/SGEOBIZ' );
+		$plugin_title = urlencode( 'Saya menggunakan SGEOBIZ SEO — Plugin SEO canggih khusus untuk bisnis lokal Indonesia!' );
+		
+		// WhatsApp Share
+		echo '    <a href="https://api.whatsapp.com/send?text=' . $plugin_title . '%20' . $plugin_url . '" target="_blank" class="sgeobiz-share-btn wa" style="background:#25d366; color:#fff; padding:6px 12px; border-radius:6px; text-decoration:none; font-size:12px; font-weight:600; display:flex; align-items:center; gap:6px; box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);">Share WhatsApp</a>';
+		// Facebook Share
+		echo '    <a href="https://www.facebook.com/sharer/sharer.php?u=' . $plugin_url . '" target="_blank" class="sgeobiz-share-btn fb" style="background:#1877f2; color:#fff; padding:6px 12px; border-radius:6px; text-decoration:none; font-size:12px; font-weight:600; display:flex; align-items:center; gap:6px; box-shadow: 0 2px 4px rgba(24, 119, 242, 0.2);">Share Facebook</a>';
+		// Twitter/X Share
+		echo '    <a href="https://twitter.com/intent/tweet?text=' . $plugin_title . '&url=' . $plugin_url . '" target="_blank" class="sgeobiz-share-btn x" style="background:#000000; color:#fff; padding:6px 12px; border-radius:6px; text-decoration:none; font-size:12px; font-weight:600; display:flex; align-items:center; gap:6px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">Share X</a>';
+		// LinkedIn Share
+		echo '    <a href="https://www.linkedin.com/sharing/share-offsite/?url=' . $plugin_url . '" target="_blank" class="sgeobiz-share-btn in" style="background:#0a66c2; color:#fff; padding:6px 12px; border-radius:6px; text-decoration:none; font-size:12px; font-weight:600; display:flex; align-items:center; gap:6px; box-shadow: 0 2px 4px rgba(10, 102, 194, 0.2);">Share LinkedIn</a>';
+		
+		echo '  </div>';
+		echo '</div>';
+
 		// ── Bagian 1: Info Bisnis ──────────────────────────────────────────
 		echo '<div class="sgeobiz-section">';
 		echo '<h2>Informasi Bisnis Utama</h2>';
