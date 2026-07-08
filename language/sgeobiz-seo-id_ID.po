@@ -109,7 +109,7 @@ msgstr "Pengaturan SEO"
 
 #: inc/classes/admin/menu.class.php:112
 msgid "SEO"
-msgstr "seo"
+msgstr "SEO"
 
 #. translators: %s: number of issues waiting
 #: inc/classes/admin/menu.class.php:187

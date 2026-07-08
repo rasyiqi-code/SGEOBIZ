@@ -76,8 +76,22 @@ class SGEOBIZ_GBP_Settings {
 			echo '  </div>';
 			echo '</div>';
 			
-			// Ajax script untuk simpan status dismiss ke user meta
+			// Ajax script untuk simpan status dismiss ke user meta & memindahkan box iklan ke urutan paling atas di atas H1
 			echo '<script>';
+			echo '(function() {';
+			echo '  function moveAd() {';
+			echo '    var box = document.getElementById("sgeobiz-ad-crediblemark");';
+			echo '    var topWrap = document.querySelector(".sgeobiz-top-wrap") || document.querySelector(".sgeobiz-metaboxes h1") || document.querySelector(".wrap h1");';
+			echo '    if (box && topWrap) {';
+			echo '      topWrap.parentNode.insertBefore(box, topWrap);';
+			echo '    }';
+			echo '  }';
+			echo '  if (document.readyState === "loading") {';
+			echo '    document.addEventListener("DOMContentLoaded", moveAd);';
+			echo '  } else {';
+			echo '    moveAd();';
+			echo '  }';
+			echo '})();';
 			echo 'function sgeobizDismissAd() {';
 			echo '  var box = document.getElementById("sgeobiz-ad-crediblemark");';
 			echo '  if(box) { box.style.display = "none"; }';
