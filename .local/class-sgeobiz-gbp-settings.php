@@ -68,9 +68,12 @@ class SGEOBIZ_GBP_Settings {
 		echo '<div class="sgeobiz-dashboard-ad" id="sgeobiz-ad-crediblemark">';
 		echo '  <span class="sgeobiz-ad-close" onclick="sgeobizDismissAd()" style="float:right; font-weight:bold; cursor:pointer; font-size:16px;">&times;</span>';
 		echo '  <span class="sgeobiz-ad-tag" style="background:#d97706; color:#fff; font-size:10px; font-weight:700; padding:2px 6px; border-radius:4px; text-transform:uppercase;">Rekomendasi</span>';
-		echo '  <h4 style="margin: 10px 0 6px 0; font-size:14px; font-weight:700; color:#78350f;">Verifikasi Kredibilitas Bisnis Anda</h4>';
-		echo '  <p style="margin:0 0 12px 0; font-size:13px; line-height:1.5; color:#92400e;">Tingkatkan kepercayaan pelanggan dan visibilitas pencarian dengan mendaftarkan merek dagang atau sertifikasi kredibilitas resmi di <strong><a href="https://crediblemark.com/" target="_blank">CredibleMark.com</a></strong>.</p>';
-		echo '  <a href="https://crediblemark.com/" target="_blank" class="button button-primary" style="background: linear-gradient(135deg, #d97706, #b45309) !important; border:none !important; box-shadow:none !important; text-shadow:none !important; color:#fff !important; font-weight:600 !important; border-radius:6px !important;">Kunjungi CredibleMark</a>';
+		echo '  <h4 style="margin: 10px 0 6px 0; font-size:14px; font-weight:700; color:#78350f;">Jasa Pembuatan Web &amp; Sistem Operasional — CredibleMark</h4>';
+		echo '  <p style="margin:0 0 12px 0; font-size:13px; line-height:1.5; color:#92400e;">Butuh website kustom, sistem operasional digital, atau perbaikan bug WordPress? Tim profesional <strong><a href="https://crediblemark.com/" target="_blank">CredibleMark.com</a></strong> siap membantu bisnis Anda berkembang secara digital dengan 100% kepemilikan kode tanpa biaya bulanan.</p>';
+		echo '  <div style="display:flex; gap:8px; flex-wrap:wrap;">';
+		echo '    <a href="https://crediblemark.com/" target="_blank" class="button button-primary" style="background: linear-gradient(135deg, #d97706, #b45309) !important; border:none !important; box-shadow:none !important; text-shadow:none !important; color:#fff !important; font-weight:600 !important; border-radius:6px !important;">Kunjungi CredibleMark</a>';
+		echo '    <a href="https://wa.me/6285183131249" target="_blank" class="button button-secondary" style="border: 1px solid #cbd5e1 !important; color:#475569 !important; font-weight:600 !important; border-radius:6px !important; background:#fff !important;">Hubungi via WhatsApp (+62 851-8313-1249)</a>';
+		echo '  </div>';
 		echo '</div>';
 		
 		// Script penutup via AJAX
@@ -623,9 +626,12 @@ class SGEOBIZ_GBP_Settings {
 			echo '  <span class="sgeobiz-ad-close" onclick="sgeobizDismissAd()">&times;</span>';
 			echo '  <div class="sgeobiz-ad-content">';
 			echo '      <span class="sgeobiz-ad-tag">Rekomendasi</span>';
-			echo '      <h3>Verifikasi Legalitas &amp; Kredibilitas Bisnis Anda</h3>';
-			echo '      <p>Tingkatkan kepercayaan pelanggan dan mesin pencari dengan mendaftarkan merek dagang atau mendapatkan sertifikasi kredibilitas resmi di <strong><a href="https://crediblemark.com/" target="_blank">CredibleMark.com</a></strong>. Solusi perlindungan reputasi digital terbaik di Indonesia.</p>';
-			echo '      <a href="https://crediblemark.com/" target="_blank" class="sgeobiz-ad-button">Kunjungi CredibleMark</a>';
+			echo '      <h3>Jasa Pembuatan Web &amp; Sistem Operasional — CredibleMark</h3>';
+			echo '      <p>Butuh website kustom, sistem operasional digital, atau perbaikan bug WordPress? Tim profesional <strong><a href="https://crediblemark.com/" target="_blank">CredibleMark.com</a></strong> siap membantu bisnis Anda berkembang secara digital dengan 100% kepemilikan kode tanpa biaya bulanan.</p>';
+			echo '      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">';
+			echo '        <a href="https://crediblemark.com/" target="_blank" class="sgeobiz-ad-button" style="margin-top:0 !important;">Kunjungi CredibleMark.com</a>';
+			echo '        <a href="https://wa.me/6285183131249" target="_blank" class="sgeobiz-ad-button" style="margin-top:0 !important; background:linear-gradient(135deg, #22c55e, #15803d) !important; box-shadow: 0 2px 4px rgba(34, 197, 94, 0.2) !important;">Hubungi WhatsApp (+62 851-8313-1249)</a>';
+			echo '      </div>';
 			echo '  </div>';
 			echo '</div>';
 			
