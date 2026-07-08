@@ -62,7 +62,13 @@ class SGEOBIZ_GBP_Settings {
 
 		\wp_enqueue_media();
 
-		// Tambahkan CSS premium konsisten
+		\add_action( 'admin_head', [ $this, 'print_styles' ] );
+	}
+
+	/**
+	 * Cetak style langsung di head admin.
+	 */
+	public function print_styles() {
 		$css = '
 			.sgeobiz-settings-wrap {
 				max-width: 1200px !important;
@@ -203,7 +209,7 @@ class SGEOBIZ_GBP_Settings {
 				padding: 6px 12px !important;
 				font-size: 13px !important;
 			}
-			/* Toggle switch untuk Tutup Jam Operasional */
+			/* Toggle switch untuk Jam Operasional Tutup */
 			.sgeobiz-hours-grid input[type="checkbox"] {
 				-webkit-appearance: none;
 				appearance: none;
@@ -221,7 +227,7 @@ class SGEOBIZ_GBP_Settings {
 				box-shadow: none !important;
 			}
 			.sgeobiz-hours-grid input[type="checkbox"]:checked {
-				background-color: #ef4444; /* Merah untuk Tutup */
+				background-color: #ef4444;
 			}
 			.sgeobiz-hours-grid input[type="checkbox"]::before {
 				content: "";
@@ -270,7 +276,7 @@ class SGEOBIZ_GBP_Settings {
 				color: #1e293b !important;
 			}
 		';
-		\wp_add_inline_style( 'wp-admin', $css );
+		echo '<style id="sgeobiz-gbp-styles">' . $css . '</style>';
 	}
 
 	/**
