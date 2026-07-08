@@ -1,0 +1,139 @@
+/* ==========================================================================
+   SGEOBIZ CSS MODULE - MINOR VIEWS & SPECIFIC STYLES
+   ========================================================================== */
+
+/* Radio Button Styles */
+.sgeobiz-premium-theme input[type="radio"] {
+    border: 1px solid #cbd5e1 !important;
+    width: 18px !important;
+    height: 18px !important;
+    margin: 0 8px 0 0 !important;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: border-color 0.2s !important;
+}
+
+.sgeobiz-premium-theme input[type="radio"]:checked::before {
+    background-color: #6366f1 !important;
+    width: 10px !important;
+    height: 10px !important;
+    margin: 3px !important;
+}
+
+/* Styling Active Sidebar Submenu */
+#toplevel_page_sgeobiz-seo-settings .wp-submenu li.current {
+    background-color: rgba(99, 102, 241, 0.08) !important;
+    border-left: 3px solid #6366f1 !important;
+    padding-left: 0px !important;
+}
+
+#toplevel_page_sgeobiz-seo-settings .wp-submenu li.current a,
+#toplevel_page_sgeobiz-seo-settings .wp-submenu li.current a:focus,
+#toplevel_page_sgeobiz-seo-settings .wp-submenu li.current a:hover {
+    color: #6366f1 !important;
+    font-weight: 700 !important;
+}
+
+/* Native Title Sep & Location specific styles */
+#sgeobiz-title-separator {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#sgeobiz-title-separator input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    z-index: -1;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+#sgeobiz-title-separator label {
+    display: inline-block;
+    width: auto;
+    min-width: 28px;
+    min-height: 28px;
+    margin: 3px;
+    padding: 0 4px;
+    border: 1px solid #ccc;
+    line-height: 28px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: -1px -1px 1px #aaa inset;
+    font-size: 16px;
+}
+
+#sgeobiz-title-separator label:hover {
+    box-shadow: 1px 1px 1px #aaa inset;
+    background-color: #fff;
+}
+
+#sgeobiz-title-separator input:checked + label {
+    box-shadow: 1px 1px 1px #333 inset;
+    background-color: #fff;
+}
+
+#sgeobiz-title-location label > span,
+#sgeobiz-home-title-location label > span {
+    display: inline-block;
+    min-width: 60px;
+    vertical-align: baseline;
+}
+
+/* Post Type Archives & Title Additions view styles */
+.sgeobiz-title-additions-js,
+.sgeobiz-title-additions-example-left code,
+.sgeobiz-title-additions-example-right code {
+    white-space: pre-wrap;
+}
+
+.sgeobiz-title-additions-location-hidden,
+.sgeobiz-title-tax-prefix-hidden {
+    display: none;
+}
+
+#sgeobiz-post-type-archive-header-wrap {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    vertical-align: top;
+    gap: 1.625em 4ch;
+}
+
+#sgeobiz-post-type-archive-select-wrap {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1em;
+    align-items: center;
+}
+
+#sgeobiz-post-type-archive-select-wrap label {
+    font-weight: 600;
+}
+
+#sgeobiz-post-type-archive-header-wrap h4 {
+    margin: 0;
+}
+
+.sgeobiz-post-type-archive-link {
+    display: inline-block;
+}
+
+.sgeobiz-post-type-archive-if-excluded p:last-of-type {
+    margin-bottom: 0;
+}
+
+.sgeobiz-nav-tab-content select {
+    width: 100%;
+    max-width: max-content;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,185 @@
+/* ==========================================================================
+   SGEOBIZ CSS MODULE - BASE LAYOUT & WRAPPERS
+   ========================================================================== */
+
+/* Main wrapping container */
+.sgeobiz-metaboxes {
+    box-sizing: border-box;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.sgeobiz-dashboard {
+    display: flex !important;
+    flex-direction: column !important;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+    border: 1px solid #e2e8f0;
+    border-top: 4px solid #6366f1;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Main Content Area */
+.sgeobiz-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+}
+
+.sgeobiz-topbar {
+    padding: 20px 30px;
+    background: linear-gradient(to right, #f8fafc, #ffffff);
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sgeobiz-topbar-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #0f172a;
+}
+
+.sgeobiz-topbar-title .sgeobiz-badge {
+    font-size: 11px;
+    font-weight: 600;
+    background: #e0e7ff;
+    color: #4f46e5;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.sgeobiz-topbar-actions {
+    display: flex;
+    gap: 12px;
+}
+
+/* Button stylings */
+.sgeobiz-topbar-actions .button-primary,
+.sgeobiz-bottom-buttons .button-primary {
+    background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
+    border: none !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    padding: 0 20px !important;
+    height: 38px !important;
+    line-height: 38px !important;
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3) !important;
+    cursor: pointer !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    font-size: 13px !important;
+}
+
+.sgeobiz-topbar-actions .button-primary:hover,
+.sgeobiz-bottom-buttons .button-primary:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4) !important;
+}
+
+.sgeobiz-topbar-actions .button-primary:active,
+.sgeobiz-bottom-buttons .button-primary:active {
+    transform: translateY(0) !important;
+}
+
+.sgeobiz-topbar-actions .button,
+.sgeobiz-topbar-actions .button-secondary {
+    border-radius: 8px !important;
+    padding: 0 16px !important;
+    height: 38px !important;
+    line-height: 36px !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #475569 !important;
+    font-weight: 600 !important;
+    background: #ffffff !important;
+    font-size: 13px !important;
+    transition: all 0.2s ease !important;
+}
+
+.sgeobiz-topbar-actions .button:hover,
+.sgeobiz-topbar-actions .button-secondary:hover {
+    background: #f8fafc !important;
+    border-color: #94a3b8 !important;
+    color: #1e293b !important;
+}
+
+.sgeobiz-top-wrap,
+.sgeobiz-bottom-wrap {
+    display: none !important;
+}
+
+/* Postboxes Container */
+.sgeobiz-settings-container {
+    padding: 30px;
+    flex-grow: 1;
+    background: #f8fafc;
+}
+
+.sgeobiz-settings-container .postbox {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin-bottom: 0 !important;
+}
+
+.sgeobiz-settings-container .postbox .postbox-header {
+    display: none !important;
+}
+
+.sgeobiz-settings-container .postbox .inside {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.sgeobiz-top-wrap {
+    margin-bottom: 8px;
+}
+
+.sgeobiz-top-buttons {
+    padding: 9px 0 4px;
+}
+
+.sgeobiz-top-buttons,
+.sgeobiz-bottom-buttons {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: start;
+    flex-flow: row wrap;
+    gap: 10px;
+}
+
+.sgeobiz-top-buttons.sgeobiz-end,
+.sgeobiz-bottom-buttons.sgeobiz-end {
+    justify-content: flex-end;
+}
+
+@media screen and (max-width: 782px) {
+    .sgeobiz-top-wrap,
+    .sgeobiz-bottom-wrap,
+    .sgeobiz-top-buttons.sgeobiz-end,
+    .sgeobiz-bottom-buttons.sgeobiz-end {
+        justify-content: start;
+    }
+    .sgeobiz-top-buttons,
+    .sgeobiz-bottom-buttons {
+        width: 100%;
+    }
+}
+
+.sgeobiz-metaboxes .sgeobiz-top-buttons > *,
+.sgeobiz-metaboxes .sgeobiz-bottom-buttons > * {
+    text-align: center;
+}
+
+.sgeobiz-metaboxes .metabox-holder {
+    clear: both;
+}

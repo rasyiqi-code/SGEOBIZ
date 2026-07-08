@@ -1,5 +1,6 @@
+/* --- base.css --- */
 /* ==========================================================================
-   SGEOBIZ SEO SETTINGS SHEET (ROOT DECLARATION - REFACTORED)
+   SGEOBIZ CSS MODULE - BASE LAYOUT & WRAPPERS
    ========================================================================== */
 
 /* Main wrapping container */
@@ -11,8 +12,8 @@
 }
 
 .sgeobiz-dashboard {
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
     background: #ffffff;
     border-radius: 16px;
     overflow: hidden;
@@ -140,50 +141,55 @@
     margin: 0 !important;
 }
 
-/* Toggle switches */
-.sgeobiz-metaboxes input[type="checkbox"] {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 44px !important;
-    height: 24px !important;
-    background-color: #e2e8f0 !important;
-    border-radius: 12px !important;
-    position: relative !important;
-    cursor: pointer !important;
-    outline: none !important;
-    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    vertical-align: middle !important;
-    margin-right: 10px !important;
-    border: none !important;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05) !important;
+.sgeobiz-top-wrap {
+    margin-bottom: 8px;
 }
 
-.sgeobiz-metaboxes input[type="checkbox"]:checked {
-    background-color: #6366f1 !important;
+.sgeobiz-top-buttons {
+    padding: 9px 0 4px;
 }
 
-.sgeobiz-metaboxes input[type="checkbox"]::before {
-    content: "" !important;
-    position: absolute !important;
-    width: 18px !important;
-    height: 18px !important;
-    border-radius: 50% !important;
-    background-color: #ffffff !important;
-    top: 3px !important;
-    left: 3px !important;
-    margin: 0 !important;
-    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.15) !important;
-    float: none !important;
-    display: block !important;
+.sgeobiz-top-buttons,
+.sgeobiz-bottom-buttons {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: start;
+    flex-flow: row wrap;
+    gap: 10px;
 }
 
-.sgeobiz-metaboxes input[type="checkbox"]:checked::before {
-    content: "" !important;
-    transform: translateX(20px) !important;
-    background-color: #ffffff !important;
-    margin: 0 !important;
+.sgeobiz-top-buttons.sgeobiz-end,
+.sgeobiz-bottom-buttons.sgeobiz-end {
+    justify-content: flex-end;
 }
+
+@media screen and (max-width: 782px) {
+    .sgeobiz-top-wrap,
+    .sgeobiz-bottom-wrap,
+    .sgeobiz-top-buttons.sgeobiz-end,
+    .sgeobiz-bottom-buttons.sgeobiz-end {
+        justify-content: start;
+    }
+    .sgeobiz-top-buttons,
+    .sgeobiz-bottom-buttons {
+        width: 100%;
+    }
+}
+
+.sgeobiz-metaboxes .sgeobiz-top-buttons > *,
+.sgeobiz-metaboxes .sgeobiz-bottom-buttons > * {
+    text-align: center;
+}
+
+.sgeobiz-metaboxes .metabox-holder {
+    clear: both;
+}
+
+
+/* --- tabs.css --- */
+/* ==========================================================================
+   SGEOBIZ CSS MODULE - TABS STYLING & TOGGLES
+   ========================================================================== */
 
 /* Tab Headers as Rounded Pills */
 .sgeobiz-nav-tab-wrapper {
@@ -237,7 +243,92 @@ input.sgeobiz-nav-tab-radio {
     box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3) !important;
 }
 
-/* Inputs styling */
+/* Original Tabs fallback classes */
+.sgeobiz-nav-tab-no-js {
+    position: relative;
+    clear: both;
+    width: 100%;
+    display: inline-block;
+    border-bottom: 1px solid #ccc;
+    line-height: inherit;
+    padding: 8px 12px 0;
+    margin: -4px -12px;
+}
+
+.sgeobiz-nav-desktop {
+    margin-left: 7px;
+}
+
+.sgeobiz-dashicons-tabs {
+    font-size: initial;
+    display: inline;
+    vertical-align: text-bottom;
+}
+
+.sgeobiz-nav-tab-content-no-js {
+    margin: 1.33em auto;
+}
+
+body.js .sgeobiz-nav-tab-content {
+    display: none;
+}
+
+body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
+    display: block;
+}
+
+
+/* --- inputs.css --- */
+/* ==========================================================================
+   SGEOBIZ CSS MODULE - INPUTS, SELECTS & TOGGLES
+   ========================================================================== */
+
+/* Toggle Switches */
+.sgeobiz-metaboxes input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 44px !important;
+    height: 24px !important;
+    background-color: #e2e8f0 !important;
+    border-radius: 12px !important;
+    position: relative !important;
+    cursor: pointer !important;
+    outline: none !important;
+    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    vertical-align: middle !important;
+    margin-right: 10px !important;
+    border: none !important;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05) !important;
+}
+
+.sgeobiz-metaboxes input[type="checkbox"]:checked {
+    background-color: #6366f1 !important;
+}
+
+.sgeobiz-metaboxes input[type="checkbox"]::before {
+    content: "" !important;
+    position: absolute !important;
+    width: 18px !important;
+    height: 18px !important;
+    border-radius: 50% !important;
+    background-color: #ffffff !important;
+    top: 3px !important;
+    left: 3px !important;
+    margin: 0 !important;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.15) !important;
+    float: none !important;
+    display: block !important;
+}
+
+.sgeobiz-metaboxes input[type="checkbox"]:checked::before {
+    content: "" !important;
+    transform: translateX(20px) !important;
+    background-color: #ffffff !important;
+    margin: 0 !important;
+}
+
+/* Text Inputs, URLs & Textareas */
 .sgeobiz-metaboxes input[type="text"],
 .sgeobiz-metaboxes input[type="url"],
 .sgeobiz-metaboxes textarea {
@@ -251,6 +342,7 @@ input.sgeobiz-nav-tab-radio {
     transition: border-color 0.2s, box-shadow 0.2s !important;
 }
 
+/* Select Dropdown */
 .sgeobiz-metaboxes select {
     border: 1px solid #cbd5e1 !important;
     border-radius: 8px !important;
@@ -273,8 +365,46 @@ input.sgeobiz-nav-tab-radio {
     outline: none !important;
 }
 
-/* Core grid layout & Card styling for sections (.sgeobiz-fields) */
-.sgeobiz-metaboxes .inside h4 {
+/* Select Group Card (Borderless flat gray card) */
+.sgeobiz-premium-theme .sgeobiz-select-group {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 6px 12px !important;
+    background: #f1f5f9 !important;
+    border-radius: 8px !important;
+    margin: 0 !important;
+}
+
+.sgeobiz-premium-theme .sgeobiz-select-group label {
+    display: block !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: #64748b !important; /* Slate 500 */
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin: 0 0 4px 0 !important;
+    background: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+.sgeobiz-premium-theme .sgeobiz-select-group select {
+    display: block !important;
+    width: 100% !important;
+    grid-column: auto !important; /* Reset span 2 */
+}
+
+
+/* --- grid.css --- */
+/* ==========================================================================
+   SGEOBIZ CSS MODULE - GRID LAYOUTS & CARDS
+   ========================================================================== */
+
+/* Style headings inside metaboxes as section titles */
+.sgeobiz-premium-theme .inside h4 {
     font-size: 15px !important;
     font-weight: 700 !important;
     color: #0f172a !important; /* Slate 900 */
@@ -282,11 +412,13 @@ input.sgeobiz-nav-tab-radio {
     padding: 0 !important;
 }
 
-.sgeobiz-metaboxes .inside hr {
+/* Hide HR separators inside metaboxes as cards act as separation */
+.sgeobiz-premium-theme .inside hr {
     display: none !important;
 }
 
-.sgeobiz-metaboxes .sgeobiz-fields {
+/* Style Each .sgeobiz-fields Container as a Gorgeous White Card with 2-Column Grid */
+.sgeobiz-premium-theme .sgeobiz-fields {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 12px !important;
@@ -301,11 +433,12 @@ input.sgeobiz-nav-tab-radio {
     transition: all 0.25s ease !important;
 }
 
-.sgeobiz-metaboxes .sgeobiz-fields:hover {
+.sgeobiz-premium-theme .sgeobiz-fields:hover {
     box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.08) !important;
 }
 
-.sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-toblock {
+/* Checkbox & Switch/Radio labels alignment inside .sgeobiz-fields */
+.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-toblock {
     display: flex !important;
     align-items: center !important;
     width: 100% !important;
@@ -318,11 +451,11 @@ input.sgeobiz-nav-tab-radio {
     transition: all 0.2s ease !important;
 }
 
-.sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-toblock:hover {
+.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-toblock:hover {
     background: #e2e8f0 !important;
 }
 
-.sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-toblock label {
+.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-toblock label {
     display: flex !important;
     align-items: center !important;
     flex-grow: 1 !important;
@@ -337,12 +470,13 @@ input.sgeobiz-nav-tab-radio {
     transition: color 0.2s ease !important;
 }
 
-.sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-toblock:hover label {
+.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-toblock:hover label {
     color: #0f172a !important;
 }
 
-.sgeobiz-metaboxes .sgeobiz-fields p.description,
-.sgeobiz-metaboxes .sgeobiz-fields .description {
+/* Option fields / description layout in grid */
+.sgeobiz-premium-theme .sgeobiz-fields p.description,
+.sgeobiz-premium-theme .sgeobiz-fields .description {
     font-size: 12px !important;
     color: #64748b !important;
     margin-top: 8px !important;
@@ -352,61 +486,32 @@ input.sgeobiz-nav-tab-radio {
     grid-column: span 2 !important;
 }
 
-.sgeobiz-metaboxes .sgeobiz-fields textarea,
-.sgeobiz-metaboxes .sgeobiz-fields > select,
-.sgeobiz-metaboxes .sgeobiz-fields input[type="text"],
-.sgeobiz-metaboxes .sgeobiz-fields input[type="url"],
-.sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-select-wrap,
-.sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-select-block {
+/* Ensure larger inputs span full-width inside grid (except selects inside select groups) */
+.sgeobiz-premium-theme .sgeobiz-fields textarea,
+.sgeobiz-premium-theme .sgeobiz-fields > select,
+.sgeobiz-premium-theme .sgeobiz-fields input[type="text"],
+.sgeobiz-premium-theme .sgeobiz-fields input[type="url"],
+.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-select-wrap,
+.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-select-block {
     grid-column: span 2 !important;
     width: 100% !important;
 }
 
-.sgeobiz-metaboxes .sgeobiz-select-group {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 6px 12px !important;
-    background: #f1f5f9 !important;
-    border-radius: 8px !important;
-    margin: 0 !important;
-}
-
-.sgeobiz-metaboxes .sgeobiz-select-group label {
-    display: block !important;
-    font-size: 11px !important;
-    font-weight: 700 !important;
-    color: #64748b !important; /* Slate 500 */
-    text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
-    margin: 0 0 4px 0 !important;
-    background: transparent !important;
-    padding: 0 !important;
-    border: none !important;
-}
-
-.sgeobiz-metaboxes .sgeobiz-select-group select {
-    display: block !important;
-    width: 100% !important;
-    grid-column: auto !important; /* Reset span 2 */
-}
-
 /* WordPress original form table styling overrides */
-.sgeobiz-metaboxes .form-table {
+.sgeobiz-premium-theme .form-table {
     display: block !important;
     width: 100% !important;
     margin: 0 !important;
     border-collapse: collapse;
 }
 
-.sgeobiz-metaboxes .form-table tbody {
+.sgeobiz-premium-theme .form-table tbody {
     display: block !important;
     width: 100% !important;
 }
 
-.sgeobiz-metaboxes .form-table tr {
+/* Style Each Setting Row as a Gorgeous White Card */
+.sgeobiz-premium-theme .form-table tr {
     display: flex !important;
     flex-direction: column !important;
     margin-bottom: 16px !important;
@@ -420,21 +525,21 @@ input.sgeobiz-nav-tab-radio {
     transition: all 0.25s ease !important;
 }
 
-.sgeobiz-metaboxes .form-table tr:hover {
+.sgeobiz-premium-theme .form-table tr:hover {
     box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.08) !important;
 }
 
-.sgeobiz-metaboxes .form-table th {
+.sgeobiz-premium-theme .form-table th {
     display: block !important;
     width: 100% !important;
     padding: 0 0 12px 0 !important;
     font-size: 14px !important;
     font-weight: 700 !important;
-    color: #0f172a !important;
+    color: #0f172a !important; /* Slate 900 */
     text-align: left;
 }
 
-.sgeobiz-metaboxes .form-table td {
+.sgeobiz-premium-theme .form-table td {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 12px !important;
@@ -443,7 +548,7 @@ input.sgeobiz-nav-tab-radio {
     box-sizing: border-box !important;
 }
 
-.sgeobiz-metaboxes .form-table td label {
+.sgeobiz-premium-theme .form-table td label {
     display: flex !important;
     align-items: center !important;
     width: 100% !important;
@@ -460,13 +565,45 @@ input.sgeobiz-nav-tab-radio {
     margin: 0 !important;
 }
 
-.sgeobiz-metaboxes .form-table td label:hover {
+.sgeobiz-premium-theme .form-table td label:hover {
     background: #e2e8f0 !important;
     color: #0f172a !important;
 }
 
-/* Radio buttons styles */
-.sgeobiz-metaboxes input[type="radio"] {
+/* Responsive collapse on mobile */
+@media screen and (max-width: 768px) {
+    .sgeobiz-premium-theme .sgeobiz-fields {
+        grid-template-columns: 1fr !important;
+        padding: 16px !important;
+    }
+    .sgeobiz-premium-theme .sgeobiz-fields p.description,
+    .sgeobiz-premium-theme .sgeobiz-fields .description,
+    .sgeobiz-premium-theme .sgeobiz-fields textarea,
+    .sgeobiz-premium-theme .sgeobiz-fields > select,
+    .sgeobiz-premium-theme .sgeobiz-fields input[type="text"],
+    .sgeobiz-premium-theme .sgeobiz-fields input[type="url"],
+    .sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-select-wrap,
+    .sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-select-block {
+        grid-column: span 1 !important;
+    }
+    .sgeobiz-premium-theme .form-table td {
+        grid-template-columns: 1fr !important;
+    }
+    .sgeobiz-premium-theme td textarea,
+    .sgeobiz-premium-theme td table,
+    .sgeobiz-premium-theme td .sgeobiz-select-block {
+        grid-column: span 1 !important;
+    }
+}
+
+
+/* --- views.css --- */
+/* ==========================================================================
+   SGEOBIZ CSS MODULE - MINOR VIEWS & SPECIFIC STYLES
+   ========================================================================== */
+
+/* Radio Button Styles */
+.sgeobiz-premium-theme input[type="radio"] {
     border: 1px solid #cbd5e1 !important;
     width: 18px !important;
     height: 18px !important;
@@ -476,14 +613,14 @@ input.sgeobiz-nav-tab-radio {
     transition: border-color 0.2s !important;
 }
 
-.sgeobiz-metaboxes input[type="radio"]:checked::before {
+.sgeobiz-premium-theme input[type="radio"]:checked::before {
     background-color: #6366f1 !important;
     width: 10px !important;
     height: 10px !important;
     margin: 3px !important;
 }
 
-/* Active Sidebar submenu highlight */
+/* Styling Active Sidebar Submenu */
 #toplevel_page_sgeobiz-seo-settings .wp-submenu li.current {
     background-color: rgba(99, 102, 241, 0.08) !important;
     border-left: 3px solid #6366f1 !important;
@@ -514,6 +651,8 @@ input.sgeobiz-nav-tab-radio {
     padding: 0;
     border: 0;
     z-index: -1;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
 }
 
@@ -538,8 +677,8 @@ input.sgeobiz-nav-tab-radio {
 }
 
 #sgeobiz-title-separator input:checked + label {
-	box-shadow: 1px 1px 1px #333 inset;
-	background-color: #fff;
+    box-shadow: 1px 1px 1px #333 inset;
+    background-color: #fff;
 }
 
 #sgeobiz-title-location label > span,
@@ -549,81 +688,52 @@ input.sgeobiz-nav-tab-radio {
     vertical-align: baseline;
 }
 
-/* Minor view variables */
+/* Post Type Archives & Title Additions view styles */
 .sgeobiz-title-additions-js,
 .sgeobiz-title-additions-example-left code,
 .sgeobiz-title-additions-example-right code {
-	white-space: pre-wrap;
+    white-space: pre-wrap;
 }
 
 .sgeobiz-title-additions-location-hidden,
 .sgeobiz-title-tax-prefix-hidden {
-	display: none;
+    display: none;
 }
 
 #sgeobiz-post-type-archive-header-wrap {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
-	align-items: center;
-	vertical-align: top;
-	gap: 1.625em 4ch;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    vertical-align: top;
+    gap: 1.625em 4ch;
 }
 
 #sgeobiz-post-type-archive-select-wrap {
-	display: flex;
-	flex-flow: row wrap;
-	gap: 1em;
-	align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1em;
+    align-items: center;
 }
 
 #sgeobiz-post-type-archive-select-wrap label {
-	font-weight: 600;
+    font-weight: 600;
 }
 
 #sgeobiz-post-type-archive-header-wrap h4 {
-	margin: 0;
+    margin: 0;
 }
 
 .sgeobiz-post-type-archive-link {
-	display: inline-block;
+    display: inline-block;
 }
 
 .sgeobiz-post-type-archive-if-excluded p:last-of-type {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .sgeobiz-nav-tab-content select {
-	width: 100%;
-	max-width: max-content;
-	text-overflow: ellipsis;
-}
-
-/* Responsive layout overrides */
-@media screen and (max-width: 768px) {
-    .sgeobiz-metaboxes {
-        padding: 0 10px;
-    }
-    .sgeobiz-metaboxes .sgeobiz-fields {
-        grid-template-columns: 1fr !important;
-        padding: 16px !important;
-    }
-    .sgeobiz-metaboxes .sgeobiz-fields p.description,
-    .sgeobiz-metaboxes .sgeobiz-fields .description,
-    .sgeobiz-metaboxes .sgeobiz-fields textarea,
-    .sgeobiz-metaboxes .sgeobiz-fields > select,
-    .sgeobiz-metaboxes .sgeobiz-fields input[type="text"],
-    .sgeobiz-metaboxes .sgeobiz-fields input[type="url"],
-    .sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-select-wrap,
-    .sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-select-block {
-        grid-column: span 1 !important;
-    }
-    .sgeobiz-metaboxes .form-table td {
-        grid-template-columns: 1fr !important;
-    }
-    .sgeobiz-metaboxes .form-table td textarea,
-    .sgeobiz-metaboxes .form-table td table,
-    .sgeobiz-metaboxes .form-table td .sgeobiz-select-block {
-        grid-column: span 1 !important;
-    }
+    width: 100%;
+    max-width: max-content;
+    text-overflow: ellipsis;
 }
