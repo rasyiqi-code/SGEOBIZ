@@ -50,16 +50,19 @@
 	width: 24px !important;
 	padding: 0 !important;
 	vertical-align: stretch !important;
+	position: relative !important;
 }
 
 .sgeobiz-seo-bar {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	height: 100%;
-	min-height: 48px;
-	padding: 0;
-	margin: 0;
+	position: absolute !important;
+	top: 0 !important;
+	bottom: 0 !important;
+	left: 0 !important;
+	right: 0 !important;
+	display: flex !important;
+	flex-direction: column !important;
+	padding: 0 !important;
+	margin: 0 !important;
 }
 
 .sgeobiz-seo-bar-inner-wrap {
