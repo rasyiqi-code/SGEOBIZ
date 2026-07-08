@@ -56,4 +56,7 @@ function sgeobiz_boot() {
 
 	// 5. Custom Schema & Graph Injector ( FAQ, Review, Event, Job, dll )
 	SGEOBIZ_Custom_Schema::init();
+
+	// 6. Auto Silo Related Links ( Internal Linking Pyramid )
+	SGEOBIZ_Silo_Links::init();
 }
