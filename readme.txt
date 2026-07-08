@@ -4,7 +4,7 @@ Tags: seo, schema, local seo, google business profile, structured data, sitemap,
 Requires at least: 6.7
 Tested up to: 6.9
 Requires PHP: 7.4.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -116,6 +116,13 @@ Tidak. JD.id resmi tutup sejak Maret 2023.
 
 == Changelog ==
 
+= 1.0.1 =
+* Perbaikan: Penanda warna gold pada submenu sidebar admin kini mengikuti halaman yang aktif secara dinamis (sebelumnya macet di Umum).
+* Fitur: Menambahkan metabox widget iklan CredibleMark.com di urutan teratas Dashboard Utama WordPress.
+* Fitur: Iklan di dashboard akan ditampilkan ulang secara otomatis setiap kali admin login baru.
+* Refactor: Mengganti nama menu utama sidebar admin dari "SGEOBIZ SEO" menjadi "SEO" (huruf kapital).
+* Refactor: Mengganti semua tautan bantuan/dokumentasi sgeobiz.com di dalam kode ke GitHub Pages mandiri.
+
 = 1.0.0 =
 * Rilis pertama SGEOBIZ SEO
 * Fitur: SEO meta otomatis, Schema LocalBusiness, Profil Bisnis, Sitemap XML
@@ -130,6 +137,9 @@ Tidak. JD.id resmi tutup sejak Maret 2023.
 * Fitur: Panel admin modern dengan desain card minimalis
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Pembaruan penting untuk memperbaiki highlighting menu gold dan menambahkan widget promosi baru.
 
 = 1.0.0 =
 Rilis awal SGEOBIZ SEO. Tidak ada upgrade dari versi sebelumnya.

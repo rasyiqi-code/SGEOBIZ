@@ -176,6 +176,13 @@ python3 scripts/build_settings.py
 
 ## Changelog
 
+### 1.0.1 — Pembaruan & Fitur Baru
+- **Fix**: Penanda warna gold pada submenu sidebar admin kini mengikuti halaman yang aktif secara dinamis (sebelumnya macet di Umum)
+- **Feat**: Menambahkan metabox widget iklan CredibleMark.com di urutan teratas Dashboard Utama WordPress
+- **Feat**: Iklan di dashboard akan ditampilkan ulang secara otomatis setiap kali admin login baru
+- **Refactor**: Mengganti nama menu utama sidebar admin dari "SGEOBIZ SEO" menjadi "SEO" (huruf kapital)
+- **Refactor**: Mengganti semua tautan bantuan/dokumentasi sgeobiz.com di dalam kode ke GitHub Pages mandiri
+
 ### 1.0.0 — Rilis Perdana
 - Fitur SEO meta otomatis (title, description, canonical)
 - Schema LocalBusiness lengkap untuk bisnis lokal Indonesia
