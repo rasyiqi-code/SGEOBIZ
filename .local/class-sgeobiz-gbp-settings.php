@@ -36,6 +36,7 @@ class SGEOBIZ_GBP_Settings {
 		add_action( 'admin_enqueue_scripts', [ $instance, 'enqueue_assets' ] );
 		add_action( 'admin_head', [ $instance, 'print_styles' ] );
 		add_action( 'wp_ajax_sgeobiz_dismiss_ad', [ $instance, 'ajax_dismiss_ad' ] );
+		add_action( 'wp_dashboard_setup', [ $instance, 'register_dashboard_widget' ] );
 	}
 
 	/**
@@ -44,6 +45,42 @@ class SGEOBIZ_GBP_Settings {
 	public function ajax_dismiss_ad() {
 		update_user_meta( get_current_user_id(), 'sgeobiz_dismissed_ad_crediblemark', 1 );
 		wp_send_json_success();
+	}
+
+	/**
+	 * Daftarkan widget iklan di Dashboard utama WordPress.
+	 */
+	public function register_dashboard_widget() {
+		$dismissed_ad = get_user_meta( get_current_user_id(), 'sgeobiz_dismissed_ad_crediblemark', true );
+		if ( ! $dismissed_ad ) {
+			wp_add_dashboard_widget(
+				'sgeobiz_crediblemark_ad_widget',
+				__( 'Rekomendasi Kredibilitas Bisnis', 'sgeobiz-seo' ),
+				[ $this, 'render_dashboard_ad_widget' ]
+			);
+		}
+	}
+
+	/**
+	 * Render widget iklan di Dashboard utama WordPress.
+	 */
+	public function render_dashboard_ad_widget() {
+		echo '<div class="sgeobiz-dashboard-ad" id="sgeobiz-ad-crediblemark">';
+		echo '  <span class="sgeobiz-ad-close" onclick="sgeobizDismissAd()" style="float:right; font-weight:bold; cursor:pointer; font-size:16px;">&times;</span>';
+		echo '  <span class="sgeobiz-ad-tag" style="background:#d97706; color:#fff; font-size:10px; font-weight:700; padding:2px 6px; border-radius:4px; text-transform:uppercase;">Rekomendasi</span>';
+		echo '  <h4 style="margin: 10px 0 6px 0; font-size:14px; font-weight:700; color:#78350f;">Verifikasi Kredibilitas Bisnis Anda</h4>';
+		echo '  <p style="margin:0 0 12px 0; font-size:13px; line-height:1.5; color:#92400e;">Tingkatkan kepercayaan pelanggan dan visibilitas pencarian dengan mendaftarkan merek dagang atau sertifikasi kredibilitas resmi di <strong><a href="https://crediblemark.com/" target="_blank">CredibleMark.com</a></strong>.</p>';
+		echo '  <a href="https://crediblemark.com/" target="_blank" class="button button-primary" style="background: linear-gradient(135deg, #d97706, #b45309) !important; border:none !important; box-shadow:none !important; text-shadow:none !important; color:#fff !important; font-weight:600 !important; border-radius:6px !important;">Kunjungi CredibleMark</a>';
+		echo '</div>';
+		
+		// Script penutup via AJAX
+		echo '<script>';
+		echo 'function sgeobizDismissAd() {';
+		echo '  var widget = document.getElementById("sgeobiz_crediblemark_ad_widget");';
+		echo '  if(widget) { widget.style.display = "none"; }';
+		echo '  jQuery.post(ajaxurl, { action: "sgeobiz_dismiss_ad" });';
+		echo '}';
+		echo '</script>';
 	}
 
 	/**
@@ -367,6 +404,26 @@ class SGEOBIZ_GBP_Settings {
 				transform: translateY(-1px) !important;
 				box-shadow: 0 4px 8px rgba(217, 119, 6, 0.3) !important;
 				color: #ffffff !important;
+			}
+			
+			/* Dashboard widget styling */
+			#sgeobiz_crediblemark_ad_widget {
+				background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%) !important;
+				border: 1px solid #f59e0b !important;
+				border-left: 5px solid #d97706 !important;
+				border-radius: 12px !important;
+				box-shadow: 0 4px 6px -1px rgba(217, 119, 6, 0.05) !important;
+			}
+			#sgeobiz_crediblemark_ad_widget h2 {
+				color: #78350f !important;
+				font-weight: 700 !important;
+			}
+			#sgeobiz_crediblemark_ad_widget .postbox-header {
+				border-bottom: none !important;
+				background: transparent !important;
+			}
+			#sgeobiz_crediblemark_ad_widget .inside {
+				padding-top: 0 !important;
 			}
 		';
 		echo '<style id="sgeobiz-gbp-styles">' . $css . '</style>';
