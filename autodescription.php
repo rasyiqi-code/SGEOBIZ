@@ -16,7 +16,7 @@
  * Plugin Name: SGEOBIZ SEO
  * Plugin URI: https://rasyiqi-code.github.io/SGEOBIZ/
  * Description: Plugin SEO canggih untuk bisnis lokal Indonesia — schema LocalBusiness, Google Business Profile, AI meta generator, dan WooCommerce schema.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: SGEOBIZ
  * Author URI: https://rasyiqi-code.github.io/SGEOBIZ/
  * License: GPLv3
