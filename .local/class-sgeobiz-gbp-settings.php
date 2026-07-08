@@ -614,20 +614,10 @@ class SGEOBIZ_GBP_Settings {
 		echo '<form method="post" action="">';
 		\wp_nonce_field( self::NONCE_ACTION );
 
-		echo '<div class="sgeobiz-dashboard">';
-		echo '    <div class="sgeobiz-main">';
-		echo '        <div class="sgeobiz-topbar">';
-		echo '             <h2 class="sgeobiz-topbar-title">' . \esc_html__( 'Profil Bisnis', 'sgeobiz-seo' ) . '<span class="sgeobiz-badge">Google Business Profile</span></h2>';
-		echo '             <div class="sgeobiz-topbar-actions">';
-		submit_button( 'Simpan Semua Pengaturan', 'primary', 'sgeobiz_save_settings', false );
-		echo '             </div>';
-		echo '        </div>';
-		echo '        <div class="sgeobiz-settings-container">';
-
 		// Iklan Jasa Crediblemark.com yang bisa di-close
 		$dismissed_ad = get_user_meta( get_current_user_id(), 'sgeobiz_dismissed_ad_crediblemark', true );
 		if ( ! $dismissed_ad ) {
-			echo '<div class="sgeobiz-ad-box" id="sgeobiz-ad-crediblemark">';
+			echo '<div class="sgeobiz-ad-box" id="sgeobiz-ad-crediblemark" style="margin-top: 15px; margin-bottom: 15px;">';
 			echo '  <span class="sgeobiz-ad-close" onclick="sgeobizDismissAd()">&times;</span>';
 			echo '  <div class="sgeobiz-ad-content">';
 			echo '      <h3>Jasa Pembuatan Template dan Plugin Khusus Eksklusif</h3>';
@@ -648,6 +638,16 @@ class SGEOBIZ_GBP_Settings {
 			echo '}';
 			echo '</script>';
 		}
+
+		echo '<div class="sgeobiz-dashboard">';
+		echo '    <div class="sgeobiz-main">';
+		echo '        <div class="sgeobiz-topbar">';
+		echo '             <h2 class="sgeobiz-topbar-title">' . \esc_html__( 'Profil Bisnis', 'sgeobiz-seo' ) . '<span class="sgeobiz-badge">Google Business Profile</span></h2>';
+		echo '             <div class="sgeobiz-topbar-actions">';
+		submit_button( 'Simpan Semua Pengaturan', 'primary', 'sgeobiz_save_settings', false );
+		echo '             </div>';
+		echo '        </div>';
+		echo '        <div class="sgeobiz-settings-container">';
 
 		// ── Bagian: Bagikan & Dukung Proyek ──────────────────────────────────
 		echo '<div class="sgeobiz-section" style="border-bottom: 1px solid #f1f5f9; padding-bottom: 20px; margin-bottom: 20px;">';
