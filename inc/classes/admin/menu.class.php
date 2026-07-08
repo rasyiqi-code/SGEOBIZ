@@ -66,18 +66,38 @@ class Menu {
 			$menu['position'],
 		);
 
-		/**
-		 * Simply copy the previous, but rename the submenu entry.
-		 * The function add_submenu_page() takes care of the duplications.
-		 */
 		\add_submenu_page(
 			$menu['menu_slug'],
-			$menu['page_title'],
-			$menu['page_title'],
+			\esc_html__( 'General Settings', 'sgeobiz-seo' ),
+			\esc_html__( 'General Settings', 'sgeobiz-seo' ),
 			$menu['capability'],
-			$menu['menu_slug'],
+			$menu['menu_slug'], // Gunakan parent slug agar link pertama me-rename judul menu default
 			$menu['callback'],
 		);
+
+		// Daftarkan sub-menu individual untuk deep-link
+		$sub_menus = [
+			'title'        => \esc_html__( 'Title Settings', 'sgeobiz-seo' ),
+			'description'  => \esc_html__( 'Description Meta Settings', 'sgeobiz-seo' ),
+			'social'       => \esc_html__( 'Social Meta Settings', 'sgeobiz-seo' ),
+			'homepage'     => \esc_html__( 'Homepage Settings', 'sgeobiz-seo' ),
+			'schema'       => \esc_html__( 'Schema.org Settings', 'sgeobiz-seo' ),
+			'robots'       => \esc_html__( 'Robots Settings', 'sgeobiz-seo' ),
+			'webmaster'    => \esc_html__( 'Webmaster Meta Settings', 'sgeobiz-seo' ),
+			'sitemap'      => \esc_html__( 'Sitemap Settings', 'sgeobiz-seo' ),
+			'feed'         => \esc_html__( 'Feed Settings', 'sgeobiz-seo' ),
+		];
+
+		foreach ( $sub_menus as $slug => $title ) {
+			\add_submenu_page(
+				$menu['menu_slug'],
+				$title,
+				$title,
+				$menu['capability'],
+				$menu['menu_slug'] . '&section=' . $slug,
+				$menu['callback']
+			);
+		}
 
 		/**
 		 * Register the meta boxes early, otherwise we cannot toggle them via Screen Options.
