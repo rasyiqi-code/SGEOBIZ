@@ -39,31 +39,51 @@ class SGEOBIZ_Schema_Local {
 			return $graph;
 		}
 
-		$local_id = home_url( '#localbusiness' );
+		$business_type = $data['business_type'] ?? 'LocalBusiness';
 
-		// 1. Bangun schema LocalBusiness utama (tanpa @context karena bagian dari graph)
-		$local_schema = $this->build_schema( $data, $local_id );
-
-		if ( ! empty( $local_schema ) ) {
-			$graph[] = $local_schema;
-		}
-
-		// 2. Hubungkan entitas WebPage ke LocalBusiness kita
-		foreach ( $graph as &$entity ) {
-			if ( ! isset( $entity['@type'] ) ) {
-				continue;
-			}
-
-			$types = (array) $entity['@type'];
-			if ( in_array( 'WebPage', $types, true ) || in_array( 'CollectionPage', $types, true ) ) {
-				// Tautkan about dan publisher ke LocalBusiness
-				$entity['about']     = [ '@id' => $local_id ];
-				$entity['publisher'] = [ '@id' => $local_id ];
+		// Cari apakah ada entitas dengan tipe 'Organization' di dalam graph
+		$org_index = null;
+		foreach ( $graph as $index => $entity ) {
+			if ( isset( $entity['@type'] ) && $entity['@type'] === 'Organization' ) {
+				$org_index = $index;
+				break;
 			}
 		}
-		unset( $entity );
 
-		// 3. Tambahkan cabang-cabang (locations) jika ada ke dalam graph
+		if ( $org_index !== null ) {
+			// Hubungkan semantik: Node Organization bawaan kita ubah tipenya menjadi tipe bisnis lokal
+			// dan kita pertahankan ID-nya agar semua tautan referensi (seperti dari WebPage) tetap valid.
+			$local_id     = $graph[ $org_index ]['@id'];
+			$local_schema = $this->build_schema( $data, $local_id );
+
+			// Merge data: data local business kita menimpa/bergabung dengan data Organization
+			$graph[ $org_index ] = array_merge( $graph[ $org_index ], $local_schema );
+			$graph[ $org_index ]['@type'] = $business_type;
+		} else {
+			// Fallback jika tidak ada node Organization, buat node LocalBusiness baru
+			$local_id     = home_url( '#localbusiness' );
+			$local_schema = $this->build_schema( $data, $local_id );
+
+			if ( ! empty( $local_schema ) ) {
+				$graph[] = $local_schema;
+			}
+
+			// Hubungkan entitas WebPage ke LocalBusiness fallback kita
+			foreach ( $graph as &$entity ) {
+				if ( ! isset( $entity['@type'] ) ) {
+					continue;
+				}
+
+				$types = (array) $entity['@type'];
+				if ( in_array( 'WebPage', $types, true ) || in_array( 'CollectionPage', $types, true ) ) {
+					$entity['about']     = [ '@id' => $local_id ];
+					$entity['publisher'] = [ '@id' => $local_id ];
+				}
+			}
+			unset( $entity );
+		}
+
+		// Tambahkan cabang-cabang (locations) jika ada ke dalam graph
 		$branches = $this->build_branch_schemas( $data, $local_id );
 		if ( ! empty( $branches ) ) {
 			$graph = array_merge( $graph, $branches );
