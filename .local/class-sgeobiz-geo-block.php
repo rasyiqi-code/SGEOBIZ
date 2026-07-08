@@ -125,7 +125,7 @@ class SGEOBIZ_GEO_Block {
 				left: 0;
 				width: 4px;
 				height: 100%;
-				background: linear-gradient(180deg, #4f46e5 0%, #06b6d4 100%);
+				background: linear-gradient(180deg, #d97706 0%, #b45309 100%);
 			}
 			.ringkasan-geo-header {
 				display: flex;
@@ -145,8 +145,8 @@ class SGEOBIZ_GEO_Block {
 				width: 24px;
 				height: 24px;
 				border-radius: 6px;
-				background: rgba(79, 70, 229, 0.1);
-				color: #4f46e5;
+				background: rgba(217, 119, 6, 0.1);
+				color: #d97706;
 			}
 			.ringkasan-geo-content {
 				font-size: 15px;

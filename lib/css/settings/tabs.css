@@ -55,9 +55,9 @@ input.sgeobiz-nav-tab-radio {
 /* Tab aktif — gradient indigo */
 .sgeobiz-metaboxes .sgeobiz-nav-tab-radio:checked + label.sgeobiz-nav-tab-label {
     color: #ffffff;
-    background: linear-gradient(135deg, #6366f1, #4f46e5);
-    border-color: #6366f1;
-    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+    background: linear-gradient(135deg, #d97706, #b45309);
+    border-color: #d97706;
+    box-shadow: 0 4px 10px rgba(217, 119, 6, 0.3);
 }
 
 /* ── Fallback: No-JS tabs ────────────────────────────────────────────────── */

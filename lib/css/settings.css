@@ -22,7 +22,7 @@
     overflow: hidden;
     box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
     border: 1px solid #e2e8f0;
-    border-top: 4px solid #6366f1;
+    border-top: 4px solid #d97706;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
 }
 
@@ -55,7 +55,7 @@
     font-size: 11px;
     font-weight: 600;
     background: #e0e7ff;
-    color: #4f46e5;
+    color: #b45309;
     padding: 4px 8px;
     border-radius: 6px;
     margin-left: 10px;
@@ -70,7 +70,7 @@
 /* Button stylings — WP .button-primary pakai !important, jadi kita perlu !important juga */
 .sgeobiz-metaboxes .sgeobiz-topbar-actions .button-primary,
 .sgeobiz-metaboxes .sgeobiz-bottom-buttons .button-primary {
-    background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
+    background: linear-gradient(135deg, #d97706, #b45309) !important;
     border: none !important;
     color: #ffffff !important;
     font-weight: 600 !important;
@@ -78,7 +78,7 @@
     padding: 0 20px !important;
     height: 38px !important;
     line-height: 38px !important;
-    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3) !important;
+    box-shadow: 0 4px 10px rgba(217, 119, 6, 0.3) !important;
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 13px !important;
@@ -87,7 +87,7 @@
 .sgeobiz-metaboxes .sgeobiz-topbar-actions .button-primary:hover,
 .sgeobiz-metaboxes .sgeobiz-bottom-buttons .button-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4) !important;
+    box-shadow: 0 6px 15px rgba(217, 119, 6, 0.4) !important;
 }
 
 .sgeobiz-metaboxes .sgeobiz-topbar-actions .button-primary:active,
@@ -244,9 +244,9 @@ input.sgeobiz-nav-tab-radio {
 /* Tab aktif — gradient indigo */
 .sgeobiz-metaboxes .sgeobiz-nav-tab-radio:checked + label.sgeobiz-nav-tab-label {
     color: #ffffff;
-    background: linear-gradient(135deg, #6366f1, #4f46e5);
-    border-color: #6366f1;
-    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+    background: linear-gradient(135deg, #d97706, #b45309);
+    border-color: #d97706;
+    box-shadow: 0 4px 10px rgba(217, 119, 6, 0.3);
 }
 
 /* ── Fallback: No-JS tabs ────────────────────────────────────────────────── */
@@ -314,7 +314,7 @@ body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
 }
 
 .sgeobiz-metaboxes input[type="checkbox"]:checked {
-    background-color: #6366f1;
+    background-color: #d97706;
 }
 
 .sgeobiz-metaboxes input[type="checkbox"]::before {
@@ -374,8 +374,8 @@ body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
 .sgeobiz-metaboxes input[type="url"]:focus,
 .sgeobiz-metaboxes textarea:focus,
 .sgeobiz-metaboxes select:focus {
-    border-color: #6366f1;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    border-color: #d97706;
+    box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
     outline: none;
 }
 
@@ -647,7 +647,7 @@ body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
 }
 
 .sgeobiz-metaboxes input[type="radio"]:checked::before {
-    background-color: #6366f1;
+    background-color: #d97706;
     width: 10px;
     height: 10px;
     margin: 3px;
@@ -657,15 +657,15 @@ body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
    WP sidebar rules punya specificity tinggi, perlu !important di sini
    ─────────────────────────────────────────────────────────────────────────── */
 #toplevel_page_sgeobiz-seo-settings .wp-submenu li.current {
-    background-color: rgba(99, 102, 241, 0.08) !important;
-    border-left: 3px solid #6366f1 !important;
+    background-color: rgba(217, 119, 6, 0.08) !important;
+    border-left: 3px solid #d97706 !important;
     padding-left: 0px !important;
 }
 
 #toplevel_page_sgeobiz-seo-settings .wp-submenu li.current a,
 #toplevel_page_sgeobiz-seo-settings .wp-submenu li.current a:focus,
 #toplevel_page_sgeobiz-seo-settings .wp-submenu li.current a:hover {
-    color: #6366f1 !important;
+    color: #d97706 !important;
     font-weight: 700 !important;
 }
 

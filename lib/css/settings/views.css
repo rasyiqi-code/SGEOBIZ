@@ -17,7 +17,7 @@
 }
 
 .sgeobiz-metaboxes input[type="radio"]:checked::before {
-    background-color: #6366f1;
+    background-color: #d97706;
     width: 10px;
     height: 10px;
     margin: 3px;
@@ -27,15 +27,15 @@
    WP sidebar rules punya specificity tinggi, perlu !important di sini
    ─────────────────────────────────────────────────────────────────────────── */
 #toplevel_page_sgeobiz-seo-settings .wp-submenu li.current {
-    background-color: rgba(99, 102, 241, 0.08) !important;
-    border-left: 3px solid #6366f1 !important;
+    background-color: rgba(217, 119, 6, 0.08) !important;
+    border-left: 3px solid #d97706 !important;
     padding-left: 0px !important;
 }
 
 #toplevel_page_sgeobiz-seo-settings .wp-submenu li.current a,
 #toplevel_page_sgeobiz-seo-settings .wp-submenu li.current a:focus,
 #toplevel_page_sgeobiz-seo-settings .wp-submenu li.current a:hover {
-    color: #6366f1 !important;
+    color: #d97706 !important;
     font-weight: 700 !important;
 }
 

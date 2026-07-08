@@ -27,7 +27,7 @@
 }
 
 .sgeobiz-metaboxes input[type="checkbox"]:checked {
-    background-color: #6366f1;
+    background-color: #d97706;
 }
 
 .sgeobiz-metaboxes input[type="checkbox"]::before {
@@ -87,8 +87,8 @@
 .sgeobiz-metaboxes input[type="url"]:focus,
 .sgeobiz-metaboxes textarea:focus,
 .sgeobiz-metaboxes select:focus {
-    border-color: #6366f1;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    border-color: #d97706;
+    box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
     outline: none;
 }
 

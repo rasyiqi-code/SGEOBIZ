@@ -35,6 +35,15 @@ class SGEOBIZ_GBP_Settings {
 		add_action( 'admin_init', [ $instance, 'handle_save' ] );
 		add_action( 'admin_enqueue_scripts', [ $instance, 'enqueue_assets' ] );
 		add_action( 'admin_head', [ $instance, 'print_styles' ] );
+		add_action( 'wp_ajax_sgeobiz_dismiss_ad', [ $instance, 'ajax_dismiss_ad' ] );
+	}
+
+	/**
+	 * Handler AJAX untuk menyimpan status dismiss iklan.
+	 */
+	public function ajax_dismiss_ad() {
+		update_user_meta( get_current_user_id(), 'sgeobiz_dismissed_ad_crediblemark', 1 );
+		wp_send_json_success();
 	}
 
 	/**
@@ -108,7 +117,7 @@ class SGEOBIZ_GBP_Settings {
 			}
 			/* Save button override */
 			.sgeobiz-topbar-actions .button-primary {
-				background: linear-gradient(135deg, #4f46e5, #7c3aed) !important;
+				background: linear-gradient(135deg, #d97706, #b45309) !important;
 				border: none !important;
 				color: #fff !important;
 				font-weight: 600 !important;
@@ -116,14 +125,14 @@ class SGEOBIZ_GBP_Settings {
 				padding: 0 16px !important;
 				height: 32px !important;
 				line-height: 32px !important;
-				box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2), 0 2px 4px -1px rgba(79, 70, 229, 0.1) !important;
+				box-shadow: 0 4px 6px -1px rgba(217, 119, 6, 0.2), 0 2px 4px -1px rgba(217, 119, 6, 0.1) !important;
 				cursor: pointer !important;
 				transition: transform 0.2s, box-shadow 0.2s !important;
 				font-size: 12px !important;
 			}
 			.sgeobiz-topbar-actions .button-primary:hover {
 				transform: translateY(-1px);
-				box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3), 0 4px 6px -2px rgba(79, 70, 229, 0.15) !important;
+				box-shadow: 0 10px 15px -3px rgba(217, 119, 6, 0.3), 0 4px 6px -2px rgba(217, 119, 6, 0.15) !important;
 			}
 			.sgeobiz-settings-container {
 				padding: 20px 30px;
@@ -178,8 +187,8 @@ class SGEOBIZ_GBP_Settings {
 			.sgeobiz-field input[type="email"]:focus,
 			.sgeobiz-field select:focus,
 			.sgeobiz-field textarea:focus {
-				border-color: #6366f1 !important;
-				box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+				border-color: #d97706 !important;
+				box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15) !important;
 				outline: none !important;
 			}
 			.sgeobiz-row-2 {
@@ -256,7 +265,7 @@ class SGEOBIZ_GBP_Settings {
 			}
 			.sgeobiz-badge {
 				display: inline-block;
-				background: linear-gradient(135deg, #4f46e5, #7c3aed);
+				background: linear-gradient(135deg, #d97706, #b45309);
 				color: #fff;
 				padding: 4px 10px;
 				border-radius: 12px;
@@ -279,6 +288,85 @@ class SGEOBIZ_GBP_Settings {
 			.button#sgeobiz-pick-logo:hover {
 				border-color: #94a3b8 !important;
 				color: #1e293b !important;
+			}
+
+			/* Ad Box Crediblemark */
+			.sgeobiz-ad-box {
+				background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%) !important;
+				border: 1px solid #f59e0b !important;
+				border-left: 5px solid #d97706 !important;
+				border-radius: 12px !important;
+				padding: 20px !important;
+				margin-bottom: 24px !important;
+				position: relative !important;
+				box-shadow: 0 4px 6px -1px rgba(217, 119, 6, 0.05), 0 2px 4px -2px rgba(217, 119, 6, 0.05) !important;
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+			}
+			.sgeobiz-ad-close {
+				position: absolute !important;
+				top: 12px !important;
+				right: 16px !important;
+				font-size: 20px !important;
+				font-weight: bold !important;
+				color: #b45309 !important;
+				cursor: pointer !important;
+				transition: color 0.2s !important;
+			}
+			.sgeobiz-ad-close:hover {
+				color: #78350f !important;
+			}
+			.sgeobiz-ad-tag {
+				display: inline-block !important;
+				background: #d97706 !important;
+				color: #ffffff !important;
+				padding: 2px 8px !important;
+				font-size: 10px !important;
+				font-weight: 700 !important;
+				text-transform: uppercase !important;
+				border-radius: 4px !important;
+				letter-spacing: 0.5px !important;
+				margin-bottom: 6px !important;
+				width: max-content !important;
+			}
+			.sgeobiz-ad-box h3 {
+				margin: 0 !important;
+				font-size: 15px !important;
+				color: #78350f !important;
+				font-weight: 700 !important;
+			}
+			.sgeobiz-ad-box p {
+				margin: 0 !important;
+				font-size: 13px !important;
+				color: #92400e !important;
+				line-height: 1.5 !important;
+			}
+			.sgeobiz-ad-box a {
+				color: #b45309 !important;
+				text-decoration: underline !important;
+			}
+			.sgeobiz-ad-box a:hover {
+				color: #78350f !important;
+			}
+			.sgeobiz-ad-button {
+				display: inline-block !important;
+				background: linear-gradient(135deg, #d97706, #b45309) !important;
+				color: #ffffff !important;
+				font-weight: 600 !important;
+				padding: 8px 16px !important;
+				border-radius: 6px !important;
+				text-decoration: none !important;
+				font-size: 12px !important;
+				margin-top: 8px !important;
+				width: max-content !important;
+				box-shadow: 0 2px 4px rgba(217, 119, 6, 0.2) !important;
+				transition: transform 0.2s, box-shadow 0.2s !important;
+			}
+			.sgeobiz-ad-button:hover {
+				transform: translateY(-1px) !important;
+				box-shadow: 0 4px 8px rgba(217, 119, 6, 0.3) !important;
+				color: #ffffff !important;
 			}
 		';
 		echo '<style id="sgeobiz-gbp-styles">' . $css . '</style>';
@@ -470,6 +558,29 @@ class SGEOBIZ_GBP_Settings {
 		echo '             </div>';
 		echo '        </div>';
 		echo '        <div class="sgeobiz-settings-container">';
+
+		// Iklan Jasa Crediblemark.com yang bisa di-close
+		$dismissed_ad = get_user_meta( get_current_user_id(), 'sgeobiz_dismissed_ad_crediblemark', true );
+		if ( ! $dismissed_ad ) {
+			echo '<div class="sgeobiz-ad-box" id="sgeobiz-ad-crediblemark">';
+			echo '  <span class="sgeobiz-ad-close" onclick="sgeobizDismissAd()">&times;</span>';
+			echo '  <div class="sgeobiz-ad-content">';
+			echo '      <span class="sgeobiz-ad-tag">Rekomendasi</span>';
+			echo '      <h3>Verifikasi Legalitas &amp; Kredibilitas Bisnis Anda</h3>';
+			echo '      <p>Tingkatkan kepercayaan pelanggan dan mesin pencari dengan mendaftarkan merek dagang atau mendapatkan sertifikasi kredibilitas resmi di <strong><a href="https://crediblemark.com/" target="_blank">CredibleMark.com</a></strong>. Solusi perlindungan reputasi digital terbaik di Indonesia.</p>';
+			echo '      <a href="https://crediblemark.com/" target="_blank" class="sgeobiz-ad-button">Kunjungi CredibleMark</a>';
+			echo '  </div>';
+			echo '</div>';
+			
+			// Ajax script untuk simpan status dismiss ke user meta
+			echo '<script>';
+			echo 'function sgeobizDismissAd() {';
+			echo '  var box = document.getElementById("sgeobiz-ad-crediblemark");';
+			echo '  if(box) { box.style.display = "none"; }';
+			echo '  jQuery.post(ajaxurl, { action: "sgeobiz_dismiss_ad" });';
+			echo '}';
+			echo '</script>';
+		}
 
 		// ── Bagian 1: Info Bisnis ──────────────────────────────────────────
 		echo '<div class="sgeobiz-section">';
