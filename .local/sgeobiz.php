@@ -83,5 +83,14 @@ function sgeobiz_boot() {
 
 	// 14. Article Schema Injector — upgrade WebPage ke Article/BlogPosting (SEO 2026)
 	SGEOBIZ_Article_Schema::init();
+
+	// 15. AI Robots.txt Agent — izinkan bot AI tepercaya mengindeks konten
+	SGEOBIZ_AI_Robots::init();
+
+	// 16. GEO Answer Block & Shortcode — pemicu cuplikan jawaban AI Overviews
+	SGEOBIZ_GEO_Block::init();
+
+	// 17. Product Schema Enhancer — adaptasi data terstruktur produk 2026
+	SGEOBIZ_Product_Enhancer::init();
 }
 
