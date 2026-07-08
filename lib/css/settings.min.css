@@ -563,3 +563,17 @@ body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
     margin: 3px !important;
 }
 
+/* Styling Active Sidebar Submenu */
+#toplevel_page_sgeobiz-seo-settings .wp-submenu li.current {
+    background-color: rgba(99, 102, 241, 0.08) !important;
+    border-left: 3px solid #6366f1 !important;
+    padding-left: 0px !important;
+}
+
+#toplevel_page_sgeobiz-seo-settings .wp-submenu li.current a,
+#toplevel_page_sgeobiz-seo-settings .wp-submenu li.current a:focus,
+#toplevel_page_sgeobiz-seo-settings .wp-submenu li.current a:hover {
+    color: #818cf8 !important;
+    font-weight: 700 !important;
+}
+

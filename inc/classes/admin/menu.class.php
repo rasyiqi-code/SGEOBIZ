@@ -68,31 +68,31 @@ class Menu {
 
 		\add_submenu_page(
 			$menu['menu_slug'],
-			\esc_html__( 'General Settings', 'sgeobiz-seo' ),
-			\esc_html__( 'General Settings', 'sgeobiz-seo' ),
+			\esc_html__( 'General Settings - SGEOBIZ SEO', 'sgeobiz-seo' ),
+			\esc_html__( 'Umum', 'sgeobiz-seo' ),
 			$menu['capability'],
 			$menu['menu_slug'], // Gunakan parent slug agar link pertama me-rename judul menu default
 			$menu['callback'],
 		);
 
-		// Daftarkan sub-menu individual untuk deep-link
+		// Daftarkan sub-menu individual untuk deep-link: [page_title, menu_title]
 		$sub_menus = [
-			'title'        => \esc_html__( 'Title Settings', 'sgeobiz-seo' ),
-			'description'  => \esc_html__( 'Description Meta Settings', 'sgeobiz-seo' ),
-			'social'       => \esc_html__( 'Social Meta Settings', 'sgeobiz-seo' ),
-			'homepage'     => \esc_html__( 'Homepage Settings', 'sgeobiz-seo' ),
-			'schema'       => \esc_html__( 'Schema.org Settings', 'sgeobiz-seo' ),
-			'robots'       => \esc_html__( 'Robots Settings', 'sgeobiz-seo' ),
-			'webmaster'    => \esc_html__( 'Webmaster Meta Settings', 'sgeobiz-seo' ),
-			'sitemap'      => \esc_html__( 'Sitemap Settings', 'sgeobiz-seo' ),
-			'feed'         => \esc_html__( 'Feed Settings', 'sgeobiz-seo' ),
+			'title'        => [ \esc_html__( 'Title Settings - SGEOBIZ SEO', 'sgeobiz-seo' ), \esc_html__( 'Judul', 'sgeobiz-seo' ) ],
+			'description'  => [ \esc_html__( 'Description Meta Settings - SGEOBIZ SEO', 'sgeobiz-seo' ), \esc_html__( 'Deskripsi Meta', 'sgeobiz-seo' ) ],
+			'social'       => [ \esc_html__( 'Social Meta Settings - SGEOBIZ SEO', 'sgeobiz-seo' ), \esc_html__( 'Media Sosial', 'sgeobiz-seo' ) ],
+			'homepage'     => [ \esc_html__( 'Homepage Settings - SGEOBIZ SEO', 'sgeobiz-seo' ), \esc_html__( 'Homepage', 'sgeobiz-seo' ) ],
+			'schema'       => [ \esc_html__( 'Schema.org Settings - SGEOBIZ SEO', 'sgeobiz-seo' ), \esc_html__( 'Schema.org', 'sgeobiz-seo' ) ],
+			'robots'       => [ \esc_html__( 'Robots Settings - SGEOBIZ SEO', 'sgeobiz-seo' ), \esc_html__( 'Robots', 'sgeobiz-seo' ) ],
+			'webmaster'    => [ \esc_html__( 'Webmaster Meta Settings - SGEOBIZ SEO', 'sgeobiz-seo' ), \esc_html__( 'Webmaster', 'sgeobiz-seo' ) ],
+			'sitemap'      => [ \esc_html__( 'Sitemap Settings - SGEOBIZ SEO', 'sgeobiz-seo' ), \esc_html__( 'Sitemap', 'sgeobiz-seo' ) ],
+			'feed'         => [ \esc_html__( 'Feed Settings - SGEOBIZ SEO', 'sgeobiz-seo' ), \esc_html__( 'Feed', 'sgeobiz-seo' ) ],
 		];
 
-		foreach ( $sub_menus as $slug => $title ) {
+		foreach ( $sub_menus as $slug => $titles ) {
 			\add_submenu_page(
 				$menu['menu_slug'],
-				$title,
-				$title,
+				$titles[0],
+				$titles[1],
 				$menu['capability'],
 				$menu['menu_slug'] . '&section=' . $slug,
 				$menu['callback']
