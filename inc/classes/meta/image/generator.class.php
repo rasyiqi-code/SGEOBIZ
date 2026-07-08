@@ -311,4 +311,41 @@ final class Generator {
 				'id'  => $id,
 			];
 	}
+
+	/**
+	 * Generates image URLs and IDs from the post terms (category/tags) social image fallback.
+	 *
+	 * @since 5.1.5
+	 * @generator
+	 *
+	 * @param array|null $args The query arguments.
+	 * @param string     $size The size of the image to get.
+	 * @yield array {
+	 *     The image details.
+	 * }
+	 */
+	public static function generate_term_fallback_image_details( $args = null, $size = 'full' ) {
+		$post_id = $args['id'] ?? Query::get_the_real_id();
+		if ( ! $post_id ) return;
+
+		// Dapatkan semua taxonomy publik yang dikaitkan dengan post type ini
+		$taxonomies = \get_object_taxonomies( \get_post_type( $post_id ) );
+		if ( empty( $taxonomies ) ) return;
+
+		foreach ( $taxonomies as $taxonomy ) {
+			$terms = \get_the_terms( $post_id, $taxonomy );
+			if ( \is_wp_error( $terms ) || empty( $terms ) ) continue;
+
+			foreach ( $terms as $term ) {
+				$url = Data\Plugin\Term::get_meta_item( 'social_image_url', $term->term_id );
+				if ( $url ) {
+					yield [
+						'url' => $url,
+						'id'  => Data\Plugin\Term::get_meta_item( 'social_image_id', $term->term_id ) ?: 0,
+					];
+					return; // Selesai jika sudah menemukan satu fallback term
+				}
+			}
+		}
+	}
 }

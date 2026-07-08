@@ -543,6 +543,7 @@ class Image {
 
 			if ( 'social' === $context )
 				$fallback = [
+					'term'     => [ $generator, 'generate_term_fallback_image_details' ],
 					'settings' => [ $generator, 'generate_fallback_image_details' ],
 					'header'   => [ $generator, 'generate_theme_header_image_details' ],
 					'logo'     => [ $generator, 'generate_site_logo_image_details' ],
