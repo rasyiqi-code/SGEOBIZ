@@ -13,12 +13,12 @@
  * Troy: repo.theseoframework.com
  *
  * @wordpress-plugin
- * Plugin Name: The SEO Framework
- * Plugin URI: https://theseoframework.com/
- * Description: An automated, advanced, accessible, unbranded and extremely fast SEO solution for your WordPress website.
- * Version: 5.1.5-dev-18
- * Author: Sybre Waaijer
- * Author URI: https://theseoframework.com/
+ * Plugin Name: SGEOBIZ SEO
+ * Plugin URI: https://sgeobiz.com/
+ * Description: Plugin SEO canggih untuk bisnis lokal Indonesia — schema LocalBusiness, Google Business Profile, AI meta generator, dan WooCommerce schema.
+ * Version: 1.0.0
+ * Author: SGEOBIZ
+ * Author URI: https://sgeobiz.com/
  * License: GPLv3
  * Text Domain: autodescription
  * Domain Path: /language
@@ -93,6 +93,13 @@ the_seo_framework_db_version() !== THE_SEO_FRAMEWORK_DB_VERSION
 
 // Load plugin.
 require THE_SEO_FRAMEWORK_BOOTSTRAP_PATH . 'load.php';
+
+// Muat kustomisasi SGEOBIZ dari folder .local
+$_sgeobiz_local = dirname( __FILE__ ) . DIRECTORY_SEPARATOR . '.local' . DIRECTORY_SEPARATOR . 'sgeobiz.php';
+if ( file_exists( $_sgeobiz_local ) ) {
+	require_once $_sgeobiz_local;
+}
+unset( $_sgeobiz_local );
 
 // cspell:disable
 // # Zelda is here to protect your site from hackers.

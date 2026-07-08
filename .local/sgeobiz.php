@@ -1,0 +1,58 @@
+<?php
+/**
+ * SGEOBIZ SEO — Main Loader
+ *
+ * Titik masuk utama kustomisasi SGEOBIZ di atas TSF.
+ * File ini dimuat dari autodescription.php setelah TSF selesai load.
+ *
+ * @package SGEOBIZ
+ */
+
+defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
+
+// Konstanta jalur direktori .local
+define( 'SGEOBIZ_LOCAL_DIR', dirname( __FILE__ ) . DIRECTORY_SEPARATOR );
+define( 'SGEOBIZ_VERSION', '1.0.0' );
+
+/**
+ * Autoload kelas SGEOBIZ dari folder .local.
+ *
+ * @param string $class Nama kelas yang dipanggil.
+ */
+function sgeobiz_autoload( $class ) {
+	// Hanya handle kelas dengan prefix SGEOBIZ_
+	if ( strpos( $class, 'SGEOBIZ_' ) !== 0 ) {
+		return;
+	}
+
+	// Konversi nama kelas ke nama file: SGEOBIZ_Foo_Bar → class-sgeobiz-foo-bar.php
+	$slug = strtolower( str_replace( [ 'SGEOBIZ_', '_' ], [ '', '-' ], $class ) );
+	$file = SGEOBIZ_LOCAL_DIR . 'class-sgeobiz-' . $slug . '.php';
+
+	if ( file_exists( $file ) ) {
+		require_once $file;
+	}
+}
+spl_autoload_register( 'sgeobiz_autoload' );
+
+/**
+ * Boot semua modul SGEOBIZ.
+ * Di-hook ke 'the_seo_framework_loaded' agar TSF sudah siap.
+ */
+add_action( 'the_seo_framework_loaded', 'sgeobiz_boot', 10 );
+function sgeobiz_boot() {
+	// 1. Branding (white-label)
+	SGEOBIZ_Branding::init();
+
+	// 2. Settings page: Google Business Profile + LocalBusiness info
+	// Harus init sebelum Schema dan AI supaya data tersedia
+	SGEOBIZ_GBP_Settings::init();
+
+	// 3. Output schema JSON-LD LocalBusiness di front-end
+	SGEOBIZ_Schema_Local::init();
+
+	// 4. AI Meta Generator (title + description) — hanya di admin
+	if ( is_admin() ) {
+		SGEOBIZ_AI_Meta::init();
+	}
+}
