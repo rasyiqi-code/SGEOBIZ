@@ -1,394 +1,141 @@
-=== SGEOBIZ SEO – SEO Lokal Indonesia ===
-Contributors: Cybr
-Donate link: https://github.com/sponsors/sybrew
-Tags: seo, xml sitemap, google search, open graph, structured data
+=== SGEOBIZ SEO ===
+Contributors: sgeobiz
+Tags: seo, schema, local seo, google business profile, structured data, sitemap, meta tags, indonesia
 Requires at least: 6.7
 Tested up to: 6.9
 Requires PHP: 7.4.0
-Stable tag: 5.1.4
+Stable tag: 1.0.0
 License: GPLv3
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-The fastest feature-complete SEO plugin for professional WordPress websites. Secure, fast, unbranded, and automated SEO. Do less; get better results.
+Plugin SEO canggih untuk WordPress — otomasi penuh meta tag, structured data Schema.org, Google Business Profile, dan optimasi bisnis lokal Indonesia.
 
 == Description ==
 
-**The fastest and only feature-complete SEO plugin that follows the guidelines and rules imposed by WordPress and search engines.**
+**SGEOBIZ SEO adalah plugin WordPress yang dirancang khusus untuk kebutuhan SEO bisnis lokal Indonesia.**
 
-**[Preview SGEOBIZ SEO in WordPress Playground.](https://playground.wordpress.net/?plugin=autodescription&login=1&url=/wp-admin/edit.php)**
+Aktifkan plugin, isi data bisnis Anda, dan biarkan SGEOBIZ bekerja — menghasilkan meta tag, structured data, dan sitemap secara otomatis tanpa konfigurasi rumit.
 
-Start using proven SEO tactics to improve your website's ranking. Clean, dedicated, extensible, unrestricted, ad-free, and no strings attached.
+### Fitur Utama
 
-To top it off, this is the [fastest full-featured SEO plugin](https://twitter.com/TheSEOFramework/status/1493352649445580804/photo/1), and it blends right into your WordPress website, without leaving you in the dark.
+* **Meta Tag Otomatis** — Title, description, dan canonical URL dibuat otomatis berdasarkan konten halaman.
+* **Schema LocalBusiness** — Structured data JSON-LD untuk bisnis lokal: nama, alamat, koordinat GPS, jam operasional, telepon, dan semua platform digital.
+* **Google Business Profile (GBP)** — Panel pengaturan terpusat untuk data NAP (Name, Address, Phone) dan link ke semua platform.
+* **Sitemap XML** — Sitemap otomatis dengan notifikasi ke Google dan Bing setiap ada konten baru.
+* **Open Graph & Twitter Cards** — Optimasi tampilan konten saat dibagikan di media sosial.
+* **SEO Bar** — Indikator warna di daftar post/page untuk memantau status SEO setiap halaman.
+* **Breadcrumb Schema** — Breadcrumb tersembunyi untuk mesin pencari + shortcode untuk tampilan visual.
+* **Robots.txt Generator** — Termasuk blokir AI crawler (GPTBot, CCBot, dll.) dan SEO crawler.
+* **WooCommerce Schema** — Structured data produk untuk toko online.
+* **IndexNow** — Notifikasi instan ke Bing dan Yandex saat konten diperbarui.
+* **Multi-bahasa** — Mendukung WPML, Polylang, WPGlobus, dan MultilingualPress.
 
-It's easy to get started. Activate this plugin, and your site's instantly protected against prominent SEO attacks. SGEOBIZ SEO will also prefill all critical meta tags for you. A real time-saver. Ingenious.
+### Fitur Khusus Indonesia
 
-[Migrate](https://sgeobiz.com/?p=511) | [Setup](https://sgeobiz.com/?p=2428) | [Improve](https://sgeobiz.com/?p=2663) | [Extensions](https://sgeobiz.com/extensions/) | [API](https://sgeobiz.com/?p=82) | [Support](https://sgeobiz.com/?p=3478) | [Privacy](https://sgeobiz.com/?p=1701#pluginprivacyinformation)
+* **Profil Bisnis Lengkap** — Panel pengaturan NAP + koordinat GPS + 34 provinsi Indonesia
+* **Marketplace Lokal** — Link ke Tokopedia, Shopee, Lazada, Blibli, Zalora
+* **Food Delivery** — Link ke GoFood, GrabFood, ShopeeFood
+* **Sosial Media Lengkap** — Facebook, Instagram, TikTok, YouTube, Twitter/X, LinkedIn, Threads, Pinterest
 
-### We poured over 27&#160;000 hours of love into this plugin. <br>Here are the results:
+### Komponen Plugin (.local)
 
-* **It is brilliant.**
-SGEOBIZ SEO is an [expert system](https://en.wikipedia.org/wiki/Expert_system) for SEO. It is the only solution that can intelligently generate critical SEO meta tags in any language by reading your WordPress environment. This automation saves you a considerable amount of time that could be used to write more content or focus on other tasks. It also removes the need for advanced SEO knowledge.
+Plugin ini menyertakan fitur-fitur canggih yang dibangun modular:
 
-* **It comes preconfigured.**
-With SGEOBIZ SEO, we provide an excellent starting point for your website by rationally optimizing all your pages. Naturally, you can also tweak it however you like. If you're not an SEO expert, learn what you may wish to optimize in our [Setup guide](https://sgeobiz.com/?p=2428).
-
-* **It helps you optimize your metadata.**
-We made the only SEO plugin that follows Google's webmaster guidelines to the letter. It took years of research and tweaking to translate this well inside your WordPress interface. Finally, you can freely optimize your pages without having to worry about making critical mistakes.
-
-* **It creates a beautiful overview.**
-On your post overview pages, you'll find color-coded guidelines. They suggest how to improve your pages as you hover over them with your mouse cursor. For example, when your titles are unbranded or when WordPress blocks indexing. Instinctively, touch-and keyboard navigation is also supported.
-
-* **It includes exceptional support.**
-We don't outsource our support. We're here for you. Feel free to drop by [our support channels](https://sgeobiz.com/support/) at any time to ask a question. More than 5000 inquiries have been answered personally in the past nine years, typically within 72 hours.
-
-* **It leaves no room for errors.**
-We focus on the quality of features you need over the quantity on features you don't. This trait makes this plugin unique, faster, more accurate, nearly bug-free, and more sustainable. The added benefit is that your site is unlikely to get penalized by search engines. We won't steer you into writing unnatural content or allow you to trick search engines.
-
-* **It remains genuine and pure.**
-We built SGEOBIZ SEO for small to large corporations and enterprises. The interface is entirely accessible and seamlessly integrates within your dashboard. Therefore, interacting with this plugin feels natural. It might feel dull, but your WordPress dashboard shouldn't be a billboard for our branding. We won't ever change this.
-
-* **It improves search presence.**
-SGEOBIZ SEO ranks your website distinctively by enabling breadcrumbs for Google Search via structured data. It also automatically generates titles and descriptions according to Google's guidelines and quickly helps search engines find the website's latest changes via the built-in optimized sitemap.
-
-* **It makes social sharing easy.**
-SGEOBIZ SEO automatically supports and allows you to further tailor the Open Graph, Facebook, and Twitter Cards protocols. It helps your posts stand out when they're shared on various social networks, including Pinterest, Discord, and WhatsApp.
-
-* **It feels more than accessible.**
-We handpicked our color scheme so that people with any medically recognized color-vision deficiency can distinguish the guidelines set by search engines. We also implemented full keyboard-navigation and screen-reader support.
-
-* **It protects you from mistakes.**
-SGEOBIZ SEO steers you from making significant and common SEO mistakes. It leaves little room for you to mess up because the plugin already does everything SEO for you. For example, it automatically prevents duplicated content mistakes by enforcing strict canonical rules.
-
-* **It follows best-practices and beyond.**
-The biggest problems with WordPress plugins are security and compatibility. As part-time security researchers, we focus on making this plugin impenetrable. SGEOBIZ SEO also uses WordPress's API whenever possible, making this plugin integrate neatly with every other plugin written with that in mind.
-
-* **It has developers at heart.**
-We encourage other developers to enhance and add functionality to this plugin. We've done so ourselves, already, with our [extensions](https://sgeobiz.com/extensions/). Check out [our API](https://sgeobiz.com/?p=82), and feel free to [contribute](https://sgeobiz.com/contributing)!
-
-* **It respects your privacy.**
-SGEOBIZ SEO sends us no information and does not create cookies. Learn more from our strictly adhered-to [privacy policy](https://sgeobiz.com/?p=1701#pluginprivacyinformation).
-
-### Getting started
-
-* Used another SEO plugin? Easily [migrate your metadata](https://sgeobiz.com/?p=511).
-* Need a helping hand getting started? Read our [quick setup guide](https://sgeobiz.com/?p=2428).
-* Want to improve your pages? Learn how to [optimize your metadata](https://sgeobiz.com/?p=2663).
-
-### Do more with extensions
-
-For additional functionality, check out our free companion plugin [Extension Manager](https://sgeobiz.com/?p=2760). It provides numerous free and paid extensions, such as:
-
-* [Focus](https://sgeobiz.com/?p=2305) guides you through the process of writing targeted content that ranks with **focus keywords and synonyms**.
-* [Articles](https://sgeobiz.com/?p=2303) **enhances your published posts** by automatically adding important Structured Data.
-* [Transport](https://sgeobiz.com/?p=3962) **migrates and transforms metadata** from Rank Math, Yoast SEO, and SEOPress to this plugin.
-* [Honeypot](https://sgeobiz.com/?p=2300) **catches comment spammers** through five lightweight yet powerful ways.
-* [Cord](https://sgeobiz.com/?p=3404) helps you connect your website to **Google Analytics and Meta Pixel**.
-* [Local](https://sgeobiz.com/?p=2306) lets you set up **important local business information** for search engines to consume.
-* [AMP](https://sgeobiz.com/?p=2304) **binds SGEOBIZ SEO to the AMP plugin** for AMP supported articles and pages.
-* [Monitor](https://sgeobiz.com/?p=2302) **keeps track of your website's SEO** optimizations and statistics.
-* [Incognito](https://sgeobiz.com/?p=2301) **hides all development-comments** from SGEOBIZ SEO.
-* [Origin](https://sgeobiz.com/?p=2299) **redirects attachment-page visitors** back to the parent post.
-* [Title Fix](https://sgeobiz.com/?p=2298) makes sure your **title output is as configured**. Even if your theme is doing it wrong.
-
-Visit our [extensions overview page](https://sgeobiz.com/extensions/) for more information.
-
-### Unbranded, free and for the professionals
-
-SGEOBIZ SEO is a uniquely white label plugin that blends seamlessly into your WordPress dashboard. This means that we don't even put the name "SGEOBIZ SEO" anywhere within your WordPress interface. No ads, no nags. Nobody has to know about the tools you've used to create your website. Note that we output standardized development-comments distinguishing the plugin output in source code. You can remove these with our free [Incognito extension](https://sgeobiz.com/?p=2301).
-
-### Behind the screens
-
-SGEOBIZ SEO works on many things without notifying you, because the best software is fast, nimble, responsive, and should save you precious time. Here are a few things it does behind the screens.
-
-* It prevents canonical errors for categories, pages, subdomains, and WordPress Multisite domain mapping.
-* It stops SEO attacks that are caused by pagination exploits in WordPress by telling the search engine to look at the existing last page instead.
-* It discourages 404 pages and empty categories from being indexed, even when they don't send a 404 response.
-* It automatically notifies Google and the Bing network on website updates when sitemaps are enabled.
-* It discourages search engines from indexing feeds and the sitemap. This doesn't mean they won't use them; only, they won't show them in their search results.
-* It directs search engines from the comment pages back to the post storing those comments.
-
-### Compatibility and accessibility
-
-**SGEOBIZ SEO supports:**
-
-* Internationalization through WordPress.org. You can [contribute here](https://translate.wordpress.org/projects/wp-plugins/autodescription/).
-* Unicode (UTF-8) character recognition and rendering, including Emoji and CJKV (Chinese, Japanese, Korean, Vietnamese).
-* Right to Left (RTL) languages (Arabic, Hebrew, Farsi, etc.), through its interface and meta tag generation.
-* Complete color-vision deficiency accessibility thanks to a carefully picked color scheme.
-* Full keyboard navigation, so that you can inspect tooltips quickly without ever having to reach for your mouse.
-* Full screen-reader accessibility via field anchors, ARIA labels, and title attributes.
-* WordPress Multisite setups, this plugin is in fact built upon one.
-* Detection and output of robots.txt and sitemap.xml files.
-* Full integration with WordPress Core sitemaps.
-* Primary term (category) selection to influence breadcrumbs and links.
-* Output of structured data via Schema.org JSON-LD scripts.
-* Altering oEmbed for improved sharing on Discord.
-* Detection of various other SEO plugins to help you switch graciously.
-* Translation plugins like WPML, Polylang, WPGlobus, and MultilingualPress.
-* E-commerce plugins like WooCommerce and Easy Digital Downloads.
-* Blocking of SEO analysis and AI crawlers for Moz, OpenAI, Apple, and others, [via robots.txt](https://kb.sgeobiz.com/?p=263).
-* Forum plugins like bbPress and wpForo.
-* Editing posts and terms via WordPress's native bulk-and-quick-edit interfaces.
-* Headless mode via a single [constant definition](https://kb.sgeobiz.com/?p=136).
+* **AI Robots** — Pemblokiran crawler AI dari konten Anda
+* **Article Schema** — Structured data artikel otomatis
+* **Auto Alt Image** — Pengisian alt text gambar secara otomatis
+* **Custom Schema** — Tambah schema JSON-LD kustom per halaman
+* **Focus** — Panduan penulisan konten terarah
+* **GBP Settings** — Panel pengaturan Google Business Profile
+* **Geo Block** — Pemblokiran akses berdasarkan geolokasi
+* **Geo Meta** — Meta tag geolokasi untuk konten lokal
+* **HTTP 304** — Optimasi caching header tidak berubah
+* **IndexNow** — Notifikasi URL ke Bing/Yandex secara instan
+* **Product Enhancer** — Peningkatan schema produk WooCommerce
+* **Redirect 404** — Pengalihan halaman 404 yang cerdas
+* **Schema Geo** — GeoCoordinates untuk peta dan Maps
+* **Schema Local** — LocalBusiness schema lengkap
+* **Semantic HTML Sanitizer** — Pembersihan HTML semantik
+* **Silo Links** — Struktur internal linking berbasis silo
 
 == Installation ==
 
-### This plugin requires:
+= Persyaratan =
 
-* PHP 7.4 or higher.
-* WordPress 6.0 or higher.
-* Any modern browser for administration.
+* PHP 7.4 atau lebih baru
+* WordPress 6.7 atau lebih baru
 
-### Installation instructions:
+= Langkah Instalasi =
 
-1. Install **SGEOBIZ SEO** either via your WordPress dashboard using plugin search or by uploading the files to your server.
-1. Either network-activate this plugin or activate it on a single site.
-1. That's it! The plugin now handles your website's SEO. It also protects your website against SEO attacks.
-
-### This plugin auto-configures its global settings
-
-However, it would be best if you read up on our [plugin setup guide](https://sgeobiz.com/?p=2428) to get the most out of SGEOBIZ SEO.
-
-### This plugin auto-configures SEO meta settings
-
-Still, you may want to read up on our [page improvement guide](https://sgeobiz.com/?p=2663) to learn how you can optimize your pages.
-
-### Get more SEO power
-
-Optionally, also install our free [Extension Manager](https://sgeobiz.com/?p=2760) plugin for additional SEO solutions.
-
-== Screenshots ==
-
-1. SGEOBIZ SEO shows you how your site is performing, at a glance. This is what we call the SEO Bar.
-2. Hover over, tap on, or focus any SEO Bar item and it will tell you what's asserted from your environment.
-3. The SEO meta box is displayed on all pages. It's everything you need. Here you can see the pixel counters.
-4. These SEO settings are shown on the term edit screen. It seamlessly blends into your WordPress interface.
-5. The SEO settings page of SGEOBIZ SEO. Every setting is explained thoroughly. You're in full control.
+1. Upload folder `sgeobiz-seo` ke direktori `/wp-content/plugins/`
+2. Aktifkan plugin melalui menu **Plugin** di WordPress
+3. Plugin langsung aktif — SEO dasar dikonfigurasi otomatis
+4. Kunjungi **SGEOBIZ SEO → Profil Bisnis** untuk mengisi data bisnis Anda
 
 == Frequently Asked Questions ==
 
-= Is SGEOBIZ SEO free? =
+= Apakah SGEOBIZ SEO gratis? =
 
-Absolutely! It will stay free as well, without ads, tracking, bloat, or nags!
-This plugin is slim yet all-inclusive. It's 100% freeware, not crippleware.
+Ya, sepenuhnya gratis. Tidak ada versi premium tersembunyi, tidak ada iklan, tidak ada tracking.
 
-= Is there a premium version? =
+= Apakah plugin ini mengirim data ke server eksternal? =
 
-No. We treat this plugin as premium already.
+Tidak. Semua data tersimpan di database WordPress Anda sendiri.
 
-However, we do offer many free and paid extensions that help support this free plugin. We provide these via our free [Extension Manager plugin](https://sgeobiz.com/?p=2760).
+= Bagaimana cara menampilkan breadcrumb? =
 
-= Why is there no analytics, tracking, or 404 monitoring? =
+Gunakan shortcode `[sgeobiz_breadcrumb]` di template atau halaman yang diinginkan.
 
-SEO experts that use advanced tools such as Ahrefs, SEMrush, Screaming Frog, and Google Analytics prefer using SGEOBIZ SEO because it doesn't try to do their job haphazardly.
+= Apakah kompatibel dengan WooCommerce? =
 
-To correctly analyze your website, it must be done from the outside. If we load these features on your site, bad robots will cause thousands of false positives that fill your database with useless information that doesn't apply to search engines. We refrain from this because it won't ever help you anyway.
+Ya. Plugin menyertakan WooCommerce schema untuk produk dan toko.
 
-= I have a feature request, a question, or found a bug. =
+= Bagaimana cara mendapatkan koordinat GPS? =
 
-Please visit [the support forums](https://wordpress.org/support/plugin/autodescription) and kindly tell us about it.
+1. Buka Google Maps dan cari lokasi bisnis Anda
+2. Klik kanan pada pin lokasi
+3. Salin koordinat yang muncul (misal: `-6.2088, 106.8456`)
+4. Angka pertama = Latitude, angka kedua = Longitude
 
-We'll try to get back to you within a week. Typically, we reply within three days.
+= Apakah Bukalapak masih didukung? =
 
-= I am a developer; how can I help? =
+Tidak. Sejak Januari 2025, Bukalapak menghentikan marketplace produk fisik.
+Field Bukalapak telah dihapus dari pengaturan — diganti dengan Zalora.
 
-Any input is much appreciated, and everything will be considered.
-Please visit the [GitHub project page](https://github.com/sybrew/the-seo-framework) to submit issues or even pull requests.
+= Apakah JD.id didukung? =
 
-Learn more [about contributing](https://sgeobiz.com/contributing).
+Tidak. JD.id resmi tutup sejak Maret 2023.
 
-= What do the colors tell me? =
+== Screenshots ==
 
-We use different colors to convey messages. Red is an error that you must resolve. Yellow is a non-critical warning that you may want to address. Green is good. Blue is informational and situational. Gray is undefined or unprocessable.
-
-= The sitemap doesn't contain categories, images, etc. =
-
-Not having every single page listed is not an issue. Search engines love crawling WordPress because its structure is consistent and well known.
-
-If a visitor can't find a page, then why would a search engine? Don't rely on your sitemap, but on your content and website's usability.
-
-Check out our [Extension Manager](https://sgeobiz.com/?p=2760). It brings extensions, like [Articles](https://sgeobiz.com/?p=2303), that fill in the gaps via modern and more robust means.
-
-= The sitemap contains unwanted links. =
-
-SGEOBIZ SEO takes all publicly queryable posts, pages, and CPT and puts them in the sitemap.
-
-If you don't want a page in the sitemap, consider enabling the `noindex` option for it. This option will also remove the page from search engine result pages.
-
-If the link shouldn't be in the sitemap because it's meant for structural reasons, then inform the plugin or theme author that created them.
-You should tell the author to check out the "`public` and `rewrite` post type arguments." The plugin or theme author should know what that means.
-
-In the meantime, you can disable SEO for the unwanted entries via the "General SEO Settings" under "Exclusions."
-
-= Why aren't focus keywords included? =
-
-[Google warns](https://developers.google.com/search/docs/advanced/guidelines/irrelevant-keywords) about the keyword stuffing approach implemented by some other SEO plugins. It forces users to write unnatural content, and it can have adverse effects on your site's ranking.
-
-Modern search engines use AI to understand the context of your articles. This means that as long as you write relevant content, you shouldn't have to worry about keywords.
-
-However, we implemented the same API Google uses to help you find appropriate synonyms and inflections for your keywords. This functionality is part of our premium suite of extensions.
-
-= What do the application/ld+json scripts do? =
-
-The JSON-LD scripts are search engine helpers that tell search engines how to connect and index the site. We do this via the Schema.org standard.
-
-They can tell the search engine if your site contains an internal search engine, which social sites you're connected to, and what page structure you're using. This is also referred to as **structured data**.
-
-= How do I display breadcrumbs? =
-
-SGEOBIZ SEO outputs hidden breadcrumbs for search engines to find via its Schema.org settings.
-
-You can also output these breadcrumbs visually in your theme by [using a shortcode](https://kb.sgeobiz.com/?p=212).
+1. Halaman Profil Bisnis — input data NAP, koordinat, dan semua platform digital
+2. Bagian Media Sosial & Marketplace — Facebook, Instagram, TikTok, Tokopedia, Shopee, GoFood, dll.
+3. Pengaturan Jam Operasional — toggle tutup per hari dengan toggle switch
+4. SEO Bar — indikator status SEO di daftar post/page
+5. Panel Pengaturan SEO Utama — tab berdasarkan kategori pengaturan
 
 == Changelog ==
 
-### 5.1.5
-
-TODO Fix sitemaps on SUBDIRECTORIES already.
-
-## For everyone
-
-* **Changed:**
-	* **Open Graph locales:** We couldn't find any documentation on the languages Facebook supports for Open Graph, so we resorted to scraping their network, testing all 46500 possible locale combinations, and adjusted support accordingly:
-		* **These WordPress locales are no longer supported by Facebook:** Cebuano, Esperanto, Spanish (Chile, Colombia, Mexico, Venezuela), Igbo, Limburgish, Lingala, Luganda, Māori, Romansh, Sanskrit, Silesian, Syriac, Tamazight, Wolof, Xhosa, Yoruba, Zulu.
-			* A fallback locale will be calculated for these languages based on their language code only. For example, `es_MX` (Spanish - Mexico) will fall back to `es_ES` (Spanish - Spain).
-			* This does not affect your site's language or any other functionality; only Open Graph locale output is affected to conform to Facebook's supported locales.
-		* **The locales are also no longer supported:** Akan, Aymara, Sorani Kurdish, Cherokee, English (India, Pirate, Upside Down), Leet Speak, Classical Greek, Latin, Ndebele, Chewa, Quechua, Northern Sámi, Klingon, Yiddish, Zazaki.
-		* **These locales are now supported, although not by WordPress:** Haitian Creole, Inupiaq, Inuktitut.
-* **Improved:**
-	* **Tooltips:**
-		* Tooltips now aim to be a little wider to ease reading.
-		* Tooltips now properly dismiss when tapping elsewhere on touch devices. Particularily, added improved support for iOS.
-		* Tooltips now spawn correctly on Android when tapping child elements within tooltip items.
-		* Added `touchcancel` event handling for multi-finger gesture support -- it won't invoke multiple tooltips anymore.
-		* Tooltips now stay when invoking a scroll or pan on touch devices.
-		* SEO Bar focus styles now use `:focus-visible` instead of `:focus`, preventing focus rings on touch taps, but still showing them for keyboard navigation.
-	* **Styling:**
-		* The default admin style for WordPress 7.0 is now assumed to be `'modern'` instead of `'fresh'`.
-		* Updated radio buttons and checkboxes to accomodate for WordPress 7.0.
-		* Fixed a layout issue where hovering title prefix and addition overlays were misaligned in WordPress 7.0 admin input fields. Remains compatible with WordPress 6.8 and 6.9.
-	* **Robots.txt:**
-		* Sitemap Hinting now correctly outputs WordPress Core sitemap URLs when "Optimized Sitemap" output is disabled.
-	* **Head tags:**
-		* The metatag generator now always outputs in HTML5 syntax, dropping XHTML support.
-* **Compatibility:**
-	* **Plugins: Cachify, LiteSpeed Cache, SpeedyCache, Surge, W3 Total Cache, etc.:**
-		* Resolved an issue where cache plugins that do not have specific exclusion rules for sitemap or sitemap stylesheet endpoints could serve an empty sitemap or stylesheet on later visits.
-			* You must flush the entire cache for these plugins in order to make this effective. This update prevents new empty sitemap or stylesheet responses from being stored, but it cannot replace a broken response already written to a page cache, reverse proxy, CDN, or host-level cache before WordPress loads.
-			* After updating, use the cache plugin's "Purge All," "Clear all cache," or equivalent full-cache action. Do not purge only `sitemap.xml`, `sitemap_index.xml`, or `sitemap.xsl`, because cache plugins may store endpoint variants by host, scheme, compression, mobile view, language, or query state.
-			* Do not rely on the plugin update process to clear these entries. Cachify, SpeedyCache, and W3 Total Cache do not appear to purge all page cache entries on plugin updates; LiteSpeed Cache does so only when its "Purge All On Upgrade" setting is enabled; Surge expires all entries on automatic updates and plugin activation/deactivation, but not reliably on manual updates.
-	* **Plugin: Polylang:**
-		* Resolved an issue where posts excluded from local search could still appear in translated search results.
-* **Fixed:**
-	* Resolved an issue where excluded posts could slip through search-result filtering caused by malformed search queries without a raw search parameter.
-	* Resolved an issue where `X-Robots-Tag: noindex` was omitted from the `robots.txt` response unless an output buffer (like a page cache) was active.
-	* Resolved an issue where the `[sgeobiz_breadcrumb]` shortcode's `<ol>` element could inherit inline-start padding from the active theme, causing misaligned breadcrumb display.
-	* Resolved an issue where the generated archive title prefix briefly flickered when typing in Post Type Archive Settings meta title fields.
-* **Notes:**
-	* WordPress 6.7 is now required, from 6.0. This allowed us to drop some legacy workarounds.
-		* Since WordPress doesn't adhere to Semantic Versioning (SemVer), this is actually a minor bump -- so we didn't bother highlighting it.
-* **Other:**
-	* Twitter Card help links now point to our [Knowledge Base](https://kb.sgeobiz.com/?p=451#card-types) because X removed the original documentation. The explanation on how this works has also been more explicitely defined.
-
-## For developers
-
-* **PHP API notes:**
-	* **Added:**
-		* Pool `sgeobiz()->admin()->seobar()` is now available.
-			* It contains public methods `generate_bar()`, `collect_seo_bar_items()`, `register_seo_bar_item()`, and `edit_seo_bar_item()`.
-			* It contains public constants `STATE_UNDEFINED`, `STATE_UNKNOWN`, `STATE_BAD`, `STATE_OKAY`, and `STATE_GOOD`.
-			* Internally known as `SGEOBIZ_SEO\Admin\SEOBar\Builder`.
-		* Pool `sgeobiz()->admin()->scripts()->loader()` is now available.
-			* It contains public methods `mount()` and `init()`, among many script setup methods.
-			* Internally known as `SGEOBIZ_SEO\Admin\Script\Loader`.
-		* **Fun fact:** We had to add the two pools above to display interactive demos of SGEOBIZ on our Knowledge Base -- in this case, for our [SEO Bar explainer](https://kb.sgeobiz.com/kb/what-is-the-seo-bar/). More demos will come, which will force us to improve the APIs even further.
-	* **Changed:**
-		* Method `SGEOBIZ_SEO\Helper\Format\Minify::css()` (`sgeobiz()->format()->minify()->css()`) no longer minifies `)` followed by a space, to prevent breaking CSS4 selectors like `:not(a) b`.
-		* Method `SGEOBIZ_SEO\Meta\Open_Graph::get_supported_locales()` (`sgeobiz()->open_graph()->get_supported_locales()`):
-			1. Removed deprecated locales: `ak_GH`, `ay_BO`, `cb_IQ`, `ck_US`, `cx_PH`, `en_IN`, `en_PI`, `en_UD`, `eo_EO`, `es_CL`, `es_CO`, `es_MX`, `es_VE`, `fb_LT`, `gx_GR`, `ig_NG`, `la_VA`, `lg_UG`, `li_NL`, `ln_CD`, `mi_NZ`, `nd_ZW`, `ny_MW`, `qu_PE`, `rm_CH`, `sa_IN`, `se_NO`, `sy_SY`, `sz_PL`, `tl_ST`, `tz_MA`, `wo_SN`, `xh_ZA`, `yi_DE`, `yo_NG`, `zu_ZA`, `zz_TR`.
-			2. Added locales: `ht_HT`, `ik_US`, `iu_CA`.
-	* **Improved:**
-		* Method `SGEOBIZ_SEO\Meta\Open_Graph::get_locale()` (`sgeobiz()->open_graph()->get_locale()`) now derives the Open Graph locale from `SGEOBIZ_SEO\Data\Blog::get_language()` (`sgeobiz()->data()->blog()->get_language()`) instead of calling `get_locale()` directly. Because `get_language()` is memoized, repeated locale filter callbacks on multilingual sites (Polylang, WPML) are avoided.
-		* Method `SGEOBIZ_SEO\Helper\Format\Arrays::array_diff_assoc_recursive()` (`sgeobiz()->format()->arrays()->array_diff_assoc_recursive()`) now uses `array_reduce()` instead of a while-loop for 1.9x faster execution and better readability.
-		* Method `SGEOBIZ_SEO\Helper\Headers::clean_response_header()` (`sgeobiz()->headers()->clean_response_header()`) now defines `DONOTCACHEPAGE` before clearing output buffers, so page caches can skip storing scrubbed responses.
-		* Method `SGEOBIZ_SEO\Sitemap\Registry::output_stylesheet()` (`sgeobiz()->sitemap()->registry()->output_stylesheet()`) now sends a nofollow header to prevent crawlers from following non-existent template links in the XSL.
-	* **Fixed:**
-		* Resolved an issue where taxonomies with `public` set to `true` but `rewrite` set to `false` could cause a PHP warning when viewing the taxonomy term in admin.
-	* **Other:**
-		* Class `SGEOBIZ_SEO\Pool` (`sgeobiz()->pool()`) now stores cache keys by function name, instead of hardcoded strings, reducing duplication and the risk of mismatched keys. This was initiated after we found a typo in a string key.
-* **Filter notes:**
-	* **Changed:**
-		* Filter `sgeobiz_seo_breadcrumb_shortcode_css`: The default CSS for the `nav.$class ol` selector now includes `padding-inline-start:0`.
-
-### 5.1.4
-
-This tiny update adds a new setting and shortcode attribute for breadcrumb title output, letting you choose between meta titles or page titles. We rushed this one out because our notification didn't work, and we do not want to send out notifications without giving [a feature in return](https://sgeobiz.com/?p=4439).
-
-### 5.1.3
-
-This update adds primary term selection to quick/bulk edit, option visibility toggles, comprehensive Avada theme compatibility, improved Elementor handling, and [various bug fixes](https://sgeobiz.com/?p=4423).
-
-We also deleted all deprecated code from before SGEOBIZ v5.0. If you added custom snippets from before 2 years ago without resolving the deprecations, you may experience issues. Feel free to reach out to us in our [support forums](https://wordpress.org/support/plugin/autodescription) if you need help.
-
-### 5.1.2
-
-This patch [resolves another issue](https://sgeobiz.com/?p=4380) where saving author meta data could cause an error.
-
-### 5.1.1
-
-This tiny update [resolves issues](https://sgeobiz.com/?p=4348) our community found with the release of SGEOBIZ v5.1.
-
-### 5.1.0 - Profound
-
-*The lover of wisdom, then, far surpasses the lover of gain. - [Plato](https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0168%3Abook%3D9)*
-
-**Release highlights**
-
-* This update brings a new color scheme that's easier on your eyes. You'll love it tomorrow.
-* The canonical URL is now tracked in real-time when editing any page or term.
-* You can now block AI trainers and SEO analysis crawlers from using your content.
-* We added a warning for image types that aren't compatible with most social platforms.
-* You can now set a canonical and redirect URL for the homepage.
-
-**Profound**
-
-After the monumental v5.0 "Apex" update, we're proud to present SGEOBIZ v5.1 "Profound." It's a less impactful update, bringing only 150 improvements, but every single one aims to make SGEOBIZ even more user-friendly. Meticulously crafted, unlike anything, this update is yet another testament to our dedication to making WordPress SEO bearable.
-
-**Canonical URL Notation Tracker**
-
-The canonical URL is a critical part of SEO, but WordPress doesn't convey what it becomes when editing the page, only after saving it. Now, you can see it in real-time as a placeholder, depending on your site's permalink settings.
-
-This tracker is accurate. Still, we plan to make it more sophisticated in future updates. It won't reflect category changes in Quick Edit because we must still add a primary term selector there, and it's disabled when a multilingual plugin is active, as those modify the URL structure in a non-standard way.
-
-**New robots.txt generator**
-
-We've replaced the existing robots.txt writer with a priority-based generator. We've already added the ability to add your sitemap's location, block AI trainers, block SEO analysis crawlers, and limit access to the admin area. You can append, remove, and modify generator sections using filter `sgeobiz_seo_robots_txt_sections`.
-
-**Updated administrative scripts**
-
-We've significantly updated the plugin's CSS and JavaScript files. If you find issues with the interface, you may need to flush your browser caches. Check out our [KB article to learn more](https://sgeobiz.com/kb/common-update-issues/).
-
-**Support the development**
-
-We hope you'll love this update as much as we do. Please consider supporting us by posting [a fantastic review](https://wordpress.org/support/plugin/autodescription/reviews/#new-topic-0), [get a license](https://sgeobiz.com/pricing/), or do your friends and colleagues a favor by installing SGEOBIZ for them.
-
-**Detailed log**
-
-But surely it is obvious to everyone that all the endeavor of the part by which we learn is ever towards [knowledge of the truth of things](https://sgeobiz.com/?p=4331#detailed).
-
-### Full changelog
-
-* **You can find the full changelog [here](https://sgeobiz.com/?cat=2).**
+= 1.0.0 =
+* Rilis pertama SGEOBIZ SEO
+* Fitur: SEO meta otomatis, Schema LocalBusiness, Profil Bisnis, Sitemap XML
+* Fitur: Open Graph, Twitter Cards, Breadcrumb schema
+* Fitur: Robots.txt generator dengan blokir AI crawler
+* Fitur: Dukungan marketplace Indonesia (Tokopedia, Shopee, Lazada, Blibli, Zalora)
+* Fitur: Food delivery (GoFood, GrabFood, ShopeeFood)
+* Fitur: 34 provinsi Indonesia di dropdown alamat
+* Fitur: Koordinat GPS (GeoCoordinates) untuk Google Maps
+* Fitur: IndexNow untuk notifikasi instan ke Bing/Yandex
+* Fitur: WooCommerce schema produk
+* Fitur: Panel admin modern dengan desain card minimalis
 
 == Upgrade Notice ==
 
-= 5.1.3 =
-
-We removed all deprecated code from before SGEOBIZ v5.0. You may experience issues if you added custom snippets from before 2 years ago without resolving the deprecations. We'll be happy to help you in our [support forums](https://wordpress.org/support/plugin/autodescription).
-
-= 5.0.0 =
-
-This is a major upgrade. Make a backup of your database before updating. WordPress v5.9 or higher and PHP v7.4 or higher are now required. If you use the Extension Manager, update it to v2.6.3 or higher before updating this plugin. Downgrading to v4.2.8 is possible, but the description's HTML parsing method will revert to its default setting.
+= 1.0.0 =
+Rilis awal SGEOBIZ SEO. Tidak ada upgrade dari versi sebelumnya.
 
 == Other Notes ==
+
+Dokumentasi lengkap tersedia di: https://sgeobiz.com/docs/
+
+Untuk dukungan teknis, kunjungi: https://sgeobiz.com/support/

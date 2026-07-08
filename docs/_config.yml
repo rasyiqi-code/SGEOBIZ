@@ -1,0 +1,45 @@
+theme: just-the-docs
+title: SGEOBIZ SEO — Dokumentasi
+description: Plugin SEO terlengkap untuk WordPress, dioptimalkan untuk bisnis lokal Indonesia.
+baseurl: ""
+url: "https://sgeobiz.com"
+logo: "/assets/images/logo.svg"
+color_scheme: light
+
+# Navigasi
+nav_sort: order
+
+# Footer
+footer_content: "&copy; 2024–2025 SGEOBIZ SEO. Dilisensikan di bawah <a href=\"https://www.gnu.org/licenses/gpl-3.0.html\">GPLv3</a>."
+
+# Search
+search_enabled: true
+search:
+  heading_level: 2
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+  tokenizer_separator: /[\s/]+/
+  rel_url: true
+  button: false
+
+# GitHub link
+gh_edit_link: true
+gh_edit_link_text: "Edit halaman ini di GitHub"
+gh_edit_repository: "https://github.com/sgeobiz/sgeobiz-seo"
+gh_edit_branch: "main"
+gh_edit_source: docs
+gh_edit_view_mode: "tree"
+
+# Plugins Jekyll
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Exclude dari build
+exclude:
+  - node_modules
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - README.md
