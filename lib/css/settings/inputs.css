@@ -84,24 +84,33 @@
     outline: none !important;
 }
 
-/* Select Group Card (Borderless flat gray card) */
+/* Select Group Card — White card to match .sgeobiz-toblock */
 .sgeobiz-premium-theme .sgeobiz-select-group {
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
     width: 100% !important;
     box-sizing: border-box !important;
-    padding: 6px 12px !important;
-    background: #f1f5f9 !important;
-    border-radius: 8px !important;
+    padding: 10px 16px !important;
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
     margin: 0 !important;
+    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.05) !important;
+    transition: all 0.2s ease !important;
+}
+
+.sgeobiz-premium-theme .sgeobiz-select-group:hover {
+    background: #f8fafc !important;
+    border-color: #cbd5e1 !important;
+    box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.08) !important;
 }
 
 .sgeobiz-premium-theme .sgeobiz-select-group label {
     display: block !important;
     font-size: 11px !important;
     font-weight: 700 !important;
-    color: #64748b !important; /* Slate 500 */
+    color: #64748b !important;
     text-transform: uppercase !important;
     letter-spacing: 0.5px !important;
     margin: 0 0 4px 0 !important;
@@ -113,5 +122,5 @@
 .sgeobiz-premium-theme .sgeobiz-select-group select {
     display: block !important;
     width: 100% !important;
-    grid-column: auto !important; /* Reset span 2 */
+    grid-column: auto !important;
 }
