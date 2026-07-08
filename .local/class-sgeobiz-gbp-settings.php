@@ -76,22 +76,16 @@ class SGEOBIZ_GBP_Settings {
 			echo '  </div>';
 			echo '</div>';
 			
-			// Ajax script untuk simpan status dismiss ke user meta & memindahkan box iklan ke urutan paling atas di atas H1
+			// Ajax script untuk simpan status dismiss ke user meta
+			// Jalankan SETELAH settings.js selesai rekonstruksi DOM (window.load)
 			echo '<script>';
-			echo '(function() {';
-			echo '  function moveAd() {';
-			echo '    var box = document.getElementById("sgeobiz-ad-crediblemark");';
-			echo '    var topWrap = document.querySelector(".sgeobiz-top-wrap") || document.querySelector(".sgeobiz-metaboxes h1") || document.querySelector(".wrap h1");';
-			echo '    if (box && topWrap) {';
-			echo '      topWrap.parentNode.insertBefore(box, topWrap);';
-			echo '    }';
+			echo 'jQuery(window).on("load", function() {';
+			echo '  var box = document.getElementById("sgeobiz-ad-crediblemark");';
+			echo '  var container = document.querySelector(".sgeobiz-settings-container");';
+			echo '  if (box && container) {';
+			echo '    container.parentNode.insertBefore(box, container);';
 			echo '  }';
-			echo '  if (document.readyState === "loading") {';
-			echo '    document.addEventListener("DOMContentLoaded", moveAd);';
-			echo '  } else {';
-			echo '    moveAd();';
-			echo '  }';
-			echo '})();';
+			echo '});';
 			echo 'function sgeobizDismissAd() {';
 			echo '  var box = document.getElementById("sgeobiz-ad-crediblemark");';
 			echo '  if(box) { box.style.display = "none"; }';
