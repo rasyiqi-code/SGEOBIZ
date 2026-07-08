@@ -73,6 +73,10 @@ class Utils {
 						'by'   => 'Apple',
 						'link' => 'https://support.apple.com/en-us/119829',
 					],
+					'Bytespider'         => [
+						'by'   => 'ByteDance (TikTok)',
+						'link' => 'https://bytedance.com/',
+					],
 					'CCBot'              => [
 						'by'   => 'Common Crawl',
 						'link' => 'https://commoncrawl.org/ccbot',
@@ -80,6 +84,14 @@ class Utils {
 					'ClaudeBot'          => [
 						'by'   => 'Anthropic',
 						'link' => 'https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler',
+					],
+					'Cohere-ai'          => [
+						'by'   => 'Cohere',
+						'link' => 'https://cohere.com/',
+					],
+					'diffbot'            => [
+						'by'   => 'Diffbot',
+						'link' => 'https://diffbot.com/',
 					],
 					'GPTBot'             => [
 						'by'   => 'OpenAI',
@@ -93,6 +105,10 @@ class Utils {
 						'by'   => 'Google',
 						'link' => 'https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers',
 					],
+					'ImagesiftBot'       => [
+						'by'   => 'Imagesift',
+						'link' => 'https://imagesift.com/',
+					],
 					'Meta-ExternalAgent' => [ // Why does Meta say lowercase meta-externalagent?
 						'by'   => 'Meta',
 						'link' => 'https://developers.facebook.com/docs/sharing/webmasters/web-crawlers/',
@@ -100,6 +116,22 @@ class Utils {
 					'FacebookBot'        => [ // Should not impede social sharing, they use FacebookExternalHit otherwise.
 						'by'   => 'Meta',
 						'link' => 'https://developers.facebook.com/docs/sharing/bot',
+					],
+					'omgilibot'          => [
+						'by'   => 'Omgili',
+						'link' => 'https://omgili.com/',
+					],
+					'PetalBot'           => [
+						'by'   => 'Huawei',
+						'link' => 'https://webmaster.petalbot.com/',
+					],
+					'PerplexityBot'      => [
+						'by'   => 'Perplexity',
+						'link' => 'https://perplexity.ai/',
+					],
+					'YouBot'             => [
+						'by'   => 'You.com',
+						'link' => 'https://you.com/',
 					],
 				];
 				break;
