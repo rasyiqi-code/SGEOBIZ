@@ -62,4 +62,7 @@ function sgeobiz_boot() {
 
 	// 7. Redirect 404 / Artikel Dihapus ke Homepage secara 301
 	SGEOBIZ_Redirect_404::init();
+
+	// 8. Automated HTML Semantic Sanitizer ( H1 tunggal & Heading Hierarchy logis )
+	SGEOBIZ_Semantic_HTML_Sanitizer::init();
 }
