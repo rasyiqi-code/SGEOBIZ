@@ -1,203 +1,200 @@
 /* ==========================================================================
    SGEOBIZ CSS MODULE - GRID LAYOUTS & CARDS
+   Strategi: Prefix .sgeobiz-metaboxes memberikan specificity (0-1-0) cukup
+   untuk mengalahkan WP admin tanpa !important chain.
    ========================================================================== */
 
-/* Style headings inside metaboxes as section titles */
-.sgeobiz-premium-theme .inside h4 {
-    font-size: 15px !important;
-    font-weight: 700 !important;
-    color: #0f172a !important; /* Slate 900 */
-    margin: 24px 0 12px 4px !important;
-    padding: 0 !important;
+/* Headings di dalam metaboxes sebagai section titles */
+.sgeobiz-metaboxes .inside h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 24px 0 12px 4px;
+    padding: 0;
 }
 
-/* Hide HR separators inside metaboxes as cards act as separation */
-.sgeobiz-premium-theme .inside hr {
-    display: none !important;
+/* Sembunyikan HR separator — cards sudah jadi pemisah visual */
+.sgeobiz-metaboxes .inside hr {
+    display: none;
 }
 
-/* Transparent Grid Wrapper (.sgeobiz-fields) — kecuali title separator yang punya class ini */
-.sgeobiz-premium-theme .sgeobiz-fields:not(#sgeobiz-title-separator) {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 12px !important;
-    width: 100% !important;
-    padding: 0 !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    box-sizing: border-box !important;
-    margin: 0 0 24px 0 !important;
-    transition: none !important;
+/* ── .sgeobiz-fields Grid Wrapper ──────────────────────────────────────────
+   Kecuali #sgeobiz-title-separator yang kebetulan punya class .sgeobiz-fields
+   tapi bukan untuk grid — cukup pakai :not() tanpa override
+   ─────────────────────────────────────────────────────────────────────────── */
+.sgeobiz-metaboxes .sgeobiz-fields:not(#sgeobiz-title-separator) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    box-sizing: border-box;
+    margin: 0 0 24px 0;
 }
 
-.sgeobiz-premium-theme .sgeobiz-fields:not(#sgeobiz-title-separator):hover {
-    box-shadow: none !important;
+/* ── Option Card (.sgeobiz-toblock) ────────────────────────────────────────
+   White card mandiri — bukan nested container
+   ─────────────────────────────────────────────────────────────────────────── */
+.sgeobiz-metaboxes .sgeobiz-fields:not(#sgeobiz-title-separator) .sgeobiz-toblock {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    margin: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
 }
 
-/* Checkbox & Switch/Radio labels as Modern White Cards inside .sgeobiz-fields */
-.sgeobiz-premium-theme .sgeobiz-fields:not(#sgeobiz-title-separator) .sgeobiz-toblock {
-    display: flex !important;
-    align-items: center !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 12px 16px !important;
-    background: #ffffff !important;
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 12px !important;
-    margin: 0 !important;
-    cursor: pointer !important;
-    transition: all 0.2s ease !important;
-    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.05) !important;
+.sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-toblock:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.08);
 }
 
-.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-toblock:hover {
-    background: #f8fafc !important;
-    border-color: #cbd5e1 !important;
-    box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.08) !important;
+.sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-toblock label {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    background: transparent;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    color: #334155;
+    margin: 0;
+    transition: color 0.2s ease;
 }
 
-.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-toblock label {
-    display: flex !important;
-    align-items: center !important;
-    flex-grow: 1 !important;
-    background: transparent !important;
-    padding: 0 !important;
-    border: none !important;
-    cursor: pointer !important;
-    font-size: 13px !important;
-    font-weight: 500 !important;
-    color: #334155 !important;
-    margin: 0 !important;
-    transition: color 0.2s ease !important;
+.sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-toblock:hover label {
+    color: #0f172a;
 }
 
-.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-toblock:hover label {
-    color: #0f172a !important;
-}
-
-/* Option fields / description layout in grid */
-.sgeobiz-premium-theme .sgeobiz-fields p.description,
-.sgeobiz-premium-theme .sgeobiz-fields .description {
-    font-size: 12px !important;
-    color: #64748b !important;
-    margin-top: 8px !important;
-    line-height: 1.6 !important;
+/* Description / keterangan di bawah grup field */
+.sgeobiz-metaboxes .sgeobiz-fields p.description,
+.sgeobiz-metaboxes .sgeobiz-fields .description {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 8px;
+    line-height: 1.6;
     display: block;
     width: 100%;
-    grid-column: span 2 !important;
-    padding-left: 4px !important;
+    grid-column: span 2;
+    padding-left: 4px;
 }
 
-/* Ensure larger inputs span full-width inside grid (except selects inside select groups) */
-.sgeobiz-premium-theme .sgeobiz-fields textarea,
-.sgeobiz-premium-theme .sgeobiz-fields > select,
-.sgeobiz-premium-theme .sgeobiz-fields input[type="text"],
-.sgeobiz-premium-theme .sgeobiz-fields input[type="url"],
-.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-select-wrap,
-.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-select-block {
-    grid-column: span 2 !important;
-    width: 100% !important;
+/* Input besar span 2 kolom (kecuali select di dalam select-group) */
+.sgeobiz-metaboxes .sgeobiz-fields textarea,
+.sgeobiz-metaboxes .sgeobiz-fields > select,
+.sgeobiz-metaboxes .sgeobiz-fields input[type="text"],
+.sgeobiz-metaboxes .sgeobiz-fields input[type="url"],
+.sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-select-wrap,
+.sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-select-block {
+    grid-column: span 2;
+    width: 100%;
 }
 
-/* WordPress original form table styling overrides */
-.sgeobiz-premium-theme .form-table {
-    display: block !important;
-    width: 100% !important;
-    margin: 0 !important;
+/* ── WordPress .form-table overrides ───────────────────────────────────────
+   Ubah table layout WP jadi block/grid agar bisa pakai desain card modern.
+   .sgeobiz-metaboxes + element tag cukup mengalahkan WP .form-table rules.
+   ─────────────────────────────────────────────────────────────────────────── */
+.sgeobiz-metaboxes .form-table {
+    display: block;
+    width: 100%;
+    margin: 0;
     border-collapse: collapse;
 }
 
-.sgeobiz-premium-theme .form-table tbody {
-    display: block !important;
-    width: 100% !important;
+.sgeobiz-metaboxes .form-table tbody {
+    display: block;
+    width: 100%;
 }
 
-/* Transparent Setting Row */
-.sgeobiz-premium-theme .form-table tr {
-    display: flex !important;
-    flex-direction: column !important;
-    margin-bottom: 24px !important;
-    padding: 0 !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    transition: none !important;
+/* Row transparan — hanya jadi flex container vertikal */
+.sgeobiz-metaboxes .form-table tr {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.sgeobiz-premium-theme .form-table tr:hover {
-    box-shadow: none !important;
-}
-
-.sgeobiz-premium-theme .form-table th {
-    display: block !important;
-    width: 100% !important;
-    padding: 0 0 12px 4px !important;
-    font-size: 15px !important;
-    font-weight: 700 !important;
-    color: #0f172a !important; /* Slate 900 */
+.sgeobiz-metaboxes .form-table th {
+    display: block;
+    width: 100%;
+    padding: 0 0 12px 4px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
     text-align: left;
 }
 
-.sgeobiz-premium-theme .form-table td {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 12px !important;
-    width: 100% !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
+/* TD sebagai grid 2-kolom untuk label-label checkbox di dalamnya */
+.sgeobiz-metaboxes .form-table td {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* TD Checkbox & Switch labels as Modern White Cards */
-.sgeobiz-premium-theme .form-table td label {
-    display: flex !important;
-    align-items: center !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 12px 16px !important;
-    background: #ffffff !important;
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 12px !important;
-    cursor: pointer !important;
-    font-size: 13px !important;
-    font-weight: 500 !important;
-    color: #334155 !important;
-    transition: all 0.2s ease !important;
-    margin: 0 !important;
-    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.05) !important;
+/* Label langsung di dalam td sebagai white card
+   SCOPE: hanya direct child label (bukan label di dalam #sgeobiz-title-separator
+   yang kebetulan ada dalam td — ID selector di views.css punya specificity lebih tinggi) */
+.sgeobiz-metaboxes .form-table td > label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    color: #334155;
+    transition: all 0.2s ease;
+    margin: 0;
+    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
 }
 
-.sgeobiz-premium-theme .form-table td label:hover {
-    background: #f8fafc !important;
-    border-color: #cbd5e1 !important;
-    box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.08) !important;
-    color: #0f172a !important;
+.sgeobiz-metaboxes .form-table td > label:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.08);
+    color: #0f172a;
 }
 
-/* Responsive collapse on mobile */
+/* Responsive — 1 kolom di mobile */
 @media screen and (max-width: 768px) {
-    .sgeobiz-premium-theme .sgeobiz-fields {
-        grid-template-columns: 1fr !important;
-        padding: 0 !important;
+    .sgeobiz-metaboxes .sgeobiz-fields:not(#sgeobiz-title-separator) {
+        grid-template-columns: 1fr;
     }
-    .sgeobiz-premium-theme .sgeobiz-fields p.description,
-    .sgeobiz-premium-theme .sgeobiz-fields .description,
-    .sgeobiz-premium-theme .sgeobiz-fields textarea,
-    .sgeobiz-premium-theme .sgeobiz-fields > select,
-    .sgeobiz-premium-theme .sgeobiz-fields input[type="text"],
-    .sgeobiz-premium-theme .sgeobiz-fields input[type="url"],
-    .sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-select-wrap,
-    .sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-select-block {
-        grid-column: span 1 !important;
+    .sgeobiz-metaboxes .sgeobiz-fields p.description,
+    .sgeobiz-metaboxes .sgeobiz-fields .description,
+    .sgeobiz-metaboxes .sgeobiz-fields textarea,
+    .sgeobiz-metaboxes .sgeobiz-fields > select,
+    .sgeobiz-metaboxes .sgeobiz-fields input[type="text"],
+    .sgeobiz-metaboxes .sgeobiz-fields input[type="url"],
+    .sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-select-wrap,
+    .sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-select-block {
+        grid-column: span 1;
     }
-    .sgeobiz-premium-theme .form-table td {
-        grid-template-columns: 1fr !important;
-    }
-    .sgeobiz-premium-theme td textarea,
-    .sgeobiz-premium-theme td table,
-    .sgeobiz-premium-theme td .sgeobiz-select-block {
-        grid-column: span 1 !important;
+    .sgeobiz-metaboxes .form-table td {
+        grid-template-columns: 1fr;
     }
 }

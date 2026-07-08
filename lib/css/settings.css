@@ -1,6 +1,9 @@
 /* --- base.css --- */
 /* ==========================================================================
    SGEOBIZ CSS MODULE - BASE LAYOUT & WRAPPERS
+   Strategi: Semua style plugin scope ke .sgeobiz-metaboxes agar specificity
+   (0-1-0) mengalahkan WP admin (0-0-0) tanpa perlu !important chain.
+   !important HANYA dipertahankan untuk: tombol WP, display:none hide, appearance.
    ========================================================================== */
 
 /* Main wrapping container */
@@ -11,9 +14,9 @@
     padding: 0 20px;
 }
 
-.sgeobiz-dashboard {
-    display: flex !important;
-    flex-direction: column !important;
+.sgeobiz-metaboxes .sgeobiz-dashboard {
+    display: flex;
+    flex-direction: column;
     background: #ffffff;
     border-radius: 16px;
     overflow: hidden;
@@ -24,14 +27,14 @@
 }
 
 /* Main Content Area */
-.sgeobiz-main {
+.sgeobiz-metaboxes .sgeobiz-main {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     background: #ffffff;
 }
 
-.sgeobiz-topbar {
+.sgeobiz-metaboxes .sgeobiz-topbar {
     padding: 20px 30px;
     background: linear-gradient(to right, #f8fafc, #ffffff);
     border-bottom: 1px solid #e2e8f0;
@@ -40,7 +43,7 @@
     align-items: center;
 }
 
-.sgeobiz-topbar-title {
+.sgeobiz-metaboxes .sgeobiz-topbar-title {
     margin: 0;
     font-size: 22px;
     font-weight: 800;
@@ -48,7 +51,7 @@
     color: #0f172a;
 }
 
-.sgeobiz-topbar-title .sgeobiz-badge {
+.sgeobiz-metaboxes .sgeobiz-topbar-title .sgeobiz-badge {
     font-size: 11px;
     font-weight: 600;
     background: #e0e7ff;
@@ -59,14 +62,14 @@
     vertical-align: middle;
 }
 
-.sgeobiz-topbar-actions {
+.sgeobiz-metaboxes .sgeobiz-topbar-actions {
     display: flex;
     gap: 12px;
 }
 
-/* Button stylings */
-.sgeobiz-topbar-actions .button-primary,
-.sgeobiz-bottom-buttons .button-primary {
+/* Button stylings — WP .button-primary pakai !important, jadi kita perlu !important juga */
+.sgeobiz-metaboxes .sgeobiz-topbar-actions .button-primary,
+.sgeobiz-metaboxes .sgeobiz-bottom-buttons .button-primary {
     background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
     border: none !important;
     color: #ffffff !important;
@@ -76,81 +79,78 @@
     height: 38px !important;
     line-height: 38px !important;
     box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3) !important;
-    cursor: pointer !important;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 13px !important;
 }
 
-.sgeobiz-topbar-actions .button-primary:hover,
-.sgeobiz-bottom-buttons .button-primary:hover {
-    transform: translateY(-2px) !important;
+.sgeobiz-metaboxes .sgeobiz-topbar-actions .button-primary:hover,
+.sgeobiz-metaboxes .sgeobiz-bottom-buttons .button-primary:hover {
+    transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4) !important;
 }
 
-.sgeobiz-topbar-actions .button-primary:active,
-.sgeobiz-bottom-buttons .button-primary:active {
-    transform: translateY(0) !important;
+.sgeobiz-metaboxes .sgeobiz-topbar-actions .button-primary:active,
+.sgeobiz-metaboxes .sgeobiz-bottom-buttons .button-primary:active {
+    transform: translateY(0);
 }
 
-.sgeobiz-topbar-actions .button,
-.sgeobiz-topbar-actions .button-secondary {
+.sgeobiz-metaboxes .sgeobiz-topbar-actions .button,
+.sgeobiz-metaboxes .sgeobiz-topbar-actions .button-secondary {
     border-radius: 8px !important;
     padding: 0 16px !important;
     height: 38px !important;
     line-height: 36px !important;
     border: 1px solid #cbd5e1 !important;
     color: #475569 !important;
-    font-weight: 600 !important;
+    font-weight: 600;
     background: #ffffff !important;
-    font-size: 13px !important;
-    transition: all 0.2s ease !important;
+    font-size: 13px;
+    transition: all 0.2s ease;
 }
 
-.sgeobiz-topbar-actions .button:hover,
-.sgeobiz-topbar-actions .button-secondary:hover {
+.sgeobiz-metaboxes .sgeobiz-topbar-actions .button:hover,
+.sgeobiz-metaboxes .sgeobiz-topbar-actions .button-secondary:hover {
     background: #f8fafc !important;
     border-color: #94a3b8 !important;
     color: #1e293b !important;
 }
 
+/* Sembunyikan elemen WP bawaan — perlu !important karena WP pakai display:block inline */
 .sgeobiz-top-wrap,
 .sgeobiz-bottom-wrap {
     display: none !important;
 }
 
 /* Postboxes Container */
-.sgeobiz-settings-container {
+.sgeobiz-metaboxes .sgeobiz-settings-container {
     padding: 30px;
     flex-grow: 1;
     background: #f8fafc;
 }
 
-.sgeobiz-settings-container .postbox {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    margin-bottom: 0 !important;
+.sgeobiz-metaboxes .sgeobiz-settings-container .postbox {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    margin-bottom: 0;
 }
 
-.sgeobiz-settings-container .postbox .postbox-header {
-    display: none !important;
+.sgeobiz-metaboxes .sgeobiz-settings-container .postbox .postbox-header {
+    display: none;
 }
 
-.sgeobiz-settings-container .postbox .inside {
-    padding: 0 !important;
-    margin: 0 !important;
+.sgeobiz-metaboxes .sgeobiz-settings-container .postbox .inside {
+    padding: 0;
+    margin: 0;
 }
 
-.sgeobiz-top-wrap {
+.sgeobiz-metaboxes .sgeobiz-top-wrap {
     margin-bottom: 8px;
 }
 
-.sgeobiz-top-buttons {
-    padding: 9px 0 4px;
-}
-
-.sgeobiz-top-buttons,
-.sgeobiz-bottom-buttons {
+.sgeobiz-metaboxes .sgeobiz-top-buttons,
+.sgeobiz-metaboxes .sgeobiz-bottom-buttons {
     display: flex;
     flex: 1 1 auto;
     justify-content: start;
@@ -158,20 +158,20 @@
     gap: 10px;
 }
 
-.sgeobiz-top-buttons.sgeobiz-end,
-.sgeobiz-bottom-buttons.sgeobiz-end {
+.sgeobiz-metaboxes .sgeobiz-top-buttons.sgeobiz-end,
+.sgeobiz-metaboxes .sgeobiz-bottom-buttons.sgeobiz-end {
     justify-content: flex-end;
 }
 
 @media screen and (max-width: 782px) {
-    .sgeobiz-top-wrap,
-    .sgeobiz-bottom-wrap,
-    .sgeobiz-top-buttons.sgeobiz-end,
-    .sgeobiz-bottom-buttons.sgeobiz-end {
+    .sgeobiz-metaboxes .sgeobiz-top-wrap,
+    .sgeobiz-metaboxes .sgeobiz-bottom-wrap,
+    .sgeobiz-metaboxes .sgeobiz-top-buttons.sgeobiz-end,
+    .sgeobiz-metaboxes .sgeobiz-bottom-buttons.sgeobiz-end {
         justify-content: start;
     }
-    .sgeobiz-top-buttons,
-    .sgeobiz-bottom-buttons {
+    .sgeobiz-metaboxes .sgeobiz-top-buttons,
+    .sgeobiz-metaboxes .sgeobiz-bottom-buttons {
         width: 100%;
     }
 }
@@ -189,40 +189,45 @@
 /* --- tabs.css --- */
 /* ==========================================================================
    SGEOBIZ CSS MODULE - TABS STYLING & TOGGLES
+   Strategi: Scope ke .sgeobiz-metaboxes — specificity (0-1-0) + class lagi
+   mengalahkan WP .nav-tab rules (0-0-1-0) tanpa !important.
    ========================================================================== */
 
-/* Tab Headers as Rounded Pills */
-.sgeobiz-nav-tab-wrapper {
-    border-bottom: none !important;
-    padding: 0 0 16px 0 !important;
-    margin: 0 0 20px 0 !important;
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 8px !important;
+/* Tab Headers sebagai Rounded Pills */
+.sgeobiz-metaboxes .sgeobiz-nav-tab-wrapper {
+    border-bottom: none;
+    padding: 0 0 16px 0;
+    margin: 0 0 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
-.sgeobiz-nav-tab-content {
-    margin: 0 !important;
+.sgeobiz-metaboxes .sgeobiz-nav-tab-content {
+    margin: 0;
 }
 
-.sgeobiz-nav-tab-label {
-    background: #e2e8f0 !important;
-    border: 1px solid #cbd5e1 !important;
-    padding: 8px 16px !important;
-    color: #475569 !important;
-    font-size: 13px !important;
-    font-weight: 600 !important;
-    margin: 0 !important;
-    border-radius: 8px !important;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+.sgeobiz-metaboxes .sgeobiz-nav-tab-label {
+    background: #e2e8f0;
+    border: 1px solid #cbd5e1;
+    padding: 8px 16px;
+    color: #475569;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0;
+    border-radius: 8px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    cursor: pointer;
+    display: inline-block;
 }
 
-.sgeobiz-nav-tab-label:hover {
-    background: #cbd5e1 !important;
-    color: #0f172a !important;
+.sgeobiz-metaboxes .sgeobiz-nav-tab-label:hover {
+    background: #cbd5e1;
+    color: #0f172a;
 }
 
+/* Radio tab tersembunyi (accessibility) */
 input.sgeobiz-nav-tab-radio {
     position: absolute;
     width: 0;
@@ -236,14 +241,15 @@ input.sgeobiz-nav-tab-radio {
     appearance: none;
 }
 
-.sgeobiz-nav-tab-radio:checked + label {
-    color: #ffffff !important;
-    background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
-    border-color: #6366f1 !important;
-    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3) !important;
+/* Tab aktif — gradient indigo */
+.sgeobiz-metaboxes .sgeobiz-nav-tab-radio:checked + label.sgeobiz-nav-tab-label {
+    color: #ffffff;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    border-color: #6366f1;
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
 }
 
-/* Original Tabs fallback classes */
+/* ── Fallback: No-JS tabs ────────────────────────────────────────────────── */
 .sgeobiz-nav-tab-no-js {
     position: relative;
     clear: both;
@@ -281,334 +287,342 @@ body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
 /* --- inputs.css --- */
 /* ==========================================================================
    SGEOBIZ CSS MODULE - INPUTS, SELECTS & TOGGLES
+   Strategi: Scope ke .sgeobiz-metaboxes (0-1-0) + element/attribute selector
+   cukup kalahkan WP admin default tanpa !important chain.
+   !important hanya dipertahankan untuk appearance (browser vendor) dan focus ring.
    ========================================================================== */
 
-/* Toggle Switches */
+/* ── Toggle Switch (Checkbox custom) ───────────────────────────────────────
+   -webkit-appearance: none perlu !important karena browser pakai user-agent stylesheet
+   ─────────────────────────────────────────────────────────────────────────── */
 .sgeobiz-metaboxes input[type="checkbox"] {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 44px !important;
-    height: 24px !important;
-    background-color: #e2e8f0 !important;
-    border-radius: 12px !important;
-    position: relative !important;
-    cursor: pointer !important;
-    outline: none !important;
-    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    vertical-align: middle !important;
-    margin-right: 10px !important;
-    border: none !important;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05) !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    width: 44px;
+    height: 24px;
+    background-color: #e2e8f0;
+    border-radius: 12px;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    vertical-align: middle;
+    margin-right: 10px;
+    border: none;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+    flex-shrink: 0;
 }
 
 .sgeobiz-metaboxes input[type="checkbox"]:checked {
-    background-color: #6366f1 !important;
+    background-color: #6366f1;
 }
 
 .sgeobiz-metaboxes input[type="checkbox"]::before {
-    content: "" !important;
-    position: absolute !important;
-    width: 18px !important;
-    height: 18px !important;
-    border-radius: 50% !important;
-    background-color: #ffffff !important;
-    top: 3px !important;
-    left: 3px !important;
-    margin: 0 !important;
-    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.15) !important;
-    float: none !important;
-    display: block !important;
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    top: 3px;
+    left: 3px;
+    margin: 0;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.15);
+    float: none;
+    display: block;
 }
 
 .sgeobiz-metaboxes input[type="checkbox"]:checked::before {
-    content: "" !important;
-    transform: translateX(20px) !important;
-    background-color: #ffffff !important;
-    margin: 0 !important;
+    transform: translateX(20px);
+    background-color: #ffffff;
+    margin: 0;
 }
 
-/* Text Inputs, URLs & Textareas */
+/* ── Text Inputs, URLs & Textareas ─────────────────────────────────────────
+   .sgeobiz-metaboxes input[type=text] (0-1-0-1) > WP input[type=text] (0-0-0-1)
+   ─────────────────────────────────────────────────────────────────────────── */
 .sgeobiz-metaboxes input[type="text"],
 .sgeobiz-metaboxes input[type="url"],
 .sgeobiz-metaboxes textarea {
-    border: 1px solid #cbd5e1 !important;
-    border-radius: 8px !important;
-    padding: 8px 12px !important;
-    font-size: 13px !important;
-    background: #ffffff !important;
-    color: #334155 !important;
-    box-shadow: none !important;
-    transition: border-color 0.2s, box-shadow 0.2s !important;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 13px;
+    background: #ffffff;
+    color: #334155;
+    box-shadow: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* Select Dropdown */
+/* ── Select Dropdown ────────────────────────────────────────────────────── */
 .sgeobiz-metaboxes select {
-    border: 1px solid #cbd5e1 !important;
-    border-radius: 8px !important;
-    padding: 4px 8px !important;
-    font-size: 13px !important;
-    background: #ffffff !important;
-    color: #334155 !important;
-    box-shadow: none !important;
-    transition: border-color 0.2s, box-shadow 0.2s !important;
-    height: 30px !important;
-    line-height: 1.2 !important;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 4px 8px;
+    font-size: 13px;
+    background: #ffffff;
+    color: #334155;
+    box-shadow: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    height: 30px;
+    line-height: 1.2;
 }
 
+/* Focus ring — perlu specificity lebih tinggi dari WP */
 .sgeobiz-metaboxes input[type="text"]:focus,
 .sgeobiz-metaboxes input[type="url"]:focus,
 .sgeobiz-metaboxes textarea:focus,
 .sgeobiz-metaboxes select:focus {
-    border-color: #6366f1 !important;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15) !important;
-    outline: none !important;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    outline: none;
 }
 
-/* Select Group Card — White card to match .sgeobiz-toblock */
-.sgeobiz-premium-theme .sgeobiz-select-group {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 10px 16px !important;
-    background: #ffffff !important;
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 12px !important;
-    margin: 0 !important;
-    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.05) !important;
-    transition: all 0.2s ease !important;
+/* ── Select Group Card ──────────────────────────────────────────────────────
+   White card yang membungkus label + select agar sejajar dengan .sgeobiz-toblock
+   ─────────────────────────────────────────────────────────────────────────── */
+.sgeobiz-metaboxes .sgeobiz-select-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    margin: 0;
+    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+    transition: all 0.2s ease;
 }
 
-.sgeobiz-premium-theme .sgeobiz-select-group:hover {
-    background: #f8fafc !important;
-    border-color: #cbd5e1 !important;
-    box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.08) !important;
+.sgeobiz-metaboxes .sgeobiz-select-group:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.08);
 }
 
-.sgeobiz-premium-theme .sgeobiz-select-group label {
-    display: block !important;
-    font-size: 11px !important;
-    font-weight: 700 !important;
-    color: #64748b !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
-    margin: 0 0 4px 0 !important;
-    background: transparent !important;
-    padding: 0 !important;
-    border: none !important;
+.sgeobiz-metaboxes .sgeobiz-select-group > label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 4px 0;
+    background: transparent;
+    padding: 0;
+    border: none;
 }
 
-.sgeobiz-premium-theme .sgeobiz-select-group select {
-    display: block !important;
-    width: 100% !important;
-    grid-column: auto !important;
+.sgeobiz-metaboxes .sgeobiz-select-group select {
+    display: block;
+    width: 100%;
+    grid-column: auto;
+    height: auto;
 }
 
 
 /* --- grid.css --- */
 /* ==========================================================================
    SGEOBIZ CSS MODULE - GRID LAYOUTS & CARDS
+   Strategi: Prefix .sgeobiz-metaboxes memberikan specificity (0-1-0) cukup
+   untuk mengalahkan WP admin tanpa !important chain.
    ========================================================================== */
 
-/* Style headings inside metaboxes as section titles */
-.sgeobiz-premium-theme .inside h4 {
-    font-size: 15px !important;
-    font-weight: 700 !important;
-    color: #0f172a !important; /* Slate 900 */
-    margin: 24px 0 12px 4px !important;
-    padding: 0 !important;
+/* Headings di dalam metaboxes sebagai section titles */
+.sgeobiz-metaboxes .inside h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 24px 0 12px 4px;
+    padding: 0;
 }
 
-/* Hide HR separators inside metaboxes as cards act as separation */
-.sgeobiz-premium-theme .inside hr {
-    display: none !important;
+/* Sembunyikan HR separator — cards sudah jadi pemisah visual */
+.sgeobiz-metaboxes .inside hr {
+    display: none;
 }
 
-/* Transparent Grid Wrapper (.sgeobiz-fields) — kecuali title separator yang punya class ini */
-.sgeobiz-premium-theme .sgeobiz-fields:not(#sgeobiz-title-separator) {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 12px !important;
-    width: 100% !important;
-    padding: 0 !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    box-sizing: border-box !important;
-    margin: 0 0 24px 0 !important;
-    transition: none !important;
+/* ── .sgeobiz-fields Grid Wrapper ──────────────────────────────────────────
+   Kecuali #sgeobiz-title-separator yang kebetulan punya class .sgeobiz-fields
+   tapi bukan untuk grid — cukup pakai :not() tanpa override
+   ─────────────────────────────────────────────────────────────────────────── */
+.sgeobiz-metaboxes .sgeobiz-fields:not(#sgeobiz-title-separator) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    box-sizing: border-box;
+    margin: 0 0 24px 0;
 }
 
-.sgeobiz-premium-theme .sgeobiz-fields:not(#sgeobiz-title-separator):hover {
-    box-shadow: none !important;
+/* ── Option Card (.sgeobiz-toblock) ────────────────────────────────────────
+   White card mandiri — bukan nested container
+   ─────────────────────────────────────────────────────────────────────────── */
+.sgeobiz-metaboxes .sgeobiz-fields:not(#sgeobiz-title-separator) .sgeobiz-toblock {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    margin: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
 }
 
-/* Checkbox & Switch/Radio labels as Modern White Cards inside .sgeobiz-fields */
-.sgeobiz-premium-theme .sgeobiz-fields:not(#sgeobiz-title-separator) .sgeobiz-toblock {
-    display: flex !important;
-    align-items: center !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 12px 16px !important;
-    background: #ffffff !important;
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 12px !important;
-    margin: 0 !important;
-    cursor: pointer !important;
-    transition: all 0.2s ease !important;
-    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.05) !important;
+.sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-toblock:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.08);
 }
 
-.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-toblock:hover {
-    background: #f8fafc !important;
-    border-color: #cbd5e1 !important;
-    box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.08) !important;
+.sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-toblock label {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    background: transparent;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    color: #334155;
+    margin: 0;
+    transition: color 0.2s ease;
 }
 
-.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-toblock label {
-    display: flex !important;
-    align-items: center !important;
-    flex-grow: 1 !important;
-    background: transparent !important;
-    padding: 0 !important;
-    border: none !important;
-    cursor: pointer !important;
-    font-size: 13px !important;
-    font-weight: 500 !important;
-    color: #334155 !important;
-    margin: 0 !important;
-    transition: color 0.2s ease !important;
+.sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-toblock:hover label {
+    color: #0f172a;
 }
 
-.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-toblock:hover label {
-    color: #0f172a !important;
-}
-
-/* Option fields / description layout in grid */
-.sgeobiz-premium-theme .sgeobiz-fields p.description,
-.sgeobiz-premium-theme .sgeobiz-fields .description {
-    font-size: 12px !important;
-    color: #64748b !important;
-    margin-top: 8px !important;
-    line-height: 1.6 !important;
+/* Description / keterangan di bawah grup field */
+.sgeobiz-metaboxes .sgeobiz-fields p.description,
+.sgeobiz-metaboxes .sgeobiz-fields .description {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 8px;
+    line-height: 1.6;
     display: block;
     width: 100%;
-    grid-column: span 2 !important;
-    padding-left: 4px !important;
+    grid-column: span 2;
+    padding-left: 4px;
 }
 
-/* Ensure larger inputs span full-width inside grid (except selects inside select groups) */
-.sgeobiz-premium-theme .sgeobiz-fields textarea,
-.sgeobiz-premium-theme .sgeobiz-fields > select,
-.sgeobiz-premium-theme .sgeobiz-fields input[type="text"],
-.sgeobiz-premium-theme .sgeobiz-fields input[type="url"],
-.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-select-wrap,
-.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-select-block {
-    grid-column: span 2 !important;
-    width: 100% !important;
+/* Input besar span 2 kolom (kecuali select di dalam select-group) */
+.sgeobiz-metaboxes .sgeobiz-fields textarea,
+.sgeobiz-metaboxes .sgeobiz-fields > select,
+.sgeobiz-metaboxes .sgeobiz-fields input[type="text"],
+.sgeobiz-metaboxes .sgeobiz-fields input[type="url"],
+.sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-select-wrap,
+.sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-select-block {
+    grid-column: span 2;
+    width: 100%;
 }
 
-/* WordPress original form table styling overrides */
-.sgeobiz-premium-theme .form-table {
-    display: block !important;
-    width: 100% !important;
-    margin: 0 !important;
+/* ── WordPress .form-table overrides ───────────────────────────────────────
+   Ubah table layout WP jadi block/grid agar bisa pakai desain card modern.
+   .sgeobiz-metaboxes + element tag cukup mengalahkan WP .form-table rules.
+   ─────────────────────────────────────────────────────────────────────────── */
+.sgeobiz-metaboxes .form-table {
+    display: block;
+    width: 100%;
+    margin: 0;
     border-collapse: collapse;
 }
 
-.sgeobiz-premium-theme .form-table tbody {
-    display: block !important;
-    width: 100% !important;
+.sgeobiz-metaboxes .form-table tbody {
+    display: block;
+    width: 100%;
 }
 
-/* Transparent Setting Row */
-.sgeobiz-premium-theme .form-table tr {
-    display: flex !important;
-    flex-direction: column !important;
-    margin-bottom: 24px !important;
-    padding: 0 !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    transition: none !important;
+/* Row transparan — hanya jadi flex container vertikal */
+.sgeobiz-metaboxes .form-table tr {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.sgeobiz-premium-theme .form-table tr:hover {
-    box-shadow: none !important;
-}
-
-.sgeobiz-premium-theme .form-table th {
-    display: block !important;
-    width: 100% !important;
-    padding: 0 0 12px 4px !important;
-    font-size: 15px !important;
-    font-weight: 700 !important;
-    color: #0f172a !important; /* Slate 900 */
+.sgeobiz-metaboxes .form-table th {
+    display: block;
+    width: 100%;
+    padding: 0 0 12px 4px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
     text-align: left;
 }
 
-.sgeobiz-premium-theme .form-table td {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 12px !important;
-    width: 100% !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
+/* TD sebagai grid 2-kolom untuk label-label checkbox di dalamnya */
+.sgeobiz-metaboxes .form-table td {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* TD Checkbox & Switch labels as Modern White Cards */
-.sgeobiz-premium-theme .form-table td label {
-    display: flex !important;
-    align-items: center !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 12px 16px !important;
-    background: #ffffff !important;
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 12px !important;
-    cursor: pointer !important;
-    font-size: 13px !important;
-    font-weight: 500 !important;
-    color: #334155 !important;
-    transition: all 0.2s ease !important;
-    margin: 0 !important;
-    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.05) !important;
+/* Label langsung di dalam td sebagai white card
+   SCOPE: hanya direct child label (bukan label di dalam #sgeobiz-title-separator
+   yang kebetulan ada dalam td — ID selector di views.css punya specificity lebih tinggi) */
+.sgeobiz-metaboxes .form-table td > label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    color: #334155;
+    transition: all 0.2s ease;
+    margin: 0;
+    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
 }
 
-.sgeobiz-premium-theme .form-table td label:hover {
-    background: #f8fafc !important;
-    border-color: #cbd5e1 !important;
-    box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.08) !important;
-    color: #0f172a !important;
+.sgeobiz-metaboxes .form-table td > label:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.08);
+    color: #0f172a;
 }
 
-/* Responsive collapse on mobile */
+/* Responsive — 1 kolom di mobile */
 @media screen and (max-width: 768px) {
-    .sgeobiz-premium-theme .sgeobiz-fields {
-        grid-template-columns: 1fr !important;
-        padding: 0 !important;
+    .sgeobiz-metaboxes .sgeobiz-fields:not(#sgeobiz-title-separator) {
+        grid-template-columns: 1fr;
     }
-    .sgeobiz-premium-theme .sgeobiz-fields p.description,
-    .sgeobiz-premium-theme .sgeobiz-fields .description,
-    .sgeobiz-premium-theme .sgeobiz-fields textarea,
-    .sgeobiz-premium-theme .sgeobiz-fields > select,
-    .sgeobiz-premium-theme .sgeobiz-fields input[type="text"],
-    .sgeobiz-premium-theme .sgeobiz-fields input[type="url"],
-    .sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-select-wrap,
-    .sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-select-block {
-        grid-column: span 1 !important;
+    .sgeobiz-metaboxes .sgeobiz-fields p.description,
+    .sgeobiz-metaboxes .sgeobiz-fields .description,
+    .sgeobiz-metaboxes .sgeobiz-fields textarea,
+    .sgeobiz-metaboxes .sgeobiz-fields > select,
+    .sgeobiz-metaboxes .sgeobiz-fields input[type="text"],
+    .sgeobiz-metaboxes .sgeobiz-fields input[type="url"],
+    .sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-select-wrap,
+    .sgeobiz-metaboxes .sgeobiz-fields .sgeobiz-select-block {
+        grid-column: span 1;
     }
-    .sgeobiz-premium-theme .form-table td {
-        grid-template-columns: 1fr !important;
-    }
-    .sgeobiz-premium-theme td textarea,
-    .sgeobiz-premium-theme td table,
-    .sgeobiz-premium-theme td .sgeobiz-select-block {
-        grid-column: span 1 !important;
+    .sgeobiz-metaboxes .form-table td {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -618,25 +632,30 @@ body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
    SGEOBIZ CSS MODULE - MINOR VIEWS & SPECIFIC STYLES
    ========================================================================== */
 
-/* Radio Button Styles */
-.sgeobiz-premium-theme input[type="radio"] {
-    border: 1px solid #cbd5e1 !important;
-    width: 18px !important;
-    height: 18px !important;
-    margin: 0 8px 0 0 !important;
+/* ── Radio Button Styles ────────────────────────────────────────────────────
+   .sgeobiz-metaboxes input[type=radio] (0-1-0-1) > WP input[type=radio] (0-0-0-1)
+   ─────────────────────────────────────────────────────────────────────────── */
+.sgeobiz-metaboxes input[type="radio"] {
+    border: 1px solid #cbd5e1;
+    width: 18px;
+    height: 18px;
+    margin: 0 8px 0 0;
     vertical-align: middle;
     cursor: pointer;
-    transition: border-color 0.2s !important;
+    transition: border-color 0.2s;
+    flex-shrink: 0;
 }
 
-.sgeobiz-premium-theme input[type="radio"]:checked::before {
-    background-color: #6366f1 !important;
-    width: 10px !important;
-    height: 10px !important;
-    margin: 3px !important;
+.sgeobiz-metaboxes input[type="radio"]:checked::before {
+    background-color: #6366f1;
+    width: 10px;
+    height: 10px;
+    margin: 3px;
 }
 
-/* Styling Active Sidebar Submenu */
+/* ── Active Sidebar Submenu ─────────────────────────────────────────────────
+   WP sidebar rules punya specificity tinggi, perlu !important di sini
+   ─────────────────────────────────────────────────────────────────────────── */
 #toplevel_page_sgeobiz-seo-settings .wp-submenu li.current {
     background-color: rgba(99, 102, 241, 0.08) !important;
     border-left: 3px solid #6366f1 !important;
@@ -650,7 +669,12 @@ body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
     font-weight: 700 !important;
 }
 
-/* Native Title Sep & Location specific styles */
+/* ── Native Title Separator & Location ─────────────────────────────────────
+   #sgeobiz-title-separator adalah <p class="sgeobiz-fields"> — ID selector
+   (specificity 0-1-0-0) mengalahkan class selector .sgeobiz-metaboxes .form-table td > label
+   (specificity 0-3-0-0) JIKA kita tidak pakai !important di grid.css.
+   Dengan refactor ini, tidak ada konflik — selector sudah clean.
+   ─────────────────────────────────────────────────────────────────────────── */
 #sgeobiz-title-separator {
     display: table;
     width: 100%;
@@ -704,7 +728,7 @@ body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
     vertical-align: baseline;
 }
 
-/* Post Type Archives & Title Additions view styles */
+/* ── Post Type Archives & Title Additions ───────────────────────────────── */
 .sgeobiz-title-additions-js,
 .sgeobiz-title-additions-example-left code,
 .sgeobiz-title-additions-example-right code {

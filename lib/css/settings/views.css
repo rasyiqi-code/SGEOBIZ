@@ -2,25 +2,30 @@
    SGEOBIZ CSS MODULE - MINOR VIEWS & SPECIFIC STYLES
    ========================================================================== */
 
-/* Radio Button Styles */
-.sgeobiz-premium-theme input[type="radio"] {
-    border: 1px solid #cbd5e1 !important;
-    width: 18px !important;
-    height: 18px !important;
-    margin: 0 8px 0 0 !important;
+/* ── Radio Button Styles ────────────────────────────────────────────────────
+   .sgeobiz-metaboxes input[type=radio] (0-1-0-1) > WP input[type=radio] (0-0-0-1)
+   ─────────────────────────────────────────────────────────────────────────── */
+.sgeobiz-metaboxes input[type="radio"] {
+    border: 1px solid #cbd5e1;
+    width: 18px;
+    height: 18px;
+    margin: 0 8px 0 0;
     vertical-align: middle;
     cursor: pointer;
-    transition: border-color 0.2s !important;
+    transition: border-color 0.2s;
+    flex-shrink: 0;
 }
 
-.sgeobiz-premium-theme input[type="radio"]:checked::before {
-    background-color: #6366f1 !important;
-    width: 10px !important;
-    height: 10px !important;
-    margin: 3px !important;
+.sgeobiz-metaboxes input[type="radio"]:checked::before {
+    background-color: #6366f1;
+    width: 10px;
+    height: 10px;
+    margin: 3px;
 }
 
-/* Styling Active Sidebar Submenu */
+/* ── Active Sidebar Submenu ─────────────────────────────────────────────────
+   WP sidebar rules punya specificity tinggi, perlu !important di sini
+   ─────────────────────────────────────────────────────────────────────────── */
 #toplevel_page_sgeobiz-seo-settings .wp-submenu li.current {
     background-color: rgba(99, 102, 241, 0.08) !important;
     border-left: 3px solid #6366f1 !important;
@@ -34,7 +39,12 @@
     font-weight: 700 !important;
 }
 
-/* Native Title Sep & Location specific styles */
+/* ── Native Title Separator & Location ─────────────────────────────────────
+   #sgeobiz-title-separator adalah <p class="sgeobiz-fields"> — ID selector
+   (specificity 0-1-0-0) mengalahkan class selector .sgeobiz-metaboxes .form-table td > label
+   (specificity 0-3-0-0) JIKA kita tidak pakai !important di grid.css.
+   Dengan refactor ini, tidak ada konflik — selector sudah clean.
+   ─────────────────────────────────────────────────────────────────────────── */
 #sgeobiz-title-separator {
     display: table;
     width: 100%;
@@ -88,7 +98,7 @@
     vertical-align: baseline;
 }
 
-/* Post Type Archives & Title Additions view styles */
+/* ── Post Type Archives & Title Additions ───────────────────────────────── */
 .sgeobiz-title-additions-js,
 .sgeobiz-title-additions-example-left code,
 .sgeobiz-title-additions-example-right code {

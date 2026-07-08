@@ -1,39 +1,44 @@
 /* ==========================================================================
    SGEOBIZ CSS MODULE - TABS STYLING & TOGGLES
+   Strategi: Scope ke .sgeobiz-metaboxes — specificity (0-1-0) + class lagi
+   mengalahkan WP .nav-tab rules (0-0-1-0) tanpa !important.
    ========================================================================== */
 
-/* Tab Headers as Rounded Pills */
-.sgeobiz-nav-tab-wrapper {
-    border-bottom: none !important;
-    padding: 0 0 16px 0 !important;
-    margin: 0 0 20px 0 !important;
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 8px !important;
+/* Tab Headers sebagai Rounded Pills */
+.sgeobiz-metaboxes .sgeobiz-nav-tab-wrapper {
+    border-bottom: none;
+    padding: 0 0 16px 0;
+    margin: 0 0 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
-.sgeobiz-nav-tab-content {
-    margin: 0 !important;
+.sgeobiz-metaboxes .sgeobiz-nav-tab-content {
+    margin: 0;
 }
 
-.sgeobiz-nav-tab-label {
-    background: #e2e8f0 !important;
-    border: 1px solid #cbd5e1 !important;
-    padding: 8px 16px !important;
-    color: #475569 !important;
-    font-size: 13px !important;
-    font-weight: 600 !important;
-    margin: 0 !important;
-    border-radius: 8px !important;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+.sgeobiz-metaboxes .sgeobiz-nav-tab-label {
+    background: #e2e8f0;
+    border: 1px solid #cbd5e1;
+    padding: 8px 16px;
+    color: #475569;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0;
+    border-radius: 8px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    cursor: pointer;
+    display: inline-block;
 }
 
-.sgeobiz-nav-tab-label:hover {
-    background: #cbd5e1 !important;
-    color: #0f172a !important;
+.sgeobiz-metaboxes .sgeobiz-nav-tab-label:hover {
+    background: #cbd5e1;
+    color: #0f172a;
 }
 
+/* Radio tab tersembunyi (accessibility) */
 input.sgeobiz-nav-tab-radio {
     position: absolute;
     width: 0;
@@ -47,14 +52,15 @@ input.sgeobiz-nav-tab-radio {
     appearance: none;
 }
 
-.sgeobiz-nav-tab-radio:checked + label {
-    color: #ffffff !important;
-    background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
-    border-color: #6366f1 !important;
-    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3) !important;
+/* Tab aktif — gradient indigo */
+.sgeobiz-metaboxes .sgeobiz-nav-tab-radio:checked + label.sgeobiz-nav-tab-label {
+    color: #ffffff;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    border-color: #6366f1;
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
 }
 
-/* Original Tabs fallback classes */
+/* ── Fallback: No-JS tabs ────────────────────────────────────────────────── */
 .sgeobiz-nav-tab-no-js {
     position: relative;
     clear: both;

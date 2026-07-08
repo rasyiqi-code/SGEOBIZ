@@ -1,5 +1,8 @@
 /* ==========================================================================
    SGEOBIZ CSS MODULE - BASE LAYOUT & WRAPPERS
+   Strategi: Semua style plugin scope ke .sgeobiz-metaboxes agar specificity
+   (0-1-0) mengalahkan WP admin (0-0-0) tanpa perlu !important chain.
+   !important HANYA dipertahankan untuk: tombol WP, display:none hide, appearance.
    ========================================================================== */
 
 /* Main wrapping container */
@@ -10,9 +13,9 @@
     padding: 0 20px;
 }
 
-.sgeobiz-dashboard {
-    display: flex !important;
-    flex-direction: column !important;
+.sgeobiz-metaboxes .sgeobiz-dashboard {
+    display: flex;
+    flex-direction: column;
     background: #ffffff;
     border-radius: 16px;
     overflow: hidden;
@@ -23,14 +26,14 @@
 }
 
 /* Main Content Area */
-.sgeobiz-main {
+.sgeobiz-metaboxes .sgeobiz-main {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     background: #ffffff;
 }
 
-.sgeobiz-topbar {
+.sgeobiz-metaboxes .sgeobiz-topbar {
     padding: 20px 30px;
     background: linear-gradient(to right, #f8fafc, #ffffff);
     border-bottom: 1px solid #e2e8f0;
@@ -39,7 +42,7 @@
     align-items: center;
 }
 
-.sgeobiz-topbar-title {
+.sgeobiz-metaboxes .sgeobiz-topbar-title {
     margin: 0;
     font-size: 22px;
     font-weight: 800;
@@ -47,7 +50,7 @@
     color: #0f172a;
 }
 
-.sgeobiz-topbar-title .sgeobiz-badge {
+.sgeobiz-metaboxes .sgeobiz-topbar-title .sgeobiz-badge {
     font-size: 11px;
     font-weight: 600;
     background: #e0e7ff;
@@ -58,14 +61,14 @@
     vertical-align: middle;
 }
 
-.sgeobiz-topbar-actions {
+.sgeobiz-metaboxes .sgeobiz-topbar-actions {
     display: flex;
     gap: 12px;
 }
 
-/* Button stylings */
-.sgeobiz-topbar-actions .button-primary,
-.sgeobiz-bottom-buttons .button-primary {
+/* Button stylings — WP .button-primary pakai !important, jadi kita perlu !important juga */
+.sgeobiz-metaboxes .sgeobiz-topbar-actions .button-primary,
+.sgeobiz-metaboxes .sgeobiz-bottom-buttons .button-primary {
     background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
     border: none !important;
     color: #ffffff !important;
@@ -75,81 +78,78 @@
     height: 38px !important;
     line-height: 38px !important;
     box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3) !important;
-    cursor: pointer !important;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 13px !important;
 }
 
-.sgeobiz-topbar-actions .button-primary:hover,
-.sgeobiz-bottom-buttons .button-primary:hover {
-    transform: translateY(-2px) !important;
+.sgeobiz-metaboxes .sgeobiz-topbar-actions .button-primary:hover,
+.sgeobiz-metaboxes .sgeobiz-bottom-buttons .button-primary:hover {
+    transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4) !important;
 }
 
-.sgeobiz-topbar-actions .button-primary:active,
-.sgeobiz-bottom-buttons .button-primary:active {
-    transform: translateY(0) !important;
+.sgeobiz-metaboxes .sgeobiz-topbar-actions .button-primary:active,
+.sgeobiz-metaboxes .sgeobiz-bottom-buttons .button-primary:active {
+    transform: translateY(0);
 }
 
-.sgeobiz-topbar-actions .button,
-.sgeobiz-topbar-actions .button-secondary {
+.sgeobiz-metaboxes .sgeobiz-topbar-actions .button,
+.sgeobiz-metaboxes .sgeobiz-topbar-actions .button-secondary {
     border-radius: 8px !important;
     padding: 0 16px !important;
     height: 38px !important;
     line-height: 36px !important;
     border: 1px solid #cbd5e1 !important;
     color: #475569 !important;
-    font-weight: 600 !important;
+    font-weight: 600;
     background: #ffffff !important;
-    font-size: 13px !important;
-    transition: all 0.2s ease !important;
+    font-size: 13px;
+    transition: all 0.2s ease;
 }
 
-.sgeobiz-topbar-actions .button:hover,
-.sgeobiz-topbar-actions .button-secondary:hover {
+.sgeobiz-metaboxes .sgeobiz-topbar-actions .button:hover,
+.sgeobiz-metaboxes .sgeobiz-topbar-actions .button-secondary:hover {
     background: #f8fafc !important;
     border-color: #94a3b8 !important;
     color: #1e293b !important;
 }
 
+/* Sembunyikan elemen WP bawaan — perlu !important karena WP pakai display:block inline */
 .sgeobiz-top-wrap,
 .sgeobiz-bottom-wrap {
     display: none !important;
 }
 
 /* Postboxes Container */
-.sgeobiz-settings-container {
+.sgeobiz-metaboxes .sgeobiz-settings-container {
     padding: 30px;
     flex-grow: 1;
     background: #f8fafc;
 }
 
-.sgeobiz-settings-container .postbox {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    margin-bottom: 0 !important;
+.sgeobiz-metaboxes .sgeobiz-settings-container .postbox {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    margin-bottom: 0;
 }
 
-.sgeobiz-settings-container .postbox .postbox-header {
-    display: none !important;
+.sgeobiz-metaboxes .sgeobiz-settings-container .postbox .postbox-header {
+    display: none;
 }
 
-.sgeobiz-settings-container .postbox .inside {
-    padding: 0 !important;
-    margin: 0 !important;
+.sgeobiz-metaboxes .sgeobiz-settings-container .postbox .inside {
+    padding: 0;
+    margin: 0;
 }
 
-.sgeobiz-top-wrap {
+.sgeobiz-metaboxes .sgeobiz-top-wrap {
     margin-bottom: 8px;
 }
 
-.sgeobiz-top-buttons {
-    padding: 9px 0 4px;
-}
-
-.sgeobiz-top-buttons,
-.sgeobiz-bottom-buttons {
+.sgeobiz-metaboxes .sgeobiz-top-buttons,
+.sgeobiz-metaboxes .sgeobiz-bottom-buttons {
     display: flex;
     flex: 1 1 auto;
     justify-content: start;
@@ -157,20 +157,20 @@
     gap: 10px;
 }
 
-.sgeobiz-top-buttons.sgeobiz-end,
-.sgeobiz-bottom-buttons.sgeobiz-end {
+.sgeobiz-metaboxes .sgeobiz-top-buttons.sgeobiz-end,
+.sgeobiz-metaboxes .sgeobiz-bottom-buttons.sgeobiz-end {
     justify-content: flex-end;
 }
 
 @media screen and (max-width: 782px) {
-    .sgeobiz-top-wrap,
-    .sgeobiz-bottom-wrap,
-    .sgeobiz-top-buttons.sgeobiz-end,
-    .sgeobiz-bottom-buttons.sgeobiz-end {
+    .sgeobiz-metaboxes .sgeobiz-top-wrap,
+    .sgeobiz-metaboxes .sgeobiz-bottom-wrap,
+    .sgeobiz-metaboxes .sgeobiz-top-buttons.sgeobiz-end,
+    .sgeobiz-metaboxes .sgeobiz-bottom-buttons.sgeobiz-end {
         justify-content: start;
     }
-    .sgeobiz-top-buttons,
-    .sgeobiz-bottom-buttons {
+    .sgeobiz-metaboxes .sgeobiz-top-buttons,
+    .sgeobiz-metaboxes .sgeobiz-bottom-buttons {
         width: 100%;
     }
 }
