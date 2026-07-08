@@ -40,14 +40,17 @@ a.sgeobiz-tooltip-item {
 }
 
 .sgeobiz-tooltip-text-wrap {
-	padding: 10px 12px;
-	font-size: 13px;
+	padding: 12px 14px;
+	font-size: 12px;
 	font-weight: 400;
-	line-height: 1.625em;
-	border-radius: 3px;
-	background: #424242;
-	color: #fbf7fd;
-	box-shadow: 0px 0px 2px rgba( 0, 0, 0, .6 );
+	line-height: 1.5;
+	border-radius: 8px;
+	background: rgba(15, 23, 42, 0.95); /* Slate 900 */
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	color: #f1f5f9;
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
 	text-shadow: none;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
@@ -57,6 +60,7 @@ a.sgeobiz-tooltip-item {
 	flex: 1 0 auto;
 	flex-flow: row wrap;
 	justify-content: flex-start;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .sgeobiz-tooltip-text {
@@ -64,7 +68,13 @@ a.sgeobiz-tooltip-item {
 }
 
 .sgeobiz-tooltip-text-wrap * {
-	color: #fbf7fd;
+	color: #e2e8f0;
+}
+
+.sgeobiz-tooltip-text-wrap strong, 
+.sgeobiz-tooltip-text-wrap b {
+	color: #ffffff;
+	font-weight: 600;
 }
 
 .sgeobiz-tooltip-text span {
@@ -115,7 +125,7 @@ a.sgeobiz-tooltip-item {
 	content: "";
 	border-left: 9px solid transparent;
 	border-right: 9px solid transparent;
-	border-top: 9px solid rgba( 0, 0, 0, .25 );
+	border-top: 9px solid rgba( 255, 255, 255, 0.1 );
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -125,7 +135,7 @@ a.sgeobiz-tooltip-item {
 	content: "";
 	border-left: 8px solid transparent;
 	border-right: 8px solid transparent;
-	border-top: 8px solid #424242;
+	border-top: 8px solid rgba(15, 23, 42, 0.95);
 	position: absolute;
 	bottom: 1px;
 	left: 1px;
@@ -135,12 +145,12 @@ a.sgeobiz-tooltip-item {
 	bottom: auto;
 	top: 0;
 	border-top: 0;
-	border-bottom: 9px solid rgba( 0, 0, 0, .25 );
+	border-bottom: 9px solid rgba( 255, 255, 255, 0.1 );
 }
 
 .sgeobiz-tooltip-down .sgeobiz-tooltip-arrow::after {
 	bottom: auto;
 	top: 1px;
 	border-top: 0;
-	border-bottom: 8px solid #424242;
+	border-bottom: 8px solid rgba(15, 23, 42, 0.95);
 }
