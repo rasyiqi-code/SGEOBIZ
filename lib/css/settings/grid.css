@@ -16,8 +16,8 @@
     display: none !important;
 }
 
-/* Transparent Grid Wrapper (.sgeobiz-fields) */
-.sgeobiz-premium-theme .sgeobiz-fields {
+/* Transparent Grid Wrapper (.sgeobiz-fields) — kecuali title separator yang punya class ini */
+.sgeobiz-premium-theme .sgeobiz-fields:not(#sgeobiz-title-separator) {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 12px !important;
@@ -31,12 +31,12 @@
     transition: none !important;
 }
 
-.sgeobiz-premium-theme .sgeobiz-fields:hover {
+.sgeobiz-premium-theme .sgeobiz-fields:not(#sgeobiz-title-separator):hover {
     box-shadow: none !important;
 }
 
 /* Checkbox & Switch/Radio labels as Modern White Cards inside .sgeobiz-fields */
-.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-toblock {
+.sgeobiz-premium-theme .sgeobiz-fields:not(#sgeobiz-title-separator) .sgeobiz-toblock {
     display: flex !important;
     align-items: center !important;
     width: 100% !important;
