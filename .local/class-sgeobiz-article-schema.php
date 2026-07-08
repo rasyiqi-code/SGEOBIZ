@@ -31,8 +31,9 @@ class SGEOBIZ_Article_Schema {
 		if ( self::$inst ) return;
 		self::$inst = new self();
 
-		// Priority 15 → setelah Schema_GEO (priority 12), sebelum filter umum
-		add_filter( 'sgeobiz_seo_schema_graph_data', [ self::$inst, 'inject_article_schema' ], 15, 2 );
+		// Priority 14 → setelah Schema_GEO (p12), sebelum Custom Schema Injector (p15)
+		// Urutan penting: WebPage harus diupgrade ke Article dulu sebelum custom schema di-merge
+		add_filter( 'sgeobiz_seo_schema_graph_data', [ self::$inst, 'inject_article_schema' ], 14, 2 );
 	}
 
 	/**
