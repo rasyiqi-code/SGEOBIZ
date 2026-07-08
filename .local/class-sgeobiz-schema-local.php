@@ -148,18 +148,39 @@ class SGEOBIZ_Schema_Local {
 			$schema['email'] = $data['email'];
 		}
 
-		// ContactPoint untuk WhatsApp
-		if ( ! empty( $data['whatsapp'] ) ) {
-			$wa_number = preg_replace( '/[^0-9]/', '', $data['whatsapp'] );
-			$schema['contactPoint'] = [
-				[
-					'@type'       => 'ContactPoint',
-					'telephone'   => '+' . $wa_number,
-					'contactType' => 'customer service',
-					'areaServed'  => 'ID',
-					'availableLanguage' => [ 'Indonesian', 'English' ],
-				],
+		// ContactPoint: bangun array dari semua saluran kontak yang tersedia
+		// Dioptimasi untuk Google 2026: areaServed + availableLanguage wajib
+		$contact_points = [];
+		$area_served    = ! empty( $data['service_area'] ) ? $data['service_area'] : 'ID';
+		$languages      = ! empty( $data['available_language'] )
+			? array_map( 'trim', explode( ',', $data['available_language'] ) )
+			: [ 'Indonesian' ];
+
+		// ContactPoint telepon utama (jika ada nomor telepon)
+		if ( ! empty( $data['phone'] ) ) {
+			$contact_points[] = [
+				'@type'             => 'ContactPoint',
+				'telephone'         => sanitize_text_field( $data['phone'] ),
+				'contactType'       => 'customer service',
+				'areaServed'        => $area_served,
+				'availableLanguage' => $languages,
 			];
+		}
+
+		// ContactPoint WhatsApp (kanal komunikasi utama bisnis Indonesia)
+		if ( ! empty( $data['whatsapp'] ) ) {
+			$wa_number        = preg_replace( '/[^0-9]/', '', $data['whatsapp'] );
+			$contact_points[] = [
+				'@type'             => 'ContactPoint',
+				'telephone'         => '+' . $wa_number,
+				'contactType'       => 'sales',
+				'areaServed'        => $area_served,
+				'availableLanguage' => $languages,
+			];
+		}
+
+		if ( ! empty( $contact_points ) ) {
+			$schema['contactPoint'] = $contact_points;
 		}
 
 		// Logo

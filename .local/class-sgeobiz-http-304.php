@@ -63,9 +63,12 @@ class SGEOBIZ_HTTP_304 {
 		$etag = '"' . md5( $last_modified_gmt_str . get_queried_object_id() ) . '"';
 
 		// Kirim header penentu cache di front-end
+		// stale-while-revalidate: crawler AI (GPTBot, Googlebot) bisa pakai cache lama
+		// sambil revalidasi di background → sinyal freshness konten yang efisien
 		header( 'Last-Modified: ' . $last_modified_gmt_str );
 		header( 'ETag: ' . $etag );
-		header( 'Cache-Control: public, max-age=3600, must-revalidate' );
+		header( 'Cache-Control: public, max-age=3600, stale-while-revalidate=86400, must-revalidate' );
+		header( 'Vary: Accept-Encoding' );
 
 		// Ambil header validasi dari request Googlebot / browser
 		$if_modified_since = isset( $_SERVER['HTTP_IF_MODIFIED_SINCE'] ) ? trim( $_SERVER['HTTP_IF_MODIFIED_SINCE'] ) : false;

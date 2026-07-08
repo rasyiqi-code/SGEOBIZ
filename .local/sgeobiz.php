@@ -72,7 +72,7 @@ function sgeobiz_boot() {
 	// 10. Auto Image SEO Optimizer ( Alt Tag & File Name Renamer )
 	SGEOBIZ_Auto_Alt_Image::init();
 
-	// 11. GEO Graph Optimizer ( Speakable Schema & Author sameAs )
+	// 11. GEO Graph Optimizer ( Speakable Schema & Author E-E-A-T sameAs )
 	SGEOBIZ_Schema_GEO::init();
 
 	// 12. Real-Time IndexNow API Client ( Instant AI Indexing )
@@ -80,5 +80,8 @@ function sgeobiz_boot() {
 
 	// 13. Focus SEO Content Optimizer (Keyword, subject density, dictionary)
 	SGEOBIZ_Focus::init();
+
+	// 14. Article Schema Injector — upgrade WebPage ke Article/BlogPosting (SEO 2026)
+	SGEOBIZ_Article_Schema::init();
 }
 

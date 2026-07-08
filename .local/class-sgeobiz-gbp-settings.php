@@ -363,8 +363,10 @@ class SGEOBIZ_GBP_Settings {
 			'email'           => sanitize_email( $post['business_email'] ?? '' ),
 
 			// Kontak
-			'phone'           => sanitize_text_field( $post['business_phone'] ?? '' ),
-			'whatsapp'        => sanitize_text_field( $post['business_whatsapp'] ?? '' ),
+			'phone'              => sanitize_text_field( $post['business_phone'] ?? '' ),
+			'whatsapp'           => sanitize_text_field( $post['business_whatsapp'] ?? '' ),
+			'service_area'       => sanitize_text_field( $post['business_service_area'] ?? 'ID' ),
+			'available_language' => sanitize_text_field( $post['business_available_language'] ?? 'Indonesian' ),
 
 			// Alamat utama
 			'address'         => sanitize_text_field( $post['business_address'] ?? '' ),
@@ -474,6 +476,18 @@ class SGEOBIZ_GBP_Settings {
 		echo '<div class="sgeobiz-row-2">';
 		$this->field( 'business_phone', 'Nomor Telepon (format: +6221xxxxxxxx)', $d( 'phone' ) );
 		$this->field( 'business_whatsapp', 'WhatsApp (format: 628xxxxxxxxx)', $d( 'whatsapp' ) );
+		echo '</div>';
+		echo '<div class="sgeobiz-row-2">';
+		$this->field(
+			'business_service_area',
+			'Area Layanan (kode negara/wilayah, pisahkan koma: ID, SG)',
+			$d( 'service_area', 'ID' )
+		);
+		$this->field(
+			'business_available_language',
+			'Bahasa Tersedia (pisahkan koma: Indonesian, English)',
+			$d( 'available_language', 'Indonesian' )
+		);
 		echo '</div>';
 		echo '</div>';
 
