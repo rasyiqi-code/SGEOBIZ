@@ -22,7 +22,7 @@ use SGEOBIZ_SEO\Helper\{
 
 /**
  * SGEOBIZ SEO plugin
- * Copyright (C) 2016 - 2025 SGEOBIZ (https://sgeobiz.com/)
+ * Copyright (C) 2016 - 2025 SGEOBIZ (https://rasyiqi-code.github.io/SGEOBIZ/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -289,7 +289,7 @@ switch ( $instance ) :
 					echo ' ';
 					HTML::make_info(
 						\__( 'Learn more about this card.', 'sgeobiz-seo' ),
-						'https://docs.sgeobiz.com/',
+						'https://rasyiqi-code.github.io/SGEOBIZ/',
 					);
 					?>
 				</h4>
@@ -326,7 +326,7 @@ switch ( $instance ) :
 		<hr>
 		<?php
 		HTML::header_title( \__( 'Card and Content Attribution', 'sgeobiz-seo' ) );
-		/* See: https://docs.sgeobiz.com/ */
+		/* See: https://rasyiqi-code.github.io/SGEOBIZ/ */
 		HTML::description( \__( 'X claims users will be able to follow and view the profiles of attributed accounts directly from the card when these fields are filled in.', 'sgeobiz-seo' ) );
 		HTML::description( \__( 'However, for now, these fields seem to have no discernible effect.', 'sgeobiz-seo' ) );
 		?>

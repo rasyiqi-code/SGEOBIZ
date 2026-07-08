@@ -14,7 +14,7 @@ use SGEOBIZ_SEO\Admin\Settings\Layout\Input;
 
 /**
  * SGEOBIZ SEO plugin
- * Copyright (C) 2017 - 2025 SGEOBIZ (https://sgeobiz.com/)
+ * Copyright (C) 2017 - 2025 SGEOBIZ (https://rasyiqi-code.github.io/SGEOBIZ/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -47,7 +47,7 @@ if (
 	$_extensions_button = Admin\Utils::display_extension_suggestions()
 		? \sprintf(
 			'<a href="%s" class=button rel="noreferrer noopener" target=_blank>%s</a>',
-			'https://sgeobiz.com/extensions/',
+			'https://rasyiqi-code.github.io/SGEOBIZ/',
 			\esc_html_x( 'Extensions', 'Plugin extensions', 'sgeobiz-seo' ),
 		)
 		: '';

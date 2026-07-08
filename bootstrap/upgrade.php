@@ -20,7 +20,7 @@ use SGEOBIZ_SEO\Helper\{
 
 /**
  * SGEOBIZ SEO plugin
- * Copyright (C) 2015 - 2025 SGEOBIZ (https://sgeobiz.com/)
+ * Copyright (C) 2015 - 2025 SGEOBIZ (https://rasyiqi-code.github.io/SGEOBIZ/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -455,7 +455,7 @@ function _prepare_upgrade_notice( $previous_version, $current_version ) {
 						\sprintf(
 							/* translators: %s = Link, markdown. */
 							\esc_html__( 'To take full advantage of all SEO features, please follow our [5-minute setup guide](%s).', 'sgeobiz-seo' ),
-							'https://sgeobiz.com/docs/seo-plugin-setup/' // Use https://sgeobiz.com/docs/setup ? Needless redirection...
+							'https://rasyiqi-code.github.io/SGEOBIZ/seo-plugin-setup/' // Use https://rasyiqi-code.github.io/SGEOBIZ/setup ? Needless redirection...
 						),
 						[ 'a' ],
 						[ 'a_internal' => false ],
@@ -533,7 +533,7 @@ function _prepare_upgrade_notice( $previous_version, $current_version ) {
 								? \wp_sprintf_l( '%l', $found_titles )
 								: current( $found_titles ),
 						),
-						'https://sgeobiz.com/docs/seo-data-migration/',
+						'https://rasyiqi-code.github.io/SGEOBIZ/seo-data-migration/',
 					),
 					[ 'a' ],
 					[ 'a_internal' => false ],

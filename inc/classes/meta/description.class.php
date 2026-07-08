@@ -28,7 +28,7 @@ use SGEOBIZ_SEO\Helper\{
 
 /**
  * SGEOBIZ SEO plugin
- * Copyright (C) 2023 - 2025 SGEOBIZ (https://sgeobiz.com/)
+ * Copyright (C) 2023 - 2025 SGEOBIZ (https://rasyiqi-code.github.io/SGEOBIZ/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -154,7 +154,7 @@ class Description {
 			$type,
 		);
 
-		// This page has a generated description that's far too short: https://sgeobiz.com/release-notes/extension-manager/1-0-0/.
+		// This page has a generated description that's far too short: https://rasyiqi-code.github.io/SGEOBIZ/release-notes/extension-manager/1-0-0/.
 		// A direct directory-'site:' query will accept the description outputted--anything else will ignore it...
 		// We should not work around that, because it won't direct in the slightest what to display.
 		$desc = Strings::clamp_sentence(

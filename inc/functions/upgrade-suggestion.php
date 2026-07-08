@@ -17,7 +17,7 @@ use SGEOBIZ_SEO\{
 
 /**
  * SGEOBIZ SEO plugin
- * Copyright (C) 2018 - 2025 SGEOBIZ (https://sgeobiz.com/)
+ * Copyright (C) 2018 - 2025 SGEOBIZ (https://rasyiqi-code.github.io/SGEOBIZ/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -103,8 +103,8 @@ function _suggest_temp_sale( $previous_version, $current_version ) {
 			Markdown::convert(
 				\sprintf(
 					'<p>You\'re now on SGEOBIZ SEO v5.1.4 &mdash; thanks for sticking with us!</p><p>We spent the year [rethinking plugin distribution](%s). Because we\'re late, our BFCM sale runs 2 extra weeks: [50%% off extensions for life](%s).</p><p>This notice disappears December 16th or when dismissed.</p>',
-					'https://sgeobiz.com/',
-					'https://sgeobiz.com/',
+					'https://rasyiqi-code.github.io/SGEOBIZ/',
+					'https://rasyiqi-code.github.io/SGEOBIZ/',
 				),
 				[ 'a' ],
 				[ 'a_internal' => false ],

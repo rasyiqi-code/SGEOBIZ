@@ -4,9 +4,9 @@
  *
  * @package   SGEOBIZ_SEO\Bootstrap
  * @author    SGEOBIZ
- * @copyright 2015 - 2025 SGEOBIZ (https://sgeobiz.com/)
+ * @copyright 2015 - 2025 SGEOBIZ (https://rasyiqi-code.github.io/SGEOBIZ/)
  * @license   GPL-3.0
- * @link      https://sgeobiz.com/
+ * @link      https://rasyiqi-code.github.io/SGEOBIZ/
  * @access    public
  *
  * @troy-repo
@@ -14,11 +14,11 @@
  *
  * @wordpress-plugin
  * Plugin Name: SGEOBIZ SEO
- * Plugin URI: https://sgeobiz.com/
+ * Plugin URI: https://rasyiqi-code.github.io/SGEOBIZ/
  * Description: Plugin SEO canggih untuk bisnis lokal Indonesia — schema LocalBusiness, Google Business Profile, AI meta generator, dan WooCommerce schema.
  * Version: 1.0.0
  * Author: SGEOBIZ
- * Author URI: https://sgeobiz.com/
+ * Author URI: https://rasyiqi-code.github.io/SGEOBIZ/
  * License: GPLv3
  * Text Domain: autodescription
  * Domain Path: /language
@@ -31,7 +31,7 @@ defined( 'ABSPATH' ) or die;
 
 /**
  * SGEOBIZ SEO plugin
- * Copyright (C) 2015 - 2025 SGEOBIZ (https://sgeobiz.com/)
+ * Copyright (C) 2015 - 2025 SGEOBIZ (https://rasyiqi-code.github.io/SGEOBIZ/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published

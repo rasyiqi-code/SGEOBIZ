@@ -22,7 +22,7 @@ use SGEOBIZ_SEO\Helper\Format\{
 
 /**
  * SGEOBIZ SEO plugin
- * Copyright (C) 2016 - 2025 SGEOBIZ (https://sgeobiz.com/)
+ * Copyright (C) 2016 - 2025 SGEOBIZ (https://rasyiqi-code.github.io/SGEOBIZ/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -149,7 +149,7 @@ switch ( $instance ) :
 						/* translators: 1: Extension name, 2: Extension link. Markdown!  */
 						\esc_html__( "The current theme doesn't support a feature that allows predictable output of titles. Consider installing [%1\$s](%2\$s) when you notice the title output in the browser-tab isn't as you have configured.", 'sgeobiz-seo' ),
 						'Title Fix',
-						'https://sgeobiz.com/',
+						'https://rasyiqi-code.github.io/SGEOBIZ/',
 					),
 					[ 'a' ],
 					[ 'a_internal' => false ],
@@ -335,7 +335,7 @@ switch ( $instance ) :
 			<?php
 			$info = HTML::make_info(
 				\__( "The prefix helps visitors and search engines determine what kind of page they're visiting.", 'sgeobiz-seo' ),
-				'https://docs.sgeobiz.com/',
+				'https://rasyiqi-code.github.io/SGEOBIZ/',
 				false,
 			);
 			HTML::wrap_fields(

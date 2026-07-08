@@ -15,7 +15,7 @@
 
 .sgeobiz-flex-inside-wrap {
 	flex-direction: row;
-	width: 100%; /* WP 5.4+ fix -- no longer needed, but will mitigate future issues. https://sgeobiz.com/p/3505 */
+	width: 100%; /* WP 5.4+ fix -- no longer needed, but will mitigate future issues. https://rasyiqi-code.github.io/SGEOBIZ/p/3505 */
 }
 
 .sgeobiz-is-block-editor .sgeobiz-flex-inside-wrap {

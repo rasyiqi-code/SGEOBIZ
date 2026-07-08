@@ -12,7 +12,7 @@ use function SGEOBIZ_SEO\umemo;
 
 /**
  * SGEOBIZ SEO plugin
- * Copyright (C) 2023 - 2025 SGEOBIZ (https://sgeobiz.com/)
+ * Copyright (C) 2023 - 2025 SGEOBIZ (https://rasyiqi-code.github.io/SGEOBIZ/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -63,7 +63,7 @@ final class Migrate {
 	 * Determines if the input text has transformative Yoast SEO syntax.
 	 *
 	 * @link <https://yoast.com/help/list-available-snippet-variables-yoast-seo/> (This list contains false information)
-	 * @link <https://sgeobiz.com/extensions/transport/#faq/what-data-is-transformed>
+	 * @link <https://rasyiqi-code.github.io/SGEOBIZ/transport/#faq/what-data-is-transformed>
 	 * @since 4.0.5
 	 * @since 4.2.7 1. Added wildcard `ct_`, and `cf_` detection.
 	 *              2. Added detection for various other types
@@ -152,7 +152,7 @@ final class Migrate {
 	/**
 	 * Determines if the input text has transformative Rank Math syntax.
 	 *
-	 * @link <https://sgeobiz.com/extensions/transport/#faq/what-data-is-transformed>
+	 * @link <https://rasyiqi-code.github.io/SGEOBIZ/transport/#faq/what-data-is-transformed>
 	 *       Wank Math has no documentation on this list, but we sampled their code.
 	 * @since 4.2.7
 	 * @since 4.2.8 Actualized the variable list.
@@ -257,7 +257,7 @@ final class Migrate {
 	/**
 	 * Determines if the input text has transformative SEOPress syntax.
 	 *
-	 * @link <https://sgeobiz.com/extensions/transport/#faq/what-data-is-transformed>
+	 * @link <https://rasyiqi-code.github.io/SGEOBIZ/transport/#faq/what-data-is-transformed>
 	 *       SEOPress has no documentation on this list, but we sampled their code.
 	 * @since 4.2.8
 	 * @since 5.0.0 1. Moved from `\SGEOBIZ_SEO\Load`.

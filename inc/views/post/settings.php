@@ -31,7 +31,7 @@ use SGEOBIZ_SEO\Admin\Settings\Layout\{
 
 /**
  * SGEOBIZ SEO plugin
- * Copyright (C) 2017 - 2025 SGEOBIZ (https://sgeobiz.com/)
+ * Copyright (C) 2017 - 2025 SGEOBIZ (https://rasyiqi-code.github.io/SGEOBIZ/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -402,7 +402,7 @@ switch ( $instance ) :
 							<?php
 							HTML::make_info(
 								\__( 'The Twitter Card type controls the link preview layout. On X, the summary card shows a small thumbnail beside truncated title and description; the large-image card overlays the title on the image with no description. On Discord, the image appears small at the side or large below; both card types show the description.', 'sgeobiz-seo' ),
-								'https://docs.sgeobiz.com/',
+								'https://rasyiqi-code.github.io/SGEOBIZ/',
 							);
 							?>
 						</div>

@@ -17,7 +17,7 @@ use SGEOBIZ_SEO\Admin\Settings\Layout\{
 
 /**
  * SGEOBIZ SEO plugin
- * Copyright (C) 2016 - 2025 SGEOBIZ (https://sgeobiz.com/)
+ * Copyright (C) 2016 - 2025 SGEOBIZ (https://rasyiqi-code.github.io/SGEOBIZ/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -48,7 +48,7 @@ switch ( $instance ) : // Quite useless, but prepared for expansion.
 
 		$info = HTML::make_info(
 			\__( 'Learn how this feature works.', 'sgeobiz-seo' ),
-			'https://docs.sgeobiz.com/',
+			'https://rasyiqi-code.github.io/SGEOBIZ/',
 			false,
 		);
 		HTML::wrap_fields(
@@ -115,7 +115,7 @@ switch ( $instance ) : // Quite useless, but prepared for expansion.
 		HTML::description_noesc(
 			\sprintf(
 				'<a href="%s" target=_blank rel="noreferrer noopener">%s</a>',
-				'https://docs.sgeobiz.com/',
+				'https://rasyiqi-code.github.io/SGEOBIZ/',
 				\esc_html__( 'Learn how this works.', 'sgeobiz-seo' ),
 			)
 		);

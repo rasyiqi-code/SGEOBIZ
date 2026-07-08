@@ -11,7 +11,7 @@ use function SGEOBIZ_SEO\is_headless;
 
 /**
  * SGEOBIZ SEO plugin
- * Copyright (C) 2021 - 2025 SGEOBIZ (https://sgeobiz.com/)
+ * Copyright (C) 2021 - 2025 SGEOBIZ (https://rasyiqi-code.github.io/SGEOBIZ/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -60,7 +60,7 @@ final class PluginTable {
 
 		$sgeobiz_links['docs'] = \sprintf(
 			'<a href="%s" rel="noreferrer noopener" target=_blank>%s</a>',
-			'https://sgeobiz.com/docs/',
+			'https://rasyiqi-code.github.io/SGEOBIZ/',
 			'Dokumentasi',
 		);
 
@@ -92,12 +92,12 @@ final class PluginTable {
 			[
 				'support' => \sprintf(
 					'<a href="%s" rel="noreferrer noopener nofollow" target=_blank>%s</a>',
-					'https://sgeobiz.com/support/',
+					'https://github.com/rasyiqi-code/SGEOBIZ/issues',
 					'Dukungan',
 				),
 				'docs'    => \sprintf(
 					'<a href="%s" rel="noreferrer noopener nofollow" target=_blank>%s</a>',
-					'https://sgeobiz.com/docs/',
+					'https://rasyiqi-code.github.io/SGEOBIZ/',
 					'Dokumentasi',
 				),
 			],

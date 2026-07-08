@@ -23,7 +23,7 @@ use SGEOBIZ_SEO\Helper\{
 
 /**
  * SGEOBIZ SEO plugin
- * Copyright (C) 2016 - 2025 SGEOBIZ (https://sgeobiz.com/)
+ * Copyright (C) 2016 - 2025 SGEOBIZ (https://rasyiqi-code.github.io/SGEOBIZ/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -88,7 +88,7 @@ switch ( $instance ) :
 				\sprintf(
 					/* translators: %s = Learn more URL. Markdown! */
 					\esc_html__( 'The sitemap does not contribute to ranking; [it can only help with indexing](%s). Search engines process smaller, less complicated sitemaps quicker, which shortens the time required for indexing pages.', 'sgeobiz-seo' ),
-					'https://docs.sgeobiz.com/',
+					'https://rasyiqi-code.github.io/SGEOBIZ/',
 				),
 				[ 'a' ],
 				[ 'a_internal' => false ],
@@ -154,7 +154,7 @@ switch ( $instance ) :
 						\sprintf(
 							/* translators: %s = Documentation URL in markdown */
 							\esc_html__( 'A multilingual plugin has been detected, so your site may have multiple sitemaps. [Learn more](%s).', 'sgeobiz-seo' ),
-							'https://docs.sgeobiz.com/',
+							'https://rasyiqi-code.github.io/SGEOBIZ/',
 						),
 						[ 'a' ],
 						[ 'a_internal' => false ] // opens in new tab.

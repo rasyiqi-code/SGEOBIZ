@@ -24,7 +24,7 @@ use SGEOBIZ_SEO\Helper\{
 
 /**
  * SGEOBIZ SEO plugin
- * Copyright (C) 2016 - 2025 SGEOBIZ (https://sgeobiz.com/)
+ * Copyright (C) 2016 - 2025 SGEOBIZ (https://rasyiqi-code.github.io/SGEOBIZ/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -501,7 +501,7 @@ switch ( $instance ) :
 		if ( RobotsTXT\Utils::get_blocked_user_agents( 'ai' ) ) {
 			$info = HTML::make_info(
 				\__( 'Discover which AI crawlers are being blocked.', 'sgeobiz-seo' ),
-				'https://docs.sgeobiz.com/',
+				'https://rasyiqi-code.github.io/SGEOBIZ/',
 				false,
 			);
 
@@ -519,7 +519,7 @@ switch ( $instance ) :
 		if ( RobotsTXT\Utils::get_blocked_user_agents( 'seo' ) ) {
 			$info = HTML::make_info(
 				\__( 'Discover which SEO crawlers are being blocked.', 'sgeobiz-seo' ),
-				'https://docs.sgeobiz.com/',
+				'https://rasyiqi-code.github.io/SGEOBIZ/',
 				false,
 			);
 
