@@ -54,7 +54,10 @@ function sgeobiz_boot() {
 	// 4. GEO Meta Tags (geo.region, geo.position, geo.placename, ICBM) untuk Local SEO
 	SGEOBIZ_Geo_Meta::init();
 
-	// 5. AI Meta Generator (title + description) — hanya di admin
+	// 5. AI Custom Schema Generator & Graph Injector ( FAQ, Review, Event, Job, dll )
+	SGEOBIZ_Custom_Schema::init();
+
+	// 6. AI Meta Generator (title + description) — hanya di admin
 	if ( is_admin() ) {
 		SGEOBIZ_AI_Meta::init();
 	}
