@@ -65,9 +65,6 @@ spl_autoload_register( 'sgeobiz_autoload' );
  */
 add_action( 'sgeobiz_seo_loaded', 'sgeobiz_boot', 10 );
 function sgeobiz_boot() {
-	// 1. Branding (white-label)
-	SGEOBIZ_Branding::init();
-
 	// 2. Settings page: Google Business Profile + LocalBusiness info
 	// Harus init sebelum Schema dan AI supaya data tersedia
 	SGEOBIZ_GBP_Settings::init();

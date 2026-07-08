@@ -112,7 +112,6 @@ class Utils {
 	 * @return bool
 	 */
 	public static function display_extension_suggestions() {
-		return \current_user_can( 'install_plugins' )
-			&& ! ( \defined( 'SGEOBIZ_DISABLE_SUGGESTIONS' ) && \SGEOBIZ_DISABLE_SUGGESTIONS );
+		return false;
 	}
 }

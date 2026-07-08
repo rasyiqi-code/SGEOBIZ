@@ -68,8 +68,8 @@ class Menu {
 
 		\add_submenu_page(
 			$menu['menu_slug'],
-			\esc_html__( 'General Settings - SGEOBIZ SEO', 'sgeobiz-seo' ),
-			\esc_html__( 'General', 'sgeobiz-seo' ),
+			\esc_html__( 'Pengaturan Umum - SGEOBIZ SEO', 'sgeobiz-seo' ),
+			\esc_html__( 'Umum', 'sgeobiz-seo' ),
 			$menu['capability'],
 			$menu['menu_slug'], // Gunakan parent slug agar link pertama me-rename judul menu default
 			$menu['callback'],
@@ -129,13 +129,13 @@ class Menu {
 		return memo( \apply_filters(
 			'sgeobiz_seo_top_menu_args',
 			[
-				'page_title' => \esc_html__( 'SEO Settings', 'sgeobiz-seo' ),
-				'menu_title' => \esc_html__( 'SEO', 'sgeobiz-seo' )
+				'page_title' => \esc_html__( 'Pengaturan SGEOBIZ SEO', 'sgeobiz-seo' ),
+				'menu_title' => \esc_html__( 'SGEOBIZ SEO', 'sgeobiz-seo' )
 					. ( $issue_count ? self::get_issue_badge( $issue_count ) : '' ),
 				'capability' => \SGEOBIZ_SEO_SETTINGS_CAP,
 				'menu_slug'  => \SGEOBIZ_SEO_SITE_OPTIONS_SLUG,
 				'callback'   => [ Settings\Plugin::class, 'prepare_settings_wrap' ],
-				'icon'       => 'dashicons-search',
+				'icon'       => 'dashicons-location-alt',
 				'position'   => '90.9001',
 			],
 		) );

@@ -58,15 +58,10 @@ final class PluginTable {
 			);
 		}
 
-		$sgeobiz_links['sgeobizem']   = \sprintf(
+		$sgeobiz_links['docs'] = \sprintf(
 			'<a href="%s" rel="noreferrer noopener" target=_blank>%s</a>',
-			'https://sgeobiz.com/extensions/',
-			\esc_html_x( 'Extensions', 'Plugin extensions', 'sgeobiz-seo' ),
-		);
-		$sgeobiz_links['pricing'] = \sprintf(
-			'<a href="%s" rel="noreferrer noopener" target=_blank>%s</a>',
-			'https://sgeobiz.com/pricing/',
-			\esc_html_x( 'Pricing', 'Plugin pricing', 'sgeobiz-seo' ),
+			'https://sgeobiz.com/docs/',
+			'Dokumentasi',
 		);
 
 		return array_merge( $sgeobiz_links, $links );
@@ -98,22 +93,12 @@ final class PluginTable {
 				'support' => \sprintf(
 					'<a href="%s" rel="noreferrer noopener nofollow" target=_blank>%s</a>',
 					'https://sgeobiz.com/support/',
-					\esc_html__( 'Support', 'sgeobiz-seo' ),
+					'Dukungan',
 				),
 				'docs'    => \sprintf(
 					'<a href="%s" rel="noreferrer noopener nofollow" target=_blank>%s</a>',
 					'https://sgeobiz.com/docs/',
-					\esc_html__( 'Documentation', 'sgeobiz-seo' ),
-				),
-				'Git'     => \sprintf(
-					'<a href="%s" rel="noreferrer noopener nofollow" target=_blank>%s</a>',
-					'https://github.com/sgeobiz',
-					'GitHub',
-				),
-				'EM'      => \sprintf(
-					'<a href="%s" rel="noreferrer noopener nofollow" target=_blank>%s</a>',
-					'https://sgeobiz.com/extensions/',
-					'Extension Manager',
+					'Dokumentasi',
 				),
 			],
 		);
