@@ -2,15 +2,15 @@
 /**
  * SGEOBIZ AI Meta Generator
  *
- * Menambahkan tombol "Generate dengan AI" di meta box SGEOBIZ pada editor post.
+ * Menambahkan tombol "Generate dengan AI" dan "Analisis Heading" di meta box SGEOBIZ pada editor post.
  * Menggunakan Google Gemini (prioritas) atau OpenAI GPT-4o sebagai fallback.
  *
  * Fitur:
  * - Generate SEO title otomatis dari konten/judul post
  * - Generate meta description otomatis
+ * - AI Search Intent Heading Optimizer (H1, H2, H3) kustom
  * - AJAX handler yang aman (nonce + capability check)
  * - Timeout dan error handling yang robust
- * - Tidak memerlukan WooCommerce (plugin-agnostic)
  *
  * @package SGEOBIZ
  */
@@ -61,7 +61,7 @@ class SGEOBIZ_AI_Meta {
 		$js = $this->get_inline_script( $nonce );
 		wp_add_inline_script( 'jquery-core', $js );
 
-		// Style tombol AI
+		// Style tombol AI & Box Heading Rekomendasi
 		$css = '
 			.sgeobiz-ai-btn-wrap { margin-top: 8px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 			.sgeobiz-ai-btn {
@@ -75,6 +75,17 @@ class SGEOBIZ_AI_Meta {
 			.sgeobiz-ai-btn .dashicons { font-size: 14px; width: 14px; height: 14px; }
 			.sgeobiz-ai-status { font-size: 11px; color: #6b7280; font-style: italic; }
 			.sgeobiz-ai-status.error { color: #dc2626; }
+			
+			.sgeobiz-ai-heading-box {
+				margin-top: 12px; padding: 14px; border-radius: 6px;
+				background: #f8fafc; border: 1px solid #e2e8f0; font-size: 13px; line-height: 1.6; color: #334155;
+				width: 100%; box-sizing: border-box; text-align: left;
+			}
+			.sgeobiz-ai-heading-box h4 { margin-top: 0; margin-bottom: 10px; font-size: 14px; color: #1e293b; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+			.sgeobiz-ai-heading-box h4 .dashicons { font-size: 16px; width: 16px; height: 16px; color: #059669; }
+			.sgeobiz-ai-heading-box ul { margin: 0; padding-left: 20px; list-style-type: disc; }
+			.sgeobiz-ai-heading-box li { margin-bottom: 6px; }
+			.sgeobiz-ai-heading-box li code { background: #e2e8f0; padding: 2px 5px; border-radius: 3px; font-size: 11px; font-family: monospace; color: #475569; font-weight: bold; }
 		';
 		wp_add_inline_style( 'wp-admin', $css );
 	}
@@ -97,8 +108,6 @@ class SGEOBIZ_AI_Meta {
 	 * SGEOBIZ merender meta box-nya via JS, jadi kita observe DOM.
 	 */
 	function sgeobizInjectAiButtons() {
-		// Target: input title dan textarea description SGEOBIZ
-		// SGEOBIZ menggunakan ID spesifik: _genesis_title dan _genesis_description
 		var titleInput = document.querySelector('#_genesis_title, [name="_genesis_title"]');
 		var descInput  = document.querySelector('#_genesis_description, [name="_genesis_description"]');
 
@@ -127,11 +136,18 @@ class SGEOBIZ_AI_Meta {
 	}
 
 	function sgeobizDescBtnHtml() {
-		return '<div class="sgeobiz-ai-btn-wrap">' +
-			'<button type="button" class="sgeobiz-ai-btn" data-action="description">' +
-			'<span class="dashicons dashicons-superhero-alt"></span> AI: Generate Description' +
-			'</button>' +
-			'<span class="sgeobiz-ai-status" id="sgeobiz-desc-status"></span>' +
+		return '<div class="sgeobiz-ai-btn-wrap" style="flex-direction: column; align-items: flex-start; gap: 4px;">' +
+			'<div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">' +
+				'<button type="button" class="sgeobiz-ai-btn" data-action="description">' +
+				'<span class="dashicons dashicons-superhero-alt"></span> AI: Generate Description' +
+				'</button>' +
+				'<button type="button" class="sgeobiz-ai-btn" style="background: linear-gradient(135deg, #059669, #10b981);" data-action="heading_outline">' +
+				'<span class="dashicons dashicons-editor-ol"></span> AI: Analisis Heading & Search Intent' +
+				'</button>' +
+				'<span class="sgeobiz-ai-status" id="sgeobiz-description-status"></span>' +
+				'<span class="sgeobiz-ai-status" id="sgeobiz-heading_outline-status"></span>' +
+			'</div>' +
+			'<div id="sgeobiz-heading-result-wrap" style="width: 100%;"></div>' +
 			'</div>';
 	}
 
@@ -149,7 +165,7 @@ class SGEOBIZ_AI_Meta {
 		var statusEl = document.getElementById('sgeobiz-' + action + '-status');
 		if ( statusEl ) {
 			statusEl.className = 'sgeobiz-ai-status';
-			statusEl.textContent = 'Sedang generate...';
+			statusEl.textContent = 'Sedang memproses...';
 		}
 
 		\$.ajax({
@@ -161,26 +177,33 @@ class SGEOBIZ_AI_Meta {
 				post_id: postId,
 				generate: action
 			},
-			timeout: 30000,
+			timeout: 45000,
 			success: function(res) {
 				btn.disabled = false;
 				if ( res.success && res.data && res.data.text ) {
-					// Isi ke input SGEOBIZ
 					if ( action === 'title' ) {
 						var inp = document.querySelector('#_genesis_title, [name="_genesis_title"]');
 						if ( inp ) { inp.value = res.data.text; inp.dispatchEvent(new Event('input')); }
-					} else {
+					} else if ( action === 'description' ) {
 						var ta = document.querySelector('#_genesis_description, [name="_genesis_description"]');
 						if ( ta ) { ta.value = res.data.text; ta.dispatchEvent(new Event('input')); }
+					} else if ( action === 'heading_outline' ) {
+						var wrap = document.getElementById('sgeobiz-heading-result-wrap');
+						if ( wrap ) {
+							wrap.innerHTML = '<div class="sgeobiz-ai-heading-box">' +
+								'<h4><span class="dashicons dashicons-analytics"></span> Rekomendasi Struktur Heading & Search Intent</h4>' +
+								res.data.text +
+								'</div>';
+						}
 					}
 					if ( statusEl ) {
 						statusEl.className = 'sgeobiz-ai-status';
-						statusEl.textContent = '✓ Berhasil! Periksa dan edit sesuai kebutuhan.';
+						statusEl.textContent = '✓ Berhasil!';
 					}
 				} else {
 					if ( statusEl ) {
 						statusEl.className = 'sgeobiz-ai-status error';
-						statusEl.textContent = '✗ ' + (res.data?.message || 'Gagal generate. Coba lagi.');
+						statusEl.textContent = '✗ ' + (res.data?.message || 'Gagal memproses. Coba lagi.');
 					}
 				}
 			},
@@ -198,10 +221,8 @@ class SGEOBIZ_AI_Meta {
 
 	// Observe DOM untuk mendeteksi saat SGEOBIZ meta box selesai render
 	\$(document).ready(function(){
-		// Percobaan langsung
 		sgeobizInjectAiButtons();
 
-		// Observer untuk Gutenberg & SGEOBIZ async render
 		var observer = new MutationObserver(function(){
 			sgeobizInjectAiButtons();
 		});
@@ -210,7 +231,6 @@ class SGEOBIZ_AI_Meta {
 			observer.observe(target, { childList: true, subtree: true });
 		}
 
-		// Fallback: coba lagi setelah 2 detik (SGEOBIZ bisa lambat init)
 		setTimeout(sgeobizInjectAiButtons, 2000);
 	});
 
@@ -219,7 +239,7 @@ JS;
 	}
 
 	/**
-	 * AJAX handler: generate SEO title atau description via AI.
+	 * AJAX handler: generate SEO title, description, atau heading outline via AI.
 	 */
 	public function handle_ajax() {
 		// 1. Security check
@@ -233,7 +253,7 @@ JS;
 		$post_id  = absint( $_POST['post_id'] ?? 0 );
 		$generate = sanitize_text_field( $_POST['generate'] ?? '' );
 
-		if ( ! $post_id || ! in_array( $generate, [ 'title', 'description' ], true ) ) {
+		if ( ! $post_id || ! in_array( $generate, [ 'title', 'description', 'heading_outline' ], true ) ) {
 			wp_send_json_error( [ 'message' => 'Parameter tidak valid.' ] );
 		}
 
@@ -246,9 +266,13 @@ JS;
 		$context = $this->build_context( $post );
 
 		// 4. Buat prompt berdasarkan tipe generate
-		$prompt = $generate === 'title'
-			? $this->make_title_prompt( $context )
-			: $this->make_description_prompt( $context );
+		if ( $generate === 'title' ) {
+			$prompt = $this->make_title_prompt( $context );
+		} elseif ( $generate === 'description' ) {
+			$prompt = $this->make_description_prompt( $context );
+		} else {
+			$prompt = $this->make_heading_prompt( $context );
+		}
 
 		// 5. Panggil AI
 		$result = $this->call_ai( $prompt );
@@ -269,7 +293,7 @@ JS;
 	private function build_context( $post ) {
 		// Ekstrak teks bersih dari konten post (tanpa HTML, max 1000 karakter)
 		$content_stripped = wp_strip_all_tags( $post->post_content );
-		$content_excerpt  = mb_substr( $content_stripped, 0, 1000 );
+		$content_excerpt  = mb_substr( $content_stripped, 0, 1500 ); // Lebih panjang untuk analisis heading
 
 		// Ambil info bisnis untuk konteks tambahan
 		$biz  = SGEOBIZ_GBP_Settings::get_business_data();
@@ -348,6 +372,46 @@ Meta Description:',
 	}
 
 	/**
+	 * Buat prompt untuk generate rekomendasi heading dan analisis Search Intent.
+	 *
+	 * @param array $ctx Konteks post.
+	 * @return string
+	 */
+	private function make_heading_prompt( array $ctx ) {
+		return sprintf(
+			'Kamu adalah SEO content strategist ahli untuk pasar Indonesia.
+Analisis draf artikel berikut dan tentukan Search Intent-nya, lalu susun rekomendasi struktur heading berjenjang (H1, H2, H3) yang paling optimal untuk menjawab Search Intent tersebut secara langsung.
+
+Judul Artikel: "%s"
+Nama Bisnis: %s
+Draf Konten Singkat: "%s"
+
+Aturan Output:
+- Harus ditulis dalam Bahasa Indonesia.
+- Jangan gunakan markdown tebal (* atau **) atau pembungkus kode (```) di output utama.
+- Output harus berupa HTML list sederhana (<ul> dan <li>) dengan elemen <code> untuk menandai tag heading.
+- Format output wajib seperti ini:
+  <p><strong>Target Search Intent:</strong> [Tentukan jenis intent: Informasional, Komersial, Transaksional, atau Navigasional dan beri penjelasan singkat]</p>
+  <p><strong>Rekomendasi Struktur Heading:</strong></p>
+  <ul>
+    <li><code>H1</code>: [Rekomendasi Judul Utama]</li>
+    <li><code>H2</code>: [Sub-judul Utama 1 - Menjawab pertanyaan utama search intent]
+      <ul>
+        <li><code>H3</code>: [Detail sub-topik pendukung]</li>
+        <li><code>H3</code>: [Detail sub-topik pendukung]</li>
+      </ul>
+    </li>
+    <li><code>H2</code>: [Sub-judul Utama 2 - Langkah praktis / Solusi bisnis %s]</li>
+    <li><code>H2</code>: [Sub-judul Utama 3 - FAQ / Kesimpulan]</li>
+  </ul>',
+			$ctx['post_title'],
+			$ctx['business'],
+			$ctx['content'],
+			$ctx['business']
+		);
+	}
+
+	/**
 	 * Panggil AI API (Gemini atau OpenAI) dan kembalikan teks hasil generate.
 	 *
 	 * @param string $prompt Prompt yang akan dikirim ke AI.
@@ -408,14 +472,14 @@ Meta Description:',
 			],
 			'generationConfig' => [
 				'temperature'     => 0.4,
-				'maxOutputTokens' => 200,
+				'maxOutputTokens' => 800,
 			],
 		] );
 
 		$response = wp_remote_post( $url, [
 			'headers' => [ 'Content-Type' => 'application/json' ],
 			'body'    => $body,
-			'timeout' => 25,
+			'timeout' => 35,
 		] );
 
 		if ( is_wp_error( $response ) ) {
@@ -452,7 +516,7 @@ Meta Description:',
 				],
 			],
 			'temperature' => 0.4,
-			'max_tokens'  => 200,
+			'max_tokens'  => 800,
 		] );
 
 		$response = wp_remote_post( $url, [
@@ -461,7 +525,7 @@ Meta Description:',
 				'Authorization' => 'Bearer ' . $api_key,
 			],
 			'body'    => $body,
-			'timeout' => 25,
+			'timeout' => 35,
 		] );
 
 		if ( is_wp_error( $response ) ) {
