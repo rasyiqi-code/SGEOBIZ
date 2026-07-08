@@ -643,6 +643,7 @@ body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
 }
 
 /* Styling Active Sidebar Submenu */
+/* Styling Active Sidebar Submenu */
 #toplevel_page_sgeobiz-seo-settings .wp-submenu li.current {
     background-color: rgba(99, 102, 241, 0.08) !important;
     border-left: 3px solid #6366f1 !important;
@@ -654,5 +655,115 @@ body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
 #toplevel_page_sgeobiz-seo-settings .wp-submenu li.current a:hover {
     color: #6366f1 !important;
     font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   SGEOBIZ CORE FIELDS GRID & CARD LAYOUT REDESIGN
+   ========================================================================== */
+
+/* Style h4 headings inside metaboxes as section titles */
+.sgeobiz-premium-theme .inside h4 {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important; /* Slate 900 */
+    margin: 24px 0 12px 0 !important;
+    padding: 0 !important;
+}
+
+/* Hide HR separators inside metaboxes as cards act as separation */
+.sgeobiz-premium-theme .inside hr {
+    display: none !important;
+}
+
+/* Style Each .sgeobiz-fields Container as a Gorgeous White Card with 2-Column Grid */
+.sgeobiz-premium-theme .sgeobiz-fields {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    width: 100% !important;
+    padding: 24px !important;
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+    box-sizing: border-box !important;
+    margin: 0 0 24px 0 !important;
+    transition: all 0.25s ease !important;
+}
+
+.sgeobiz-premium-theme .sgeobiz-fields:hover {
+    border-color: #cbd5e1 !important;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04) !important;
+}
+
+/* Checkbox & Switch labels alignment inside .sgeobiz-fields */
+.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-toblock {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-toblock label {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 12px 16px !important;
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    color: #334155 !important;
+    transition: all 0.2s ease !important;
+    margin: 0 !important;
+}
+
+.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-toblock label:hover {
+    background: #f8fafc !important;
+    border-color: #94a3b8 !important;
+    color: #0f172a !important;
+}
+
+/* Option fields / description layout in grid */
+.sgeobiz-premium-theme .sgeobiz-fields p.description,
+.sgeobiz-premium-theme .sgeobiz-fields .description {
+    font-size: 12px !important;
+    color: #64748b !important;
+    margin-top: 8px !important;
+    line-height: 1.6 !important;
+    display: block;
+    width: 100%;
+    grid-column: span 2 !important;
+}
+
+/* Ensure larger inputs span full-width inside grid */
+.sgeobiz-premium-theme .sgeobiz-fields textarea,
+.sgeobiz-premium-theme .sgeobiz-fields select,
+.sgeobiz-premium-theme .sgeobiz-fields input[type="text"],
+.sgeobiz-premium-theme .sgeobiz-fields input[type="url"],
+.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-select-wrap,
+.sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-select-block {
+    grid-column: span 2 !important;
+    width: 100% !important;
+}
+
+/* Responsive collapse on mobile */
+@media screen and (max-width: 768px) {
+    .sgeobiz-premium-theme .sgeobiz-fields {
+        grid-template-columns: 1fr !important;
+        padding: 16px !important;
+    }
+    .sgeobiz-premium-theme .sgeobiz-fields p.description,
+    .sgeobiz-premium-theme .sgeobiz-fields .description,
+    .sgeobiz-premium-theme .sgeobiz-fields textarea,
+    .sgeobiz-premium-theme .sgeobiz-fields select,
+    .sgeobiz-premium-theme .sgeobiz-fields input[type="text"],
+    .sgeobiz-premium-theme .sgeobiz-fields input[type="url"],
+    .sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-select-wrap,
+    .sgeobiz-premium-theme .sgeobiz-fields .sgeobiz-select-block {
+        grid-column: span 1 !important;
+    }
 }
 
