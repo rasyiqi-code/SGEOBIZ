@@ -16,8 +16,8 @@ use function SGEOBIZ_SEO\{
 use SGEOBIZ_SEO\Data;
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2023 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2023 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -43,7 +43,7 @@ class Taxonomy {
 
 	/**
 	 * Checks if the taxonomy isn't disabled, and that at least one taxonomy
-	 * objects post type supports The SEO Framework.
+	 * objects post type supports SGEOBIZ SEO.
 	 *
 	 * @since 3.1.0
 	 * @since 4.0.0 1. Now returns true if at least one post type for the taxonomy is supported.
@@ -88,9 +88,9 @@ class Taxonomy {
 	}
 
 	/**
-	 * Determines if the taxonomy supports The SEO Framework.
+	 * Determines if the taxonomy supports SGEOBIZ SEO.
 	 *
-	 * Checks if at least one taxonomy objects post type supports The SEO Framework,
+	 * Checks if at least one taxonomy objects post type supports SGEOBIZ SEO,
 	 * and whether the taxonomy is public and rewritable.
 	 *
 	 * @since 4.0.0

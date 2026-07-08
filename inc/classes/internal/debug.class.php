@@ -24,8 +24,8 @@ use SGEOBIZ_SEO\Helper\{
 // phpcs:disable WordPress.PHP.DevelopmentFunctions -- This whole class is meant for development.
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2015 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2015 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -94,7 +94,7 @@ final class Debug {
 			if ( isset( $replacement ) ) {
 				$message = \sprintf(
 					/* translators: 1: Function name, 2: 'Deprecated', 3: Plugin Version notification, 4: Replacement function */
-					\esc_html__( '%1$s is %2$s since version %3$s of The SEO Framework! Use %4$s instead.', 'sgeobiz-seo' ),
+					\esc_html__( '%1$s is %2$s since version %3$s of SGEOBIZ SEO! Use %4$s instead.', 'sgeobiz-seo' ),
 					\esc_html( $function ),
 					'<strong>' . \esc_html__( 'deprecated', 'sgeobiz-seo' ) . '</strong>',
 					\esc_html( $version ) ?: 'unknown',
@@ -103,7 +103,7 @@ final class Debug {
 			} else {
 				$message = \sprintf(
 					/* translators: 1: Function name, 2: 'Deprecated', 3: Plugin Version notification */
-					\esc_html__( '%1$s is %2$s since version %3$s of The SEO Framework with no alternative available.', 'sgeobiz-seo' ),
+					\esc_html__( '%1$s is %2$s since version %3$s of SGEOBIZ SEO with no alternative available.', 'sgeobiz-seo' ),
 					\esc_html( $function ),
 					'<strong>' . \esc_html__( 'deprecated', 'sgeobiz-seo' ) . '</strong>',
 					\esc_html( $version ) ?: 'unknown',
@@ -154,7 +154,7 @@ final class Debug {
 
 			$ver_message = $version
 				/* translators: 1: plugin version */
-				? \sprintf( \__( '(This message was added in version %s of The SEO Framework.)', 'sgeobiz-seo' ), $version )
+				? \sprintf( \__( '(This message was added in version %s of SGEOBIZ SEO.)', 'sgeobiz-seo' ), $version )
 				: '';
 
 			$message = \sprintf(
@@ -247,7 +247,7 @@ final class Debug {
 		if ( ! $backtrace ) return [];
 
 		/**
-		 * Always one step before TSF:
+		 * Always one step before SGEOBIZ:
 		 * 0 = caller of this func
 		 * 1 = tsf debugger
 		 * 2 = debugger container
@@ -390,7 +390,7 @@ final class Debug {
 	 * Wraps query status Booleans in human-readable code.
 	 *
 	 * @since 2.6.6
-	 * @since 4.0.0 Cleaned up global callers; only use TSF methods.
+	 * @since 4.0.0 Cleaned up global callers; only use SGEOBIZ methods.
 	 * @since 4.1.0 Added more debugging variables added since 4.0.0.
 	 *
 	 * @param string $cache_version 'yup' or 'nope'

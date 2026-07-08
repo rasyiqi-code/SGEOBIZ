@@ -2,8 +2,8 @@
 /**
  * SGEOBIZ SEO — Main Loader
  *
- * Titik masuk utama kustomisasi SGEOBIZ di atas TSF.
- * File ini dimuat dari autodescription.php setelah TSF selesai load.
+ * Titik masuk utama kustomisasi SGEOBIZ di atas SGEOBIZ.
+ * File ini dimuat dari autodescription.php setelah SGEOBIZ selesai load.
  *
  * @package SGEOBIZ
  */
@@ -37,7 +37,7 @@ spl_autoload_register( 'sgeobiz_autoload' );
 
 /**
  * Boot semua modul SGEOBIZ.
- * Di-hook ke 'sgeobiz_seo_loaded' agar TSF sudah siap.
+ * Di-hook ke 'sgeobiz_seo_loaded' agar SGEOBIZ sudah siap.
  */
 add_action( 'sgeobiz_seo_loaded', 'sgeobiz_boot', 10 );
 function sgeobiz_boot() {

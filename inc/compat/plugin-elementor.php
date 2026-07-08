@@ -24,10 +24,10 @@ const ELEMENTOR_DUMB_POST_TYPES = [ // TODO remove "ELEMENTOR_" prefix when we n
  * Does the job Elementor was sought to do by everyone back in 2016, by chiseling
  * off their non-public post types purported as public.
  *
- * This solely affects The SEO Framework.
+ * This solely affects SGEOBIZ SEO.
  *
  * This filter only runs on admin pages and sitemap to hide the post type from
- * TSF's interface and improve sitemap rendering performance.
+ * SGEOBIZ's interface and improve sitemap rendering performance.
  *
  * @hook sgeobiz_seo_public_post_types 10
  * @since 4.2.0

@@ -2,8 +2,8 @@
 /**
  * SGEOBIZ Branding — White-label layer (Total Rebrand)
  *
- * Mengganti SEMUA tampilan branding TSF di admin UI dengan SGEOBIZ
- * via WordPress filter & action hooks resmi TSF.
+ * Mengganti SEMUA tampilan branding SGEOBIZ di admin UI dengan SGEOBIZ
+ * via WordPress filter & action hooks resmi SGEOBIZ.
  *
  * Target rebrand:
  * - Nama menu admin: "SEO" → "SGEOBIZ SEO"
@@ -29,7 +29,7 @@ class SGEOBIZ_Branding {
 
 		// ── Menu & Halaman ────────────────────────────────────────────────
 
-		// Ganti args menu utama TSF (judul halaman + label menu + icon)
+		// Ganti args menu utama SGEOBIZ (judul halaman + label menu + icon)
 		add_filter( 'sgeobiz_seo_top_menu_args', [ $instance, 'filter_menu_args' ] );
 
 		// Ganti nama menu "SEO" di sidebar secara langsung (fallback jika filter di atas tidak cukup)
@@ -51,19 +51,19 @@ class SGEOBIZ_Branding {
 		add_filter( 'admin_footer_text', [ $instance, 'filter_admin_footer' ] );
 
 		// ── HTML Comment Indicator di <head> ─────────────────────────────
-		// TSF menampilkan "The SEO Framework by Sybre Waaijer" di comment HTML
+		// SGEOBIZ menampilkan "SGEOBIZ SEO by SGEOBIZ" di comment HTML
 		// Sudah diganti di head.class.php via sed, filter ini sebagai double-safety
 		add_filter( 'sgeobiz_seo_indicator', [ $instance, 'filter_indicator' ] );
 
 		// ── Extensions Button di Settings Page ───────────────────────────
-		// Sembunyikan tombol "Extensions" yang mengarah ke TSF
+		// Sembunyikan tombol "Extensions" yang mengarah ke SGEOBIZ
 		add_filter( 'sgeobiz_seo_show_extension_suggestions', '__return_false' );
 	}
 
 	/**
-	 * Filter args menu utama TSF.
+	 * Filter args menu utama SGEOBIZ.
 	 *
-	 * @param array $args Menu args dari TSF.
+	 * @param array $args Menu args dari SGEOBIZ.
 	 * @return array
 	 */
 	public function filter_menu_args( $args ) {
@@ -118,13 +118,13 @@ class SGEOBIZ_Branding {
 
 	/**
 	 * Ganti action links di halaman Plugins.
-	 * Hapus link TSF external, ganti dengan link SGEOBIZ.
+	 * Hapus link SGEOBIZ external, ganti dengan link SGEOBIZ.
 	 *
 	 * @param array $links Link action.
 	 * @return array
 	 */
 	public function filter_action_links( $links ) {
-		// Hapus key 'tsfem' (Extensions) dan 'pricing' dari TSF
+		// Hapus key 'tsfem' (Extensions) dan 'pricing' dari SGEOBIZ
 		unset( $links['tsfem'], $links['pricing'] );
 
 		// Tambahkan link SGEOBIZ di awal
@@ -146,7 +146,7 @@ class SGEOBIZ_Branding {
 
 	/**
 	 * Ganti row meta di halaman Plugins.
-	 * Hapus semua link TSF, ganti dengan link SGEOBIZ.
+	 * Hapus semua link SGEOBIZ, ganti dengan link SGEOBIZ.
 	 *
 	 * @param array  $links Link meta plugin.
 	 * @param string $file  Plugin basename.
@@ -184,7 +184,7 @@ class SGEOBIZ_Branding {
 			return $text;
 		}
 
-		// Aktif di semua halaman yang berkaitan dengan SGEOBIZ/TSF
+		// Aktif di semua halaman yang berkaitan dengan SGEOBIZ/SGEOBIZ
 		$tsf_screens = [
 			SGEOBIZ_SEO_SITE_OPTIONS_SLUG,
 			'seo_page_sgeobiz-business-settings',
@@ -208,7 +208,7 @@ class SGEOBIZ_Branding {
 
 	/**
 	 * Ganti teks indicator di HTML comment <head>.
-	 * TSF output: <!-- The SEO Framework by Sybre Waaijer ... -->
+	 * SGEOBIZ output: <!-- SGEOBIZ SEO by SGEOBIZ ... -->
 	 *
 	 * @param string $indicator Teks indicator asli.
 	 * @return string

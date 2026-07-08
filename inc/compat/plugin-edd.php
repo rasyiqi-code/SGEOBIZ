@@ -40,7 +40,7 @@ function _set_edd_is_product( $is_product, $post ) {
  *
  * @hook sgeobiz_seo_is_product_admin 10
  * @since 4.0.5
- * @TODO is this redundant for TSF?
+ * @TODO is this redundant for SGEOBIZ?
  *
  * @param bool $is_product_admin Whether this is a product admin query.
  * @return bool

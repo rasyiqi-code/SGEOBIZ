@@ -22,8 +22,8 @@ use SGEOBIZ_SEO\Helper\{
 // phpcs:disable WordPress.WP.GlobalVariablesOverride -- This isn't the global scope.
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2016 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2016 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -135,7 +135,7 @@ switch ( $instance ) :
 					\esc_url( Sitemap\Registry::get_expected_sitemap_endpoint_url(), [ 'https', 'http' ] ),
 					\esc_html__( 'View the base sitemap.', 'sgeobiz-seo' ),
 				) );
-				// TODO In settings generator (TSF 5.0): Overwrite this section for Polylang/WPML and output each sitemap language link respectively.
+				// TODO In settings generator (SGEOBIZ 5.0): Overwrite this section for Polylang/WPML and output each sitemap language link respectively.
 				// TODO Also add a link telling where why it may not work consistently ('try opening in another browser, incognito, etc.')
 			} elseif ( Sitemap\Utils::use_core_sitemaps() ) {
 				$_index_url = \get_sitemap_url( 'index' );

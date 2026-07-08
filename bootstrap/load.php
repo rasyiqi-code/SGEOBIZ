@@ -9,8 +9,8 @@ namespace SGEOBIZ_SEO;
 \defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2018 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2018 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -33,7 +33,7 @@ spl_autoload_register( 'SGEOBIZ_SEO\_autoload_classes', true, true );
 \add_action( 'deactivate_' . \SGEOBIZ_SEO_PLUGIN_BASENAME, 'SGEOBIZ_SEO\_do_plugin_deactivation' );
 
 /**
- * Loads all of TSF.
+ * Loads all of SGEOBIZ.
  *
  * Runs at action `plugins_loaded`, priority `5`. So, use anything above 5, or any
  * action later than plugins_loaded and you can access the class and functions.
@@ -45,7 +45,7 @@ spl_autoload_register( 'SGEOBIZ_SEO\_autoload_classes', true, true );
 function _load_tsf() {
 	/**
 	 * @since 2.3.7
-	 * @param bool $load Set to false to prevent loading TSF.
+	 * @param bool $load Set to false to prevent loading SGEOBIZ.
 	 */
 	if ( \apply_filters( 'sgeobiz_seo_load', true ) ) {
 		if ( SGEOBIZ_SEO_DEBUG )
@@ -58,21 +58,21 @@ function _load_tsf() {
 		if ( \is_admin() ) {
 			/**
 			 * @since 3.1.0
-			 * Runs after TSF is loaded in the admin.
+			 * Runs after SGEOBIZ is loaded in the admin.
 			 */
 			\do_action( 'sgeobiz_seo_admin_loaded' );
 		}
 
 		/**
 		 * @since 3.1.0
-		 * Runs after TSF is loaded.
+		 * Runs after SGEOBIZ is loaded.
 		 */
 		\do_action( 'sgeobiz_seo_loaded' );
 	}
 }
 
 /**
- * Initializes all of TSF.
+ * Initializes all of SGEOBIZ.
  *
  * @hook init 0
  * @since 3.1.0

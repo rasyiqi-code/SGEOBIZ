@@ -15,8 +15,8 @@ use SGEOBIZ_SEO\{
 };
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2020 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2020 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -43,7 +43,7 @@ use SGEOBIZ_SEO\{
 final class Filter {
 
 	/**
-	 * Sets "doing sitemap" in TSF if preliminary conditions pass.
+	 * Sets "doing sitemap" in SGEOBIZ if preliminary conditions pass.
 	 * We do this via a filter, which is unconventional but a bypass.
 	 *
 	 * @hook wp_sitemaps_posts_query_args 11

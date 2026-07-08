@@ -9,8 +9,8 @@ namespace SGEOBIZ_SEO\Traits\Internal;
 \defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2023 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2023 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -37,14 +37,14 @@ namespace SGEOBIZ_SEO\Traits\Internal;
  * @property string $colloquial_handle
  * @property array  $deprecated_methods : {
  *     @param string $name The method name => {
- *        @param string   since       The TSF version of deprecation,
+ *        @param string   since       The SGEOBIZ version of deprecation,
  *        @param string   alternative The alternative call,
  *        @param callable fallback    The fallback callback,
  *     }
  * }
  * @property array $deprecated_properties : {
  *     @param string $name The property name => {
- *        @param string since       The TSF version of deprecation,
+ *        @param string since       The SGEOBIZ version of deprecation,
  *        @param string alternative The alternative call,
  *        @param mixed  fallback    The fallback value,
  *     }
@@ -82,7 +82,7 @@ trait Static_Deprecator {
 				trim(
 					\sprintf(
 						'%s;%s',
-						$since ? "Since $since of The SEO Framework" : '',
+						$since ? "Since $since of SGEOBIZ SEO" : '',
 						$alternative ? " Use $alternative instead" : '',
 						$this->colloquial_handle,
 					),
@@ -125,7 +125,7 @@ trait Static_Deprecator {
 				trim(
 					\sprintf(
 						'%s;%s',
-						$since ? "Since $since of The SEO Framework" : '',
+						$since ? "Since $since of SGEOBIZ SEO" : '',
 						$alternative ? " Use $alternative instead" : '',
 						$this->colloquial_handle,
 					),

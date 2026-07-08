@@ -16,8 +16,8 @@ use SGEOBIZ_SEO\{
 };
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2023 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2023 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -233,7 +233,7 @@ final class Compatibility {
 
 		// Check for classes
 		foreach ( $plugins['classes'] ?? [] as $name )
-			if ( ! class_exists( $name, false ) ) // phpcs:ignore TSF.Performance.Functions.PHP -- we don't autoload.
+			if ( ! class_exists( $name, false ) ) // phpcs:ignore SGEOBIZ.Performance.Functions.PHP -- we don't autoload.
 				return false;
 
 		// Check for classes

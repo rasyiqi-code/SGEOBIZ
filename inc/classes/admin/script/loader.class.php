@@ -24,8 +24,8 @@ use SGEOBIZ_SEO\Helper\{
 };
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2019 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2019 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -205,7 +205,7 @@ class Loader {
 	}
 
 	/**
-	 * Returns the common TSF scripts.
+	 * Returns the common SGEOBIZ scripts.
 	 *
 	 * @since 5.1.0
 	 *
@@ -213,7 +213,7 @@ class Loader {
 	 */
 	public static function get_common_scripts() {
 		return [
-			// Load TSF-utils first. TODO split the TSF object so that they will no longer become reliant upon eachother.
+			// Load SGEOBIZ-utils first. TODO split the SGEOBIZ object so that they will no longer become reliant upon eachother.
 			[
 				'id'       => 'sgeobiz-utils',
 				'type'     => 'js',

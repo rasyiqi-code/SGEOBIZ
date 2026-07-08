@@ -9,8 +9,8 @@ namespace SGEOBIZ_SEO;
 \defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2023 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2023 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -52,7 +52,7 @@ class Legacy_API {
 	 * @param string|string[] $key Option name, or a map of indexes therefor.
 	 *                             If you send an empty array, you'll get all options.
 	 *                             Don't do that; use `sgeobiz()->get_options()` instead.
-	 * @return ?mixed The TSF option value. Null when not found.
+	 * @return ?mixed The SGEOBIZ option value. Null when not found.
 	 */
 	public static function get_option( $key ) {
 		return static::data()->plugin()->get_option( ...(array) $key );
@@ -64,7 +64,7 @@ class Legacy_API {
 	 * @since 5.0.0
 	 * @api
 	 *
-	 * @return array The TSF option values.
+	 * @return array The SGEOBIZ option values.
 	 */
 	public static function get_options() {
 		return static::data()->plugin()->get_options();

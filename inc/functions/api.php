@@ -8,8 +8,8 @@ namespace {
 }
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2018 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2018 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -33,7 +33,7 @@ namespace {
 	 * unforeseen issues.
 	 *
 	 * @since 4.2.0
-	 * @since 5.0.0 Now always returns TSF's object.
+	 * @since 5.0.0 Now always returns SGEOBIZ's object.
 	 * @see `sgeobiz_seo()` alias.
 	 * @see inc\classes\pool.class.php for factory API functions;
 	 *      e.g., `sgeobiz()->query()->is_sitemap()`
@@ -53,7 +53,7 @@ namespace {
 	 * unforeseen issues.
 	 *
 	 * @since 2.2.5
-	 * @since 5.0.0 Now always returns TSF's object.
+	 * @since 5.0.0 Now always returns SGEOBIZ's object.
 	 * @see `sgeobiz()` alias.
 	 * @api
 	 *
@@ -64,7 +64,7 @@ namespace {
 	}
 
 	/**
-	 * Returns the database version of TSF.
+	 * Returns the database version of SGEOBIZ.
 	 *
 	 * @since 3.1.0
 	 * @since 3.1.2 Now casts to string.
@@ -85,7 +85,7 @@ namespace {
 	 * @since 5.0.3 No longer requires action `plugins_loaded` to have occurred.
 	 * @api
 	 *
-	 * @return string|bool The SEO Framework class name. False if The SEO Framework isn't loaded (yet).
+	 * @return string|bool SGEOBIZ SEO class name. False if SGEOBIZ SEO isn't loaded (yet).
 	 */
 	function sgeobiz_seo_class() {
 		return get_class( sgeobiz() );
@@ -226,7 +226,7 @@ namespace SGEOBIZ_SEO {
 	 * @api
 	 *
 	 * @param ?string $type The type of headless mode to request.
-	 * @return bool|array $is_headless Whether headless TSF is enabled by $type, or otherwise all values: {
+	 * @return bool|array $is_headless Whether headless SGEOBIZ is enabled by $type, or otherwise all values: {
 	 *   'meta'     => bool True to disable post/term-meta-data storing/fetching.
 	 *   'settings' => bool True to disable non-default setting.
 	 *   'user'     => bool True to disable SEO user-meta-data storing/fetching.
@@ -265,7 +265,7 @@ namespace SGEOBIZ_SEO {
 
 	/**
 	 * Normalizes generation args to prevent PHP warnings.
-	 * This is the standard way TSF determines the type of query.
+	 * This is the standard way SGEOBIZ determines the type of query.
 	 *
 	 * 'uid' is reserved. It is already used in Author::build(), however.
 	 *

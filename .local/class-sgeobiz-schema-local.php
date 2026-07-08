@@ -25,7 +25,7 @@ class SGEOBIZ_Schema_Local {
 	public static function init() {
 		$instance = new self();
 
-		// Inject JSON-LD ke <head> — priority 5 agar lebih awal dari TSF
+		// Inject JSON-LD ke <head> — priority 5 agar lebih awal dari SGEOBIZ
 		add_action( 'wp_head', [ $instance, 'output_schema' ], 5 );
 	}
 

@@ -16,8 +16,8 @@ use SGEOBIZ_SEO\{
 };
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2023 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2023 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -1105,7 +1105,7 @@ class Query {
 	 * Determines the number of available pages.
 	 *
 	 * This is largely taken from \WP_Query::setup_postdata(), however, the data
-	 * we need is set up in the loop, not in the header; where TSF is active.
+	 * we need is set up in the loop, not in the header; where SGEOBIZ is active.
 	 *
 	 * @since 3.1.0
 	 * @since 3.2.4 Now only returns "1" in the admin.
@@ -1248,7 +1248,7 @@ class Query {
 	}
 
 	/**
-	 * Determines whether we're on The SEO Framework's sitemap or not.
+	 * Determines whether we're on SGEOBIZ SEO's sitemap or not.
 	 * Memoizes the return value once set.
 	 *
 	 * @since 2.9.2

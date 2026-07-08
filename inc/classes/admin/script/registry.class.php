@@ -24,8 +24,8 @@ use SGEOBIZ_SEO\Helper\{
 };
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2018 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2018 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -90,7 +90,7 @@ final class Registry {
 	private static $queue = [];
 
 	/**
-	 * Registers the script hooks when TSF is deemed to be loaded.
+	 * Registers the script hooks when SGEOBIZ is deemed to be loaded.
 	 *
 	 * @hook admin_enqueue_scripts 0
 	 * @since 5.0.0
@@ -192,7 +192,7 @@ final class Registry {
 	}
 
 	/**
-	 * Prints the TSF no-js transform script, using ES2015 (ECMA-262).
+	 * Prints the SGEOBIZ no-js transform script, using ES2015 (ECMA-262).
 	 *
 	 * @hook in_admin_header 10
 	 * @since 4.0.0

@@ -11,8 +11,8 @@ namespace SGEOBIZ_SEO\Data\Plugin;
 use SGEOBIZ_SEO\Data;
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2023 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2023 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -28,7 +28,7 @@ use SGEOBIZ_SEO\Data;
  */
 
 /**
- * Holds a collection of data deprecator methods for TSF.
+ * Holds a collection of data deprecator methods for SGEOBIZ.
  *
  * @since 5.0.0
  * @access private
@@ -37,7 +37,7 @@ final class Deprecated {
 
 	/**
 	 * @since 5.0.0
-	 * @var array Holds 'all' deprecated TSF's options/settings. Updates in real time.
+	 * @var array Holds 'all' deprecated SGEOBIZ's options/settings. Updates in real time.
 	 */
 	private static $deprecation_map;
 

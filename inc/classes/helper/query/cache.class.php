@@ -11,8 +11,8 @@ namespace SGEOBIZ_SEO\Helper\Query;
 use SGEOBIZ_SEO\Helper\Query; // Yes, it is legal to share class and namespaces.
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2023 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2023 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -149,7 +149,7 @@ class Cache {
 		 *
 		 * This is unlike `SGEOBIZ_SEO\Internal/Debug::get_error()` that searches
 		 * from top to bottom, because there we expect the user to directly call a
-		 * broken function in TSF; we clean up internal deprecations before public release.
+		 * broken function in SGEOBIZ; we clean up internal deprecations before public release.
 		 **/
 		foreach ( array_reverse( \array_slice( $backtrace, 3 ) ) as $trace ) {
 			if (

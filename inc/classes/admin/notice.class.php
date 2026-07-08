@@ -11,8 +11,8 @@ namespace SGEOBIZ_SEO\Admin;
 use SGEOBIZ_SEO\Admin; // Yes, it is legal to share class and namespace.
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2023 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2023 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -65,7 +65,7 @@ class Notice {
 
 	/**
 	 * Generates dismissible notice.
-	 * Also loads scripts and styles if out of The SEO Framework's context.
+	 * Also loads scripts and styles if out of SGEOBIZ SEO's context.
 	 *
 	 * @since 2.6.0
 	 * @since 3.0.6 The messages are no longer auto-styled to "strong".

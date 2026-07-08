@@ -10,8 +10,8 @@ namespace SGEOBIZ_SEO\Admin;
 use SGEOBIZ_SEO\Helper\Format\Markdown;
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2023 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2023 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -27,7 +27,7 @@ use SGEOBIZ_SEO\Helper\Format\Markdown;
  */
 
 /**
- * Holds various Utility methods for TSF admin.
+ * Holds various Utility methods for SGEOBIZ admin.
  *
  * @since 5.0.0
  * @access protected

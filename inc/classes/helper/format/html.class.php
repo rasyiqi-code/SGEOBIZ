@@ -16,8 +16,8 @@ use SGEOBIZ_SEO\{
 };
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2023 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2023 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -100,7 +100,7 @@ class HTML {
 	 *              5. The 'clear' index now has added to default `area`, `audio`, `datalist`, `del`, `dialog`, `fieldset`, `form`, `map`,
 	 *                 `menu`, `meter`, `nav`, `object`, `output`, `pre`, `progress`, `s`, `table`, and `template`.
 	 *              6. Added the 'passes' index to `$args`. This tells the maximum passes 'space' may process.
-	 *                 Read TSF option `auto_description_html_method` to use the user-defined method.
+	 *                 Read SGEOBIZ option `auto_description_html_method` to use the user-defined method.
 	 *              7. Now replaces all elements passed with spaces. For void elements, or phrasing elements, you'd want to omit
 	 *                 those from '$args' so it falls through to `strip_tags()`.
 	 *              8. Added preparation memoization using cache delimiters `$args['space']` and `$args['clear']`.

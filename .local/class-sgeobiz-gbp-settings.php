@@ -37,7 +37,7 @@ class SGEOBIZ_GBP_Settings {
 	}
 
 	/**
-	 * Daftarkan halaman submenu di bawah menu TSF (SGEOBIZ SEO).
+	 * Daftarkan halaman submenu di bawah menu SGEOBIZ (SGEOBIZ SEO).
 	 */
 	public function register_menu() {
 		add_submenu_page(

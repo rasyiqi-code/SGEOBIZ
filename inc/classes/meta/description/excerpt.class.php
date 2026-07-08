@@ -21,8 +21,8 @@ use SGEOBIZ_SEO\{
 };
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2023 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2023 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -192,7 +192,7 @@ class Excerpt {
 		$excerpt = (string) \apply_filters_deprecated(
 			'sgeobiz_seo_generated_archive_excerpt',
 			[ '', $object ],
-			'5.1.0 of The SEO Framework',
+			'5.1.0 of SGEOBIZ SEO',
 			'sgeobiz_seo_get_excerpt',
 		);
 
@@ -223,7 +223,7 @@ class Excerpt {
 						$object->description ?? '',
 						$object,
 					],
-					'5.1.0 of The SEO Framework',
+					'5.1.0 of SGEOBIZ SEO',
 					'sgeobiz_seo_get_excerpt',
 				);
 			} else {
@@ -238,7 +238,7 @@ class Excerpt {
 				$excerpt = (string) \apply_filters_deprecated(
 					'sgeobiz_seo_fallback_archive_description_excerpt',
 					[ '', $object ],
-					'5.1.0 of The SEO Framework',
+					'5.1.0 of SGEOBIZ SEO',
 					'sgeobiz_seo_get_excerpt',
 				);
 			}

@@ -25,8 +25,8 @@ use SGEOBIZ_SEO\Helper\{
 };
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2019 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2019 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -108,7 +108,7 @@ final class Page extends Main {
 
 		$this->query_cache = [
 			'post'   => $post,
-			'meta'   => Data\Plugin\Post::get_meta( static::$query['id'] ), // Use TSF cache--TSF initializes it anyway.
+			'meta'   => Data\Plugin\Post::get_meta( static::$query['id'] ), // Use SGEOBIZ cache--SGEOBIZ initializes it anyway.
 			'states' => [
 				'ishome'       => Query::is_real_front_page_by_id( static::$query['id'] ),
 				'locale'       => \get_locale(),

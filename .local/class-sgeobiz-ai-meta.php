@@ -2,7 +2,7 @@
 /**
  * SGEOBIZ AI Meta Generator
  *
- * Menambahkan tombol "Generate dengan AI" di meta box TSF pada editor post.
+ * Menambahkan tombol "Generate dengan AI" di meta box SGEOBIZ pada editor post.
  * Menggunakan Google Gemini (prioritas) atau OpenAI GPT-4o sebagai fallback.
  *
  * Fitur:
@@ -80,7 +80,7 @@ class SGEOBIZ_AI_Meta {
 	}
 
 	/**
-	 * Generate script JS inline untuk tombol AI di meta box TSF.
+	 * Generate script JS inline untuk tombol AI di meta box SGEOBIZ.
 	 *
 	 * @param string $nonce Nonce untuk AJAX.
 	 * @return string JavaScript.
@@ -93,12 +93,12 @@ class SGEOBIZ_AI_Meta {
 	'use strict';
 
 	/**
-	 * Inject tombol AI ke dalam meta box TSF setelah DOM siap.
-	 * TSF merender meta box-nya via JS, jadi kita observe DOM.
+	 * Inject tombol AI ke dalam meta box SGEOBIZ setelah DOM siap.
+	 * SGEOBIZ merender meta box-nya via JS, jadi kita observe DOM.
 	 */
 	function sgeobizInjectAiButtons() {
-		// Target: input title dan textarea description TSF
-		// TSF menggunakan ID spesifik: _genesis_title dan _genesis_description
+		// Target: input title dan textarea description SGEOBIZ
+		// SGEOBIZ menggunakan ID spesifik: _genesis_title dan _genesis_description
 		var titleInput = document.querySelector('#_genesis_title, [name="_genesis_title"]');
 		var descInput  = document.querySelector('#_genesis_description, [name="_genesis_description"]');
 
@@ -165,7 +165,7 @@ class SGEOBIZ_AI_Meta {
 			success: function(res) {
 				btn.disabled = false;
 				if ( res.success && res.data && res.data.text ) {
-					// Isi ke input TSF
+					// Isi ke input SGEOBIZ
 					if ( action === 'title' ) {
 						var inp = document.querySelector('#_genesis_title, [name="_genesis_title"]');
 						if ( inp ) { inp.value = res.data.text; inp.dispatchEvent(new Event('input')); }
@@ -196,12 +196,12 @@ class SGEOBIZ_AI_Meta {
 		});
 	}
 
-	// Observe DOM untuk mendeteksi saat TSF meta box selesai render
+	// Observe DOM untuk mendeteksi saat SGEOBIZ meta box selesai render
 	\$(document).ready(function(){
 		// Percobaan langsung
 		sgeobizInjectAiButtons();
 
-		// Observer untuk Gutenberg & TSF async render
+		// Observer untuk Gutenberg & SGEOBIZ async render
 		var observer = new MutationObserver(function(){
 			sgeobizInjectAiButtons();
 		});
@@ -210,7 +210,7 @@ class SGEOBIZ_AI_Meta {
 			observer.observe(target, { childList: true, subtree: true });
 		}
 
-		// Fallback: coba lagi setelah 2 detik (TSF bisa lambat init)
+		// Fallback: coba lagi setelah 2 detik (SGEOBIZ bisa lambat init)
 		setTimeout(sgeobizInjectAiButtons, 2000);
 	});
 

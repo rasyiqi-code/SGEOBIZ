@@ -7,7 +7,7 @@ namespace SGEOBIZ_SEO\Bootstrap;
 
 \defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
-// phpcs:disable TSF.Performance.Opcodes.ShouldHaveNamespaceEscape -- Too many scoped funcs. Test me once in a while.
+// phpcs:disable SGEOBIZ.Performance.Opcodes.ShouldHaveNamespaceEscape -- Too many scoped funcs. Test me once in a while.
 
 use SGEOBIZ_SEO\{
 	Admin,
@@ -19,8 +19,8 @@ use SGEOBIZ_SEO\Helper\{
 };
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2015 - 2025 Sybre Waaijer, CyberWire (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2015 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -38,7 +38,7 @@ use SGEOBIZ_SEO\Helper\{
 /**
  * This file holds functions for upgrading the plugin.
  * This file will only be called ONCE if the required version option is lower
- * compared to The SEO Framework version constant.
+ * compared to SGEOBIZ SEO version constant.
  *
  * @since 2.7.0
  * @since 3.2.4 Applied namespacing to this file. All method names have changed.
@@ -59,7 +59,7 @@ use SGEOBIZ_SEO\Helper\{
  *
  * @since 3.0.0
  *
- * @return string The prior-to-upgrade TSF db version.
+ * @return string The prior-to-upgrade SGEOBIZ db version.
  */
 function _previous_db_version() {
 
@@ -69,7 +69,7 @@ function _previous_db_version() {
 }
 
 /**
- * Upgrade The SEO Framework to the latest version.
+ * Upgrade SGEOBIZ SEO to the latest version.
  *
  * Does an iteration of upgrades in order of upgrade appearance.
  * Each called function will upgrade the version by its iteration.
@@ -87,7 +87,7 @@ function _previous_db_version() {
  *              4. Now redirects from the SEO settings page, as the options can conflict during upgrade.
  *              5. Now always flushes rewrite rules after an upgrade.
  *              6. Now registers the settings on the first run.
- *              7. Now checks if The SEO Framework is loaded.
+ *              7. Now checks if SGEOBIZ SEO is loaded.
  *              8. Now tries to increase memory limit. This probably isn't needed.
  *              9. Now runs on the front-end, too, via `init`, instead of `admin_init`.
  * @since 3.1.4 Now flushes object cache before the upgrade settings are called.
@@ -98,7 +98,7 @@ function _previous_db_version() {
  *                 While this lock is active, the SEO Settings can't be accessed, either.
  * @since 4.1.0 Now checks whether the lock is successfully set before proceeding. Preventing race conditions.
  * @since 4.2.1 No longer lowers the PHP execution time limit -- only increases it.
- * @since 5.0.0 No longer checks if TSF can load.
+ * @since 5.0.0 No longer checks if SGEOBIZ can load.
  */
 function _do_upgrade() {
 
@@ -371,7 +371,7 @@ function _prepare_downgrade_notice( $previous_version, $current_version ) {
 			Markdown::convert(
 				\sprintf(
 					/* translators: %1$s = New, lower version number, surrounded in markdown-backticks. %2$s = Old, higher version number, surrounded in markdown-backticks. */
-					\esc_html__( 'Your website has been downgraded successfully to use The SEO Framework at database version `%1$s` from `%2$s`.', 'sgeobiz-seo' ),
+					\esc_html__( 'Your website has been downgraded successfully to use SGEOBIZ SEO at database version `%1$s` from `%2$s`.', 'sgeobiz-seo' ),
 					\esc_html( $current_version ),
 					\esc_html( $previous_version ),
 				),
@@ -422,7 +422,7 @@ function _prepare_upgrade_notice( $previous_version, $current_version ) {
 			Markdown::convert(
 				\sprintf(
 					/* translators: %s = Version number, surrounded in markdown-backticks. */
-					\esc_html__( 'Thank you for updating The SEO Framework! Your website has been upgraded successfully to use The SEO Framework at database version `%s`.', 'sgeobiz-seo' ),
+					\esc_html__( 'Thank you for updating SGEOBIZ SEO! Your website has been upgraded successfully to use SGEOBIZ SEO at database version `%s`.', 'sgeobiz-seo' ),
 					\esc_html( $current_version ),
 				),
 				[ 'code' ],
@@ -450,12 +450,12 @@ function _prepare_upgrade_notice( $previous_version, $current_version ) {
 			Admin\Notice\Persistent::register_notice(
 				\sprintf(
 					'<p>%s</p><p>%s</p>',
-					\esc_html__( 'The SEO Framework automatically optimizes your website for search engines and social media.', 'sgeobiz-seo' ),
+					\esc_html__( 'SGEOBIZ SEO automatically optimizes your website for search engines and social media.', 'sgeobiz-seo' ),
 					Markdown::convert(
 						\sprintf(
 							/* translators: %s = Link, markdown. */
 							\esc_html__( 'To take full advantage of all SEO features, please follow our [5-minute setup guide](%s).', 'sgeobiz-seo' ),
-							'https://theseoframework.com/docs/seo-plugin-setup/' // Use https://tsf.fyi/docs/setup ? Needless redirection...
+							'https://sgeobiz.com/docs/seo-plugin-setup/' // Use https://sgeobiz.com/docs/setup ? Needless redirection...
 						),
 						[ 'a' ],
 						[ 'a_internal' => false ],
@@ -527,13 +527,13 @@ function _prepare_upgrade_notice( $previous_version, $current_version ) {
 				Markdown::convert(
 					\sprintf(
 						/* translators: 1: SEO plugin name(s), 2: link to guide, in Markdown! */
-						\esc_html__( 'The SEO Framework detected metadata from %1$s. Whenever you are set, read our [migration guide](%2$s).', 'sgeobiz-seo' ),
+						\esc_html__( 'SGEOBIZ SEO detected metadata from %1$s. Whenever you are set, read our [migration guide](%2$s).', 'sgeobiz-seo' ),
 						\esc_html(
 							\count( $found_titles ) > 1
 								? \wp_sprintf_l( '%l', $found_titles )
 								: current( $found_titles ),
 						),
-						'https://theseoframework.com/docs/seo-data-migration/',
+						'https://sgeobiz.com/docs/seo-data-migration/',
 					),
 					[ 'a' ],
 					[ 'a_internal' => false ],
@@ -607,7 +607,7 @@ function _add_upgrade_notice( $notice = '' ) {
 }
 
 /**
- * Sets initial values for The SEO Framework.
+ * Sets initial values for SGEOBIZ SEO.
  *
  * @since 3.1.0
  */
@@ -931,7 +931,7 @@ function _do_upgrade_5001() {
 
 		global $wpdb;
 
-		// Cleanup leftover from TSF 3.0.0 ~ 3.1.0. Sans trailing _, since it doesn't support multilingual.
+		// Cleanup leftover from SGEOBIZ 3.0.0 ~ 3.1.0. Sans trailing _, since it doesn't support multilingual.
 		$wpdb->query( $wpdb->prepare(
 			"DELETE FROM $wpdb->options WHERE option_name LIKE %s",
 			$wpdb->esc_like( "_transient_tsf_exclude_0_{$GLOBALS['blog_id']}" ) . '%',

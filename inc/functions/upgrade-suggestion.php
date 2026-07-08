@@ -16,8 +16,8 @@ use SGEOBIZ_SEO\{
 // phpcs:disable VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable -- includes.
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2018 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2018 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -41,7 +41,7 @@ use SGEOBIZ_SEO\{
  * @access private
  */
 
-// phpcs:ignore TSF.Performance.Opcodes.ShouldHaveNamespaceEscape
+// phpcs:ignore SGEOBIZ.Performance.Opcodes.ShouldHaveNamespaceEscape
 _prepare( $previous_version, $current_version );
 /**
  * Prepares a suggestion notification to ALL applicable plugin users on upgrade;
@@ -78,7 +78,7 @@ function _prepare( $previous_version, $current_version ) {
 		$show_sale = ! \tsf_extension_manager()->is_connected_user();
 	}
 	if ( $show_sale ) {
-		// phpcs:ignore TSF.Performance.Opcodes.ShouldHaveNamespaceEscape
+		// phpcs:ignore SGEOBIZ.Performance.Opcodes.ShouldHaveNamespaceEscape
 		_suggest_temp_sale( $previous_version, $current_version );
 	}
 }
@@ -102,7 +102,7 @@ function _suggest_temp_sale( $previous_version, $current_version ) {
 		Admin\Notice\Persistent::register_notice(
 			Markdown::convert(
 				\sprintf(
-					'<p>You\'re now on The SEO Framework v5.1.4 &mdash; thanks for sticking with us!</p><p>We spent the year [rethinking plugin distribution](%s). Because we\'re late, our BFCM sale runs 2 extra weeks: [50%% off extensions for life](%s).</p><p>This notice disappears December 16th or when dismissed.</p>',
+					'<p>You\'re now on SGEOBIZ SEO v5.1.4 &mdash; thanks for sticking with us!</p><p>We spent the year [rethinking plugin distribution](%s). Because we\'re late, our BFCM sale runs 2 extra weeks: [50%% off extensions for life](%s).</p><p>This notice disappears December 16th or when dismissed.</p>',
 					'https://sgeobiz.com/',
 					'https://sgeobiz.com/',
 				),

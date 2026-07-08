@@ -89,10 +89,10 @@ function _is_shop( $post = null ) {
 			? $post
 			: ( \get_post( $post )->ID ?? 0 );
 
-		// phpcs:ignore TSF.Performance.Opcodes -- local funcs
+		// phpcs:ignore SGEOBIZ.Performance.Opcodes -- local funcs
 		$is_shop = $id && _get_shop_page_id() === $id;
 	} else {
-		// phpcs:ignore TSF.Performance.Opcodes -- local funcs
+		// phpcs:ignore SGEOBIZ.Performance.Opcodes -- local funcs
 		$is_shop = ! \is_admin() && \function_exists( 'is_shop' ) && \is_shop();
 	}
 
@@ -109,7 +109,7 @@ function _is_shop( $post = null ) {
  * @return int
  */
 function _set_real_id_wc_shop( $id ) {
-	// phpcs:ignore TSF.Performance.Opcodes -- local funcs.
+	// phpcs:ignore SGEOBIZ.Performance.Opcodes -- local funcs.
 	return _is_shop() ? _get_shop_page_id() : $id;
 }
 
@@ -124,7 +124,7 @@ function _set_real_id_wc_shop( $id ) {
  * @return bool
  */
 function _set_shop_singular_archive( $is_singular_archive, $id ) {
-	// phpcs:ignore TSF.Performance.Opcodes -- local func
+	// phpcs:ignore SGEOBIZ.Performance.Opcodes -- local func
 	return $is_singular_archive || ( _get_shop_page_id() && _is_shop( $id ) );
 }
 
@@ -134,14 +134,14 @@ function _set_shop_singular_archive( $is_singular_archive, $id ) {
  * @hook sgeobiz_seo_is_shop 10
  * @since 4.0.5
  * @since 4.1.4 Now handles the assertion fully.
- * @TODO is this redundant for TSF? -> yes. lol. It's used nowhere, for now...
+ * @TODO is this redundant for SGEOBIZ? -> yes. lol. It's used nowhere, for now...
  *
  * @param bool             $is_shop Whether this is a shop page.
  * @param int|WP_Post|null $post    Post ID or post object.
  * @return bool
  */
 function _set_wc_is_shop( $is_shop, $post ) {
-	// phpcs:ignore TSF.Performance.Opcodes -- local func
+	// phpcs:ignore SGEOBIZ.Performance.Opcodes -- local func
 	return $is_shop || _is_shop( $post );
 }
 
@@ -172,7 +172,7 @@ function _set_wc_is_product( $is_product, $post ) {
  * @hook sgeobiz_seo_is_product_admin 10
  * @since 4.0.5
  * @since 4.1.4 Now handles the assertion fully.
- * @TODO is this redundant for TSF? Yup. This very much is because we do not show an interface for OG types.
+ * @TODO is this redundant for SGEOBIZ? Yup. This very much is because we do not show an interface for OG types.
  *
  * @param bool $is_product_admin Whether this is a product admin query.
  * @return bool
@@ -417,7 +417,7 @@ function _get_product_category_thumbnail_image_details( $args = null, $size = 'f
 }
 
 /**
- * Filters WC product PTA from TSF's recognized public post type archives.
+ * Filters WC product PTA from SGEOBIZ's recognized public post type archives.
  *
  * We only filter the admin area to prevent any unforeseeable issues on the front-end.
  * This is because the shop page is singular, singular_archive, shop, and post_type_archive,
@@ -432,7 +432,7 @@ function _get_product_category_thumbnail_image_details( $args = null, $size = 'f
 function _filter_public_wc_post_type_archives( $post_types ) {
 
 	// Don't mess with it on the front-end, or when no post ID is assigned to the shop.
-	// phpcs:ignore TSF.Performance.Opcodes.ShouldHaveNamespaceEscape -- local func
+	// phpcs:ignore SGEOBIZ.Performance.Opcodes.ShouldHaveNamespaceEscape -- local func
 	if ( ! \is_admin() || ! _get_shop_page_id() ) return $post_types;
 
 	return array_diff( $post_types, [ 'product' ] );

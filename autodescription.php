@@ -1,16 +1,16 @@
 <?php
 /**
- * The SEO Framework
+ * SGEOBIZ SEO
  *
  * @package   SGEOBIZ_SEO\Bootstrap
- * @author    Sybre Waaijer
- * @copyright 2015 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * @author    SGEOBIZ
+ * @copyright 2015 - 2025 SGEOBIZ (https://sgeobiz.com/)
  * @license   GPL-3.0
- * @link      https://theseoframework.com/
+ * @link      https://sgeobiz.com/
  * @access    public
  *
  * @troy-repo
- * Troy: repo.theseoframework.com
+ * Troy: repo.sgeobiz.com
  *
  * @wordpress-plugin
  * Plugin Name: SGEOBIZ SEO
@@ -30,8 +30,8 @@
 defined( 'ABSPATH' ) or die;
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2015 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2015 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published

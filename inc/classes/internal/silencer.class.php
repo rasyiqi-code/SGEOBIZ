@@ -11,8 +11,8 @@ namespace SGEOBIZ_SEO\Internal;
 // phpcs:disable Generic.CodeAnalysis.UnusedFunctionParameter -- That's the whole premise of this file.
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2018 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2018 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published

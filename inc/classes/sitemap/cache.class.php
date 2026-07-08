@@ -11,8 +11,8 @@ namespace SGEOBIZ_SEO\Sitemap;
 use SGEOBIZ_SEO\Data;
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2023 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2023 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -84,7 +84,7 @@ class Cache {
 				[ 'type' => 'sitemap' ],
 				[ true ],
 			],
-			'5.0.0 of The SEO Framework',
+			'5.0.0 of SGEOBIZ SEO',
 			'sgeobiz_seo_cleared_sitemap_transients',
 		);
 	}

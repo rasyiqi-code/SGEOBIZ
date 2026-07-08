@@ -14,8 +14,8 @@ use function SGEOBIZ_SEO\{
 };
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2023 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2023 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -31,7 +31,7 @@ use function SGEOBIZ_SEO\{
  */
 
 /**
- * Prepares the TSF menu interfaces.
+ * Prepares the SGEOBIZ menu interfaces.
  *
  * @since 5.0.0
  * @access protected
@@ -124,8 +124,8 @@ class Menu {
 	/**
 	 * @since 5.0.0
 	 *
-	 * @param string $submenu The submenu to get. If it's empty, it'll get TSF's main page hook.
-	 * @return string TSF's menu page hook name or its submenu hook name.
+	 * @param string $submenu The submenu to get. If it's empty, it'll get SGEOBIZ's main page hook.
+	 * @return string SGEOBIZ's menu page hook name or its submenu hook name.
 	 */
 	public static function get_page_hook_name( $submenu = '' ) {
 

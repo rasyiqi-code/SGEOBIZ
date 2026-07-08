@@ -17,8 +17,8 @@ use SGEOBIZ_SEO\{
 };
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2023 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2023 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -55,7 +55,7 @@ class Post {
 		$post = \get_post( $post ?: Query::get_the_real_id() );
 
 		// '0' is not deemed content. Return empty string for it's a slippery slope.
-		// We only allow that for TSF's custom fields.
+		// We only allow that for SGEOBIZ's custom fields.
 		return ! empty( $post->post_excerpt ) && \post_type_supports( $post->post_type, 'excerpt' )
 			? $post->post_excerpt
 			: '';
@@ -74,7 +74,7 @@ class Post {
 		$post = \get_post( $post ?: Query::get_the_real_id() );
 
 		// '0' is not deemed content. Return empty string for it's a slippery slope.
-		// We only allow that for TSF's custom fields.
+		// We only allow that for SGEOBIZ's custom fields.
 		return ! empty( $post->post_content ) && \post_type_supports( $post->post_type, 'editor' )
 			? $post->post_content
 			: '';

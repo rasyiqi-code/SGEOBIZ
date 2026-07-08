@@ -15,7 +15,7 @@ namespace SGEOBIZ_SEO;
 /**
  * Removes support for Bricks' non-public post types conditionally.
  *
- * This solely affects The SEO Framework.
+ * This solely affects SGEOBIZ SEO.
  *
  * @hook sgeobiz_seo_public_post_types 10
  * @since 5.1.0
@@ -25,7 +25,7 @@ namespace SGEOBIZ_SEO;
  */
 function _bricks_fix_public_post_types( $post_types ) {
 
-	// phpcs:ignore TSF.Performance.Functions.PHP -- this method is memoized via filter, autoload is false.
+	// phpcs:ignore SGEOBIZ.Performance.Functions.PHP -- this method is memoized via filter, autoload is false.
 	if ( \defined( 'BRICKS_DB_TEMPLATE_SLUG' ) && class_exists( \Bricks\Database::class, false ) )
 		if ( ! \Bricks\Database::get_setting( 'publicTemplates' ) )
 			$post_types = array_diff( $post_types, [ BRICKS_DB_TEMPLATE_SLUG ] );
@@ -37,7 +37,7 @@ function _bricks_fix_public_post_types( $post_types ) {
  * Removes support for Bricks' template taxonomies.
  * They aren't used for display, only organizing templates.
  *
- * This solely affects The SEO Framework.
+ * This solely affects SGEOBIZ SEO.
  *
  * @hook sgeobiz_seo_public_taxonomies 10
  * @since 5.1.0

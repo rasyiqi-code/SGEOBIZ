@@ -19,8 +19,8 @@ use SGEOBIZ_SEO\{
 };
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2023 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2023 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -206,7 +206,7 @@ final class Head {
 	 *                                      Accepts 'before' for before, anything else for after.
 	 * @param float  $meta_timer            Total meta time in seconds.
 	 * @param float  $bootstrap_timer       Total bootstrap time in seconds.
-	 * @return string The SEO Framework's HTML plugin indicator.
+	 * @return string SGEOBIZ SEO's HTML plugin indicator.
 	 */
 	private static function print_plugin_indicator( $where = 'before', $meta_timer = 0, $bootstrap_timer = 0 ) {
 

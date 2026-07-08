@@ -18,8 +18,8 @@ use SGEOBIZ_SEO\{
 };
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2023 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2023 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -35,7 +35,7 @@ use SGEOBIZ_SEO\{
  */
 
 /**
- * Holds a collection of Post Type Archive data interface methods for TSF.
+ * Holds a collection of Post Type Archive data interface methods for SGEOBIZ.
  *
  * @since 5.0.0
  * @since 5.1.0 Added the Property_Refresher trait.

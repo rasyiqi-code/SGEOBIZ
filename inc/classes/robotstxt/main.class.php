@@ -18,8 +18,8 @@ use SGEOBIZ_SEO\{
 };
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2023 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2023 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -48,7 +48,7 @@ class Main {
 	 * Requires the site not to have a robots.txt file in the root directory.
 	 *
 	 * This methods completely hijacks default output. This is intentional (read next paragraph).
-	 * Use a higher filter priority to override TSF's output.
+	 * Use a higher filter priority to override SGEOBIZ's output.
 	 *
 	 * The robots.txt file should not be used to block endpoints that are supposed to be hidden.
 	 * This is because the robots.txt file is public; adding endpoints there would expose them.
@@ -92,7 +92,7 @@ class Main {
 		$disallow_queries = \apply_filters_deprecated(
 			'sgeobiz_seo_robots_disallow_queries',
 			[ false ],
-			'5.1.0 of The SEO Framework',
+			'5.1.0 of SGEOBIZ SEO',
 			'sgeobiz_seo_robots_txt_sections'
 		) ? '/*?*'
 		  : '';
@@ -150,7 +150,7 @@ class Main {
 					'raw'      => (string) \apply_filters_deprecated(
 						'sgeobiz_seo_robots_txt_pre',
 						[ '' ],
-						'5.1.0 of The SEO Framework',
+						'5.1.0 of SGEOBIZ SEO',
 						'sgeobiz_seo_robots_txt_sections',
 					),
 					'priority' => 0,
@@ -179,7 +179,7 @@ class Main {
 					'raw'      => (string) \apply_filters_deprecated(
 						'sgeobiz_seo_robots_txt_pro',
 						[ '' ],
-						'5.1.0 of The SEO Framework',
+						'5.1.0 of SGEOBIZ SEO',
 						'sgeobiz_seo_robots_txt_sections',
 					),
 					'priority' => 500,

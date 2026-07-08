@@ -13,8 +13,8 @@ use function SGEOBIZ_SEO\is_headless;
 use SGEOBIZ_SEO\Traits\Property_Refresher;
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2023 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2023 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -30,7 +30,7 @@ use SGEOBIZ_SEO\Traits\Property_Refresher;
  */
 
 /**
- * Holds a collection of data interface methods for TSF.
+ * Holds a collection of data interface methods for SGEOBIZ.
  *
  * @since 5.0.0
  * @access protected
@@ -43,14 +43,14 @@ class Plugin {
 
 	/**
 	 * @since 5.0.0
-	 * @var ?array Holds 'all' TSF's options/settings.
+	 * @var ?array Holds 'all' SGEOBIZ's options/settings.
 	 * @uses \SGEOBIZ_SEO_SITE_OPTIONS
 	 */
 	private static $options_memo;
 
 	/**
 	 * @since 5.0.0
-	 * @var ?array Holds 'all' TSF's site cache.
+	 * @var ?array Holds 'all' SGEOBIZ's site cache.
 	 * @uses \SGEOBIZ_SEO_SITE_CACHE
 	 */
 	private static $site_cache_memo;
@@ -81,7 +81,7 @@ class Plugin {
 	 *
 	 * @param string ...$key Option name. Additional parameters will try get sub-values of the array.
 	 *                       When empty, it'll return all options. You should use get_options() instead.
-	 * @return mixed The TSF option value. Null when not found.
+	 * @return mixed The SGEOBIZ option value. Null when not found.
 	 */
 	public static function get_option( ...$key ) {
 

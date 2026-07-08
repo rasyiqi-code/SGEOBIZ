@@ -18,8 +18,8 @@ use SGEOBIZ_SEO\{
 };
 
 /**
- * The SEO Framework plugin
- * Copyright (C) 2021 - 2025 Sybre Waaijer, CyberWire B.V. (https://cyberwire.nl/)
+ * SGEOBIZ SEO plugin
+ * Copyright (C) 2021 - 2025 SGEOBIZ (https://sgeobiz.com/)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as published
@@ -134,7 +134,7 @@ final class AJAX {
 	 *              - This was set to 'edit_post' in WP 4.7? trac ticket got lost, probably for (invalid) security reasons.
 	 *                In any case, that's still incorrect, and I gave up on communicating this;
 	 *                We're not editing the image, we're creating a new one!
-	 *           2. It now only accepts TSF own AJAX nonces.
+	 *           2. It now only accepts SGEOBIZ own AJAX nonces.
 	 *           3. It now only accepts context 'sgeobiz-image'
 	 *           4. It no longer accepts a default context.
 	 *

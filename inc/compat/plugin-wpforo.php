@@ -22,21 +22,21 @@ use SGEOBIZ_SEO\Meta;
  * @since 3.1.2 1. Now disables HTML output when wpForo SEO is enabled.
  *              2. Now disables title override when wpForo Title SEO is enabled.
  * @since 4.2.8 1. Now supports wpForo 2.0+.
- *              2. Now disables TSF's output by default; for if their API disappears again.
+ *              2. Now disables SGEOBIZ's output by default; for if their API disappears again.
  *              3. Now uses action `wpforo_before_init` instead of `sgeobiz_seo_init`.
  */
 function _wpforo_fix_page() {
 
 	if ( \is_admin() || ! \function_exists( 'is_wpforo_page' ) || ! \is_wpforo_page() ) return;
 
-	if ( _wpforo_seo_title_enabled() ) { // phpcs:ignore TSF.Performance.Opcodes -- is local.
+	if ( _wpforo_seo_title_enabled() ) { // phpcs:ignore SGEOBIZ.Performance.Opcodes -- is local.
 		\add_filter( 'sgeobiz_seo_title_from_generation', __NAMESPACE__ . '\_wpforo_filter_pre_title', 10, 2 );
 		\add_filter( 'sgeobiz_seo_use_title_branding', '__return_false' );
 	}
 
-	if ( _wpforo_seo_meta_enabled() ) { // phpcs:ignore TSF.Performance.Opcodes -- is local.
-		// Remove TSF's output: Twofold, may they change the order of operation in a future update.
-		_wpforo_disable_tsf_html_output(); // phpcs:ignore TSF.Performance.Opcodes -- is local.
+	if ( _wpforo_seo_meta_enabled() ) { // phpcs:ignore SGEOBIZ.Performance.Opcodes -- is local.
+		// Remove SGEOBIZ's output: Twofold, may they change the order of operation in a future update.
+		_wpforo_disable_tsf_html_output(); // phpcs:ignore SGEOBIZ.Performance.Opcodes -- is local.
 
 		// This won't run on wpForo at the time of writing (2.1.6), because action sgeobiz_seo_after_init already happened.
 		\add_action( 'sgeobiz_seo_after_init', __NAMESPACE__ . '\_wpforo_disable_tsf_html_output', 1 );
@@ -49,7 +49,7 @@ function _wpforo_fix_page() {
 }
 
 /**
- * Disables The SEO Framework's meta tag output on wpForo pages.
+ * Disables SGEOBIZ SEO's meta tag output on wpForo pages.
  *
  * @hook sgeobiz_seo_after_init 1
  * @since 3.1.2 Introduced as Lambda.
@@ -113,8 +113,8 @@ function _assert_wpforo_page_seo_bar( $interpreter ) {
 
 	if ( $interpreter::$query['tax'] ) return;
 
-	$meta_enabled  = _wpforo_seo_meta_enabled();  // phpcs:ignore TSF.Performance.Opcodes -- is local.
-	$title_enabled = _wpforo_seo_title_enabled(); // phpcs:ignore TSF.Performance.Opcodes -- is local.
+	$meta_enabled  = _wpforo_seo_meta_enabled();  // phpcs:ignore SGEOBIZ.Performance.Opcodes -- is local.
+	$title_enabled = _wpforo_seo_title_enabled(); // phpcs:ignore SGEOBIZ.Performance.Opcodes -- is local.
 
 	if ( ! $meta_enabled && ! $title_enabled ) return;
 
@@ -129,7 +129,7 @@ function _assert_wpforo_page_seo_bar( $interpreter ) {
 	foreach ( $items as $id => &$item ) {
 		switch ( $id ) {
 			case 'redirect':
-				// Preserve redirect, for TSF still manages that.
+				// Preserve redirect, for SGEOBIZ still manages that.
 				continue 2;
 			case 'title':
 				if ( ! $title_enabled ) continue 2;

@@ -201,7 +201,7 @@ function _polylang_sitemap_append_non_translatables( $args ) {
  * Allows front-end query adjustments when Polylang filters by language.
  *
  * Polylang adds its non-public 'language' taxonomy to front-end tax queries.
- * TSF supports it only for query adjustment checks; admin taxonomy SEO support
+ * SGEOBIZ supports it only for query adjustment checks; admin taxonomy SEO support
  * remains unchanged.
  *
  * @hook sgeobiz_seo_supported_taxonomy 10
@@ -221,10 +221,10 @@ function _polylang_support_language_taxonomy( $supported, $taxonomy ) {
 }
 
 /**
- * Translates TSF's post exclusions to the current Polylang language.
+ * Translates SGEOBIZ's post exclusions to the current Polylang language.
  *
  * Polylang's front-end ID auto-translation is registered too late for the main
- * query in released versions. This local fallback mirrors only the part TSF
+ * query in released versions. This local fallback mirrors only the part SGEOBIZ
  * needs until Polylang translates IDs added during pre_get_posts itself.
  *
  * @hook pre_get_posts 10000
@@ -429,7 +429,7 @@ function _hijack_polylang_home_url() {
 
 /**
  * Polylang breaks the home URL by not always augmenting the home URL.
- * This filter adds TSF as correctly interpreting the home URL, so it can be
+ * This filter adds SGEOBIZ as correctly interpreting the home URL, so it can be
  * agnostic about the home URL request.
  *
  * @hook pll_home_url_white_list 10
@@ -447,10 +447,10 @@ function _polylang_allow_tsf_home_url( $allow_list ) {
 }
 
 /**
- * Polylang and TSF race to prepend their column keys on terms to 'posts'.
+ * Polylang and SGEOBIZ race to prepend their column keys on terms to 'posts'.
  *
- * This filter forces TSF to be put before the language selection of Polylang
- * by prioritizing their column keys to what TSF will prepend itself to.
+ * This filter forces SGEOBIZ to be put before the language selection of Polylang
+ * by prioritizing their column keys to what SGEOBIZ will prepend itself to.
  *
  * @since 5.1.0
  *
