@@ -68,7 +68,7 @@ class SGEOBIZ_Branding {
 	 */
 	public function filter_menu_args( $args ) {
 		// Ganti judul halaman
-		$args['page_title'] = 'General Settings - SGEOBIZ SEO';
+		$args['page_title'] = 'Pengaturan Umum - SGEOBIZ SEO';
 
 		// Ganti label menu sidebar (ambil hanya badge issue count-nya)
 		$current = $args['menu_title'];
@@ -112,7 +112,7 @@ class SGEOBIZ_Branding {
 
 		// Ganti label submenu pertama (= judul halaman utama)
 		if ( isset( $submenu[ SGEOBIZ_SEO_SITE_OPTIONS_SLUG ][0] ) ) {
-			$submenu[ SGEOBIZ_SEO_SITE_OPTIONS_SLUG ][0][0] = 'General';
+			$submenu[ SGEOBIZ_SEO_SITE_OPTIONS_SLUG ][0][0] = 'Umum';
 		}
 	}
 

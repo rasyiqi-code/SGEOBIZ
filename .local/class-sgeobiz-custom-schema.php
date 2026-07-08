@@ -38,7 +38,7 @@ class SGEOBIZ_Custom_Schema {
 		foreach ( $post_types as $type ) {
 			add_meta_box(
 				'sgeobiz_custom_schema_box',
-				__( 'SGEOBIZ SEO - Custom Schema (JSON-LD)', 'default' ),
+				__( 'SGEOBIZ SEO - Skema Kustom (JSON-LD)', 'default' ),
 				[ $this, 'render_metabox' ],
 				$type,
 				'normal',

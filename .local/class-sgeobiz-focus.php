@@ -46,7 +46,7 @@ class SGEOBIZ_Focus {
 	 */
 	public function add_focus_tab( $tabs ) {
 		$tabs['focus'] = [
-			'name'     => __( 'Focus', 'sgeobiz-seo' ),
+			'name'     => __( 'Fokus', 'sgeobiz-seo' ),
 			'callback' => [ $this, 'render_focus_tab' ],
 			'dashicon' => 'editor-spellcheck', // Ikon dashicon yang relevan untuk penulisan
 		];
@@ -142,7 +142,7 @@ class SGEOBIZ_Focus {
 			<!-- Header & Informasi Singkat -->
 			<div class="sgeobiz-focus-header">
 				<div class="sgeobiz-focus-title-wrap">
-					<h3>Focus Content Optimizer <span class="sgeobiz-premium-badge">Premium Active</span></h3>
+					<h3>Pengoptimal Konten Fokus <span class="sgeobiz-premium-badge">Premium Aktif</span></h3>
 					<p class="description">Optimalkan tulisan Anda berdasarkan hingga 3 kata kunci subjek. Fokus pada keterbacaan, relevansi, dan sinonim semantik.</p>
 				</div>
 				<!-- Visual Skor Melingkar -->
