@@ -13,12 +13,17 @@ defined( 'SGEOBIZ_SEO_PRESENT' ) or die;
 
 class SGEOBIZ_Focus {
 
+	/** Singleton instance untuk mempertahankan referensi callback saat dipanggil WordPress. */
+	private static $inst = null;
+
 	/**
 	 * Daftarkan hook WordPress.
 	 */
 	public static function init() {
-		$instance = new self();
-		
+		if ( self::$inst ) return;
+		self::$inst = new self();
+		$instance   = self::$inst;
+
 		// Integrasi dengan metabox tab SGEOBIZ SEO
 		add_filter( 'sgeobiz_seo_inpost_settings_tabs', [ $instance, 'add_focus_tab' ] );
 		
@@ -94,7 +99,8 @@ class SGEOBIZ_Focus {
 			return;
 		}
 
-		$local_url = plugins_url( '', __FILE__ );
+		// Hitung URL folder .local dari konstanta jalur yang sudah terdefinisi
+		$local_url = rtrim( SGEOBIZ_SEO_DIR_URL, '/' ) . '/.local';
 
 		wp_enqueue_style( 'sgeobiz-focus-css', $local_url . '/css/focus.css', [], SGEOBIZ_VERSION );
 		wp_enqueue_script( 'sgeobiz-focus-js', $local_url . '/js/focus.js', [ 'jquery', 'wp-data', 'wp-blocks' ], SGEOBIZ_VERSION, true );
@@ -110,10 +116,10 @@ class SGEOBIZ_Focus {
 	 * Render tampilan tab Focus.
 	 */
 	public function render_focus_tab() {
-		$post_id  = SGEOBIZ_SEO\Helper\Query::get_the_real_id();
-		$meta     = SGEOBIZ_SEO\Data\Plugin\Post::get_meta( $post_id );
-		
-		$raw_keywords = isset( $meta['_sgeobiz_focus_keywords'] ) ? $meta['_sgeobiz_focus_keywords'] : '';
+		// Ambil post ID dan meta kata kunci Focus yang tersimpan
+		$post_id      = get_the_ID() ?: 0;
+		$raw_keywords = $post_id ? get_post_meta( $post_id, '_sgeobiz_focus_keywords', true ) : '';
+
 		$keywords = [];
 		if ( ! empty( $raw_keywords ) ) {
 			$decoded = json_decode( $raw_keywords, true );
@@ -190,7 +196,7 @@ class SGEOBIZ_Focus {
 				<h4>Analisis Kualitas Konten & SEO</h4>
 				<ul class="sgeobiz-focus-checklist">
 					<!-- Indikator Kepadatan -->
-					<li id="sgeobiz-check-density" class="sgeobiz-check-item">
+					<li id="sgeobiz-check-density" class="sgeobiz-focus-check-item">
 						<span class="status-icon"></span>
 						<div class="check-text">
 							<strong>Kepadatan Kata Kunci (Subject Density)</strong>
@@ -199,7 +205,7 @@ class SGEOBIZ_Focus {
 						<div class="check-metric">0% (0 kata)</div>
 					</li>
 					<!-- Indikator Judul -->
-					<li id="sgeobiz-check-title" class="sgeobiz-check-item">
+					<li id="sgeobiz-check-title" class="sgeobiz-focus-check-item">
 						<span class="status-icon"></span>
 						<div class="check-text">
 							<strong>Kata Kunci di Judul Meta (Meta Title)</strong>
@@ -207,7 +213,7 @@ class SGEOBIZ_Focus {
 						</div>
 					</li>
 					<!-- Indikator Deskripsi -->
-					<li id="sgeobiz-check-description" class="sgeobiz-check-item">
+					<li id="sgeobiz-check-description" class="sgeobiz-focus-check-item">
 						<span class="status-icon"></span>
 						<div class="check-text">
 							<strong>Kata Kunci di Deskripsi Meta</strong>
@@ -215,7 +221,7 @@ class SGEOBIZ_Focus {
 						</div>
 					</li>
 					<!-- Indikator Paragraf 1 -->
-					<li id="sgeobiz-check-intro" class="sgeobiz-check-item">
+					<li id="sgeobiz-check-intro" class="sgeobiz-focus-check-item">
 						<span class="status-icon"></span>
 						<div class="check-text">
 							<strong>Kata Kunci di Paragraf Pertama</strong>
@@ -223,7 +229,7 @@ class SGEOBIZ_Focus {
 						</div>
 					</li>
 					<!-- Indikator Internal Linking -->
-					<li id="sgeobiz-check-linking-internal" class="sgeobiz-check-item">
+					<li id="sgeobiz-check-linking-internal" class="sgeobiz-focus-check-item">
 						<span class="status-icon"></span>
 						<div class="check-text">
 							<strong>Tautan Internal (Internal Links)</strong>
@@ -232,7 +238,7 @@ class SGEOBIZ_Focus {
 						<div class="check-metric">0 tautan</div>
 					</li>
 					<!-- Indikator External Linking -->
-					<li id="sgeobiz-check-linking-external" class="sgeobiz-check-item">
+					<li id="sgeobiz-check-linking-external" class="sgeobiz-focus-check-item">
 						<span class="status-icon"></span>
 						<div class="check-text">
 							<strong>Tautan Eksternal (External Links)</strong>
@@ -241,7 +247,7 @@ class SGEOBIZ_Focus {
 						<div class="check-metric">0 tautan</div>
 					</li>
 					<!-- Indikator Panjang Konten -->
-					<li id="sgeobiz-check-length" class="sgeobiz-check-item">
+					<li id="sgeobiz-check-length" class="sgeobiz-focus-check-item">
 						<span class="status-icon"></span>
 						<div class="check-text">
 							<strong>Panjang Konten (Word Count)</strong>
