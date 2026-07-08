@@ -59,23 +59,218 @@ class SGEOBIZ_GBP_Settings {
 		if ( $hook !== 'seo_page_sgeobiz-business-settings' ) {
 			return;
 		}
-		// Tambahkan CSS inline minimal, tidak perlu file eksternal
+
+		\wp_enqueue_media();
+
+		// Tambahkan CSS premium konsisten
 		$css = '
-			.sgeobiz-settings-wrap { max-width: 900px; }
-			.sgeobiz-section { background: #fff; border: 1px solid #c3c4c7; border-radius: 4px; padding: 20px 24px; margin-bottom: 20px; }
-			.sgeobiz-section h2 { margin-top: 0; font-size: 1.1em; border-bottom: 1px solid #eee; padding-bottom: 8px; }
-			.sgeobiz-field { margin-bottom: 16px; display: flex; flex-direction: column; gap: 4px; }
-			.sgeobiz-field label { font-weight: 600; font-size: 13px; }
+			.sgeobiz-settings-wrap {
+				max-width: 1200px !important;
+				margin: 10px 20px 0 0 !important;
+			}
+			.sgeobiz-dashboard {
+				display: flex;
+				flex-direction: column;
+				background: #ffffff !important;
+				border-radius: 12px;
+				overflow: hidden;
+				box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+				border: 1px solid #e2e8f0;
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+			}
+			.sgeobiz-main {
+				flex-grow: 1;
+				display: flex;
+				flex-direction: column;
+				background: #ffffff !important;
+			}
+			.sgeobiz-topbar {
+				padding: 24px 30px;
+				background: #ffffff;
+				border-bottom: 1px solid #f1f5f9;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.sgeobiz-topbar-title {
+				margin: 0;
+				font-size: 20px;
+				font-weight: 700;
+				color: #0f172a;
+			}
+			.sgeobiz-topbar-actions {
+				display: flex;
+				gap: 10px;
+			}
+			/* Save button override */
+			.sgeobiz-topbar-actions .button-primary {
+				background: linear-gradient(135deg, #4f46e5, #7c3aed) !important;
+				border: none !important;
+				color: #fff !important;
+				font-weight: 600 !important;
+				border-radius: 6px !important;
+				padding: 0 20px !important;
+				height: 38px !important;
+				line-height: 38px !important;
+				box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2), 0 2px 4px -1px rgba(79, 70, 229, 0.1) !important;
+				cursor: pointer !important;
+				transition: transform 0.2s, box-shadow 0.2s !important;
+			}
+			.sgeobiz-topbar-actions .button-primary:hover {
+				transform: translateY(-1px);
+				box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3), 0 4px 6px -2px rgba(79, 70, 229, 0.15) !important;
+			}
+			.sgeobiz-settings-container {
+				padding: 30px;
+				background: #ffffff !important;
+			}
+			.sgeobiz-section {
+				margin-bottom: 30px;
+				padding-bottom: 24px;
+				border-bottom: 1px solid #f1f5f9;
+			}
+			.sgeobiz-section:last-child {
+				margin-bottom: 0;
+				padding-bottom: 0;
+				border-bottom: none;
+			}
+			.sgeobiz-section h2 {
+				margin-top: 0;
+				margin-bottom: 20px;
+				font-size: 16px;
+				font-weight: 700;
+				color: #1e293b;
+			}
+			.sgeobiz-field {
+				margin-bottom: 20px;
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+			}
+			.sgeobiz-field label {
+				font-weight: 600;
+				font-size: 14px;
+				color: #1e293b;
+			}
 			.sgeobiz-field input[type="text"],
 			.sgeobiz-field input[type="url"],
-			.sgeobiz-field input[type="password"],
+			.sgeobiz-field input[type="email"],
 			.sgeobiz-field select,
-			.sgeobiz-field textarea { width: 100%; max-width: 480px; }
-			.sgeobiz-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-			.sgeobiz-hours-grid { display: grid; grid-template-columns: 120px 1fr 1fr; gap: 8px; align-items: center; margin-bottom: 8px; font-size: 13px; }
-			.sgeobiz-badge { display: inline-block; background: #0073aa; color: #fff; padding: 2px 8px; border-radius: 10px; font-size: 11px; vertical-align: middle; margin-left: 6px; }
+			.sgeobiz-field textarea {
+				border: 1px solid #cbd5e1 !important;
+				border-radius: 8px !important;
+				padding: 8px 12px !important;
+				font-size: 13px !important;
+				background: #ffffff !important;
+				color: #334155 !important;
+				box-shadow: none !important;
+				transition: border-color 0.2s, box-shadow 0.2s !important;
+				width: 100%;
+				max-width: 540px;
+			}
+			.sgeobiz-field input[type="text"]:focus,
+			.sgeobiz-field input[type="url"]:focus,
+			.sgeobiz-field input[type="email"]:focus,
+			.sgeobiz-field select:focus,
+			.sgeobiz-field textarea:focus {
+				border-color: #6366f1 !important;
+				box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+				outline: none !important;
+			}
+			.sgeobiz-row-2 {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 20px;
+			}
+			@media (max-width: 782px) {
+				.sgeobiz-row-2 {
+					grid-template-columns: 1fr;
+					gap: 0;
+				}
+			}
+			.sgeobiz-hours-grid {
+				display: grid;
+				grid-template-columns: 120px 140px 140px 100px;
+				gap: 12px;
+				align-items: center;
+				margin-bottom: 12px;
+				font-size: 13px;
+				color: #334155;
+			}
+			.sgeobiz-hours-grid input[type="time"] {
+				border: 1px solid #cbd5e1 !important;
+				border-radius: 8px !important;
+				padding: 6px 12px !important;
+				font-size: 13px !important;
+			}
+			/* Toggle switch untuk Tutup Jam Operasional */
+			.sgeobiz-hours-grid input[type="checkbox"] {
+				-webkit-appearance: none;
+				appearance: none;
+				width: 40px;
+				height: 20px;
+				background-color: #cbd5e1;
+				border-radius: 10px;
+				position: relative;
+				cursor: pointer;
+				outline: none;
+				transition: background-color 0.2s ease;
+				vertical-align: middle;
+				margin-right: 8px !important;
+				border: none !important;
+				box-shadow: none !important;
+			}
+			.sgeobiz-hours-grid input[type="checkbox"]:checked {
+				background-color: #ef4444; /* Merah untuk Tutup */
+			}
+			.sgeobiz-hours-grid input[type="checkbox"]::before {
+				content: "";
+				position: absolute;
+				width: 16px;
+				height: 16px;
+				border-radius: 50%;
+				background-color: white;
+				top: 2px;
+				left: 2px;
+				transition: transform 0.2s ease;
+				box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+			}
+			.sgeobiz-hours-grid input[type="checkbox"]:checked::before {
+				transform: translateX(20px);
+			}
+			.sgeobiz-hours-grid label {
+				font-size: 13px;
+				font-weight: 600;
+				color: #475569;
+			}
+			.sgeobiz-badge {
+				display: inline-block;
+				background: linear-gradient(135deg, #4f46e5, #7c3aed);
+				color: #fff;
+				padding: 4px 10px;
+				border-radius: 12px;
+				font-size: 11px;
+				font-weight: 600;
+				vertical-align: middle;
+				margin-left: 10px;
+			}
+			.button#sgeobiz-pick-logo {
+				border-radius: 6px !important;
+				padding: 0 16px !important;
+				height: 36px !important;
+				line-height: 34px !important;
+				border: 1px solid #cbd5e1 !important;
+				color: #475569 !important;
+				font-weight: 600 !important;
+				background: #ffffff !important;
+				box-shadow: none !important;
+			}
+			.button#sgeobiz-pick-logo:hover {
+				border-color: #94a3b8 !important;
+				color: #1e293b !important;
+			}
 		';
-		wp_add_inline_style( 'wp-admin', $css );
+		\wp_add_inline_style( 'wp-admin', $css );
 	}
 
 	/**
@@ -233,9 +428,18 @@ class SGEOBIZ_GBP_Settings {
 		}
 
 		echo '<div class="wrap sgeobiz-settings-wrap">';
-		echo '<h1>SGEOBIZ SEO <span class="sgeobiz-badge">Profil Bisnis</span></h1>';
 		echo '<form method="post" action="">';
-		wp_nonce_field( self::NONCE_ACTION );
+		\wp_nonce_field( self::NONCE_ACTION );
+
+		echo '<div class="sgeobiz-dashboard">';
+		echo '    <div class="sgeobiz-main">';
+		echo '        <div class="sgeobiz-topbar">';
+		echo '             <h2 class="sgeobiz-topbar-title">' . \esc_html__( 'Profil Bisnis', 'sgeobiz-seo' ) . '<span class="sgeobiz-badge">Google Business Profile</span></h2>';
+		echo '             <div class="sgeobiz-topbar-actions">';
+		submit_button( 'Simpan Semua Pengaturan', 'primary', 'sgeobiz_save_settings', false );
+		echo '             </div>';
+		echo '        </div>';
+		echo '        <div class="sgeobiz-settings-container">';
 
 		// ── Bagian 1: Info Bisnis ──────────────────────────────────────────
 		echo '<div class="sgeobiz-section">';
@@ -245,7 +449,7 @@ class SGEOBIZ_GBP_Settings {
 		$this->field_select( 'business_type', 'Tipe Bisnis (Schema)', $schema_types, $d( 'business_type', 'LocalBusiness' ) );
 		echo '</div>';
 		echo '<div class="sgeobiz-field"><label>Deskripsi Singkat Bisnis</label>';
-		echo '<textarea name="business_description" rows="3" style="max-width:480px">' . esc_textarea( $data['description'] ?? '' ) . '</textarea></div>';
+		echo '<textarea name="business_description" rows="3">' . esc_textarea( $data['description'] ?? '' ) . '</textarea></div>';
 		echo '<div class="sgeobiz-row-2">';
 		$this->field( 'business_website', 'Website', $d( 'website' ), 'url' );
 		$this->field( 'business_email', 'Email Bisnis', $d( 'email' ), 'text' );
@@ -273,7 +477,7 @@ class SGEOBIZ_GBP_Settings {
 		$this->field( 'business_postal', 'Kode Pos (5 digit)', $d( 'postal_code' ) );
 		echo '<div class="sgeobiz-field"><label>Negara</label><input type="text" value="Indonesia" readonly style="background:#f6f7f7"></div>';
 		echo '</div>';
-		echo '<p><strong>Koordinat GPS</strong> — <small>Isi untuk output GeoCoordinates di schema (dapatkan dari Google Maps)</small></p>';
+		echo '<p style="margin-top: 20px; margin-bottom: 10px;"><strong>Koordinat GPS</strong> — <small>Isi untuk output GeoCoordinates di schema (dapatkan dari Google Maps)</small></p>';
 		echo '<div class="sgeobiz-row-2">';
 		$this->field( 'business_lat', 'Latitude (contoh: -6.2088)', $d( 'latitude' ) );
 		$this->field( 'business_lng', 'Longitude (contoh: 106.8456)', $d( 'longitude' ) );
@@ -310,7 +514,7 @@ class SGEOBIZ_GBP_Settings {
 		echo '</div>';
 
 		// ── Bagian 6: Logo Bisnis ─────────────────────────────────────────
-		echo '<div class="sgeobiz-section">';
+		echo '<div class="sgeobiz-section" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">';
 		echo '<h2>Logo Bisnis (untuk Schema)</h2>';
 		$logo_id  = absint( $data['logo_id'] ?? 0 );
 		$logo_url = $logo_id ? wp_get_attachment_image_url( $logo_id, 'medium' ) : '';
@@ -322,12 +526,14 @@ class SGEOBIZ_GBP_Settings {
 		echo '<script>function sgeobizPickLogo(){ var frame=wp.media({title:"Pilih Logo Bisnis",button:{text:"Gunakan Logo"},multiple:false});frame.on("select",function(){var att=frame.state().get("selection").first().toJSON();document.getElementById("sgeobiz_logo_id").value=att.id;});frame.open();}</script>';
 		echo '</div>';
 
+		echo '        </div>'; // end settings-container
+		echo '    </div>'; // end main
+		echo '</div>'; // end dashboard
 
-
-		// ── Submit ─────────────────────────────────────────────────────────
-		echo '<p>';
+		// ── Submit di Bawah ────────────────────────────────────────────────
+		echo '<div style="margin-top: 20px;">';
 		submit_button( 'Simpan Semua Pengaturan', 'primary', 'sgeobiz_save_settings', false );
-		echo '</p>';
+		echo '</div>';
 
 		echo '</form>';
 		echo '</div>'; // wrap
