@@ -441,11 +441,30 @@ class SGEOBIZ_GBP_Settings {
 			echo '<div class="notice notice-success is-dismissible"><p>Pengaturan berhasil disimpan!</p></div>';
 		}
 
-		echo '<div class="wrap sgeobiz-settings-wrap">';
+		echo '<div class="wrap sgeobiz-settings-wrap sgeobiz-premium-theme">';
 		echo '<form method="post" action="">';
 		\wp_nonce_field( self::NONCE_ACTION );
 
 		echo '<div class="sgeobiz-dashboard">';
+		echo '    <div class="sgeobiz-sidebar">';
+		echo '        <div class="sgeobiz-sidebar-brand">';
+		echo '             <span class="dashicons dashicons-location-alt"></span>';
+		echo '             <h3>SGEOBIZ SEO</h3>';
+		echo '        </div>';
+		echo '        <ul class="sgeobiz-sidebar-menu">';
+		echo '             <li data-slug="general"><a href="admin.php?page=sgeobiz-seo"><span class="dashicons dashicons-admin-generic"></span> Umum</a></li>';
+		echo '             <li data-slug="title"><a href="admin.php?page=sgeobiz-seo&section=title"><span class="dashicons dashicons-editor-textcolor"></span> Judul</a></li>';
+		echo '             <li data-slug="description"><a href="admin.php?page=sgeobiz-seo&section=description"><span class="dashicons dashicons-editor-alignleft"></span> Deskripsi Meta</a></li>';
+		echo '             <li data-slug="social"><a href="admin.php?page=sgeobiz-seo&section=social"><span class="dashicons dashicons-share"></span> Media Sosial</a></li>';
+		echo '             <li data-slug="homepage"><a href="admin.php?page=sgeobiz-seo&section=homepage"><span class="dashicons dashicons-admin-home"></span> Homepage</a></li>';
+		echo '             <li data-slug="schema"><a href="admin.php?page=sgeobiz-seo&section=schema"><span class="dashicons dashicons-networking"></span> Schema.org</a></li>';
+		echo '             <li data-slug="robots"><a href="admin.php?page=sgeobiz-seo&section=robots"><span class="dashicons dashicons-index-card"></span> Robots.txt</a></li>';
+		echo '             <li data-slug="webmaster"><a href="admin.php?page=sgeobiz-seo&section=webmaster"><span class="dashicons dashicons-translation"></span> Webmaster</a></li>';
+		echo '             <li data-slug="sitemap"><a href="admin.php?page=sgeobiz-seo&section=sitemap"><span class="dashicons dashicons-category"></span> Peta Situs</a></li>';
+		echo '             <li data-slug="feed"><a href="admin.php?page=sgeobiz-seo&section=feed"><span class="dashicons dashicons-rss"></span> Feed</a></li>';
+		echo '             <li data-slug="business-settings" class="active"><a href="admin.php?page=sgeobiz-business-settings"><span class="dashicons dashicons-store"></span> Profil Bisnis</a></li>';
+		echo '        </ul>';
+		echo '    </div>';
 		echo '    <div class="sgeobiz-main">';
 		echo '        <div class="sgeobiz-topbar">';
 		echo '             <h2 class="sgeobiz-topbar-title">' . \esc_html__( 'Profil Bisnis', 'sgeobiz-seo' ) . '<span class="sgeobiz-badge">Google Business Profile</span></h2>';
