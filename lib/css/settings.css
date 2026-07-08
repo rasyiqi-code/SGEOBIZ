@@ -498,14 +498,14 @@ body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
 .sgeobiz-premium-theme select {
     border: 1px solid #cbd5e1 !important;
     border-radius: 8px !important;
-    padding: 6px 10px !important;
+    padding: 4px 8px !important;
     font-size: 13px !important;
     background: #ffffff !important;
     color: #334155 !important;
     box-shadow: none !important;
     transition: border-color 0.2s, box-shadow 0.2s !important;
-    height: 34px !important;
-    line-height: 1.4 !important;
+    height: 30px !important;
+    line-height: 1.2 !important;
 }
 
 .sgeobiz-premium-theme input[type="text"]:focus,
@@ -772,7 +772,7 @@ body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
     justify-content: center !important;
     width: 100% !important;
     box-sizing: border-box !important;
-    padding: 8px 12px !important;
+    padding: 6px 12px !important;
     background: #f1f5f9 !important;
     border-radius: 8px !important;
     margin: 0 !important;
@@ -785,7 +785,7 @@ body.js .sgeobiz-nav-tab-content.sgeobiz-nav-tab-content-active {
     color: #64748b !important; /* Slate 500 */
     text-transform: uppercase !important;
     letter-spacing: 0.5px !important;
-    margin: 0 0 6px 0 !important;
+    margin: 0 0 4px 0 !important;
     background: transparent !important;
     padding: 0 !important;
     border: none !important;
