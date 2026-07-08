@@ -51,7 +51,10 @@ function sgeobiz_boot() {
 	// 3. Output schema JSON-LD LocalBusiness di front-end
 	SGEOBIZ_Schema_Local::init();
 
-	// 4. AI Meta Generator (title + description) — hanya di admin
+	// 4. GEO Meta Tags (geo.region, geo.position, geo.placename, ICBM) untuk Local SEO
+	SGEOBIZ_Geo_Meta::init();
+
+	// 5. AI Meta Generator (title + description) — hanya di admin
 	if ( is_admin() ) {
 		SGEOBIZ_AI_Meta::init();
 	}
