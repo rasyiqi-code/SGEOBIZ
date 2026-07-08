@@ -1,0 +1,420 @@
+/**
+ * SGEOBIZ Focus CSS
+ * Desain modern, premium, dan bernuansa Glassmorphism
+ */
+
+.sgeobiz-focus-container {
+	padding: 24px;
+	background: #ffffff;
+	border-radius: 12px;
+	border: 1px solid #e2e8f0;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+/* Header & Skor Ring */
+.sgeobiz-focus-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #f1f5f9;
+	padding-bottom: 24px;
+	margin-bottom: 24px;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+
+.sgeobiz-focus-title-wrap h3 {
+	margin: 0 0 6px 0;
+	font-size: 20px;
+	font-weight: 700;
+	color: #1e293b;
+	display: flex;
+	align-items: center;
+}
+
+.sgeobiz-focus-premium-badge {
+	font-size: 11px;
+	background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+	color: #ffffff;
+	padding: 3px 8px;
+	border-radius: 20px;
+	margin-left: 10px;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+	box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+}
+
+.sgeobiz-focus-title-wrap p.description {
+	margin: 0;
+	color: #64748b;
+	font-size: 13px;
+}
+
+/* Skor Radial Progress */
+.sgeobiz-focus-gauge-wrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-width: 120px;
+}
+
+.sgeobiz-focus-gauge {
+	position: relative;
+	width: 80px;
+	height: 80px;
+}
+
+.sgeobiz-focus-gauge-circle {
+	width: 100%;
+	height: 100%;
+	transform: rotate(-90deg);
+}
+
+.sgeobiz-focus-gauge-circle circle {
+	fill: none;
+	stroke-width: 8px;
+}
+
+.sgeobiz-focus-gauge-circle circle.bg {
+	stroke: #f1f5f9;
+}
+
+.sgeobiz-focus-gauge-circle circle.bar {
+	stroke: #ef4444; /* Default merah */
+	stroke-linecap: round;
+	stroke-dasharray: 283; /* 2 * PI * r (r=45) */
+	transition: stroke-dashoffset 0.6s ease, stroke 0.6s ease;
+}
+
+.sgeobiz-focus-gauge-value {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 20px;
+	font-weight: 700;
+	color: #1e293b;
+}
+
+.sgeobiz-focus-gauge-label {
+	font-size: 11px;
+	font-weight: 600;
+	color: #64748b;
+	margin-top: 6px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+/* Keywords Grid */
+.sgeobiz-focus-keywords-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 20px;
+	margin-bottom: 24px;
+}
+
+.sgeobiz-focus-keyword-field {
+	background: #f8fafc;
+	border: 1px solid #e2e8f0;
+	padding: 16px;
+	border-radius: 10px;
+	transition: all 0.3s ease;
+}
+
+.sgeobiz-focus-keyword-field:hover,
+.sgeobiz-focus-keyword-field.active {
+	border-color: #cbd5e1;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.sgeobiz-focus-keyword-field label {
+	display: block;
+	font-weight: 600;
+	font-size: 13px;
+	color: #475569;
+	margin-bottom: 8px;
+}
+
+.sgeobiz-focus-input-wrapper {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.sgeobiz-focus-kw-input {
+	width: 100% !important;
+	height: 38px !important;
+	border: 1px solid #cbd5e1 !important;
+	border-radius: 6px !important;
+	padding: 0 35px 0 12px !important;
+	font-size: 13px !important;
+	color: #1e293b !important;
+	box-shadow: none !important;
+	transition: all 0.2s ease !important;
+}
+
+.sgeobiz-focus-kw-input:focus {
+	border-color: #3b82f6 !important;
+	box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+	outline: none !important;
+}
+
+.sgeobiz-focus-kw-clear {
+	position: absolute;
+	right: 8px;
+	background: none;
+	border: none;
+	font-size: 18px;
+	color: #94a3b8;
+	cursor: pointer;
+	padding: 4px;
+	display: none;
+	line-height: 1;
+}
+
+.sgeobiz-focus-kw-clear:hover {
+	color: #64748b;
+}
+
+/* Dictionary Loading & Suggestions */
+.sgeobiz-focus-dict-loading {
+	margin-top: 10px;
+	font-size: 12px;
+	color: #64748b;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.sgeobiz-focus-dict-loading .spinner {
+	margin: 0;
+	float: none;
+}
+
+.sgeobiz-focus-suggestions {
+	margin-top: 12px;
+	border-top: 1px dashed #e2e8f0;
+	padding-top: 10px;
+}
+
+.sgeobiz-focus-suggestion-title {
+	font-size: 11px;
+	font-weight: 700;
+	color: #64748b;
+	text-transform: uppercase;
+	margin-bottom: 6px;
+	letter-spacing: 0.5px;
+}
+
+.sgeobiz-focus-badge-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.sgeobiz-focus-badge {
+	display: inline-block;
+	font-size: 11px;
+	background: #f1f5f9;
+	color: #475569;
+	padding: 4px 10px;
+	border-radius: 20px;
+	cursor: pointer;
+	border: 1px solid #e2e8f0;
+	transition: all 0.2s ease;
+	user-select: none;
+}
+
+.sgeobiz-focus-badge:hover {
+	background: #e2e8f0;
+	color: #0f172a;
+	transform: translateY(-1px);
+}
+
+.sgeobiz-focus-badge.active {
+	background: linear-gradient(135deg, #dbeafe, #eff6ff);
+	color: #1d4ed8;
+	border-color: #bfdbfe;
+	font-weight: 600;
+}
+
+/* Subject Tabs untuk Multi-Keyword Switcher */
+.sgeobiz-focus-subject-tabs {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 20px;
+	background: #f1f5f9;
+	padding: 8px 16px;
+	border-radius: 8px;
+}
+
+.sgeobiz-focus-tab-label {
+	font-size: 12px;
+	font-weight: 600;
+	color: #64748b;
+}
+
+.sgeobiz-focus-tab-buttons {
+	display: flex;
+	gap: 6px;
+}
+
+.sgeobiz-focus-tab-btn {
+	background: #ffffff;
+	border: 1px solid #cbd5e1;
+	border-radius: 6px;
+	padding: 6px 14px;
+	font-size: 12px;
+	font-weight: 600;
+	color: #475569;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.sgeobiz-focus-tab-btn:hover {
+	background: #f8fafc;
+	color: #1e293b;
+}
+
+.sgeobiz-focus-tab-btn.active {
+	background: #1e293b;
+	color: #ffffff;
+	border-color: #1e293b;
+	box-shadow: 0 2px 6px rgba(30, 41, 59, 0.2);
+}
+
+/* Checklist Evaluasi */
+.sgeobiz-focus-checklist-wrap h4 {
+	margin: 0 0 16px 0;
+	font-size: 15px;
+	font-weight: 700;
+	color: #334155;
+}
+
+.sgeobiz-focus-checklist {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.sgeobiz-focus-check-item {
+	display: flex;
+	align-items: flex-start;
+	padding: 12px 0;
+	border-bottom: 1px solid #f1f5f9;
+	transition: background-color 0.2s ease;
+}
+
+.sgeobiz-focus-check-item:last-child {
+	border-bottom: none;
+}
+
+/* Status Icon Bulat */
+.sgeobiz-focus-check-item .status-icon {
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	margin-top: 2px;
+	margin-right: 14px;
+	display: inline-block;
+	flex-shrink: 0;
+	position: relative;
+	transition: background-color 0.3s ease;
+}
+
+/* Status: Error (Merah) */
+.sgeobiz-focus-check-item.status-error .status-icon {
+	background-color: #ef4444;
+	box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.sgeobiz-focus-check-item.status-error .status-icon::before {
+	content: "\f158"; /* dashicon-no */
+	font-family: dashicons;
+	color: #fff;
+	font-size: 10px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/* Status: Warning (Oranye) */
+.sgeobiz-focus-check-item.status-warning .status-icon {
+	background-color: #f97316;
+	box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+}
+
+.sgeobiz-focus-check-item.status-warning .status-icon::before {
+	content: "\f534"; /* dashicon-warning */
+	font-family: dashicons;
+	color: #fff;
+	font-size: 10px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/* Status: Success (Hijau) */
+.sgeobiz-focus-check-item.status-success .status-icon {
+	background-color: #22c55e;
+	box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+}
+
+.sgeobiz-focus-check-item.status-success .status-icon::before {
+	content: "\f147"; /* dashicon-yes */
+	font-family: dashicons;
+	color: #fff;
+	font-size: 12px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.check-text {
+	flex-grow: 1;
+}
+
+.check-text strong {
+	display: block;
+	font-size: 13px;
+	color: #334155;
+	font-weight: 600;
+	margin-bottom: 2px;
+}
+
+.check-text .check-desc {
+	display: block;
+	font-size: 12px;
+	color: #64748b;
+}
+
+.check-metric {
+	font-size: 12px;
+	font-weight: 600;
+	color: #475569;
+	background: #f1f5f9;
+	padding: 4px 10px;
+	border-radius: 6px;
+	white-space: nowrap;
+	margin-left: 15px;
+}
+
+.sgeobiz-focus-check-item.status-success .check-metric {
+	background: #dcfce7;
+	color: #15803d;
+}
+
+.sgeobiz-focus-check-item.status-warning .check-metric {
+	background: #ffedd5;
+	color: #c2410c;
+}
+
+.sgeobiz-focus-check-item.status-error .check-metric {
+	background: #fee2e2;
+	color: #b91c1c;
+}

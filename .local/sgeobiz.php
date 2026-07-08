@@ -77,4 +77,8 @@ function sgeobiz_boot() {
 
 	// 12. Real-Time IndexNow API Client ( Instant AI Indexing )
 	SGEOBIZ_IndexNow::init();
+
+	// 13. Focus SEO Content Optimizer (Keyword, subject density, dictionary)
+	SGEOBIZ_Focus::init();
 }
+
