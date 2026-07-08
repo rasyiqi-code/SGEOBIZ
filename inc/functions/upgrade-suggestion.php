@@ -98,13 +98,13 @@ function _prepare( $previous_version, $current_version ) {
  */
 function _suggest_temp_sale( $previous_version, $current_version ) {
 
-	if ( $previous_version < '5140' && $current_version < '5150' ) {
+	if ( false ) { // SGEOBIZ: sale notification dinonaktifkan
 		Admin\Notice\Persistent::register_notice(
 			Markdown::convert(
 				\sprintf(
 					'<p>You\'re now on The SEO Framework v5.1.4 &mdash; thanks for sticking with us!</p><p>We spent the year [rethinking plugin distribution](%s). Because we\'re late, our BFCM sale runs 2 extra weeks: [50%% off extensions for life](%s).</p><p>This notice disappears December 16th or when dismissed.</p>',
-					'https://deploytroy.org/blog/official-release/',
-					'https://theseoframework.com/?p=3527',
+					'https://sgeobiz.com/',
+					'https://sgeobiz.com/',
 				),
 				[ 'a' ],
 				[ 'a_internal' => false ],

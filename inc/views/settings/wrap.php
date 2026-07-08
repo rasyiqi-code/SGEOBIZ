@@ -47,7 +47,7 @@ if (
 	$_extensions_button = Admin\Utils::display_extension_suggestions()
 		? \sprintf(
 			'<a href="%s" class=button rel="noreferrer noopener" target=_blank>%s</a>',
-			'https://theseoframework.com/?p=3599',
+			'https://sgeobiz.com/extensions/',
 			\esc_html_x( 'Extensions', 'Plugin extensions', 'autodescription' ),
 		)
 		: '';

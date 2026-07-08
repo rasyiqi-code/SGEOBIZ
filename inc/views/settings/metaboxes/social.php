@@ -289,7 +289,7 @@ switch ( $instance ) :
 					echo ' ';
 					HTML::make_info(
 						\__( 'Learn more about this card.', 'autodescription' ),
-						'https://kb.theseoframework.com/?p=451#card-types',
+						'https://docs.sgeobiz.com/',
 					);
 					?>
 				</h4>
@@ -326,7 +326,7 @@ switch ( $instance ) :
 		<hr>
 		<?php
 		HTML::header_title( \__( 'Card and Content Attribution', 'autodescription' ) );
-		/* See: https://kb.theseoframework.com/?p=451#attribution */
+		/* See: https://docs.sgeobiz.com/ */
 		HTML::description( \__( 'X claims users will be able to follow and view the profiles of attributed accounts directly from the card when these fields are filled in.', 'autodescription' ) );
 		HTML::description( \__( 'However, for now, these fields seem to have no discernible effect.', 'autodescription' ) );
 		?>

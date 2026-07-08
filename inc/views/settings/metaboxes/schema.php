@@ -345,7 +345,7 @@ switch ( $instance ) :
 				\sprintf(
 					/* translators: %s = Documentation URL in Markdown */
 					\esc_html__( 'You can also use a shortcode to output breadcrumbs. [Learn more](%s).', 'autodescription' ),
-					'https://kb.theseoframework.com/?p=212',
+					'https://docs.sgeobiz.com/',
 				),
 				[ 'a' ],
 				[ 'a_internal' => false ],

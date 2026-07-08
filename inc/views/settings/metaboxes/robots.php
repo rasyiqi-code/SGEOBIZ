@@ -501,7 +501,7 @@ switch ( $instance ) :
 		if ( RobotsTXT\Utils::get_blocked_user_agents( 'ai' ) ) {
 			$info = HTML::make_info(
 				\__( 'Discover which AI crawlers are being blocked.', 'autodescription' ),
-				'https://kb.theseoframework.com/?p=263#blocking-ai-crawlers',
+				'https://docs.sgeobiz.com/',
 				false,
 			);
 
@@ -519,7 +519,7 @@ switch ( $instance ) :
 		if ( RobotsTXT\Utils::get_blocked_user_agents( 'seo' ) ) {
 			$info = HTML::make_info(
 				\__( 'Discover which SEO crawlers are being blocked.', 'autodescription' ),
-				'https://kb.theseoframework.com/?p=263#blocking-seo-crawlers',
+				'https://docs.sgeobiz.com/',
 				false,
 			);
 

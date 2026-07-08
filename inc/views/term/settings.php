@@ -312,7 +312,7 @@ Input::output_js_social_data(
 					echo ' ';
 					HTML::make_info(
 						\__( 'The Twitter Card type controls the link preview layout. On X, the summary card shows a small thumbnail beside truncated title and description; the large-image card overlays the title on the image with no description. On Discord, the image appears small at the side or large below; both card types show the description.', 'autodescription' ),
-						'https://kb.theseoframework.com/?p=451#card-types',
+						'https://docs.sgeobiz.com/',
 					);
 					?>
 				</label>

@@ -60,12 +60,12 @@ final class PluginTable {
 
 		$tsf_links['tsfem']   = \sprintf(
 			'<a href="%s" rel="noreferrer noopener" target=_blank>%s</a>',
-			'https://theseoframework.com/extensions/',
+			'https://sgeobiz.com/extensions/',
 			\esc_html_x( 'Extensions', 'Plugin extensions', 'autodescription' ),
 		);
 		$tsf_links['pricing'] = \sprintf(
 			'<a href="%s" rel="noreferrer noopener" target=_blank>%s</a>',
-			'https://theseoframework.com/pricing/',
+			'https://sgeobiz.com/pricing/',
 			\esc_html_x( 'Pricing', 'Plugin pricing', 'autodescription' ),
 		);
 
@@ -97,22 +97,22 @@ final class PluginTable {
 			[
 				'support' => \sprintf(
 					'<a href="%s" rel="noreferrer noopener nofollow" target=_blank>%s</a>',
-					'https://tsf.fyi/support',
+					'https://sgeobiz.com/support/',
 					\esc_html__( 'Support', 'autodescription' ),
 				),
 				'docs'    => \sprintf(
 					'<a href="%s" rel="noreferrer noopener nofollow" target=_blank>%s</a>',
-					'https://tsf.fyi/docs',
+					'https://sgeobiz.com/docs/',
 					\esc_html__( 'Documentation', 'autodescription' ),
 				),
 				'Git'     => \sprintf(
 					'<a href="%s" rel="noreferrer noopener nofollow" target=_blank>%s</a>',
-					'https://tsf.fyi/github',
+					'https://github.com/sgeobiz',
 					'GitHub',
 				),
 				'EM'      => \sprintf(
 					'<a href="%s" rel="noreferrer noopener nofollow" target=_blank>%s</a>',
-					'https://tsf.fyi/extension-manager',
+					'https://sgeobiz.com/extensions/',
 					'Extension Manager',
 				),
 			],

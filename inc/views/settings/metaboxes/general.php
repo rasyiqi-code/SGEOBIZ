@@ -132,7 +132,7 @@ switch ( $instance ) :
 
 		$pixel_info = HTML::make_info(
 			\__( 'The pixel counter computes whether the input will fit on search engine result pages.', 'autodescription' ),
-			'https://kb.theseoframework.com/?p=48',
+			'https://docs.sgeobiz.com/',
 			false,
 		);
 

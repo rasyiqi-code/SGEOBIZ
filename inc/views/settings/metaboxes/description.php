@@ -48,7 +48,7 @@ switch ( $instance ) : // Quite useless, but prepared for expansion.
 
 		$info = HTML::make_info(
 			\__( 'Learn how this feature works.', 'autodescription' ),
-			'https://kb.theseoframework.com/?p=65',
+			'https://docs.sgeobiz.com/',
 			false,
 		);
 		HTML::wrap_fields(
@@ -115,7 +115,7 @@ switch ( $instance ) : // Quite useless, but prepared for expansion.
 		HTML::description_noesc(
 			\sprintf(
 				'<a href="%s" target=_blank rel="noreferrer noopener">%s</a>',
-				'https://kb.theseoframework.com/?p=65#html-passes',
+				'https://docs.sgeobiz.com/',
 				\esc_html__( 'Learn how this works.', 'autodescription' ),
 			)
 		);

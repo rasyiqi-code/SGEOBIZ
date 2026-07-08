@@ -88,7 +88,7 @@ switch ( $instance ) :
 				\sprintf(
 					/* translators: %s = Learn more URL. Markdown! */
 					\esc_html__( 'The sitemap does not contribute to ranking; [it can only help with indexing](%s). Search engines process smaller, less complicated sitemaps quicker, which shortens the time required for indexing pages.', 'autodescription' ),
-					'https://kb.theseoframework.com/?p=119',
+					'https://docs.sgeobiz.com/',
 				),
 				[ 'a' ],
 				[ 'a_internal' => false ],
@@ -154,7 +154,7 @@ switch ( $instance ) :
 						\sprintf(
 							/* translators: %s = Documentation URL in markdown */
 							\esc_html__( 'A multilingual plugin has been detected, so your site may have multiple sitemaps. [Learn more](%s).', 'autodescription' ),
-							'https://kb.theseoframework.com/?p=104#same-site-sitemaps',
+							'https://docs.sgeobiz.com/',
 						),
 						[ 'a' ],
 						[ 'a_internal' => false ] // opens in new tab.

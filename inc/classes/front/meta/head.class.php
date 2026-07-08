@@ -222,16 +222,16 @@ final class Head {
 			 */
 			'show_timer' => (bool) \apply_filters( 'the_seo_framework_indicator_timing', true ),
 			'annotation' => \esc_html( trim( vsprintf(
-				/* translators: 1 = The SEO Framework, 2 = 'by Sybre Waaijer */
+				/* translators: 1 = Plugin name, 2 = Author */
 				\__( '%1$s %2$s', 'autodescription' ),
 				[
-					'The SEO Framework',
+					'SGEOBIZ SEO',
 					/**
 					 * @since 2.4.0
 					 * @param bool $sybre Whether to show the author name in the indicator.
 					 */
-					\apply_filters( 'sybre_waaijer_<3', true ) // phpcs:ignore WordPress.NamingConventions.ValidHookName -- Easter egg.
-						? \__( 'by Sybre Waaijer', 'autodescription' )
+					false // phpcs:ignore WordPress.NamingConventions.ValidHookName -- Easter egg.
+						? \__( 'by SGEOBIZ', 'autodescription' )
 						: '',
 				]
 			) ) ),

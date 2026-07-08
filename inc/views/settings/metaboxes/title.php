@@ -149,7 +149,7 @@ switch ( $instance ) :
 						/* translators: 1: Extension name, 2: Extension link. Markdown!  */
 						\esc_html__( "The current theme doesn't support a feature that allows predictable output of titles. Consider installing [%1\$s](%2\$s) when you notice the title output in the browser-tab isn't as you have configured.", 'autodescription' ),
 						'Title Fix',
-						'https://theseoframework.com/?p=2298',
+						'https://sgeobiz.com/',
 					),
 					[ 'a' ],
 					[ 'a_internal' => false ],
@@ -335,7 +335,7 @@ switch ( $instance ) :
 			<?php
 			$info = HTML::make_info(
 				\__( "The prefix helps visitors and search engines determine what kind of page they're visiting.", 'autodescription' ),
-				'https://kb.theseoframework.com/?p=34',
+				'https://docs.sgeobiz.com/',
 				false,
 			);
 			HTML::wrap_fields(

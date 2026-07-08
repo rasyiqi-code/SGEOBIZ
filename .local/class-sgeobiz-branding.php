@@ -1,9 +1,18 @@
 <?php
 /**
- * SGEOBIZ Branding — White-label layer
+ * SGEOBIZ Branding — White-label layer (Total Rebrand)
  *
- * Mengganti semua tampilan "The SEO Framework" di admin UI
- * dengan branding SGEOBIZ SEO via WordPress filter hooks.
+ * Mengganti SEMUA tampilan branding TSF di admin UI dengan SGEOBIZ
+ * via WordPress filter & action hooks resmi TSF.
+ *
+ * Target rebrand:
+ * - Nama menu admin: "SEO" → "SGEOBIZ SEO"
+ * - Judul halaman settings: "SEO Settings" → "SGEOBIZ SEO Settings"
+ * - Plugin action links (halaman Plugins)
+ * - Plugin row meta (halaman Plugins)
+ * - Footer text di halaman settings
+ * - HTML comment indicator di <head>
+ * - Teks tombol Extensions di settings
  *
  * @package SGEOBIZ
  */
@@ -13,103 +22,195 @@ defined( 'THE_SEO_FRAMEWORK_PRESENT' ) or die;
 class SGEOBIZ_Branding {
 
 	/**
-	 * Daftarkan semua filter branding.
+	 * Daftarkan semua filter dan action rebrand.
 	 */
 	public static function init() {
 		$instance = new self();
 
-		// Ganti judul halaman settings TSF
-		add_filter( 'the_seo_framework_settings_page_name', [ $instance, 'filter_settings_page_name' ] );
+		// ── Menu & Halaman ────────────────────────────────────────────────
 
-		// Ganti nama plugin di link action halaman Plugins
-		add_filter( 'plugin_action_links_' . THE_SEO_FRAMEWORK_PLUGIN_BASENAME, [ $instance, 'filter_plugin_action_links' ], 20 );
-		add_filter( 'plugin_row_meta', [ $instance, 'filter_plugin_row_meta' ], 20, 2 );
+		// Ganti args menu utama TSF (judul halaman + label menu + icon)
+		add_filter( 'the_seo_framework_top_menu_args', [ $instance, 'filter_menu_args' ] );
 
-		// Ganti footer text di halaman settings TSF
-		add_filter( 'admin_footer_text', [ $instance, 'filter_admin_footer_text' ] );
-
-		// Ganti judul menu di admin sidebar
+		// Ganti nama menu "SEO" di sidebar secara langsung (fallback jika filter di atas tidak cukup)
 		add_action( 'admin_menu', [ $instance, 'rename_admin_menu' ], 999 );
 
-		// Override site title di TSF untuk SEO bar (opsional, info saja)
+		// ── Plugin Table (halaman Plugins) ────────────────────────────────
+
+		// Ganti action links: Settings, Extensions, Pricing
+		add_filter(
+			'plugin_action_links_' . THE_SEO_FRAMEWORK_PLUGIN_BASENAME,
+			[ $instance, 'filter_action_links' ],
+			20
+		);
+
+		// Ganti row meta: Support, Docs, GitHub, Extension Manager
+		add_filter( 'plugin_row_meta', [ $instance, 'filter_row_meta' ], 20, 2 );
+
+		// ── Footer Admin ──────────────────────────────────────────────────
+		add_filter( 'admin_footer_text', [ $instance, 'filter_admin_footer' ] );
+
+		// ── HTML Comment Indicator di <head> ─────────────────────────────
+		// TSF menampilkan "The SEO Framework by Sybre Waaijer" di comment HTML
+		// Sudah diganti di head.class.php via sed, filter ini sebagai double-safety
 		add_filter( 'the_seo_framework_indicator', [ $instance, 'filter_indicator' ] );
+
+		// ── Extensions Button di Settings Page ───────────────────────────
+		// Sembunyikan tombol "Extensions" yang mengarah ke TSF
+		add_filter( 'the_seo_framework_show_extension_suggestions', '__return_false' );
 	}
 
 	/**
-	 * Ganti nama halaman settings TSF → SGEOBIZ SEO.
+	 * Filter args menu utama TSF.
 	 *
-	 * @param string $name Nama asli.
-	 * @return string
-	 */
-	public function filter_settings_page_name( $name ) {
-		return 'SGEOBIZ SEO';
-	}
-
-	/**
-	 * Ganti teks di action links plugin.
-	 *
-	 * @param array $links Link action.
+	 * @param array $args Menu args dari TSF.
 	 * @return array
 	 */
-	public function filter_plugin_action_links( $links ) {
-		// Ganti teks "Settings" menjadi link yang tetap tapi tetap fungsional
-		return $links;
-	}
+	public function filter_menu_args( $args ) {
+		// Ganti judul halaman
+		$args['page_title'] = 'SGEOBIZ SEO Settings';
 
-	/**
-	 * Hapus baris meta plugin yang mengarah ke theseoframework.com.
-	 *
-	 * @param array  $links Link meta.
-	 * @param string $file  Basename plugin file.
-	 * @return array
-	 */
-	public function filter_plugin_row_meta( $links, $file ) {
-		if ( $file !== THE_SEO_FRAMEWORK_PLUGIN_BASENAME ) {
-			return $links;
+		// Ganti label menu sidebar (ambil hanya badge issue count-nya)
+		$current = $args['menu_title'];
+
+		// Ekstrak badge HTML jika ada (angka notifikasi issue)
+		$badge = '';
+		if ( str_contains( $current, '<span' ) ) {
+			preg_match( '/<span[^>]*>.*?<\/span>/s', $current, $m );
+			$badge = $m[0] ?? '';
 		}
-		// Hapus link eksternal TSF, ganti dengan SGEOBIZ
-		return [
-			'<a href="https://sgeobiz.com/docs/" target="_blank">Dokumentasi</a>',
-			'<a href="https://sgeobiz.com/support/" target="_blank">Dukungan</a>',
-		];
+
+		$args['menu_title'] = 'SGEOBIZ SEO' . $badge;
+
+		// Ganti icon ke icon yang lebih relevan
+		$args['icon'] = 'dashicons-location-alt'; // icon lokasi → cocok untuk local SEO
+
+		return $args;
 	}
 
 	/**
-	 * Ganti footer text di halaman settings TSF.
-	 *
-	 * @param string $text Footer asli.
-	 * @return string
-	 */
-	public function filter_admin_footer_text( $text ) {
-		$screen = get_current_screen();
-		if ( $screen && str_contains( (string) $screen->id, 'theseoframework' ) ) {
-			return sprintf(
-				'SGEOBIZ SEO v%s &mdash; <a href="https://sgeobiz.com" target="_blank">sgeobiz.com</a>',
-				SGEOBIZ_VERSION
-			);
-		}
-		return $text;
-	}
-
-	/**
-	 * Ganti nama menu "SEO" di admin sidebar menjadi "SGEOBIZ SEO".
+	 * Rename menu sidebar secara langsung (fallback).
+	 * Dibutuhkan karena filter 'the_seo_framework_top_menu_args' bisa di-memo
+	 * sebelum filter ini terpasang.
 	 */
 	public function rename_admin_menu() {
 		global $menu, $submenu;
 
-		// Cari menu TSF dan ganti labelnya
 		foreach ( $menu as $pos => $item ) {
 			if ( isset( $item[2] ) && $item[2] === THE_SEO_FRAMEWORK_SITE_OPTIONS_SLUG ) {
-				$menu[ $pos ][0] = 'SGEOBIZ SEO';
+				// Pertahankan badge (angka notifikasi) jika ada
+				$badge = '';
+				if ( isset( $item[0] ) && str_contains( (string) $item[0], '<span' ) ) {
+					preg_match( '/<span[^>]*>.*?<\/span>/s', $item[0], $m );
+					$badge = $m[0] ?? '';
+				}
+				$menu[ $pos ][0] = 'SGEOBIZ SEO' . $badge;
+				$menu[ $pos ][6] = 'dashicons-location-alt';
 				break;
 			}
+		}
+
+		// Ganti label submenu pertama (= judul halaman utama)
+		if ( isset( $submenu[ THE_SEO_FRAMEWORK_SITE_OPTIONS_SLUG ][0] ) ) {
+			$submenu[ THE_SEO_FRAMEWORK_SITE_OPTIONS_SLUG ][0][0] = 'SGEOBIZ SEO Settings';
 		}
 	}
 
 	/**
-	 * Filter indicator TSF (ditampilkan di comment HTML output).
+	 * Ganti action links di halaman Plugins.
+	 * Hapus link TSF external, ganti dengan link SGEOBIZ.
 	 *
-	 * @param string $indicator
+	 * @param array $links Link action.
+	 * @return array
+	 */
+	public function filter_action_links( $links ) {
+		// Hapus key 'tsfem' (Extensions) dan 'pricing' dari TSF
+		unset( $links['tsfem'], $links['pricing'] );
+
+		// Tambahkan link SGEOBIZ di awal
+		$sgeobiz_links = [];
+
+		if ( isset( $links['settings'] ) ) {
+			$sgeobiz_links['settings'] = $links['settings']; // Pertahankan link Settings
+			unset( $links['settings'] );
+		}
+
+		$sgeobiz_links['docs'] = sprintf(
+			'<a href="%s" rel="noreferrer noopener" target="_blank">%s</a>',
+			'https://sgeobiz.com/docs/',
+			'Dokumentasi'
+		);
+
+		return array_merge( $sgeobiz_links, $links );
+	}
+
+	/**
+	 * Ganti row meta di halaman Plugins.
+	 * Hapus semua link TSF, ganti dengan link SGEOBIZ.
+	 *
+	 * @param array  $links Link meta plugin.
+	 * @param string $file  Plugin basename.
+	 * @return array
+	 */
+	public function filter_row_meta( $links, $file ) {
+		if ( $file !== THE_SEO_FRAMEWORK_PLUGIN_BASENAME ) {
+			return $links;
+		}
+
+		// Ganti semua link dengan link SGEOBIZ
+		return [
+			sprintf(
+				'<a href="%s" rel="noreferrer noopener" target="_blank">%s</a>',
+				'https://sgeobiz.com/docs/',
+				'Dokumentasi'
+			),
+			sprintf(
+				'<a href="%s" rel="noreferrer noopener" target="_blank">%s</a>',
+				'https://sgeobiz.com/support/',
+				'Dukungan'
+			),
+		];
+	}
+
+	/**
+	 * Ganti footer text di halaman settings SGEOBIZ.
+	 *
+	 * @param string $text Footer asli WordPress.
+	 * @return string
+	 */
+	public function filter_admin_footer( $text ) {
+		$screen = get_current_screen();
+		if ( ! $screen ) {
+			return $text;
+		}
+
+		// Aktif di semua halaman yang berkaitan dengan SGEOBIZ/TSF
+		$tsf_screens = [
+			THE_SEO_FRAMEWORK_SITE_OPTIONS_SLUG,
+			'seo_page_sgeobiz-business-settings',
+		];
+
+		$is_tsf_screen = str_contains( (string) $screen->id, 'theseoframework' )
+			|| in_array( $screen->id, $tsf_screens, true )
+			|| ( isset( $screen->base ) && str_contains( (string) $screen->base, 'theseoframework' ) );
+
+		if ( $is_tsf_screen ) {
+			return sprintf(
+				'<strong>SGEOBIZ SEO</strong> v%s &nbsp;|&nbsp; '
+				. '<a href="https://sgeobiz.com" target="_blank" rel="noreferrer">sgeobiz.com</a> '
+				. '&nbsp;|&nbsp; <a href="https://sgeobiz.com/support/" target="_blank" rel="noreferrer">Dukungan</a>',
+				SGEOBIZ_VERSION
+			);
+		}
+
+		return $text;
+	}
+
+	/**
+	 * Ganti teks indicator di HTML comment <head>.
+	 * TSF output: <!-- The SEO Framework by Sybre Waaijer ... -->
+	 *
+	 * @param string $indicator Teks indicator asli.
 	 * @return string
 	 */
 	public function filter_indicator( $indicator ) {
